@@ -20,63 +20,63 @@ export const PricingConsultationSection: React.FC<PricingConsultationSectionProp
 
   const deliverables = [
     {
-      title: lang === 'hi' ? '60 मिनट का गहन 1-on-1 सत्र' : '60-Minute Comprehensive 1-on-1 Session',
-      desc: lang === 'hi' ? 'वीडियो या ऑडियो कॉल द्वारा पूजा जी से सीधा संवाद' : 'Private video or audio dialogue directly with Dr. Pooja Awasthi'
+      title: lang === 'hi' ? '60 मिनट का व्यक्तिगत 1-on-1 सत्र' : '60-Minute Private 1-on-1 Session',
+      desc: lang === 'hi' ? 'वीडियो या फोन कॉल द्वारा डॉ. पूजा जी से सीधा संवाद' : 'Private video or phone call directly with Dr. Pooja Awasthi'
     },
     {
-      title: lang === 'hi' ? 'मूलांक व भाग्यांक का संपूर्ण विश्लेषण' : 'Mulank & Bhagyank Cosmic Matrix Analysis',
-      desc: lang === 'hi' ? 'जन्मतिथि के आधार पर कर्म चक्र और करियर का मार्गदर्शन' : 'Uncovering your core soul number, destiny trajectory, and career cycles'
+      title: lang === 'hi' ? 'मूलांक व भाग्यांक (जन्म व भाग्य अंक)' : 'Birth & Destiny Numbers (Mulank & Bhagyank)',
+      desc: lang === 'hi' ? 'जन्मतिथि के अनुसार आपकी शक्तियों और करियर की दिशा का विश्लेषण' : 'Understand your personality, inner talents, and best life direction'
     },
     {
-      title: lang === 'hi' ? 'नाम कंपन व स्पेलिंग संतुलन' : 'Name Vibration & Phonetic Alignment',
-      desc: lang === 'hi' ? 'नाम के अक्षरों का अंकशास्त्रीय परीक्षण और शुभ संशोधन' : 'Evaluating your current name frequency against planetary rulers'
+      title: lang === 'hi' ? 'नाम की स्पेलिंग व शुभ अंक जांच' : 'Name Spelling & Lucky Number Check',
+      desc: lang === 'hi' ? 'नाम के अक्षरों का अंकशास्त्रीय परीक्षण और शुभ संतुलन' : 'Check if your name spelling aligns with your lucky numbers'
     },
     {
-      title: lang === 'hi' ? 'आने वाले समय का ग्रह चक्र (Timing)' : 'Planetary Timing & Auspicious Windows',
-      desc: lang === 'hi' ? 'करियर, व्यापार, विवाह व निवेश के लिए अनुकूल समय' : 'Identifying optimal cycles for major ventures and decisions'
+      title: lang === 'hi' ? 'शुभ समय व ग्रह चक्र (Timing)' : 'Best Timing for Career & Major Decisions',
+      desc: lang === 'hi' ? 'करियर, नया काम, विवाह या निवेश के लिए सबसे अच्छा समय' : 'Know the most favorable months and years to start new projects'
     },
     {
-      title: lang === 'hi' ? 'व्यक्तिगत और सरल वैदिक उपाय' : 'Personalized Practical Vedic Remedies',
-      desc: lang === 'hi' ? 'शुभ रंग, शुभ दिन, मंत्र व क्रिस्टल मार्गदर्शन' : 'Actionable daily remedies, auspicious colors, mantras, and crystals'
+      title: lang === 'hi' ? 'सरल और व्यावहारिक उपाय' : 'Simple & Practical Daily Remedies',
+      desc: lang === 'hi' ? 'आपके अनुकूल शुभ रंग, शुभ दिन, सरल मंत्र व रत्न मार्गदर्शन' : 'Actionable daily tips, lucky colors, days, and gemstone advice'
     },
     {
-      title: lang === 'hi' ? 'सत्रोपरांत मार्गदर्शन सार' : 'Post-Session Summary & Follow-Up',
-      desc: lang === 'hi' ? 'महत्वपूर्ण बिंदुओं का लिखित सारांश व दिशा-निर्देश' : 'Key points and actionable decision checklist delivered after the call'
+      title: lang === 'hi' ? 'सत्र के बाद लिखित सार' : 'Written Summary & Next Steps',
+      desc: lang === 'hi' ? 'बातचीत के मुख्य बिंदुओं और उपायों की लिखित जानकारी' : 'Key points and important advice sent to you after the session'
     }
   ];
 
   const steps = [
     {
       num: '01',
-      title: lang === 'hi' ? 'विवरण साझा करें' : 'Share Coordinates',
+      title: lang === 'hi' ? 'अपनी जानकारी साझा करें' : 'Share Your Details',
       desc:
         lang === 'hi'
-          ? 'अपनी जन्मतिथि, जन्म समय, जन्म स्थान और अपने मुख्य प्रश्न दर्ज करें।'
-          : 'Submit your birth date, time, location, and the core crossroads you wish to navigate.'
+          ? 'अपनी जन्मतिथि, नाम और जो सवाल आप पूछना चाहते हैं, वे बताएं।'
+          : 'Send your birth date, name, and the questions on your mind.'
     },
     {
       num: '02',
-      title: lang === 'hi' ? 'समय निर्धारण' : 'Direct Confirmation',
+      title: lang === 'hi' ? 'समय तय करें' : 'Confirm Your Time',
       desc:
         lang === 'hi'
-          ? 'व्हाट्सएप (+91 91057 31969) पर आपकी सुविधानुसार समय निश्चित किया जाता है।'
-          : 'Your preferred video or audio time slot is confirmed directly via WhatsApp or Email.'
+          ? 'व्हाट्सएप (+91 91057 31969) पर अपनी सुविधानुसार समय निश्चित करें।'
+          : 'Choose a convenient day and time slot easily on WhatsApp.'
     },
     {
       num: '03',
-      title: lang === 'hi' ? 'निजी 1-on-1 सत्र' : 'Private Guidance Session',
+      title: lang === 'hi' ? 'निजी 1-on-1 बातचीत' : '1-on-1 Consultation',
       desc:
         lang === 'hi'
-          ? 'डॉ. पूजा अवस्थी के साथ 60 मिनट का शांत, गोपनीय और गहन विश्लेषण सत्र।'
-          : 'Experience an unhurried, compassionate, and deeply focused 60-minute consultation.'
+          ? 'डॉ. पूजा अवस्थी के साथ 60 मिनट की शांत, गोपनीय और गहन बातचीत।'
+          : 'Enjoy a calm, completely private 60-minute session with Dr. Pooja Awasthi.'
     },
     {
       num: '04',
-      title: lang === 'hi' ? 'सचेत आत्मविश्वास' : 'Grounded Roadmap',
+      title: lang === 'hi' ? 'शांति व आत्मविश्वास' : 'Clarity & Next Steps',
       desc:
         lang === 'hi'
-          ? 'प्राप्त स्पष्टता और वैदिक उपायों को अपने दैनिक जीवन में लागू करें।'
-          : 'Walk away with total clarity, empowering answers, and constructive next steps.'
+          ? 'मिली हुई स्पष्टता और सरल उपायों के साथ आत्मविश्वास से आगे बढ़ें।'
+          : 'Move forward with clear answers, peace of mind, and simple remedies.'
     }
   ];
 

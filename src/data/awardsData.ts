@@ -1,8 +1,10 @@
 export interface AwardItem {
   id: string;
   filename: string;
+  imageUrl?: string;
   category: 'felicitation' | 'conclave' | 'memento' | 'press';
   caption: string;
+  caption_en?: string;
   event: string;
   event_hi: string;
   alt: string;
@@ -11,12 +13,14 @@ export interface AwardItem {
 export const AWARDS_DATA: AwardItem[] = [
   {
     id: "award-1",
-    filename: "555.jpeg",
+    filename: "National_director_of_Nafeed-2.jpeg",
+    imageUrl: "/assets/aistudio/__________________National_director_of_Nafeed-2_f0142bbc.jpeg",
     category: "felicitation",
     caption: "माननीय अशोक ठाकुर National Director of Nafeed द्वारा सम्मानित",
+    caption_en: "Honored by Shri Ashok Thakur, National Director of NAFED at Dynamic Excellence Awards 2025",
     event: "Dynamic Excellence Awards 2025",
     event_hi: "डायनामिक एक्सीलेंस अवार्ड्स 2025",
-    alt: "Dr. Pooja Awasthi at Dynamic Excellence Awards 2025 ceremony"
+    alt: "Dr. Pooja Awasthi honored by Hon. Ashok Thakur, National Director of NAFED at Dynamic Excellence Awards 2025"
   },
   {
     id: "award-2",
@@ -29,39 +33,47 @@ export const AWARDS_DATA: AwardItem[] = [
   },
   {
     id: "award-3",
-    filename: "6666.jpeg",
+    filename: "mahakal_ujjain_dinesh_ji_indore.jpeg",
+    imageUrl: "/mahakal_ujjain_dinesh_ji_indore.jpeg",
     category: "conclave",
     caption: "माननीय दिनेश जी (महाकाल उज्जैन के प्रधान पुरोहित ) का आशीर्वाद प्राप्त हुआ. जय महाकाल 🙏",
+    caption_en: "Blessed by Hon. Dinesh Ji, Head Priest of Mahakal Ujjain at 40th Jyotish Sammelan, Indore",
     event: "40th Jyotish Sammelan, Hotel Park Palace, Indore",
     event_hi: "40वाँ ज्योतिष सम्मेलन, होटल पार्क पैलेस, इन्दौर",
-    alt: "Dr. Pooja Awasthi with revered Guru at 40th Jyotish Sammelan in Indore"
+    alt: "Dr. Pooja Awasthi receiving sacred blessings from Pt. Dinesh Ji, Head Priest of Mahakal Ujjain at Hotel Park Palace, Indore"
   },
   {
     id: "award-4",
-    filename: "pooja (1).jpeg",
+    filename: "bhu_varanasi_acharya_chandramouli_upadhyay.jpeg",
+    imageUrl: "/assets/aistudio/_______________________________________________________________________________________________-_7_cfe480d3.jpeg",
     category: "conclave",
     caption: "बनारस हिंदू विश्वविद्यालय (BHU) के ज्योतिष विभाग के प्रमुख, आचार्य चंद्रमौली उपाध्याय जी द्वारा सम्मानित। 🙏🏆",
+    caption_en: "Conferred with Honour by Prof. Acharya Chandramouli Upadhyay, Head of Jyotish Dept., Banaras Hindu University (BHU), Varanasi",
     event: "International Jyotish & Vastu Sammelan, BHU Varanasi",
     event_hi: "अन्तर्राष्ट्रीय ज्योतिष एवं वास्तु सम्मेलन, काशी हिन्दू विश्वविद्यालय, वाराणसी",
-    alt: "Receiving certificate of honour at Banaras Hindu University"
+    alt: "Dr. Pooja Awasthi receiving certificate of honour from Acharya Chandramouli Upadhyay at Banaras Hindu University (BHU)"
   },
   {
     id: "award-5",
-    filename: "pooja (2).jpeg",
+    filename: "bhu_keynote_address_pooja_awasthi.jpeg",
+    imageUrl: "/assets/aistudio/_______________________________________________________________________________________________-_4_a4b581f7.jpeg",
     category: "conclave",
     caption: "बनारस हिंदू विश्वविद्यालय (BHU) के ज्योतिष विभाग के प्रमुख, आचार्य चंद्रमौली उपाध्याय जी द्वारा सम्मानित। 🙏🏆",
+    caption_en: "Keynote Address by Dr. Pooja Awasthi at International Jyotish & Vastu Sammelan, Banaras Hindu University (BHU)",
     event: "Keynote Address at International Jyotish & Vastu Sammelan",
     event_hi: "अन्तर्राष्ट्रीय ज्योतिष एवं वास्तु सम्मेलन में मंच संबोधन",
-    alt: "Dr. Pooja Awasthi speaking at the podium"
+    alt: "Dr. Pooja Awasthi delivering keynote speech at International Jyotish & Vastu Sammelan, BHU Varanasi"
   },
   {
     id: "award-6",
-    filename: "pooja (3).jpeg",
+    filename: "uttarakhand_governor_gurmeet_singh_award.jpeg",
+    imageUrl: "/assets/aistudio/___________________________________________________________________________________________-5_cf9c055f.jpeg",
     category: "felicitation",
     caption: "अमर उजाला ज्योतिष महाकुम्भ में उत्तराखंड के माननीय राज्यपाल ले. ज. गुरमीत सिंह द्वारा सम्मानित",
+    caption_en: "Felicitation by Hon. Governor of Uttarakhand, Lt. Gen. Gurmeet Singh at Amar Ujala Jyotish Mahakumbh",
     event: "Honoured by Lt. Gen. Gurmeet Singh, Hon. Governor of Uttarakhand",
     event_hi: "माननीय राज्यपाल ले. ज. गुरमीत सिंह द्वारा सम्मान अर्पण",
-    alt: "Felicitation on stage by Hon. Governor of Uttarakhand"
+    alt: "Dr. Pooja Awasthi honored on stage by Hon. Governor of Uttarakhand Lt. Gen. Gurmeet Singh"
   },
   {
     id: "award-7",

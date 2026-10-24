@@ -68,7 +68,7 @@ export const TariffView: React.FC<TariffViewProps> = ({
   const handleShare = () => {
     if (navigator.share) {
       navigator.share({
-        title: 'Pooja Awasthi — Spiritual Guidance Tariff',
+        title: 'Dr. Pooja Awasthi — Spiritual Guidance Tariff',
         url: window.location.href
       }).catch(() => {});
     } else {

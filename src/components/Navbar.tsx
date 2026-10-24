@@ -185,7 +185,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 </div>
                 <div className="flex flex-col">
                   <span className="font-cinzel text-base sm:text-lg lg:text-xl font-bold tracking-wider text-white group-hover:text-[#D6B574] transition-colors leading-tight">
-                    Pooja Awasthi
+                    Dr. Pooja Awasthi
                   </span>
                   <span className="text-[11px] sm:text-xs text-[#D6B574] italic font-cormorant tracking-wide leading-tight mt-0.5">
                     “Discover Your Path. Transform Your Life.”
@@ -252,7 +252,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                       onClick={() => handleNav('about')}
                       className="w-full text-left px-3.5 py-2 text-xs text-[#EAE2F4] hover:text-[#D6B574] hover:bg-white/5 transition-colors"
                     >
-                      About Pooja Ji
+                      About Dr. Pooja Ji
                     </button>
                     <div className="px-3 pt-2 pb-1 text-[10px] uppercase tracking-wider text-[#D6B574]/80 font-semibold border-t border-[#D6B574]/15">
                       Services
@@ -425,7 +425,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 onClick={() => handleNav('about')}
                 className="hover:text-[#D6B574] transition-colors px-2 py-1"
               >
-                About Pooja Ji
+                About Dr. Pooja Ji
               </button>
 
               <button
@@ -469,7 +469,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           {/* Header Matter Summary Card */}
           <div className="bg-[#1c1024] p-3.5 rounded-lg border border-[#D6B574]/25 space-y-2">
             <div className="font-cinzel text-base font-bold text-white flex items-center justify-between">
-              <span>Pooja Awasthi</span>
+              <span>Dr. Pooja Awasthi</span>
               <span className="text-[10px] font-sans text-[#D6B574] border border-[#D6B574]/40 px-2 py-0.5 rounded-full">
                 Spiritual Guidance
               </span>
@@ -548,7 +548,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 onClick={() => handleNav('about')}
                 className="w-full text-left py-1.5 px-3 text-xs text-[#EAE2F4] hover:text-[#D6B574] hover:bg-white/5 rounded"
               >
-                About Pooja Ji
+                About Dr. Pooja Ji
               </button>
 
               {/* Services accordion */}

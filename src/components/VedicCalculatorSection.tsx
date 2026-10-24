@@ -9,8 +9,8 @@ interface VedicCalculatorSectionProps {
 
 export const VedicCalculatorSection: React.FC<VedicCalculatorSectionProps> = ({ onBookWithNumbers, lang = 'en' }) => {
   const [dob, setDob] = useState('1992-06-15');
-  const [name, setName] = useState('Pooja Awasthi');
-  const [result, setResult] = useState(calculateVedicProfile('1992-06-15', 'Pooja Awasthi'));
+  const [name, setName] = useState('Dr. Pooja Awasthi');
+  const [result, setResult] = useState(calculateVedicProfile('1992-06-15', 'Dr. Pooja Awasthi'));
 
   const handleCalculate = (e: React.FormEvent) => {
     e.preventDefault();
@@ -79,7 +79,7 @@ export const VedicCalculatorSection: React.FC<VedicCalculatorSectionProps> = ({ 
                   type="text"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  placeholder="e.g. Pooja Awasthi"
+                  placeholder="e.g. Dr. Pooja Awasthi"
                   className="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/15 text-white text-sm focus:outline-none focus:border-[#D6B574] transition-colors"
                 />
                 <p className="text-[11px] text-[#EAE2F4]/60 mt-1">

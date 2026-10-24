@@ -20,27 +20,27 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ lang, onBookClick })
   const pillars = [
     {
       num: '01',
-      title: lang === 'hi' ? 'स्पष्टता (Clarity)' : 'Clarity of Purpose',
+      title: lang === 'hi' ? 'सच्ची स्पष्टता (Clarity)' : 'Clear Purpose & Direction',
       desc:
         lang === 'hi'
-          ? 'आपके प्रश्नों और वर्तमान जीवन परिस्थितियों को एक उच्च एवं निष्पक्ष दृष्टिकोण से समझना।'
-          : 'Gaining an objective, illuminated perspective on complex crossroads and persistent dilemmas.'
+          ? 'जीवन के कठिन सवालों और उलझनों को सुलझाकर सही दिशा में आगे बढ़ने की स्पष्टता।'
+          : 'Clear answers to your life questions so you know exactly which direction to take.'
     },
     {
       num: '02',
-      title: lang === 'hi' ? 'आत्म-सचेतनता (Self-Awareness)' : 'Subtle Self-Awareness',
+      title: lang === 'hi' ? 'आत्म-बोध (Self-Awareness)' : 'Self-Awareness',
       desc:
         lang === 'hi'
-          ? 'अपने अंतर्निहित व्यवहार, ऊर्जा चक्रों और छिपी हुई संभावनाओं को गहराई से पहचानना।'
-          : 'Deconstructing subconscious cycles, emotional blind spots, and latent talents encoded in your birth matrix.'
+          ? 'अपनी प्राकृतिक खूबियों, स्वभाव और छिपी हुई प्रतिभा को गहराई से समझना।'
+          : 'Understanding your natural strengths, emotional patterns, and hidden talents.'
     },
     {
       num: '03',
-      title: lang === 'hi' ? 'आत्म-सक्षमता (Empowerment)' : 'Conscious Empowerment',
+      title: lang === 'hi' ? 'आत्मविश्वास (Empowerment)' : 'Confidence & Peace',
       desc:
         lang === 'hi'
-          ? 'आध्यात्मिक निर्भरता के बजाय स्वयं के विवेक और आत्मविश्वास से जीवन के निर्णय लेना।'
-          : 'Reclaiming personal sovereignty so you make decisive life transitions with calm, grounded authority.'
+          ? 'किसी पर निर्भर होने के बजाय, अपने विवेक और पूरे आत्मविश्वास से सही फैसले लेना।'
+          : 'Making confident life decisions with calm courage instead of fear or dependency.'
     }
   ];
 
@@ -143,12 +143,12 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ lang, onBookClick })
             <div className="p-5 rounded-2xl bg-gradient-to-br from-[#EAE2F4]/40 to-white border border-[#6941A5]/20 space-y-2 shadow-xs">
               <div className="flex items-center gap-2 text-xs font-semibold text-[#24152F]">
                 <Shield size={16} className="text-[#6941A5]" />
-                <span>100% Ethical & Consecrated Sanctuary</span>
+                <span>{bioLang === 'hi' ? '100% नैतिक व सुरक्षित परामर्श' : '100% Ethical & Confidential Guidance'}</span>
               </div>
               <p className="text-xs text-[#29242E]/75 leading-relaxed">
                 {bioLang === 'hi'
-                  ? 'हम भय आधारित भविष्यवाणियों या अवास्तविक दावों से पूर्णतः दूर रहते हैं। हर सत्र विशुद्ध रूप से आपकी व्यक्तिगत स्पष्टता और आत्म-विकास के लिए समर्पित है।'
-                  : 'Strictly zero fear-based fatalism. Every 1-on-1 session is an authentic, confidential space dedicated to conscious self-discovery and clarity.'}
+                  ? 'हम किसी भी तरह के भय या डराने वाले दावों से दूर रहते हैं। हर सत्र केवल आपकी मन की शांति, सही दिशा और आत्म-विश्वास के लिए समर्पित है।'
+                  : 'Zero fear-based predictions or false promises. Every 1-on-1 session is an authentic, completely private space dedicated to your peace of mind and clarity.'}
               </p>
             </div>
           </div>
@@ -191,25 +191,25 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ lang, onBookClick })
               {bioLang === 'hi' ? (
                 <div className="space-y-4 text-sm font-normal text-[#29242E]/90 leading-relaxed">
                   <p className="text-base text-[#24152F] font-medium leading-relaxed">
-                    पूजा अवस्थी एक समर्पित आध्यात्मिक मार्गदर्शिका हैं, जो वैदिक अंकशास्त्र, टैरो रीडिंग, ऊर्जा संतुलन एवं समग्र लाइफ कोचिंग के माध्यम से साधकों को उनके जीवन को एक नवीन एवं सकारात्मक दृष्टिकोण से देखने हेतु सशक्त बनाती हैं।
+                    डॉ. पूजा अवस्थी एक समर्पित आध्यात्मिक मार्गदर्शिका हैं, जो वैदिक अंकशास्त्र, टैरो रीडिंग, चक्र हीलिंग और लाइफ कोचिंग के माध्यम से लोगों को जीवन में नई दिशा और आशा देती हैं।
                   </p>
                   <p>
-                    उनका अटूट विश्वास है कि प्रत्येक व्यक्ति की जीवन यात्रा अद्वितीय है। जीवन में प्रायः ऐसे मोड़ आते हैं जहाँ कई सवाल खड़े होते हैं और उनके सच्चे उत्तर हमें अपने भीतर ही तलाशने होते हैं। ऐसे समय में एक संवेदनशील और प्रामाणिक मार्गदर्शन हमें अपनी आंतरिक शक्तियों को पहचानने और सही दिशा चुनने में मदद करता है।
+                    उनका मानना है कि हर व्यक्ति की जीवन यात्रा अनोखी है। जीवन में जब कठिन मोड़ आते हैं या बड़े फैसले लेने होते हैं, तो अक्सर मन उलझ जाता है। ऐसे समय में सही और सरल मार्गदर्शन आपको अपनी ताकत पहचानने, उलझनों को सुलझाने और सही रास्ता चुनने में मदद करता है।
                   </p>
                   <p>
-                    उनका दृष्टिकोण सनातन वैदिक ज्ञान, व्यक्तिगत संवेदनशीलता और आधुनिक जीवन के व्यावहारिक सामंजस्य का सुंदर संगम है। उनके सत्र किसी पर बाह्य निर्णय थोपने के बजाय, आत्म-बोध जगाने और पूरे आत्मविश्वास के साथ आगे बढ़ने में सहयोग करते हैं।
+                    पूजा जी प्राचीन वैदिक ज्ञान और रोजमर्रा की व्यावहारिक समझ को साथ लेकर चलती हैं। वह आप पर कभी कोई फैसला नहीं थोपतीं, बल्कि आपको अपने जीवन को गहराई से समझने और पूरे आत्मविश्वास व शांति के साथ आगे बढ़ने में मदद करती हैं।
                   </p>
                 </div>
               ) : (
                 <div className="space-y-4 text-sm font-normal text-[#29242E]/90 leading-relaxed">
                   <p className="text-base text-[#24152F] font-medium leading-relaxed">
-                    Dr. Pooja Awasthi is a dedicated spiritual guidance expert who empowers individuals through Vedic Numerology, Tarot Reading, Energy Healing, and conscious Life Coaching to perceive and understand their lives from a deeper, renewed perspective.
+                    Dr. Pooja Awasthi offers caring spiritual guidance through Vedic Numerology, Tarot Reading, Energy Healing, and Life Coaching to help you see your life with clarity and hope.
                   </p>
                   <p>
-                    She believes that every individual’s life journey is fundamentally unique. Frequently, life presents us with crossroad questions whose true answers must be unearthed within ourselves. At such moments, attuned guidance helps us comprehend our circumstances, acknowledge our innate strengths, and perceive our forward path with lucid clarity.
+                    She believes that every person’s journey is special. When life brings tough questions or big decisions, finding the right answers can feel overwhelming. Gentle, honest guidance helps you understand what is happening, discover your inner strengths, and choose the right path forward.
                   </p>
                   <p>
-                    Pooja Awasthi’s approach represents a harmonious synthesis of spiritual insight, personal empathy, and practical life mentorship. Her sessions never seek to impose external decisions upon anyone, but rather to facilitate deeper self-comprehension, examine options with equanimity, and move forward with heightened conscious awareness.
+                    Her approach blends timeless Vedic wisdom with practical, everyday advice. She never tells you what you 'must' do. Instead, she helps you understand yourself better, weigh your choices calmly, and move forward with peace and confidence.
                   </p>
                 </div>
               )}

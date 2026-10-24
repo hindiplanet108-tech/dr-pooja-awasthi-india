@@ -72,34 +72,39 @@ export const AwardsSection: React.FC<AwardsSectionProps> = ({ lang }) => {
           </p>
         </div>
 
-        {/* Honoree Spotlight Feature with Original Photo (28.jpeg) */}
+        {/* Honoree Spotlight Feature with Original Photo: Dynamic Excellence Awards 2025 */}
         <div className="mb-10 p-5 sm:p-6 rounded-2xl bg-white/5 border border-[#D6B574]/40 backdrop-blur-md flex flex-col md:flex-row items-center gap-6 shadow-xl relative overflow-hidden">
           <div className="absolute -right-8 -bottom-8 w-44 h-44 bg-[#D6B574]/15 rounded-full blur-2xl pointer-events-none" />
           
-          <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-xl overflow-hidden border-2 border-[#D6B574] shrink-0 shadow-lg relative aspect-square bg-[#1c0f26]">
+          <div className="w-28 h-36 sm:w-36 sm:h-44 rounded-xl overflow-hidden border-2 border-[#D6B574] shrink-0 shadow-lg relative bg-[#1c0f26]">
             <img
-              src={poojaAuthenticPhoto}
-              alt="Dr. Pooja Awasthi - Conclave Honoree"
+              src="/assets/aistudio/__________________National_director_of_Nafeed-2_f0142bbc.jpeg"
+              alt="माननीय अशोक ठाकुर National Director of Nafeed द्वारा सम्मानित - डायनामिक एक्सीलेंस अवार्ड्स 2025"
               className="w-full h-full object-cover object-top"
               onError={(e) => {
                 const target = e.currentTarget;
-                if (target.src !== '/28.jpeg') target.src = '/28.jpeg';
+                if (target.src !== '/ashok_thakur_nafeed_award_2025.jpeg') target.src = '/ashok_thakur_nafeed_award_2025.jpeg';
               }}
             />
           </div>
 
-          <div className="space-y-1.5 text-center md:text-left flex-1">
+          <div className="space-y-2 text-center md:text-left flex-1">
             <div className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-[#D6B574]/20 border border-[#D6B574]/40 text-[#D6B574] text-[11px] font-semibold">
               <Sparkles size={11} />
-              <span>National Conclave Honoree & Spiritual Guide</span>
+              <span>{lang === 'hi' ? 'विशेष राष्ट्रीय सम्मान' : 'Featured National Honor'}</span>
             </div>
             <h3 className="font-cinzel text-lg sm:text-xl font-bold text-white">
-              Dr. Pooja Awasthi • Authentic Conclave Felicitations
+              {lang === 'hi' ? 'डायनामिक एक्सीलेंस अवार्ड्स 2025' : 'Dynamic Excellence Awards 2025'}
             </h3>
+            <p className="text-sm font-semibold text-[#D6B574]">
+              {lang === 'hi'
+                ? 'माननीय अशोक ठाकुर (National Director of Nafeed) द्वारा सम्मानित'
+                : 'Honored by Shri Ashok Thakur, National Director of NAFED'}
+            </p>
             <p className="text-xs text-[#EAE2F4]/80 leading-relaxed max-w-3xl">
               {lang === 'hi'
-                ? 'महाकाल उज्जैन के प्रधान पुरोहित माननीय दिनेश जी, उत्तराखंड के माननीय राज्यपाल ले. ज. गुरमीत सिंह, और काशी हिन्दू विश्वविद्यालय (BHU) के आचार्य चंद्रमौली उपाध्याय जी द्वारा सम्मानित एवं 26 प्रतिष्ठित राष्ट्रीय सम्मेलनों में अलंकृत।'
-                : 'Conferred with 26 distinguished state & national honors by revered spiritual authorities including Mahakal Ujjain Head Priest Dinesh Ji, Hon. Governor of Uttarakhand Lt. Gen. Gurmeet Singh, and BHU Astrology Head Acharya Chandramouli Upadhyay.'}
+                ? 'वैदिक अंकशास्त्र, टैरो एवं लोक कल्याण के क्षेत्र में विशिष्ट योगदान हेतु डायनामिक एक्सीलेंस अवार्ड्स 2025 के गरिमामय मंच पर डॉ. पूजा अवस्थी को नाफेड (Nafeed) के नेशनल डायरेक्टर माननीय अशोक ठाकुर जी द्वारा सम्मानित किया गया।'
+                : 'Dr. Pooja Awasthi was honored by Shri Ashok Thakur, National Director of NAFED on stage at the prestigious Dynamic Excellence Awards 2025 in recognition of her dedication to Vedic wisdom and conscious guidance.'}
             </p>
           </div>
         </div>
@@ -150,9 +155,9 @@ export const AwardsSection: React.FC<AwardsSectionProps> = ({ lang }) => {
                       /* Authentic Photo Presentation with Gold Seal Overlay */
                       <div className="relative w-full h-full overflow-hidden group/thumb cursor-pointer" onClick={() => setSelectedAward(award)}>
                         <img
-                          src={poojaAuthenticPhoto}
+                          src={award.imageUrl || poojaAuthenticPhoto}
                           alt={`${award.event} - Dr. Pooja Awasthi`}
-                          className="w-full h-full object-cover object-top opacity-85 transition-transform duration-500 group-hover:scale-105"
+                          className="w-full h-full object-cover object-top opacity-95 transition-transform duration-500 group-hover:scale-105"
                           onError={(e) => {
                             const target = e.currentTarget;
                             if (target.src !== '/28.jpeg') target.src = '/28.jpeg';
@@ -256,7 +261,7 @@ export const AwardsSection: React.FC<AwardsSectionProps> = ({ lang }) => {
             {/* Custom Photo preview or Authentic Honoree Portrait with Citation */}
             <div className="rounded-xl overflow-hidden bg-black/40 border border-[#D6B574]/30 aspect-video relative flex items-center justify-center">
               <img
-                src={customPhotos[selectedAward.id] || poojaAuthenticPhoto}
+                src={customPhotos[selectedAward.id] || selectedAward.imageUrl || poojaAuthenticPhoto}
                 alt={selectedAward.alt}
                 className="w-full h-full object-contain bg-[#1c0f26]"
                 onError={(e) => {

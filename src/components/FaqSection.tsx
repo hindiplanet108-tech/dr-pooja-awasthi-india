@@ -11,38 +11,38 @@ export const FaqSection: React.FC<FaqSectionProps> = ({ lang = 'en' }) => {
   const faqs_en = [
     {
       q: "How do online consultations with Pooja ji work?",
-      a: "All sessions are conducted seamlessly via high-definition Google Meet, Zoom, or WhatsApp video call. You receive an instant confirmation and prep guide once booked. Distance does not diminish the accuracy or potency of spiritual and numerological consultations."
+      a: "Sessions take place comfortably via Google Meet, Zoom, or WhatsApp video/audio call. Once you book, you receive a direct link and quick confirmation. Online sessions are just as personal, comfortable, and accurate as meeting in person."
     },
     {
       q: "What details are needed for a Vedic Numerology reading?",
-      a: "For Vedic Numerology and life chart breakdown, you provide your full date of birth (Day, Month, Year), your legal/daily name spelling, and approximate birth time (if available). This allows Dr. Pooja Awasthi to calculate your Mulank, Bhagyank, planetary periods (Dashas), and Chaldean name vibrations."
+      a: "You only need your date of birth (Day, Month, Year) and the usual spelling of your name. If you know your approximate birth time, that is helpful too. This helps calculate your Birth Number (Mulank) and Destiny Number (Bhagyank)."
     },
     {
       q: "What is the difference between Tarot and Fortune Telling?",
-      a: "Tarot is not fatalistic fortune-telling. Rather, it serves as a sacred intuitive mirror reflecting your subconscious mind, underlying emotional conflicts, and emerging opportunities. Pooja ji’s guidance focuses on returning conscious autonomy and clarity into your hands, rather than creating passive dependency on pre-determined outcomes."
+      a: "Tarot is not about creating fear or guessing rigid futures. It acts like an honest mirror to your thoughts, feelings, and choices. Pooja ji helps you understand where you stand and make confident decisions that bring peace."
     },
     {
-      q: "Can Energy Healing work remotely?",
-      a: "Yes. In the Vedic and quantum paradigm of Prana (vital life force), subtle energy transcends geographical boundaries. Distance energy healing, aura cleansing, and chakra alignment operate across the subtle biofield through meditative attunement, sacred sound resonance, and intention."
+      q: "Does Distance Energy Healing really work?",
+      a: "Yes. Energy and heartfelt prayers are not limited by physical distance. Through calm meditation and positive intention, distance sessions bring wonderful relief, peace, and lightness wherever you are in the world."
     }
   ];
 
   const faqs_hi = [
     {
-      q: "पूजा जी के साथ ऑनलाइन परामर्श कैसे आयोजित होता है?",
-      a: "सभी सत्र उच्च गुणवत्ता वाले गूगल मीट, ज़ूम या व्हाट्सएप वीडियो/ऑडियो कॉल द्वारा आयोजित किए जाते हैं। बुकिंग के बाद आपको समय व लिंक प्राप्त होता है। वैदिक व आध्यात्मिक परामर्श में दूरी का कोई नकारात्मक प्रभाव नहीं पड़ता।"
+      q: "पूजा जी के साथ ऑनलाइन परामर्श कैसे होता है?",
+      a: "सत्र बहुत आसानी से गूगल मीट, ज़ूम या व्हाट्सएप वीडियो/ऑडियो कॉल द्वारा होते हैं। बुकिंग के बाद आपको समय और लिंक मिल जाता है। ऑनलाइन सत्र भी आमने-सामने की तरह ही व्यक्तिगत और असरदार होते हैं।"
     },
     {
-      q: "वैदिक अंकशास्त्र परामर्श के लिए किन जानकारियों की आवश्यकता होती है?",
-      a: "वैदिक अंकशास्त्र विश्लेषण के लिए आपकी पूर्ण जन्मतिथि (दिन, माह, वर्ष), पुकारू नाम की अंग्रेजी वर्तनी (स्पेलिंग), तथा जन्म समय (यदि उपलब्ध हो) आवश्यक होता है। इससे आपके मूलांक, भाग्यांक और नाम कंपन की गणना की जाती है।"
+      q: "वैदिक अंकशास्त्र के लिए किन जानकारियों की जरूरत होती है?",
+      a: "इसके लिए केवल आपकी जन्मतिथि (दिन, महीना, साल) और आपके नाम की सही स्पेलिंग चाहिए। यदि जन्म का समय भी पता हो, तो और भी अच्छा है। इससे आपके मूलांक और भाग्यांक की सही गणना की जाती है।"
     },
     {
-      q: "टैरो कार्ड रीडिंग और केवल भविष्य कथन में क्या अंतर है?",
-      a: "टैरो अंधविश्वास या भय आधारित भविष्य कथन नहीं है। यह आपके अवचेतन मन और वर्तमान ऊर्जाओं का पावन दर्पण है। पूजा जी का मार्गदर्शन आपको अपने निर्णयों के प्रति सजग, आत्मविश्वासी और स्पष्ट बनाता है।"
+      q: "टैरो कार्ड रीडिंग और केवल भविष्य बताने में क्या फर्क है?",
+      a: "टैरो किसी डर या अंधविश्वास पर आधारित नहीं है। यह आपके मन, विचारों और वर्तमान स्थिति का एक सच्चा दर्पण है। पूजा जी आपको सही फैसले लेने और मन का भ्रम दूर करने में मदद करती हैं।"
     },
     {
-      q: "क्या दूरस्थ ऊर्जा उपचार (डिस्टेंस हीलिंग) वास्तव में काम करता है?",
-      a: "हाँ। सनातन वैदिक परंपरा और प्राण ऊर्जा के सिद्धांत के अनुसार, सूक्ष्म चेतना भौतिक दूरी से परे होती है। ध्यान, संकल्प, पवित्र मंत्र ध्वनि और सूक्ष्म ऊर्जा कंपन के माध्यम से डिस्टेंस हीलिंग अत्यंत प्रभावशाली परिणाम देती है।"
+      q: "क्या दूर से की जाने वाली हीलिंग (डिस्टेंस हीलिंग) काम करती है?",
+      a: "हाँ। सकारात्मक ऊर्जा और प्रार्थना की कोई सीमा नहीं होती। ध्यान, संकल्प और सकारात्मक तरंगों के माध्यम से आप घर बैठे ही मन की शांति, हल्कापन और नई ऊर्जा महसूस कर सकते हैं।"
     }
   ];
 
