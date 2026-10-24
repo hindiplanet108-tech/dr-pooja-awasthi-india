@@ -151,7 +151,7 @@ export const TariffView: React.FC<TariffViewProps> = ({
               className="px-3.5 py-1.5 rounded-lg bg-white border border-[#EAE2F4] text-xs font-medium text-[#29242E]/80 hover:text-[#24152F] hover:border-[#D6B574] transition-all flex items-center gap-1.5 shadow-2xs"
             >
               <Printer size={13} />
-              <span>{tariffLang === 'hi' ? 'प्रिंट रेट कार्ड' : 'Print Rate Card'}</span>
+              <span>{tariffLang === 'hi' ? 'दर सूची प्रिंट करें' : 'Print Rate Card'}</span>
             </button>
             <a
               href="https://wa.me/919105731969?text=Hello%20Dr.%20Pooja%20Awasthi,%20I%20have%20an%20inquiry%20regarding%20the%20Consultancy%20Tariff."
@@ -175,7 +175,7 @@ export const TariffView: React.FC<TariffViewProps> = ({
           </h1>
           <p className="text-sm text-[#29242E]/75 leading-relaxed font-light">
             {tariffLang === 'hi'
-              ? 'पूर्ण गोपनीयता, पवित्र चेतना और गहन आध्यात्मिक ऊर्जा संतुलन के साथ 1-on-1 व्यक्तिगत सत्र।'
+              ? 'पूर्ण गोपनीयता, पवित्र चेतना और गहन आध्यात्मिक ऊर्जा संतुलन के साथ व्यक्तिगत सत्र।'
               : 'Dedicated 1-on-1 sessions designed with complete confidentiality, sacred awareness, and profound spiritual healing.'}
           </p>
 
@@ -217,14 +217,14 @@ export const TariffView: React.FC<TariffViewProps> = ({
 
               <div className="space-y-3">
                 <span className="text-[11px] font-bold uppercase tracking-widest px-3 py-1 rounded-full bg-[#D6B574] text-[#24152F] inline-block shadow-sm">
-                  {tariffLang === 'hi' ? 'सर्वाधिक लोकप्रिय · 1-on-1 मार्गदर्शन' : 'Most Popular · 1-on-1 Guidance'}
+                  {tariffLang === 'hi' ? 'सर्वाधिक लोकप्रिय · व्यक्तिगत मार्गदर्शन' : 'Most Popular · 1-on-1 Guidance'}
                 </span>
                 <h2 className="font-cinzel text-2xl sm:text-3xl font-bold text-white">
                   {tariffLang === 'hi' ? 'व्यक्तिगत आध्यात्मिक व अंकशास्त्रीय परामर्श' : 'Personalized Spiritual Consultation'}
                 </h2>
                 <p className="text-sm text-[#EAE2F4]/85 leading-relaxed font-light">
                   {tariffLang === 'hi'
-                    ? 'डॉ. पूजा अवस्थी के साथ 45-60 मिनट का गहन 1-on-1 सत्र, जिसमें आपके जीवन की उलझनों, मूलांक, भाग्यांक और ग्रह चक्रों का संपूर्ण विश्लेषण किया जाता है।'
+                    ? 'डॉ. पूजा अवस्थी के साथ 45-60 मिनट का गहन व्यक्तिगत सत्र, जिसमें आपके जीवन की उलझनों, मूलांक, भाग्यांक और ग्रह चक्रों का संपूर्ण विश्लेषण किया जाता है।'
                     : 'A personalized 1-on-1 consultation session dedicated to understanding your queries, life circumstances, and life path through Vedic wisdom with Dr. Pooja Awasthi.'}
                 </p>
 
@@ -258,7 +258,7 @@ export const TariffView: React.FC<TariffViewProps> = ({
                   onClick={() => onBookService('Personalized Spiritual Consultation (₹5,100)')}
                   className="px-6 py-3 bg-[#D6B574] hover:bg-[#e4ca8c] text-[#24152F] font-bold text-xs uppercase tracking-wider rounded-xl transition-all shadow-md"
                 >
-                  {tariffLang === 'hi' ? 'परामर्श बुक करें' : 'Book Consultation'}
+                  {tariffLang === 'hi' ? 'परामर्श सत्र प्राप्त करें' : 'Book Consultation'}
                 </button>
                 <a
                   href="#payment-gateway"
@@ -275,7 +275,7 @@ export const TariffView: React.FC<TariffViewProps> = ({
         <div className="mb-20 space-y-8">
           <div>
             <span className="text-xs font-bold uppercase tracking-widest text-[#6941A5]">
-              {tariffLang === 'hi' ? 'विशेषीकृत हीलिंग व उपचार' : 'Specialized Healing & Therapies'}
+              {tariffLang === 'hi' ? 'विशिष्ट हीलिंग व ऊर्जा संतुलन' : 'Specialized Healing & Therapies'}
             </span>
             <h2 className="font-cinzel text-2xl sm:text-3xl font-bold text-[#24152F] mt-1">
               {tariffLang === 'hi' ? '11 विशिष्ट हीलिंग एवं सुधार सेवाएँ' : '11 Specialized Healing & Correction Services'}
@@ -288,8 +288,8 @@ export const TariffView: React.FC<TariffViewProps> = ({
               { id: 'all', label_en: 'All Services (11)', label_hi: 'सभी सेवाएँ (11)' },
               { id: 'healing', label_en: 'Energy & Healing (5)', label_hi: 'ऊर्जा एवं हीलिंग (5)' },
               { id: 'numerology', label_en: 'Numerology Corrections (2)', label_hi: 'अंकशास्त्र शुद्धि (2)' },
-              { id: 'therapy', label_en: 'Mind Balance & Therapy (3)', label_hi: 'मानसिक संतुलन व थेरेपी (3)' },
-              { id: 'regression', label_en: 'PLR Regression (1)', label_hi: 'पीएलआर सत्र (1)' },
+              { id: 'therapy', label_en: 'Mind Balance & Therapy (3)', label_hi: 'मानसिक संतुलन व विश्राम (3)' },
+              { id: 'regression', label_en: 'PLR Regression (1)', label_hi: 'पूर्व जन्म स्मृति सत्र (1)' },
             ].map((btn) => (
               <button
                 key={btn.id}
@@ -366,7 +366,7 @@ export const TariffView: React.FC<TariffViewProps> = ({
                     onClick={() => onBookService(`${tariffLang === 'hi' ? srv.title : srv.title_en} (${srv.feeFormatted})`)}
                     className="px-4 py-2 bg-[#24152F] hover:bg-[#341e44] text-[#D6B574] text-xs font-bold uppercase tracking-wider rounded-lg transition-colors shadow-xs"
                   >
-                    {tariffLang === 'hi' ? 'सत्र बुक करें' : 'Book Session'}
+                    {tariffLang === 'hi' ? 'सत्र निर्धारित करें' : 'Book Session'}
                   </button>
                 </div>
               </div>
@@ -379,7 +379,7 @@ export const TariffView: React.FC<TariffViewProps> = ({
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
             <div>
               <span className="text-xs font-bold uppercase tracking-widest text-[#6941A5]">
-                {tariffLang === 'hi' ? 'आधिकारिक भुगतान गेटवे' : 'Official Payment Gateway'}
+                {tariffLang === 'hi' ? 'आधिकारिक भुगतान व्यवस्था' : 'Official Payment Gateway'}
               </span>
               <h2 className="font-cinzel text-2xl sm:text-3xl font-bold text-[#24152F] mt-1">
                 {tariffLang === 'hi' ? 'बैंक खाता, UPI एवं QR स्कैनर विवरण' : 'Bank Account, UPI & QR Scanner Details'}
@@ -440,7 +440,7 @@ export const TariffView: React.FC<TariffViewProps> = ({
                 <div className="pt-2 text-center">
                   <label className="cursor-pointer inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-[#D6B574] text-xs font-medium border border-[#D6B574]/30 transition-colors">
                     <Upload size={13} />
-                    <span>{tariffLang === 'hi' ? 'स्कैनर QR इमेज अपलोड करें' : 'Upload Scanner QR Image'}</span>
+                    <span>{tariffLang === 'hi' ? 'क्यूआर स्कैनर छवि अपलोड करें' : 'Upload Scanner QR Image'}</span>
                     <input
                       type="file"
                       ref={qrInputRef}
@@ -459,7 +459,7 @@ export const TariffView: React.FC<TariffViewProps> = ({
                     {tariffLang === 'hi' ? 'आधिकारिक UPI ID' : 'Official UPI ID'}
                   </span>
                   <span className="text-[10px] text-[#D6B574] font-medium">
-                    {tariffLang === 'hi' ? '1-क्लिक कॉपी' : '1-Click Copy'}
+                    {tariffLang === 'hi' ? 'त्वरित कॉपी' : '1-Click Copy'}
                   </span>
                 </div>
                 <div className="flex items-center justify-between gap-2">
@@ -485,7 +485,7 @@ export const TariffView: React.FC<TariffViewProps> = ({
                   <div className="flex items-center gap-2">
                     <Building2 size={18} className="text-[#6941A5]" />
                     <h3 className="font-cinzel text-lg font-bold text-[#24152F]">
-                      {tariffLang === 'hi' ? 'सीधा बैंक खाता ट्रांसफर (NEFT / IMPS / RTGS)' : 'Direct Bank Transfer (NEFT / IMPS / RTGS)'}
+                      {tariffLang === 'hi' ? 'सीधा बैंक खाता अंतरण (NEFT / IMPS / RTGS)' : 'Direct Bank Transfer (NEFT / IMPS / RTGS)'}
                     </h3>
                   </div>
                   <span className="text-[11px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">
@@ -547,7 +547,7 @@ export const TariffView: React.FC<TariffViewProps> = ({
                       {tariffLang === 'hi' ? 'खाता प्रकार' : 'Account Type'}
                     </span>
                     <span className="font-semibold text-sm text-[#24152F] block">
-                      {tariffLang === 'hi' ? 'बचत खाता (Savings)' : bankDetails.type}
+                      {tariffLang === 'hi' ? 'बचत खाता' : bankDetails.type}
                     </span>
                   </div>
 
@@ -568,7 +568,7 @@ export const TariffView: React.FC<TariffViewProps> = ({
                   </span>
                   <p className="text-xs text-emerald-800 leading-relaxed">
                     {tariffLang === 'hi'
-                      ? 'लेनदेन (ट्रांजेक्शन) का स्क्रीनशॉट आधिकारिक व्हाट्सएप (+91 91057 31969) पर भेजें ताकि समय तुरंत निश्चित हो सके।'
+                      ? 'भुगतान रसीद का स्क्रीनशॉट आधिकारिक व्हाट्सएप (+91 91057 31969) पर भेजें ताकि समय तुरंत निश्चित हो सके।'
                       : 'Send transaction screenshot to WhatsApp (+91 91057 31969) for instant appointment confirmation.'}
                   </p>
                 </div>

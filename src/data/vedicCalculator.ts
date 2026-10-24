@@ -9,7 +9,9 @@ export interface VedicNumberProfile {
   element: string;
   element_hi: string;
   luckyColors: string;
+  luckyColors_hi: string;
   luckyDays: string;
+  luckyDays_hi: string;
   harmonicMantra: string;
   description: string;
   description_hi: string;
@@ -27,7 +29,9 @@ export const VEDIC_NUMBERS_MAP: Record<number, VedicNumberProfile> = {
     element: "Fire (Agni)",
     element_hi: "अग्नि तत्व",
     luckyColors: "Gold, Copper, Ruby Red, Saffron",
+    luckyColors_hi: "सुनहरा, तांबा, गहरा लाल, केसरिया",
     luckyDays: "Sunday, Monday",
+    luckyDays_hi: "रविवार, सोमवार",
     harmonicMantra: "Om Suryaya Namaha (ॐ सूर्याय नमः)",
     description: "Blessed with the vitalizing brilliance of Surya, you possess innate leadership, strong willpower, and executive charisma to initiate new ventures.",
     description_hi: "भगवान सूर्य के तेज से संपन्न, आपमें जन्मजात नेतृत्व क्षमता, दृढ़ इच्छाशक्ति और नई पहलों को साकार करने का अद्वितीय ओज है।"
@@ -43,7 +47,9 @@ export const VEDIC_NUMBERS_MAP: Record<number, VedicNumberProfile> = {
     element: "Water (Jal)",
     element_hi: "जल तत्व",
     luckyColors: "Pearl White, Silver, Cream, Pale Green",
+    luckyColors_hi: "मोती जैसा सफेद, चांदी, क्रीम, हल्का हरा",
     luckyDays: "Monday, Sunday",
+    luckyDays_hi: "सोमवार, रविवार",
     harmonicMantra: "Om Chandraya Namaha (ॐ चन्द्राय नमः)",
     description: "Under Chandra's calming radiance, your gift lies in deep emotional intelligence, diplomacy, intuitive foresight, and collaborative unity.",
     description_hi: "चंद्रमा की शीतल आभा से पोषित, आपमें गहरी संवेदनशीलता, अंतर्ज्ञान, सौहार्द और रिश्तों को सहेजने की अलौकिक कला है।"
@@ -59,7 +65,9 @@ export const VEDIC_NUMBERS_MAP: Record<number, VedicNumberProfile> = {
     element: "Ether / Space (Akash)",
     element_hi: "आकाश तत्व",
     luckyColors: "Bright Yellow, Golden Amber, Ochre",
+    luckyColors_hi: "चमकीला पीला, सुनहरा, गेरुआ",
     luckyDays: "Thursday, Tuesday",
+    luckyDays_hi: "गुरुवार, मंगलवार",
     harmonicMantra: "Om Brihaspataye Namaha (ॐ बृहस्पतये नमः)",
     description: "Guided by Brihaspati, you possess expansive wisdom, expressive articulation, optimistic foresight, and an innate capacity to advise and uplift others.",
     description_hi: "गुरु बृहस्पति की कृपा से आप ज्ञान, उच्च विवेक, रचनात्मक अभिव्यक्ति और दूसरों को सही मार्ग दिखाने में अद्वितीय हैं।"
@@ -75,7 +83,9 @@ export const VEDIC_NUMBERS_MAP: Record<number, VedicNumberProfile> = {
     element: "Earth / Air",
     element_hi: "पृथ्वी / वायु तत्व",
     luckyColors: "Electric Blue, Charcoal Grey, Khaki",
+    luckyColors_hi: "गहरा नीला, धूसर (ग्रे), खाकी",
     luckyDays: "Sunday, Saturday",
+    luckyDays_hi: "रविवार, शनिवार",
     harmonicMantra: "Om Rahave Namaha (ॐ राहवे नमः)",
     description: "Influenced by Rahu, you bring revolutionary thinking, unconventional mastery, acute technical strategy, and perseverance against all odds.",
     description_hi: "राहु के प्रभाव से आप लीक से हटकर सोचने वाले, सटीक रणनीतिकार और अप्रत्याशित चुनौतियों को अवसर में बदलने वाले हैं।"
@@ -91,7 +101,9 @@ export const VEDIC_NUMBERS_MAP: Record<number, VedicNumberProfile> = {
     element: "Earth (Prithvi)",
     element_hi: "पृथ्वी तत्व",
     luckyColors: "Emerald Green, Mint, Turquoise",
+    luckyColors_hi: "पन्ना हरा, हल्का हरा, फिरोजी",
     luckyDays: "Wednesday, Friday",
+    luckyDays_hi: "बुधवार, शुक्रवार",
     harmonicMantra: "Om Budhaya Namaha (ॐ बुधाय नमः)",
     description: "Governed by Budh, you excel in commercial acumen, sharp analytical intellect, adaptive versatility, and engaging interpersonal communication.",
     description_hi: "बुध देव की कृपा से आपकी बुद्धि अत्यंत कुशाग्र, व्यापार में पारखी और किसी भी नए वातावरण में शीघ्र सामंजस्य बैठाने वाली है।"
@@ -107,7 +119,9 @@ export const VEDIC_NUMBERS_MAP: Record<number, VedicNumberProfile> = {
     element: "Water / Air",
     element_hi: "जल / वायु तत्व",
     luckyColors: "Rose Pink, Silk White, Sky Blue",
+    luckyColors_hi: "गुलाबी, श्वेत (सफेद), आसमानी नीला",
     luckyDays: "Friday, Wednesday",
+    luckyDays_hi: "शुक्रवार, बुधवार",
     harmonicMantra: "Om Shukraya Namaha (ॐ शुक्राय नमः)",
     description: "Under Shukra's radiant blessing, your presence brings soothing beauty and healing comfort. You have natural aesthetic genius and deep familial fidelity.",
     description_hi: "शुक्र देव के पावन आशीष से आपका व्यक्तित्व आकर्षक, कलात्मक, करुणामयी और दूसरों के जीवन में सुख-शांति लाने वाला है।"
@@ -123,7 +137,9 @@ export const VEDIC_NUMBERS_MAP: Record<number, VedicNumberProfile> = {
     element: "Water / Fire",
     element_hi: "जल / अग्नि तत्व",
     luckyColors: "Sea Green, Light Yellow, Pearl Grey",
+    luckyColors_hi: "समुद्री हरा, हल्का पीला, मोती जैसा स्लेटी",
     luckyDays: "Monday, Thursday",
+    luckyDays_hi: "सोमवार, गुरुवार",
     harmonicMantra: "Om Ketave Namaha (ॐ केतवे नमः)",
     description: "Charged with Ketu's introspective current, you penetrate beyond surface illusions. You possess profound spiritual inclinations and metaphysical depth.",
     description_hi: "केतु के प्रभाव से आप बाहरी दिखावे से दूर, गूढ़ सत्यों को जानने वाले, उच्च आध्यात्मिक दृष्टि और अंतर्मुखी साधक हैं।"
@@ -139,7 +155,9 @@ export const VEDIC_NUMBERS_MAP: Record<number, VedicNumberProfile> = {
     element: "Air (Vayu)",
     element_hi: "वायु तत्व",
     luckyColors: "Midnight Blue, Black, Dark Violet",
+    luckyColors_hi: "गहरा नीला, काला, गहरा बैंगनी",
     luckyDays: "Saturday, Wednesday",
+    luckyDays_hi: "शनिवार, बुधवार",
     harmonicMantra: "Om Sham Shanaishcharaya Namaha (ॐ शं शनैश्चराय नमः)",
     description: "Tempered by Shani Dev, you represent endurance, justice, institutional authority, and massive long-term accomplishments forged through discipline.",
     description_hi: "शनि देव की छत्रछाया में आप धैर्य, कर्मठता, न्यायप्रियता और दीर्घकालिक परिश्रम से विशाल उपलब्धियां हासिल करने वाले कर्मयोगी हैं।"
@@ -155,7 +173,9 @@ export const VEDIC_NUMBERS_MAP: Record<number, VedicNumberProfile> = {
     element: "Fire (Agni)",
     element_hi: "अग्नि तत्व",
     luckyColors: "Crimson Red, Scarlet, Coral, Maroon",
+    luckyColors_hi: "लाल, गहरा लाल, मूंगा रंग, कत्थई",
     luckyDays: "Tuesday, Thursday",
+    luckyDays_hi: "मंगलवार, गुरुवार",
     harmonicMantra: "Om Angarakaya Namaha (ॐ अंगारकाय नमः)",
     description: "Infused with Mangal's boundless valor, you are fierce, protective, idealistic, and driven to champion noble causes and protect the vulnerable.",
     description_hi: "मंगल देव के असीम साहस से युक्त, आप निर्भीक, ऊर्जावान, परोपकारी और किसी भी संकट में डटकर खड़े रहने वाले साहसी नायक हैं।"

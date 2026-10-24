@@ -64,7 +64,7 @@ export const ContactBookingSection: React.FC<ContactBookingSectionProps> = ({
                 <MessageSquare size={14} />
                 <span>{t.contactNav}</span>
                 <span aria-hidden="true">·</span>
-                <span>Direct Appointment</span>
+                <span>{lang === 'hi' ? 'सीधा समय निर्धारण' : 'Direct Appointment'}</span>
               </div>
 
               <h2 className="font-cormorant text-3xl sm:text-4xl lg:text-5xl font-light text-white leading-tight">
@@ -74,7 +74,7 @@ export const ContactBookingSection: React.FC<ContactBookingSectionProps> = ({
 
               <p className="text-sm text-[#EAE2F4]/80 leading-relaxed font-light">
                 {lang === 'hi'
-                  ? 'परामर्श सत्र पूर्व-निर्धारित समय पर आयोजित किए जाते हैं। फॉर्म भरें या सीधे आधिकारिक व्हाट्सएप पर संदेश भेजकर अपना स्लॉट सुरक्षित करें।'
+                  ? 'परामर्श सत्र पूर्व-निर्धारित समय पर आयोजित किए जाते हैं। फॉर्म भरें या सीधे आधिकारिक व्हाट्सएप पर संदेश भेजकर अपना परामर्श समय निश्चित करें।'
                   : 'All private consultations are conducted by prior appointment. Fill out the consultation request below or message directly via official WhatsApp.'}
               </p>
             </div>
@@ -85,10 +85,10 @@ export const ContactBookingSection: React.FC<ContactBookingSectionProps> = ({
               <div className="p-5 rounded-2xl bg-white/5 border border-[#D6B574]/30 hover:border-[#D6B574] transition-all duration-300 space-y-2 group shadow-sm hover:shadow-lg">
                 <div className="flex items-center justify-between">
                   <span className="text-xs font-bold text-[#D6B574] uppercase tracking-wider">
-                    Official WhatsApp
+                    {lang === 'hi' ? 'आधिकारिक व्हाट्सएप' : 'Official WhatsApp'}
                   </span>
                   <span className="text-[10px] px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 font-semibold border border-emerald-500/30">
-                    Fast Response
+                    {lang === 'hi' ? 'त्वरित उत्तर' : 'Fast Response'}
                   </span>
                 </div>
                 <div className="flex items-center justify-between">
@@ -103,14 +103,16 @@ export const ContactBookingSection: React.FC<ContactBookingSectionProps> = ({
                   </a>
                 </div>
                 <p className="text-xs text-[#EAE2F4]/70">
-                  Consultation Hours: 10:00 AM – 7:00 PM IST (Mon - Sat)
+                  {lang === 'hi'
+                    ? 'परामर्श समय: प्रातः 10:00 से सायं 7:00 बजे (सोम - शनि)'
+                    : 'Consultation Hours: 10:00 AM – 7:00 PM IST (Mon - Sat)'}
                 </p>
               </div>
 
               {/* Email direct card */}
               <div className="p-5 rounded-2xl bg-white/5 border border-[#D6B574]/30 hover:border-[#D6B574] transition-all duration-300 space-y-2 group shadow-sm">
                 <span className="text-xs font-bold text-[#D6B574] uppercase tracking-wider">
-                  Official Email Sanctuary
+                  {lang === 'hi' ? 'आधिकारिक ईमेल' : 'Official Email Sanctuary'}
                 </span>
                 <div>
                   <a
@@ -148,10 +150,18 @@ export const ContactBookingSection: React.FC<ContactBookingSectionProps> = ({
                   <CheckCircle2 size={36} />
                 </div>
                 <h3 className="font-cinzel text-2xl font-bold text-[#24152F]">
-                  Consultation Request Received
+                  {lang === 'hi' ? 'परामर्श अनुरोध प्राप्त हुआ' : 'Consultation Request Received'}
                 </h3>
                 <p className="text-sm text-[#29242E]/80 max-w-md mx-auto leading-relaxed">
-                  Thank you, <span className="font-semibold text-[#24152F]">{formData.name}</span>. Your consultation request has been registered. Dr. Pooja Awasthi’s office will reach out shortly on WhatsApp ({formData.phone}) or email to confirm your appointment slot.
+                  {lang === 'hi' ? (
+                    <>
+                      धन्यवाद, <span className="font-semibold text-[#24152F]">{formData.name}</span>। आपका परामर्श अनुरोध सफलतापूर्वक दर्ज हो गया है। डॉ. पूजा अवस्थी का कार्यालय शीघ्र ही व्हाट्सएप ({formData.phone}) या ईमेल पर समय की पुष्टि हेतु संपर्क करेगा।
+                    </>
+                  ) : (
+                    <>
+                      Thank you, <span className="font-semibold text-[#24152F]">{formData.name}</span>. Your consultation request has been registered. Dr. Pooja Awasthi’s office will reach out shortly on WhatsApp ({formData.phone}) or email to confirm your appointment slot.
+                    </>
+                  )}
                 </p>
 
                 <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-3">
@@ -160,14 +170,14 @@ export const ContactBookingSection: React.FC<ContactBookingSectionProps> = ({
                     onClick={handleWhatsAppDirect}
                     className="px-5 py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-semibold rounded-lg transition-colors shadow-sm"
                   >
-                    Confirm Slot via WhatsApp
+                    {lang === 'hi' ? 'व्हाट्सएप द्वारा समय निश्चित करें' : 'Confirm Slot via WhatsApp'}
                   </button>
                   <button
                     type="button"
                     onClick={() => setSubmitted(false)}
                     className="px-5 py-2.5 bg-[#FBF8F2] hover:bg-[#EAE2F4] text-[#24152F] text-xs font-semibold rounded-lg transition-colors border border-[#EAE2F4]"
                   >
-                    Submit Another Request
+                    {lang === 'hi' ? 'अन्य अनुरोध भेजें' : 'Submit Another Request'}
                   </button>
                 </div>
               </div>
@@ -175,10 +185,12 @@ export const ContactBookingSection: React.FC<ContactBookingSectionProps> = ({
               <form onSubmit={handleSubmit} className="space-y-5">
                 <div className="border-b border-[#EAE2F4] pb-4">
                   <h3 className="font-cinzel text-xl font-bold text-[#24152F]">
-                    Consultation Booking Form
+                    {lang === 'hi' ? 'परामर्श अनुरोध प्रपत्र' : 'Consultation Booking Form'}
                   </h3>
                   <p className="text-xs text-[#29242E]/60 mt-1">
-                    Birth coordinates ensure pinpoint accuracy for Vedic numerological analysis.
+                    {lang === 'hi'
+                      ? 'सटीक जन्म विवरण वैदिक अंकशास्त्र विश्लेषण को अत्यंत उपयोगी और स्पष्ट बनाते हैं।'
+                      : 'Birth coordinates ensure pinpoint accuracy for Vedic numerological analysis.'}
                   </p>
                 </div>
 
@@ -193,7 +205,7 @@ export const ContactBookingSection: React.FC<ContactBookingSectionProps> = ({
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-xs font-semibold text-[#24152F] uppercase tracking-wider mb-1">
-                      Full Name *
+                      {lang === 'hi' ? 'पूरा नाम *' : 'Full Name *'}
                     </label>
                     <input
                       type="text"
@@ -207,7 +219,7 @@ export const ContactBookingSection: React.FC<ContactBookingSectionProps> = ({
 
                   <div>
                     <label className="block text-xs font-semibold text-[#24152F] uppercase tracking-wider mb-1">
-                      WhatsApp / Mobile *
+                      {lang === 'hi' ? 'व्हाट्सएप / मोबाइल नंबर *' : 'WhatsApp / Mobile *'}
                     </label>
                     <input
                       type="tel"
@@ -223,7 +235,7 @@ export const ContactBookingSection: React.FC<ContactBookingSectionProps> = ({
                 {/* Email */}
                 <div>
                   <label className="block text-xs font-semibold text-[#24152F] uppercase tracking-wider mb-1">
-                    Email Address *
+                    {lang === 'hi' ? 'ईमेल पता *' : 'Email Address *'}
                   </label>
                   <input
                     type="email"
@@ -239,7 +251,7 @@ export const ContactBookingSection: React.FC<ContactBookingSectionProps> = ({
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-xs font-semibold text-[#24152F] uppercase tracking-wider mb-1">
-                      Date of Birth (Optional)
+                      {lang === 'hi' ? 'जन्मतिथि (वैकल्पिक)' : 'Date of Birth (Optional)'}
                     </label>
                     <input
                       type="date"
@@ -251,7 +263,7 @@ export const ContactBookingSection: React.FC<ContactBookingSectionProps> = ({
 
                   <div>
                     <label className="block text-xs font-semibold text-[#24152F] uppercase tracking-wider mb-1">
-                      Time of Birth (Optional)
+                      {lang === 'hi' ? 'जन्म समय (वैकल्पिक)' : 'Time of Birth (Optional)'}
                     </label>
                     <input
                       type="time"
@@ -265,30 +277,50 @@ export const ContactBookingSection: React.FC<ContactBookingSectionProps> = ({
                 {/* Service Selection */}
                 <div>
                   <label className="block text-xs font-semibold text-[#24152F] uppercase tracking-wider mb-1">
-                    Desired Guidance Offering
+                    {lang === 'hi' ? 'इच्छित परामर्श सेवा' : 'Desired Guidance Offering'}
                   </label>
                   <select
                     value={formData.service}
                     onChange={(e) => setFormData({ ...formData, service: e.target.value })}
                     className="w-full px-3.5 py-2.5 rounded-lg border border-[#EAE2F4] text-xs text-[#24152F] focus:outline-none focus:border-[#6941A5] bg-[#FBF8F2]"
                   >
-                    <option value="Vedic Numerology (₹5,100)">Vedic Numerology Consultation — ₹5,100</option>
-                    <option value="Tarot Guidance (₹5,100)">Tarot Intuitive Guidance — ₹5,100</option>
-                    <option value="Energy Chakras & Healing (₹5,100)">Energy Chakras & Aura Healing — ₹5,100</option>
-                    <option value="Life Coaching & Mentorship (₹5,100)">Life Coaching & Conscious Mentorship — ₹5,100</option>
-                    <option value="Combined Guidance Session (₹5,100)">Combined Multi-Disciplinary Session — ₹5,100</option>
-                    <option value="Mobile Number Correction (₹5,100)">Mobile Number Numerology Correction — ₹5,100</option>
-                    <option value="Name Spelling Correction (₹1,100)">Name Spelling Vibrational Correction — ₹1,100</option>
-                    <option value="Aura Cleansing (₹3,100)">Aura Cleansing (20 min) — ₹3,100</option>
-                    <option value="Past Life Regression PLR (₹15,000)">Past Life Regression (PLR) Session — ₹15,000</option>
-                    <option value="7-Day Chakra Intensive (₹31,000)">7-Day Intensive Chakra Alignment — ₹31,000</option>
+                    <option value="Vedic Numerology (₹5,100)">
+                      {lang === 'hi' ? 'वैदिक अंकशास्त्र परामर्श — ₹5,100' : 'Vedic Numerology Consultation — ₹5,100'}
+                    </option>
+                    <option value="Tarot Guidance (₹5,100)">
+                      {lang === 'hi' ? 'सहज बोध टैरो मार्गदर्शन — ₹5,100' : 'Tarot Intuitive Guidance — ₹5,100'}
+                    </option>
+                    <option value="Energy Chakras & Healing (₹5,100)">
+                      {lang === 'hi' ? 'आभा मंडल व चक्र हीलिंग — ₹5,100' : 'Energy Chakras & Aura Healing — ₹5,100'}
+                    </option>
+                    <option value="Life Coaching & Mentorship (₹5,100)">
+                      {lang === 'hi' ? 'जीवन मार्गदर्शन एवं कोचिंग — ₹5,100' : 'Life Coaching & Conscious Mentorship — ₹5,100'}
+                    </option>
+                    <option value="Combined Guidance Session (₹5,100)">
+                      {lang === 'hi' ? 'समग्र संयुक्त परामर्श सत्र — ₹5,100' : 'Combined Multi-Disciplinary Session — ₹5,100'}
+                    </option>
+                    <option value="Mobile Number Correction (₹5,100)">
+                      {lang === 'hi' ? 'मोबाइल नंबर अंक संशोधन — ₹5,100' : 'Mobile Number Numerology Correction — ₹5,100'}
+                    </option>
+                    <option value="Name Spelling Correction (₹1,100)">
+                      {lang === 'hi' ? 'नाम वर्तनी एवं अंक संतुलन — ₹1,100' : 'Name Spelling Vibrational Correction — ₹1,100'}
+                    </option>
+                    <option value="Aura Cleansing (₹3,100)">
+                      {lang === 'hi' ? 'आभा मंडल शुद्धि (20 मिनट) — ₹3,100' : 'Aura Cleansing (20 min) — ₹3,100'}
+                    </option>
+                    <option value="Past Life Regression PLR (₹15,000)">
+                      {lang === 'hi' ? 'पूर्व जन्म स्मृति सत्र (पीएलआर) — ₹15,000' : 'Past Life Regression (PLR) Session — ₹15,000'}
+                    </option>
+                    <option value="7-Day Chakra Intensive (₹31,000)">
+                      {lang === 'hi' ? 'सप्त चक्र गहन साधना (7 दिवसीय) — ₹31,000' : '7-Day Intensive Chakra Alignment — ₹31,000'}
+                    </option>
                   </select>
                 </div>
 
                 {/* Consultation Format */}
                 <div>
                   <label className="block text-xs font-semibold text-[#24152F] uppercase tracking-wider mb-1">
-                    Consultation Medium
+                    {lang === 'hi' ? 'परामर्श का माध्यम' : 'Consultation Medium'}
                   </label>
                   <div className="grid grid-cols-2 gap-3">
                     <button
@@ -300,7 +332,7 @@ export const ContactBookingSection: React.FC<ContactBookingSectionProps> = ({
                           : 'border-[#EAE2F4] bg-[#FBF8F2] text-[#29242E]/70'
                       }`}
                     >
-                      Video Call (Meet / WhatsApp)
+                      {lang === 'hi' ? 'वीडियो कॉल (मीट / व्हाट्सएप)' : 'Video Call (Meet / WhatsApp)'}
                     </button>
                     <button
                       type="button"
@@ -311,7 +343,7 @@ export const ContactBookingSection: React.FC<ContactBookingSectionProps> = ({
                           : 'border-[#EAE2F4] bg-[#FBF8F2] text-[#29242E]/70'
                       }`}
                     >
-                      Private Voice Call
+                      {lang === 'hi' ? 'निजी फोन / ऑडियो कॉल' : 'Private Voice Call'}
                     </button>
                   </div>
                 </div>
@@ -319,13 +351,17 @@ export const ContactBookingSection: React.FC<ContactBookingSectionProps> = ({
                 {/* Message / Core questions */}
                 <div>
                   <label className="block text-xs font-semibold text-[#24152F] uppercase tracking-wider mb-1">
-                    Primary Questions or Context
+                    {lang === 'hi' ? 'अपने मुख्य प्रश्न या स्थिति' : 'Primary Questions or Context'}
                   </label>
                   <textarea
                     rows={3}
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    placeholder="Briefly mention career crossroads, relationship dilemmas, or personal topics you wish to explore..."
+                    placeholder={
+                      lang === 'hi'
+                        ? 'करियर, रिश्ते, व्यक्तिगत निर्णय या जिस विषय पर आप मार्गदर्शन चाहते हैं, संक्षेप में लिखें...'
+                        : 'Briefly mention career crossroads, relationship dilemmas, or personal topics you wish to explore...'
+                    }
                     className="w-full px-3.5 py-2.5 rounded-lg border border-[#EAE2F4] text-xs text-[#29242E] focus:outline-none focus:border-[#6941A5] bg-[#FBF8F2]"
                   />
                 </div>
@@ -336,7 +372,7 @@ export const ContactBookingSection: React.FC<ContactBookingSectionProps> = ({
                   className="w-full py-4 bg-[#24152F] hover:bg-[#341e44] text-[#D6B574] font-bold text-xs uppercase tracking-wider rounded-xl transition-all flex items-center justify-center gap-2 shadow-lg hover:scale-[1.01]"
                 >
                   <Send size={15} />
-                  <span>Submit Consultation Request</span>
+                  <span>{lang === 'hi' ? 'परामर्श अनुरोध प्रेषित करें' : 'Submit Consultation Request'}</span>
                 </button>
               </form>
             )}

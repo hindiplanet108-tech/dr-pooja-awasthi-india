@@ -42,7 +42,7 @@ export const Footer: React.FC<FooterProps> = ({ lang, onOpenTariff, onOpenBankUp
           {/* Quick Links */}
           <div className="lg:col-span-3 space-y-3">
             <h4 className="font-cinzel text-xs font-bold uppercase tracking-wider text-[#D6B574]">
-              Quick Navigation
+              {lang === 'hi' ? 'त्वरित लिंक' : 'Quick Navigation'}
             </h4>
             <ul className="space-y-2 text-xs text-[#EAE2F4]/80">
               <li>
@@ -57,12 +57,12 @@ export const Footer: React.FC<FooterProps> = ({ lang, onOpenTariff, onOpenBankUp
               </li>
               <li>
                 <a href="#calculator" className="hover:text-[#D6B574] transition-colors">
-                  {lang === 'hi' ? 'वैदिक अंक ज्योतिष कैलकुलेटर' : 'Vedic Numbers Calculator'}
+                  {lang === 'hi' ? 'वैदिक अंक गणना' : 'Vedic Numbers Calculator'}
                 </a>
               </li>
               <li>
                 <a href="#tarot" className="hover:text-[#D6B574] transition-colors">
-                  {lang === 'hi' ? 'दैनिक टैरो कार्ड ओरेकल' : 'Daily Tarot Oracle'}
+                  {lang === 'hi' ? 'दैनिक टैरो कार्ड मार्गदर्शन' : 'Daily Tarot Oracle'}
                 </a>
               </li>
               {onOpenTariff && (
@@ -72,7 +72,7 @@ export const Footer: React.FC<FooterProps> = ({ lang, onOpenTariff, onOpenBankUp
                     onClick={onOpenTariff}
                     className="hover:text-[#D6B574] transition-colors text-left font-medium text-[#D6B574]"
                   >
-                    ★ {lang === 'hi' ? '11 हीलिंग सेवाएं एवं टैरिफ' : '11 Healing Services Tariff'}
+                    ★ {lang === 'hi' ? '11 हीलिंग सेवा शुल्क सूची' : '11 Healing Services Tariff'}
                   </button>
                 </li>
               )}
@@ -103,7 +103,7 @@ export const Footer: React.FC<FooterProps> = ({ lang, onOpenTariff, onOpenBankUp
           {/* Verified Contact */}
           <div className="lg:col-span-4 space-y-3">
             <h4 className="font-cinzel text-xs font-bold uppercase tracking-wider text-[#D6B574]">
-              Official Coordinates
+              {lang === 'hi' ? 'आधिकारिक संपर्क' : 'Official Coordinates'}
             </h4>
             <div className="space-y-2 text-xs text-[#EAE2F4]/80">
               <div className="flex items-center gap-2">
@@ -127,7 +127,9 @@ export const Footer: React.FC<FooterProps> = ({ lang, onOpenTariff, onOpenBankUp
                 </a>
               </div>
               <p className="text-[11px] text-[#EAE2F4]/60 pt-1">
-                Consultation Hours: 10:00 AM – 7:00 PM IST (Mon - Sat)
+                {lang === 'hi'
+                  ? 'परामर्श समय: प्रातः 10:00 से सायं 7:00 बजे (सोम - शनि)'
+                  : 'Consultation Hours: 10:00 AM – 7:00 PM IST (Mon - Sat)'}
               </p>
             </div>
           </div>
@@ -138,7 +140,7 @@ export const Footer: React.FC<FooterProps> = ({ lang, onOpenTariff, onOpenBankUp
         <div className="pt-8 pb-6 border-b border-white/5 text-[11px] text-[#EAE2F4]/60 leading-relaxed font-light">
           <p>
             <span className="font-semibold text-[#D6B574]">
-              Ethical & Legal Notice:{" "}
+              {lang === 'hi' ? 'नैतिक एवं विधिक सूचना: ' : 'Ethical & Legal Notice: '}
             </span>
             {t.disclaimer}
           </p>
@@ -146,7 +148,7 @@ export const Footer: React.FC<FooterProps> = ({ lang, onOpenTariff, onOpenBankUp
 
         {/* Bottom copyright row */}
         <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#EAE2F4]/60">
-          <p>© {new Date().getFullYear()} {t.brandTitle}. All rights reserved.</p>
+          <p>{lang === 'hi' ? `© ${new Date().getFullYear()} ${t.brandTitle}। सर्वाधिकार सुरक्षित।` : `© ${new Date().getFullYear()} ${t.brandTitle}. All rights reserved.`}</p>
           <div className="flex items-center gap-4">
             <button
               type="button"

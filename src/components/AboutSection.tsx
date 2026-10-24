@@ -20,7 +20,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ lang, onBookClick })
   const pillars = [
     {
       num: '01',
-      title: lang === 'hi' ? 'सच्ची स्पष्टता (Clarity)' : 'Clear Purpose & Direction',
+      title: lang === 'hi' ? 'सच्ची स्पष्टता' : 'Clear Purpose & Direction',
       desc:
         lang === 'hi'
           ? 'जीवन के कठिन सवालों और उलझनों को सुलझाकर सही दिशा में आगे बढ़ने की स्पष्टता।'
@@ -28,7 +28,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ lang, onBookClick })
     },
     {
       num: '02',
-      title: lang === 'hi' ? 'आत्म-बोध (Self-Awareness)' : 'Self-Awareness',
+      title: lang === 'hi' ? 'आत्म-बोध एवं सजगता' : 'Self-Awareness',
       desc:
         lang === 'hi'
           ? 'अपनी प्राकृतिक खूबियों, स्वभाव और छिपी हुई प्रतिभा को गहराई से समझना।'
@@ -36,7 +36,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ lang, onBookClick })
     },
     {
       num: '03',
-      title: lang === 'hi' ? 'आत्मविश्वास (Empowerment)' : 'Confidence & Peace',
+      title: lang === 'hi' ? 'आत्मविश्वास एवं आंतरिक बल' : 'Confidence & Peace',
       desc:
         lang === 'hi'
           ? 'किसी पर निर्भर होने के बजाय, अपने विवेक और पूरे आत्मविश्वास से सही फैसले लेना।'
@@ -55,7 +55,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ lang, onBookClick })
           <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-[#6941A5]">
             <span>{t.aboutNav}</span>
             <span aria-hidden="true">·</span>
-            <span>Vision & Philosophy</span>
+            <span>{lang === 'hi' ? 'पावन संकल्प एवं दृष्टिकोण' : 'Vision & Philosophy'}</span>
           </div>
           <h2 className="font-cormorant text-3xl sm:text-4xl lg:text-5xl font-light text-[#24152F] leading-tight">
             {t.aboutTitle} — <br />
@@ -93,7 +93,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ lang, onBookClick })
                     Dr. Pooja Awasthi
                   </p>
                   <p className="text-[11px] text-[#EAE2F4]/80 tracking-wider uppercase mt-0.5">
-                    Spiritual Guide & Sacred Consultant
+                    {bioLang === 'hi' ? 'आध्यात्मिक मार्गदर्शिका एवं सलाहकार' : 'Spiritual Guide & Sacred Consultant'}
                   </p>
                 </div>
 
@@ -116,24 +116,48 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ lang, onBookClick })
               <div className="pt-3 space-y-2">
                 <div className="text-[11px] font-bold uppercase tracking-wider text-[#6941A5] flex items-center gap-1.5">
                   <Award size={13} className="text-[#D6B574]" />
-                  <span>Sacred Alignment Disciplines</span>
+                  <span>{bioLang === 'hi' ? 'विशेषज्ञता एवं साधना क्षेत्र' : 'Sacred Alignment Disciplines'}</span>
                 </div>
                 <ul className="text-xs text-[#29242E]/80 space-y-1.5 leading-relaxed">
                   <li className="flex items-start gap-2">
                     <span className="text-[#D6B574] mt-0.5">✦</span>
-                    <span><strong>Vedic Numerologist</strong> & Chaldean Name Vibration Specialist</span>
+                    <span>
+                      {bioLang === 'hi' ? (
+                        <><strong>वैदिक अंकशास्त्री</strong> एवं कील्डियन नाम तरंग विशेषज्ञ</>
+                      ) : (
+                        <><strong>Vedic Numerologist</strong> & Chaldean Name Vibration Specialist</>
+                      )}
+                    </span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-[#D6B574] mt-0.5">✦</span>
-                    <span><strong>Intuitive Tarot</strong> & Symbolic Archetypal Consultant</span>
+                    <span>
+                      {bioLang === 'hi' ? (
+                        <><strong>सहज बोध टैरो</strong> एवं प्रतीक विज्ञान मार्गदर्शिका</>
+                      ) : (
+                        <><strong>Intuitive Tarot</strong> & Symbolic Archetypal Consultant</>
+                      )}
+                    </span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-[#D6B574] mt-0.5">✦</span>
-                    <span><strong>Subtle Body Energy</strong> Cleanser & Chakra Harmonizer</span>
+                    <span>
+                      {bioLang === 'hi' ? (
+                        <><strong>आभा मंडल व चक्र हीलिंग</strong> ऊर्जा संतुलन विशेषज्ञ</>
+                      ) : (
+                        <><strong>Subtle Body Energy</strong> Cleanser & Chakra Harmonizer</>
+                      )}
+                    </span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-[#D6B574] mt-0.5">✦</span>
-                    <span><strong>Mindful Life Coach</strong> & Spiritual Mentor</span>
+                    <span>
+                      {bioLang === 'hi' ? (
+                        <><strong>जीवन मार्गदर्शन</strong> एवं आध्यात्मिक परामर्शदाता</>
+                      ) : (
+                        <><strong>Mindful Life Coach</strong> & Spiritual Mentor</>
+                      )}
+                    </span>
                   </li>
                 </ul>
               </div>
@@ -160,7 +184,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ lang, onBookClick })
             <div className="p-6 sm:p-7 rounded-2xl bg-white border border-[#EAE2F4] shadow-sm space-y-5">
               <div className="flex items-center justify-between border-b border-[#EAE2F4] pb-3">
                 <span className="text-xs font-bold uppercase tracking-wider text-[#6941A5]">
-                  Spiritual Biography / आध्यात्मिक परिचय
+                  {bioLang === 'hi' ? 'आध्यात्मिक परिचय' : 'Spiritual Biography'}
                 </span>
                 <div className="inline-flex rounded-lg border border-[#D6B574]/40 p-0.5 bg-[#FBF8F2] text-xs">
                   <button
@@ -191,7 +215,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ lang, onBookClick })
               {bioLang === 'hi' ? (
                 <div className="space-y-4 text-sm font-normal text-[#29242E]/90 leading-relaxed">
                   <p className="text-base text-[#24152F] font-medium leading-relaxed">
-                    डॉ. पूजा अवस्थी एक समर्पित आध्यात्मिक मार्गदर्शिका हैं, जो वैदिक अंकशास्त्र, टैरो रीडिंग, चक्र हीलिंग और लाइफ कोचिंग के माध्यम से लोगों को जीवन में नई दिशा और आशा देती हैं।
+                    डॉ. पूजा अवस्थी एक समर्पित आध्यात्मिक मार्गदर्शिका हैं, जो वैदिक अंकशास्त्र, टैरो मार्गदर्शन, चक्र हीलिंग और जीवन कोचिंग के माध्यम से लोगों को जीवन में नई दिशा और आशा देती हैं।
                   </p>
                   <p>
                     उनका मानना है कि हर व्यक्ति की जीवन यात्रा अनोखी है। जीवन में जब कठिन मोड़ आते हैं या बड़े फैसले लेने होते हैं, तो अक्सर मन उलझ जाता है। ऐसे समय में सही और सरल मार्गदर्शन आपको अपनी ताकत पहचानने, उलझनों को सुलझाने और सही रास्ता चुनने में मदद करता है।
@@ -220,7 +244,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ lang, onBookClick })
               <div className="absolute -right-4 -bottom-4 w-28 h-28 bg-[#D6B574]/15 rounded-full blur-xl pointer-events-none" />
               <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#6941A5]">
                 <Sparkles size={14} className="text-[#D6B574]" />
-                <span>Her Vision / पावन संकल्प</span>
+                <span>{bioLang === 'hi' ? 'पावन संकल्प' : 'Her Vision'}</span>
               </div>
               <blockquote className="font-cormorant text-xl md:text-2xl italic text-[#24152F] leading-snug">
                 {bioLang === 'hi'
@@ -233,7 +257,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ lang, onBookClick })
             <div className="p-6 rounded-2xl bg-white border border-[#EAE2F4] shadow-sm space-y-4">
               <h3 className="font-cinzel text-base font-bold text-[#24152F] flex items-center gap-2 border-b border-[#EAE2F4] pb-3">
                 <Compass size={17} className="text-[#6941A5]" />
-                <span>Three Sacred Pillars of Mentorship</span>
+                <span>{bioLang === 'hi' ? 'मार्गदर्शन के तीन पावन स्तंभ' : 'Three Sacred Pillars of Mentorship'}</span>
               </h3>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -268,7 +292,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ lang, onBookClick })
                 className="px-5 py-3 bg-white hover:bg-[#FBF8F2] text-[#24152F] border border-[#D6B574] font-semibold text-xs uppercase tracking-wider rounded-lg transition-all shadow-xs inline-flex items-center gap-2"
               >
                 <Maximize2 size={13} className="text-[#6941A5]" />
-                <span>{bioLang === 'hi' ? 'मूल चित्र देखें (View Original Photo)' : 'View Original Photo (28.jpeg)'}</span>
+                <span>{bioLang === 'hi' ? 'मूल चित्र देखें' : 'View Original Photo (28.jpeg)'}</span>
               </button>
             </div>
           </div>
@@ -311,7 +335,9 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ lang, onBookClick })
                 Dr. Pooja Awasthi
               </h3>
               <p className="text-xs text-[#EAE2F4]/80 mt-0.5">
-                Spiritual Guide & Sacred Consultant • Authentic Consecrated Portrait (28.jpeg)
+                {bioLang === 'hi'
+                  ? 'आध्यात्मिक मार्गदर्शिका एवं सलाहकार • प्रामाणिक स्वरूप'
+                  : 'Spiritual Guide & Sacred Consultant • Authentic Consecrated Portrait (28.jpeg)'}
               </p>
             </div>
           </div>

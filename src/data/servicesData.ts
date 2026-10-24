@@ -60,9 +60,9 @@ export const CORE_SERVICES: CoreService[] = [
     ],
     benefits_hi: [
       "अपनी प्राकृतिक शक्तियों, प्रतिभा और जीवन के उद्देश्य को पहचानें",
-      "नाम की स्पेलिंग का शुभ संतुलन ताकि भाग्य में सकारात्मकता आए",
-      "करियर में तरक्की और नए काम शुरू करने का सही समय जानें",
-      "वार्षिक और मासिक शुभ चक्रों के अनुसार महत्वपूर्ण कार्य प्लान करें",
+      "नाम के अक्षरों (वर्तनी) का शुभ संतुलन ताकि भाग्य में सकारात्मकता आए",
+      "करियर में तरक्की और नए कार्य शुरू करने का सही समय जानें",
+      "वार्षिक और मासिक शुभ चक्रों के अनुसार महत्वपूर्ण कार्यों की योजना बनाएं",
       "सरल और असरदार उपाय (शुभ रंग, शुभ दिन, मंत्र व रत्न मार्गदर्शन)"
     ],
     deliverables: [
@@ -71,8 +71,8 @@ export const CORE_SERVICES: CoreService[] = [
       "List of your lucky numbers, colors, dates, and personalized remedies"
     ],
     deliverables_hi: [
-      "डॉ. पूजा अवस्थी के साथ 60 मिनट का व्यक्तिगत 1-on-1 परामर्श",
-      "सरल भाषा में आपकी व्यक्तिगत अंकशास्त्र रिपोर्ट",
+      "डॉ. पूजा अवस्थी के साथ 60 मिनट का सीधा व्यक्तिगत परामर्श",
+      "सरल भाषा में आपकी व्यक्तिगत अंकशास्त्र विवरण तालिका",
       "आपके शुभ अंक, अनुकूल रंग, महत्वपूर्ण तिथियां व सरल उपाय"
     ],
     sessionDuration: "60 minutes",
@@ -85,11 +85,11 @@ export const CORE_SERVICES: CoreService[] = [
   {
     id: "tarot",
     title: "Tarot Guidance",
-    title_hi: "टैरो कार्ड रीडिंग",
+    title_hi: "टैरो कार्ड मार्गदर्शन",
     tagline: "Clear guidance to understand your choices and move forward with peace",
     tagline_hi: "मन के भ्रम को दूर कर सही निर्णय लेने का सरल मार्गदर्शन",
     summary: "Intuitive card readings to uncover hidden truths in relationships, emotional confusion, career choices, and upcoming opportunities.",
-    summary_hi: "रिश्तों की उलझनें, मन का द्वंद्व, करियर के विकल्प और आने वाले अवसरों को समझने के लिए अंतर्ज्ञानी कार्ड रीडिंग।",
+    summary_hi: "रिश्तों की उलझनें, मन का द्वंद्व, करियर के विकल्प और आने वाले अवसरों को समझने के लिए अंतर्ज्ञानी टैरो मार्गदर्शन।",
     fullDescription: "Tarot is not about creating fear or making blind predictions. It acts as an honest mirror to your thoughts and feelings. Dr. Pooja Awasthi gently uses tarot cards to help you see where you stand, clear up confusion, and choose the most peaceful and positive way forward.",
     fullDescription_hi: "टैरो कोई अंधविश्वास या डराने वाली भविष्यवाणी नहीं है, बल्कि आपके मन और भावनाओं का एक सच्चा दर्पण है। पूजा जी कार्ड्स के माध्यम से आपकी वर्तमान स्थिति को स्पष्ट करती हैं और आपको सही व शांतिपूर्ण रास्ता चुनने में मदद करती हैं।",
     benefits: [
@@ -113,8 +113,8 @@ export const CORE_SERVICES: CoreService[] = [
     ],
     deliverables_hi: [
       "45 से 60 मिनट का सहज व संवेदनशील टैरो सत्र",
-      "आपके प्रश्न या स्थिति के अनुसार विशेष कार्ड स्प्रेड",
-      "वीडियो या ऑडियो कॉल और आपके निकाले गए कार्ड्स की फोटो"
+      "आपके प्रश्न या स्थिति के अनुसार विशेष कार्ड विन्यास (कार्ड व्यवस्था)",
+      "वीडियो या ऑडियो कॉल और आपके निकाले गए कार्ड्स की स्पष्ट तस्वीरें"
     ],
     sessionDuration: "45 - 60 minutes",
     sessionDuration_hi: "45 - 60 मिनट",
@@ -130,7 +130,7 @@ export const CORE_SERVICES: CoreService[] = [
     tagline: "Clear heavy energy and bring deep peace to your mind and body",
     tagline_hi: "नकारात्मक ऊर्जा दूर कर तन और मन में शांति व नई ताजगी लाएं",
     summary: "Chakra alignment, aura cleansing, and distance healing to release stress, dissolve anxiety, and restore emotional calm.",
-    summary_hi: "चक्र संतुलन, आभा मंडल (ऑरा) की शुद्धि और हीलिंग द्वारा तनाव दूर करना और मन को शांत व हल्का बनाना।",
+    summary_hi: "चक्र संतुलन, आभा मंडल की पावन शुद्धि और हीलिंग द्वारा तनाव दूर करना और मन को शांत व हल्का बनाना।",
     fullDescription: "Daily stress, worries, and toxic environments can make us feel tired, heavy, and overwhelmed. Through guided meditation, breathing techniques, and distance energy healing, Dr. Pooja Awasthi helps clear away negative vibrations and restore your natural peace and vitality.",
     fullDescription_hi: "रोजमर्रा का तनाव, पुरानी चिंताएं और नकारात्मक माहौल हमारे मन और शरीर को थका देते हैं। पूजा जी ध्यान, श्वास संतुलन और हीलिंग के माध्यम से नकारात्मकता को दूर कर आपकी खोई हुई ऊर्जा और मानसिक शांति को लौटाती हैं।",
     benefits: [
@@ -154,7 +154,7 @@ export const CORE_SERVICES: CoreService[] = [
     ],
     deliverables_hi: [
       "आपकी ऊर्जा और 7 चक्रों की स्थिति की समझ",
-      "निर्देशित डिस्टेंस हीलिंग और श्वास अभ्यास सत्र",
+      "निर्देशित दूरस्थ ऊर्जा उपचार (हीलिंग) और श्वास अभ्यास सत्र",
       "सकारात्मक ऊर्जा बनाए रखने के आसान दैनिक नियम"
     ],
     sessionDuration: "50 minutes",
@@ -171,7 +171,7 @@ export const CORE_SERVICES: CoreService[] = [
     tagline: "Simple steps to build self-confidence and live a happy, purposeful life",
     tagline_hi: "आत्मविश्वास बढ़ाने और जीवन में खुशहाली व लक्ष्य पाने के सरल कदम",
     summary: "Caring 1-on-1 mentoring to help you overcome self-doubt, build good habits, set healthy boundaries, and achieve your goals.",
-    summary_hi: "व्यक्तिगत 1-on-1 बातचीत जो आपको नकारात्मक सोच बदलने, आत्मविश्वास जगाने और अपने लक्ष्य पाने में मदद करती है।",
+    summary_hi: "व्यक्तिगत आत्मीय संवाद जो आपको नकारात्मक सोच बदलने, आत्मविश्वास जगाने और अपने लक्ष्य पाने में मदद करता है।",
     fullDescription: "Real transformation happens when honest self-reflection is combined with small, steady daily actions. Dr. Pooja Awasthi provides a warm, supportive space where you can share openly, understand what is holding you back, and take practical steps toward the life you truly want.",
     fullDescription_hi: "सच्चा बदलाव तब आता है जब हम अपनी सोच को समझते हैं और रोज छोटे-छोटे सकारात्मक कदम उठाते हैं। पूजा जी एक ऐसा सुरक्षित और दोस्ताना माहौल देती हैं जहाँ आप बिना झिझक अपनी बात रख सकते हैं और जीवन में आगे बढ़ सकते हैं।",
     benefits: [
@@ -182,7 +182,7 @@ export const CORE_SERVICES: CoreService[] = [
       "Caring support and encouragement to keep you on track"
     ],
     benefits_hi: [
-      "ज्यादा सोचने (ओवरथिंकिंग) और खुद को कम आंकने की आदत छोड़ना",
+      "अत्यधिक और व्यर्थ सोचने की आदत छोड़ना तथा आत्मविश्वास बढ़ाना",
       "करियर, परिवार और जीवन के लिए स्पष्ट व आसान लक्ष्य बनाना",
       "अंदरूनी शांति और सच्चा आत्मविश्वास हासिल करना",
       "शालीनता से अपनी बात कहना और सही सीमाएं तय करना",
@@ -194,9 +194,9 @@ export const CORE_SERVICES: CoreService[] = [
       "Follow-up support via messaging"
     ],
     deliverables_hi: [
-      "स्पष्ट लक्ष्यों के साथ 1-on-1 व्यक्तिगत कोचिंग बातचीत",
+      "स्पष्ट लक्ष्यों के साथ व्यक्तिगत जीवन मार्गदर्शन संवाद",
       "घर पर अभ्यास के लिए आसान कार्य-सूची व मार्गदर्शिका",
-      "सत्र के बाद व्हाट्सएप पर जरूरी फॉलो-अप सहायता"
+      "सत्र के बाद व्हाट्सएप पर निरंतर मार्गदर्शन व सहायता"
     ],
     sessionDuration: "60 minutes",
     sessionDuration_hi: "60 मिनट",
@@ -211,13 +211,13 @@ export const CATALOG_SERVICES: CatalogServiceItem[] = [
   {
     id: "aura-cleaning",
     number: 1,
-    title: "ऑरा क्लीनिंग (ऊर्जा शुद्धि)",
+    title: "आभा मंडल ऊर्जा शुद्धि (ऑरा क्लीनिंग)",
     title_en: "Aura Cleansing (Energy Balance)",
     fee: 3100,
     feeFormatted: "₹3,100",
     duration: "20 मिनट",
     duration_en: "20 minutes",
-    description: "ऑरा क्लीनिंग आपके चारों ओर की नकारात्मक ऊर्जा को साफ करके मन को शांत, हल्का और सकारात्मक बनाती है।",
+    description: "आभा मंडल की ऊर्जा शुद्धि आपके चारों ओर की नकारात्मकता को दूर करके मन को शांत, हल्का और सकारात्मक बनाती है।",
     description_en: "A gentle session to clear negative energy around you, bring peace of mind, and refresh your inner strength.",
     category: "healing",
     categoryLabel_hi: "ऊर्जा एवं हीलिंग",
@@ -226,7 +226,7 @@ export const CATALOG_SERVICES: CatalogServiceItem[] = [
   {
     id: "negativity-healing",
     number: 2,
-    title: "नकारात्मकता हीलिंग",
+    title: "नकारात्मकता निवारण व हीलिंग",
     title_en: "Negativity Release & Healing",
     fee: 5100,
     feeFormatted: "₹5,100",
@@ -241,7 +241,7 @@ export const CATALOG_SERVICES: CatalogServiceItem[] = [
   {
     id: "chakra-healing",
     number: 3,
-    title: "चक्र हीलिंग (7 दिवसीय गहन साधना)",
+    title: "सप्त चक्र हीलिंग (7 दिवसीय गहन साधना)",
     title_en: "Chakra Healing (7-Day Guided Session)",
     fee: 31000,
     feeFormatted: "₹31,000",
@@ -258,7 +258,7 @@ export const CATALOG_SERVICES: CatalogServiceItem[] = [
   {
     id: "mobile-number-correction",
     number: 4,
-    title: "मोबाइल नंबर करेक्शन",
+    title: "मोबाइल नंबर अंक संशोधन",
     title_en: "Mobile Number Numerology",
     fee: 5100,
     feeFormatted: "₹5,100",
@@ -271,11 +271,11 @@ export const CATALOG_SERVICES: CatalogServiceItem[] = [
   {
     id: "name-correction",
     number: 5,
-    title: "नाम स्पेलिंग करेक्शन",
+    title: "नाम वर्तनी व अंक संशोधन",
     title_en: "Name Spelling Correction",
     fee: 1100,
     feeFormatted: "₹1,100",
-    description: "अपने नाम की स्पेलिंग में सरल और शुभ सुधार, जिससे आपके नाम की ऊर्जा आपके जीवन में सफलता और सामंजस्य लाए।",
+    description: "अपने नाम के अक्षरों में सरल और शुभ अंकशास्त्रीय सुधार, जिससे आपके नाम की ऊर्जा जीवन में सफलता और सामंजस्य लाए।",
     description_en: "Simple, positive adjustments to your name's spelling according to numerology to bring better luck, confidence, and harmony.",
     category: "numerology",
     categoryLabel_hi: "अंकशास्त्र सुधार",
@@ -284,7 +284,7 @@ export const CATALOG_SERVICES: CatalogServiceItem[] = [
   {
     id: "relationship-healing",
     number: 6,
-    title: "रिलेशनशिप हीलिंग (रिश्तों में सुधार)",
+    title: "संबंध सौहार्द एवं हीलिंग (रिश्तों में मधुरता)",
     title_en: "Relationship Healing & Harmony",
     fee: 11000,
     feeFormatted: "₹11,000",
@@ -297,7 +297,7 @@ export const CATALOG_SERVICES: CatalogServiceItem[] = [
   {
     id: "sound-healing",
     number: 7,
-    title: "साउंड हीलिंग (ध्वनि ध्यान)",
+    title: "नाद एवं ध्वनि ध्यान हीलिंग (साउंड हीलिंग)",
     title_en: "Sound Bowl & Mantra Healing",
     fee: 11000,
     feeFormatted: "₹11,000",
@@ -310,7 +310,7 @@ export const CATALOG_SERVICES: CatalogServiceItem[] = [
   {
     id: "mind-body-relaxation",
     number: 8,
-    title: "माइंड एवं बॉडी रिलैक्सेशन",
+    title: "तन-मन विश्राम एवं तनाव मुक्ति",
     title_en: "Mind & Body Relaxation",
     fee: 5100,
     feeFormatted: "₹5,100",
@@ -323,7 +323,7 @@ export const CATALOG_SERVICES: CatalogServiceItem[] = [
   {
     id: "anxiety-depression-support",
     number: 9,
-    title: "चिंता व तनाव में सहायता (सपोर्ट थेरेपी)",
+    title: "चिंता, अवसाद व तनाव मुक्ति सहायता",
     title_en: "Anxiety & Stress Support",
     fee: 5100,
     feeFormatted: "₹5,100",
@@ -338,7 +338,7 @@ export const CATALOG_SERVICES: CatalogServiceItem[] = [
   {
     id: "plr-session",
     number: 10,
-    title: "पीएलआर सेशन (Past Life Regression)",
+    title: "पूर्व जन्म स्मृति सत्र (पीएलआर)",
     title_en: "Past Life Exploration (PLR)",
     fee: 15000,
     feeFormatted: "₹15,000",
@@ -353,7 +353,7 @@ export const CATALOG_SERVICES: CatalogServiceItem[] = [
   {
     id: "mind-peace-therapy",
     number: 11,
-    title: "माइंड पीस थेरेपी (मानसिक शांति)",
+    title: "मानसिक शांति एवं आंतरिक स्थिरता सत्र",
     title_en: "Mind Peace & Calm Therapy",
     fee: 5100,
     feeFormatted: "₹5,100",

@@ -20,7 +20,7 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({ lang }
             <Quote size={14} className="text-[#D6B574]" />
             <span>{t.testimonialsNav}</span>
             <span aria-hidden="true">·</span>
-            <span>Verified Reflections</span>
+            <span>{lang === 'hi' ? 'सत्यापित अनुभव एवं विचार' : 'Verified Reflections'}</span>
           </div>
 
           <h2 className="font-cormorant text-3xl sm:text-4xl lg:text-5xl font-light text-[#24152F] leading-tight">
@@ -29,7 +29,9 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({ lang }
           </h2>
 
           <p className="text-sm text-[#29242E]/75 leading-relaxed max-w-2xl mx-auto font-light">
-            Every reflection below is from individuals who have undertaken verified 1-on-1 consultations with Dr. Pooja Awasthi. No fabricated testimonials.
+            {lang === 'hi'
+              ? 'नीचे दिए गए सभी विचार उन लोगों के वास्तविक अनुभव हैं, जिन्होंने डॉ. पूजा अवस्थी जी से व्यक्तिगत मार्गदर्शन प्राप्त किया है। कोई भी बनावटी समीक्षा नहीं।'
+              : 'Every reflection below is from individuals who have undertaken verified personal consultations with Dr. Pooja Awasthi. Authentic and sincere.'}
           </p>
         </div>
 

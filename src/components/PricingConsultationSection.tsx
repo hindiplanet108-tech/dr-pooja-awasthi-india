@@ -20,19 +20,19 @@ export const PricingConsultationSection: React.FC<PricingConsultationSectionProp
 
   const deliverables = [
     {
-      title: lang === 'hi' ? '60 मिनट का व्यक्तिगत 1-on-1 सत्र' : '60-Minute Private 1-on-1 Session',
+      title: lang === 'hi' ? '60 मिनट का व्यक्तिगत परामर्श सत्र' : '60-Minute Private 1-on-1 Session',
       desc: lang === 'hi' ? 'वीडियो या फोन कॉल द्वारा डॉ. पूजा जी से सीधा संवाद' : 'Private video or phone call directly with Dr. Pooja Awasthi'
     },
     {
-      title: lang === 'hi' ? 'मूलांक व भाग्यांक (जन्म व भाग्य अंक)' : 'Birth & Destiny Numbers (Mulank & Bhagyank)',
+      title: lang === 'hi' ? 'मूलांक व भाग्यांक विश्लेषण' : 'Birth & Destiny Numbers (Mulank & Bhagyank)',
       desc: lang === 'hi' ? 'जन्मतिथि के अनुसार आपकी शक्तियों और करियर की दिशा का विश्लेषण' : 'Understand your personality, inner talents, and best life direction'
     },
     {
-      title: lang === 'hi' ? 'नाम की स्पेलिंग व शुभ अंक जांच' : 'Name Spelling & Lucky Number Check',
+      title: lang === 'hi' ? 'नाम की वर्तनी व शुभ अंक संतुलन' : 'Name Spelling & Lucky Number Check',
       desc: lang === 'hi' ? 'नाम के अक्षरों का अंकशास्त्रीय परीक्षण और शुभ संतुलन' : 'Check if your name spelling aligns with your lucky numbers'
     },
     {
-      title: lang === 'hi' ? 'शुभ समय व ग्रह चक्र (Timing)' : 'Best Timing for Career & Major Decisions',
+      title: lang === 'hi' ? 'शुभ समय व ग्रह चक्र' : 'Best Timing for Career & Major Decisions',
       desc: lang === 'hi' ? 'करियर, नया काम, विवाह या निवेश के लिए सबसे अच्छा समय' : 'Know the most favorable months and years to start new projects'
     },
     {
@@ -64,7 +64,7 @@ export const PricingConsultationSection: React.FC<PricingConsultationSectionProp
     },
     {
       num: '03',
-      title: lang === 'hi' ? 'निजी 1-on-1 बातचीत' : '1-on-1 Consultation',
+      title: lang === 'hi' ? 'निजी व्यक्तिगत संवाद' : '1-on-1 Consultation',
       desc:
         lang === 'hi'
           ? 'डॉ. पूजा अवस्थी के साथ 60 मिनट की शांत, गोपनीय और गहन बातचीत।'
@@ -90,7 +90,7 @@ export const PricingConsultationSection: React.FC<PricingConsultationSectionProp
             <Sparkles size={14} className="text-[#D6B574]" />
             <span>{t.chargesNav}</span>
             <span aria-hidden="true">·</span>
-            <span>Private Sanctuary</span>
+            <span>{lang === 'hi' ? 'गोपनीय एवं पावन परामर्श' : 'Private Sanctuary'}</span>
           </div>
 
           <h2 className="font-cormorant text-3xl sm:text-4xl lg:text-5xl font-light text-[#24152F] leading-tight">
@@ -130,11 +130,13 @@ export const PricingConsultationSection: React.FC<PricingConsultationSectionProp
                     <span className="text-xs font-bold uppercase tracking-widest text-[#D6B574] block">
                       {lang === 'hi' ? 'मानक परामर्श सत्र' : 'Comprehensive Guidance'}
                     </span>
-                    <span className="text-[11px] text-[#EAE2F4]/70">Dr. Pooja Awasthi (1-on-1)</span>
+                    <span className="text-[11px] text-[#EAE2F4]/70">
+                      {lang === 'hi' ? 'डॉ. पूजा अवस्थी (व्यक्तिगत सत्र)' : 'Dr. Pooja Awasthi (1-on-1)'}
+                    </span>
                   </div>
                 </div>
                 <span className="text-xs px-2.5 py-1 rounded-full bg-white/10 text-[#EAE2F4] border border-white/20">
-                  60 Minutes
+                  {lang === 'hi' ? '60 मिनट' : '60 Minutes'}
                 </span>
               </div>
 
@@ -144,23 +146,25 @@ export const PricingConsultationSection: React.FC<PricingConsultationSectionProp
                     ₹5,100
                   </span>
                   <span className="text-xs text-[#EAE2F4]/70 uppercase tracking-wider">
-                    / 1-on-1 Session
+                    {lang === 'hi' ? '/ व्यक्तिगत सत्र' : '/ 1-on-1 Session'}
                   </span>
                 </div>
                 <p className="text-xs text-[#EAE2F4]/80 mt-2 font-light">
-                  Standard verified fee for Vedic Numerology, Tarot Reading, or Integrated Life Coaching.
+                  {lang === 'hi'
+                    ? 'वैदिक अंकशास्त्र, टैरो मार्गदर्शन या समग्र जीवन परामर्श हेतु प्रामाणिक दक्षिणा।'
+                    : 'Standard verified fee for Vedic Numerology, Tarot Reading, or Integrated Life Coaching.'}
                 </p>
               </div>
 
               <div className="p-4 rounded-xl bg-white/5 border border-[#D6B574]/20 space-y-2 text-xs text-[#EAE2F4]/90">
                 <div className="flex items-center gap-2 font-semibold text-white">
                   <ShieldCheck size={16} className="text-[#D6B574]" />
-                  <span>Session Assurances:</span>
+                  <span>{lang === 'hi' ? 'परामर्श की प्रमुख विशेषताएं:' : 'Session Assurances:'}</span>
                 </div>
                 <ul className="space-y-1.5 pl-6 list-disc text-[#EAE2F4]/80 text-[11px]">
-                  <li>Direct 1-on-1 dialogue with Dr. Pooja Awasthi</li>
-                  <li>100% confidential and non-judgmental space</li>
-                  <li>Instant appointment confirmation via WhatsApp</li>
+                  <li>{lang === 'hi' ? 'डॉ. पूजा अवस्थी जी से सीधा संवाद' : 'Direct 1-on-1 dialogue with Dr. Pooja Awasthi'}</li>
+                  <li>{lang === 'hi' ? '100% गोपनीय और सुरक्षित वातावरण' : '100% confidential and non-judgmental space'}</li>
+                  <li>{lang === 'hi' ? 'व्हाट्सएप पर तत्काल समय की पुष्टि' : 'Instant appointment confirmation via WhatsApp'}</li>
                 </ul>
               </div>
             </div>
@@ -181,7 +185,7 @@ export const PricingConsultationSection: React.FC<PricingConsultationSectionProp
                     onClick={onOpenTariff}
                     className="py-2.5 px-3 rounded-lg border border-[#D6B574]/50 bg-white/5 hover:bg-[#D6B574]/20 text-[#D6B574] text-[11px] font-semibold transition-all text-center"
                   >
-                    ★ 11 Services Tariff
+                    {lang === 'hi' ? '★ संपूर्ण 11 सेवा शुल्क' : '★ 11 Services Tariff'}
                   </button>
                 )}
                 {onOpenBankUpi && (
@@ -190,13 +194,15 @@ export const PricingConsultationSection: React.FC<PricingConsultationSectionProp
                     onClick={onOpenBankUpi}
                     className="py-2.5 px-3 rounded-lg border border-white/20 bg-white/5 hover:bg-white/15 text-white text-[11px] font-medium transition-all text-center"
                   >
-                    Bank & UPI QR
+                    {lang === 'hi' ? 'बैंक एवं यूपीआई' : 'Bank & UPI QR'}
                   </button>
                 )}
               </div>
 
               <p className="text-[11px] text-[#EAE2F4]/60 text-center pt-1">
-                Official booking & calendar confirmation via WhatsApp
+                {lang === 'hi'
+                  ? 'व्हाट्सएप द्वारा आधिकारिक समय निर्धारण एवं पुष्टि'
+                  : 'Official booking & calendar confirmation via WhatsApp'}
               </p>
             </div>
           </div>
@@ -205,7 +211,7 @@ export const PricingConsultationSection: React.FC<PricingConsultationSectionProp
           <div className="lg:col-span-7 rounded-3xl bg-white p-8 sm:p-10 border border-[#EAE2F4] shadow-sm flex flex-col justify-between">
             <div>
               <h3 className="font-cinzel text-xl font-bold text-[#24152F] mb-6 border-b border-[#EAE2F4] pb-4">
-                What Your Consultation Includes:
+                {lang === 'hi' ? 'परामर्श सत्र में क्या सम्मिलित है:' : 'What Your Consultation Includes:'}
               </h3>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
@@ -225,8 +231,17 @@ export const PricingConsultationSection: React.FC<PricingConsultationSectionProp
 
             {/* Practical Advice Note */}
             <div className="mt-8 p-4 rounded-xl bg-[#FBF8F2] border border-[#EAE2F4] text-xs text-[#29242E]/75 leading-relaxed">
-              <span className="font-bold text-[#6941A5]">Preparation Guidance: </span>
-              Note down your birth date, time, and 2-3 specific priorities you wish to explore for maximum depth during the consultation.
+              {lang === 'hi' ? (
+                <>
+                  <span className="font-bold text-[#6941A5]">परामर्श पूर्व तैयारी: </span>
+                  सत्र से पहले अपनी जन्मतिथि, जन्म समय और अपने 2-3 मुख्य प्रश्न लिख लें ताकि चर्चा अधिक उपयोगी व स्पष्ट हो सके।
+                </>
+              ) : (
+                <>
+                  <span className="font-bold text-[#6941A5]">Preparation Guidance: </span>
+                  Note down your birth date, time, and 2-3 specific priorities you wish to explore for maximum depth during the consultation.
+                </>
+              )}
             </div>
           </div>
 
@@ -236,10 +251,10 @@ export const PricingConsultationSection: React.FC<PricingConsultationSectionProp
         <div className="space-y-8">
           <div className="text-center max-w-2xl mx-auto space-y-2">
             <span className="text-xs font-bold uppercase tracking-widest text-[#6941A5]">
-              Seamless Workflow
+              {lang === 'hi' ? 'सरल एवं पारदर्शी प्रक्रिया' : 'Seamless Workflow'}
             </span>
             <h3 className="font-cormorant text-2xl sm:text-3xl font-light text-[#24152F]">
-              Your 4-Step Journey to Clarity
+              {lang === 'hi' ? 'स्पष्टता और मार्गदर्शन के 4 सरल चरण' : 'Your 4-Step Journey to Clarity'}
             </h3>
           </div>
 

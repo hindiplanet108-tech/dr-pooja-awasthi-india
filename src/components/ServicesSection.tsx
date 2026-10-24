@@ -52,7 +52,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ lang, onSelect
                   : 'text-[#29242E]/70 hover:text-[#24152F]'
               }`}
             >
-              Core Disciplines
+              {lang === 'hi' ? 'प्रमुख साधना क्षेत्र' : 'Core Disciplines'}
             </button>
             <button
               type="button"
@@ -63,7 +63,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ lang, onSelect
                   : 'text-[#29242E]/70 hover:text-[#24152F]'
               }`}
             >
-              Complete Catalog (11)
+              {lang === 'hi' ? 'संपूर्ण सेवा सूची (11)' : 'Complete Catalog (11)'}
             </button>
             <button
               type="button"
@@ -75,7 +75,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ lang, onSelect
               }`}
             >
               <Sparkles size={12} className="text-[#D6B574]" />
-              <span>Animated 7 Chakras</span>
+              <span>{lang === 'hi' ? 'सप्त चक्र एवं आभा मंडल' : 'Animated 7 Chakras'}</span>
             </button>
           </div>
         </div>
@@ -149,14 +149,14 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ lang, onSelect
                         onClick={() => setSelectedServiceModal(srv)}
                         className="px-3.5 py-2 text-xs font-medium text-[#24152F] hover:text-[#6941A5] transition-colors"
                       >
-                        Learn More
+                        {lang === 'hi' ? 'विस्तार से जानें' : 'Learn More'}
                       </button>
                       <button
                         type="button"
                         onClick={() => onSelectServiceForBooking(srv.title)}
                         className="px-4 py-2 bg-[#24152F] hover:bg-[#341e44] text-[#D6B574] text-xs font-bold rounded-md transition-colors flex items-center gap-1 shadow-sm"
                       >
-                        <span>Book Session</span>
+                        <span>{lang === 'hi' ? 'सत्र निर्धारित करें' : 'Book Session'}</span>
                         <ArrowRight size={13} />
                       </button>
                     </div>
@@ -173,11 +173,11 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ lang, onSelect
             {/* Filter buttons */}
             <div className="flex flex-wrap items-center gap-2">
               {[
-                { id: 'all', label: 'All 11 Offerings' },
-                { id: 'healing', label: 'Energy & Healing (5)' },
-                { id: 'numerology', label: 'Numerology Corrections (2)' },
-                { id: 'therapy', label: 'Mind Balance & Therapy (3)' },
-                { id: 'regression', label: 'Past Life Regression (1)' },
+                { id: 'all', label: lang === 'hi' ? 'सभी 11 सेवाएँ' : 'All 11 Offerings' },
+                { id: 'healing', label: lang === 'hi' ? 'ऊर्जा एवं हीलिंग (5)' : 'Energy & Healing (5)' },
+                { id: 'numerology', label: lang === 'hi' ? 'अंकशास्त्र शुद्धि (2)' : 'Numerology Corrections (2)' },
+                { id: 'therapy', label: lang === 'hi' ? 'मानसिक संतुलन व विश्राम (3)' : 'Mind Balance & Therapy (3)' },
+                { id: 'regression', label: lang === 'hi' ? 'पूर्व जन्म स्मृति सत्र (1)' : 'Past Life Regression (1)' },
               ].map((btn) => (
                 <button
                   key={btn.id}
@@ -286,28 +286,35 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ lang, onSelect
             <div className="p-6 sm:p-8 overflow-y-auto space-y-6 text-sm text-[#29242E]/85">
               <div>
                 <h4 className="font-semibold text-xs text-[#6941A5] uppercase tracking-wider mb-2">
-                  Comprehensive Scope
+                  {lang === 'hi' ? 'विस्तृत विवरण एवं प्रभाव' : 'Comprehensive Scope'}
                 </h4>
                 <p className="leading-relaxed">
-                  {selectedServiceModal.fullDescription}
+                  {lang === 'hi' && selectedServiceModal.fullDescription_hi
+                    ? selectedServiceModal.fullDescription_hi
+                    : selectedServiceModal.fullDescription}
                 </p>
               </div>
 
               <div>
                 <h4 className="font-semibold text-xs text-[#6941A5] uppercase tracking-wider mb-2">
-                  Who Is This For?
+                  {lang === 'hi' ? 'यह परामर्श किसके लिए आवश्यक है?' : 'Who Is This For?'}
                 </h4>
                 <p className="text-xs leading-relaxed text-[#29242E]/75 bg-[#FBF8F2] p-3 rounded-lg border border-[#EAE2F4]">
-                  {selectedServiceModal.whoIsThisFor}
+                  {lang === 'hi' && selectedServiceModal.whoIsThisFor_hi
+                    ? selectedServiceModal.whoIsThisFor_hi
+                    : selectedServiceModal.whoIsThisFor}
                 </p>
               </div>
 
               <div>
                 <h4 className="font-semibold text-xs text-[#6941A5] uppercase tracking-wider mb-2">
-                  What You Receive:
+                  {lang === 'hi' ? 'सत्र में आपको क्या प्राप्त होगा:' : 'What You Receive:'}
                 </h4>
                 <div className="space-y-2">
-                  {selectedServiceModal.deliverables.map((d, i) => (
+                  {((lang === 'hi' && selectedServiceModal.deliverables_hi)
+                    ? selectedServiceModal.deliverables_hi
+                    : selectedServiceModal.deliverables
+                  ).map((d, i) => (
                     <div key={i} className="flex items-start gap-2 text-xs">
                       <Check size={14} className="text-[#6941A5] shrink-0 mt-0.5" />
                       <span>{d}</span>
@@ -319,19 +326,19 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ lang, onSelect
 
             <div className="p-4 sm:p-6 bg-[#FBF8F2] border-t border-[#EAE2F4] flex items-center justify-between">
               <div className="text-xs text-[#29242E]/70">
-                <span className="font-semibold">Standard Fee: </span>
+                <span className="font-semibold">{lang === 'hi' ? 'मानक परामर्श दक्षिणा: ' : 'Standard Fee: '}</span>
                 <span className="font-cinzel text-base font-bold text-[#24152F]">{selectedServiceModal.baseFee}</span>
               </div>
               <button
                 type="button"
                 onClick={() => {
-                  const title = selectedServiceModal.title;
+                  const title = lang === 'hi' ? selectedServiceModal.title_hi : selectedServiceModal.title;
                   setSelectedServiceModal(null);
                   onSelectServiceForBooking(title);
                 }}
                 className="px-5 py-2.5 bg-[#24152F] hover:bg-[#341e44] text-[#D6B574] font-semibold text-xs uppercase tracking-wider rounded-md transition-colors"
               >
-                Proceed to Book
+                {lang === 'hi' ? 'परामर्श सत्र प्राप्त करें' : 'Proceed to Book'}
               </button>
             </div>
           </div>

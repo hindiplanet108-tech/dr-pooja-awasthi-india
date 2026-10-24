@@ -68,7 +68,7 @@ export const BankUpiModal: React.FC<BankUpiModalProps> = ({ isOpen, onClose, lan
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#D6B574]">
                 <Smartphone size={16} />
-                <span>Instant UPI & QR Payment</span>
+                <span>{lang === 'hi' ? 'त्वरित UPI एवं क्यूआर भुगतान' : 'Instant UPI & QR Payment'}</span>
               </div>
               <span className="text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 font-semibold border border-emerald-500/30">
                 GPay · PhonePe · Paytm · BHIM
@@ -79,7 +79,9 @@ export const BankUpiModal: React.FC<BankUpiModalProps> = ({ isOpen, onClose, lan
               {/* UPI ID Box */}
               <div className="p-3.5 rounded-xl bg-black/40 border border-white/10 flex items-center justify-between">
                 <div>
-                  <span className="text-[10px] text-[#EAE2F4]/60 uppercase block">Official UPI ID</span>
+                  <span className="text-[10px] text-[#EAE2F4]/60 uppercase block">
+                    {lang === 'hi' ? 'आधिकारिक UPI ID' : 'Official UPI ID'}
+                  </span>
                   <span className="font-mono text-sm font-bold text-white select-all">
                     {paymentData.upiId}
                   </span>
@@ -97,7 +99,9 @@ export const BankUpiModal: React.FC<BankUpiModalProps> = ({ isOpen, onClose, lan
               {/* Phone / Mobile UPI */}
               <div className="p-3.5 rounded-xl bg-black/40 border border-white/10 flex items-center justify-between">
                 <div>
-                  <span className="text-[10px] text-[#EAE2F4]/60 uppercase block">UPI Linked Mobile</span>
+                  <span className="text-[10px] text-[#EAE2F4]/60 uppercase block">
+                    {lang === 'hi' ? 'UPI से जुड़ा मोबाइल नंबर' : 'UPI Linked Mobile'}
+                  </span>
                   <span className="font-mono text-sm font-bold text-white select-all">
                     {paymentData.phone}
                   </span>
@@ -118,23 +122,29 @@ export const BankUpiModal: React.FC<BankUpiModalProps> = ({ isOpen, onClose, lan
           <div className="p-5 rounded-2xl bg-white/5 border border-white/15 space-y-4">
             <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#D6B574]">
               <Building2 size={16} />
-              <span>Direct Bank Account Transfer (NEFT / IMPS)</span>
+              <span>{lang === 'hi' ? 'सीधा बैंक अंतरण (NEFT / IMPS / RTGS)' : 'Direct Bank Account Transfer (NEFT / IMPS)'}</span>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
               <div className="p-3 rounded-xl bg-black/30 border border-white/5 space-y-1">
-                <span className="text-[10px] text-[#EAE2F4]/60 uppercase block">Account Holder</span>
+                <span className="text-[10px] text-[#EAE2F4]/60 uppercase block">
+                  {lang === 'hi' ? 'खाताधारक का नाम' : 'Account Holder'}
+                </span>
                 <span className="font-semibold text-white block">{paymentData.accountHolder}</span>
               </div>
 
               <div className="p-3 rounded-xl bg-black/30 border border-white/5 space-y-1">
-                <span className="text-[10px] text-[#EAE2F4]/60 uppercase block">Bank Name</span>
+                <span className="text-[10px] text-[#EAE2F4]/60 uppercase block">
+                  {lang === 'hi' ? 'बैंक का नाम' : 'Bank Name'}
+                </span>
                 <span className="font-semibold text-white block">{paymentData.bankName}</span>
               </div>
 
               <div className="p-3 rounded-xl bg-black/30 border border-white/5 flex items-center justify-between">
                 <div>
-                  <span className="text-[10px] text-[#EAE2F4]/60 uppercase block">Account Number</span>
+                  <span className="text-[10px] text-[#EAE2F4]/60 uppercase block">
+                    {lang === 'hi' ? 'खाता संख्या' : 'Account Number'}
+                  </span>
                   <span className="font-mono text-sm font-bold text-white select-all">
                     {paymentData.accountNumber}
                   </span>
@@ -150,7 +160,9 @@ export const BankUpiModal: React.FC<BankUpiModalProps> = ({ isOpen, onClose, lan
 
               <div className="p-3 rounded-xl bg-black/30 border border-white/5 flex items-center justify-between">
                 <div>
-                  <span className="text-[10px] text-[#EAE2F4]/60 uppercase block">IFSC Code</span>
+                  <span className="text-[10px] text-[#EAE2F4]/60 uppercase block">
+                    {lang === 'hi' ? 'IFSC कोड' : 'IFSC Code'}
+                  </span>
                   <span className="font-mono text-sm font-bold text-white select-all">
                     {paymentData.ifscCode}
                   </span>
@@ -165,7 +177,9 @@ export const BankUpiModal: React.FC<BankUpiModalProps> = ({ isOpen, onClose, lan
               </div>
 
               <div className="p-3 rounded-xl bg-black/30 border border-white/5 sm:col-span-2 space-y-1">
-                <span className="text-[10px] text-[#EAE2F4]/60 uppercase block">Branch Location</span>
+                <span className="text-[10px] text-[#EAE2F4]/60 uppercase block">
+                  {lang === 'hi' ? 'शाखा एवं स्थान' : 'Branch Location'}
+                </span>
                 <span className="text-white block">{paymentData.branch}</span>
               </div>
             </div>
@@ -176,7 +190,7 @@ export const BankUpiModal: React.FC<BankUpiModalProps> = ({ isOpen, onClose, lan
             <ShieldCheck size={18} className="text-emerald-400 shrink-0 mt-0.5" />
             <p>
               {lang === 'hi'
-                ? 'कृपया भुगतान पूर्ण होने के उपरांत स्क्रीनशॉट या यूटीआर (UTR) संख्या आधिकारिक व्हाट्सएप (+91 91057 31969) पर भेजें। पुष्टि होते ही आपका 1-on-1 परामर्श स्लॉट लॉक कर दिया जाएगा।'
+                ? 'कृपया भुगतान पूर्ण होने के उपरांत रसीद का स्क्रीनशॉट या यूटीआर (UTR) संख्या आधिकारिक व्हाट्सएप (+91 91057 31969) पर भेजें। पुष्टि होते ही आपका व्यक्तिगत परामर्श समय तुरंत निश्चित कर दिया जाएगा।'
                 : 'After completing payment, please share the screenshot or UTR number directly to official WhatsApp (+91 91057 31969). Your private consultation slot will be scheduled immediately.'}
             </p>
           </div>

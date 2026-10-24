@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Sparkles, Award, ShieldCheck, ArrowRight, Camera, Upload, CheckCircle2, Maximize2, X } from 'lucide-react';
+import { Sparkles, Award, Trophy, ShieldCheck, ArrowRight, Camera, Upload, CheckCircle2, Maximize2, X } from 'lucide-react';
 import { getStoredMedia, saveStoredMedia } from '../utils/photoStorage';
 import { getTranslation } from '../data/translations';
 import { CelestialStarfield } from './CelestialStarfield';
@@ -92,9 +92,12 @@ export const Hero: React.FC<HeroProps> = ({
             <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2 text-xs md:text-sm font-medium text-[#D6B574] tracking-widest uppercase">
               <span>{t.taglineSub}</span>
               <span aria-hidden="true">·</span>
-              <span>26 National Honors</span>
+              <a href="#honors" className="hover:underline flex items-center gap-1">
+                <Trophy size={13} />
+                <span>{lang === 'hi' ? '40+ राष्ट्रीय सम्मान व पावन दीर्घा' : '40+ National Honors & Archive'}</span>
+              </a>
               <span aria-hidden="true">·</span>
-              <span>1-on-1 Sanctuary</span>
+              <span>{lang === 'hi' ? 'गोपनीय व पावन संवाद' : '1-on-1 Sanctuary'}</span>
             </div>
 
             <h1 className="font-cormorant text-4xl sm:text-5xl lg:text-6xl font-light text-white leading-tight tracking-tight text-balance">
@@ -119,6 +122,14 @@ export const Hero: React.FC<HeroProps> = ({
                 <ArrowRight size={15} />
               </button>
 
+              <a
+                href="#honors"
+                className="w-full sm:w-auto px-5 py-3.5 bg-gradient-to-r from-[#D6B574]/20 to-[#6941A5]/30 hover:bg-[#D6B574]/30 text-[#D6B574] hover:text-white border border-[#D6B574]/50 rounded-md font-semibold text-xs tracking-wider transition-all flex items-center justify-center gap-2 shadow-sm"
+              >
+                <Trophy size={14} className="text-[#D6B574]" />
+                <span>{lang === 'hi' ? '40+ सम्मान व चित्र दीर्घा देखें' : 'View 40+ Honors Gallery'}</span>
+              </a>
+
               {onCalculateVedic && (
                 <button
                   onClick={onCalculateVedic}
@@ -126,17 +137,7 @@ export const Hero: React.FC<HeroProps> = ({
                   className="w-full sm:w-auto px-5 py-3.5 bg-[#6941A5]/30 hover:bg-[#6941A5]/50 text-[#D6B574] hover:text-white border border-[#D6B574]/40 rounded-md font-semibold text-xs tracking-wider transition-all flex items-center justify-center gap-2"
                 >
                   <Sparkles size={14} className="text-[#D6B574]" />
-                  <span>{lang === 'hi' ? 'मूलांक-भाग्यांक कैलकुलेट करें' : 'Calculate Vedic Numbers'}</span>
-                </button>
-              )}
-
-              {onOpenTariff && (
-                <button
-                  onClick={onOpenTariff}
-                  type="button"
-                  className="w-full sm:w-auto px-5 py-3.5 bg-white/5 hover:bg-white/10 text-[#EAE2F4] hover:text-white border border-white/20 rounded-md font-medium text-xs tracking-wider transition-colors flex items-center justify-center gap-2"
-                >
-                  <span>★ {lang === 'hi' ? 'शुल्क विवरण (₹5,100)' : 'Tariff (₹5,100)'}</span>
+                  <span>{lang === 'hi' ? 'मूलांक-भाग्यांक' : 'Calculate'}</span>
                 </button>
               )}
             </div>
@@ -236,9 +237,11 @@ export const Hero: React.FC<HeroProps> = ({
             </div>
           </div>
           <div className="text-center p-3 border-r border-[#D6B574]/15 last:border-0">
-            <div className="font-cinzel text-xl md:text-2xl font-bold text-[#D6B574]">Vedic</div>
+            <div className="font-cinzel text-xl md:text-2xl font-bold text-[#D6B574]">
+              {lang === 'hi' ? 'वैदिक' : 'Vedic'}
+            </div>
             <div className="text-xs text-[#EAE2F4]/80 mt-1">
-              Numerology & Chakras
+              {lang === 'hi' ? 'अंकशास्त्र एवं चक्र हीलिंग' : 'Numerology & Chakras'}
             </div>
           </div>
           <div className="text-center p-3 border-r border-[#D6B574]/15 last:border-0">
@@ -249,6 +252,9 @@ export const Hero: React.FC<HeroProps> = ({
           </div>
           <div className="text-center p-3">
             <div className="font-cinzel text-xl md:text-2xl font-bold text-[#D6B574]">100%</div>
+            <div className="text-xs text-[#EAE2F4]/80 mt-1">
+              {lang === 'hi' ? 'गोपनीय व सुरक्षित' : 'Confidential'}
+            </div>
           </div>
         </div>
       </div>
@@ -285,7 +291,9 @@ export const Hero: React.FC<HeroProps> = ({
                 Dr. Pooja Awasthi
               </h3>
               <p className="text-xs text-[#EAE2F4]/80 mt-0.5">
-                Spiritual Guide & Vedic Numerologist • Authentic Consecrated Portrait (28.jpeg)
+                {lang === 'hi'
+                  ? 'आध्यात्मिक मार्गदर्शिका एवं वैदिक अंकशास्त्री • प्रामाणिक स्वरूप'
+                  : 'Spiritual Guide & Vedic Numerologist • Authentic Consecrated Portrait (28.jpeg)'}
               </p>
             </div>
           </div>

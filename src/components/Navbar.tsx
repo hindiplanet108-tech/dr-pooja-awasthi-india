@@ -13,7 +13,8 @@ import {
   CreditCard,
   FileText,
   HeartHandshake,
-  Compass
+  Compass,
+  Trophy
 } from 'lucide-react';
 import { ALL_LANGUAGES } from '../data/translations';
 
@@ -97,7 +98,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           <div className="flex flex-wrap items-center gap-x-3 sm:gap-x-4 gap-y-1">
             <span className="flex items-center gap-1.5 text-[#D6B574] font-medium tracking-wide">
               <MapPin size={12} className="text-[#D6B574] shrink-0" />
-              <span>Dehradun • Virtual Consultations Worldwide</span>
+              <span>{lang === 'hi' ? 'देहरादून • विश्वभर में ऑनलाइन परामर्श' : 'Dehradun • Virtual Consultations Worldwide'}</span>
             </span>
 
             <span className="hidden md:inline-block text-[#D6B574]/30">|</span>
@@ -147,7 +148,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               title="Choose from 11 National & 11 International Languages"
             >
               <Globe size={11} className="text-[#D6B574] group-hover:rotate-12 transition-transform" />
-              <span className="text-[#D6B574] font-medium">Language:</span>
+              <span className="text-[#D6B574] font-medium">{lang === 'hi' ? 'भाषा:' : 'Language:'}</span>
               <span className="font-semibold text-white">
                 {currentLangObj.code === 'en' ? 'English (English)' : `${currentLangObj.name} (${currentLangObj.nativeName})`}
               </span>
@@ -188,7 +189,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                     Dr. Pooja Awasthi
                   </span>
                   <span className="text-[11px] sm:text-xs text-[#D6B574] italic font-cormorant tracking-wide leading-tight mt-0.5">
-                    “Discover Your Path. Transform Your Life.”
+                    {lang === 'hi' ? '“अपने जीवन का सही मार्ग खोजें। अपने जीवन को बदलें।”' : '“Discover Your Path. Transform Your Life.”'}
                   </span>
                 </div>
               </a>
@@ -209,7 +210,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   }`}
                   aria-expanded={quickLinksOpen}
                 >
-                  <span>Quick Links</span>
+                  <span>{lang === 'hi' ? 'त्वरित लिंक' : 'Quick Links'}</span>
                   <ChevronDown
                     size={14}
                     className={`transition-transform duration-200 ${quickLinksOpen ? 'rotate-180 text-[#D6B574]' : 'opacity-70'}`}
@@ -219,7 +220,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 {quickLinksOpen && (
                   <div className="absolute left-0 mt-2 w-64 rounded-lg bg-[#24152F] border border-[#D6B574]/30 shadow-2xl py-2 z-50 backdrop-blur-md animate-in fade-in slide-in-from-top-1 duration-150">
                     <div className="px-3 py-1.5 text-[10px] uppercase tracking-wider text-[#D6B574]/80 font-semibold border-b border-[#D6B574]/15">
-                      Quick Access
+                      {lang === 'hi' ? 'त्वरित पहुंच' : 'Quick Access'}
                     </div>
                     {onOpenTariff && (
                       <button
@@ -230,8 +231,12 @@ export const Navbar: React.FC<NavbarProps> = ({
                         }}
                         className="w-full text-left px-3.5 py-2 text-xs text-[#EAE2F4] hover:text-[#D6B574] hover:bg-white/5 transition-colors flex items-center justify-between"
                       >
-                        <span className="font-semibold text-[#D6B574]">★ Consultancy Tariff</span>
-                        <span className="text-[10px] bg-[#D6B574]/20 text-[#D6B574] px-1.5 py-0.5 rounded">11 Services</span>
+                        <span className="font-semibold text-[#D6B574]">
+                          {lang === 'hi' ? '★ संपूर्ण 11 सेवा शुल्क' : '★ Consultancy Tariff'}
+                        </span>
+                        <span className="text-[10px] bg-[#D6B574]/20 text-[#D6B574] px-1.5 py-0.5 rounded">
+                          {lang === 'hi' ? '11 सेवाएँ' : '11 Services'}
+                        </span>
                       </button>
                     )}
                     {onOpenBankUpi && (
@@ -244,39 +249,47 @@ export const Navbar: React.FC<NavbarProps> = ({
                         className="w-full text-left px-3.5 py-2 text-xs text-[#EAE2F4] hover:text-white hover:bg-white/5 transition-colors flex items-center gap-2"
                       >
                         <CreditCard size={13} className="text-[#D6B574]" />
-                        <span>Bank & UPI Details</span>
+                        <span>{lang === 'hi' ? 'बैंक एवं UPI विवरण' : 'Bank & UPI Details'}</span>
                       </button>
                     )}
+                    <button
+                      type="button"
+                      onClick={() => handleNav('honors')}
+                      className="w-full text-left px-3.5 py-2 text-xs text-[#D6B574] hover:bg-white/5 transition-colors flex items-center gap-2 font-semibold"
+                    >
+                      <Trophy size={13} className="text-[#D6B574]" />
+                      <span>{lang === 'hi' ? '★ 40+ राष्ट्रीय सम्मान व दीर्घा' : '★ 40+ Honors & Photo Gallery'}</span>
+                    </button>
                     <button
                       type="button"
                       onClick={() => handleNav('about')}
                       className="w-full text-left px-3.5 py-2 text-xs text-[#EAE2F4] hover:text-[#D6B574] hover:bg-white/5 transition-colors"
                     >
-                      About Dr. Pooja Ji
+                      {lang === 'hi' ? 'डॉ. पूजा जी के बारे में' : 'About Dr. Pooja Ji'}
                     </button>
                     <div className="px-3 pt-2 pb-1 text-[10px] uppercase tracking-wider text-[#D6B574]/80 font-semibold border-t border-[#D6B574]/15">
-                      Services
+                      {lang === 'hi' ? 'सेवाएँ' : 'Services'}
                     </div>
                     <button
                       type="button"
                       onClick={() => handleNav('calculator')}
                       className="w-full text-left px-4 py-1.5 text-xs text-[#EAE2F4]/90 hover:text-[#D6B574] hover:bg-white/5 transition-colors pl-6"
                     >
-                      • Vedic Numerology
+                      {lang === 'hi' ? '• वैदिक अंकशास्त्र' : '• Vedic Numerology'}
                     </button>
                     <button
                       type="button"
                       onClick={() => handleNav('tarot')}
                       className="w-full text-left px-4 py-1.5 text-xs text-[#EAE2F4]/90 hover:text-[#D6B574] hover:bg-white/5 transition-colors pl-6"
                     >
-                      • Tarot Guidance
+                      {lang === 'hi' ? '• टैरो मार्गदर्शन' : '• Tarot Guidance'}
                     </button>
                     <button
                       type="button"
                       onClick={() => handleNav('services')}
                       className="w-full text-left px-4 py-1.5 text-xs text-[#EAE2F4]/90 hover:text-[#D6B574] hover:bg-white/5 transition-colors pl-6"
                     >
-                      • Energy Chakras
+                      {lang === 'hi' ? '• चक्र एवं ऊर्जा हीलिंग' : '• Energy Chakras'}
                     </button>
                     <div className="border-t border-[#D6B574]/15 mt-1 pt-1">
                       <button
@@ -284,7 +297,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                         onClick={() => handleNav('testimonials')}
                         className="w-full text-left px-3.5 py-2 text-xs text-[#EAE2F4] hover:text-[#D6B574] hover:bg-white/5 transition-colors"
                       >
-                        Testimonials
+                        {lang === 'hi' ? 'अनुभव एवं समीक्षाएं' : 'Testimonials'}
                       </button>
                     </div>
                   </div>
@@ -305,7 +318,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   aria-expanded={sacredServicesOpen}
                 >
                   <Sparkles size={13} className="text-[#D6B574]" />
-                  <span>Sacred Services</span>
+                  <span>{lang === 'hi' ? 'पावन सेवाएँ' : 'Sacred Services'}</span>
                   <ChevronDown
                     size={14}
                     className={`transition-transform duration-200 ${sacredServicesOpen ? 'rotate-180 text-[#D6B574]' : 'opacity-70'}`}
@@ -315,8 +328,8 @@ export const Navbar: React.FC<NavbarProps> = ({
                 {sacredServicesOpen && (
                   <div className="absolute left-0 mt-2 w-80 rounded-lg bg-[#24152F] border border-[#D6B574]/30 shadow-2xl py-2.5 z-50 backdrop-blur-md animate-in fade-in slide-in-from-top-1 duration-150">
                     <div className="px-3.5 py-1 text-[10px] uppercase tracking-wider text-[#D6B574] font-semibold border-b border-[#D6B574]/15 flex items-center justify-between">
-                      <span>Sacred Healing Portfolio</span>
-                      <span className="text-[10px] text-[#EAE2F4]/70">6 Offerings</span>
+                      <span>{lang === 'hi' ? 'आध्यात्मिक हीलिंग पोर्टफोलियो' : 'Sacred Healing Portfolio'}</span>
+                      <span className="text-[10px] text-[#EAE2F4]/70">{lang === 'hi' ? '6 प्रमुख सेवाएँ' : '6 Offerings'}</span>
                     </div>
 
                     {/* 1. 11 Healing Services Tariff */}
@@ -332,10 +345,10 @@ export const Navbar: React.FC<NavbarProps> = ({
                         <FileText size={14} className="text-[#D6B574] shrink-0" />
                         <div>
                           <div className="font-semibold text-[#D6B574] group-hover:text-white transition-colors">
-                            11 Healing Services Tariff
+                            {lang === 'hi' ? '11 हीलिंग सेवा शुल्क सूची' : '11 Healing Services Tariff'}
                           </div>
                           <div className="text-[10px] text-[#EAE2F4]/70">
-                            Transparent pricing & official rate card
+                            {lang === 'hi' ? 'पारदर्शी दक्षिणा एवं आधिकारिक दर सूची' : 'Transparent pricing & official rate card'}
                           </div>
                         </div>
                       </button>
@@ -348,7 +361,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                       className="w-full text-left px-3.5 py-2 text-xs text-[#EAE2F4] hover:text-[#D6B574] hover:bg-white/5 transition-colors flex items-center gap-2"
                     >
                       <span className="w-1.5 h-1.5 rounded-full bg-[#D6B574]" />
-                      <span>Vedic Numerology Reading</span>
+                      <span>{lang === 'hi' ? 'वैदिक अंकशास्त्र विश्लेषण' : 'Vedic Numerology Reading'}</span>
                     </button>
 
                     {/* 3. Intuitive Tarot Consultation */}
@@ -358,7 +371,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                       className="w-full text-left px-3.5 py-2 text-xs text-[#EAE2F4] hover:text-[#D6B574] hover:bg-white/5 transition-colors flex items-center gap-2"
                     >
                       <span className="w-1.5 h-1.5 rounded-full bg-[#D6B574]" />
-                      <span>Intuitive Tarot Consultation</span>
+                      <span>{lang === 'hi' ? 'सहज बोध टैरो परामर्श' : 'Intuitive Tarot Consultation'}</span>
                     </button>
 
                     {/* 4. Distance Energy & Chakra Healing */}
@@ -368,7 +381,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                       className="w-full text-left px-3.5 py-2 text-xs text-[#EAE2F4] hover:text-[#D6B574] hover:bg-white/5 transition-colors flex items-center gap-2"
                     >
                       <span className="w-1.5 h-1.5 rounded-full bg-[#D6B574]" />
-                      <span>Distance Energy & Chakra Healing</span>
+                      <span>{lang === 'hi' ? 'दूरस्थ ऊर्जा एवं चक्र हीलिंग' : 'Distance Energy & Chakra Healing'}</span>
                     </button>
 
                     {/* 5. Conscious Life Coaching */}
@@ -378,7 +391,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                       className="w-full text-left px-3.5 py-2 text-xs text-[#EAE2F4] hover:text-[#D6B574] hover:bg-white/5 transition-colors flex items-center gap-2"
                     >
                       <span className="w-1.5 h-1.5 rounded-full bg-[#D6B574]" />
-                      <span>Conscious Life Coaching</span>
+                      <span>{lang === 'hi' ? 'सचेत जीवन कोचिंग' : 'Conscious Life Coaching'}</span>
                     </button>
 
                     {/* 6. Relationship Compatibility & Milestones */}
@@ -388,7 +401,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                       className="w-full text-left px-3.5 py-2 text-xs text-[#EAE2F4] hover:text-[#D6B574] hover:bg-white/5 transition-colors flex items-center gap-2"
                     >
                       <span className="w-1.5 h-1.5 rounded-full bg-[#D6B574]" />
-                      <span>Relationship Compatibility & Milestones</span>
+                      <span>{lang === 'hi' ? 'संबंध अनुकूलता एवं जीवन निर्णय' : 'Relationship Compatibility & Milestones'}</span>
                     </button>
                   </div>
                 )}
@@ -403,7 +416,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   title="View 11 Healing Services Tariff & Rate Card"
                 >
                   <FileText size={12} className="text-[#D6B574]" />
-                  <span>Consultancy Tariff</span>
+                  <span>{lang === 'hi' ? 'सेवा शुल्क' : 'Consultancy Tariff'}</span>
                 </button>
               )}
 
@@ -416,16 +429,25 @@ export const Navbar: React.FC<NavbarProps> = ({
                   title="Bank & UPI Payment Details"
                 >
                   <CreditCard size={12} className="text-[#D6B574]" />
-                  <span>Bank & UPI Details</span>
+                  <span>{lang === 'hi' ? 'बैंक एवं UPI' : 'Bank & UPI Details'}</span>
                 </button>
               )}
+
+              <button
+                type="button"
+                onClick={() => handleNav('honors')}
+                className="hover:text-[#D6B574] transition-colors px-2.5 py-1 flex items-center gap-1.5 text-[#D6B574] font-semibold bg-white/5 rounded-md border border-[#D6B574]/30"
+              >
+                <Trophy size={13} className="text-[#D6B574]" />
+                <span>{lang === 'hi' ? 'चित्र दीर्घा व सम्मान' : 'Honors & Gallery'}</span>
+              </button>
 
               <button
                 type="button"
                 onClick={() => handleNav('about')}
                 className="hover:text-[#D6B574] transition-colors px-2 py-1"
               >
-                About Dr. Pooja Ji
+                {lang === 'hi' ? 'डॉ. पूजा जी' : 'About Dr. Pooja Ji'}
               </button>
 
               <button
@@ -433,7 +455,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 onClick={() => handleNav('testimonials')}
                 className="hover:text-[#D6B574] transition-colors px-2 py-1"
               >
-                Testimonials
+                {lang === 'hi' ? 'समीक्षाएं' : 'Testimonials'}
               </button>
             </nav>
 
@@ -444,7 +466,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 type="button"
                 className="px-3.5 sm:px-4 py-2 text-xs font-bold uppercase tracking-wider text-[#24152F] bg-gradient-to-r from-[#D6B574] via-[#ecd6a4] to-[#D6B574] hover:from-[#ecd6a4] hover:to-[#D6B574] rounded-md transition-all shadow-[0_2px_10px_rgba(214,181,116,0.3)] hover:scale-[1.02] active:scale-[0.98] whitespace-nowrap"
               >
-                Book Consultation
+                {lang === 'hi' ? 'परामर्श प्राप्त करें' : 'Book Consultation'}
               </button>
 
               {/* Mobile menu hamburger button */}
@@ -471,14 +493,16 @@ export const Navbar: React.FC<NavbarProps> = ({
             <div className="font-cinzel text-base font-bold text-white flex items-center justify-between">
               <span>Dr. Pooja Awasthi</span>
               <span className="text-[10px] font-sans text-[#D6B574] border border-[#D6B574]/40 px-2 py-0.5 rounded-full">
-                Spiritual Guidance
+                {lang === 'hi' ? 'आध्यात्मिक मार्गदर्शन' : 'Spiritual Guidance'}
               </span>
             </div>
             <p className="text-xs italic text-[#D6B574] font-cormorant font-normal">
-              “Discover Your Path. Transform Your Life.”
+              {lang === 'hi' ? '“अपने जीवन का सही मार्ग खोजें। अपने जीवन को बदलें।”' : '“Discover Your Path. Transform Your Life.”'}
             </p>
             <p className="text-[11px] text-[#EAE2F4]/85 leading-relaxed pt-1">
-              Spiritual guidance combining Vedic Numerology, Tarot Reading, Energy Healing and Life Coaching. Dedicated to helping seekers understand life patterns and move forward with conscious confidence.
+              {lang === 'hi'
+                ? 'वैदिक अंकशास्त्र, टैरो मार्गदर्शन, ऊर्जा चक्र हीलिंग और जीवन कोचिंग का पावन संगम। जीवन को सकारात्मक दृष्टि और आत्मविश्वास के साथ समझने हेतु समर्पित।'
+                : 'Spiritual guidance combining Vedic Numerology, Tarot Reading, Energy Healing and Life Coaching. Dedicated to helping seekers understand life patterns and move forward with conscious confidence.'}
             </p>
           </div>
 
@@ -486,7 +510,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           <div className="bg-white/5 rounded-lg p-3 border border-white/10 flex items-center justify-between">
             <div>
               <div className="text-[10px] uppercase tracking-wider text-[#D6B574] font-semibold">
-                Language:
+                {lang === 'hi' ? 'भाषा:' : 'Language:'}
               </div>
               <div className="text-xs font-medium text-white flex items-center gap-1.5 mt-0.5">
                 <Globe size={13} className="text-[#D6B574]" />
@@ -504,7 +528,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               type="button"
               className="text-xs font-semibold px-2.5 py-1 rounded bg-[#D6B574]/20 hover:bg-[#D6B574]/30 text-[#D6B574] border border-[#D6B574]/40"
             >
-              Change Language
+              {lang === 'hi' ? 'भाषा बदलें' : 'Change Language'}
             </button>
           </div>
 
@@ -512,7 +536,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           <div className="space-y-2">
             <div className="text-[11px] font-bold uppercase tracking-wider text-[#D6B574] border-b border-[#D6B574]/20 pb-1 flex items-center gap-1.5">
               <Compass size={13} />
-              <span>Quick Links</span>
+              <span>{lang === 'hi' ? 'त्वरित लिंक' : 'Quick Links'}</span>
             </div>
             <div className="grid grid-cols-1 gap-1.5 pl-1">
               {onOpenTariff && (
@@ -524,8 +548,10 @@ export const Navbar: React.FC<NavbarProps> = ({
                   }}
                   className="w-full text-left py-2 px-3 text-xs font-semibold text-[#D6B574] bg-[#D6B574]/10 hover:bg-[#D6B574]/20 rounded border border-[#D6B574]/30 flex items-center justify-between"
                 >
-                  <span>Consultancy Tariff</span>
-                  <span className="text-[10px] bg-[#D6B574] text-[#24152F] font-bold px-1.5 py-0.2 rounded">11 Services</span>
+                  <span>{lang === 'hi' ? 'संपूर्ण 11 सेवा शुल्क' : 'Consultancy Tariff'}</span>
+                  <span className="text-[10px] bg-[#D6B574] text-[#24152F] font-bold px-1.5 py-0.2 rounded">
+                    {lang === 'hi' ? '11 सेवाएँ' : '11 Services'}
+                  </span>
                 </button>
               )}
 
@@ -539,16 +565,25 @@ export const Navbar: React.FC<NavbarProps> = ({
                   className="w-full text-left py-2 px-3 text-xs font-medium text-[#EAE2F4] bg-white/5 hover:bg-white/10 rounded border border-white/10 flex items-center gap-2"
                 >
                   <CreditCard size={13} className="text-[#D6B574]" />
-                  <span>Bank & UPI Details</span>
+                  <span>{lang === 'hi' ? 'बैंक एवं UPI विवरण' : 'Bank & UPI Details'}</span>
                 </button>
               )}
+
+              <button
+                type="button"
+                onClick={() => handleNav('honors')}
+                className="w-full text-left py-2 px-3 text-xs text-[#D6B574] font-semibold bg-[#D6B574]/15 rounded border border-[#D6B574]/30 flex items-center gap-2"
+              >
+                <Trophy size={14} className="text-[#D6B574]" />
+                <span>{lang === 'hi' ? '★ 40+ राष्ट्रीय सम्मान एवं चित्र दीर्घा' : '★ 40+ Honors & Photo Gallery'}</span>
+              </button>
 
               <button
                 type="button"
                 onClick={() => handleNav('about')}
                 className="w-full text-left py-1.5 px-3 text-xs text-[#EAE2F4] hover:text-[#D6B574] hover:bg-white/5 rounded"
               >
-                About Dr. Pooja Ji
+                {lang === 'hi' ? 'डॉ. पूजा जी के बारे में' : 'About Dr. Pooja Ji'}
               </button>
 
               {/* Services accordion */}
@@ -558,7 +593,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   onClick={() => setMobileServicesSubOpen(!mobileServicesSubOpen)}
                   className="w-full text-left py-1.5 px-3 text-xs text-[#EAE2F4] hover:text-[#D6B574] flex items-center justify-between rounded hover:bg-white/5"
                 >
-                  <span>Services</span>
+                  <span>{lang === 'hi' ? 'सेवाएँ' : 'Services'}</span>
                   <ChevronDown
                     size={14}
                     className={`transition-transform ${mobileServicesSubOpen ? 'rotate-180 text-[#D6B574]' : 'opacity-70'}`}
@@ -571,21 +606,21 @@ export const Navbar: React.FC<NavbarProps> = ({
                       onClick={() => handleNav('calculator')}
                       className="block w-full text-left text-xs py-1 text-[#EAE2F4]/90 hover:text-[#D6B574]"
                     >
-                      • Vedic Numerology
+                      {lang === 'hi' ? '• वैदिक अंकशास्त्र' : '• Vedic Numerology'}
                     </button>
                     <button
                       type="button"
                       onClick={() => handleNav('tarot')}
                       className="block w-full text-left text-xs py-1 text-[#EAE2F4]/90 hover:text-[#D6B574]"
                     >
-                      • Tarot Guidance
+                      {lang === 'hi' ? '• टैरो मार्गदर्शन' : '• Tarot Guidance'}
                     </button>
                     <button
                       type="button"
                       onClick={() => handleNav('services')}
                       className="block w-full text-left text-xs py-1 text-[#EAE2F4]/90 hover:text-[#D6B574]"
                     >
-                      • Energy Chakras
+                      {lang === 'hi' ? '• चक्र एवं ऊर्जा हीलिंग' : '• Energy Chakras'}
                     </button>
                   </div>
                 )}
@@ -596,7 +631,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 onClick={() => handleNav('testimonials')}
                 className="w-full text-left py-1.5 px-3 text-xs text-[#EAE2F4] hover:text-[#D6B574] hover:bg-white/5 rounded"
               >
-                Testimonials
+                {lang === 'hi' ? 'अनुभव एवं समीक्षाएं' : 'Testimonials'}
               </button>
             </div>
           </div>
@@ -605,7 +640,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           <div className="space-y-2">
             <div className="text-[11px] font-bold uppercase tracking-wider text-[#D6B574] border-b border-[#D6B574]/20 pb-1 flex items-center gap-1.5">
               <Sparkles size={13} />
-              <span>Sacred Services</span>
+              <span>{lang === 'hi' ? 'पावन सेवाएँ' : 'Sacred Services'}</span>
             </div>
             <div className="grid grid-cols-1 gap-1.5 pl-1">
               {onOpenTariff && (
@@ -617,7 +652,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   }}
                   className="w-full text-left py-2 px-3 text-xs text-[#D6B574] font-semibold bg-[#D6B574]/10 rounded border border-[#D6B574]/20"
                 >
-                  1. 11 Healing Services Tariff
+                  {lang === 'hi' ? '1. 11 हीलिंग सेवा शुल्क सूची' : '1. 11 Healing Services Tariff'}
                 </button>
               )}
               <button
@@ -625,35 +660,35 @@ export const Navbar: React.FC<NavbarProps> = ({
                 onClick={() => handleNav('calculator')}
                 className="w-full text-left py-1.5 px-3 text-xs text-[#EAE2F4] hover:text-[#D6B574]"
               >
-                2. Vedic Numerology Reading
+                {lang === 'hi' ? '2. वैदिक अंकशास्त्र विश्लेषण' : '2. Vedic Numerology Reading'}
               </button>
               <button
                 type="button"
                 onClick={() => handleNav('tarot')}
                 className="w-full text-left py-1.5 px-3 text-xs text-[#EAE2F4] hover:text-[#D6B574]"
               >
-                3. Intuitive Tarot Consultation
+                {lang === 'hi' ? '3. सहज बोध टैरो परामर्श' : '3. Intuitive Tarot Consultation'}
               </button>
               <button
                 type="button"
                 onClick={() => handleNav('services')}
                 className="w-full text-left py-1.5 px-3 text-xs text-[#EAE2F4] hover:text-[#D6B574]"
               >
-                4. Distance Energy & Chakra Healing
+                {lang === 'hi' ? '4. दूरस्थ ऊर्जा एवं चक्र हीलिंग' : '4. Distance Energy & Chakra Healing'}
               </button>
               <button
                 type="button"
                 onClick={() => handleNav('services')}
                 className="w-full text-left py-1.5 px-3 text-xs text-[#EAE2F4] hover:text-[#D6B574]"
               >
-                5. Conscious Life Coaching
+                {lang === 'hi' ? '5. सचेत जीवन कोचिंग' : '5. Conscious Life Coaching'}
               </button>
               <button
                 type="button"
                 onClick={() => handleNav('services')}
                 className="w-full text-left py-1.5 px-3 text-xs text-[#EAE2F4] hover:text-[#D6B574]"
               >
-                6. Relationship Compatibility & Milestones
+                {lang === 'hi' ? '6. संबंध अनुकूलता एवं जीवन निर्णय' : '6. Relationship Compatibility & Milestones'}
               </button>
             </div>
           </div>
@@ -662,10 +697,10 @@ export const Navbar: React.FC<NavbarProps> = ({
           <div className="space-y-2 bg-[#1a0e22] p-3.5 rounded-lg border border-[#D6B574]/20">
             <div className="text-[11px] font-bold uppercase tracking-wider text-[#D6B574] flex items-center gap-1.5">
               <Phone size={13} />
-              <span>Direct Connection</span>
+              <span>{lang === 'hi' ? 'सीधा संपर्क' : 'Direct Connection'}</span>
             </div>
             <p className="text-[11px] text-[#EAE2F4]/80">
-              Connect directly for consultation scheduling and queries:
+              {lang === 'hi' ? 'परामर्श समय व किसी भी प्रश्न हेतु सीधे संपर्क करें:' : 'Connect directly for consultation scheduling and queries:'}
             </p>
             <div className="space-y-2 pt-1 text-xs">
               <a
@@ -698,7 +733,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
               <div className="flex items-center gap-2 text-[#D6B574] p-1.5">
                 <MapPin size={13} className="shrink-0" />
-                <span className="text-[11px]">Dehradun • Virtual Consultations Worldwide</span>
+                <span className="text-[11px]">{lang === 'hi' ? 'देहरादून • विश्वभर में ऑनलाइन परामर्श' : 'Dehradun • Virtual Consultations Worldwide'}</span>
               </div>
             </div>
           </div>
@@ -713,7 +748,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               type="button"
               className="w-full py-3 text-center text-xs font-bold uppercase tracking-wider text-[#24152F] bg-gradient-to-r from-[#D6B574] via-[#ecd6a4] to-[#D6B574] hover:from-[#ecd6a4] hover:to-[#D6B574] rounded-md transition-all shadow-md"
             >
-              Book Consultation
+              {lang === 'hi' ? 'परामर्श प्राप्त करें' : 'Book Consultation'}
             </button>
           </div>
         </div>

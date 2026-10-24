@@ -34,9 +34,9 @@ export const VedicCalculatorSection: React.FC<VedicCalculatorSectionProps> = ({ 
           </div>
 
           <h2 className="font-cormorant text-3xl sm:text-4xl lg:text-5xl font-light text-white leading-tight">
-            {lang === 'hi' ? 'वैदिक अंकशास्त्र कैलकुलेटर —' : 'Vedic Numerology Calculator —'} <br />
+            {lang === 'hi' ? 'वैदिक अंकशास्त्र गणना —' : 'Vedic Numerology Calculator —'} <br />
             <span className="italic font-normal text-[#D6B574]">
-              {lang === 'hi' ? 'अपने मूलांक (ड्राइवर) एवं भाग्यांक (कंडक्टर) का रहस्य जानें' : 'Calculate your Mulank (Driver) & Bhagyank (Conductor) Numbers'}
+              {lang === 'hi' ? 'अपने मूलांक एवं भाग्यांक का रहस्य जानें' : 'Calculate your Mulank (Driver) & Bhagyank (Conductor) Numbers'}
             </span>
           </h2>
 
@@ -54,7 +54,7 @@ export const VedicCalculatorSection: React.FC<VedicCalculatorSectionProps> = ({ 
               <div>
                 <label className="block text-xs font-semibold uppercase tracking-wider text-[#D6B574] mb-2 flex items-center gap-1.5">
                   <Calendar size={13} />
-                  <span>{lang === 'hi' ? 'जन्मतिथि (Date of Birth)' : 'Date of Birth'}</span>
+                  <span>{lang === 'hi' ? 'आपकी जन्मतिथि' : 'Date of Birth'}</span>
                 </label>
                 <input
                   type="date"
@@ -65,7 +65,7 @@ export const VedicCalculatorSection: React.FC<VedicCalculatorSectionProps> = ({ 
                 />
                 <p className="text-[11px] text-[#EAE2F4]/60 mt-1">
                   {lang === 'hi'
-                    ? 'आपके मूलांक (जन्म अंक) और भाग्यांक (कुल योग) की गणना करता है।'
+                    ? 'आपके मूलांक (जन्म अंक) और भाग्यांक (जीवन पथ अंक) की गणना करता है।'
                     : 'Determines your Mulank (Driver) & Bhagyank (Destiny) numbers.'}
                 </p>
               </div>
@@ -73,7 +73,7 @@ export const VedicCalculatorSection: React.FC<VedicCalculatorSectionProps> = ({ 
               <div>
                 <label className="block text-xs font-semibold uppercase tracking-wider text-[#D6B574] mb-2 flex items-center gap-1.5">
                   <User size={13} />
-                  <span>{lang === 'hi' ? 'पूरा नाम (ध्वनि कंपन हेतु)' : 'Full Name (Optional for Name Vibration)'}</span>
+                  <span>{lang === 'hi' ? 'पूरा नाम (ध्वनि तरंग विश्लेषण हेतु)' : 'Full Name (Optional for Name Vibration)'}</span>
                 </label>
                 <input
                   type="text"
@@ -110,11 +110,11 @@ export const VedicCalculatorSection: React.FC<VedicCalculatorSectionProps> = ({ 
         <div className="space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             
-            {/* Mulank (Birth / Driver) */}
+            {/* Mulank (Birth) */}
             <div className="p-6 sm:p-8 rounded-3xl bg-gradient-to-b from-white/10 to-white/5 border border-[#D6B574]/40 shadow-xl flex flex-col justify-between space-y-4">
               <div className="space-y-2">
                 <span className="text-xs font-bold uppercase tracking-wider text-[#D6B574] block">
-                  {lang === 'hi' ? 'मूलांक (जन्म अंक / ड्राइवर)' : 'Mulank (Birth / Driver)'}
+                  {lang === 'hi' ? 'मूलांक (जन्म अंक)' : 'Mulank (Birth / Driver)'}
                 </span>
                 <span className="text-xs text-[#EAE2F4]/70 block">
                   {lang === 'hi' ? 'मूल स्वभाव एवं आंतरिक चेतना' : 'Core Nature & Self'}
@@ -135,11 +135,11 @@ export const VedicCalculatorSection: React.FC<VedicCalculatorSectionProps> = ({ 
               </p>
             </div>
 
-            {/* Bhagyank (Destiny / Conductor) */}
+            {/* Bhagyank (Destiny) */}
             <div className="p-6 sm:p-8 rounded-3xl bg-gradient-to-b from-white/10 to-white/5 border border-[#D6B574]/40 shadow-xl flex flex-col justify-between space-y-4">
               <div className="space-y-2">
                 <span className="text-xs font-bold uppercase tracking-wider text-[#D6B574] block">
-                  {lang === 'hi' ? 'भाग्यांक (भाग्य अंक / कंडक्टर)' : 'Bhagyank (Destiny / Conductor)'}
+                  {lang === 'hi' ? 'भाग्यांक (जीवन पथ अंक)' : 'Bhagyank (Destiny / Conductor)'}
                 </span>
                 <span className="text-xs text-[#EAE2F4]/70 block">
                   {lang === 'hi' ? 'कर्म पथ एवं जीवन की दिशा' : 'Life Path & Karma'}
@@ -164,7 +164,7 @@ export const VedicCalculatorSection: React.FC<VedicCalculatorSectionProps> = ({ 
             <div className="p-6 sm:p-8 rounded-3xl bg-gradient-to-b from-white/10 to-white/5 border border-[#D6B574]/40 shadow-xl flex flex-col justify-between space-y-4">
               <div className="space-y-2">
                 <span className="text-xs font-bold uppercase tracking-wider text-[#D6B574] block">
-                  {lang === 'hi' ? 'नाम कंपन अंक (कील्डियन)' : 'Name Vibration Number'}
+                  {lang === 'hi' ? 'नाम तरंग अंक (कील्डियन)' : 'Name Vibration Number'}
                 </span>
                 <span className="text-xs text-[#EAE2F4]/70 block">
                   {lang === 'hi' ? 'कील्डियन अंक प्रणाली' : 'Chaldean System'}
@@ -177,7 +177,7 @@ export const VedicCalculatorSection: React.FC<VedicCalculatorSectionProps> = ({ 
                 </h3>
                 <div className="text-xs text-[#D6B574]">
                   {lang === 'hi'
-                    ? `कील्डियन विभाजन: संयुक्त ${result.nameCompound} → एकल ${result.nameSingle}`
+                    ? `कील्डियन योग: संयुक्त ${result.nameCompound} → एकल ${result.nameSingle}`
                     : `Chaldean Breakdown: Compound ${result.nameCompound} → Single ${result.nameSingle}`}
                 </div>
               </div>
@@ -198,7 +198,7 @@ export const VedicCalculatorSection: React.FC<VedicCalculatorSectionProps> = ({ 
                 {lang === 'hi' ? 'ग्रह सामंजस्य एवं शुभ मार्गदर्शन' : 'Planetary Synergy & Auspicious Guidance'}
               </span>
               <p className="font-cormorant text-xl text-white mt-1">
-                {result.synergy}
+                {lang === 'hi' ? result.synergy_hi : result.synergy}
               </p>
             </div>
 
@@ -207,14 +207,18 @@ export const VedicCalculatorSection: React.FC<VedicCalculatorSectionProps> = ({ 
                 <span className="text-[10px] uppercase font-bold text-[#D6B574] block">
                   {lang === 'hi' ? 'शुभ रंग' : 'Lucky Colors'}
                 </span>
-                <span className="text-white font-medium">{result.mulankProfile.luckyColors}</span>
+                <span className="text-white font-medium">
+                  {lang === 'hi' ? result.mulankProfile.luckyColors_hi : result.mulankProfile.luckyColors}
+                </span>
               </div>
 
               <div className="p-3.5 rounded-2xl bg-white/5 border border-white/10 space-y-1">
                 <span className="text-[10px] uppercase font-bold text-[#D6B574] block">
                   {lang === 'hi' ? 'शुभ दिन' : 'Lucky Days'}
                 </span>
-                <span className="text-white font-medium">{result.mulankProfile.luckyDays}</span>
+                <span className="text-white font-medium">
+                  {lang === 'hi' ? result.mulankProfile.luckyDays_hi : result.mulankProfile.luckyDays}
+                </span>
               </div>
 
               <div className="p-3.5 rounded-2xl bg-white/5 border border-white/10 space-y-1">
@@ -238,7 +242,7 @@ export const VedicCalculatorSection: React.FC<VedicCalculatorSectionProps> = ({ 
             <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-white/10">
               <p className="text-xs text-[#EAE2F4]/80">
                 {lang === 'hi'
-                  ? 'क्या आप व्यक्तिगत वैदिक उपाय, नाम स्पेलिंग संशोधन या वार्षिक ग्रह दशा विश्लेषण चाहते हैं?'
+                  ? 'क्या आप व्यक्तिगत वैदिक उपाय, नाम वर्तनी संतुलन या वार्षिक ग्रह दशा विश्लेषण चाहते हैं?'
                   : 'Looking for personalized Vedic remedies, name-spelling optimization, or annual forecast?'}
               </p>
               <button
@@ -250,7 +254,7 @@ export const VedicCalculatorSection: React.FC<VedicCalculatorSectionProps> = ({ 
                 }
                 className="w-full sm:w-auto px-6 py-3 bg-[#D6B574] hover:bg-[#e4ca8c] text-[#24152F] font-bold text-xs uppercase tracking-wider rounded-xl transition-all shadow-md hover:scale-[1.02] whitespace-nowrap"
               >
-                {lang === 'hi' ? 'पूजा जी से संपूर्ण विश्लेषण सत्र बुक करें' : 'Book Complete Reading with Pooja Ji'}
+                {lang === 'hi' ? 'डॉ. पूजा जी से संपूर्ण विश्लेषण सत्र प्राप्त करें' : 'Book Complete Reading with Dr. Pooja Ji'}
               </button>
             </div>
           </div>
