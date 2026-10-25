@@ -39,10 +39,10 @@ export const Footer: React.FC<FooterProps> = ({ lang, onOpenTariff, onOpenBankUp
             </p>
           </div>
 
-          {/* Quick Links */}
+          {/* Explore Services / प्रमुख सेवाएँ */}
           <div className="lg:col-span-3 space-y-3">
             <h4 className="font-cinzel text-xs font-bold uppercase tracking-wider text-[#D6B574]">
-              {lang === 'hi' ? 'त्वरित लिंक' : 'Quick Navigation'}
+              {lang === 'hi' ? 'प्रमुख सेवाएँ' : 'Explore Services'}
             </h4>
             <ul className="space-y-2 text-xs text-[#EAE2F4]/80">
               <li>
@@ -52,12 +52,12 @@ export const Footer: React.FC<FooterProps> = ({ lang, onOpenTariff, onOpenBankUp
               </li>
               <li>
                 <a href="#services" className="hover:text-[#D6B574] transition-colors">
-                  {t.servicesNav}
+                  {lang === 'hi' ? '११ पावन हीलिंग सेवाएँ' : t.servicesNav}
                 </a>
               </li>
               <li>
                 <a href="#calculator" className="hover:text-[#D6B574] transition-colors">
-                  {lang === 'hi' ? 'वैदिक अंक गणना' : 'Vedic Numbers Calculator'}
+                  {lang === 'hi' ? 'जन्मतिथि डिकोडर (मूलांक, भाग्यांक व कुआ)' : 'Vedic Numbers Calculator'}
                 </a>
               </li>
               <li>
@@ -72,7 +72,7 @@ export const Footer: React.FC<FooterProps> = ({ lang, onOpenTariff, onOpenBankUp
                     onClick={onOpenTariff}
                     className="hover:text-[#D6B574] transition-colors text-left font-medium text-[#D6B574]"
                   >
-                    ★ {lang === 'hi' ? '11 हीलिंग सेवा शुल्क सूची' : '11 Healing Services Tariff'}
+                    ★ {lang === 'hi' ? '११ विशेष हीलिंग दक्षिणा सूची' : '11 Healing Services Tariff'}
                   </button>
                 </li>
               )}
@@ -89,7 +89,7 @@ export const Footer: React.FC<FooterProps> = ({ lang, onOpenTariff, onOpenBankUp
               )}
               <li>
                 <a href="#honors" className="hover:text-[#D6B574] transition-colors">
-                  {t.awardsNav} (26)
+                  {lang === 'hi' ? 'प्रमाण-पत्र एवं सम्मान (40+)' : 'Honors & Gallery (40+)'}
                 </a>
               </li>
               <li>
@@ -100,24 +100,30 @@ export const Footer: React.FC<FooterProps> = ({ lang, onOpenTariff, onOpenBankUp
             </ul>
           </div>
 
-          {/* Verified Contact */}
+          {/* Direct Connection / सीधा संपर्क */}
           <div className="lg:col-span-4 space-y-3">
             <h4 className="font-cinzel text-xs font-bold uppercase tracking-wider text-[#D6B574]">
-              {lang === 'hi' ? 'आधिकारिक संपर्क' : 'Official Coordinates'}
+              {lang === 'hi' ? 'सीधा संपर्क' : 'Direct Connection'}
             </h4>
-            <div className="space-y-2 text-xs text-[#EAE2F4]/80">
-              <div className="flex items-center gap-2">
-                <MessageSquare size={14} className="text-[#D6B574]" />
-                <a
-                  href="https://wa.me/919105731969"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-[#D6B574] transition-colors font-mono"
-                >
-                  +91 91057 31969 (WhatsApp)
-                </a>
+            <div className="space-y-2.5 text-xs text-[#EAE2F4]/80">
+              <div>
+                <span className="text-[10px] uppercase font-bold text-[#D6B574] block">
+                  {lang === 'hi' ? 'व्हाट्सएप / कॉल व UPI:' : 'WhatsApp / Call & UPI:'}
+                </span>
+                <div className="flex items-center gap-2 mt-1">
+                  <MessageSquare size={14} className="text-[#25D366]" />
+                  <a
+                    href="https://wa.me/919105731969"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-[#D6B574] transition-colors font-mono font-bold text-white text-sm"
+                  >
+                    +91 91057 31969
+                  </a>
+                </div>
               </div>
-              <div className="flex items-center gap-2">
+
+              <div className="flex items-center gap-2 pt-1">
                 <Mail size={14} className="text-[#D6B574]" />
                 <a
                   href="mailto:astro.poojaofficial@gmail.com"
@@ -126,11 +132,23 @@ export const Footer: React.FC<FooterProps> = ({ lang, onOpenTariff, onOpenBankUp
                   astro.poojaofficial@gmail.com
                 </a>
               </div>
-              <p className="text-[11px] text-[#EAE2F4]/60 pt-1">
+
+              <p className="text-[11px] text-[#EAE2F4]/70 pt-1">
                 {lang === 'hi'
-                  ? 'परामर्श समय: प्रातः 10:00 से सायं 7:00 बजे (सोम - शनि)'
-                  : 'Consultation Hours: 10:00 AM – 7:00 PM IST (Mon - Sat)'}
+                  ? 'परामर्श समय: प्रातः 10:00 से सायं 7:00 बजे (सोम - शनि) • ऑनलाइन परामर्श'
+                  : 'Consultation Hours: 10:00 AM – 7:00 PM IST (Mon - Sat) • Online Consultations'}
               </p>
+
+              <div className="pt-2">
+                <a
+                  href="https://wa.me/919105731969?text=Namaste%20Dr.%20Pooja%20Awasthi,%20I%20would%20like%20to%20book%20a%20consultation."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[#D6B574] text-[#24152F] font-bold text-xs uppercase tracking-wider hover:bg-[#edd8a6] transition-colors shadow-md"
+                >
+                  <span>{lang === 'hi' ? 'परामर्श बुक करें' : 'Book Consultation'}</span>
+                </a>
+              </div>
             </div>
           </div>
 

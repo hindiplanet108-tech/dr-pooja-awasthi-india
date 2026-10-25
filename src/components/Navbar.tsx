@@ -189,7 +189,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                     Dr. Pooja Awasthi
                   </span>
                   <span className="text-[11px] sm:text-xs text-[#D6B574] italic font-cormorant tracking-wide leading-tight mt-0.5">
-                    {lang === 'hi' ? '“अपने जीवन का सही मार्ग खोजें। अपने जीवन को बदलें।”' : '“Discover Your Path. Transform Your Life.”'}
+                    {lang === 'hi' ? '“अपनी राह पहचानें। अपना जीवन रूपांतरित करें।”' : '“Discover Your Path. Transform Your Life.”'}
                   </span>
                 </div>
               </a>
@@ -197,7 +197,19 @@ export const Navbar: React.FC<NavbarProps> = ({
 
             {/* Zone 2: Desktop Navigation Menus */}
             <nav className="hidden lg:flex items-center gap-2 xl:gap-3 text-xs xl:text-sm font-medium text-[#EAE2F4]">
-              {/* Dropdown 1: Quick Links */}
+              {/* Home / मुख्य पृष्ठ Link */}
+              <button
+                type="button"
+                onClick={() => {
+                  handleNav('root');
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
+                className="hover:text-[#D6B574] transition-colors px-2 py-1 font-medium"
+              >
+                {lang === 'hi' ? 'मुख्य पृष्ठ' : 'Home'}
+              </button>
+
+              {/* Dropdown 1: अन्य सेवाएँ / More Offerings */}
               <div className="relative" ref={quickLinksRef}>
                 <button
                   type="button"
@@ -210,7 +222,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   }`}
                   aria-expanded={quickLinksOpen}
                 >
-                  <span>{lang === 'hi' ? 'त्वरित लिंक' : 'Quick Links'}</span>
+                  <span>{lang === 'hi' ? 'अन्य सेवाएँ' : 'More Services'}</span>
                   <ChevronDown
                     size={14}
                     className={`transition-transform duration-200 ${quickLinksOpen ? 'rotate-180 text-[#D6B574]' : 'opacity-70'}`}
@@ -220,7 +232,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 {quickLinksOpen && (
                   <div className="absolute left-0 mt-2 w-64 rounded-lg bg-[#24152F] border border-[#D6B574]/30 shadow-2xl py-2 z-50 backdrop-blur-md animate-in fade-in slide-in-from-top-1 duration-150">
                     <div className="px-3 py-1.5 text-[10px] uppercase tracking-wider text-[#D6B574]/80 font-semibold border-b border-[#D6B574]/15">
-                      {lang === 'hi' ? 'त्वरित पहुंच' : 'Quick Access'}
+                      {lang === 'hi' ? 'अन्य सेवाएँ व जानकारी' : 'Quick Access'}
                     </div>
                     {onOpenTariff && (
                       <button
@@ -439,7 +451,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 className="hover:text-[#D6B574] transition-colors px-2.5 py-1 flex items-center gap-1.5 text-[#D6B574] font-semibold bg-white/5 rounded-md border border-[#D6B574]/30"
               >
                 <Trophy size={13} className="text-[#D6B574]" />
-                <span>{lang === 'hi' ? 'चित्र दीर्घा व सम्मान' : 'Honors & Gallery'}</span>
+                <span>{lang === 'hi' ? 'प्रमाण-पत्र एवं सम्मान' : 'Honors & Gallery'}</span>
               </button>
 
               <button
@@ -455,7 +467,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 onClick={() => handleNav('testimonials')}
                 className="hover:text-[#D6B574] transition-colors px-2 py-1"
               >
-                {lang === 'hi' ? 'समीक्षाएं' : 'Testimonials'}
+                {lang === 'hi' ? 'साधकों के अनुभव' : 'Testimonials'}
               </button>
             </nav>
 
@@ -466,7 +478,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 type="button"
                 className="px-3.5 sm:px-4 py-2 text-xs font-bold uppercase tracking-wider text-[#24152F] bg-gradient-to-r from-[#D6B574] via-[#ecd6a4] to-[#D6B574] hover:from-[#ecd6a4] hover:to-[#D6B574] rounded-md transition-all shadow-[0_2px_10px_rgba(214,181,116,0.3)] hover:scale-[1.02] active:scale-[0.98] whitespace-nowrap"
               >
-                {lang === 'hi' ? 'परामर्श प्राप्त करें' : 'Book Consultation'}
+                {lang === 'hi' ? 'परामर्श बुक करें' : 'Book Consultation'}
               </button>
 
               {/* Mobile menu hamburger button */}
@@ -497,11 +509,11 @@ export const Navbar: React.FC<NavbarProps> = ({
               </span>
             </div>
             <p className="text-xs italic text-[#D6B574] font-cormorant font-normal">
-              {lang === 'hi' ? '“अपने जीवन का सही मार्ग खोजें। अपने जीवन को बदलें।”' : '“Discover Your Path. Transform Your Life.”'}
+              {lang === 'hi' ? '“अपनी राह पहचानें। अपना जीवन रूपांतरित करें।”' : '“Discover Your Path. Transform Your Life.”'}
             </p>
             <p className="text-[11px] text-[#EAE2F4]/85 leading-relaxed pt-1">
               {lang === 'hi'
-                ? 'वैदिक अंकशास्त्र, टैरो मार्गदर्शन, ऊर्जा चक्र हीलिंग और जीवन कोचिंग का पावन संगम। जीवन को सकारात्मक दृष्टि और आत्मविश्वास के साथ समझने हेतु समर्पित।'
+                ? 'वैदिक अंकशास्त्र, टैरो मार्गदर्शन, ऊर्जा चक्र हीलिंग और जीवन मार्गदर्शन का पावन संगम। जीवन को सकारात्मक दृष्टि और आत्मविश्वास के साथ समझने हेतु समर्पित।'
                 : 'Spiritual guidance combining Vedic Numerology, Tarot Reading, Energy Healing and Life Coaching. Dedicated to helping seekers understand life patterns and move forward with conscious confidence.'}
             </p>
           </div>
@@ -532,13 +544,25 @@ export const Navbar: React.FC<NavbarProps> = ({
             </button>
           </div>
 
-          {/* Section: Quick Links */}
+          {/* Section: Other Services / अन्य सेवाएँ */}
           <div className="space-y-2">
             <div className="text-[11px] font-bold uppercase tracking-wider text-[#D6B574] border-b border-[#D6B574]/20 pb-1 flex items-center gap-1.5">
               <Compass size={13} />
-              <span>{lang === 'hi' ? 'त्वरित लिंक' : 'Quick Links'}</span>
+              <span>{lang === 'hi' ? 'अन्य सेवाएँ' : 'Quick Links'}</span>
             </div>
             <div className="grid grid-cols-1 gap-1.5 pl-1">
+              {/* Home */}
+              <button
+                type="button"
+                onClick={() => {
+                  handleNav('root');
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
+                className="w-full text-left py-1.5 px-3 text-xs text-[#EAE2F4] hover:text-[#D6B574] hover:bg-white/5 rounded"
+              >
+                {lang === 'hi' ? 'मुख्य पृष्ठ' : 'Home'}
+              </button>
+
               {onOpenTariff && (
                 <button
                   type="button"
@@ -575,7 +599,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 className="w-full text-left py-2 px-3 text-xs text-[#D6B574] font-semibold bg-[#D6B574]/15 rounded border border-[#D6B574]/30 flex items-center gap-2"
               >
                 <Trophy size={14} className="text-[#D6B574]" />
-                <span>{lang === 'hi' ? '★ 40+ राष्ट्रीय सम्मान एवं चित्र दीर्घा' : '★ 40+ Honors & Photo Gallery'}</span>
+                <span>{lang === 'hi' ? '★ प्रमाण-पत्र एवं सम्मान (40+)' : '★ 40+ Honors & Photo Gallery'}</span>
               </button>
 
               <button
