@@ -21,6 +21,7 @@ export const AWARDS_DATA: AwardItem[] = [
   {
     id: "iimt-1",
     filename: "IMMT-6.jpeg",
+    imageUrl: "/assets/awards/IMMT-6.jpeg",
     category: "memento",
     eventGroup: "iimt_meerut",
     eventGroup_hi: "आईआईएमटी विश्वविद्यालय मेरठ",
@@ -35,6 +36,7 @@ export const AWARDS_DATA: AwardItem[] = [
   {
     id: "iimt-2",
     filename: "IMMT-5.jpeg",
+    imageUrl: "/assets/awards/IMMT-5.jpeg",
     category: "felicitation",
     eventGroup: "iimt_meerut",
     eventGroup_hi: "आईआईएमटी विश्वविद्यालय मेरठ",
@@ -49,6 +51,7 @@ export const AWARDS_DATA: AwardItem[] = [
   {
     id: "iimt-3",
     filename: "IMMT.jpeg",
+    imageUrl: "/assets/awards/IMMT.jpeg",
     category: "felicitation",
     eventGroup: "iimt_meerut",
     eventGroup_hi: "आईआईएमटी विश्वविद्यालय मेरठ",
@@ -63,6 +66,7 @@ export const AWARDS_DATA: AwardItem[] = [
   {
     id: "iimt-4",
     filename: "IMMT-2.jpeg",
+    imageUrl: "/assets/awards/IMMT-2.jpeg",
     category: "memento",
     eventGroup: "iimt_meerut",
     eventGroup_hi: "आईआईएमटी विश्वविद्यालय मेरठ",
@@ -77,6 +81,7 @@ export const AWARDS_DATA: AwardItem[] = [
   {
     id: "iimt-5",
     filename: "IMMT-3.jpeg",
+    imageUrl: "/assets/awards/IMMT-5.jpeg",
     category: "conclave",
     eventGroup: "iimt_meerut",
     eventGroup_hi: "आईआईएमटी विश्वविद्यालय मेरठ",
@@ -91,6 +96,7 @@ export const AWARDS_DATA: AwardItem[] = [
   {
     id: "iimt-6",
     filename: "IMMT-4.jpeg",
+    imageUrl: "/assets/awards/IMMT-6.jpeg",
     category: "conclave",
     eventGroup: "iimt_meerut",
     eventGroup_hi: "आईआईएमटी विश्वविद्यालय मेरठ",
@@ -109,6 +115,7 @@ export const AWARDS_DATA: AwardItem[] = [
   {
     id: "lucknow-1",
     filename: "Lucknow mahopadhyay award-7.jpeg",
+    imageUrl: "/assets/awards/Lucknow_mahopadhyay_award_7.jpeg",
     category: "memento",
     eventGroup: "lucknow",
     eventGroup_hi: "राष्ट्रीय सम्मेलन लखनऊ",
@@ -123,6 +130,7 @@ export const AWARDS_DATA: AwardItem[] = [
   {
     id: "lucknow-2",
     filename: "Lucknow mahopadhyay award.jpeg",
+    imageUrl: "/assets/awards/Lucknow_mahopadhyay_award.jpeg",
     category: "felicitation",
     eventGroup: "lucknow",
     eventGroup_hi: "राष्ट्रीय सम्मेलन लखनऊ",
@@ -137,6 +145,7 @@ export const AWARDS_DATA: AwardItem[] = [
   {
     id: "lucknow-3",
     filename: "Lucknow mahopadhyay award-2.jpeg",
+    imageUrl: "/assets/awards/Lucknow_mahopadhyay_award.jpeg",
     category: "felicitation",
     eventGroup: "lucknow",
     eventGroup_hi: "राष्ट्रीय सम्मेलन लखनऊ",
@@ -151,6 +160,7 @@ export const AWARDS_DATA: AwardItem[] = [
   {
     id: "lucknow-4",
     filename: "Lucknow mahopadhyay award-3.jpeg",
+    imageUrl: "/assets/awards/Lucknow_mahopadhyay_award_7.jpeg",
     category: "felicitation",
     eventGroup: "lucknow",
     eventGroup_hi: "राष्ट्रीय सम्मेलन लखनऊ",
@@ -165,6 +175,7 @@ export const AWARDS_DATA: AwardItem[] = [
   {
     id: "lucknow-5",
     filename: "Lucknow mahopadhyay award-4.jpeg",
+    imageUrl: "/assets/awards/Lucknow_mahopadhyay_award.jpeg",
     category: "felicitation",
     eventGroup: "lucknow",
     eventGroup_hi: "राष्ट्रीय सम्मेलन लखनऊ",
@@ -179,6 +190,7 @@ export const AWARDS_DATA: AwardItem[] = [
   {
     id: "lucknow-6",
     filename: "Lucknow mahopadhyay award-5.jpeg",
+    imageUrl: "/assets/awards/Lucknow_mahopadhyay_award_7.jpeg",
     category: "conclave",
     eventGroup: "lucknow",
     eventGroup_hi: "राष्ट्रीय सम्मेलन लखनऊ",
@@ -193,6 +205,7 @@ export const AWARDS_DATA: AwardItem[] = [
   {
     id: "lucknow-7",
     filename: "Lucknow mahopadhyay award-6.jpeg",
+    imageUrl: "/assets/awards/Lucknow_mahopadhyay_award.jpeg",
     category: "felicitation",
     eventGroup: "lucknow",
     eventGroup_hi: "राष्ट्रीय सम्मेलन लखनऊ",
@@ -211,6 +224,7 @@ export const AWARDS_DATA: AwardItem[] = [
   {
     id: "ujjain-1",
     filename: "भारत के शीर्ष 10 उपलब्धि पुरस्कारों में सम्मानित होने का गौरव। बाबा महाकाल की पावन नगरी उज्जैन में, बाबा महाकाल के असीम आशीर्वाद से यह सम्मान प्राप्त हुआ। हर-हर महादेव.jpeg",
+    imageUrl: "/assets/awards/ujjain_top_10_trophy.jpeg",
     category: "memento",
     eventGroup: "ujjain_indore",
     eventGroup_hi: "महाकाल उज्जैन व इन्दौर",
@@ -225,6 +239,7 @@ export const AWARDS_DATA: AwardItem[] = [
   {
     id: "ujjain-2",
     filename: "ज्योतिष वास्तु एवं आयुर्वेद सम्मेलन इंदौर 2026 - 1.jpeg",
+    imageUrl: "/assets/awards/ujjain_top_10_trophy.jpeg",
     category: "felicitation",
     eventGroup: "ujjain_indore",
     eventGroup_hi: "महाकाल उज्जैन व इन्दौर",
@@ -239,6 +254,7 @@ export const AWARDS_DATA: AwardItem[] = [
   {
     id: "ujjain-3",
     filename: "ज्योतिष वास्तु एवं आयुर्वेद सम्मेलन इंदौर 2026 - 2.jpeg",
+    imageUrl: "/assets/awards/ujjain_top_10_trophy.jpeg",
     category: "felicitation",
     eventGroup: "ujjain_indore",
     eventGroup_hi: "महाकाल उज्जैन व इन्दौर",
@@ -253,6 +269,7 @@ export const AWARDS_DATA: AwardItem[] = [
   {
     id: "ujjain-4",
     filename: "ज्योतिष वास्तु एवं आयुर्वेद सम्मेलन इंदौर 2026 - 3.jpeg",
+    imageUrl: "/assets/awards/ujjain_top_10_trophy.jpeg",
     category: "felicitation",
     eventGroup: "ujjain_indore",
     eventGroup_hi: "महाकाल उज्जैन व इन्दौर",
@@ -267,6 +284,7 @@ export const AWARDS_DATA: AwardItem[] = [
   {
     id: "ujjain-5",
     filename: "ज्योतिष वास्तु एवं आयुर्वेद सम्मेलन इंदौर 2026 - 4.jpeg",
+    imageUrl: "/assets/awards/ujjain_top_10_trophy.jpeg",
     category: "conclave",
     eventGroup: "ujjain_indore",
     eventGroup_hi: "महाकाल उज्जैन व इन्दौर",
@@ -281,6 +299,7 @@ export const AWARDS_DATA: AwardItem[] = [
   {
     id: "ujjain-6",
     filename: "ज्योतिष वास्तु एवं आयुर्वेद सम्मेलन इंदौर 2026 - 5.jpeg",
+    imageUrl: "/assets/awards/ujjain_top_10_trophy.jpeg",
     category: "felicitation",
     eventGroup: "ujjain_indore",
     eventGroup_hi: "महाकाल उज्जैन व इन्दौर",
@@ -295,6 +314,7 @@ export const AWARDS_DATA: AwardItem[] = [
   {
     id: "ujjain-7",
     filename: "ज्योतिष वास्तु एवं आयुर्वेद सम्मेलन इंदौर 2026 - 6.jpeg",
+    imageUrl: "/assets/awards/ujjain_top_10_trophy.jpeg",
     category: "conclave",
     eventGroup: "ujjain_indore",
     eventGroup_hi: "महाकाल उज्जैन व इन्दौर",
@@ -358,6 +378,7 @@ export const AWARDS_DATA: AwardItem[] = [
   {
     id: "gov-2",
     filename: "अमर उजाला ज्योतिष महाकुम्भ मै उत्तराखंड के माननीय राजयपाल ले ज गुरुमीत सिंह द्वारा सम्मानित-2.jpeg",
+    imageUrl: "/assets/awards/uttarakhand_governor_gurmeet_singh_award.jpeg",
     category: "felicitation",
     eventGroup: "uttarakhand_governor",
     eventGroup_hi: "उत्तराखंड राजभवन व अमर उजाला",
@@ -372,6 +393,7 @@ export const AWARDS_DATA: AwardItem[] = [
   {
     id: "gov-3",
     filename: "अमर उजाला ज्योतिष महाकुम्भ मै उत्तराखंड के माननीय राजयपाल ले ज गुरुमीत सिंह द्वारा सम्मानित-3.jpeg",
+    imageUrl: "/assets/awards/uttarakhand_governor_gurmeet_singh_award.jpeg",
     category: "conclave",
     eventGroup: "uttarakhand_governor",
     eventGroup_hi: "उत्तराखंड राजभवन व अमर उजाला",
@@ -386,6 +408,7 @@ export const AWARDS_DATA: AwardItem[] = [
   {
     id: "gov-4",
     filename: "अमर उजाला ज्योतिष महाकुम्भ मै उत्तराखंड के माननीय राजयपाल ले ज गुरुमीत सिंह द्वारा सम्मानित-1.jpeg",
+    imageUrl: "/assets/awards/uttarakhand_governor_gurmeet_singh_award.jpeg",
     category: "felicitation",
     eventGroup: "uttarakhand_governor",
     eventGroup_hi: "उत्तराखंड राजभवन व अमर उजाला",
@@ -400,6 +423,7 @@ export const AWARDS_DATA: AwardItem[] = [
   {
     id: "gov-5",
     filename: "अमर उजाला ज्योतिष महाकुम्भ मै उत्तराखंड के माननीय राजयपाल ले ज गुरुमीत सिंह द्वारा सम्मानित-4.jpeg",
+    imageUrl: "/assets/awards/uttarakhand_governor_gurmeet_singh_award.jpeg",
     category: "press",
     eventGroup: "uttarakhand_governor",
     eventGroup_hi: "उत्तराखंड राजभवन व अमर उजाला",
@@ -448,6 +472,7 @@ export const AWARDS_DATA: AwardItem[] = [
   {
     id: "bhu-3",
     filename: "मुख्य अतिथि के रूप में सम्मानित.jpeg",
+    imageUrl: "/assets/awards/bhu_hexagonal_memento.jpeg",
     category: "memento",
     eventGroup: "bhu_varanasi",
     eventGroup_hi: "बीएचयू वाराणसी महासम्मेलन",
@@ -462,6 +487,7 @@ export const AWARDS_DATA: AwardItem[] = [
   {
     id: "bhu-4",
     filename: "बनारस हिंदू विश्वविद्यालय के ज्योतिष विभागाध्यक्ष आचार्य चंद्रमौली उपाध्याय जी द्वारा सम्मानित - 5.jpeg",
+    imageUrl: "/assets/awards/bhu_varanasi_acharya_chandramouli_upadhyay.jpeg",
     category: "conclave",
     eventGroup: "bhu_varanasi",
     eventGroup_hi: "बीएचयू वाराणसी महासम्मेलन",
@@ -476,6 +502,7 @@ export const AWARDS_DATA: AwardItem[] = [
   {
     id: "bhu-5",
     filename: "बनारस हिंदू विश्वविद्यालय के ज्योतिष विभागाध्यक्ष आचार्य चंद्रमौली उपाध्याय जी द्वारा सम्मानित - 6.jpeg",
+    imageUrl: "/assets/awards/bhu_varanasi_acharya_chandramouli_upadhyay.jpeg",
     category: "conclave",
     eventGroup: "bhu_varanasi",
     eventGroup_hi: "बीएचयू वाराणसी महासम्मेलन",
@@ -490,6 +517,7 @@ export const AWARDS_DATA: AwardItem[] = [
   {
     id: "bhu-6",
     filename: "बनारस हिंदू विश्वविद्यालय के ज्योतिष विभागाध्यक्ष आचार्य चंद्रमौली उपाध्याय जी द्वारा सम्मानित - 1.jpeg",
+    imageUrl: "/assets/awards/bhu_keynote_address_pooja_awasthi.jpeg",
     category: "conclave",
     eventGroup: "bhu_varanasi",
     eventGroup_hi: "बीएचयू वाराणसी महासम्मेलन",
@@ -523,6 +551,7 @@ export const AWARDS_DATA: AwardItem[] = [
   {
     id: "nafeed-2",
     filename: "माननीय अशोक ठाकुर National director of Nafeed-1.jpeg",
+    imageUrl: "/assets/awards/ashok_thakur_nafeed_award_2025.jpeg",
     category: "felicitation",
     eventGroup: "dynamic_excellence",
     eventGroup_hi: "डायनामिक एक्सीलेंस दिल्ली",
@@ -537,6 +566,7 @@ export const AWARDS_DATA: AwardItem[] = [
   {
     id: "nafeed-3",
     filename: "मुख्य अतिथि के रूप में सम्मानित-2.jpeg",
+    imageUrl: "/assets/awards/ashok_thakur_nafeed_award_2025.jpeg",
     category: "press",
     eventGroup: "dynamic_excellence",
     eventGroup_hi: "डायनामिक एक्सीलेंस दिल्ली",
@@ -551,6 +581,7 @@ export const AWARDS_DATA: AwardItem[] = [
   {
     id: "nafeed-4",
     filename: "बनारस हिंदू विश्वविद्यालय के ज्योतिष विभागाध्यक्ष आचार्य चंद्रमौली उपाध्याय जी द्वारा सम्मानित - 3.jpeg",
+    imageUrl: "/assets/awards/ashok_thakur_nafeed_award_2025.jpeg",
     category: "felicitation",
     eventGroup: "dynamic_excellence",
     eventGroup_hi: "डायनामिक एक्सीलेंस दिल्ली",
@@ -565,6 +596,7 @@ export const AWARDS_DATA: AwardItem[] = [
   {
     id: "nafeed-5",
     filename: "बनारस हिंदू विश्वविद्यालय के ज्योतिष विभागाध्यक्ष आचार्य चंद्रमौली उपाध्याय जी द्वारा सम्मानित - 2.jpeg",
+    imageUrl: "/assets/awards/ashok_thakur_nafeed_award_2025.jpeg",
     category: "felicitation",
     eventGroup: "dynamic_excellence",
     eventGroup_hi: "डायनामिक एक्सीलेंस दिल्ली",
@@ -583,6 +615,7 @@ export const AWARDS_DATA: AwardItem[] = [
   {
     id: "urja-1",
     filename: "माननीय गुलाब चंद कटारिया द्वारा सम्मानित.jpeg",
+    imageUrl: "/assets/awards/Lucknow_mahopadhyay_award_7.jpeg",
     category: "felicitation",
     eventGroup: "urja_samman",
     eventGroup_hi: "ऊर्जा ज्योतिष सम्मान",
@@ -601,6 +634,7 @@ export const AWARDS_DATA: AwardItem[] = [
   {
     id: "portrait-1",
     filename: "POOJA.jpg",
+    imageUrl: "/assets/awards/pooja_portrait.jpeg",
     category: "press",
     eventGroup: "portraits",
     eventGroup_hi: "आधिकारिक व्यक्तित्व चित्र",

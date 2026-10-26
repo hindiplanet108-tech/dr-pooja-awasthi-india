@@ -277,24 +277,30 @@ export const AwardsSection: React.FC<AwardsSectionProps> = ({ lang }) => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
           
           {/* Spotlight 1: IIMT University Lifetime Achievement Award */}
-          <div className="p-5 sm:p-6 rounded-2xl bg-white/5 border border-[#D6B574]/40 backdrop-blur-md flex flex-col sm:flex-row items-center gap-5 shadow-xl relative overflow-hidden group">
+          <div 
+            onClick={() => {
+              const iimtAward = AWARDS_DATA.find((a) => a.id === 'iimt-1') || AWARDS_DATA[0];
+              setSelectedAward(iimtAward);
+            }}
+            className="p-5 sm:p-6 rounded-2xl bg-white/5 border border-[#D6B574]/40 backdrop-blur-md flex flex-col sm:flex-row items-center gap-5 shadow-xl relative overflow-hidden group cursor-pointer hover:border-[#D6B574] hover:bg-white/[0.08] transition-all"
+          >
             <div className="w-28 h-36 sm:w-32 sm:h-40 rounded-xl overflow-hidden border-2 border-[#D6B574] shrink-0 shadow-lg relative bg-[#1c0f26]">
               <img
-                src={customPhotos['iimt-1'] || customPhotos['iimt-2'] || "/assets/awards/ceremony_stage_award.jpeg"}
-                alt="आईआईएमटी विश्वविद्यालय मेरठ - लाइफटाइम अचीवमेंट सम्मान"
-                className="w-full h-full object-cover object-top"
+                src={customPhotos['iimt-1'] || "/assets/awards/IMMT-6.jpeg"}
+                alt="आईआईएमटी विश्वविद्यालय मेरठ - लाइफटाइम अचीवमेंट सम्मान प्रशस्ति पत्र"
+                className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300"
                 onError={(e) => {
                   const target = e.currentTarget;
-                  if (target.src !== '/28.jpeg') target.src = '/28.jpeg';
+                  if (target.src !== '/IMMT-6.jpeg') target.src = '/IMMT-6.jpeg';
                 }}
               />
             </div>
             <div className="space-y-1.5 text-center sm:text-left flex-1">
               <div className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#D6B574]/20 border border-[#D6B574]/40 text-[#D6B574] text-[10px] font-bold">
                 <Sparkles size={10} />
-                <span>{lang === 'hi' ? 'लाइफटाइम अचीवमेंट सम्मान' : 'Lifetime Achievement Award'}</span>
+                <span>{lang === 'hi' ? 'लाइफटाइम अचीवमेंट सम्मान (प्रशस्ति पत्र)' : 'Lifetime Achievement Award Citation'}</span>
               </div>
-              <h3 className="font-cinzel text-base sm:text-lg font-bold text-white">
+              <h3 className="font-cinzel text-base sm:text-lg font-bold text-white group-hover:text-[#D6B574] transition-colors">
                 {lang === 'hi' ? 'आईआईएमटी विश्वविद्यालय, मेरठ' : 'IIMT University, Meerut'}
               </h3>
               <p className="text-xs font-semibold text-[#D6B574]">
@@ -304,19 +310,28 @@ export const AwardsSection: React.FC<AwardsSectionProps> = ({ lang }) => {
               </p>
               <p className="text-[11px] text-[#EAE2F4]/75 line-clamp-2">
                 {lang === 'hi'
-                  ? 'ज्योतिष शास्त्र एवं भारतीय ज्ञान परंपरा (IKS) में निरंतर विशिष्ट योगदान हेतु पारंपरिक साफा एवं स्वर्ण शील्ड से अलंकृत।'
+                  ? 'ज्योतिष शास्त्र एवं भारतीय ज्ञान परंपरा (IKS) में आजीवन योगदान हेतु प्रशस्ति पत्र एवं स्वर्ण शील्ड से अलंकृत।'
                   : 'Conferred for distinguished lifelong contribution to Jyotish Shastra and Indian Knowledge System.'}
               </p>
+              <div className="pt-1 flex items-center justify-center sm:justify-start gap-1 text-[11px] text-[#D6B574] font-medium">
+                <span>{lang === 'hi' ? 'प्रशस्ति पत्र व विवरण देखें →' : 'View Full Citation & Certificate →'}</span>
+              </div>
             </div>
           </div>
 
           {/* Spotlight 2: Dynamic Excellence Awards - NAFED National Director */}
-          <div className="p-5 sm:p-6 rounded-2xl bg-white/5 border border-[#D6B574]/40 backdrop-blur-md flex flex-col sm:flex-row items-center gap-5 shadow-xl relative overflow-hidden group">
+          <div 
+            onClick={() => {
+              const nafeedAward = AWARDS_DATA.find((a) => a.id === 'nafeed-1') || null;
+              if (nafeedAward) setSelectedAward(nafeedAward);
+            }}
+            className="p-5 sm:p-6 rounded-2xl bg-white/5 border border-[#D6B574]/40 backdrop-blur-md flex flex-col sm:flex-row items-center gap-5 shadow-xl relative overflow-hidden group cursor-pointer hover:border-[#D6B574] hover:bg-white/[0.08] transition-all"
+          >
             <div className="w-28 h-36 sm:w-32 sm:h-40 rounded-xl overflow-hidden border-2 border-[#D6B574] shrink-0 shadow-lg relative bg-[#1c0f26]">
               <img
                 src={customPhotos['nafeed-1'] || "/assets/awards/ashok_thakur_nafeed_award_2025.jpeg"}
                 alt="माननीय अशोक ठाकुर National Director of Nafeed द्वारा सम्मानित"
-                className="w-full h-full object-cover object-top"
+                className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300"
                 onError={(e) => {
                   const target = e.currentTarget;
                   if (target.src !== '/ashok_thakur_nafeed_award_2025.jpeg') target.src = '/ashok_thakur_nafeed_award_2025.jpeg';
@@ -328,7 +343,7 @@ export const AwardsSection: React.FC<AwardsSectionProps> = ({ lang }) => {
                 <Sparkles size={10} />
                 <span>{lang === 'hi' ? 'विशेष राष्ट्रीय मंच अलंकरण' : 'Featured National Honor'}</span>
               </div>
-              <h3 className="font-cinzel text-base sm:text-lg font-bold text-white">
+              <h3 className="font-cinzel text-base sm:text-lg font-bold text-white group-hover:text-[#D6B574] transition-colors">
                 {lang === 'hi' ? 'डायनामिक एक्सीलेंस अवार्ड्स 2025' : 'Dynamic Excellence Awards 2025'}
               </h3>
               <p className="text-xs font-semibold text-[#D6B574]">
@@ -341,6 +356,9 @@ export const AwardsSection: React.FC<AwardsSectionProps> = ({ lang }) => {
                   ? 'इंडिया इंटरनेशनल सेन्टर (IIC) नई दिल्ली के मुख्य मंच पर नाफेड नेशनल डायरेक्टर द्वारा विशिष्ट सम्मान अर्पण।'
                   : 'Conferred at India International Centre (IIC), New Delhi in recognition of conscious guidance.'}
               </p>
+              <div className="pt-1 flex items-center justify-center sm:justify-start gap-1 text-[11px] text-[#D6B574] font-medium">
+                <span>{lang === 'hi' ? 'सम्मान विवरण देखें →' : 'View Full Details →'}</span>
+              </div>
             </div>
           </div>
 
