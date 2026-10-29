@@ -6,9 +6,17 @@ interface FooterProps {
   lang: string;
   onOpenTariff?: () => void;
   onOpenBankUpi?: () => void;
+  onOpenAdmin?: () => void;
+  onOpenDynamicPage?: (slug: string) => void;
 }
 
-export const Footer: React.FC<FooterProps> = ({ lang, onOpenTariff, onOpenBankUpi }) => {
+export const Footer: React.FC<FooterProps> = ({
+  lang,
+  onOpenTariff,
+  onOpenBankUpi,
+  onOpenAdmin,
+  onOpenDynamicPage,
+}) => {
   const [showLegalModal, setShowLegalModal] = useState<'privacy' | 'terms' | null>(null);
   const t = getTranslation(lang);
 
@@ -97,6 +105,28 @@ export const Footer: React.FC<FooterProps> = ({ lang, onOpenTariff, onOpenBankUp
                   {lang === 'hi' ? 'अक्सर पूछे जाने वाले प्रश्न' : 'Frequently Asked Questions'}
                 </a>
               </li>
+              {onOpenDynamicPage && (
+                <>
+                  <li>
+                    <button
+                      type="button"
+                      onClick={() => onOpenDynamicPage('kundali-analysis')}
+                      className="hover:text-[#D6B574] transition-colors text-left"
+                    >
+                      {lang === 'hi' ? 'कुण्डली विश्लेषण एवं दोष निवारण' : 'Vedic Kundali Analysis'}
+                    </button>
+                  </li>
+                  <li>
+                    <button
+                      type="button"
+                      onClick={() => onOpenDynamicPage('rudraksha-ratna-therapy')}
+                      className="hover:text-[#D6B574] transition-colors text-left"
+                    >
+                      {lang === 'hi' ? 'रुद्राक्ष एवं सिद्ध रत्न चिकित्सा' : 'Rudraksha & Gemstone Therapy'}
+                    </button>
+                  </li>
+                </>
+              )}
             </ul>
           </div>
 
@@ -183,6 +213,19 @@ export const Footer: React.FC<FooterProps> = ({ lang, onOpenTariff, onOpenBankUp
             >
               {t.terms}
             </button>
+            {onOpenAdmin && (
+              <>
+                <span aria-hidden="true">·</span>
+                <button
+                  type="button"
+                  onClick={onOpenAdmin}
+                  className="text-[#D6B574]/80 hover:text-[#D6B574] transition-colors flex items-center gap-1 font-semibold"
+                  title="व्यवस्थापक CMS पैनल (Admin Panel)"
+                >
+                  <span>🔐 Admin CMS</span>
+                </button>
+              </>
+            )}
           </div>
         </div>
 

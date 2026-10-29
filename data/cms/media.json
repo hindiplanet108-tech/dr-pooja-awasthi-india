@@ -1,0 +1,62 @@
+[
+  {
+    "id": "med-1",
+    "filename": "pooja_portrait.jpeg",
+    "originalName": "pooja_portrait.jpeg",
+    "url": "/assets/awards/pooja_portrait.jpeg",
+    "type": "image",
+    "mimeType": "image/jpeg",
+    "sizeBytes": 184320,
+    "altText": "Dr. Pooja Awasthi - Spiritual Guide & Vedic Numerologist",
+    "caption": "डॉ. पूजा अवस्थी - मुख्य आधिकारिक चित्र",
+    "uploadedAt": "2026-10-25T10:00:00.000Z"
+  },
+  {
+    "id": "med-2",
+    "filename": "IMMT.jpeg",
+    "originalName": "IMMT.jpeg",
+    "url": "/assets/awards/IMMT.jpeg",
+    "type": "image",
+    "mimeType": "image/jpeg",
+    "sizeBytes": 187107,
+    "altText": "आईआईएमटी विश्वविद्यालय मेरठ - राजस्थानी पावन गुलाबी साफा सम्मान",
+    "caption": "आईआईएमटी विश्वविद्यालय महासमागम में साफा सम्मान एवं लाइफटाइम अचीवमेंट",
+    "uploadedAt": "2026-10-27T03:57:00.000Z"
+  },
+  {
+    "id": "med-3",
+    "filename": "iimt_lifetime_certificate.jpeg",
+    "originalName": "iimt_lifetime_certificate.jpeg",
+    "url": "/assets/awards/iimt_lifetime_certificate.jpeg",
+    "type": "image",
+    "mimeType": "image/jpeg",
+    "sizeBytes": 195200,
+    "altText": "IIMT University Meerut Lifetime Achievement Citation Certificate",
+    "caption": "आईआईएमटी विश्वविद्यालय लाइफटाइम अचीवमेंट प्रशस्ति पत्र",
+    "uploadedAt": "2026-10-26T12:00:00.000Z"
+  },
+  {
+    "id": "med-4",
+    "filename": "bhu_keynote_address_pooja_awasthi.jpeg",
+    "originalName": "bhu_keynote_address_pooja_awasthi.jpeg",
+    "url": "/assets/awards/bhu_keynote_address_pooja_awasthi.jpeg",
+    "type": "image",
+    "mimeType": "image/jpeg",
+    "sizeBytes": 210450,
+    "altText": "Banaras Hindu University (BHU) Keynote Address by Dr. Pooja Awasthi",
+    "caption": "काशी हिन्दू विश्वविद्यालय (BHU) मंच पर शोध व्याख्यान",
+    "uploadedAt": "2026-10-26T14:30:00.000Z"
+  },
+  {
+    "id": "med-5",
+    "filename": "ashok_thakur_nafeed_award_2025.jpeg",
+    "originalName": "ashok_thakur_nafeed_award_2025.jpeg",
+    "url": "/assets/awards/ashok_thakur_nafeed_award_2025.jpeg",
+    "type": "image",
+    "mimeType": "image/jpeg",
+    "sizeBytes": 224100,
+    "altText": "National Director of NAFED Honoring Dr. Pooja Awasthi",
+    "caption": "नाफेड नेशनल डायरेक्टर श्री अशोक ठाकुर द्वारा राष्ट्रीय सम्मान",
+    "uploadedAt": "2026-10-26T16:00:00.000Z"
+  }
+]

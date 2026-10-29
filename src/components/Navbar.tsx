@@ -25,6 +25,8 @@ interface NavbarProps {
   onOpenTariff?: () => void;
   onOpenBankUpi?: () => void;
   onNavigate?: (id: string) => void;
+  onOpenAdmin?: () => void;
+  onOpenDynamicPage?: (slug: string) => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
@@ -34,15 +36,19 @@ export const Navbar: React.FC<NavbarProps> = ({
   onOpenTariff,
   onOpenBankUpi,
   onNavigate,
+  onOpenAdmin,
+  onOpenDynamicPage,
 }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [quickLinksOpen, setQuickLinksOpen] = useState(false);
   const [sacredServicesOpen, setSacredServicesOpen] = useState(false);
+  const [pagesDropdownOpen, setPagesDropdownOpen] = useState(false);
   const [mobileServicesSubOpen, setMobileServicesSubOpen] = useState(false);
 
   const quickLinksRef = useRef<HTMLDivElement>(null);
   const sacredServicesRef = useRef<HTMLDivElement>(null);
+  const pagesDropdownRef = useRef<HTMLDivElement>(null);
 
   const currentLangObj = ALL_LANGUAGES.find((l) => l.code === lang) || ALL_LANGUAGES[0];
 
@@ -65,6 +71,9 @@ export const Navbar: React.FC<NavbarProps> = ({
       if (sacredServicesRef.current && !sacredServicesRef.current.contains(target)) {
         setSacredServicesOpen(false);
       }
+      if (pagesDropdownRef.current && !pagesDropdownRef.current.contains(target)) {
+        setPagesDropdownOpen(false);
+      }
     };
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
@@ -75,6 +84,7 @@ export const Navbar: React.FC<NavbarProps> = ({
     setMobileMenuOpen(false);
     setQuickLinksOpen(false);
     setSacredServicesOpen(false);
+    setPagesDropdownOpen(false);
 
     if (onNavigate) {
       onNavigate(id);
@@ -462,13 +472,93 @@ export const Navbar: React.FC<NavbarProps> = ({
                 {lang === 'hi' ? 'डॉ. पूजा जी' : 'About Dr. Pooja Ji'}
               </button>
 
-              <button
-                type="button"
-                onClick={() => handleNav('testimonials')}
-                className="hover:text-[#D6B574] transition-colors px-2 py-1"
-              >
-                {lang === 'hi' ? 'साधकों के अनुभव' : 'Testimonials'}
-              </button>
+              {/* Dropdown 3: विशेष पृष्ठ / Custom CMS Pages */}
+              <div className="relative" ref={pagesDropdownRef}>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setPagesDropdownOpen(!pagesDropdownOpen);
+                    setQuickLinksOpen(false);
+                    setSacredServicesOpen(false);
+                  }}
+                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md hover:text-[#D6B574] hover:bg-white/5 transition-colors ${
+                    pagesDropdownOpen ? 'text-[#D6B574] bg-white/5' : ''
+                  }`}
+                  aria-expanded={pagesDropdownOpen}
+                >
+                  <FileText size={13} className="text-[#D6B574]" />
+                  <span>{lang === 'hi' ? 'विशेष पृष्ठ' : 'Pages'}</span>
+                  <ChevronDown
+                    size={14}
+                    className={`transition-transform duration-200 ${pagesDropdownOpen ? 'rotate-180 text-[#D6B574]' : 'opacity-70'}`}
+                  />
+                </button>
+
+                {pagesDropdownOpen && (
+                  <div className="absolute right-0 mt-2 w-72 rounded-xl bg-[#24152F] border border-[#D6B574]/40 shadow-2xl py-2 z-50 backdrop-blur-xl animate-in fade-in slide-in-from-top-1 duration-150">
+                    <div className="px-3 py-1 text-[10px] uppercase tracking-wider text-[#D6B574] font-semibold border-b border-[#D6B574]/15 flex items-center justify-between">
+                      <span>{lang === 'hi' ? 'वैदिक लेख एवं मार्गदर्शन पृष्ठ' : 'Articles & Special Pages'}</span>
+                      <span className="text-[9px] bg-[#D6B574]/20 text-[#D6B574] px-1.5 py-0.5 rounded font-bold">CMS</span>
+                    </div>
+
+                    {onOpenDynamicPage && (
+                      <div className="py-1">
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setPagesDropdownOpen(false);
+                            onOpenDynamicPage('kundali-analysis');
+                          }}
+                          className="w-full text-left px-3.5 py-2 text-xs text-[#EAE2F4] hover:text-[#D6B574] hover:bg-white/5 transition-colors flex items-center gap-2"
+                        >
+                          <span className="text-[#D6B574]">✦</span>
+                          <span className="truncate">{lang === 'hi' ? 'कुण्डली विश्लेषण एवं दोष निवारण' : 'Vedic Kundali Analysis'}</span>
+                        </button>
+
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setPagesDropdownOpen(false);
+                            onOpenDynamicPage('rudraksha-ratna-therapy');
+                          }}
+                          className="w-full text-left px-3.5 py-2 text-xs text-[#EAE2F4] hover:text-[#D6B574] hover:bg-white/5 transition-colors flex items-center gap-2"
+                        >
+                          <span className="text-[#D6B574]">✦</span>
+                          <span className="truncate">{lang === 'hi' ? 'रुद्राक्ष एवं सिद्ध रत्न चिकित्सा' : 'Rudraksha & Gemstone Therapy'}</span>
+                        </button>
+
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setPagesDropdownOpen(false);
+                            onOpenDynamicPage('vastu-aura-cleansing');
+                          }}
+                          className="w-full text-left px-3.5 py-2 text-xs text-[#EAE2F4] hover:text-[#D6B574] hover:bg-white/5 transition-colors flex items-center gap-2"
+                        >
+                          <span className="text-[#D6B574]">✦</span>
+                          <span className="truncate">{lang === 'hi' ? 'वास्तु दोष निवारण व औरा शुद्धि' : 'Vastu & Aura Cleansing'}</span>
+                        </button>
+                      </div>
+                    )}
+
+                    {onOpenAdmin && (
+                      <div className="border-t border-[#D6B574]/20 pt-1 mt-1">
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setPagesDropdownOpen(false);
+                            onOpenAdmin();
+                          }}
+                          className="w-full text-left px-3.5 py-2 text-xs text-[#D6B574] hover:bg-white/10 transition-colors flex items-center justify-between font-semibold"
+                        >
+                          <span>🔐 {lang === 'hi' ? 'Admin Panel व पेज जोड़ें' : 'Admin CMS Portal'}</span>
+                          <span className="text-[10px] bg-[#D6B574] text-[#1c0f26] px-1.5 py-0.5 rounded font-bold">Admin</span>
+                        </button>
+                      </div>
+                    )}
+                  </div>
+                )}
+              </div>
             </nav>
 
             {/* Zone 3: Direct Action CTA Button */}
@@ -759,6 +849,67 @@ export const Navbar: React.FC<NavbarProps> = ({
                 <MapPin size={13} className="shrink-0" />
                 <span className="text-[11px]">{lang === 'hi' ? 'देहरादून • विश्वभर में ऑनलाइन परामर्श' : 'Dehradun • Virtual Consultations Worldwide'}</span>
               </div>
+            </div>
+          </div>
+
+          {/* Mobile Pages Section */}
+          <div className="space-y-2">
+            <div className="text-[11px] font-bold uppercase tracking-wider text-[#D6B574] border-b border-[#D6B574]/20 pb-1 flex items-center justify-between">
+              <span className="flex items-center gap-1.5">
+                <FileText size={13} />
+                <span>{lang === 'hi' ? 'विशेष मार्गदर्शन पृष्ठ (Pages)' : 'Special Pages & Articles'}</span>
+              </span>
+              <span className="text-[9px] bg-[#D6B574]/20 text-[#D6B574] px-1.5 py-0.5 rounded font-bold">CMS</span>
+            </div>
+            <div className="grid grid-cols-1 gap-1.5 pl-1">
+              {onOpenDynamicPage && (
+                <>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setMobileMenuOpen(false);
+                      onOpenDynamicPage('kundali-analysis');
+                    }}
+                    className="w-full text-left py-1.5 px-3 text-xs text-[#EAE2F4] hover:text-[#D6B574] hover:bg-white/5 rounded"
+                  >
+                    ✦ {lang === 'hi' ? 'कुण्डली विश्लेषण एवं दोष निवारण' : 'Vedic Kundali Analysis'}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setMobileMenuOpen(false);
+                      onOpenDynamicPage('rudraksha-ratna-therapy');
+                    }}
+                    className="w-full text-left py-1.5 px-3 text-xs text-[#EAE2F4] hover:text-[#D6B574] hover:bg-white/5 rounded"
+                  >
+                    ✦ {lang === 'hi' ? 'रुद्राक्ष एवं सिद्ध रत्न चिकित्सा' : 'Rudraksha & Gemstone Therapy'}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setMobileMenuOpen(false);
+                      onOpenDynamicPage('vastu-aura-cleansing');
+                    }}
+                    className="w-full text-left py-1.5 px-3 text-xs text-[#EAE2F4] hover:text-[#D6B574] hover:bg-white/5 rounded"
+                  >
+                    ✦ {lang === 'hi' ? 'वास्तु दोष निवारण व औरा शुद्धि' : 'Vastu & Aura Cleansing'}
+                  </button>
+                </>
+              )}
+
+              {onOpenAdmin && (
+                <button
+                  type="button"
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    onOpenAdmin();
+                  }}
+                  className="w-full text-left py-2 px-3 text-xs text-[#D6B574] font-bold bg-[#D6B574]/15 hover:bg-[#D6B574]/25 rounded border border-[#D6B574]/30 flex items-center justify-between"
+                >
+                  <span>🔐 {lang === 'hi' ? 'व्यवस्थापक Admin CMS पोर्टल' : 'Admin CMS Portal'}</span>
+                  <span className="text-[9px] bg-[#D6B574] text-[#1c0f26] px-1.5 py-0.5 rounded font-bold">Admin</span>
+                </button>
+              )}
             </div>
           </div>
 
