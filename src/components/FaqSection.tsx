@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { ChevronDown, HelpCircle, MessageSquare, Mail, Sparkles } from 'lucide-react';
+import { useSiteContent } from '../utils/siteContentContext';
 
 interface FaqSectionProps {
   lang?: string;
@@ -7,6 +8,7 @@ interface FaqSectionProps {
 
 export const FaqSection: React.FC<FaqSectionProps> = ({ lang = 'en' }) => {
   const [openIndex, setOpenIndex] = useState<number | null>(0); // First open by default
+  const { siteContent } = useSiteContent();
 
   const faqs_en = [
     {
@@ -27,7 +29,7 @@ export const FaqSection: React.FC<FaqSectionProps> = ({ lang = 'en' }) => {
     }
   ];
 
-  const faqs_hi = [
+  const default_faqs_hi = [
     {
       q: "पूजा जी के साथ ऑनलाइन परामर्श कैसे होता है?",
       a: "सत्र बहुत आसानी से गूगल मीट, ज़ूम या व्हाट्सएप वीडियो/ऑडियो कॉल द्वारा होते हैं। बुकिंग के बाद आपको समय और लिंक मिल जाता है। ऑनलाइन सत्र भी आमने-सामने की तरह ही व्यक्तिगत और असरदार होते हैं।"
@@ -46,7 +48,13 @@ export const FaqSection: React.FC<FaqSectionProps> = ({ lang = 'en' }) => {
     }
   ];
 
-  const faqs = lang === 'hi' ? faqs_hi : faqs_en;
+  const customFaqs = siteContent?.faqs && siteContent.faqs.length > 0
+    ? siteContent.faqs.map(f => ({ q: f.q, a: f.a }))
+    : null;
+
+  const faqs = lang === 'hi' 
+    ? (customFaqs || default_faqs_hi) 
+    : (customFaqs && customFaqs.length > 0 ? customFaqs : faqs_en);
 
   return (
     <section id="faq" className="py-20 md:py-28 bg-[#FBF8F2] text-[#29242E] relative border-t border-[#EAE2F4]">

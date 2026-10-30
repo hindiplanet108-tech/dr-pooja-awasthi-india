@@ -16,8 +16,8 @@ import {
 import { clearAdminAuth, getStoredAdminUser } from '../../utils/cmsApi';
 
 interface AdminLayoutProps {
-  currentTab: 'dashboard' | 'pages' | 'create-page' | 'media' | 'settings';
-  onSelectTab: (tab: 'dashboard' | 'pages' | 'create-page' | 'media' | 'settings') => void;
+  currentTab: 'dashboard' | 'site-editor' | 'pages' | 'create-page' | 'media' | 'settings';
+  onSelectTab: (tab: 'dashboard' | 'site-editor' | 'pages' | 'create-page' | 'media' | 'settings') => void;
   onLogout: () => void;
   onViewLiveSite: () => void;
   children: React.ReactNode;
@@ -50,8 +50,14 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({
       badge: null,
     },
     {
+      id: 'site-editor',
+      label: lang === 'hi' ? 'वेबसाइट सामग्री संपादक' : 'Edit Website Sections',
+      icon: Sparkles,
+      badge: 'Live',
+    },
+    {
       id: 'pages',
-      label: lang === 'hi' ? 'वेबसाइट पेज' : 'All Pages',
+      label: lang === 'hi' ? 'विशेष/कस्टम पेज' : 'Custom Pages',
       icon: FileText,
       badge: null,
     },
@@ -59,7 +65,7 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({
       id: 'create-page',
       label: lang === 'hi' ? 'नया पेज बनाएँ' : 'Create Page',
       icon: PlusCircle,
-      badge: 'New',
+      badge: '+',
     },
     {
       id: 'media',

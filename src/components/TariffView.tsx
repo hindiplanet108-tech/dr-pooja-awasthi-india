@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
-import { CATALOG_SERVICES } from '../data/servicesData';
+import { CATALOG_SERVICES, CatalogServiceItem } from '../data/servicesData';
+import { useSiteContent } from '../utils/siteContentContext';
 import {
   ArrowLeft,
   Share2,
@@ -32,6 +33,8 @@ export const TariffView: React.FC<TariffViewProps> = ({
   onOpenBrandSettings,
   lang = 'en'
 }) => {
+  const { siteContent } = useSiteContent();
+  const bankInfo = siteContent?.bankUpi;
   const [tariffLang, setTariffLang] = useState<'en' | 'hi'>(lang === 'hi' ? 'hi' : 'en');
   const [filter, setFilter] = useState<'all' | 'healing' | 'numerology' | 'therapy' | 'regression'>('all');
   const [copiedKey, setCopiedKey] = useState<string | null>(null);
@@ -43,14 +46,14 @@ export const TariffView: React.FC<TariffViewProps> = ({
   }, [lang]);
 
   const bankDetails = {
-    holder: 'Dr. Pooja Awasthi',
-    bank: 'State Bank of India',
-    accNumber: '38920194857',
-    ifsc: 'SBIN0001234',
+    holder: bankInfo?.account_name || 'Dr. Pooja Awasthi',
+    bank: bankInfo?.bank_name || 'State Bank of India',
+    accNumber: bankInfo?.account_number || '39876543210',
+    ifsc: bankInfo?.ifsc_code || 'SBIN0001234',
     type: 'Savings Account',
-    branch: 'Dehradun Main Branch, Uttarakhand',
-    upiId: '9105731969@okaxis',
-    phone: '+91 91057 31969'
+    branch: bankInfo?.branch || 'Dehradun Main Branch, Uttarakhand',
+    upiId: bankInfo?.upi_id || '9105731969@upi',
+    phone: siteContent?.contact?.phone || '+91 91057 31969'
   };
 
   const handleCopy = (text: string, key: string) => {
@@ -91,9 +94,29 @@ export const TariffView: React.FC<TariffViewProps> = ({
     }
   };
 
+  const currentCatalog: CatalogServiceItem[] = siteContent?.services && siteContent.services.length > 0
+    ? siteContent.services.map((s, idx) => ({
+        id: s.id || `srv-${idx + 1}`,
+        number: s.number || (idx + 1),
+        title: s.title_hi || s.title,
+        title_en: s.title,
+        category: (s.category || 'numerology') as 'healing' | 'numerology' | 'therapy' | 'regression',
+        categoryLabel_hi: s.categoryLabel_hi || 'वैदिक सेवा',
+        categoryLabel_en: s.category || 'Vedic Service',
+        badge: s.badge,
+        badge_en: s.badge,
+        description: s.description || '',
+        description_en: s.description || '',
+        fee: s.fee ?? 5100,
+        feeFormatted: s.feeFormatted || `₹${(s.fee ?? 5100).toLocaleString()}`,
+        duration: s.duration || '60 मिनट',
+        duration_en: s.duration || '60 mins'
+      }))
+    : CATALOG_SERVICES;
+
   const filteredCatalog = filter === 'all'
-    ? CATALOG_SERVICES
-    : CATALOG_SERVICES.filter((item) => item.category === filter);
+    ? currentCatalog
+    : currentCatalog.filter((item) => item.category === filter);
 
   return (
     <div className="min-h-screen bg-[#FBF8F2] text-[#29242E] pt-32 md:pt-36 pb-20">

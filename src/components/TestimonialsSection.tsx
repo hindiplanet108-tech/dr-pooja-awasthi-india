@@ -2,6 +2,7 @@ import React from 'react';
 import { TESTIMONIALS_DATA } from '../data/testimonialsData';
 import { Star, Quote, MapPin } from 'lucide-react';
 import { getTranslation } from '../data/translations';
+import { useSiteContent } from '../utils/siteContentContext';
 
 interface TestimonialsSectionProps {
   lang: string;
@@ -9,6 +10,23 @@ interface TestimonialsSectionProps {
 
 export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({ lang }) => {
   const t = getTranslation(lang);
+  const { siteContent } = useSiteContent();
+
+  const testimonialsList = siteContent?.testimonials && siteContent.testimonials.length > 0
+    ? siteContent.testimonials.map((item, idx) => ({
+        id: item.id || `custom-test-${idx}`,
+        rating: item.rating || 5,
+        quote: item.quote,
+        quote_hi: item.quote,
+        name: item.name,
+        location: item.location,
+        location_hi: item.location,
+        date: item.date || '2026',
+        date_hi: item.date || '2026',
+        service: item.service,
+        service_hi: item.service
+      }))
+    : TESTIMONIALS_DATA;
 
   return (
     <section id="testimonials" className="py-20 md:py-28 bg-[#FBF8F2] text-[#29242E] relative border-t border-[#EAE2F4] overflow-hidden">
@@ -37,7 +55,7 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({ lang }
 
         {/* Testimonials Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {TESTIMONIALS_DATA.map((item) => (
+          {testimonialsList.map((item) => (
             <div
               key={item.id}
               className="p-8 rounded-3xl bg-white border border-[#EAE2F4] hover:border-[#D6B574]/80 shadow-xs hover:shadow-xl transition-all flex flex-col justify-between space-y-6 group"

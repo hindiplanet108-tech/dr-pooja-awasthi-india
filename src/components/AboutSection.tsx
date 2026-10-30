@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Compass, Sparkles, Shield, CheckCircle, Maximize2, X, Award } from 'lucide-react';
 import { getTranslation } from '../data/translations';
 import poojaAuthenticPhoto from '../assets/images/pooja_awasthi_portrait.jpeg';
+import { useSiteContent } from '../utils/siteContentContext';
 
 interface AboutSectionProps {
   lang: string;
@@ -9,6 +10,8 @@ interface AboutSectionProps {
 }
 
 export const AboutSection: React.FC<AboutSectionProps> = ({ lang, onBookClick }) => {
+  const { siteContent } = useSiteContent();
+  const aboutContent = siteContent?.about;
   const [bioLang, setBioLang] = useState<'en' | 'hi'>(lang === 'hi' ? 'hi' : 'en');
   const [showLightbox, setShowLightbox] = useState(false);
   const t = getTranslation(lang);
@@ -17,30 +20,35 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ lang, onBookClick })
     setBioLang(lang === 'hi' ? 'hi' : 'en');
   }, [lang]);
 
+  const displayPhoto = aboutContent?.photo_url || poojaAuthenticPhoto;
+
   const pillars = [
     {
       num: '01',
-      title: lang === 'hi' ? 'सच्ची स्पष्टता' : 'Clear Purpose & Direction',
-      desc:
-        lang === 'hi'
-          ? 'जीवन के कठिन सवालों और उलझनों को सुलझाकर सही दिशा में आगे बढ़ने की स्पष्टता।'
-          : 'Clear answers to your life questions so you know exactly which direction to take.'
+      title: bioLang === 'hi'
+        ? (aboutContent?.pillar1_title || 'सहानुभूतिपूर्ण श्रवण (Compassionate Listening)')
+        : 'Compassionate Listening',
+      desc: bioLang === 'hi'
+        ? (aboutContent?.pillar1_desc || 'बिना किसी पूर्वग्रह के आपकी चिंताओं को ध्यानपूर्वक सुनना और मानसिक शांति प्रदान करना।')
+        : 'Listening deeply to your unique circumstances without judgement to provide genuine peace.'
     },
     {
       num: '02',
-      title: lang === 'hi' ? 'आत्म-बोध एवं सजगता' : 'Self-Awareness',
-      desc:
-        lang === 'hi'
-          ? 'अपनी प्राकृतिक खूबियों, स्वभाव और छिपी हुई प्रतिभा को गहराई से समझना।'
-          : 'Understanding your natural strengths, emotional patterns, and hidden talents.'
+      title: bioLang === 'hi'
+        ? (aboutContent?.pillar2_title || 'वैदिक प्रामाणिकता (Authentic Vedic Insight)')
+        : 'Authentic Vedic Insight',
+      desc: bioLang === 'hi'
+        ? (aboutContent?.pillar2_desc || 'शास्त्रीय पाराशरी, अंकशास्त्रीय व चक्र सूत्रों का सूक्ष्म वैज्ञानिक विश्लेषण।')
+        : 'Rigorous calculation of birth and destiny numbers grounded in timeless Vedic tradition.'
     },
     {
       num: '03',
-      title: lang === 'hi' ? 'आत्मविश्वास एवं आंतरिक बल' : 'Confidence & Peace',
-      desc:
-        lang === 'hi'
-          ? 'किसी पर निर्भर होने के बजाय, अपने विवेक और पूरे आत्मविश्वास से सही फैसले लेना।'
-          : 'Making confident life decisions with calm courage instead of fear or dependency.'
+      title: bioLang === 'hi'
+        ? (aboutContent?.pillar3_title || 'सकारात्मक रूपांतरण (Conscious Transformation)')
+        : 'Conscious Transformation',
+      desc: bioLang === 'hi'
+        ? (aboutContent?.pillar3_desc || 'व्यावहारिक, सात्विक एवं भय-मुक्त मार्गदर्शन जो जीवन में स्थाई शांति और सफलता लाए।')
+        : 'Practical, fear-free remedies empowering you to take charge of your life with calm courage.'
     }
   ];
 
@@ -78,7 +86,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ lang, onBookClick })
                 onClick={() => setShowLightbox(true)}
               >
                 <img
-                  src={poojaAuthenticPhoto}
+                  src={displayPhoto}
                   alt="Dr. Pooja Awasthi with Tarot & Healing Crystals"
                   className="w-full h-full object-cover object-top transition-transform duration-700 group-hover/img:scale-105"
                   onError={(e) => {
@@ -215,25 +223,19 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ lang, onBookClick })
               {bioLang === 'hi' ? (
                 <div className="space-y-4 text-sm font-normal text-[#29242E]/90 leading-relaxed">
                   <p className="text-base text-[#24152F] font-medium leading-relaxed">
-                    डॉ. पूजा अवस्थी एक समर्पित आध्यात्मिक मार्गदर्शिका हैं, जो वैदिक अंकशास्त्र, टैरो मार्गदर्शन, चक्र हीलिंग और जीवन कोचिंग के माध्यम से लोगों को जीवन में नई दिशा और आशा देती हैं।
+                    {aboutContent?.p1_hi || 'डॉ. पूजा अवस्थी एक समर्पित आध्यात्मिक मार्गदर्शिका हैं, जो वैदिक अंकशास्त्र, टैरो मार्गदर्शन, चक्र हीलिंग और जीवन कोचिंग के माध्यम से लोगों को जीवन में नई दिशा और आशा देती हैं।'}
                   </p>
                   <p>
-                    उनका मानना है कि हर व्यक्ति की जीवन यात्रा अनोखी है। जीवन में जब कठिन मोड़ आते हैं या बड़े फैसले लेने होते हैं, तो अक्सर मन उलझ जाता है। ऐसे समय में सही और सरल मार्गदर्शन आपको अपनी ताकत पहचानने, उलझनों को सुलझाने और सही रास्ता चुनने में मदद करता है।
-                  </p>
-                  <p>
-                    पूजा जी प्राचीन वैदिक ज्ञान और रोजमर्रा की व्यावहारिक समझ को साथ लेकर चलती हैं। वह आप पर कभी कोई फैसला नहीं थोपतीं, बल्कि आपको अपने जीवन को गहराई से समझने और पूरे आत्मविश्वास व शांति के साथ आगे बढ़ने में मदद करती हैं।
+                    {aboutContent?.p2_hi || 'उनका दृष्टिकोण प्राचीन भारतीय ज्ञान परंपरा और आधुनिक समझ का सामंजस्यपूर्ण समन्वय है। वे किसी भय या अंधविश्वास के बिना साधकों को स्पष्ट, व्यावहारिक और आत्मिक मार्गदर्शन प्रदान करती हैं।'}
                   </p>
                 </div>
               ) : (
                 <div className="space-y-4 text-sm font-normal text-[#29242E]/90 leading-relaxed">
                   <p className="text-base text-[#24152F] font-medium leading-relaxed">
-                    Dr. Pooja Awasthi offers caring spiritual guidance through Vedic Numerology, Tarot Reading, Energy Healing, and Life Coaching to help you see your life with clarity and hope.
+                    {aboutContent?.p1_en || 'Dr. Pooja Awasthi offers caring spiritual guidance through Vedic Numerology, Tarot Reading, Energy Healing, and Life Coaching to help you see your life with clarity and hope.'}
                   </p>
                   <p>
-                    She believes that every person’s journey is special. When life brings tough questions or big decisions, finding the right answers can feel overwhelming. Gentle, honest guidance helps you understand what is happening, discover your inner strengths, and choose the right path forward.
-                  </p>
-                  <p>
-                    Her approach blends timeless Vedic wisdom with practical, everyday advice. She never tells you what you 'must' do. Instead, she helps you understand yourself better, weigh your choices calmly, and move forward with peace and confidence.
+                    {aboutContent?.p2_en || 'Her approach blends timeless Vedic wisdom with practical, everyday advice. She never tells you what you "must" do. Instead, she helps you understand yourself better, weigh your choices calmly, and move forward with peace and confidence.'}
                   </p>
                 </div>
               )}

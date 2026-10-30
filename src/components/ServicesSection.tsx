@@ -4,6 +4,7 @@ import { CHAKRAS_DATA, ChakraItem } from '../data/chakrasData';
 import { ArrowRight, Check, Clock, Sparkles, X, ChevronRight, Shield, Layers, Sun } from 'lucide-react';
 import { getTranslation } from '../data/translations';
 import { ChakraAuraVisualizer } from './ChakraAuraVisualizer';
+import { useSiteContent } from '../utils/siteContentContext';
 
 interface ServicesSectionProps {
   lang: string;
@@ -15,10 +16,31 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ lang, onSelect
   const [selectedServiceModal, setSelectedServiceModal] = useState<CoreService | null>(null);
   const [catalogFilter, setCatalogFilter] = useState<'all' | 'healing' | 'numerology' | 'therapy' | 'regression'>('all');
   const t = getTranslation(lang);
+  const { siteContent } = useSiteContent();
+
+  const currentCatalog: CatalogServiceItem[] = siteContent?.services && siteContent.services.length > 0
+    ? siteContent.services.map((s, idx) => ({
+        id: s.id || `srv-${idx + 1}`,
+        number: s.number || (idx + 1),
+        title: s.title_hi || s.title,
+        title_en: s.title,
+        category: (s.category || 'numerology') as 'healing' | 'numerology' | 'therapy' | 'regression',
+        categoryLabel_hi: s.categoryLabel_hi || 'वैदिक सेवा',
+        categoryLabel_en: s.category || 'Vedic Service',
+        badge: s.badge,
+        badge_en: s.badge,
+        description: s.description || '',
+        description_en: s.description || '',
+        fee: s.fee ?? 5100,
+        feeFormatted: s.feeFormatted || `₹${(s.fee ?? 5100).toLocaleString()}`,
+        duration: s.duration || '60 मिनट',
+        duration_en: s.duration || '60 mins'
+      }))
+    : CATALOG_SERVICES;
 
   const filteredCatalog = catalogFilter === 'all'
-    ? CATALOG_SERVICES
-    : CATALOG_SERVICES.filter(item => item.category === catalogFilter);
+    ? currentCatalog
+    : currentCatalog.filter(item => item.category === catalogFilter);
 
   return (
     <section id="services" className="py-20 md:py-28 bg-[#FBF8F2] text-[#29242E] relative border-t border-[#EAE2F4] overflow-hidden">

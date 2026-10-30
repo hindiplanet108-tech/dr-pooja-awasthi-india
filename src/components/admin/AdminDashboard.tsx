@@ -19,7 +19,7 @@ import {
 import { DashboardStats, getDashboardStats, CMSPage, deletePage } from '../../utils/cmsApi';
 
 interface AdminDashboardProps {
-  onNavigateTab: (tab: 'dashboard' | 'pages' | 'create-page' | 'media' | 'settings') => void;
+  onNavigateTab: (tab: 'dashboard' | 'site-editor' | 'pages' | 'create-page' | 'media' | 'settings') => void;
   onEditPage: (pageId: string) => void;
   onPreviewPage: (slug: string) => void;
   lang?: string;
@@ -89,25 +89,32 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
           </h1>
           <p className="text-xs text-[#EAE2F4]/70">
             {lang === 'hi'
-              ? 'बिना कोडिंग के नए पेज, चित्र, वीडियो एवं वैदिक लेख प्रकाशित करें।'
-              : 'Create and publish custom pages, photos, videos, and spiritual articles without code.'}
+              ? 'बिना कोडिंग के पूरी वेबसाइट के टेक्स्ट, फ़ोटो, वीडियो व नए पेज सीधे यहाँ से बदलें।'
+              : 'Directly edit website text, photos, videos, and dynamic pages without coding.'}
           </p>
         </div>
 
         <div className="flex flex-wrap items-center gap-2.5 relative z-10">
           <button
-            onClick={() => onNavigateTab('create-page')}
+            onClick={() => onNavigateTab('site-editor')}
             className="px-4 py-2.5 rounded-xl bg-gradient-to-r from-[#D6B574] via-[#eedca2] to-[#D6B574] text-[#1c0f26] font-bold text-xs tracking-wide shadow-lg shadow-[#D6B574]/20 hover:brightness-105 active:scale-95 transition-all flex items-center gap-2 cursor-pointer"
           >
-            <PlusCircle size={16} />
-            <span>{lang === 'hi' ? 'नया पेज बनाएँ' : 'Create New Page'}</span>
+            <Sparkles size={16} />
+            <span>{lang === 'hi' ? 'मुख्य वेबसाइट संपादक' : 'Edit Website Sections'}</span>
+          </button>
+          <button
+            onClick={() => onNavigateTab('create-page')}
+            className="px-4 py-2.5 rounded-xl bg-white/10 hover:bg-white/15 border border-[#D6B574]/40 text-white font-semibold text-xs tracking-wide transition-all flex items-center gap-2 cursor-pointer"
+          >
+            <PlusCircle size={16} className="text-[#D6B574]" />
+            <span>{lang === 'hi' ? 'नया पेज बनाएँ' : 'Create Page'}</span>
           </button>
           <button
             onClick={() => onNavigateTab('media')}
             className="px-4 py-2.5 rounded-xl bg-white/10 hover:bg-white/15 border border-[#D6B574]/40 text-white font-semibold text-xs tracking-wide transition-all flex items-center gap-2 cursor-pointer"
           >
             <ImageIcon size={16} className="text-[#D6B574]" />
-            <span>{lang === 'hi' ? 'मीडिया लाइब्रेरी' : 'Media Library'}</span>
+            <span>{lang === 'hi' ? 'मीडिया लाइब्रेरी' : 'Media'}</span>
           </button>
           <button
             onClick={fetchStats}
@@ -227,7 +234,29 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
       </div>
 
       {/* Quick Action Feature Banners */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div 
+          onClick={() => onNavigateTab('site-editor')}
+          className="p-5 rounded-2xl bg-[#D6B574]/10 border border-[#D6B574]/40 hover:border-[#D6B574] hover:bg-[#D6B574]/20 transition-all cursor-pointer group flex items-start gap-4 shadow-lg"
+        >
+          <div className="w-12 h-12 rounded-xl bg-gradient-to-tr from-[#D6B574] to-[#eedca2] text-[#1c0f26] flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform shadow-md">
+            <Sparkles size={22} />
+          </div>
+          <div className="space-y-1">
+            <div className="flex items-center gap-1.5">
+              <h3 className="font-cinzel text-sm font-bold text-white group-hover:text-[#D6B574] transition-colors">
+                {lang === 'hi' ? 'मुख्य वेबसाइट संपादक' : 'Website Sections'}
+              </h3>
+              <span className="text-[9px] px-1.5 py-0.2 bg-[#D6B574] text-[#1c0f26] font-bold rounded-full">Live</span>
+            </div>
+            <p className="text-xs text-[#EAE2F4]/70 line-clamp-2">
+              {lang === 'hi'
+                ? 'Hero, About, 11 सेवाएँ, वीडियो, टेस्टिमोनियल, FAQ और बैंक UPI विवरण बदलें।'
+                : 'Directly edit Hero, About, 11 Services, Video, Testimonials, FAQ & Bank UPI.'}
+            </p>
+          </div>
+        </div>
+
         <div 
           onClick={() => onNavigateTab('create-page')}
           className="p-5 rounded-2xl bg-white/5 border border-[#D6B574]/20 hover:border-[#D6B574]/60 hover:bg-white/[0.08] transition-all cursor-pointer group flex items-start gap-4"
@@ -241,7 +270,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
             </h3>
             <p className="text-xs text-[#EAE2F4]/70 line-clamp-2">
               {lang === 'hi'
-                ? 'हेडिंग, पैराग्राफ, इमेज गैलरी और यूट्यूब वीडियो जोड़कर मनचाहा पेज तैयार करें।'
+                ? 'हेडिंग, पैराग्राफ, इमेज गैलरी और यूट्यूब वीडियो जोड़कर नए कस्टम पेज बनाएँ।'
                 : 'Compose rich content blocks, galleries, and video embeds easily.'}
             </p>
           </div>

@@ -4,6 +4,7 @@ import { getStoredMedia, saveStoredMedia } from '../utils/photoStorage';
 import { getTranslation } from '../data/translations';
 import { CelestialStarfield } from './CelestialStarfield';
 import poojaAuthenticPhoto from '../assets/images/pooja_awasthi_portrait.jpeg';
+import { useSiteContent } from '../utils/siteContentContext';
 
 interface HeroProps {
   lang: string;
@@ -20,6 +21,8 @@ export const Hero: React.FC<HeroProps> = ({
   onOpenTariff,
   onCalculateVedic
 }) => {
+  const { siteContent } = useSiteContent();
+  const heroContent = siteContent?.hero;
   const [photoUrl, setPhotoUrl] = useState<string>(poojaAuthenticPhoto);
   const [showLightbox, setShowLightbox] = useState(false);
   const [isUploading, setIsUploading] = useState(false);
@@ -64,6 +67,14 @@ export const Hero: React.FC<HeroProps> = ({
     }
   };
 
+  const displayPhoto = heroContent?.portrait_photo || photoUrl;
+  const displayHeadline1 = lang === 'hi' ? (heroContent?.headline_hi || t.heroHeadline1) : (heroContent?.headline_en || t.heroHeadline1);
+  const displayHeadline2 = lang === 'hi' ? (heroContent?.motto_hi || t.heroHeadline2) : (heroContent?.motto_en || t.heroHeadline2);
+  const displayDesc = lang === 'hi' ? (heroContent?.desc_hi || t.heroDesc) : (heroContent?.desc_en || t.heroDesc);
+  const displayFee = heroContent?.fee_badge || '₹5,100';
+  const displayCta = lang === 'hi' ? (heroContent?.cta_primary_hi || t.bookBtn) : (heroContent?.cta_primary_en || t.bookBtn);
+  const displayBadge = lang === 'hi' ? (heroContent?.badge_text_hi || '★ 40+ राष्ट्रीय सम्मान व पावन दीर्घा') : (heroContent?.badge_text_en || '★ 40+ National Honors & Archive');
+
   return (
     <section className="relative pt-32 pb-16 md:pt-38 md:pb-24 overflow-hidden bg-[#24152F] text-white">
       {/* Background celestial sacred geometry */}
@@ -94,21 +105,21 @@ export const Hero: React.FC<HeroProps> = ({
               <span aria-hidden="true">·</span>
               <a href="#honors" className="hover:underline flex items-center gap-1">
                 <Trophy size={13} />
-                <span>{lang === 'hi' ? '40+ राष्ट्रीय सम्मान व पावन दीर्घा' : '40+ National Honors & Archive'}</span>
+                <span>{displayBadge}</span>
               </a>
               <span aria-hidden="true">·</span>
               <span>{lang === 'hi' ? 'गोपनीय व पावन संवाद' : '1-on-1 Sanctuary'}</span>
             </div>
 
             <h1 className="font-cormorant text-4xl sm:text-5xl lg:text-6xl font-light text-white leading-tight tracking-tight text-balance">
-              {t.heroHeadline1} <br />
+              {displayHeadline1} <br />
               <span className="italic font-normal bg-gradient-to-r from-[#D6B574] via-[#eedbb3] to-[#D6B574] bg-clip-text text-transparent">
-                {t.heroHeadline2}
+                {displayHeadline2}
               </span>
             </h1>
 
             <p className="text-base sm:text-lg text-[#EAE2F4]/85 max-w-2xl mx-auto lg:mx-0 font-light leading-relaxed">
-              {t.heroDesc}
+              {displayDesc}
             </p>
 
             {/* CTAs */}
@@ -118,7 +129,7 @@ export const Hero: React.FC<HeroProps> = ({
                 type="button"
                 className="w-full sm:w-auto px-7 py-3.5 bg-gradient-to-r from-[#D6B574] via-[#e2c78a] to-[#D6B574] hover:brightness-105 text-[#24152F] font-bold text-xs uppercase tracking-wider rounded-md transition-all shadow-lg hover:shadow-[#D6B574]/30 hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2"
               >
-                <span>{t.bookBtn}</span>
+                <span>{displayCta}</span>
                 <ArrowRight size={15} />
               </button>
 
@@ -169,7 +180,7 @@ export const Hero: React.FC<HeroProps> = ({
               {/* Main portrait container */}
               <div className="relative rounded-xl overflow-hidden bg-[#24152F] border border-[#D6B574]/60 shadow-2xl aspect-[3/4]">
                 <img
-                  src={photoUrl}
+                  src={displayPhoto}
                   alt="Dr. Pooja Awasthi - Spiritual Guide & Vedic Numerologist"
                   className="w-full h-full object-cover object-top transition-transform duration-700 group-hover/frame:scale-105 cursor-pointer"
                   onClick={() => setShowLightbox(true)}
@@ -245,7 +256,7 @@ export const Hero: React.FC<HeroProps> = ({
             </div>
           </div>
           <div className="text-center p-3 border-r border-[#D6B574]/15 last:border-0">
-            <div className="font-cinzel text-xl md:text-2xl font-bold text-[#D6B574] tabular-nums">₹5,100</div>
+            <div className="font-cinzel text-xl md:text-2xl font-bold text-[#D6B574] tabular-nums">{displayFee}</div>
             <div className="text-xs text-[#EAE2F4]/80 mt-1">
               {t.feeBadge}
             </div>

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { X, Copy, Check, QrCode, ShieldCheck, ArrowRight, MessageSquare, Building2, Smartphone } from 'lucide-react';
+import { useSiteContent } from '../utils/siteContentContext';
 
 interface BankUpiModalProps {
   isOpen: boolean;
@@ -9,19 +10,22 @@ interface BankUpiModalProps {
 
 export const BankUpiModal: React.FC<BankUpiModalProps> = ({ isOpen, onClose, lang = 'en' }) => {
   const [copiedField, setCopiedField] = useState<string | null>(null);
+  const { siteContent } = useSiteContent();
 
   if (!isOpen) return null;
 
+  const bankInfo = siteContent?.bankUpi;
   const paymentData = {
-    accountHolder: 'Dr. Pooja Awasthi',
-    bankName: 'State Bank of India (SBI)',
-    branch: 'Dehradun Main Branch, Uttarakhand',
-    accountNumber: '38920194857',
-    ifscCode: 'SBIN0001234',
+    accountHolder: bankInfo?.account_name || 'Dr. Pooja Awasthi',
+    bankName: bankInfo?.bank_name || 'State Bank of India (SBI)',
+    branch: bankInfo?.branch || 'Dehradun Main Branch, Uttarakhand',
+    accountNumber: bankInfo?.account_number || '39876543210',
+    ifscCode: bankInfo?.ifsc_code || 'SBIN0001234',
     accountType: 'Savings Account',
-    upiId: '9105731969@okaxis',
-    phone: '+91 91057 31969',
-    consultancyFee: '₹5,100'
+    upiId: bankInfo?.upi_id || '9105731969@upi',
+    phone: siteContent?.contact?.phone || '+91 91057 31969',
+    consultancyFee: siteContent?.contact?.consultation_fee || '₹5,100',
+    qrImage: bankInfo?.qr_code_image || null
   };
 
   const copyToClipboard = (text: string, fieldName: string) => {

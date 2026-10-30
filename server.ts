@@ -27,6 +27,7 @@ const AUTH_FILE = path.join(DATA_DIR, 'auth.json');
 const PAGES_FILE = path.join(DATA_DIR, 'pages.json');
 const MEDIA_FILE = path.join(DATA_DIR, 'media.json');
 const SETTINGS_FILE = path.join(DATA_DIR, 'settings.json');
+const SITE_CONTENT_FILE = path.join(DATA_DIR, 'siteContent.json');
 
 // Helper functions for JSON storage
 function readJsonFile<T>(filePath: string, defaultValue: T): T {
@@ -627,7 +628,27 @@ app.put('/api/settings', requireAuth, (req: AuthRequest, res: Response) => {
 });
 
 // ==========================================
-// 6. VITE & STATIC PRODUCTION MOUNTING
+// 6. SITE CONTENT APIS (HOMEPAGE SECTIONS)
+// ==========================================
+app.get('/api/site-content', (_req: Request, res: Response) => {
+  const content = readJsonFile(SITE_CONTENT_FILE, {});
+  return res.json(content);
+});
+
+app.put('/api/site-content', requireAuth, (req: AuthRequest, res: Response) => {
+  const current = readJsonFile<any>(SITE_CONTENT_FILE, {});
+  const updates = req.body;
+  const merged = {
+    ...current,
+    ...updates,
+    updatedAt: new Date().toISOString(),
+  };
+  writeJsonFile(SITE_CONTENT_FILE, merged);
+  return res.json(merged);
+});
+
+// ==========================================
+// 7. VITE & STATIC PRODUCTION MOUNTING
 // ==========================================
 async function startServer() {
   const isProduction = process.env.NODE_ENV === 'production';

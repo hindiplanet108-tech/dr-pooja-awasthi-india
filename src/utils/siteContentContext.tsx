@@ -1,0 +1,337 @@
+import React, { createContext, useContext, useState, useEffect } from 'react';
+import { SiteContent, getSiteContent, updateSiteContent } from './cmsApi';
+
+const defaultSiteContent: SiteContent = {
+  hero: {
+    headline_hi: "आध्यात्मिक पथ प्रदर्शन एवं वैदिक मार्गदर्शन",
+    headline_en: "Spiritual Life Guidance & Vedic Numerology",
+    motto_hi: "“अपनी राह पहचानें। अपना जीवन रूपांतरित करें।”",
+    motto_en: "“Discover Your Path. Transform Your Life.”",
+    desc_hi: "वैदिक अंकशास्त्र, टैरो रीडिंग, प्राणिक ऊर्जा उपचार एवं चक्र संतुलन का पावन संगम। डॉ. पूजा अवस्थी द्वारा व्यक्तिगत, गोपनीय एवं शास्त्रीय परामर्श।",
+    desc_en: "Vedic Numerology, Intuitive Tarot Wisdom, Energy Healing, and Life Coaching with Dr. Pooja Awasthi.",
+    portrait_photo: "/assets/awards/pooja_portrait.jpeg",
+    badge_text_hi: "★ 40+ राष्ट्रीय सम्मान एवं लाइफटाइम अचीवमेंट अलंकृत",
+    badge_text_en: "★ 40+ National Honors & Lifetime Achievement Conferred",
+    cta_primary_hi: "परामर्श स्लॉट बुक करें",
+    cta_primary_en: "Book Consultation",
+    fee_badge: "₹5,100"
+  },
+  about: {
+    title_hi: "डॉ. पूजा अवस्थी के विषय में",
+    title_en: "About Dr. Pooja Awasthi",
+    subtitle_hi: "आजीवन उपलब्धि अलंकृत ज्योतिषाचार्य, वैदिक अंकशास्त्री एवं प्राणिक हीलर",
+    subtitle_en: "Lifetime Achievement Conferred Astrologer, Numerologist & Energy Healer",
+    p1_hi: "डॉ. पूजा अवस्थी एक प्रतिष्ठित आध्यात्मिक मार्गदर्शिका, वैदिक अंकशास्त्री और प्राणिक हीलर हैं, जिन्हें ज्योतिष और भारतीय ज्ञान परंपरा (IKS) में अतुलनीय आजीवन योगदान हेतु आईआईएमटी विश्वविद्यालय द्वारा 'लाइफटाइम अचीवमेंट अवार्ड' से सम्मानित किया गया है।",
+    p1_en: "Dr. Pooja Awasthi is an acclaimed spiritual mentor, Vedic numerologist, and pranic healer honored with the Lifetime Achievement Award by IIMT University for distinguished lifelong contributions to Indian Knowledge Systems.",
+    p2_hi: "उनका दृष्टिकोण प्राचीन भारतीय ज्ञान परंपरा और आधुनिक समझ का सामंजस्यपूर्ण समन्वय है। वे किसी भय या अंधविश्वास के बिना साधकों को स्पष्ट, व्यावहारिक और आत्मिक मार्गदर्शन प्रदान करती हैं।",
+    p2_en: "Her approach blends timeless Vedic traditions with compassionate understanding, empowering seekers with calm clarity, practical remedies, and genuine peace without fear or dogma.",
+    photo_url: "/assets/awards/IMMT.jpeg",
+    pillar1_title: "सहानुभूतिपूर्ण श्रवण (Compassionate Listening)",
+    pillar1_desc: "बिना किसी पूर्वग्रह के आपकी चिंताओं को ध्यानपूर्वक सुनना और मानसिक शांति प्रदान करना।",
+    pillar2_title: "वैदिक प्रामाणिकता (Authentic Vedic Insight)",
+    pillar2_desc: "शास्त्रीय पाराशरी, अंकशास्त्रीय व चक्र सूत्रों का सूक्ष्म वैज्ञानिक विश्लेषण।",
+    pillar3_title: "सकारात्मक रूपांतरण (Conscious Transformation)",
+    pillar3_desc: "व्यावहारिक, सात्विक एवं भय-मुक्त मार्गदर्शन जो जीवन में स्थाई शांति और सफलता लाए।"
+  },
+  videoSpotlight: {
+    heading_hi: "आईआईएमटी विश्वविद्यालय महासमागम - शोध व्याख्यान",
+    heading_en: "Keynote Address at IIMT Jyotish Mahasamagam",
+    video_url: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    caption_hi: "आईआईएमटी विश्वविद्यालय परिसर मेरठ में देश-विदेश के 90+ विद्वानों के समक्ष डॉ. पूजा अवस्थी का विशेष संबोधन।",
+    caption_en: "Address by Dr. Pooja Awasthi before 90+ eminent Vedic scholars at IIMT University Conclave."
+  },
+  services: [
+    {
+      id: "srv-1",
+      number: 1,
+      title: "Vedic Numerology Analysis (Mulank & Bhagyank)",
+      title_hi: "वैदिक अंकशास्त्र विश्लेषण (मूलांक एवं भाग्यांक)",
+      fee: 5100,
+      feeFormatted: "₹5,100",
+      duration: "60–90 मिनट",
+      category: "numerology",
+      categoryLabel_hi: "वैदिक अंकशास्त्र",
+      badge: "सर्वाधिक लोकप्रिय",
+      description: "अपनी जन्मतिथि और नाम के अक्षरों का सूक्ष्म विश्लेषण। करियर, विवाह, व्यापार व जीवन की अनुकूल दिशा।"
+    },
+    {
+      id: "srv-2",
+      number: 2,
+      title: "Intuitive Tarot Oracle Consultation",
+      title_hi: "टैरो कार्ड परामर्श एवं अंतर्ज्ञान मार्गदर्शन",
+      fee: 5100,
+      feeFormatted: "₹5,100",
+      duration: "45–60 मिनट",
+      category: "numerology",
+      categoryLabel_hi: "टैरो मार्गदर्शन",
+      badge: "त्वरित स्पष्टता",
+      description: "वर्तमान परिस्थितियों, मानसिक उलझनों और रिश्तों के सवालों पर स्पष्ट आध्यात्मिक दृष्टिकोण।"
+    },
+    {
+      id: "srv-3",
+      number: 3,
+      title: "7 Chakras Aura Cleansing & Alignment",
+      title_hi: "7 चक्र एवं औरा शुद्धि अनुष्ठान",
+      fee: 5100,
+      feeFormatted: "₹5,100",
+      duration: "60 मिनट",
+      category: "healing",
+      categoryLabel_hi: "ऊर्जा चिकित्सा",
+      badge: "गहन शांति",
+      description: "मूलाधार से सहस्रार तक सातों ऊर्जा केंद्रों का संतुलन, नकारात्मकता निवारण व प्राणिक उपचार।"
+    },
+    {
+      id: "srv-4",
+      number: 4,
+      title: "Negative Energy Removal & Salt Therapy",
+      title_hi: "नकारात्मक ऊर्जा से मुक्ति एवं नमक चिकित्सा",
+      fee: 5100,
+      feeFormatted: "₹5,100",
+      duration: "45 मिनट",
+      category: "therapy",
+      categoryLabel_hi: "शुद्धि चिकित्सा",
+      badge: "प्राकृतिक शुद्धि",
+      description: "घर, कार्यस्थल और व्यक्तिगत औरा से भारीपन व नकारात्मक तरंगों को हटाने हेतु नमक शुद्धि विधान।"
+    },
+    {
+      id: "srv-5",
+      number: 5,
+      title: "Watch Analysis & Clock Therapy Consultation",
+      title_hi: "घड़ी का विश्लेषण एवं चिकित्सीय परामर्श",
+      fee: 5100,
+      feeFormatted: "₹5,100",
+      duration: "45 मिनट",
+      category: "therapy",
+      categoryLabel_hi: "समय विज्ञान",
+      badge: "अनोखा शोध",
+      description: "आपकी कलाई घड़ी का डायल, रंग व पट्टा आपके समय और जीवन चक्र को कैसे प्रभावित करता है उसका विश्लेषण।"
+    },
+    {
+      id: "srv-6",
+      number: 6,
+      title: "Pranic Energy Healing Session",
+      title_hi: "प्राणिक ऊर्जा उपचार सत्र",
+      fee: 5100,
+      feeFormatted: "₹5,100",
+      duration: "60 मिनट",
+      category: "healing",
+      categoryLabel_hi: "प्राणिक हीलिंग",
+      badge: "दूरस्थ हीलिंग",
+      description: "स्पर्श-रहित प्राणिक ऊर्जा चिकित्सा द्वारा शारीरिक व मानसिक तनाव से मुक्ति।"
+    },
+    {
+      id: "srv-7",
+      number: 7,
+      title: "Crystal & Gemstone Resonance Guidance",
+      title_hi: "क्रिस्टल एवं सिद्ध रत्न ऊर्जा चिकित्सा",
+      fee: 5100,
+      feeFormatted: "₹5,100",
+      duration: "45 मिनट",
+      category: "therapy",
+      categoryLabel_hi: "रत्न विज्ञान",
+      badge: "सिद्ध प्राण-प्रतिष्ठा",
+      description: "आपकी ऊर्जा आवृत्ति के अनुसार सही प्राकृतिक क्रिस्टल व नवरत्न धारण करने का परामर्श।"
+    },
+    {
+      id: "srv-8",
+      number: 8,
+      title: "Vastu Harmonization & Spatial Energy",
+      title_hi: "वास्तु दोष निवारण एवं औरा शुद्धि अनुष्ठान",
+      fee: 5100,
+      feeFormatted: "₹5,100",
+      duration: "60–90 मिनट",
+      category: "healing",
+      categoryLabel_hi: "वास्तु विज्ञान",
+      badge: "बिना तोड़-फोड़",
+      description: "घर और प्रतिष्ठान में पंचतत्व संतुलन और सकारात्मक ऊर्जा का निर्बाध प्रवाह।"
+    },
+    {
+      id: "srv-9",
+      number: 9,
+      title: "Relationship Harmony & Soul Connection",
+      title_hi: "दांपत्य एवं संबंध सामंजस्य परामर्श",
+      fee: 5100,
+      feeFormatted: "₹5,100",
+      duration: "60 मिनट",
+      category: "numerology",
+      categoryLabel_hi: "संबंध मार्गदर्शन",
+      badge: "पारिवारिक शांति",
+      description: "अंक और ऊर्जा मिलान द्वारा वैवाहिक जीवन और संबंधों में प्रेम व समझ की पुनर्स्थापना।"
+    },
+    {
+      id: "srv-10",
+      number: 10,
+      title: "Karma Cord Cutting & Emotional Liberation",
+      title_hi: "कार्मिक कॉर्ड कटिंग एवं भावनात्मक मुक्ति",
+      fee: 5100,
+      feeFormatted: "₹5,100",
+      duration: "60 मिनट",
+      category: "healing",
+      categoryLabel_hi: "आत्मिक शुद्धि",
+      badge: "गहरी मुक्ति",
+      description: "अतीत के कष्टकारी बंधनों और नकारात्मक यादों से आत्मिक ऊर्जा को मुक्त करने का सत्र।"
+    },
+    {
+      id: "srv-11",
+      number: 11,
+      title: "Past Life Regression Exploration",
+      title_hi: "पूर्व जन्म स्मृति अन्वेषण (PLR)",
+      fee: 5100,
+      feeFormatted: "₹5,100",
+      duration: "90–120 मिनट",
+      category: "regression",
+      categoryLabel_hi: "गहन चेतना",
+      badge: "विशेष सत्र",
+      description: "अवचेतन मन की गहराइयों में जाकर पूर्व संचित कर्मों और जीवन के मूल प्रश्नों का समाधान।"
+    }
+  ],
+  testimonials: [
+    {
+      id: "test-1",
+      name: "अनन्या शर्मा",
+      location: "देहरादून, भारत",
+      service: "वैदिक अंकशास्त्र एवं जीवन मार्गदर्शन",
+      quote: "डॉ. पूजा जी का मूलांक और भाग्यांक विश्लेषण अविश्वसनीय रूप से सटीक था। उनके दिए व्यावहारिक उपायों से मुझे 3 महीने के भीतर वरिष्ठ नेतृत्व का उच्च पद प्राप्त हुआ।",
+      rating: 5,
+      date: "फरवरी 2026"
+    },
+    {
+      id: "test-2",
+      name: "विक्रम मल्होत्रा",
+      location: "मुंबई, भारत",
+      service: "टैरो मार्गदर्शन एवं ऊर्जा उपचार",
+      quote: "मैं अपने जीवन के सबसे कठिन भावनात्मक दौर में डॉ. पूजा जी के पास आया था। उनके दूरस्थ ऊर्जा उपचार ने मेरी चिंता को पूरी तरह शांत कर दिया।",
+      rating: 5,
+      date: "जनवरी 2026"
+    },
+    {
+      id: "test-3",
+      name: "प्रियंका सेन",
+      location: "बेंगलुरु, भारत",
+      service: "जीवन मार्गदर्शन एवं चक्र संतुलन",
+      quote: "डॉ. पूजा अवस्थी में आध्यात्मिक गहराई और व्यावहारिक दृष्टिकोण का अद्भुत संतुलन है। उन्होंने मुझे ऐसी स्वस्थ सीमाएं तय करने में मदद की जिससे मेरे पारिवारिक रिश्ते संवर गए।",
+      rating: 5,
+      date: "दिसंबर 2025"
+    },
+    {
+      id: "test-4",
+      name: "राजेश एवं मीरा वर्मा",
+      location: "जयपुर, भारत",
+      service: "दांपत्य संबंध अंकशास्त्र",
+      quote: "विवाह के 7 वर्षों बाद भी हम लगातार तनाव में थे। पूजा जी के सामंजस्य सत्र ने हमारे बीच समझ और प्रेम की नई धारा प्रवाहित कर दी।",
+      rating: 5,
+      date: "नवंबर 2025"
+    }
+  ],
+  faqs: [
+    {
+      id: "faq-1",
+      q: "पूजा जी के साथ ऑनलाइन परामर्श कैसे होता है?",
+      a: "सत्र बहुत आसानी से गूगल मीट, ज़ूम या व्हाट्सएप वीडियो/ऑडियो कॉल द्वारा होते हैं। बुकिंग के बाद आपको समय और लिंक मिल जाता है। ऑनलाइन सत्र भी आमने-सामने की तरह ही व्यक्तिगत और असरदार होते हैं।"
+    },
+    {
+      id: "faq-2",
+      q: "वैदिक अंकशास्त्र के लिए किन जानकारियों की जरूरत होती है?",
+      a: "इसके लिए केवल आपकी जन्मतिथि (दिन, महीना, साल) और आपके नाम की सही स्पेलिंग चाहिए। यदि जन्म का समय भी पता हो, तो और भी अच्छा है।"
+    },
+    {
+      id: "faq-3",
+      q: "टैरो कार्ड रीडिंग और केवल भविष्य बताने में क्या फर्क है?",
+      a: "टैरो किसी डर या अंधविश्वास पर आधारित नहीं है। यह आपके मन, विचारों और वर्तमान स्थिति का एक सच्चा दर्पण है जो आपको सही फैसले लेने में मदद करता है।"
+    },
+    {
+      id: "faq-4",
+      q: "क्या दूर से की जाने वाली हीलिंग (डिस्टेंस हीलिंग) काम करती है?",
+      a: "हाँ। सकारात्मक ऊर्जा और प्रार्थना की कोई भौतिक सीमा नहीं होती। ध्यान और संकल्प के माध्यम से आप घर बैठे ही मन की शांति और हल्कापन महसूस कर सकते हैं।"
+    }
+  ],
+  contact: {
+    phone: "+91 91057 31969",
+    whatsapp: "919105731969",
+    email: "astro.poojaofficial@gmail.com",
+    consultation_fee: "₹5,100",
+    hours: "प्रातः 10:00 से सायं 7:00 बजे (सोम - शनि)",
+    address: "देहरादून, उत्तराखंड • विश्वभर में ऑनलाइन परामर्श"
+  },
+  bankUpi: {
+    bank_name: "State Bank of India (SBI)",
+    account_name: "Dr. Pooja Awasthi",
+    account_number: "39876543210",
+    ifsc_code: "SBIN0001234",
+    branch: "Dehradun Main Branch, Uttarakhand",
+    upi_id: "9105731969@upi",
+    qr_code_image: "/assets/awards/pooja_portrait.jpeg"
+  }
+};
+
+interface SiteContentContextType {
+  siteContent: SiteContent;
+  loading: boolean;
+  refreshSiteContent: () => Promise<void>;
+  updateSiteContentSection: (updates: Partial<SiteContent>) => Promise<SiteContent>;
+}
+
+const SiteContentContext = createContext<SiteContentContextType>({
+  siteContent: defaultSiteContent,
+  loading: false,
+  refreshSiteContent: async () => {},
+  updateSiteContentSection: async () => defaultSiteContent,
+});
+
+export const SiteContentProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const [siteContent, setSiteContent] = useState<SiteContent>(defaultSiteContent);
+  const [loading, setLoading] = useState<boolean>(true);
+
+  const fetchContent = async () => {
+    try {
+      setLoading(true);
+      const data = await getSiteContent();
+      if (data && data.hero) {
+        setSiteContent({
+          ...defaultSiteContent,
+          ...data,
+          hero: { ...defaultSiteContent.hero, ...(data.hero || {}) },
+          about: { ...defaultSiteContent.about, ...(data.about || {}) },
+          videoSpotlight: { ...defaultSiteContent.videoSpotlight, ...(data.videoSpotlight || {}) },
+          contact: { ...defaultSiteContent.contact, ...(data.contact || {}) },
+          bankUpi: { ...defaultSiteContent.bankUpi, ...(data.bankUpi || {}) },
+          services: data.services && data.services.length > 0 ? data.services : defaultSiteContent.services,
+          testimonials: data.testimonials && data.testimonials.length > 0 ? data.testimonials : defaultSiteContent.testimonials,
+          faqs: data.faqs && data.faqs.length > 0 ? data.faqs : defaultSiteContent.faqs,
+        });
+      }
+    } catch (e) {
+      console.warn('Could not load site content from API, using default content:', e);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchContent();
+  }, []);
+
+  const handleUpdate = async (updates: Partial<SiteContent>): Promise<SiteContent> => {
+    const updated = await updateSiteContent(updates);
+    setSiteContent((prev) => ({
+      ...prev,
+      ...updated,
+    }));
+    return updated;
+  };
+
+  return (
+    <SiteContentContext.Provider
+      value={{
+        siteContent,
+        loading,
+        refreshSiteContent: fetchContent,
+        updateSiteContentSection: handleUpdate,
+      }}
+    >
+      {children}
+    </SiteContentContext.Provider>
+  );
+};
+
+export const useSiteContent = () => useContext(SiteContentContext);

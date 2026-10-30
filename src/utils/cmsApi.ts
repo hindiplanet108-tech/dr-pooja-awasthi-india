@@ -383,3 +383,121 @@ export async function updateCMSSettings(settings: Partial<CMSSettings>): Promise
     body: JSON.stringify(settings),
   });
 }
+
+// ==========================================
+// SITE CONTENT TYPES & CLIENT CALLS
+// ==========================================
+
+export interface SiteHeroContent {
+  headline_hi: string;
+  headline_en: string;
+  motto_hi: string;
+  motto_en: string;
+  desc_hi: string;
+  desc_en: string;
+  portrait_photo: string;
+  badge_text_hi: string;
+  badge_text_en: string;
+  cta_primary_hi: string;
+  cta_primary_en: string;
+  fee_badge: string;
+}
+
+export interface SiteAboutContent {
+  title_hi: string;
+  title_en: string;
+  subtitle_hi: string;
+  subtitle_en: string;
+  p1_hi: string;
+  p1_en: string;
+  p2_hi: string;
+  p2_en: string;
+  photo_url: string;
+  pillar1_title: string;
+  pillar1_desc: string;
+  pillar2_title: string;
+  pillar2_desc: string;
+  pillar3_title: string;
+  pillar3_desc: string;
+}
+
+export interface SiteVideoSpotlight {
+  heading_hi: string;
+  heading_en: string;
+  video_url: string;
+  caption_hi: string;
+  caption_en: string;
+}
+
+export interface SiteServiceItem {
+  id: string;
+  number?: number;
+  title: string;
+  title_hi?: string;
+  fee?: number;
+  feeFormatted?: string;
+  duration?: string;
+  category?: string;
+  categoryLabel_hi?: string;
+  badge?: string;
+  description: string;
+  image?: string;
+}
+
+export interface SiteTestimonialItem {
+  id: string;
+  name: string;
+  location: string;
+  service: string;
+  quote: string;
+  rating: number;
+  date: string;
+}
+
+export interface SiteFaqItem {
+  id: string;
+  q: string;
+  a: string;
+}
+
+export interface SiteContactContent {
+  phone: string;
+  whatsapp: string;
+  email: string;
+  consultation_fee: string;
+  hours: string;
+  address: string;
+}
+
+export interface SiteBankUpiContent {
+  bank_name: string;
+  account_name: string;
+  account_number: string;
+  ifsc_code: string;
+  branch?: string;
+  upi_id: string;
+  qr_code_image: string;
+}
+
+export interface SiteContent {
+  hero: SiteHeroContent;
+  about: SiteAboutContent;
+  videoSpotlight: SiteVideoSpotlight;
+  services: SiteServiceItem[];
+  testimonials: SiteTestimonialItem[];
+  faqs: SiteFaqItem[];
+  contact: SiteContactContent;
+  bankUpi: SiteBankUpiContent;
+  updatedAt?: string;
+}
+
+export async function getSiteContent(): Promise<SiteContent> {
+  return cmsFetch<SiteContent>('/api/site-content');
+}
+
+export async function updateSiteContent(updates: Partial<SiteContent>): Promise<SiteContent> {
+  return cmsFetch<SiteContent>('/api/site-content', {
+    method: 'PUT',
+    body: JSON.stringify(updates),
+  });
+}

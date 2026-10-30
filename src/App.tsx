@@ -6,6 +6,7 @@ import { ServicesSection } from './components/ServicesSection';
 import { VedicCalculatorSection } from './components/VedicCalculatorSection';
 import { TarotOracleSection } from './components/TarotOracleSection';
 import { AwardsSection } from './components/AwardsSection';
+import { VideoSpotlightSection } from './components/VideoSpotlightSection';
 import { PricingConsultationSection } from './components/PricingConsultationSection';
 import { FaqSection } from './components/FaqSection';
 import { TestimonialsSection } from './components/TestimonialsSection';
@@ -22,14 +23,16 @@ import { AdminPageList } from './components/admin/AdminPageList';
 import { AdminPageBuilder } from './components/admin/AdminPageBuilder';
 import { AdminMediaLibrary } from './components/admin/AdminMediaLibrary';
 import { AdminSettings } from './components/admin/AdminSettings';
+import { AdminSiteEditor } from './components/admin/AdminSiteEditor';
+import { SiteContentProvider } from './utils/siteContentContext';
 import { isUserAuthenticated, CMSPage } from './utils/cmsApi';
 import { MessageSquare, ArrowUp, QrCode } from 'lucide-react';
 import { getTranslation } from './data/translations';
 
 type ViewMode = 'home' | 'tariff' | 'admin' | 'dynamic-page';
-type AdminTab = 'dashboard' | 'pages' | 'create-page' | 'media' | 'settings';
+type AdminTab = 'dashboard' | 'site-editor' | 'pages' | 'create-page' | 'media' | 'settings';
 
-export default function App() {
+function MainApp() {
   const [lang, setLang] = useState<string>('en');
   const [currentView, setCurrentView] = useState<ViewMode>('home');
   const [currentSlug, setCurrentSlug] = useState<string>('kundali-analysis');
@@ -229,6 +232,13 @@ export default function App() {
           />
         )}
 
+        {adminTab === 'site-editor' && (
+          <AdminSiteEditor
+            lang={lang}
+            onPreviewSite={() => navigateToView('home', '/')}
+          />
+        )}
+
         {adminTab === 'pages' && (
           <AdminPageList
             onCreatePage={() => {
@@ -348,6 +358,9 @@ export default function App() {
             {/* 7. 40+ National Awards, Conclaves & Honors */}
             <AwardsSection lang={lang} />
 
+            {/* 7b. Video Spotlight (Editable via Admin Panel) */}
+            <VideoSpotlightSection lang={lang} />
+
             {/* 8. Consultation Charges & 4-Step Process */}
             <PricingConsultationSection
               lang={lang}
@@ -442,5 +455,13 @@ export default function App() {
         </button>
       </div>
     </div>
+  );
+}
+
+export default function App() {
+  return (
+    <SiteContentProvider>
+      <MainApp />
+    </SiteContentProvider>
   );
 }

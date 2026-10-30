@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Phone, Mail, MessageSquare, Clock, Send, CheckCircle2, AlertCircle, ArrowUpRight } from 'lucide-react';
 import { getTranslation } from '../data/translations';
+import { useSiteContent } from '../utils/siteContentContext';
 
 interface ContactBookingSectionProps {
   lang: string;
@@ -11,13 +12,20 @@ export const ContactBookingSection: React.FC<ContactBookingSectionProps> = ({
   lang,
   preSelectedService
 }) => {
+  const { siteContent } = useSiteContent();
+  const contactInfo = siteContent?.contact;
+  const currentPhone = contactInfo?.phone || '+91 91057 31969';
+  const currentWhatsApp = contactInfo?.whatsapp || '919105731969';
+  const currentEmail = contactInfo?.email || 'astro.poojaofficial@gmail.com';
+  const currentHours = contactInfo?.hours || (lang === 'hi' ? 'प्रातः 10:00 से सायं 7:00 बजे (सोम - शनि)' : '10:00 AM – 7:00 PM IST (Mon - Sat)');
+
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
     email: '',
     dob: '',
     birthTime: '',
-    service: preSelectedService || 'Vedic Numerology (₹5,100)',
+    service: preSelectedService || `Vedic Numerology (${contactInfo?.consultation_fee || '₹5,100'})`,
     format: 'Video Call (Google Meet / WhatsApp Video)',
     message: ''
   });
@@ -45,7 +53,7 @@ export const ContactBookingSection: React.FC<ContactBookingSectionProps> = ({
     const text = encodeURIComponent(
       `Hello Dr. Pooja Awasthi,\n\nI would like to book a consultation.\n\nName: ${formData.name || 'Seeker'}\nPhone: ${formData.phone || ''}\nService: ${formData.service}\nDOB: ${formData.dob || 'To provide'}\nFormat: ${formData.format}\n\nKindly share available slots. Thank you!`
     );
-    window.open(`https://wa.me/919105731969?text=${text}`, '_blank');
+    window.open(`https://wa.me/${currentWhatsApp.replace(/[^0-9]/g, '')}?text=${text}`, '_blank');
   };
 
   return (
@@ -93,19 +101,17 @@ export const ContactBookingSection: React.FC<ContactBookingSectionProps> = ({
                 </div>
                 <div className="flex items-center justify-between">
                   <a
-                    href="https://wa.me/919105731969"
+                    href={`https://wa.me/${currentWhatsApp.replace(/[^0-9]/g, '')}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="font-cinzel text-lg sm:text-xl font-bold text-white group-hover:text-[#D6B574] transition-colors flex items-center gap-2"
                   >
-                    <span>+91 91057 31969</span>
+                    <span>{currentPhone}</span>
                     <ArrowUpRight size={16} />
                   </a>
                 </div>
                 <p className="text-xs text-[#EAE2F4]/70">
-                  {lang === 'hi'
-                    ? 'परामर्श समय: प्रातः 10:00 से सायं 7:00 बजे (सोम - शनि)'
-                    : 'Consultation Hours: 10:00 AM – 7:00 PM IST (Mon - Sat)'}
+                  {currentHours}
                 </p>
               </div>
 
@@ -116,16 +122,10 @@ export const ContactBookingSection: React.FC<ContactBookingSectionProps> = ({
                 </span>
                 <div>
                   <a
-                    href="mailto:astro.poojaofficial@gmail.com"
+                    href={`mailto:${currentEmail}`}
                     className="font-cinzel text-sm sm:text-base font-semibold text-white group-hover:text-[#D6B574] transition-colors block"
                   >
-                    astro.poojaofficial@gmail.com
-                  </a>
-                  <a
-                    href="mailto:connect@poojaawasthi.com"
-                    className="text-xs text-[#EAE2F4]/70 hover:text-white transition-colors"
-                  >
-                    connect@poojaawasthi.com
+                    {currentEmail}
                   </a>
                 </div>
               </div>
