@@ -37,10 +37,12 @@ function MainApp() {
   const [currentView, setCurrentView] = useState<ViewMode>('home');
   const [currentSlug, setCurrentSlug] = useState<string>('kundali-analysis');
 
-  // Admin Panel states
   const [isAdminLoggedIn, setIsAdminLoggedIn] = useState<boolean>(false);
   const [adminTab, setAdminTab] = useState<AdminTab>('dashboard');
   const [editingPageId, setEditingPageId] = useState<string | null>(null);
+  const [siteEditorInitialSection, setSiteEditorInitialSection] = useState<
+    'hero' | 'about' | 'services' | 'video' | 'testimonials' | 'faqs' | 'contact'
+  >('hero');
 
   // Modals & Booking State
   const [isLangModalOpen, setIsLangModalOpen] = useState(false);
@@ -234,6 +236,7 @@ function MainApp() {
 
         {adminTab === 'site-editor' && (
           <AdminSiteEditor
+            initialSection={siteEditorInitialSection}
             lang={lang}
             onPreviewSite={() => navigateToView('home', '/')}
           />
@@ -249,7 +252,21 @@ function MainApp() {
               setEditingPageId(id);
               setAdminTab('create-page');
             }}
+            onEditCoreSection={(sectionKey) => {
+              setSiteEditorInitialSection(sectionKey);
+              setAdminTab('site-editor');
+            }}
             onPreviewPage={(slug) => navigateToDynamicPage(slug)}
+            onPreviewSection={(sectionSlug) => {
+              navigateToView('home', '/');
+              setTimeout(() => {
+                if (sectionSlug.startsWith('#')) {
+                  scrollToSection(sectionSlug.replace('#', ''));
+                } else {
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+              }, 120);
+            }}
             lang={lang}
           />
         )}

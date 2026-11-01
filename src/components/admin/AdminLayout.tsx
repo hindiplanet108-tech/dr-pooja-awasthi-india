@@ -50,20 +50,20 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({
       badge: null,
     },
     {
+      id: 'pages',
+      label: lang === 'hi' ? 'वेबसाइट के सभी पेज' : 'All Website Pages',
+      icon: FileText,
+      badge: 'Core & Custom',
+    },
+    {
       id: 'site-editor',
-      label: lang === 'hi' ? 'वेबसाइट सामग्री संपादक' : 'Edit Website Sections',
+      label: lang === 'hi' ? 'सामग्री व फोटो संपादक' : 'Content & Photos Editor',
       icon: Sparkles,
       badge: 'Live',
     },
     {
-      id: 'pages',
-      label: lang === 'hi' ? 'विशेष/कस्टम पेज' : 'Custom Pages',
-      icon: FileText,
-      badge: null,
-    },
-    {
       id: 'create-page',
-      label: lang === 'hi' ? 'नया पेज बनाएँ' : 'Create Page',
+      label: lang === 'hi' ? 'नया पेज बनाएँ' : 'Create New Page',
       icon: PlusCircle,
       badge: '+',
     },
@@ -75,7 +75,7 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({
     },
     {
       id: 'settings',
-      label: lang === 'hi' ? 'सेटिंग्स व सुरक्षा' : 'Settings',
+      label: lang === 'hi' ? 'सेटिंग्स व सुरक्षा' : 'Settings & Security',
       icon: Settings,
       badge: null,
     },

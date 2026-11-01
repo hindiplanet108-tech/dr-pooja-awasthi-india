@@ -887,6 +887,36 @@ export const MISSING_NUMBERS_REMEDIES: Record<number, MissingNumberRemedy> = {
   }
 };
 
+export interface VedicPlaneItem {
+  id: string;
+  name: string;
+  name_hi: string;
+  numbers: number[];
+  planets: string;
+  planets_hi: string;
+  presentNumbers: number[];
+  missingNumbers: number[];
+  percentage: number;
+  status: 'Complete' | 'Semi-Active' | 'Inactive';
+  status_hi: string;
+  prediction: string;
+  prediction_hi: string;
+}
+
+export interface VedicGridAnalysis {
+  vedicPlanes: VedicPlaneItem[];
+  dominantPlanets: { num: number; planet: string; planet_hi: string; count: number; effect: string; effect_hi: string }[];
+  weakPlanets: { num: number; planet: string; planet_hi: string; remedy: string; remedy_hi: string; mantra: string }[];
+  careerGuidance: string;
+  careerGuidance_hi: string;
+  wealthGuidance: string;
+  wealthGuidance_hi: string;
+  relationshipGuidance: string;
+  relationshipGuidance_hi: string;
+  spiritualGuidance: string;
+  spiritualGuidance_hi: string;
+}
+
 // -------------------------------------------------------------
 // MAIN CALCULATION FUNCTION
 // -------------------------------------------------------------
@@ -923,6 +953,7 @@ export interface FullProfileResult {
   destinyPlanes: DestinyPlane[];
   missingRemedies: MissingNumberRemedy[];
   allExtractedDigits: number[];
+  vedicAnalysis: VedicGridAnalysis;
 }
 
 export function calculateFullNumerologyProfile(
@@ -1119,6 +1150,212 @@ export function calculateFullNumerologyProfile(
     synergy_hi = `पूरक ग्रह सामंजस्य (${mulank} एवं ${bhagyank}): आपका मूलांक ${mulank} (${mulankProfile.ruler_hi}) आपको स्वभाविक ऊर्जा देता है, जबकि भाग्यांक ${bhagyank} (${bhagyankProfile.ruler_hi}) आपके जीवन की दिशा तय करता है। कुआ अंक ${kuaProfile.kua} से वास्तु संरेखण करने पर सफलता का मार्ग प्रशस्त होता है।`;
   }
 
+  // 10. Vedic Grid Yogas and Predictions (8 Vedic Planes)
+  const VEDIC_PLANES_DEF = [
+    {
+      id: "v-dharma",
+      name: "Dharma & Thought Trine (3-1-9)",
+      name_hi: "ज्ञान व धर्म त्रिकोण (3-1-9)",
+      numbers: [3, 1, 9],
+      planets: "Jupiter (3), Sun (1), Mars (9)",
+      planets_hi: "गुरु (3), सूर्य (1), मंगल (9)",
+      prediction: "High intellectual authority, vision, moral principles, and executive command. Blessed with natural leadership and respect in governance or higher learning.",
+      prediction_hi: "प्रखर ज्ञान, आत्म-सम्मान, नेतृत्व शक्ति एवं दृढ़ सिद्धांत। यह त्रिकोण व्यक्ति को समाज, शिक्षा, शासन अथवा उच्च पद पर अद्वितीय प्रतिष्ठा दिलाता है।"
+    },
+    {
+      id: "v-artha",
+      name: "Artha & Prosperity Trine (6-7-5)",
+      name_hi: "ऐश्वर्य व व्यापार त्रिकोण (6-7-5)",
+      numbers: [6, 7, 5],
+      planets: "Venus (6), Ketu (7), Mercury (5)",
+      planets_hi: "शुक्र (6), केतु (7), बुध (5)",
+      prediction: "Commercial acumen, artistic eloquence, financial shrewdness, and magnetic charisma. Brings sudden fortune, trading success, and luxury aesthetics.",
+      prediction_hi: "व्यापारिक सूझबूझ, वाकपटुता, भौतिक वैभव एवं चुंबकीय व्यक्तित्व। यह योग व्यापार, कला, संचार व आकस्मिक धन लाभ हेतु अत्यंत शुभ माना जाता है।"
+    },
+    {
+      id: "v-karma",
+      name: "Karma & Stability Trine (2-8-4)",
+      name_hi: "कर्म व कर्मफल त्रिकोण (2-8-4)",
+      numbers: [2, 8, 4],
+      planets: "Moon (2), Saturn (8), Rahu (4)",
+      planets_hi: "चन्द्र (2), शनि (8), राहु (4)",
+      prediction: "Patience, technical resilience, worldly triumph over adversities, and ability to steer large-scale enterprises or complex organizations.",
+      prediction_hi: "धैर्य, कठोर परिश्रम, तकनीकी दक्षता और कठिन से कठिन बाधाओं को पार करने की अद्भुत क्षमता। उद्योग, भूमि एवं संगठन प्रबंधन में सफलता।"
+    },
+    {
+      id: "v-gyan",
+      name: "Gyan & Advisory Yoga (3-6-2)",
+      name_hi: "ज्ञान व मंत्रणा योग (3-6-2)",
+      numbers: [3, 6, 2],
+      planets: "Jupiter (3), Venus (6), Moon (2)",
+      planets_hi: "गुरु (3), शुक्र (6), चन्द्र (2)",
+      prediction: "Exceptional advisory aptitude, emotional diplomacy, aesthetic appreciation, and deep wisdom that inspires and guides large communities.",
+      prediction_hi: "अद्वितीय परामर्श क्षमता, भावनात्मक परिपक्वता, कलात्मक दृष्टि और दूसरों को सही राह दिखाने का स्वाभाविक वरदान।"
+    },
+    {
+      id: "v-tapas",
+      name: "Tapas & Rajyash Yoga (1-7-8)",
+      name_hi: "तप व राजयश योग (1-7-8)",
+      numbers: [1, 7, 8],
+      planets: "Sun (1), Ketu (7), Saturn (8)",
+      planets_hi: "सूर्य (1), केतु (7), शनि (8)",
+      prediction: "Unshakeable perseverance, research depth, administrative or state honors, and ascetic inner discipline that withstands all trials.",
+      prediction_hi: "अविचल संकल्प, गूढ़ शोध, सरकारी व राजकीय क्षेत्रों से सम्मान तथा गहन आत्म-अनुशासन जो हर संकट में ढाल बनता है।"
+    },
+    {
+      id: "v-parakram",
+      name: "Parakram & Siddhi Yoga (9-5-4)",
+      name_hi: "पराक्रम व सिद्धि योग (9-5-4)",
+      numbers: [9, 5, 4],
+      planets: "Mars (9), Mercury (5), Rahu (4)",
+      planets_hi: "मंगल (9), बुध (5), राहु (4)",
+      prediction: "Fast tactical thinking, real estate and technological mastery, courageous enterprise, and sudden breakthroughs against competitors.",
+      prediction_hi: "त्वरित रणनीतिक सोच, अचल संपत्ति व तकनीकी क्षेत्र में विजय, साहसी निर्णय और प्रतिद्वंद्वियों पर सहज बढ़त।"
+    },
+    {
+      id: "v-adhyatma",
+      name: "Maha Adhyatma Diagonal (3-7-4)",
+      name_hi: "अध्यात्म व मोक्ष महायोग (3-7-4)",
+      numbers: [3, 7, 4],
+      planets: "Jupiter (3), Ketu (7), Rahu (4)",
+      planets_hi: "गुरु (3), केतु (7), राहु (4)",
+      prediction: "Rare spiritual awakening, psychic intuition, ability to decode hidden universal laws, and triumph in occult or esoteric sciences.",
+      prediction_hi: "दुर्लभ आध्यात्मिक जागृति, अंतर्ज्ञान, गूढ़ ब्रह्मांडीय सूत्रों की समझ और पराशक्तियों अथवा उच्च साधना में सिद्धि।"
+    },
+    {
+      id: "v-drishti",
+      name: "Siddha Drishti Diagonal (9-7-2)",
+      name_hi: "सिद्ध दृष्टि व अंतर्ज्ञान योग (9-7-2)",
+      numbers: [9, 7, 2],
+      planets: "Mars (9), Ketu (7), Moon (2)",
+      planets_hi: "मंगल (9), केतु (7), चन्द्र (2)",
+      prediction: "Fierce intuitive radar, energetic perception, high creative emotional intelligence, and warrior-like mental resilience.",
+      prediction_hi: "अति संवेदनशील अंतर्ज्ञान, आभामंडल व ऊर्जा पहचानने की शक्ति, भावनात्मक साहस और आध्यात्मिक सुरक्षा कवच।"
+    }
+  ];
+
+  const vedicPlanes: VedicPlaneItem[] = VEDIC_PLANES_DEF.map((def) => {
+    const presentInPlane = def.numbers.filter((n) => countsMap[n] > 0);
+    const missingInPlane = def.numbers.filter((n) => countsMap[n] === 0);
+    const countPresent = presentInPlane.length;
+    let percentage = 0;
+    let status: 'Complete' | 'Semi-Active' | 'Inactive' = 'Inactive';
+    let status_hi = 'निष्क्रिय / दुर्बल';
+
+    if (countPresent === 3) {
+      percentage = 100;
+      status = 'Complete';
+      status_hi = 'पूर्ण सक्रिय (100%)';
+    } else if (countPresent === 2) {
+      percentage = 66;
+      status = 'Semi-Active';
+      status_hi = 'मध्यम सक्रिय (66%)';
+    } else if (countPresent === 1) {
+      percentage = 33;
+      status = 'Inactive';
+      status_hi = 'आंशिक (33%)';
+    }
+
+    return {
+      id: def.id,
+      name: def.name,
+      name_hi: def.name_hi,
+      numbers: def.numbers,
+      planets: def.planets,
+      planets_hi: def.planets_hi,
+      presentNumbers: presentInPlane,
+      missingNumbers: missingInPlane,
+      percentage,
+      status,
+      status_hi,
+      prediction: def.prediction,
+      prediction_hi: def.prediction_hi
+    };
+  });
+
+  // Dominant planets (counts >= 1, sorted by count desc)
+  const PLANET_NAMES_MAP: Record<number, { name: string; name_hi: string }> = {
+    1: { name: "Sun (Surya)", name_hi: "सूर्य देव" },
+    2: { name: "Moon (Chandra)", name_hi: "चन्द्र देव" },
+    3: { name: "Jupiter (Brihaspati)", name_hi: "बृहस्पति देव" },
+    4: { name: "Rahu", name_hi: "राहु देव" },
+    5: { name: "Mercury (Budh)", name_hi: "बुध देव" },
+    6: { name: "Venus (Shukra)", name_hi: "शुक्र देव" },
+    7: { name: "Ketu", name_hi: "केतु देव" },
+    8: { name: "Saturn (Shani)", name_hi: "शनि देव" },
+    9: { name: "Mars (Mangal)", name_hi: "मंगल देव" }
+  };
+
+  const dominantPlanets = presentNumbers
+    .map((num) => ({
+      num,
+      planet: PLANET_NAMES_MAP[num].name,
+      planet_hi: PLANET_NAMES_MAP[num].name_hi,
+      count: countsMap[num],
+      effect: countsMap[num] > 1
+        ? `Double/Multiple Planetary Activation (${countsMap[num]}x): Extremely pronounced influence on personality and decisions.`
+        : `Balanced Solar/Planetary Chamber (1x): Steady, harmonious influence.`,
+      effect_hi: countsMap[num] > 1
+        ? `प्रबल ग्रह संरेखण (${countsMap[num]}x): व्यक्तित्व, निर्णयों एवं जीवन पर इस ग्रह का गहरा व प्रभावशाली प्रभाव।`
+        : `संतुलित ग्रह प्रभाव (1x): जीवन में स्थिर और सकारात्मक ऊर्जा का प्रवाह।`
+    }))
+    .sort((a, b) => b.count - a.count);
+
+  const weakPlanets = missingNumbers.map((num) => ({
+    num,
+    planet: PLANET_NAMES_MAP[num].name,
+    planet_hi: PLANET_NAMES_MAP[num].name_hi,
+    remedy: MISSING_NUMBERS_REMEDIES[num]?.remedies?.vastuAction || "Chant Beej Mantra and wear prescribed gemstones.",
+    remedy_hi: MISSING_NUMBERS_REMEDIES[num]?.effects_hi || "वैदिक बीज मंत्र का जप एवं ग्रह शांति के उपाय करें।",
+    mantra: MISSING_NUMBERS_REMEDIES[num]?.remedies?.mantra || VEDIC_NUMBERS_MAP[num]?.harmonicMantra || ""
+  }));
+
+  // Life Guidance synthesis
+  const hasDharma = countsMap[3] > 0 && countsMap[1] > 0 && countsMap[9] > 0;
+  const hasArtha = countsMap[6] > 0 && countsMap[7] > 0 && countsMap[5] > 0;
+  const hasKarma = countsMap[2] > 0 && countsMap[8] > 0 && countsMap[4] > 0;
+
+  const careerGuidance = hasDharma
+    ? "Your Dharma Trine (3-1-9) shines brightly, favoring leadership, consultancy, administrative authority, or higher education mentorship."
+    : `Driven by Mulank ${mulank} and Bhagyank ${bhagyank}, your career path flourishes when combining structured focus with ethical principles.`;
+
+  const careerGuidance_hi = hasDharma
+    ? "आपकी कुंडली में ज्ञान व धर्म त्रिकोण (3-1-9) प्रदीप्त है, जो आपको नेतृत्व, परामर्श, प्रशासनिक पदों अथवा शोध व शिक्षा में सर्वोच्च मान-सम्मान प्रदान करता है।"
+    : `मूलांक ${mulank} एवं भाग्यांक ${bhagyank} के समन्वय से आपका करियर तब सर्वाधिक चमकेगा जब आप अपने ज्ञान और व्यावहारिक अनुशासन को एक साथ लेकर चलेंगे।`;
+
+  const wealthGuidance = hasArtha
+    ? "Your Artha Trine (6-7-5) creates enduring commercial magnetism, prosperity through intellect, and fine asset acquisition."
+    : `Financial stability grows consistently through careful budgeting, regular savings, and activating missing financial remedies.`;
+
+  const wealthGuidance_hi = hasArtha
+    ? "ऐश्वर्य व व्यापार त्रिकोण (6-7-5) की उपस्थिति आपके लिए वित्तीय समृद्धि, व्यापारिक लाभ और भौतिक सुख-सुविधाओं का निरंतर प्रवाह सुनिश्चित करती है।"
+    : `वित्तीय संवृद्धि अनुशासित निवेश, समय पर सही निर्णय तथा अनुपस्थित अंकों के वैदिक उपायों से निरंतर बढ़ती रहेगी।`;
+
+  const relationshipGuidance = countsMap[2] > 0 && countsMap[6] > 0
+    ? "Blessed with Chandra (2) and Shukra (6), your emotional radar is warm, diplomatic, and deeply understanding."
+    : "Maintain calm transparency and avoid impulsive expectations in intimate partnerships.";
+
+  const relationshipGuidance_hi = countsMap[2] > 0 && countsMap[6] > 0
+    ? "चंद्रमा (2) एवं शुक्र (6) के प्रभाव से आपके संबंधों में स्वाभाविक माधुर्य, संवेदनशीलता और आपसी विश्वास बना रहता है।"
+    : "रिश्तों में पारदर्शिता, धैर्य और अहंकार-मुक्त संवाद रखने से दांपत्य एवं पारिवारिक जीवन में असीम शांति बनी रहेगी।";
+
+  const spiritualGuidance = `Chant your personal Driver mantra daily: "${mulankProfile.harmonicMantra}" for aura radiance and internal peace.`;
+  const spiritualGuidance_hi = `प्रतिदिन अपने मूलांक के पावन बीज मंत्र: "${mulankProfile.harmonicMantra}" का जप करें। इससे आपके आभामंडल में दिव्य शांति और तेज का संचार होगा।`;
+
+  const vedicAnalysis: VedicGridAnalysis = {
+    vedicPlanes,
+    dominantPlanets,
+    weakPlanets,
+    careerGuidance,
+    careerGuidance_hi,
+    wealthGuidance,
+    wealthGuidance_hi,
+    relationshipGuidance,
+    relationshipGuidance_hi,
+    spiritualGuidance,
+    spiritualGuidance_hi
+  };
+
   return {
     day,
     month,
@@ -1141,7 +1378,8 @@ export function calculateFullNumerologyProfile(
     missingNumbers,
     destinyPlanes,
     missingRemedies,
-    allExtractedDigits: rawDigits
+    allExtractedDigits: rawDigits,
+    vedicAnalysis
   };
 }
 

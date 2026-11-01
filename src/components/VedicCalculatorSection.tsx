@@ -78,7 +78,7 @@ export const VedicCalculatorSection: React.FC<VedicCalculatorSectionProps> = ({ 
         <div className="text-center max-w-4xl mx-auto mb-12 space-y-3">
           <div className="inline-flex items-center justify-center gap-2 px-4 py-1.5 rounded-full bg-[#D6B574]/15 border border-[#D6B574]/30 text-xs font-semibold uppercase tracking-widest text-[#D6B574]">
             <Sparkles size={14} className="animate-pulse" />
-            <span>{lang === 'hi' ? 'प्रामाणिक वैदिक एवं लो-शू अंकशास्त्र' : 'Authentic Vedic & Lo Shu Numerology Engine'}</span>
+            <span>{lang === 'hi' ? 'दिव्य ज्यामितीय चक्र • Divine Geometric Matrix' : 'Divine Geometric Matrix • Vedic Numerology Engine'}</span>
           </div>
 
           <h2 className="font-cinzel text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-wide leading-tight">
@@ -89,10 +89,10 @@ export const VedicCalculatorSection: React.FC<VedicCalculatorSectionProps> = ({ 
             CHANGE YOUR LIFE AND DESTINY.
           </h3>
 
-          <p className="text-sm sm:text-base text-[#EAE2F4]/85 max-w-3xl mx-auto font-light leading-relaxed pt-1">
+          <p className="text-sm sm:text-base text-[#EAE2F4]/90 max-w-3xl mx-auto font-light leading-relaxed pt-1">
             {lang === 'hi'
-              ? 'अपनी सटीक जन्मतिथि दर्ज करें और जानें अपना मूलांक (Driver), भाग्यांक (Conductor), प्रामाणिक कुआ अंक (Kua Number), लो-शू चक्र, वैदिक अंक कुण्डली, भाग्य के 8 योग (8 Planes of Destiny) तथा अनुपस्थित अंकों के दिव्य उपाय।'
-              : 'Enter your exact date of birth to reveal your Driver (Mulank), Conductor (Bhagyank), Kua Number, 8 Planes of Destiny, and Missing Number remedies.'}
+              ? 'अपनी सटीक जन्मतिथि दर्ज करें और जानें अपना मूलांक (Driver), भाग्यांक (Conductor), कुआ अंक (Kua Number), 8 भाग्य योग (8 Planes of Destiny) तथा अनुपस्थित अंकों के दिव्य उपाय। दिव्य ज्यामितीय चक्र (Divine Geometric Matrix)।'
+              : 'Enter your exact date of birth to reveal your Driver (Mulank), Conductor (Bhagyank), Kua Number, 8 Planes of Destiny, and Missing Number remedies. Divine Geometric Matrix'}
           </p>
         </div>
 
@@ -403,7 +403,7 @@ export const VedicCalculatorSection: React.FC<VedicCalculatorSectionProps> = ({ 
             }`}
           >
             <Grid size={15} />
-            <span>{lang === 'hi' ? 'लो-शू चक्र (Lo Shu Grid 4-9-2)' : 'Lo Shu Grid (4-9-2 / 3-5-7)'}</span>
+            <span>{lang === 'hi' ? '३×३ लो-शू व वैदिक चक्र (दोनों चक्र एवं भविष्यफल)' : '3×3 Lo Shu & Vedic Grids (Both Matrices)'}</span>
           </button>
 
           <button
@@ -652,6 +652,333 @@ export const VedicCalculatorSection: React.FC<VedicCalculatorSectionProps> = ({ 
                 </div>
 
               </div>
+            </div>
+
+            {/* ========================================================================= */}
+            {/* DIRECTLY BELOW LO-SHU GRID: YOUR 3×3 VEDIC GRID (SANATAN NAVAGRAHA KUNDALI) */}
+            {/* ========================================================================= */}
+            <div className="p-6 sm:p-8 rounded-3xl bg-gradient-to-b from-[#180a26] via-[#24152F]/90 to-[#12071c] border-2 border-[#D6B574]/40 shadow-2xl backdrop-blur-md relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-80 h-80 bg-[#D6B574]/10 rounded-full blur-3xl pointer-events-none" />
+
+              {/* Header */}
+              <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 mb-6 pb-4 border-b border-[#D6B574]/30 relative z-10">
+                <div>
+                  <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#D6B574]/20 border border-[#D6B574]/40 text-[#D6B574] text-xs font-semibold mb-2">
+                    <Star size={13} />
+                    <span>{lang === 'hi' ? 'सनातन वैदिक अंक कुण्डली' : 'Sanatan Navagraha Vedic Grid'}</span>
+                  </div>
+                  <h3 className="font-cinzel text-xl sm:text-2xl font-bold text-white flex items-center gap-2">
+                    <Star className="text-[#D6B574]" size={24} />
+                    <span>{lang === 'hi' ? 'आपका ३×३ वैदिक चक्र (Your 3×3 Vedic Grid)' : 'Your 3×3 Vedic Grid (Sanatan Ank Kundali)'}</span>
+                  </h3>
+                  <p className="text-xs text-[#EAE2F4]/75 mt-1 font-light max-w-2xl leading-relaxed">
+                    {lang === 'hi'
+                      ? 'लो-शू के ठीक नीचे वैदिक अंक चक्र: पंक्ति १ (गुरु ३ - सूर्य १ - मंगल ९), पंक्ति २ (शुक्र ६ - केतु ७ - बुध ५), पंक्ति ३ (चन्द्र २ - शनि ८ - राहु ४)। इसमें जन्मतिथि के सभी अंक + मूलांक + भाग्यांक समाविष्ट हैं।'
+                      : 'Positioned directly below the Lo Shu Grid: Row 1 (Guru 3 - Surya 1 - Mangal 9), Row 2 (Shukra 6 - Ketu 7 - Budh 5), Row 3 (Chandra 2 - Shani 8 - Rahu 4). Populated with full DOB digits + Driver + Conductor.'}
+                  </p>
+                </div>
+                <div className="flex flex-wrap gap-2 text-xs">
+                  <span className="px-3 py-1.5 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30 font-semibold flex items-center gap-1.5">
+                    <CheckCircle2 size={13} />
+                    {lang === 'hi' ? `सक्रिय ग्रह: ${result.presentNumbers.length}/9` : `Active Planets: ${result.presentNumbers.length}/9`}
+                  </span>
+                </div>
+              </div>
+
+              {/* Vedic Grid Graphic & Planetary Distribution */}
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center mb-8 relative z-10">
+                <div className="lg:col-span-7 flex justify-center">
+                  <div className="w-full max-w-md aspect-square bg-[#0e0517] p-3 sm:p-4 rounded-3xl border-2 border-[#D6B574]/60 shadow-2xl shadow-[#D6B574]/15 grid grid-cols-3 gap-2.5 sm:gap-3">
+                    
+                    {/* Row 0: 3 (Guru), 1 (Surya), 9 (Mangal) */}
+                    {result.vedicGrid.row0.map((cell) => {
+                      const isPresent = cell.count > 0;
+                      return (
+                        <div
+                          key={cell.num}
+                          className={`rounded-2xl p-2.5 sm:p-3 flex flex-col items-center justify-between transition-all border ${
+                            isPresent
+                              ? 'bg-gradient-to-b from-[#D6B574]/25 via-[#6941A5]/35 to-black/75 border-[#D6B574] shadow-lg shadow-[#D6B574]/20'
+                              : 'bg-black/40 border-white/10 opacity-40'
+                          }`}
+                        >
+                          <span className="text-[10px] font-bold text-[#D6B574] text-center leading-tight">
+                            {lang === 'hi' ? cell.planet_hi : cell.planet}
+                          </span>
+                          <div className="text-3xl sm:text-4xl font-cormorant font-bold text-white my-1 tabular-nums">
+                            {cell.num}
+                          </div>
+                          <div className="text-[10px]">
+                            {isPresent ? (
+                              <span className="px-2 py-0.5 rounded-full bg-[#D6B574] text-[#1c0f26] font-bold text-[9px]">
+                                {cell.count}x {cell.count > 1 ? 'Repeated' : 'Active'}
+                              </span>
+                            ) : (
+                              <span className="text-white/40 italic text-[9px]">
+                                {lang === 'hi' ? 'रिक्त' : 'Empty'}
+                              </span>
+                            )}
+                          </div>
+                        </div>
+                      );
+                    })}
+
+                    {/* Row 1: 6 (Shukra), 7 (Ketu), 5 (Budh) */}
+                    {result.vedicGrid.row1.map((cell) => {
+                      const isPresent = cell.count > 0;
+                      return (
+                        <div
+                          key={cell.num}
+                          className={`rounded-2xl p-2.5 sm:p-3 flex flex-col items-center justify-between transition-all border ${
+                            isPresent
+                              ? 'bg-gradient-to-b from-[#D6B574]/25 via-[#6941A5]/35 to-black/75 border-[#D6B574] shadow-lg shadow-[#D6B574]/20'
+                              : 'bg-black/40 border-white/10 opacity-40'
+                          }`}
+                        >
+                          <span className="text-[10px] font-bold text-[#D6B574] text-center leading-tight">
+                            {lang === 'hi' ? cell.planet_hi : cell.planet}
+                          </span>
+                          <div className="text-3xl sm:text-4xl font-cormorant font-bold text-white my-1 tabular-nums">
+                            {cell.num}
+                          </div>
+                          <div className="text-[10px]">
+                            {isPresent ? (
+                              <span className="px-2 py-0.5 rounded-full bg-[#D6B574] text-[#1c0f26] font-bold text-[9px]">
+                                {cell.count}x {cell.count > 1 ? 'Repeated' : 'Active'}
+                              </span>
+                            ) : (
+                              <span className="text-white/40 italic text-[9px]">
+                                {lang === 'hi' ? 'रिक्त' : 'Empty'}
+                              </span>
+                            )}
+                          </div>
+                        </div>
+                      );
+                    })}
+
+                    {/* Row 2: 2 (Chandra), 8 (Shani), 4 (Rahu) */}
+                    {result.vedicGrid.row2.map((cell) => {
+                      const isPresent = cell.count > 0;
+                      return (
+                        <div
+                          key={cell.num}
+                          className={`rounded-2xl p-2.5 sm:p-3 flex flex-col items-center justify-between transition-all border ${
+                            isPresent
+                              ? 'bg-gradient-to-b from-[#D6B574]/25 via-[#6941A5]/35 to-black/75 border-[#D6B574] shadow-lg shadow-[#D6B574]/20'
+                              : 'bg-black/40 border-white/10 opacity-40'
+                          }`}
+                        >
+                          <span className="text-[10px] font-bold text-[#D6B574] text-center leading-tight">
+                            {lang === 'hi' ? cell.planet_hi : cell.planet}
+                          </span>
+                          <div className="text-3xl sm:text-4xl font-cormorant font-bold text-white my-1 tabular-nums">
+                            {cell.num}
+                          </div>
+                          <div className="text-[10px]">
+                            {isPresent ? (
+                              <span className="px-2 py-0.5 rounded-full bg-[#D6B574] text-[#1c0f26] font-bold text-[9px]">
+                                {cell.count}x {cell.count > 1 ? 'Repeated' : 'Active'}
+                              </span>
+                            ) : (
+                              <span className="text-white/40 italic text-[9px]">
+                                {lang === 'hi' ? 'रिक्त' : 'Empty'}
+                              </span>
+                            )}
+                          </div>
+                        </div>
+                      );
+                    })}
+
+                  </div>
+                </div>
+
+                {/* Vedic Calculation Proof & Formula Breakdown */}
+                <div className="lg:col-span-5 space-y-3.5 text-xs">
+                  <div className="p-4 rounded-2xl bg-black/50 border border-[#D6B574]/30 space-y-2">
+                    <span className="text-xs font-bold uppercase tracking-wider text-[#D6B574] flex items-center gap-1.5">
+                      <Sparkles size={13} />
+                      <span>{lang === 'hi' ? 'वैदिक अंक गणना प्रमाण (Vedic Proof)' : 'Vedic Calculation Proof'}</span>
+                    </span>
+                    <div className="space-y-1.5 text-[#EAE2F4]/80 font-mono text-[11px]">
+                      <div className="flex items-center justify-between border-b border-white/10 pb-1">
+                        <span className="text-[#D6B574]">{lang === 'hi' ? 'जन्मतिथि अंक (DOB Digits):' : 'DOB Digits:'}</span>
+                        <span className="text-white font-bold">{dob}</span>
+                      </div>
+                      <div className="flex items-center justify-between border-b border-white/10 pb-1">
+                        <span className="text-[#D6B574]">{lang === 'hi' ? 'मूलांक (Driver):' : 'Driver (Mulank):'}</span>
+                        <span className="text-white font-bold">{result.mulank} ({lang === 'hi' ? result.mulankProfile.ruler_hi : result.mulankProfile.ruler})</span>
+                      </div>
+                      <div className="flex items-center justify-between border-b border-white/10 pb-1">
+                        <span className="text-[#D6B574]">{lang === 'hi' ? 'भाग्यांक (Conductor):' : 'Conductor (Bhagyank):'}</span>
+                        <span className="text-white font-bold">{result.bhagyank} ({lang === 'hi' ? result.bhagyankProfile.ruler_hi : result.bhagyankProfile.ruler})</span>
+                      </div>
+                      <div className="flex items-center justify-between">
+                        <span className="text-[#D6B574]">{lang === 'hi' ? 'वैदिक चक्र समाविष्ट अंक:' : 'Extracted Vedic Digits:'}</span>
+                        <span className="text-amber-300 font-bold">[{result.allExtractedDigits.join(', ')}]</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="p-4 rounded-2xl bg-[#6941A5]/25 border border-[#D6B574]/30 space-y-1.5">
+                    <span className="text-xs font-bold uppercase tracking-wider text-[#D6B574] block">
+                      {lang === 'hi' ? 'वैदिक नवग्रह संरेखण रहस्य' : 'Sanatan Navagraha Mystery'}
+                    </span>
+                    <p className="text-[#EAE2F4]/85 leading-relaxed text-[11px]">
+                      {lang === 'hi'
+                        ? `वैदिक अंक शास्त्र में ३-१-९ ज्ञान व धर्म, ६-७-५ ऐश्वर्य व व्यापार तथा २-८-४ कर्म व सुरक्षा को नियंत्रित करते हैं। आपके चक्र में ${result.presentNumbers.length} ग्रह ऊर्जावान हैं।`
+                        : `In Sanatan Vedic Numerology, 3-1-9 governs Wisdom & Dharma, 6-7-5 governs Prosperity & Trade, and 2-8-4 governs Karma & Security. ${result.presentNumbers.length} planetary energies are active.`}
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* 8 VEDIC YOGAS / PLANES OF DESTINY */}
+              <div className="mt-8 pt-6 border-t border-[#D6B574]/30 space-y-4 relative z-10">
+                <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
+                  <div>
+                    <h4 className="font-cinzel text-base sm:text-lg font-bold text-white flex items-center gap-2">
+                      <Layers className="text-[#D6B574]" size={18} />
+                      <span>{lang === 'hi' ? '८ वैदिक राजयोग एवं त्रिकोण (8 Vedic Planes of Destiny)' : '8 Vedic Planes of Destiny (Yogas)'}</span>
+                    </h4>
+                    <p className="text-[11px] text-[#EAE2F4]/70">
+                      {lang === 'hi'
+                        ? '३ वैदिक त्रिकोण (धर्म, अर्थ, कर्म) एवं ५ पवित्र वैदिक राजयोगों का विशद विश्लेषण'
+                        : 'Comprehensive analysis of 3 Vedic Trines (Dharma, Artha, Karma) and 5 Sacred Planetary Yogas'}
+                    </p>
+                  </div>
+                  <span className="text-xs text-[#D6B574] font-semibold">
+                    {result.vedicAnalysis.vedicPlanes.filter((p) => p.status === 'Complete').length} Complete /{' '}
+                    {result.vedicAnalysis.vedicPlanes.filter((p) => p.status === 'Semi-Active').length} Semi-Active
+                  </span>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {result.vedicAnalysis.vedicPlanes.map((plane) => {
+                    const isComplete = plane.status === 'Complete';
+                    const isSemi = plane.status === 'Semi-Active';
+                    return (
+                      <div
+                        key={plane.id}
+                        className={`p-4 rounded-2xl border transition-all ${
+                          isComplete
+                            ? 'bg-gradient-to-r from-emerald-950/40 via-[#24152F]/70 to-[#D6B574]/15 border-emerald-400/60 shadow-lg'
+                            : isSemi
+                            ? 'bg-gradient-to-r from-amber-950/30 via-[#24152F]/50 to-white/5 border-amber-400/40'
+                            : 'bg-black/30 border-white/10 opacity-70'
+                        }`}
+                      >
+                        <div className="flex items-start justify-between gap-2 mb-1.5">
+                          <div>
+                            <div className="flex items-center gap-1.5">
+                              <span className="text-xs font-bold text-[#D6B574]">
+                                [{plane.numbers.join('-')}]
+                              </span>
+                              <h5 className="text-xs font-cinzel font-bold text-white">
+                                {lang === 'hi' ? plane.name_hi : plane.name}
+                              </h5>
+                            </div>
+                            <span className="text-[10px] text-[#D6B574]/80 block font-medium">
+                              {lang === 'hi' ? plane.planets_hi : plane.planets}
+                            </span>
+                          </div>
+                          <span
+                            className={`text-[9px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider shrink-0 ${
+                              isComplete
+                                ? 'bg-emerald-500 text-[#12071c]'
+                                : isSemi
+                                ? 'bg-amber-500/30 text-amber-200 border border-amber-400/40'
+                                : 'bg-white/10 text-white/50'
+                            }`}
+                          >
+                            {lang === 'hi' ? plane.status_hi : plane.status} ({plane.percentage}%)
+                          </span>
+                        </div>
+                        <p className="text-[11px] text-[#EAE2F4]/80 leading-relaxed font-light">
+                          {lang === 'hi' ? plane.prediction_hi : plane.prediction}
+                        </p>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* VEDIC PREDICTIONS (CAREER, WEALTH, RELATIONSHIPS, SPIRITUAL) */}
+              <div className="mt-8 pt-6 border-t border-[#D6B574]/30 space-y-4 relative z-10">
+                <div className="flex items-center gap-2">
+                  <Flame className="text-[#D6B574]" size={20} />
+                  <h4 className="font-cinzel text-base sm:text-lg font-bold text-white">
+                    {lang === 'hi' ? 'वैदिक चक्र विस्तृत जीवन भविष्यफल (Vedic Life Predictions)' : 'Vedic Grid Life Predictions'}
+                  </h4>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {/* 1. Career & Professional Calling */}
+                  <div className="p-4 rounded-2xl bg-white/5 border border-white/10 space-y-1.5">
+                    <span className="text-xs font-bold text-[#D6B574] flex items-center gap-1.5">
+                      <span>💼</span>
+                      <span>{lang === 'hi' ? 'आजीविका, करियर एवं कर्म पथ' : 'Career & Calling'}</span>
+                    </span>
+                    <p className="text-xs text-[#EAE2F4]/85 leading-relaxed font-light">
+                      {lang === 'hi' ? result.vedicAnalysis.careerGuidance_hi : result.vedicAnalysis.careerGuidance}
+                    </p>
+                  </div>
+
+                  {/* 2. Wealth & Prosperity */}
+                  <div className="p-4 rounded-2xl bg-white/5 border border-white/10 space-y-1.5">
+                    <span className="text-xs font-bold text-[#D6B574] flex items-center gap-1.5">
+                      <span>💰</span>
+                      <span>{lang === 'hi' ? 'धन, ऐश्वर्य एवं आर्थिक समृद्धि' : 'Wealth & Material Prosperity'}</span>
+                    </span>
+                    <p className="text-xs text-[#EAE2F4]/85 leading-relaxed font-light">
+                      {lang === 'hi' ? result.vedicAnalysis.wealthGuidance_hi : result.vedicAnalysis.wealthGuidance}
+                    </p>
+                  </div>
+
+                  {/* 3. Relationships & Harmony */}
+                  <div className="p-4 rounded-2xl bg-white/5 border border-white/10 space-y-1.5">
+                    <span className="text-xs font-bold text-[#D6B574] flex items-center gap-1.5">
+                      <span>🤝</span>
+                      <span>{lang === 'hi' ? 'संबंध, परिवार एवं दांपत्य जीवन' : 'Relationships & Family Bliss'}</span>
+                    </span>
+                    <p className="text-xs text-[#EAE2F4]/85 leading-relaxed font-light">
+                      {lang === 'hi' ? result.vedicAnalysis.relationshipGuidance_hi : result.vedicAnalysis.relationshipGuidance}
+                    </p>
+                  </div>
+
+                  {/* 4. Spiritual Evolution & Purpose */}
+                  <div className="p-4 rounded-2xl bg-white/5 border border-white/10 space-y-1.5">
+                    <span className="text-xs font-bold text-[#D6B574] flex items-center gap-1.5">
+                      <span>🧘</span>
+                      <span>{lang === 'hi' ? 'आध्यात्मिक उत्थान एवं जीवन लक्ष्य' : 'Spiritual Evolution & Higher Calling'}</span>
+                    </span>
+                    <p className="text-xs text-[#EAE2F4]/85 leading-relaxed font-light">
+                      {lang === 'hi' ? result.vedicAnalysis.spiritualGuidance_hi : result.vedicAnalysis.spiritualGuidance}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Dominant Planets & Sacred Mantras */}
+                {result.vedicAnalysis.dominantPlanets.length > 0 && (
+                  <div className="p-4 rounded-2xl bg-[#6941A5]/25 border border-[#D6B574]/40 mt-3 space-y-2">
+                    <span className="text-xs font-bold uppercase tracking-wider text-[#D6B574] block">
+                      {lang === 'hi' ? 'कुंडली के सर्वाधिक प्रभावी ग्रह' : 'Most Dominant Planets'}
+                    </span>
+                    <div className="flex flex-wrap gap-2">
+                      {result.vedicAnalysis.dominantPlanets.map((dp) => (
+                        <span
+                          key={dp.num}
+                          className="px-3 py-1 rounded-xl bg-black/40 border border-[#D6B574]/30 text-xs text-white flex items-center gap-1.5"
+                        >
+                          <span className="text-[#D6B574] font-bold">अंक {dp.num}</span>
+                          <span>({lang === 'hi' ? dp.planet_hi : dp.planet} - {dp.count}x)</span>
+                          <span className="text-[10px] text-[#EAE2F4]/70">— {lang === 'hi' ? dp.effect_hi : dp.effect}</span>
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+
             </div>
           </div>
         )}

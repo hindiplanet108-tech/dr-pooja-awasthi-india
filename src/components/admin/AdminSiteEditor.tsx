@@ -32,19 +32,27 @@ import { AdminMediaLibrary } from './AdminMediaLibrary';
 interface AdminSiteEditorProps {
   lang?: string;
   onPreviewSite?: () => void;
+  initialSection?: 'hero' | 'about' | 'services' | 'video' | 'testimonials' | 'faqs' | 'contact';
 }
 
 export const AdminSiteEditor: React.FC<AdminSiteEditorProps> = ({
   lang = 'hi',
   onPreviewSite,
+  initialSection = 'hero',
 }) => {
   const [activeTab, setActiveTab] = useState<
     'hero' | 'about' | 'services' | 'video' | 'testimonials' | 'faqs' | 'contact'
-  >('hero');
+  >(initialSection);
   const [content, setContent] = useState<SiteContent | null>(null);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [saveSuccessMsg, setSaveSuccessMsg] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (initialSection) {
+      setActiveTab(initialSection);
+    }
+  }, [initialSection]);
   const [mediaPickerTarget, setMediaPickerTarget] = useState<{
     section: 'hero' | 'about' | 'video' | 'bankUpi' | 'service';
     field: string;
