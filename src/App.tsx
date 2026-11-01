@@ -67,6 +67,23 @@ function MainApp() {
         return;
       }
 
+      if (
+        pathname === '/pages/client-reviews-stories' ||
+        pathname === '/reviews' ||
+        hash === '#client-reviews-stories' ||
+        hash === '#reviews'
+      ) {
+        if (currentView !== 'home') setCurrentView('home');
+        setTimeout(() => {
+          const el =
+            document.getElementById('client-reviews-stories') ||
+            document.getElementById('reviews') ||
+            document.getElementById('testimonials');
+          if (el) el.scrollIntoView({ behavior: 'smooth' });
+        }, 150);
+        return;
+      }
+
       if (pathname.startsWith('/pages/')) {
         const extracted = pathname.replace('/pages/', '').split('/')[0];
         if (extracted) {
@@ -163,19 +180,20 @@ function MainApp() {
   };
 
   const scrollToSection = (id: string) => {
+    const targetId = id === 'client-reviews-stories' || id === 'reviews' ? 'reviews' : id;
     if (currentView !== 'home') {
       setCurrentView('home');
       if (window.history && window.history.pushState) {
         window.history.pushState(null, '', '/');
       }
       setTimeout(() => {
-        const el = document.getElementById(id);
+        const el = document.getElementById(targetId) || document.getElementById(id);
         if (el) el.scrollIntoView({ behavior: 'smooth' });
       }, 100);
       return;
     }
 
-    const el = document.getElementById(id);
+    const el = document.getElementById(targetId) || document.getElementById(id);
     if (el) el.scrollIntoView({ behavior: 'smooth' });
   };
 
@@ -389,8 +407,14 @@ function MainApp() {
             {/* 9. Frequently Asked Questions (FAQ) */}
             <FaqSection lang={lang} />
 
-            {/* 10. Authentic Client Reflections */}
-            <TestimonialsSection lang={lang} />
+            {/* 10. Authentic Client Reflections & Stories */}
+            <TestimonialsSection
+              lang={lang}
+              onOpenBooking={(serviceName) => {
+                if (serviceName) setSelectedService(serviceName);
+                scrollToSection('contact');
+              }}
+            />
 
             {/* 11. Contact & Direct WhatsApp Booking Form */}
             <ContactBookingSection

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Phone, Mail, MessageSquare, ShieldCheck, Heart, X } from 'lucide-react';
+import { Phone, Mail, MessageSquare, ShieldCheck, Heart, X, Star } from 'lucide-react';
 import { getTranslation } from '../data/translations';
 
 interface FooterProps {
@@ -103,6 +103,16 @@ export const Footer: React.FC<FooterProps> = ({
               <li>
                 <a href="#faq" className="hover:text-[#D6B574] transition-colors">
                   {lang === 'hi' ? 'अक्सर पूछे जाने वाले प्रश्न' : 'Frequently Asked Questions'}
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#client-reviews-stories"
+                  className="hover:text-[#D6B574] transition-colors flex items-center gap-1.5 font-semibold text-[#D6B574]"
+                  title="Client Reviews & Stories"
+                >
+                  <Star size={12} fill="#D6B574" className="text-[#D6B574] shrink-0" />
+                  <span>★ {lang === 'hi' ? 'Client Reviews & Stories (समीक्षाएँ)' : 'Client Reviews & Stories'}</span>
                 </a>
               </li>
               {onOpenDynamicPage && (

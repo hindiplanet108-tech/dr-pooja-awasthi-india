@@ -14,7 +14,8 @@ import {
   FileText,
   HeartHandshake,
   Compass,
-  Trophy
+  Trophy,
+  Star
 } from 'lucide-react';
 import { ALL_LANGUAGES } from '../data/translations';
 
@@ -316,10 +317,16 @@ export const Navbar: React.FC<NavbarProps> = ({
                     <div className="border-t border-[#D6B574]/15 mt-1 pt-1">
                       <button
                         type="button"
-                        onClick={() => handleNav('testimonials')}
-                        className="w-full text-left px-3.5 py-2 text-xs text-[#EAE2F4] hover:text-[#D6B574] hover:bg-white/5 transition-colors"
+                        onClick={() => handleNav('client-reviews-stories')}
+                        className="w-full text-left px-3.5 py-2 text-xs text-[#D6B574] hover:bg-white/10 transition-colors flex items-center justify-between font-semibold"
                       >
-                        {lang === 'hi' ? 'अनुभव एवं समीक्षाएं' : 'Testimonials'}
+                        <span className="flex items-center gap-1.5">
+                          <Star size={12} fill="#D6B574" className="text-[#D6B574]" />
+                          <span>{lang === 'hi' ? '★ Client Reviews & Stories' : '★ Client Reviews & Stories'}</span>
+                        </span>
+                        <span className="text-[10px] bg-[#D6B574]/20 text-[#D6B574] px-1.5 py-0.5 rounded font-bold">
+                          {lang === 'hi' ? 'Instant Submit' : 'Submit'}
+                        </span>
                       </button>
                     </div>
                   </div>
@@ -742,10 +749,16 @@ export const Navbar: React.FC<NavbarProps> = ({
 
               <button
                 type="button"
-                onClick={() => handleNav('testimonials')}
-                className="w-full text-left py-1.5 px-3 text-xs text-[#EAE2F4] hover:text-[#D6B574] hover:bg-white/5 rounded"
+                onClick={() => handleNav('client-reviews-stories')}
+                className="w-full text-left py-2 px-3 text-xs font-semibold text-[#D6B574] bg-[#D6B574]/15 rounded border border-[#D6B574]/30 flex items-center justify-between"
               >
-                {lang === 'hi' ? 'अनुभव एवं समीक्षाएं' : 'Testimonials'}
+                <span className="flex items-center gap-1.5">
+                  <Star size={13} fill="#D6B574" className="text-[#D6B574]" />
+                  <span>{lang === 'hi' ? '★ Client Reviews & Stories' : '★ Client Reviews & Stories'}</span>
+                </span>
+                <span className="text-[10px] bg-[#D6B574] text-[#24152F] font-bold px-1.5 py-0.2 rounded">
+                  Submit
+                </span>
               </button>
             </div>
           </div>

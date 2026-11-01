@@ -28,6 +28,7 @@ const PAGES_FILE = path.join(DATA_DIR, 'pages.json');
 const MEDIA_FILE = path.join(DATA_DIR, 'media.json');
 const SETTINGS_FILE = path.join(DATA_DIR, 'settings.json');
 const SITE_CONTENT_FILE = path.join(DATA_DIR, 'siteContent.json');
+const REVIEWS_FILE = path.join(DATA_DIR, 'reviews.json');
 
 // Helper functions for JSON storage
 function readJsonFile<T>(filePath: string, defaultValue: T): T {
@@ -645,6 +646,74 @@ app.put('/api/site-content', requireAuth, (req: AuthRequest, res: Response) => {
   };
   writeJsonFile(SITE_CONTENT_FILE, merged);
   return res.json(merged);
+});
+
+// ==========================================
+// 6b. REVIEWS & STORIES APIS (INSTANT SUBMIT & UPVOTES)
+// ==========================================
+app.get('/api/reviews', (_req: Request, res: Response) => {
+  const reviews = readJsonFile<any[]>(REVIEWS_FILE, []);
+  return res.json(reviews);
+});
+
+app.post('/api/reviews', (req: Request, res: Response) => {
+  const { name, location, service, rating, quote, quote_hi } = req.body;
+  if (!name || !quote) {
+    return res.status(400).json({ error: 'Name and review text are required' });
+  }
+
+  const reviews = readJsonFile<any[]>(REVIEWS_FILE, []);
+  const newReview = {
+    id: `rev-${Date.now()}`,
+    name: String(name).trim(),
+    location: (location || 'India').trim(),
+    location_hi: (location || 'भारत').trim(),
+    service: (service || 'Vedic Numerology').trim(),
+    service_hi: (service || 'वैदिक अंक ज्योतिष').trim(),
+    rating: Math.min(5, Math.max(1, Number(rating) || 5)),
+    quote: String(quote).trim(),
+    quote_hi: (quote_hi || quote).trim(),
+    date: 'Just now',
+    date_hi: 'अभी-अभी',
+    helpfulCount: 0,
+    verified: true,
+    createdAt: new Date().toISOString(),
+  };
+
+  reviews.unshift(newReview);
+  writeJsonFile(REVIEWS_FILE, reviews);
+
+  // Sync with siteContent.testimonials
+  try {
+    const siteContent = readJsonFile<any>(SITE_CONTENT_FILE, {});
+    if (!Array.isArray(siteContent.testimonials)) siteContent.testimonials = [];
+    siteContent.testimonials.unshift({
+      id: newReview.id,
+      name: newReview.name,
+      location: newReview.location,
+      service: newReview.service,
+      rating: newReview.rating,
+      quote: newReview.quote,
+      date: newReview.date,
+    });
+    writeJsonFile(SITE_CONTENT_FILE, siteContent);
+  } catch (err) {
+    console.error('Failed to sync review with siteContent:', err);
+  }
+
+  return res.status(201).json(newReview);
+});
+
+app.post('/api/reviews/:id/helpful', (req: Request, res: Response) => {
+  const { id } = req.params;
+  const reviews = readJsonFile<any[]>(REVIEWS_FILE, []);
+  const item = reviews.find((r) => r.id === id);
+  if (item) {
+    item.helpfulCount = (item.helpfulCount || 0) + 1;
+    writeJsonFile(REVIEWS_FILE, reviews);
+    return res.json({ success: true, helpfulCount: item.helpfulCount });
+  }
+  return res.status(404).json({ error: 'Review not found' });
 });
 
 // ==========================================
