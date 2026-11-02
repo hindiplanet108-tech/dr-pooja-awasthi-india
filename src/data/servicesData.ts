@@ -38,6 +38,7 @@ export interface CatalogServiceItem {
   badge_en?: string;
   importantDisclaimer?: string;
   importantDisclaimer_en?: string;
+  image?: string;
 }
 
 export const CORE_SERVICES: CoreService[] = [
@@ -79,7 +80,7 @@ export const CORE_SERVICES: CoreService[] = [
     sessionDuration_hi: "60 मिनट",
     whoIsThisFor: "Anyone seeking clarity on career direction, marriage compatibility, business naming, or overcoming repeated obstacles.",
     whoIsThisFor_hi: "जो भी करियर में सही दिशा, विवाह/रिश्तों में सामंजस्य, नए काम की शुरुआत या बार-बार आने वाली अड़चनों का समाधान चाहते हैं।",
-    image: "/src/assets/images/vedic_numerology_sacred_cosmos_1792557572243.jpg",
+    image: "/assets/images/vedic_numerology_sacred_cosmos_1792557572243.jpg",
     baseFee: "₹5,100"
   },
   {
@@ -120,7 +121,7 @@ export const CORE_SERVICES: CoreService[] = [
     sessionDuration_hi: "45 - 60 मिनट",
     whoIsThisFor: "Anyone feeling stuck, uncertain about a relationship, worried about career decisions, or needing friendly, honest guidance.",
     whoIsThisFor_hi: "जो रिश्तों में उलझन, करियर में रुकावट या भविष्य को लेकर असमंजस महसूस कर रहे हैं और निष्पक्ष सलाह चाहते हैं।",
-    image: "/src/assets/images/tarot_intuitive_cards_luxury_1792557573151.jpg",
+    image: "/assets/images/tarot_intuitive_cards_luxury_1792557573151.jpg",
     baseFee: "₹5,100"
   },
   {
@@ -161,7 +162,7 @@ export const CORE_SERVICES: CoreService[] = [
     sessionDuration_hi: "50 मिनट",
     whoIsThisFor: "Anyone feeling tired, emotionally drained, anxious, or recovering from a difficult time in life.",
     whoIsThisFor_hi: "जो थका हुआ, चिंतित, भारी या भावनात्मक रूप से परेशान महसूस कर रहे हैं और नई ऊर्जा चाहते हैं।",
-    image: "/src/assets/images/chakras_aura_energy_flow_1792557572576.jpg",
+    image: "/assets/images/chakras_aura_energy_flow_1792557572576.jpg",
     baseFee: "₹5,100"
   },
   {
@@ -202,7 +203,7 @@ export const CORE_SERVICES: CoreService[] = [
     sessionDuration_hi: "60 मिनट",
     whoIsThisFor: "Anyone wanting personal growth, better self-control, and a clear, happy direction in life.",
     whoIsThisFor_hi: "जो भी अपने व्यक्तित्व को निखारना, आत्मविश्वास बढ़ाना और जीवन में स्पष्ट लक्ष्य पाना चाहते हैं।",
-    image: "/src/assets/images/hero_celestial_sacred_geometry_1792557572251.jpg",
+    image: "/assets/images/hero_celestial_sacred_geometry_1792557572251.jpg",
     baseFee: "₹5,100"
   }
 ];
@@ -221,22 +222,26 @@ export const CATALOG_SERVICES: CatalogServiceItem[] = [
     description_en: "A gentle session to clear negative energy around you, bring peace of mind, and refresh your inner strength.",
     category: "healing",
     categoryLabel_hi: "ऊर्जा एवं हीलिंग",
-    categoryLabel_en: "Energy & Healing"
+    categoryLabel_en: "Energy & Healing",
+    image: "/assets/images/chakras_aura_energy_flow_1792557572576.jpg"
   },
   {
     id: "negativity-healing",
     number: 2,
-    title: "नकारात्मकता निवारण व हीलिंग",
-    title_en: "Negativity Release & Healing",
+    title: "नकारात्मकता निवारण व हीलिंग (सॉल्ट थेरेपी)",
+    title_en: "Negativity Release & Salt Healing",
     fee: 5100,
     feeFormatted: "₹5,100",
     duration: "30 मिनट",
     duration_en: "30 minutes",
-    description: "यह सत्र मन के नकारात्मक विचारों, तनाव और भारीपन को दूर कर मन की सच्ची शांति पाने में मदद करता है।",
-    description_en: "Helps you let go of negative thoughts, stress, and emotional heaviness to feel light, calm, and positive.",
+    description: "यह सत्र मन के नकारात्मक विचारों, तनाव, नजर दोष और भारीपन को दूर कर मन की सच्ची शांति व सुरक्षा कवच प्रदान करता है।",
+    description_en: "Helps you let go of negative thoughts, stress, and emotional heaviness to feel light, calm, and protected.",
     category: "healing",
     categoryLabel_hi: "ऊर्जा एवं हीलिंग",
-    categoryLabel_en: "Energy & Healing"
+    categoryLabel_en: "Energy & Healing",
+    badge: "प्राकृतिक शुद्धि",
+    badge_en: "Salt Cleansing",
+    image: "/assets/images/salt_therapy_cleansing_1793624554656.jpg"
   },
   {
     id: "chakra-healing",
@@ -253,7 +258,8 @@ export const CATALOG_SERVICES: CatalogServiceItem[] = [
     categoryLabel_hi: "ऊर्जा एवं हीलिंग",
     categoryLabel_en: "Energy & Healing",
     badge: "गहन साधना (7 दिन)",
-    badge_en: "7-Day Guided"
+    badge_en: "7-Day Guided",
+    image: "/assets/images/chakras_aura_energy_flow_1792557572576.jpg"
   },
   {
     id: "mobile-number-correction",
@@ -262,11 +268,14 @@ export const CATALOG_SERVICES: CatalogServiceItem[] = [
     title_en: "Mobile Number Numerology",
     fee: 5100,
     feeFormatted: "₹5,100",
+    duration: "45 मिनट",
+    duration_en: "45 mins",
     description: "अपनी जन्मतिथि के अनुसार अपने मोबाइल नंबर के अंकों को शुभ बनाएं, ताकि आपके काम और जीवन में सकारात्मक ऊर्जा बढ़े।",
     description_en: "Find the best numbers for your mobile phone according to your date of birth, helping attract positive energy and good luck.",
     category: "numerology",
     categoryLabel_hi: "अंकशास्त्र सुधार",
-    categoryLabel_en: "Numerology"
+    categoryLabel_en: "Numerology",
+    image: "/assets/images/vedic_numerology_sacred_cosmos_1792557572243.jpg"
   },
   {
     id: "name-correction",
@@ -275,11 +284,14 @@ export const CATALOG_SERVICES: CatalogServiceItem[] = [
     title_en: "Name Spelling Correction",
     fee: 1100,
     feeFormatted: "₹1,100",
+    duration: "30 मिनट",
+    duration_en: "30 mins",
     description: "अपने नाम के अक्षरों में सरल और शुभ अंकशास्त्रीय सुधार, जिससे आपके नाम की ऊर्जा जीवन में सफलता और सामंजस्य लाए।",
     description_en: "Simple, positive adjustments to your name's spelling according to numerology to bring better luck, confidence, and harmony.",
     category: "numerology",
     categoryLabel_hi: "अंकशास्त्र सुधार",
-    categoryLabel_en: "Numerology"
+    categoryLabel_en: "Numerology",
+    image: "/assets/images/vedic_numerology_sacred_cosmos_1792557572243.jpg"
   },
   {
     id: "relationship-healing",
@@ -288,52 +300,70 @@ export const CATALOG_SERVICES: CatalogServiceItem[] = [
     title_en: "Relationship Healing & Harmony",
     fee: 11000,
     feeFormatted: "₹11,000",
+    duration: "60 मिनट",
+    duration_en: "60 mins",
     description: "परिवार, पति-पत्नी या प्रियजनों के बीच मनमुटाव और गलतफहमियों को दूर कर आपसी प्रेम, समझ और विश्वास बढ़ाने का सत्र।",
     description_en: "Helps heal misunderstandings in relationships, reduce conflicts, and rebuild love, trust, and peaceful communication.",
     category: "healing",
     categoryLabel_hi: "ऊर्जा एवं हीलिंग",
-    categoryLabel_en: "Energy & Healing"
+    categoryLabel_en: "Energy & Healing",
+    badge: "संबंध सामंजस्य",
+    badge_en: "Relationship Calm",
+    image: "/assets/images/hero_celestial_sacred_geometry_1792557572251.jpg"
   },
   {
     id: "sound-healing",
     number: 7,
-    title: "नाद एवं ध्वनि ध्यान हीलिंग (साउंड हीलिंग)",
-    title_en: "Sound Bowl & Mantra Healing",
-    fee: 11000,
-    feeFormatted: "₹11,000",
-    description: "पवित्र ध्वनि, घंटियों और वैदिक मंत्रों की तरंगों द्वारा मन और शरीर को गहरा विश्राम और मानसिक सुकून देने वाला सत्र।",
-    description_en: "Healing through singing bowls and gentle mantras to deeply calm your mind, ease anxiety, and relax your whole body.",
-    category: "healing",
-    categoryLabel_hi: "ऊर्जा एवं हीलिंग",
-    categoryLabel_en: "Energy & Healing"
+    title: "क्रिस्टल एवं सिद्ध रत्न ऊर्जा चिकित्सा",
+    title_en: "Crystal & Gemstone Resonance Guidance",
+    fee: 5100,
+    feeFormatted: "₹5,100",
+    duration: "45 मिनट",
+    duration_en: "45 mins",
+    description: "आपकी जन्मतिथि और ऊर्जा आवृत्ति के अनुसार सही प्राकृतिक क्रिस्टल व नवरत्न धारण करने का प्रमाणिक शास्त्रीय परामर्श।",
+    description_en: "Vedic gemstone and natural crystal recommendations tailored to your planetary matrix and energy frequency.",
+    category: "therapy",
+    categoryLabel_hi: "रत्न एवं क्रिस्टल",
+    categoryLabel_en: "Crystal & Gemstones",
+    badge: "सिद्ध प्राण-प्रतिष्ठा",
+    badge_en: "Consecrated Gemstones",
+    image: "/assets/images/crystal_gemstones_healing_1793624595121.jpg"
   },
   {
     id: "mind-body-relaxation",
     number: 8,
-    title: "तन-मन विश्राम एवं तनाव मुक्ति",
-    title_en: "Mind & Body Relaxation",
+    title: "घड़ी विश्लेषण एवं समय विज्ञान (वॉच थेरेपी)",
+    title_en: "Watch Analysis & Sacred Time Therapy",
     fee: 5100,
     feeFormatted: "₹5,100",
-    description: "सरल ध्यान और श्वास अभ्यास द्वारा शरीर की थकान और मन के तनाव को दूर कर पूर्ण विश्राम पाने का सत्र।",
-    description_en: "Relax your body and mind through deep breathing and gentle meditation to release daily fatigue and stress.",
+    duration: "45 मिनट",
+    duration_en: "45 mins",
+    description: "आपकी कलाई घड़ी का डायल, रंग, आकार व पट्टा आपके समय और भाग्य चक्र को कैसे गति देता है, उसका गहन विश्लेषण।",
+    description_en: "Deep analysis of your wristwatch dial, colors, and design to align with positive time cycles and opportunity.",
     category: "therapy",
-    categoryLabel_hi: "मानसिक शांति व संतुलन",
-    categoryLabel_en: "Mind Balance & Peace"
+    categoryLabel_hi: "समय विज्ञान",
+    categoryLabel_en: "Watch Therapy",
+    badge: "अनोखा शोध",
+    badge_en: "Pioneering Research",
+    image: "/assets/images/watch_therapy_consultation_1793624573045.jpg"
   },
   {
     id: "anxiety-depression-support",
     number: 9,
-    title: "चिंता, अवसाद व तनाव मुक्ति सहायता",
-    title_en: "Anxiety & Stress Support",
+    title: "वास्तु दोष निवारण एवं पंचतत्व संतुलन",
+    title_en: "Vastu Harmonization & Spatial Energy",
     fee: 5100,
     feeFormatted: "₹5,100",
-    description: "चिंता, घबराहट और उदासी के समय एक संवेदनशील मार्गदर्शन, जो आपको भावनात्मक सहारा और मानसिक मजबूती देता है।",
-    description_en: "Compassionate one-on-one emotional support and gentle meditation to help you handle anxiety, sadness, and everyday worries.",
-    importantDisclaimer: "महत्वपूर्ण: यह सत्र भावनात्मक और आध्यात्मिक सहारे के लिए है। यह किसी मेडिकल या मनोचिकित्सकीय इलाज का विकल्प नहीं है।",
-    importantDisclaimer_en: "Important: This session provides spiritual and emotional comfort. It does not replace medical or psychiatric treatment.",
+    duration: "60–90 मिनट",
+    duration_en: "60-90 mins",
+    description: "घर, कार्यालय और प्रतिष्ठान में बिना तोड़-फोड़ के पंचतत्व संतुलन, श्री यंत्र स्थापना व सकारात्मक ऊर्जा प्रवाह।",
+    description_en: "Spatial harmony without demolition, balancing five elements and sacred Sri Yantra energies in your home or workspace.",
     category: "therapy",
-    categoryLabel_hi: "मानसिक शांति व संतुलन",
-    categoryLabel_en: "Mind Balance & Peace"
+    categoryLabel_hi: "वास्तु ऊर्जा",
+    categoryLabel_en: "Vastu Energy",
+    badge: "बिना तोड़-फोड़",
+    badge_en: "Non-Destructive Vastu",
+    image: "/assets/images/vastu_sacred_yantra_1793624613612.jpg"
   },
   {
     id: "plr-session",
@@ -342,25 +372,33 @@ export const CATALOG_SERVICES: CatalogServiceItem[] = [
     title_en: "Past Life Exploration (PLR)",
     fee: 15000,
     feeFormatted: "₹15,000",
-    description: "गहन ध्यान द्वारा आत्मा के पुराने अनुभवों को समझना, ताकि वर्तमान जीवन की उलझनों और डर को सुलझाया जा सके।",
-    description_en: "A gentle guided meditation exploring deep soul memories to understand recurring life patterns and heal current relationships.",
+    duration: "90–120 मिनट",
+    duration_en: "90–120 mins",
+    description: "गहन ध्यान द्वारा आत्मा के पुराने अनुभवों को समझना, ताकि वर्तमान जीवन की उलझनों और भय को सुलझाया जा सके।",
+    description_en: "A gentle guided meditation exploring deep soul memories to understand recurring life patterns and heal current obstacles.",
     badge: "विशेष सत्र",
     badge_en: "Special Session",
     category: "regression",
     categoryLabel_hi: "आत्म-अन्वेषण",
-    categoryLabel_en: "Soul Journey"
+    categoryLabel_en: "Soul Journey",
+    image: "/assets/images/tarot_intuitive_cards_luxury_1792557573151.jpg"
   },
   {
     id: "mind-peace-therapy",
     number: 11,
-    title: "मानसिक शांति एवं आंतरिक स्थिरता सत्र",
-    title_en: "Mind Peace & Calm Therapy",
+    title: "कार्मिक कॉर्ड कटिंग एवं भावनात्मक मुक्ति",
+    title_en: "Karma Cord Cutting & Emotional Liberation",
     fee: 5100,
     feeFormatted: "₹5,100",
-    description: "दैनिक चिंताओं और विचारों की भीड़ से मन को शांत कर गहरी शांति और आंतरिक स्थिरता पाने का सत्र।",
-    description_en: "Simple meditation and relaxation techniques to quiet a busy mind and bring deep, refreshing inner peace.",
+    duration: "60 मिनट",
+    duration_en: "60 mins",
+    description: "अतीत के कष्टकारी बंधनों, टॉक्सिक रिश्तों और नकारात्मक यादों से आत्मिक ऊर्जा को मुक्त करने का पवित्र आध्यात्मिक सत्र।",
+    description_en: "Clearing draining energetic cords from past relationships and painful memories to restore peace and inner freedom.",
     category: "therapy",
-    categoryLabel_hi: "मानसिक शांति व संतुलन",
-    categoryLabel_en: "Mind Balance & Peace"
+    categoryLabel_hi: "आत्मिक शुद्धि",
+    categoryLabel_en: "Emotional Liberation",
+    badge: "गहरी मुक्ति",
+    badge_en: "Deep Liberation",
+    image: "/assets/images/salt_therapy_cleansing_1793624554656.jpg"
   }
 ];

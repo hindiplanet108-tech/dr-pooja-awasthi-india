@@ -367,6 +367,56 @@ export async function updateMediaMetadata(
   });
 }
 
+export async function addMediaLink(
+  url: string,
+  filename?: string,
+  type?: 'image' | 'video',
+  altText?: string,
+  caption?: string
+): Promise<MediaItem> {
+  return cmsFetch<MediaItem>('/api/media/link', {
+    method: 'POST',
+    body: JSON.stringify({ url, filename, type, altText, caption }),
+  });
+}
+
+export function formatEmbedUrl(rawUrl: string): { embedUrl: string; isIframe: boolean } {
+  if (!rawUrl) return { embedUrl: '', isIframe: false };
+  const trimmed = rawUrl.trim();
+
+  // YouTube standard watch URL: https://www.youtube.com/watch?v=VIDEO_ID
+  if (trimmed.includes('youtube.com/watch?v=')) {
+    const videoId = trimmed.split('v=')[1]?.split('&')[0];
+    return { embedUrl: `https://www.youtube.com/embed/${videoId}`, isIframe: true };
+  }
+
+  // YouTube short share URL: https://youtu.be/VIDEO_ID
+  if (trimmed.includes('youtu.be/')) {
+    const videoId = trimmed.split('youtu.be/')[1]?.split('?')[0];
+    return { embedUrl: `https://www.youtube.com/embed/${videoId}`, isIframe: true };
+  }
+
+  // YouTube Shorts URL: https://www.youtube.com/shorts/VIDEO_ID
+  if (trimmed.includes('youtube.com/shorts/')) {
+    const videoId = trimmed.split('shorts/')[1]?.split('?')[0];
+    return { embedUrl: `https://www.youtube.com/embed/${videoId}`, isIframe: true };
+  }
+
+  // Vimeo URL: https://vimeo.com/VIDEO_ID
+  if (trimmed.includes('vimeo.com/') && !trimmed.includes('player.vimeo.com')) {
+    const videoId = trimmed.split('vimeo.com/')[1]?.split('?')[0];
+    return { embedUrl: `https://player.vimeo.com/video/${videoId}`, isIframe: true };
+  }
+
+  // Already an embed URL (YouTube embed or Vimeo player)
+  if (trimmed.includes('/embed/') || trimmed.includes('player.vimeo.com')) {
+    return { embedUrl: trimmed, isIframe: true };
+  }
+
+  // Default: direct video file (.mp4, .webm, uploaded path)
+  return { embedUrl: trimmed, isIframe: false };
+}
+
 export async function deleteMediaItem(id: string): Promise<{ success: boolean }> {
   return cmsFetch<{ success: boolean }>(`/api/media/${id}`, {
     method: 'DELETE',

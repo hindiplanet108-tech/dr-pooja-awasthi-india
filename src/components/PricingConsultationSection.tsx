@@ -113,43 +113,77 @@ export const PricingConsultationSection: React.FC<PricingConsultationSectionProp
             <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-[#6941A5]/40 to-[#D6B574]/20 rounded-full blur-3xl pointer-events-none group-hover:scale-110 transition-transform duration-700" />
 
             <div className="space-y-6 relative z-10">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  <div className="w-11 h-11 rounded-full overflow-hidden border border-[#D6B574] shrink-0 aspect-square shadow-sm">
+              {/* Elevated Authentic Portrait Header */}
+              <div className="p-4 rounded-2xl bg-gradient-to-r from-white/10 via-[#6941A5]/20 to-white/5 border border-[#D6B574]/40 backdrop-blur-md">
+                <div className="flex items-center gap-4">
+                  <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-2xl overflow-hidden border-2 border-[#D6B574] shrink-0 aspect-square shadow-xl bg-[#1c0f26]">
                     <img
-                      src={poojaAuthenticPhoto}
+                      src="/28.jpeg"
                       alt="Dr. Pooja Awasthi"
-                      className="w-full h-full object-cover object-top"
+                      className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-300"
                       onError={(e) => {
                         const target = e.currentTarget;
-                        if (target.src !== '/28.jpeg') target.src = '/28.jpeg';
+                        if (target.src !== '/assets/images/dr_pooja_awasthi_portrait_1792561214013.jpg') {
+                          target.src = '/assets/images/dr_pooja_awasthi_portrait_1792561214013.jpg';
+                        }
                       }}
                     />
+                    <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent py-0.5 text-center">
+                      <span className="text-[9px] font-black tracking-wider text-[#F5C242] uppercase">
+                        ✓ Verified
+                      </span>
+                    </div>
                   </div>
-                  <div>
-                    <span className="text-xs font-bold uppercase tracking-widest text-[#D6B574] block">
-                      {lang === 'hi' ? 'मानक परामर्श सत्र' : 'Comprehensive Guidance'}
-                    </span>
-                    <span className="text-[11px] text-[#EAE2F4]/70">
-                      {lang === 'hi' ? 'डॉ. पूजा अवस्थी (व्यक्तिगत सत्र)' : 'Dr. Pooja Awasthi (1-on-1)'}
-                    </span>
+
+                  <div className="flex-1 min-w-0 space-y-1">
+                    <div className="flex items-center gap-1.5 flex-wrap">
+                      <span className="text-[10px] font-extrabold uppercase tracking-widest text-[#F5C242] px-2 py-0.5 rounded-md bg-[#D6B574]/20 border border-[#D6B574]/30">
+                        {lang === 'hi' ? 'मानक व्यक्तिगत सत्र' : 'Comprehensive 1-on-1'}
+                      </span>
+                      <span className="text-[10px] px-2 py-0.5 rounded-full bg-white/15 text-white border border-white/20 font-bold">
+                        {lang === 'hi' ? '60 मिनट' : '60 Min'}
+                      </span>
+                    </div>
+                    <h3 className="text-base sm:text-lg font-bold text-white leading-tight">
+                      {lang === 'hi' ? 'डॉ. पूजा अवस्थी' : 'Dr. Pooja Awasthi'}
+                    </h3>
+                    <p className="text-[11px] text-[#EAE2F4]/80 leading-snug font-light">
+                      {lang === 'hi'
+                        ? 'विदुषी अंकशास्त्री, टैरो रीडर व आध्यात्मिक परामर्शदाता'
+                        : 'Celebrity Numerologist, Tarot Reader & Spiritual Guide'}
+                    </p>
                   </div>
                 </div>
-                <span className="text-xs px-2.5 py-1 rounded-full bg-white/10 text-[#EAE2F4] border border-white/20">
-                  {lang === 'hi' ? '60 मिनट' : '60 Minutes'}
-                </span>
               </div>
 
-              <div>
-                <div className="flex items-baseline gap-2">
-                  <span className="font-cormorant text-5xl sm:text-6xl font-light text-[#D6B574] tabular-nums">
-                    ₹5,100
+              {/* BOLD ₹5,100 Pricing Box */}
+              <div className="p-4 sm:p-5 rounded-2xl bg-gradient-to-br from-white/10 via-[#D6B574]/15 to-black/40 border-2 border-[#D6B574] shadow-xl">
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-[11px] font-black uppercase tracking-wider text-[#F5C242] flex items-center gap-1.5">
+                    <Sparkles size={13} className="text-[#F5C242]" />
+                    <span>{lang === 'hi' ? 'निश्चित पावन दक्षिणा' : 'Guaranteed Fixed Fee'}</span>
                   </span>
-                  <span className="text-xs text-[#EAE2F4]/70 uppercase tracking-wider">
+                  <span className="text-[10px] px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 font-bold">
+                    {lang === 'hi' ? 'सीधा संवाद' : '100% Direct'}
+                  </span>
+                </div>
+
+                <div className="flex items-baseline gap-2">
+                  {/* Extra bold ₹ sign and 5,100 */}
+                  <span className="inline-flex items-baseline">
+                    <strong className="font-black text-[#F5C242] text-4xl sm:text-5xl font-sans drop-shadow-[0_2px_10px_rgba(245,194,66,0.5)] mr-1 select-none">
+                      ₹
+                    </strong>
+                    <strong className="font-cormorant text-5xl sm:text-6xl font-black text-white tabular-nums drop-shadow-[0_2px_14px_rgba(214,181,116,0.5)] tracking-tight">
+                      5,100
+                    </strong>
+                  </span>
+                  <span className="text-xs text-[#EAE2F4]/90 uppercase tracking-wider font-bold">
                     {lang === 'hi' ? '/ व्यक्तिगत सत्र' : '/ 1-on-1 Session'}
                   </span>
                 </div>
-                <p className="text-xs text-[#EAE2F4]/80 mt-2 font-light">
+
+                <p className="text-xs text-[#EAE2F4]/90 mt-2 font-light leading-relaxed">
                   {lang === 'hi'
                     ? 'वैदिक अंकशास्त्र, टैरो मार्गदर्शन या समग्र जीवन परामर्श हेतु प्रामाणिक दक्षिणा।'
                     : 'Standard verified fee for Vedic Numerology, Tarot Reading, or Integrated Life Coaching.'}
@@ -169,13 +203,16 @@ export const PricingConsultationSection: React.FC<PricingConsultationSectionProp
               </div>
             </div>
 
-            <div className="pt-8 relative z-10 space-y-2.5">
+            <div className="pt-6 relative z-10 space-y-2.5">
               <button
                 type="button"
                 onClick={onBookClick}
-                className="w-full py-3.5 bg-gradient-to-r from-[#D6B574] via-[#e2c78a] to-[#D6B574] hover:brightness-105 text-[#24152F] font-bold text-xs uppercase tracking-wider rounded-md transition-all shadow-md hover:scale-[1.01]"
+                className="w-full py-4 bg-gradient-to-r from-[#D6B574] via-[#F5C242] to-[#D6B574] hover:brightness-110 text-[#24152F] font-black text-xs sm:text-sm uppercase tracking-wider rounded-xl transition-all shadow-xl hover:scale-[1.01] flex items-center justify-center gap-2"
               >
-                {t.bookBtn} (₹5,100)
+                <span>{t.bookBtn}</span>
+                <span className="px-3 py-0.5 rounded-full bg-[#24152F] text-[#F5C242] font-black text-xs sm:text-sm border border-[#D6B574]/40 shadow-inner">
+                  ₹5,100
+                </span>
               </button>
 
               <div className="grid grid-cols-2 gap-2 pt-1">

@@ -38,7 +38,8 @@
       "category": "numerology",
       "categoryLabel_hi": "वैदिक अंकशास्त्र",
       "badge": "सर्वाधिक लोकप्रिय",
-      "description": "अपनी जन्मतिथि और नाम के अक्षरों का सूक्ष्म विश्लेषण। करियर, विवाह, व्यापार व जीवन की अनुकूल दिशा।"
+      "description": "अपनी जन्मतिथि और नाम के अक्षरों का सूक्ष्म विश्लेषण। करियर, विवाह, व्यापार व जीवन की अनुकूल दिशा।",
+      "image": "/assets/images/vedic_numerology_sacred_cosmos_1792557572243.jpg"
     },
     {
       "id": "srv-2",
@@ -51,7 +52,8 @@
       "category": "numerology",
       "categoryLabel_hi": "टैरो मार्गदर्शन",
       "badge": "त्वरित स्पष्टता",
-      "description": "वर्तमान परिस्थितियों, मानसिक उलझनों और रिश्तों के सवालों पर स्पष्ट आध्यात्मिक दृष्टिकोण।"
+      "description": "वर्तमान परिस्थितियों, मानसिक उलझनों और रिश्तों के सवालों पर स्पष्ट आध्यात्मिक दृष्टिकोण।",
+      "image": "/assets/images/tarot_intuitive_cards_luxury_1792557573151.jpg"
     },
     {
       "id": "srv-3",
@@ -64,33 +66,36 @@
       "category": "healing",
       "categoryLabel_hi": "ऊर्जा चिकित्सा",
       "badge": "गहन शांति",
-      "description": "मूलाधार से सहस्रार तक सातों ऊर्जा केंद्रों का संतुलन, नकारात्मकता निवारण व प्राणिक उपचार।"
+      "description": "मूलाधार से सहस्रार तक सातों ऊर्जा केंद्रों का संतुलन, नकारात्मकता निवारण व प्राणिक उपचार।",
+      "image": "/assets/images/chakras_aura_energy_flow_1792557572576.jpg"
     },
     {
       "id": "srv-4",
       "number": 4,
       "title": "Negative Energy Removal & Salt Therapy",
-      "title_hi": "नकारात्मक ऊर्जा से मुक्ति एवं नमक चिकित्सा",
+      "title_hi": "नकारात्मक ऊर्जा से मुक्ति एवं नमक चिकित्सा (सॉल्ट थेरेपी)",
       "fee": 5100,
       "feeFormatted": "₹5,100",
       "duration": "45 मिनट",
       "category": "therapy",
       "categoryLabel_hi": "शुद्धि चिकित्सा",
       "badge": "प्राकृतिक शुद्धि",
-      "description": "घर, कार्यस्थल और व्यक्तिगत औरा से भारीपन व नकारात्मक तरंगों को हटाने हेतु नमक शुद्धि विधान।"
+      "description": "घर, कार्यस्थल और व्यक्तिगत औरा से भारीपन व नकारात्मक तरंगों को हटाने हेतु नमक शुद्धि विधान।",
+      "image": "/assets/images/salt_therapy_cleansing_1793624554656.jpg"
     },
     {
       "id": "srv-5",
       "number": 5,
       "title": "Watch Analysis & Clock Therapy Consultation",
-      "title_hi": "घड़ी का विश्लेषण एवं चिकित्सीय परामर्श",
+      "title_hi": "घड़ी का विश्लेषण एवं चिकित्सीय परामर्श (वॉच थेरेपी)",
       "fee": 5100,
       "feeFormatted": "₹5,100",
       "duration": "45 मिनट",
       "category": "therapy",
       "categoryLabel_hi": "समय विज्ञान",
       "badge": "अनोखा शोध",
-      "description": "आपकी कलाई घड़ी का डायल, रंग व पट्टा आपके समय और जीवन चक्र को कैसे प्रभावित करता है उसका विश्लेषण।"
+      "description": "आपकी कलाई घड़ी का डायल, रंग व पट्टा आपके समय और जीवन चक्र को कैसे प्रभावित करता है उसका विश्लेषण।",
+      "image": "/assets/images/watch_therapy_consultation_1793624573045.jpg"
     },
     {
       "id": "srv-6",
@@ -103,7 +108,8 @@
       "category": "healing",
       "categoryLabel_hi": "प्राणिक हीलिंग",
       "badge": "दूरस्थ हीलिंग",
-      "description": "स्पर्श-रहित प्राणिक ऊर्जा चिकित्सा द्वारा शारीरिक व मानसिक तनाव से मुक्ति।"
+      "description": "स्पर्श-रहित प्राणिक ऊर्जा चिकित्सा द्वारा शारीरिक व मानसिक तनाव से मुक्ति।",
+      "image": "/assets/images/hero_celestial_sacred_geometry_1792557572251.jpg"
     },
     {
       "id": "srv-7",
@@ -116,7 +122,8 @@
       "category": "therapy",
       "categoryLabel_hi": "रत्न विज्ञान",
       "badge": "सिद्ध प्राण-प्रतिष्ठा",
-      "description": "आपकी ऊर्जा आवृत्ति के अनुसार सही प्राकृतिक क्रिस्टल व नवरत्न धारण करने का परामर्श।"
+      "description": "आपकी ऊर्जा आवृत्ति के अनुसार सही प्राकृतिक क्रिस्टल व नवरत्न धारण करने का परामर्श।",
+      "image": "/assets/images/crystal_gemstones_healing_1793624595121.jpg"
     },
     {
       "id": "srv-8",
@@ -129,7 +136,8 @@
       "category": "healing",
       "categoryLabel_hi": "वास्तु विज्ञान",
       "badge": "बिना तोड़-फोड़",
-      "description": "घर और प्रतिष्ठान में पंचतत्व संतुलन और सकारात्मक ऊर्जा का निर्बाध प्रवाह।"
+      "description": "घर और प्रतिष्ठान में पंचतत्व संतुलन और सकारात्मक ऊर्जा का निर्बाध प्रवाह।",
+      "image": "/assets/images/vastu_sacred_yantra_1793624613612.jpg"
     },
     {
       "id": "srv-9",
@@ -142,7 +150,8 @@
       "category": "numerology",
       "categoryLabel_hi": "संबंध मार्गदर्शन",
       "badge": "पारिवारिक शांति",
-      "description": "अंक और ऊर्जा मिलान द्वारा वैवाहिक जीवन और संबंधों में प्रेम व समझ की पुनर्स्थापना।"
+      "description": "अंक और ऊर्जा मिलान द्वारा वैवाहिक जीवन और संबंधों में प्रेम व समझ की पुनर्स्थापना।",
+      "image": "/assets/images/vedic_numerology_sacred_cosmos_1792557572243.jpg"
     },
     {
       "id": "srv-10",
@@ -155,7 +164,8 @@
       "category": "healing",
       "categoryLabel_hi": "आत्मिक शुद्धि",
       "badge": "गहरी मुक्ति",
-      "description": "अतीत के कष्टकारी बंधनों और नकारात्मक यादों से आत्मिक ऊर्जा को मुक्त करने का सत्र।"
+      "description": "अतीत के कष्टकारी बंधनों और नकारात्मक यादों से आत्मिक ऊर्जा को मुक्त करने का सत्र।",
+      "image": "/assets/images/chakras_aura_energy_flow_1792557572576.jpg"
     },
     {
       "id": "srv-11",
@@ -168,7 +178,8 @@
       "category": "regression",
       "categoryLabel_hi": "गहन चेतना",
       "badge": "विशेष सत्र",
-      "description": "अवचेतन मन की गहराइयों में जाकर पूर्व संचित कर्मों और जीवन के मूल प्रश्नों का समाधान।"
+      "description": "अवचेतन मन की गहराइयों में जाकर पूर्व संचित कर्मों और जीवन के मूल प्रश्नों का समाधान।",
+      "image": "/assets/images/tarot_intuitive_cards_luxury_1792557573151.jpg"
     }
   ],
   "testimonials": [

@@ -13,9 +13,10 @@ import {
   X,
   Play,
   FileCheck,
-  AlertCircle
+  AlertCircle,
+  Link as LinkIcon
 } from 'lucide-react';
-import { MediaItem, getMediaList, uploadMediaFile, deleteMediaItem, updateMediaMetadata } from '../../utils/cmsApi';
+import { MediaItem, getMediaList, uploadMediaFile, deleteMediaItem, updateMediaMetadata, addMediaLink } from '../../utils/cmsApi';
 
 interface AdminMediaLibraryProps {
   isPicker?: boolean;
@@ -41,6 +42,14 @@ export const AdminMediaLibrary: React.FC<AdminMediaLibraryProps> = ({
   const [editAltText, setEditAltText] = useState('');
   const [editCaption, setEditCaption] = useState('');
   const [savingMetadata, setSavingMetadata] = useState(false);
+
+  // External Link Modal State
+  const [showAddLinkModal, setShowAddLinkModal] = useState(false);
+  const [linkUrl, setLinkUrl] = useState('');
+  const [linkTitle, setLinkTitle] = useState('');
+  const [linkType, setLinkType] = useState<'video' | 'image'>('video');
+  const [linkCaption, setLinkCaption] = useState('');
+  const [addingLink, setAddingLink] = useState(false);
 
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -138,6 +147,30 @@ export const AdminMediaLibrary: React.FC<AdminMediaLibraryProps> = ({
     }
   };
 
+  const handleAddLink = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!linkUrl.trim()) return;
+    try {
+      setAddingLink(true);
+      await addMediaLink(
+        linkUrl.trim(),
+        linkTitle.trim() || undefined,
+        linkType,
+        linkTitle.trim() || undefined,
+        linkCaption.trim() || undefined
+      );
+      setShowAddLinkModal(false);
+      setLinkUrl('');
+      setLinkTitle('');
+      setLinkCaption('');
+      await fetchMedia();
+    } catch (err: any) {
+      alert(`लिंक जोड़ने में त्रुटि: ${err.message}`);
+    } finally {
+      setAddingLink(false);
+    }
+  };
+
   const formatBytes = (bytes: number) => {
     if (!bytes || bytes === 0) return '0 KB';
     const k = 1024;
@@ -176,7 +209,7 @@ export const AdminMediaLibrary: React.FC<AdminMediaLibraryProps> = ({
           </p>
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex flex-wrap items-center gap-2">
           {isPicker && onClosePicker && (
             <button
               onClick={onClosePicker}
@@ -185,6 +218,15 @@ export const AdminMediaLibrary: React.FC<AdminMediaLibraryProps> = ({
               <X size={18} />
             </button>
           )}
+
+          <button
+            type="button"
+            onClick={() => setShowAddLinkModal(true)}
+            className="px-4 py-3 rounded-xl bg-white/10 hover:bg-white/15 border border-[#D6B574]/40 text-white font-semibold text-xs tracking-wide transition-all flex items-center justify-center gap-2 cursor-pointer shadow-md"
+          >
+            <LinkIcon size={15} className="text-[#D6B574]" />
+            <span>{lang === 'hi' ? '🎬 यूट्यूब / वेब लिंक जोड़ें' : 'Add Web/Video Link'}</span>
+          </button>
 
           <label className="px-5 py-3 rounded-xl bg-gradient-to-r from-[#D6B574] via-[#eedca2] to-[#D6B574] text-[#1c0f26] font-bold text-xs tracking-wide shadow-lg shadow-[#D6B574]/20 hover:brightness-105 active:scale-95 transition-all flex items-center justify-center gap-2 cursor-pointer">
             <Upload size={16} />
@@ -483,6 +525,131 @@ export const AdminMediaLibrary: React.FC<AdminMediaLibraryProps> = ({
                 </button>
               </div>
             </div>
+          </div>
+        </div>
+      )}
+
+      {/* Add External Video / Image Link Modal */}
+      {showAddLinkModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-fade-in">
+          <div className="relative w-full max-w-lg bg-[#24152F] rounded-3xl border border-[#D6B574]/40 shadow-2xl p-6 sm:p-7 space-y-5">
+            <div className="flex items-center justify-between border-b border-white/10 pb-4">
+              <div className="flex items-center gap-2">
+                <div className="w-8 h-8 rounded-xl bg-[#D6B574]/20 border border-[#D6B574]/40 flex items-center justify-center text-[#D6B574]">
+                  <LinkIcon size={16} />
+                </div>
+                <div>
+                  <h3 className="font-cinzel text-base font-bold text-white">
+                    {lang === 'hi' ? 'बाहरी वीडियो या फ़ोटो लिंक जोड़ें' : 'Add External Video / Image Link'}
+                  </h3>
+                  <p className="text-[11px] text-[#EAE2F4]/60">
+                    यूट्यूब, वीमियो या किसी भी वेब इमेज को सीधे लाइब्रेरी में सहेजें
+                  </p>
+                </div>
+              </div>
+              <button
+                onClick={() => setShowAddLinkModal(false)}
+                className="p-1.5 rounded-lg text-white/50 hover:text-white hover:bg-white/10 transition-all cursor-pointer"
+              >
+                <X size={18} />
+              </button>
+            </div>
+
+            <form onSubmit={handleAddLink} className="space-y-4">
+              <div>
+                <label className="block text-xs font-semibold text-[#D6B574] uppercase tracking-wider mb-1.5">
+                  प्रकार (Media Type)
+                </label>
+                <div className="flex items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={() => setLinkType('video')}
+                    className={`flex-1 py-2 rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 transition-all cursor-pointer ${
+                      linkType === 'video'
+                        ? 'bg-purple-600 text-white shadow-md'
+                        : 'bg-[#1c0f26] text-white/70 hover:text-white border border-white/10'
+                    }`}
+                  >
+                    <Video size={14} />
+                    <span>🎬 वीडियो (YouTube / Vimeo / MP4)</span>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setLinkType('image')}
+                    className={`flex-1 py-2 rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 transition-all cursor-pointer ${
+                      linkType === 'image'
+                        ? 'bg-sky-600 text-white shadow-md'
+                        : 'bg-[#1c0f26] text-white/70 hover:text-white border border-white/10'
+                    }`}
+                  >
+                    <ImageIcon size={14} />
+                    <span>🖼️ फ़ोटो (Image URL)</span>
+                  </button>
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-xs font-semibold text-[#D6B574] uppercase tracking-wider mb-1.5">
+                  सीधा URL (Direct Link / YouTube URL) *
+                </label>
+                <input
+                  type="text"
+                  required
+                  value={linkUrl}
+                  onChange={(e) => setLinkUrl(e.target.value)}
+                  placeholder={
+                    linkType === 'video'
+                      ? 'https://www.youtube.com/watch?v=... या https://youtu.be/...'
+                      : 'https://example.com/photo.jpg'
+                  }
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-[#1c0f26] border border-[#D6B574]/30 text-xs text-white outline-hidden focus:border-[#D6B574] font-mono"
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs font-semibold text-[#D6B574] uppercase tracking-wider mb-1.5">
+                  शीर्षक (Title / Label)
+                </label>
+                <input
+                  type="text"
+                  value={linkTitle}
+                  onChange={(e) => setLinkTitle(e.target.value)}
+                  placeholder="उदा. आईआईएमटी महाकुंभ व्याख्यान"
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-[#1c0f26] border border-[#D6B574]/30 text-xs text-white outline-hidden focus:border-[#D6B574]"
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs font-semibold text-[#D6B574] uppercase tracking-wider mb-1.5">
+                  कैप्शन या विवरण (Caption)
+                </label>
+                <input
+                  type="text"
+                  value={linkCaption}
+                  onChange={(e) => setLinkCaption(e.target.value)}
+                  placeholder="संक्षिप्त विवरण या संदर्भ"
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-[#1c0f26] border border-[#D6B574]/30 text-xs text-white outline-hidden focus:border-[#D6B574]"
+                />
+              </div>
+
+              <div className="flex items-center justify-end gap-2.5 pt-3 border-t border-white/10">
+                <button
+                  type="button"
+                  onClick={() => setShowAddLinkModal(false)}
+                  className="px-4 py-2.5 rounded-xl bg-white/5 hover:bg-white/10 text-white/80 text-xs font-semibold cursor-pointer"
+                >
+                  रद्द करें
+                </button>
+                <button
+                  type="submit"
+                  disabled={addingLink || !linkUrl.trim()}
+                  className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#D6B574] via-[#eedca2] to-[#D6B574] text-[#1c0f26] text-xs font-bold shadow-lg shadow-[#D6B574]/20 hover:brightness-105 transition-all flex items-center gap-1.5 cursor-pointer disabled:opacity-50"
+                >
+                  <Check size={14} />
+                  <span>{addingLink ? 'जोड़ रहे हैं...' : 'लाइब्रेरी में जोड़ें'}</span>
+                </button>
+              </div>
+            </form>
           </div>
         </div>
       )}

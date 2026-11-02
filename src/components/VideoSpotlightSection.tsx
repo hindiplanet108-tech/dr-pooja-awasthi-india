@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Video, Play, ExternalLink, Sparkles, Award } from 'lucide-react';
 import { useSiteContent } from '../utils/siteContentContext';
+import { formatEmbedUrl } from '../utils/cmsApi';
 
 interface VideoSpotlightSectionProps {
   lang?: string;
@@ -21,13 +22,7 @@ export const VideoSpotlightSection: React.FC<VideoSpotlightSectionProps> = ({ la
     ? (spotlight.caption_hi || 'आईआईएमटी विश्वविद्यालय परिसर मेरठ में देश-विदेश के 90+ विद्वानों के समक्ष डॉ. पूजा अवस्थी का विशेष संबोधन।')
     : (spotlight.caption_en || 'Keynote address by Dr. Pooja Awasthi before 90+ eminent Vedic scholars at IIMT University.');
 
-  // Format video url for iframe if youtube
-  let embedUrl = spotlight.video_url;
-  if (embedUrl.includes('youtube.com/watch?v=')) {
-    embedUrl = embedUrl.replace('watch?v=', 'embed/');
-  } else if (embedUrl.includes('youtu.be/')) {
-    embedUrl = embedUrl.replace('youtu.be/', 'www.youtube.com/embed/');
-  }
+  const { embedUrl, isIframe } = formatEmbedUrl(spotlight.video_url);
 
   return (
     <section className="py-20 bg-gradient-to-b from-[#24152F] via-[#1c0f26] to-[#24152F] text-white relative overflow-hidden border-t border-[#D6B574]/20">
@@ -53,20 +48,20 @@ export const VideoSpotlightSection: React.FC<VideoSpotlightSectionProps> = ({ la
 
         {/* Video Player Box */}
         <div className="max-w-4xl mx-auto rounded-3xl overflow-hidden border border-[#D6B574]/40 shadow-2xl bg-black relative group aspect-video">
-          {embedUrl.endsWith('.mp4') ? (
-            <video
-              src={embedUrl}
-              controls
-              className="w-full h-full object-cover"
-              poster="/assets/awards/IMMT.jpeg"
-            />
-          ) : (
+          {isIframe ? (
             <iframe
               src={embedUrl}
               title={heading}
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
               className="w-full h-full border-0"
+            />
+          ) : (
+            <video
+              src={embedUrl}
+              controls
+              className="w-full h-full object-cover"
+              poster="/assets/awards/IMMT.jpeg"
             />
           )}
         </div>

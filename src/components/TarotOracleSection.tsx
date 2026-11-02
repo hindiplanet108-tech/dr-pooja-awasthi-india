@@ -182,7 +182,11 @@ export const TarotOracleSection: React.FC<TarotOracleSectionProps> = ({ onBookTa
                     onClick={() => onBookTarot(`Tarot Session — Inquiring after drawing "${currentSingleCard.name}"`)}
                     className="w-full sm:w-auto px-6 py-3 bg-[#D6B574] hover:bg-[#e4ca8c] text-[#24152F] font-bold text-xs uppercase tracking-wider rounded-xl transition-all shadow-md hover:scale-[1.02]"
                   >
-                    {lang === 'hi' ? 'व्यक्तिगत टैरो सत्र प्राप्त करें (₹5,100)' : 'Book Personal Tarot Session (₹5,100)'}
+                    {lang === 'hi' ? (
+                      <>व्यक्तिगत टैरो सत्र प्राप्त करें (<strong className="font-black text-[#24152F]">₹5,100</strong>)</>
+                    ) : (
+                      <>Book Personal Tarot Session (<strong className="font-black text-[#24152F]">₹5,100</strong>)</>
+                    )}
                   </button>
                 </div>
               </div>

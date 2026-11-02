@@ -391,77 +391,77 @@ export const VedicCalculatorSection: React.FC<VedicCalculatorSectionProps> = ({ 
 
         </div>
 
-        {/* Tab Navigation for Interactive Grids & Analysis */}
-        <div className="flex flex-wrap items-center justify-center gap-2 mb-8 border-b border-white/10 pb-4">
+        {/* Tab Navigation for Interactive Grids & Analysis - Compact Spacing */}
+        <div className="flex flex-wrap items-center justify-center gap-1.5 mb-3 border-b border-white/10 pb-2.5">
           <button
             type="button"
             onClick={() => setActiveTab('loshu')}
-            className={`px-4 sm:px-6 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all flex items-center gap-2 ${
+            className={`px-3.5 sm:px-4 py-2 rounded-xl text-xs sm:text-xs font-semibold transition-all flex items-center gap-1.5 ${
               activeTab === 'loshu'
                 ? 'bg-[#D6B574] text-[#24152F] shadow-lg shadow-[#D6B574]/20 scale-[1.02]'
                 : 'bg-white/5 text-[#EAE2F4]/70 hover:bg-white/10 hover:text-white'
             }`}
           >
-            <Grid size={15} />
-            <span>{lang === 'hi' ? '३×३ लो-शू व वैदिक चक्र (दोनों चक्र एवं भविष्यफल)' : '3×3 Lo Shu & Vedic Grids (Both Matrices)'}</span>
+            <Grid size={14} />
+            <span>{lang === 'hi' ? '३×३ लो-शू व वैदिक चक्र (दोनों चक्र)' : '3×3 Lo Shu & Vedic Grids'}</span>
           </button>
 
           <button
             type="button"
             onClick={() => setActiveTab('vedic')}
-            className={`px-4 sm:px-6 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all flex items-center gap-2 ${
+            className={`px-3.5 sm:px-4 py-2 rounded-xl text-xs sm:text-xs font-semibold transition-all flex items-center gap-1.5 ${
               activeTab === 'vedic'
                 ? 'bg-[#D6B574] text-[#24152F] shadow-lg shadow-[#D6B574]/20 scale-[1.02]'
                 : 'bg-white/5 text-[#EAE2F4]/70 hover:bg-white/10 hover:text-white'
             }`}
           >
-            <Star size={15} />
-            <span>{lang === 'hi' ? 'वैदिक अंक कुण्डली (Vedic Grid 3-1-9)' : 'Vedic Grid (3-1-9 / 6-7-5)'}</span>
+            <Star size={14} />
+            <span>{lang === 'hi' ? 'वैदिक अंक कुण्डली (3-1-9)' : 'Vedic Grid (3-1-9)'}</span>
           </button>
 
           <button
             type="button"
             onClick={() => setActiveTab('planes')}
-            className={`px-4 sm:px-6 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all flex items-center gap-2 ${
+            className={`px-3.5 sm:px-4 py-2 rounded-xl text-xs sm:text-xs font-semibold transition-all flex items-center gap-1.5 ${
               activeTab === 'planes'
                 ? 'bg-[#D6B574] text-[#24152F] shadow-lg shadow-[#D6B574]/20 scale-[1.02]'
                 : 'bg-white/5 text-[#EAE2F4]/70 hover:bg-white/10 hover:text-white'
             }`}
           >
-            <Layers size={15} />
-            <span>{lang === 'hi' ? '8 राजयोग एवं तल (8 Planes of Destiny)' : '8 Planes of Destiny (Yogas)'}</span>
+            <Layers size={14} />
+            <span>{lang === 'hi' ? '8 राजयोग व तल' : '8 Planes of Destiny'}</span>
             <span className="px-1.5 py-0.2 rounded-full bg-white/20 text-[10px]">
-              {result.destinyPlanes.filter((p) => p.status === 'Complete').length} Active
+              {result.destinyPlanes.filter((p) => p.status === 'Complete').length}
             </span>
           </button>
 
           <button
             type="button"
             onClick={() => setActiveTab('remedies')}
-            className={`px-4 sm:px-6 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all flex items-center gap-2 ${
+            className={`px-3.5 sm:px-4 py-2 rounded-xl text-xs sm:text-xs font-semibold transition-all flex items-center gap-1.5 ${
               activeTab === 'remedies'
                 ? 'bg-[#D6B574] text-[#24152F] shadow-lg shadow-[#D6B574]/20 scale-[1.02]'
                 : 'bg-white/5 text-[#EAE2F4]/70 hover:bg-white/10 hover:text-white'
             }`}
           >
-            <Gem size={15} />
-            <span>{lang === 'hi' ? 'अनुपस्थित अंक उपाय (Missing Remedies)' : 'Missing Number Remedies'}</span>
+            <Gem size={14} />
+            <span>{lang === 'hi' ? 'अनुपस्थित उपाय' : 'Missing Remedies'}</span>
             <span className="px-1.5 py-0.2 rounded-full bg-rose-500/30 text-rose-300 text-[10px]">
-              {result.missingNumbers.length} Missing
+              {result.missingNumbers.length}
             </span>
           </button>
 
           <button
             type="button"
             onClick={() => setActiveTab('kuaGuide')}
-            className={`px-4 sm:px-6 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all flex items-center gap-2 ${
+            className={`px-3.5 sm:px-4 py-2 rounded-xl text-xs sm:text-xs font-semibold transition-all flex items-center gap-1.5 ${
               activeTab === 'kuaGuide'
                 ? 'bg-[#D6B574] text-[#24152F] shadow-lg shadow-[#D6B574]/20 scale-[1.02]'
                 : 'bg-white/5 text-[#EAE2F4]/70 hover:bg-white/10 hover:text-white'
             }`}
           >
-            <BookOpen size={15} />
-            <span>{lang === 'hi' ? 'कुआ अंक गणना विधि एवं १९६७ उदाहरण' : 'Kua Formula & 1967 Proof Guide'}</span>
+            <BookOpen size={14} />
+            <span>{lang === 'hi' ? 'कुआ अंक विधि' : 'Kua Formula'}</span>
           </button>
         </div>
 
@@ -469,9 +469,9 @@ export const VedicCalculatorSection: React.FC<VedicCalculatorSectionProps> = ({ 
         {/* TAB 1: LO SHU GRID (4-9-2 / 3-5-7 / 8-1-6) */}
         {/* ========================================================================= */}
         {activeTab === 'loshu' && (
-          <div className="space-y-8 animate-fadeIn">
-            <div className="p-6 sm:p-8 rounded-3xl bg-white/5 border border-[#D6B574]/30 shadow-2xl backdrop-blur-md">
-              <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 mb-6 pb-4 border-b border-white/10">
+          <div className="space-y-4 animate-fadeIn">
+            <div className="p-4 sm:p-6 rounded-2xl bg-white/5 border border-[#D6B574]/30 shadow-2xl backdrop-blur-md">
+              <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-3 mb-4 pb-3 border-b border-white/10">
                 <div>
                   <h3 className="font-cinzel text-xl sm:text-2xl font-bold text-white flex items-center gap-2">
                     <Grid className="text-[#D6B574]" size={22} />
@@ -657,11 +657,11 @@ export const VedicCalculatorSection: React.FC<VedicCalculatorSectionProps> = ({ 
             {/* ========================================================================= */}
             {/* DIRECTLY BELOW LO-SHU GRID: YOUR 3×3 VEDIC GRID (SANATAN NAVAGRAHA KUNDALI) */}
             {/* ========================================================================= */}
-            <div className="p-6 sm:p-8 rounded-3xl bg-gradient-to-b from-[#180a26] via-[#24152F]/90 to-[#12071c] border-2 border-[#D6B574]/40 shadow-2xl backdrop-blur-md relative overflow-hidden">
+            <div className="p-4 sm:p-6 rounded-2xl bg-gradient-to-b from-[#180a26] via-[#24152F]/90 to-[#12071c] border-2 border-[#D6B574]/40 shadow-2xl backdrop-blur-md relative overflow-hidden">
               <div className="absolute top-0 right-0 w-80 h-80 bg-[#D6B574]/10 rounded-full blur-3xl pointer-events-none" />
 
               {/* Header */}
-              <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 mb-6 pb-4 border-b border-[#D6B574]/30 relative z-10">
+              <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-3 mb-3.5 pb-2.5 border-b border-[#D6B574]/30 relative z-10">
                 <div>
                   <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#D6B574]/20 border border-[#D6B574]/40 text-[#D6B574] text-xs font-semibold mb-2">
                     <Star size={13} />

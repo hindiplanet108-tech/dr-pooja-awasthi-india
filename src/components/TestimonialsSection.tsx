@@ -540,7 +540,13 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
               className="w-full sm:w-auto px-6 py-3 rounded-2xl bg-white/10 hover:bg-white/20 text-[#D6B574] hover:text-white border border-[#D6B574]/40 font-bold text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-2 cursor-pointer"
             >
               <MessageSquare size={15} className="text-[#25D366]" />
-              <span>{lang === 'hi' ? 'परामर्श बुक करें (₹5,100)' : 'Book Consultation (₹5,100)'}</span>
+              <span>
+                {lang === 'hi' ? (
+                  <>परामर्श बुक करें (<strong className="font-black text-[#F5C242]">₹5,100</strong>)</>
+                ) : (
+                  <>Book Consultation (<strong className="font-black text-[#F5C242]">₹5,100</strong>)</>
+                )}
+              </span>
             </a>
           </div>
         </div>

@@ -98,7 +98,7 @@ export const AdminSiteEditor: React.FC<AdminSiteEditorProps> = ({
 
   const handleSelectMedia = (url: string) => {
     if (!mediaPickerTarget || !content) return;
-    const { section, field } = mediaPickerTarget;
+    const { section, field, index } = mediaPickerTarget;
 
     if (section === 'hero') {
       setContent({ ...content, hero: { ...content.hero, portrait_photo: url } });
@@ -108,6 +108,10 @@ export const AdminSiteEditor: React.FC<AdminSiteEditorProps> = ({
       setContent({ ...content, bankUpi: { ...content.bankUpi, qr_code_image: url } });
     } else if (section === 'video') {
       setContent({ ...content, videoSpotlight: { ...content.videoSpotlight, video_url: url } });
+    } else if (section === 'service' && typeof index === 'number') {
+      const updated = [...content.services];
+      updated[index] = { ...updated[index], image: url };
+      setContent({ ...content, services: updated });
     }
 
     setMediaPickerTarget(null);
@@ -683,6 +687,46 @@ export const AdminSiteEditor: React.FC<AdminSiteEditorProps> = ({
                     placeholder="सेवा का संक्षिप्त विवरण..."
                   />
                 </div>
+
+                {/* Service Photo Selector */}
+                <div className="flex flex-col sm:flex-row items-center gap-3 pt-2 border-t border-white/5">
+                  <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-xl overflow-hidden bg-[#24152F] border border-[#D6B574]/40 shrink-0 shadow-md">
+                    <img
+                      src={srv.image || '/assets/images/vedic_numerology_sacred_cosmos_1792557572243.jpg'}
+                      alt={srv.title_hi || srv.title}
+                      className="w-full h-full object-cover"
+                      onError={(e) => {
+                        (e.target as HTMLImageElement).src = '/assets/images/hero_celestial_sacred_geometry_1792557572251.jpg';
+                      }}
+                    />
+                  </div>
+
+                  <div className="flex-1 w-full space-y-1">
+                    <label className="text-[10px] uppercase font-bold text-[#D6B574] tracking-wider block">
+                      सेवा का छायाचित्र (Service Photo URL)
+                    </label>
+                    <div className="flex items-center gap-2">
+                      <input
+                        type="text"
+                        value={srv.image || ''}
+                        onChange={(e) => {
+                          const updated = [...content.services];
+                          updated[idx] = { ...updated[idx], image: e.target.value };
+                          setContent({ ...content, services: updated });
+                        }}
+                        placeholder="/assets/images/... या मीडिया लाइब्रेरी से चुनें"
+                        className="flex-1 px-3 py-1.5 rounded-xl bg-[#24152F] border border-white/10 text-xs text-white outline-hidden font-mono"
+                      />
+                      <button
+                        type="button"
+                        onClick={() => setMediaPickerTarget({ section: 'service', field: 'image', index: idx })}
+                        className="px-3.5 py-1.5 rounded-xl bg-[#D6B574] text-[#1c0f26] text-xs font-bold shrink-0 cursor-pointer hover:brightness-105 transition-all"
+                      >
+                        फोटो चुनें
+                      </button>
+                    </div>
+                  </div>
+                </div>
               </div>
             ))}
           </div>
@@ -1081,6 +1125,23 @@ export const AdminSiteEditor: React.FC<AdminSiteEditorProps> = ({
                   })
                 }
                 className="w-full px-3.5 py-2.5 rounded-xl bg-[#1c0f26] border border-[#D6B574]/30 text-xs text-white outline-hidden"
+              />
+            </div>
+
+            <div>
+              <label className="block text-xs font-semibold text-[#D6B574] uppercase tracking-wider mb-1.5">
+                परामर्श दक्षिणा / शुल्क (Consultation Fee)
+              </label>
+              <input
+                type="text"
+                value={content.contact.consultation_fee || '₹5,100'}
+                onChange={(e) =>
+                  setContent({
+                    ...content,
+                    contact: { ...content.contact, consultation_fee: e.target.value },
+                  })
+                }
+                className="w-full px-3.5 py-2.5 rounded-xl bg-[#1c0f26] border border-[#D6B574]/30 text-xs text-white font-bold outline-hidden"
               />
             </div>
           </div>

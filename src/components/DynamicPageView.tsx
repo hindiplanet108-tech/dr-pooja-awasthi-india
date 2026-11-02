@@ -26,7 +26,8 @@ import {
   CtaButtonBlock,
   BookingCardBlock,
   DividerBlock,
-  getPageBySlug
+  getPageBySlug,
+  formatEmbedUrl
 } from '../utils/cmsApi';
 
 interface DynamicPageViewProps {
@@ -367,6 +368,7 @@ export const DynamicPageView: React.FC<DynamicPageViewProps> = ({
           // 6. VIDEO BLOCK
           if (block.type === 'video') {
             const vid = block as VideoBlock;
+            const { embedUrl, isIframe } = formatEmbedUrl(vid.videoUrl);
             return (
               <section key={vid.id} className="space-y-4 max-w-3xl mx-auto text-center">
                 {vid.heading && (
@@ -379,20 +381,20 @@ export const DynamicPageView: React.FC<DynamicPageViewProps> = ({
                 )}
 
                 <div className="aspect-video w-full rounded-3xl overflow-hidden shadow-2xl border-2 border-[#D6B574]/40 bg-black">
-                  {vid.videoUrl.includes('youtube') || vid.videoUrl.includes('embed') ? (
+                  {isIframe ? (
                     <iframe
-                      src={vid.videoUrl}
+                      src={embedUrl}
                       title={vid.heading || 'Video'}
-                      className="w-full h-full"
+                      className="w-full h-full border-0"
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                       allowFullScreen
                     />
                   ) : (
                     <video
-                      src={vid.videoUrl}
+                      src={embedUrl || vid.videoUrl}
                       controls
                       poster={vid.posterImage}
-                      className="w-full h-full"
+                      className="w-full h-full object-cover"
                     />
                   )}
                 </div>

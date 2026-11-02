@@ -563,6 +563,42 @@ app.post('/api/media/upload', requireAuth, upload.single('file'), (req: Request,
   }
 });
 
+// Add external media link (YouTube, Vimeo, external MP4 or image URL)
+app.post('/api/media/link', requireAuth, (req: AuthRequest, res: Response) => {
+  const { url, filename, type, altText, caption } = req.body;
+  if (!url || typeof url !== 'string') {
+    return res.status(400).json({ error: 'Valid URL is required' });
+  }
+
+  const trimmedUrl = url.trim();
+  const isVideo =
+    type === 'video' ||
+    trimmedUrl.includes('youtube.com') ||
+    trimmedUrl.includes('youtu.be') ||
+    trimmedUrl.includes('vimeo.com') ||
+    trimmedUrl.endsWith('.mp4') ||
+    trimmedUrl.endsWith('.webm');
+
+  const mediaList = readJsonFile<any[]>(MEDIA_FILE, []);
+  const newMedia = {
+    id: `med-${Date.now()}`,
+    filename: filename ? filename.trim() : (isVideo ? 'External Video' : 'External Image'),
+    originalName: filename ? filename.trim() : trimmedUrl,
+    url: trimmedUrl,
+    type: isVideo ? 'video' : 'image',
+    mimeType: isVideo ? 'video/external' : 'image/external',
+    sizeBytes: 0,
+    altText: altText || filename || (isVideo ? 'Video' : 'Image'),
+    caption: caption || '',
+    uploadedAt: new Date().toISOString(),
+  };
+
+  mediaList.unshift(newMedia);
+  writeJsonFile(MEDIA_FILE, mediaList);
+
+  return res.status(201).json(newMedia);
+});
+
 // Update media metadata (alt text, caption)
 app.put('/api/media/:id', requireAuth, (req: AuthRequest, res: Response) => {
   const { id } = req.params;

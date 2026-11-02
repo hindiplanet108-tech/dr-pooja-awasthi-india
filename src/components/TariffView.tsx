@@ -267,8 +267,11 @@ export const TariffView: React.FC<TariffViewProps> = ({
                 <span className="text-[11px] text-[#EAE2F4]/70 uppercase block">
                   {tariffLang === 'hi' ? 'परामर्श शुल्क' : 'Consultancy Fee'}
                 </span>
-                <div className="font-cormorant text-5xl font-light text-[#D6B574] tabular-nums">
-                  ₹5,100
+                <div className="font-cormorant text-5xl font-black text-white tabular-nums drop-shadow-md flex items-center justify-center lg:justify-end">
+                  <strong className="font-black text-[#F5C242] text-4xl font-sans mr-1 select-none">
+                    ₹
+                  </strong>
+                  <span className="font-black text-[#F3E5AB]">5,100</span>
                 </div>
                 <span className="text-[11px] text-[#EAE2F4]/60 block">
                   {tariffLang === 'hi' ? 'प्रति सत्र (वीडियो / ऑडियो कॉल)' : 'Per session (Virtual / Telephonic)'}

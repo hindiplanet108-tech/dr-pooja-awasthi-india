@@ -48,9 +48,11 @@ export const BankUpiModal: React.FC<BankUpiModalProps> = ({ isOpen, onClose, lan
                 {lang === 'hi' ? 'बैंक एवं UPI भुगतान विवरण' : 'Bank & UPI Payment Details'}
               </h3>
               <p className="text-xs text-[#D6B574]">
-                {lang === 'hi'
-                  ? `परामर्श दक्षिणा: ${paymentData.consultancyFee} · प्रामाणिक व सत्यापित खाते`
-                  : `Consultation Fee: ${paymentData.consultancyFee} · Direct Verified Accounts`}
+                {lang === 'hi' ? (
+                  <>परामर्श दक्षिणा: <strong className="font-black text-[#F5C242] text-sm">{paymentData.consultancyFee}</strong> · प्रामाणिक व सत्यापित खाते</>
+                ) : (
+                  <>Consultation Fee: <strong className="font-black text-[#F5C242] text-sm">{paymentData.consultancyFee}</strong> · Direct Verified Accounts</>
+                )}
               </p>
             </div>
           </div>

@@ -34,7 +34,8 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ lang, onSelect
         fee: s.fee ?? 5100,
         feeFormatted: s.feeFormatted || `₹${(s.fee ?? 5100).toLocaleString()}`,
         duration: s.duration || '60 मिनट',
-        duration_en: s.duration || '60 mins'
+        duration_en: s.duration || '60 mins',
+        image: s.image || CATALOG_SERVICES[idx]?.image || '/assets/images/vedic_numerology_sacred_cosmos_1792557572243.jpg'
       }))
     : CATALOG_SERVICES;
 
@@ -50,8 +51,8 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ lang, onSelect
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
-          <div className="max-w-2xl space-y-3">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-6 gap-4">
+          <div className="max-w-2xl space-y-2">
             <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-[#6941A5]">
               <span>{t.servicesNav}</span>
               <span aria-hidden="true">·</span>
@@ -63,12 +64,12 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ lang, onSelect
             </h2>
           </div>
 
-          {/* Interactive Mode Tabs */}
-          <div className="flex items-center gap-1.5 p-1 bg-[#EAE2F4]/80 rounded-xl self-start md:self-end border border-[#EAE2F4] shadow-xs">
+          {/* Interactive Mode Tabs - Compact Spacing */}
+          <div className="flex items-center gap-1 p-0.5 bg-[#EAE2F4]/80 rounded-xl self-start md:self-end border border-[#EAE2F4] shadow-xs">
             <button
               type="button"
               onClick={() => setActiveTab('core')}
-              className={`px-4 py-2 text-xs font-semibold rounded-lg transition-all whitespace-nowrap ${
+              className={`px-3.5 py-1.5 text-xs font-semibold rounded-lg transition-all whitespace-nowrap ${
                 activeTab === 'core'
                   ? 'bg-[#24152F] text-white shadow-sm'
                   : 'text-[#29242E]/70 hover:text-[#24152F]'
@@ -79,7 +80,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ lang, onSelect
             <button
               type="button"
               onClick={() => setActiveTab('catalog')}
-              className={`px-4 py-2 text-xs font-semibold rounded-lg transition-all whitespace-nowrap ${
+              className={`px-3.5 py-1.5 text-xs font-semibold rounded-lg transition-all whitespace-nowrap ${
                 activeTab === 'catalog'
                   ? 'bg-[#24152F] text-white shadow-sm'
                   : 'text-[#29242E]/70 hover:text-[#24152F]'
@@ -90,7 +91,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ lang, onSelect
             <button
               type="button"
               onClick={() => setActiveTab('chakras')}
-              className={`px-4 py-2 text-xs font-semibold rounded-lg transition-all whitespace-nowrap flex items-center gap-1.5 ${
+              className={`px-3.5 py-1.5 text-xs font-semibold rounded-lg transition-all whitespace-nowrap flex items-center gap-1.5 ${
                 activeTab === 'chakras'
                   ? 'bg-[#24152F] text-[#D6B574] shadow-sm'
                   : 'text-[#29242E]/70 hover:text-[#24152F]'
@@ -117,6 +118,9 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ lang, onSelect
                     alt={srv.title}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                     referrerPolicy="no-referrer"
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).src = '/assets/images/hero_celestial_sacred_geometry_1792557572251.jpg';
+                    }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#24152F] via-[#24152F]/40 to-transparent" />
                   
@@ -216,57 +220,83 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ lang, onSelect
               ))}
             </div>
 
-            {/* Catalog Grid */}
+            {/* Catalog Grid with Photo Banners */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {filteredCatalog.map((item) => (
                 <div
                   key={item.id}
-                  className="p-6 rounded-2xl bg-white border border-[#EAE2F4] hover:border-[#D6B574]/80 shadow-xs hover:shadow-md transition-all flex flex-col justify-between space-y-4 group"
+                  className="rounded-2xl bg-white border border-[#EAE2F4] hover:border-[#D6B574]/80 shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between overflow-hidden group"
                 >
-                  <div className="space-y-3">
-                    <div className="flex items-center justify-between gap-2">
-                      <span className="text-[11px] font-bold text-[#6941A5] uppercase tracking-wider">
-                        {item.categoryLabel_en}
+                  {/* Photo Banner Header */}
+                  <div className="relative h-48 sm:h-52 overflow-hidden bg-[#24152F]">
+                    <img
+                      src={item.image || '/assets/images/vedic_numerology_sacred_cosmos_1792557572243.jpg'}
+                      alt={item.title}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      onError={(e) => {
+                        (e.target as HTMLImageElement).src = '/assets/images/hero_celestial_sacred_geometry_1792557572251.jpg';
+                      }}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#24152F] via-[#24152F]/40 to-transparent" />
+
+                    <div className="absolute top-3 right-3 px-2.5 py-1 rounded-md bg-[#24152F]/90 backdrop-blur-xs border border-[#D6B574]/50 text-[#D6B574] text-xs font-bold tabular-nums shadow-sm">
+                      {item.feeFormatted}
+                    </div>
+
+                    {item.badge && (
+                      <div className="absolute top-3 left-3 px-2.5 py-0.5 rounded-full bg-[#6941A5]/90 backdrop-blur-xs text-white text-[10px] font-semibold border border-white/10">
+                        {item.badge_en || item.badge}
+                      </div>
+                    )}
+
+                    <div className="absolute bottom-3 left-4 right-4">
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-[#D6B574] block mb-0.5">
+                        {lang === 'hi' ? item.categoryLabel_hi : item.categoryLabel_en}
                       </span>
-                      {item.badge && (
-                        <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-[#6941A5]/10 text-[#6941A5]">
-                          {item.badge_en || item.badge}
-                        </span>
+                      <h3 className="font-cinzel text-base sm:text-lg font-bold text-white truncate drop-shadow-xs">
+                        {lang === 'hi' ? item.title : item.title_en}
+                      </h3>
+                    </div>
+                  </div>
+
+                  {/* Body Content */}
+                  <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
+                    <div className="space-y-3">
+                      <p className="text-xs text-[#29242E]/75 leading-relaxed font-normal">
+                        {lang === 'hi' ? item.description : item.description_en}
+                      </p>
+
+                      {item.duration && (
+                        <div className="flex items-center gap-1.5 text-xs text-[#29242E]/60 pt-1">
+                          <Clock size={13} className="text-[#6941A5]" />
+                          <span>{lang === 'hi' ? item.duration : item.duration_en}</span>
+                        </div>
+                      )}
+
+                      {item.importantDisclaimer && (
+                        <p className="text-[11px] text-amber-800 bg-amber-50 p-2.5 rounded-lg border border-amber-200/50 leading-relaxed">
+                          {item.importantDisclaimer_en}
+                        </p>
                       )}
                     </div>
 
-                    <h3 className="font-cinzel text-lg font-bold text-[#24152F] group-hover:text-[#6941A5] transition-colors">
-                      {lang === 'hi' ? item.title : item.title_en}
-                    </h3>
+                    <div className="pt-4 border-t border-[#EAE2F4] flex items-center justify-between gap-4">
+                      <div className="text-xs text-[#29242E]/60">
+                        <span className="text-[10px] uppercase text-[#29242E]/50 block">परामर्श शुल्क</span>
+                        <span className="font-cinzel text-base font-bold text-[#24152F] tabular-nums">
+                          {item.feeFormatted}
+                        </span>
+                      </div>
 
-                    <p className="text-xs text-[#29242E]/75 leading-relaxed font-normal">
-                      {lang === 'hi' ? item.description : item.description_en}
-                    </p>
-
-                    {item.importantDisclaimer && (
-                      <p className="text-[11px] text-amber-800 bg-amber-50 p-2.5 rounded-lg border border-amber-200/50 leading-relaxed">
-                        {item.importantDisclaimer_en}
-                      </p>
-                    )}
-                  </div>
-
-                  <div className="pt-4 border-t border-[#EAE2F4] flex items-center justify-between gap-4">
-                    <div>
-                      <span className="text-[10px] uppercase text-[#29242E]/50 block">
-                        Session Fee
-                      </span>
-                      <span className="font-cinzel text-lg font-bold text-[#24152F] tabular-nums">
-                        {item.feeFormatted}
-                      </span>
+                      <button
+                        type="button"
+                        onClick={() => onSelectServiceForBooking(lang === 'hi' ? item.title : item.title_en)}
+                        className="px-4 py-2 bg-[#24152F] hover:bg-[#341e44] text-[#D6B574] text-xs font-bold rounded-md transition-colors shadow-sm flex items-center gap-1 cursor-pointer"
+                      >
+                        <span>{lang === 'hi' ? 'सत्र बुक करें' : 'Book Session'}</span>
+                        <ArrowRight size={13} />
+                      </button>
                     </div>
-
-                    <button
-                      type="button"
-                      onClick={() => onSelectServiceForBooking(lang === 'hi' ? item.title : item.title_en)}
-                      className="px-4 py-1.5 bg-[#D6B574] hover:bg-[#e4ca8c] text-[#24152F] text-xs font-bold rounded transition-colors shadow-xs"
-                    >
-                      Book
-                    </button>
                   </div>
                 </div>
               ))}
@@ -287,22 +317,34 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ lang, onSelect
       {selectedServiceModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs">
           <div className="relative w-full max-w-2xl bg-white rounded-2xl shadow-2xl border border-[#D6B574]/40 overflow-hidden max-h-[90vh] flex flex-col">
-            <div className="p-6 bg-[#24152F] text-white flex items-center justify-between border-b border-[#D6B574]/30">
-              <div>
-                <span className="text-[11px] font-bold text-[#D6B574] uppercase tracking-wider">
-                  {lang === 'hi' ? selectedServiceModal.title_hi : selectedServiceModal.title}
-                </span>
-                <h3 className="font-cinzel text-xl sm:text-2xl text-white font-medium">
-                  {lang === 'hi' ? selectedServiceModal.title_hi : selectedServiceModal.title}
-                </h3>
-              </div>
+            {/* Modal Image Header Banner */}
+            <div className="relative h-44 sm:h-52 overflow-hidden bg-[#24152F] shrink-0">
+              <img
+                src={selectedServiceModal.image || '/assets/images/vedic_numerology_sacred_cosmos_1792557572243.jpg'}
+                alt={selectedServiceModal.title}
+                className="w-full h-full object-cover"
+                onError={(e) => {
+                  (e.target as HTMLImageElement).src = '/assets/images/hero_celestial_sacred_geometry_1792557572251.jpg';
+                }}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#24152F] via-[#24152F]/50 to-transparent" />
+              
               <button
                 type="button"
                 onClick={() => setSelectedServiceModal(null)}
-                className="p-1.5 rounded-full hover:bg-white/10 text-[#EAE2F4]"
+                className="absolute top-4 right-4 p-2 rounded-full bg-black/60 hover:bg-black/80 text-white z-10 transition-all cursor-pointer shadow-lg"
               >
-                <X size={20} />
+                <X size={18} />
               </button>
+
+              <div className="absolute bottom-4 left-6 right-6">
+                <span className="text-[11px] font-bold text-[#D6B574] uppercase tracking-wider block mb-1 drop-shadow-xs">
+                  {lang === 'hi' ? selectedServiceModal.title_hi : selectedServiceModal.title}
+                </span>
+                <h3 className="font-cinzel text-xl sm:text-2xl text-white font-medium drop-shadow-md">
+                  {lang === 'hi' ? selectedServiceModal.title_hi : selectedServiceModal.title}
+                </h3>
+              </div>
             </div>
 
             <div className="p-6 sm:p-8 overflow-y-auto space-y-6 text-sm text-[#29242E]/85">
