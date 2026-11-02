@@ -9,7 +9,17 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
-const PORT = parseInt(process.env.PORT || '3000', 10);
+
+function getArg(flag: string): string | undefined {
+  const idx = process.argv.indexOf(flag);
+  return idx !== -1 && idx + 1 < process.argv.length ? process.argv[idx + 1] : undefined;
+}
+const portArg = getArg('--port') || getArg('-p');
+// In AI Studio, nginx listens on 8080 and forwards traffic to 3000.
+// Thus the Node dev server must always bind to port 3000 (never 8080).
+const PORT = portArg
+  ? parseInt(portArg, 10)
+  : (process.env.PORT && process.env.PORT !== '8080' ? parseInt(process.env.PORT, 10) : 3000);
 const HOST = '0.0.0.0';
 
 // Ensure data/cms and public/uploads directories exist
@@ -726,7 +736,10 @@ async function startServer() {
     // Dynamic import of vite in dev mode
     const { createServer: createViteServer } = await import('vite');
     const vite = await createViteServer({
-      server: { middlewareMode: true },
+      server: {
+        middlewareMode: true,
+        hmr: process.env.DISABLE_HMR === 'true' ? false : undefined,
+      },
       appType: 'spa',
     });
     app.use(vite.middlewares);
