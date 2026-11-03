@@ -135,7 +135,7 @@ export const TariffView: React.FC<TariffViewProps> = ({
       <SEOHead
         title={tariffTitle}
         description={tariffDesc}
-        canonical="https://dr-pooja-awasthi.vercel.app/tariff"
+        canonical="https://dr-pooja-awasthi-india.netlify.app/tariff"
         keywords="डॉ पूजा अवस्थी शुल्क, वैदिक ज्योतिष टैरिफ, टैरो कार्ड फीस, चक्र हीलिंग चार्ज, Spiritual consultation charges"
         type="service"
         lang={tariffLang}
@@ -639,7 +639,7 @@ export const TariffView: React.FC<TariffViewProps> = ({
           <SocialShare
             title="Dr. Pooja Awasthi — 11 Spiritual Services Tariff & Fee Card"
             text="Transparent consultation fees and verified payment details for Vedic Numerology, Tarot Reading, Chakra Healing & PLR."
-            url="https://dr-pooja-awasthi.vercel.app/tariff"
+            url="https://dr-pooja-awasthi-india.netlify.app/tariff"
             lang={tariffLang}
           />
         </div>

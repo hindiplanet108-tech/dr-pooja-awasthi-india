@@ -333,7 +333,7 @@ function MainApp() {
         <SEOHead
           title={homeTitle}
           description={homeDesc}
-          canonical="https://dr-pooja-awasthi.vercel.app/"
+          canonical="https://dr-pooja-awasthi-india.netlify.app/"
           keywords={homeKeywords}
           type="website"
           lang={lang}

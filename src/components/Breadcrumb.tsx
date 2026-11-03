@@ -31,7 +31,7 @@ export const Breadcrumb: React.FC<BreadcrumbProps> = ({
         '@type': 'ListItem',
         position: 1,
         name: lang === 'hi' ? 'मुख्य पृष्ठ' : 'Home',
-        item: 'https://dr-pooja-awasthi.vercel.app/',
+        item: 'https://dr-pooja-awasthi-india.netlify.app/',
       },
       ...items.map((item, idx) => {
         const itemUrl = getItemUrl(item);
@@ -40,7 +40,7 @@ export const Breadcrumb: React.FC<BreadcrumbProps> = ({
           position: idx + 2,
           name: getItemName(item),
           item: itemUrl
-            ? `https://dr-pooja-awasthi.vercel.app${itemUrl.startsWith('/') ? '' : '/'}${itemUrl}`
+            ? `https://dr-pooja-awasthi-india.netlify.app${itemUrl.startsWith('/') ? '' : '/'}${itemUrl}`
             : undefined,
         };
       }),

@@ -147,7 +147,7 @@ export const DynamicPageView: React.FC<DynamicPageViewProps> = ({
       <SEOHead
         title={page.seo?.metaTitle || `${page.title} | डॉ. पूजा अवस्थी — आध्यात्मिक मार्गदर्शन`}
         description={page.seo?.metaDescription || page.excerpt || page.subtitle || `${page.title} - डॉ. पूजा अवस्थी द्वारा विशेष वैदिक अंतर्दृष्टि एवं आध्यात्मिक मार्गदर्शन।`}
-        canonical={`https://dr-pooja-awasthi.vercel.app/pages/${page.slug}`}
+        canonical={`https://dr-pooja-awasthi-india.netlify.app/pages/${page.slug}`}
         ogImage={page.seo?.ogImage}
         keywords={page.seo?.focusKeywords || `${page.title}, डॉ पूजा अवस्थी, वैदिक मार्गदर्शन`}
         type="article"
@@ -551,7 +551,7 @@ export const DynamicPageView: React.FC<DynamicPageViewProps> = ({
           <SocialShare
             title={`${page.title} — डॉ. पूजा अवस्थी`}
             text={page.excerpt || page.subtitle || ''}
-            url={`https://dr-pooja-awasthi.vercel.app/pages/${page.slug}`}
+            url={`https://dr-pooja-awasthi-india.netlify.app/pages/${page.slug}`}
             lang={lang}
           />
         </div>

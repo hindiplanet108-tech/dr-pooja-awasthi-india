@@ -24,8 +24,8 @@ const DEFAULT_DESC =
   'Discover Your Path. Transform Your Life. Professional Vedic Numerology, Intuitive Tarot Guidance, Chakra & Energy Healing, and Conscious Life Coaching with Dr. Pooja Awasthi.';
 const DEFAULT_KEYWORDS =
   'Pooja Awasthi, Dr Pooja Awasthi, Vedic Numerology, Tarot Reading, Energy Healing, Chakra Cleansing, Life Coaching, Mulank, Bhagyank, Dehradun, Spiritual Guidance';
-const DEFAULT_CANONICAL = 'https://dr-pooja-awasthi.vercel.app';
-const DEFAULT_IMAGE = 'https://dr-pooja-awasthi.vercel.app/28.jpeg';
+const DEFAULT_CANONICAL = 'https://dr-pooja-awasthi-india.netlify.app';
+const DEFAULT_IMAGE = 'https://dr-pooja-awasthi-india.netlify.app/28.jpeg';
 
 export const SEOHead: React.FC<SEOProps> = ({
   title = DEFAULT_TITLE,

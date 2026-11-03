@@ -66,7 +66,7 @@ export const AdminSeoDashboard: React.FC<{ lang?: string }> = ({ lang = 'hi' }) 
 
   // Editable settings state
   const [formSettings, setFormSettings] = useState<SeoSettings>({
-    canonicalDomain: 'https://dr-pooja-awasthi.vercel.app',
+    canonicalDomain: 'https://dr-pooja-awasthi-india.netlify.app',
     googleVerificationCode: '',
     bingVerificationCode: '',
     googleAnalyticsId: '',
@@ -80,7 +80,7 @@ export const AdminSeoDashboard: React.FC<{ lang?: string }> = ({ lang = 'hi' }) 
   // Preview state
   const [previewSnippet, setPreviewSnippet] = useState({
     title: 'Dr. Pooja Awasthi — Spiritual Guidance | Vedic Numerology & Life Coaching',
-    url: 'https://dr-pooja-awasthi.vercel.app',
+    url: 'https://dr-pooja-awasthi-india.netlify.app',
     description: 'Discover Your Path. Transform Your Life. Professional Vedic Numerology, Tarot Guidance, Energy Healing, and Life Coaching with Dr. Pooja Awasthi.',
   });
 
@@ -331,13 +331,13 @@ export const AdminSeoDashboard: React.FC<{ lang?: string }> = ({ lang = 'hi' }) 
                     rel="noopener noreferrer"
                     className="font-mono text-white hover:text-[#D6B574] transition-colors truncate block"
                   >
-                    https://dr-pooja-awasthi.vercel.app/sitemap.xml
+                    {data?.stats?.sitemapUrl || 'https://dr-pooja-awasthi-india.netlify.app/sitemap.xml'}
                   </a>
                 </div>
                 <div className="flex items-center gap-1.5 shrink-0">
                   <button
                     type="button"
-                    onClick={() => copyToClipboard('https://dr-pooja-awasthi.vercel.app/sitemap.xml', 'sitemap')}
+                    onClick={() => copyToClipboard(data?.stats?.sitemapUrl || 'https://dr-pooja-awasthi-india.netlify.app/sitemap.xml', 'sitemap')}
                     className="p-2 rounded-lg bg-white/10 hover:bg-[#D6B574] hover:text-[#1c0f26] transition-all"
                     title="Copy URL"
                   >
@@ -358,13 +358,13 @@ export const AdminSeoDashboard: React.FC<{ lang?: string }> = ({ lang = 'hi' }) 
                     rel="noopener noreferrer"
                     className="font-mono text-white hover:text-[#D6B574] transition-colors truncate block"
                   >
-                    https://dr-pooja-awasthi.vercel.app/robots.txt
+                    {data?.stats?.robotsUrl || 'https://dr-pooja-awasthi-india.netlify.app/robots.txt'}
                   </a>
                 </div>
                 <div className="flex items-center gap-1.5 shrink-0">
                   <button
                     type="button"
-                    onClick={() => copyToClipboard('https://dr-pooja-awasthi.vercel.app/robots.txt', 'robots')}
+                    onClick={() => copyToClipboard(data?.stats?.robotsUrl || 'https://dr-pooja-awasthi-india.netlify.app/robots.txt', 'robots')}
                     className="p-2 rounded-lg bg-white/10 hover:bg-[#D6B574] hover:text-[#1c0f26] transition-all"
                     title="Copy URL"
                   >
@@ -465,7 +465,7 @@ export const AdminSeoDashboard: React.FC<{ lang?: string }> = ({ lang = 'hi' }) 
                 </p>
                 <input
                   type="text"
-                  value={formSettings.canonicalDomain || 'https://dr-pooja-awasthi.vercel.app'}
+                  value={formSettings.canonicalDomain || 'https://dr-pooja-awasthi-india.netlify.app'}
                   onChange={(e) => setFormSettings({ ...formSettings, canonicalDomain: e.target.value })}
                   className="w-full px-4 py-2.5 rounded-xl bg-black/40 border border-white/15 text-white font-mono text-xs focus:outline-none focus:border-[#D6B574]"
                 />

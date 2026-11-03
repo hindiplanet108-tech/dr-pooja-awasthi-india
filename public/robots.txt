@@ -5,5 +5,5 @@ Disallow: /admin/
 Disallow: /api/
 
 # Host & Canonical Sitemap
-Host: https://dr-pooja-awasthi.vercel.app
-Sitemap: https://dr-pooja-awasthi.vercel.app/sitemap.xml
+Host: https://dr-pooja-awasthi-india.netlify.app
+Sitemap: https://dr-pooja-awasthi-india.netlify.app/sitemap.xml

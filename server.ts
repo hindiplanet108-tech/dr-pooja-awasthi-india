@@ -773,7 +773,7 @@ app.get('/sitemap.xml', (req: Request, res: Response) => {
     const seoSettings = readJsonFile<any>(SEO_SETTINGS_FILE, {});
     
     // Determine canonical base URL
-    const canonicalBase = seoSettings.canonicalDomain || 'https://dr-pooja-awasthi.vercel.app';
+    const canonicalBase = seoSettings.canonicalDomain || 'https://dr-pooja-awasthi-india.netlify.app';
     const pages = readJsonFile<any[]>(PAGES_FILE, []);
     const publishedPages = pages.filter((p) => p.status === 'published');
     const today = new Date().toISOString().split('T')[0];
@@ -901,7 +901,7 @@ function escapeXml(unsafe: string): string {
 
 app.get('/robots.txt', (req: Request, res: Response) => {
   const seoSettings = readJsonFile<any>(SEO_SETTINGS_FILE, {});
-  const canonicalBase = seoSettings.canonicalDomain || 'https://dr-pooja-awasthi.vercel.app';
+  const canonicalBase = seoSettings.canonicalDomain || 'https://dr-pooja-awasthi-india.netlify.app';
 
   const robotsContent = [
     'User-agent: *',
@@ -923,7 +923,7 @@ app.get('/robots.txt', (req: Request, res: Response) => {
 // SEO Overview & Settings APIs for Admin Panel
 app.get('/api/seo/overview', (_req: Request, res: Response) => {
   const seoSettings = readJsonFile<any>(SEO_SETTINGS_FILE, {
-    canonicalDomain: 'https://dr-pooja-awasthi.vercel.app',
+    canonicalDomain: 'https://dr-pooja-awasthi-india.netlify.app',
     googleVerificationCode: '',
     bingVerificationCode: '',
     googleAnalyticsId: '',
@@ -979,7 +979,7 @@ app.get('/api/seo/settings', (_req: Request, res: Response) => {
 
 app.put('/api/seo/settings', requireAuth, (req: AuthRequest, res: Response) => {
   const current = readJsonFile<any>(SEO_SETTINGS_FILE, {
-    canonicalDomain: 'https://dr-pooja-awasthi.vercel.app',
+    canonicalDomain: 'https://dr-pooja-awasthi-india.netlify.app',
     googleVerificationCode: '',
     bingVerificationCode: '',
     googleAnalyticsId: '',
@@ -1003,7 +1003,7 @@ app.put('/api/seo/settings', requireAuth, (req: AuthRequest, res: Response) => {
 // Ping Search Engines / IndexNow endpoint
 app.post('/api/seo/ping-sitemap', requireAuth, (_req: AuthRequest, res: Response) => {
   const seoSettings = readJsonFile<any>(SEO_SETTINGS_FILE, {});
-  const sitemapUrl = `${seoSettings.canonicalDomain || 'https://dr-pooja-awasthi.vercel.app'}/sitemap.xml`;
+  const sitemapUrl = `${seoSettings.canonicalDomain || 'https://dr-pooja-awasthi-india.netlify.app'}/sitemap.xml`;
 
   // Provide realistic verification guidance for Google & Bing
   return res.json({
