@@ -19,7 +19,7 @@ import {
 import { DashboardStats, getDashboardStats, CMSPage, deletePage } from '../../utils/cmsApi';
 
 interface AdminDashboardProps {
-  onNavigateTab: (tab: 'dashboard' | 'site-editor' | 'pages' | 'create-page' | 'media' | 'settings') => void;
+  onNavigateTab: (tab: 'dashboard' | 'site-editor' | 'pages' | 'create-page' | 'media' | 'settings' | 'seo') => void;
   onEditPage: (pageId: string) => void;
   onPreviewPage: (slug: string) => void;
   lang?: string;
@@ -296,20 +296,23 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
         </div>
 
         <div 
-          onClick={() => onNavigateTab('settings')}
-          className="p-5 rounded-2xl bg-white/5 border border-[#D6B574]/20 hover:border-[#D6B574]/60 hover:bg-white/[0.08] transition-all cursor-pointer group flex items-start gap-4"
+          onClick={() => onNavigateTab('seo')}
+          className="p-5 rounded-2xl bg-gradient-to-tr from-emerald-500/10 via-sky-500/10 to-[#D6B574]/10 border border-emerald-500/30 hover:border-emerald-500/70 hover:bg-emerald-500/15 transition-all cursor-pointer group flex items-start gap-4 shadow-lg"
         >
-          <div className="w-12 h-12 rounded-xl bg-gradient-to-tr from-purple-500/30 to-purple-500/10 border border-purple-500/40 flex items-center justify-center text-purple-300 shrink-0 group-hover:scale-105 transition-transform">
-            <Sparkles size={22} />
+          <div className="w-12 h-12 rounded-xl bg-gradient-to-tr from-emerald-500/30 to-sky-500/20 border border-emerald-500/40 flex items-center justify-center text-emerald-300 shrink-0 group-hover:scale-105 transition-transform">
+            <Sparkles size={22} className="text-emerald-400" />
           </div>
           <div className="space-y-1">
-            <h3 className="font-cinzel text-sm font-bold text-white group-hover:text-purple-300 transition-colors">
-              {lang === 'hi' ? 'एसईओ व सुरक्षा सेटिंग्स' : 'SEO & Security'}
-            </h3>
+            <div className="flex items-center gap-1.5">
+              <h3 className="font-cinzel text-sm font-bold text-white group-hover:text-emerald-300 transition-colors">
+                {lang === 'hi' ? 'गूगल एसईओ व इंडेक्सिंग' : 'Google SEO & Indexing'}
+              </h3>
+              <span className="text-[9px] px-1.5 py-0.2 bg-emerald-500 text-[#1c0f26] font-bold rounded-full">Google</span>
+            </div>
             <p className="text-xs text-[#EAE2F4]/70 line-clamp-2">
               {lang === 'hi'
-                ? 'एडमिन पासवर्ड बदलें, गूगल मेटा टैग्स सेट करें व हेडर नेविगेशन नियंत्रित करें।'
-                : 'Update password, configure Google SEO snippets and header menu.'}
+                ? 'गूगल सर्च कंसोल, साइटमैप, रोबोट्स.txt, JSON-LD स्कीमा व लाइव SERP स्निपेट प्रिव्यू।'
+                : 'Sitemap.xml, robots.txt, Search Console verification, SERP preview & JSON-LD.'}
             </p>
           </div>
         </div>

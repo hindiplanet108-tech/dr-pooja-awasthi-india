@@ -60,12 +60,12 @@ export const Footer: React.FC<FooterProps> = ({
               </li>
               <li>
                 <a href="#services" className="hover:text-[#D6B574] transition-colors">
-                  {lang === 'hi' ? '११ पावन हीलिंग सेवाएँ' : t.servicesNav}
+                  {lang === 'hi' ? '11 मुख्य हीलिंग व परामर्श सेवाएँ' : t.servicesNav}
                 </a>
               </li>
               <li>
                 <a href="#calculator" className="hover:text-[#D6B574] transition-colors">
-                  {lang === 'hi' ? 'जन्मतिथि डिकोडर (मूलांक, भाग्यांक व कुआ)' : 'Vedic Numbers Calculator'}
+                  {lang === 'hi' ? 'जन्मतिथि डिकोडर (मूलांक, भाग्यांक व कुआ अंक)' : 'Vedic Numbers Calculator'}
                 </a>
               </li>
               <li>
@@ -80,7 +80,7 @@ export const Footer: React.FC<FooterProps> = ({
                     onClick={onOpenTariff}
                     className="hover:text-[#D6B574] transition-colors text-left font-medium text-[#D6B574]"
                   >
-                    ★ {lang === 'hi' ? '११ विशेष हीलिंग दक्षिणा सूची' : '11 Healing Services Tariff'}
+                    ★ {lang === 'hi' ? '11 हीलिंग सेवाओं की फीस सूची' : '11 Healing Services Tariff'}
                   </button>
                 </li>
               )}
@@ -112,7 +112,7 @@ export const Footer: React.FC<FooterProps> = ({
                   title="Client Reviews & Stories"
                 >
                   <Star size={12} fill="#D6B574" className="text-[#D6B574] shrink-0" />
-                  <span>★ {lang === 'hi' ? 'Client Reviews & Stories (समीक्षाएँ)' : 'Client Reviews & Stories'}</span>
+                  <span>★ {lang === 'hi' ? 'ग्राहकों के अनुभव व समीक्षाएं (Reviews)' : 'Client Reviews & Stories'}</span>
                 </a>
               </li>
               {onOpenDynamicPage && (

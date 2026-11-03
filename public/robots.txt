@@ -1,4 +1,9 @@
 User-agent: *
 Allow: /
+Disallow: /admin
+Disallow: /admin/
+Disallow: /api/
 
+# Host & Canonical Sitemap
+Host: https://dr-pooja-awasthi.vercel.app
 Sitemap: https://dr-pooja-awasthi.vercel.app/sitemap.xml

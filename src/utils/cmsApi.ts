@@ -195,6 +195,8 @@ export function getAdminToken(): string | null {
   return localStorage.getItem(TOKEN_KEY);
 }
 
+export const getAdminAuthToken = getAdminToken;
+
 export function setAdminAuth(token: string, user: AdminUser): void {
   if (typeof window === 'undefined') return;
   localStorage.setItem(TOKEN_KEY, token);

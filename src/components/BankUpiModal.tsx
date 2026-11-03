@@ -15,8 +15,12 @@ export const BankUpiModal: React.FC<BankUpiModalProps> = ({ isOpen, onClose, lan
   if (!isOpen) return null;
 
   const bankInfo = siteContent?.bankUpi;
+  const qrCodeUrl =
+    bankInfo?.qr_code_image ||
+    'https://api.qrserver.com/v1/create-qr-code/?size=350x350&data=upi%3A%2F%2Fpay%3Fpa%3D9105731969%40upi%26pn%3DPooja%20Awasthi%26cu%3DINR';
+
   const paymentData = {
-    accountHolder: bankInfo?.account_name || 'Dr. Pooja Awasthi',
+    accountHolder: bankInfo?.account_name || 'Pooja Awasthi',
     bankName: bankInfo?.bank_name || 'State Bank of India (SBI)',
     branch: bankInfo?.branch || 'Dehradun Main Branch, Uttarakhand',
     accountNumber: bankInfo?.account_number || '39876543210',
@@ -25,7 +29,7 @@ export const BankUpiModal: React.FC<BankUpiModalProps> = ({ isOpen, onClose, lan
     upiId: bankInfo?.upi_id || '9105731969@upi',
     phone: siteContent?.contact?.phone || '+91 91057 31969',
     consultancyFee: siteContent?.contact?.consultation_fee || '₹5,100',
-    qrImage: bankInfo?.qr_code_image || null
+    qrImage: qrCodeUrl
   };
 
   const copyToClipboard = (text: string, fieldName: string) => {
@@ -49,7 +53,7 @@ export const BankUpiModal: React.FC<BankUpiModalProps> = ({ isOpen, onClose, lan
               </h3>
               <p className="text-xs text-[#D6B574]">
                 {lang === 'hi' ? (
-                  <>परामर्श दक्षिणा: <strong className="font-black text-[#F5C242] text-sm">{paymentData.consultancyFee}</strong> · प्रामाणिक व सत्यापित खाते</>
+                  <>परामर्श फीस: <strong className="font-black text-[#F5C242] text-sm">{paymentData.consultancyFee}</strong> · प्रामाणिक व सत्यापित खाते</>
                 ) : (
                   <>Consultation Fee: <strong className="font-black text-[#F5C242] text-sm">{paymentData.consultancyFee}</strong> · Direct Verified Accounts</>
                 )}
@@ -69,16 +73,53 @@ export const BankUpiModal: React.FC<BankUpiModalProps> = ({ isOpen, onClose, lan
         {/* Modal Body */}
         <div className="p-6 sm:p-8 overflow-y-auto space-y-6">
           
-          {/* UPI Direct Section */}
-          <div className="p-5 rounded-2xl bg-white/5 border border-[#D6B574]/30 space-y-3">
+          {/* QR Code and UPI Direct Combined Section */}
+          <div className="p-5 rounded-2xl bg-white/5 border border-[#D6B574]/30 space-y-4">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#D6B574]">
                 <Smartphone size={16} />
-                <span>{lang === 'hi' ? 'त्वरित UPI एवं क्यूआर भुगतान' : 'Instant UPI & QR Payment'}</span>
+                <span>{lang === 'hi' ? 'स्कैन करें एवं तुरंत UPI भुगतान' : 'Scan & Pay via UPI'}</span>
               </div>
-              <span className="text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 font-semibold border border-emerald-500/30">
+              <span className="text-[10px] px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 font-semibold border border-emerald-500/30">
                 GPay · PhonePe · Paytm · BHIM
               </span>
+            </div>
+
+            {/* Scannable QR Code Card */}
+            <div className="p-4 rounded-2xl bg-white text-center flex flex-col sm:flex-row items-center justify-center gap-5 shadow-lg">
+              <div className="relative p-2 rounded-xl border-2 border-[#24152F] bg-white shrink-0 shadow-inner">
+                <img
+                  src={paymentData.qrImage}
+                  alt={`UPI QR Code - ${paymentData.accountHolder} (${paymentData.upiId})`}
+                  className="w-40 h-40 object-contain rounded-lg"
+                  loading="eager"
+                />
+              </div>
+
+              <div className="text-left space-y-2">
+                <div className="inline-block px-2.5 py-1 rounded bg-[#24152F] text-[#F5C242] text-[11px] font-bold">
+                  ✓ {paymentData.accountHolder}
+                </div>
+                <div className="space-y-0.5">
+                  <span className="text-[10px] uppercase font-semibold text-[#29242E]/70 block">
+                    {lang === 'hi' ? 'सत्यापित UPI ID:' : 'Verified UPI ID:'}
+                  </span>
+                  <span className="font-mono text-sm sm:text-base font-black text-[#24152F] block select-all">
+                    {paymentData.upiId}
+                  </span>
+                </div>
+                <p className="text-[11px] text-[#29242E]/80 leading-relaxed font-medium">
+                  {lang === 'hi'
+                    ? 'गूगल पे, फोनपे, पेटीएम या भीम ऐप से स्कैन करके सीधे भुगतान करें।'
+                    : 'Scan with Google Pay, PhonePe, Paytm, BHIM, or any banking UPI app.'}
+                </p>
+                <a
+                  href={`upi://pay?pa=${paymentData.upiId}&pn=${encodeURIComponent(paymentData.accountHolder)}&cu=INR`}
+                  className="inline-flex items-center gap-1.5 text-xs font-bold text-[#6941A5] hover:underline pt-1"
+                >
+                  <span>{lang === 'hi' ? 'मोबाइल UPI ऐप में सीधे खोलें →' : 'Open in Mobile UPI App →'}</span>
+                </a>
+              </div>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-1">

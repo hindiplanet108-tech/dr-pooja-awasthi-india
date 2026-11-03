@@ -1,39 +1,104 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <!-- 1. Primary Homepage -->
   <url>
     <loc>https://dr-pooja-awasthi.vercel.app/</loc>
-    <lastmod>2026-10-21</lastmod>
-    <changefreq>weekly</changefreq>
+    <lastmod>2026-11-03</lastmod>
+    <changefreq>daily</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://dr-pooja-awasthi.vercel.app/28.jpeg</image:loc>
+      <image:title>Dr. Pooja Awasthi — Vedic Numerologist &amp; Spiritual Guide</image:title>
+      <image:caption>Acclaimed Spiritual Mentor &amp; Lifetime Achievement Awardee</image:caption>
+    </image:image>
   </url>
+
+  <!-- 2. Complete 11 Healing Services Tariff Rate Card -->
   <url>
-    <loc>https://dr-pooja-awasthi.vercel.app/#about</loc>
-    <lastmod>2026-10-21</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://dr-pooja-awasthi.vercel.app/tariff</loc>
+    <lastmod>2026-11-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
   </url>
+
+  <!-- 3. Client Reviews & Stories (Instant Submission) -->
+  <url>
+    <loc>https://dr-pooja-awasthi.vercel.app/reviews</loc>
+    <lastmod>2026-11-03</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+  </url>
+
+  <!-- 4. Vedic Date of Birth & Lo Shu Matrix Calculator -->
+  <url>
+    <loc>https://dr-pooja-awasthi.vercel.app/#calculator</loc>
+    <lastmod>2026-11-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+
+  <!-- 5. Daily Intuitive Tarot Oracle Guidance -->
+  <url>
+    <loc>https://dr-pooja-awasthi.vercel.app/#tarot</loc>
+    <lastmod>2026-11-03</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- 6. Spiritual Guidance Core Services -->
   <url>
     <loc>https://dr-pooja-awasthi.vercel.app/#services</loc>
-    <lastmod>2026-10-21</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <lastmod>2026-11-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
   </url>
+
+  <!-- 7. Lifetime Achievement Honors & Photo Gallery (40+) -->
   <url>
     <loc>https://dr-pooja-awasthi.vercel.app/#honors</loc>
-    <lastmod>2026-10-21</lastmod>
+    <lastmod>2026-11-03</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.80</priority>
   </url>
+
+  <!-- 8. About Dr. Pooja Awasthi & Spiritual Philosophy -->
+  <url>
+    <loc>https://dr-pooja-awasthi.vercel.app/#about</loc>
+    <lastmod>2026-11-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+  <!-- 9. Consultation Charges & ₹5,100 Session Assurances -->
   <url>
     <loc>https://dr-pooja-awasthi.vercel.app/#charges</loc>
-    <lastmod>2026-10-21</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <lastmod>2026-11-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
   </url>
+
+  <!-- 10. Frequently Asked Questions (FAQ) -->
+  <url>
+    <loc>https://dr-pooja-awasthi.vercel.app/#faq</loc>
+    <lastmod>2026-11-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+  <!-- 11. Direct Appointment Booking & Verified Contact -->
   <url>
     <loc>https://dr-pooja-awasthi.vercel.app/#contact</loc>
-    <lastmod>2026-10-21</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <lastmod>2026-11-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+
+  <!-- 12. Dynamic CMS Published Articles -->
+  <url>
+    <loc>https://dr-pooja-awasthi.vercel.app/pages/kundali-analysis</loc>
+    <lastmod>2026-10-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
   </url>
 </urlset>

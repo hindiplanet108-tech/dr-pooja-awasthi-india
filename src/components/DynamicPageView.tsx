@@ -29,6 +29,9 @@ import {
   getPageBySlug,
   formatEmbedUrl
 } from '../utils/cmsApi';
+import { SEOHead } from './SEOHead';
+import { Breadcrumb } from './Breadcrumb';
+import { SocialShare } from './SocialShare';
 
 interface DynamicPageViewProps {
   slug: string;
@@ -140,28 +143,33 @@ export const DynamicPageView: React.FC<DynamicPageViewProps> = ({
 
   return (
     <div className="min-h-screen bg-[#FBF8F2] text-[#29242E] selection:bg-[#EAE2F4] selection:text-[#24152F] pb-20">
+      {/* Comprehensive Dynamic SEO Head & Article Schema */}
+      <SEOHead
+        title={page.seo?.metaTitle || `${page.title} | डॉ. पूजा अवस्थी — आध्यात्मिक मार्गदर्शन`}
+        description={page.seo?.metaDescription || page.excerpt || page.subtitle || `${page.title} - डॉ. पूजा अवस्थी द्वारा विशेष वैदिक अंतर्दृष्टि एवं आध्यात्मिक मार्गदर्शन।`}
+        canonical={`https://dr-pooja-awasthi.vercel.app/pages/${page.slug}`}
+        ogImage={page.seo?.ogImage}
+        keywords={page.seo?.focusKeywords || `${page.title}, डॉ पूजा अवस्थी, वैदिक मार्गदर्शन`}
+        type="article"
+        publishDate={page.publishedAt || page.createdAt}
+        modifiedDate={page.updatedAt}
+        author="Dr. Pooja Awasthi"
+        lang={lang}
+      />
+
       {/* Top Breadcrumb & Share Navigation Strip */}
       <div className="bg-[#24152F] text-white border-b border-[#D6B574]/30 py-3 px-4 sm:px-8">
-        <div className="max-w-5xl mx-auto flex items-center justify-between gap-4 text-xs">
-          <div className="flex items-center gap-2 truncate">
-            <button
-              onClick={onBackToHome}
-              className="text-[#D6B574] hover:underline flex items-center gap-1 font-semibold shrink-0 cursor-pointer"
-            >
-              <ArrowLeft size={14} />
-              <span>{lang === 'hi' ? 'मुख्य पृष्ठ' : 'Home'}</span>
-            </button>
-            <span className="text-white/40">/</span>
-            <span className="text-[#EAE2F4]/70 hidden sm:inline">
-              {lang === 'hi' ? 'विशेष मार्गदर्शन पृष्ठ' : 'Pages'}
-            </span>
-            <span className="text-white/40 hidden sm:inline">/</span>
-            <span className="text-[#F3E5AB] font-medium truncate">
-              {page.title}
-            </span>
-          </div>
+        <div className="max-w-5xl mx-auto flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
+          <Breadcrumb
+            items={[
+              { label: lang === 'hi' ? 'विशेष मार्गदर्शन पृष्ठ' : 'Special Guides', path: '/' },
+              { label: page.title }
+            ]}
+            onNavigateHome={onBackToHome}
+            lang={lang}
+          />
 
-          <div className="flex items-center gap-2 shrink-0">
+          <div className="flex items-center gap-2 self-end sm:self-auto shrink-0">
             {page.status === 'draft' && (
               <span className="px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300 text-[10px] font-bold border border-amber-500/40">
                 ड्राफ्ट पूर्वावलोकन (Draft Mode)
@@ -537,6 +545,16 @@ export const DynamicPageView: React.FC<DynamicPageViewProps> = ({
 
           return null;
         })}
+
+        {/* Social Sharing & Promotion Block */}
+        <div className="pt-6">
+          <SocialShare
+            title={`${page.title} — डॉ. पूजा अवस्थी`}
+            text={page.excerpt || page.subtitle || ''}
+            url={`https://dr-pooja-awasthi.vercel.app/pages/${page.slug}`}
+            lang={lang}
+          />
+        </div>
 
         {/* Bottom Back Button & Consultation Affordance */}
         <div className="pt-8 border-t border-[#D6B574]/30 flex flex-col sm:flex-row items-center justify-between gap-4">

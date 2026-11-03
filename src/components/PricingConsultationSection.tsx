@@ -25,23 +25,23 @@ export const PricingConsultationSection: React.FC<PricingConsultationSectionProp
     },
     {
       title: lang === 'hi' ? 'मूलांक व भाग्यांक विश्लेषण' : 'Birth & Destiny Numbers (Mulank & Bhagyank)',
-      desc: lang === 'hi' ? 'जन्मतिथि के अनुसार आपकी शक्तियों और करियर की दिशा का विश्लेषण' : 'Understand your personality, inner talents, and best life direction'
+      desc: lang === 'hi' ? 'जन्मतिथि के अनुसार आपकी खूबियों और सही करियर दिशा की पहचान' : 'Understand your personality, inner talents, and best life direction'
     },
     {
-      title: lang === 'hi' ? 'नाम की वर्तनी व शुभ अंक संतुलन' : 'Name Spelling & Lucky Number Check',
-      desc: lang === 'hi' ? 'नाम के अक्षरों का अंकशास्त्रीय परीक्षण और शुभ संतुलन' : 'Check if your name spelling aligns with your lucky numbers'
+      title: lang === 'hi' ? 'नाम की स्पेलिंग व शुभ अंक सुधार' : 'Name Spelling & Lucky Number Check',
+      desc: lang === 'hi' ? 'नाम की स्पेलिंग का अंकशास्त्रीय मिलान और शुभ संतुलन' : 'Check if your name spelling aligns with your lucky numbers'
     },
     {
-      title: lang === 'hi' ? 'शुभ समय व ग्रह चक्र' : 'Best Timing for Career & Major Decisions',
+      title: lang === 'hi' ? 'शुभ समय व सही निर्णय' : 'Best Timing for Career & Major Decisions',
       desc: lang === 'hi' ? 'करियर, नया काम, विवाह या निवेश के लिए सबसे अच्छा समय' : 'Know the most favorable months and years to start new projects'
     },
     {
-      title: lang === 'hi' ? 'सरल और व्यावहारिक उपाय' : 'Simple & Practical Daily Remedies',
+      title: lang === 'hi' ? 'सरल और आसान घरेलू उपाय' : 'Simple & Practical Daily Remedies',
       desc: lang === 'hi' ? 'आपके अनुकूल शुभ रंग, शुभ दिन, सरल मंत्र व रत्न मार्गदर्शन' : 'Actionable daily tips, lucky colors, days, and gemstone advice'
     },
     {
-      title: lang === 'hi' ? 'सत्र के बाद लिखित सार' : 'Written Summary & Next Steps',
-      desc: lang === 'hi' ? 'बातचीत के मुख्य बिंदुओं और उपायों की लिखित जानकारी' : 'Key points and important advice sent to you after the session'
+      title: lang === 'hi' ? 'सत्र के बाद लिखित सारांश' : 'Written Summary & Next Steps',
+      desc: lang === 'hi' ? 'बातचीत के मुख्य बिंदुओं और जरूरी उपायों की लिखित जानकारी' : 'Key points and important advice sent to you after the session'
     }
   ];
 
@@ -64,7 +64,7 @@ export const PricingConsultationSection: React.FC<PricingConsultationSectionProp
     },
     {
       num: '03',
-      title: lang === 'hi' ? 'निजी व्यक्तिगत संवाद' : '1-on-1 Consultation',
+      title: lang === 'hi' ? 'सीधा व्यक्तिगत परामर्श' : '1-on-1 Consultation',
       desc:
         lang === 'hi'
           ? 'डॉ. पूजा अवस्थी के साथ 60 मिनट की शांत, गोपनीय और गहन बातचीत।'
@@ -90,7 +90,7 @@ export const PricingConsultationSection: React.FC<PricingConsultationSectionProp
             <Sparkles size={14} className="text-[#D6B574]" />
             <span>{t.chargesNav}</span>
             <span aria-hidden="true">·</span>
-            <span>{lang === 'hi' ? 'गोपनीय एवं पावन परामर्श' : 'Private Sanctuary'}</span>
+            <span>{lang === 'hi' ? '100% गोपनीय व व्यक्तिगत परामर्श' : 'Private Sanctuary'}</span>
           </div>
 
           <h2 className="font-cormorant text-3xl sm:text-4xl lg:text-5xl font-light text-[#24152F] leading-tight">
@@ -138,7 +138,7 @@ export const PricingConsultationSection: React.FC<PricingConsultationSectionProp
                   <div className="flex-1 min-w-0 space-y-1">
                     <div className="flex items-center gap-1.5 flex-wrap">
                       <span className="text-[10px] font-extrabold uppercase tracking-widest text-[#F5C242] px-2 py-0.5 rounded-md bg-[#D6B574]/20 border border-[#D6B574]/30">
-                        {lang === 'hi' ? 'मानक व्यक्तिगत सत्र' : 'Comprehensive 1-on-1'}
+                        {lang === 'hi' ? 'व्यक्तिगत परामर्श सत्र' : 'Comprehensive 1-on-1'}
                       </span>
                       <span className="text-[10px] px-2 py-0.5 rounded-full bg-white/15 text-white border border-white/20 font-bold">
                         {lang === 'hi' ? '60 मिनट' : '60 Min'}
@@ -149,7 +149,7 @@ export const PricingConsultationSection: React.FC<PricingConsultationSectionProp
                     </h3>
                     <p className="text-[11px] text-[#EAE2F4]/80 leading-snug font-light">
                       {lang === 'hi'
-                        ? 'विदुषी अंकशास्त्री, टैरो रीडर व आध्यात्मिक परामर्शदाता'
+                        ? 'प्रसिद्ध एवं अनुभवी अंकशास्त्री, टैरो रीडर व लाइफ कोच'
                         : 'Celebrity Numerologist, Tarot Reader & Spiritual Guide'}
                     </p>
                   </div>
@@ -161,7 +161,7 @@ export const PricingConsultationSection: React.FC<PricingConsultationSectionProp
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-[11px] font-black uppercase tracking-wider text-[#F5C242] flex items-center gap-1.5">
                     <Sparkles size={13} className="text-[#F5C242]" />
-                    <span>{lang === 'hi' ? 'निश्चित पावन दक्षिणा' : 'Guaranteed Fixed Fee'}</span>
+                    <span>{lang === 'hi' ? 'निश्चित परामर्श फीस (Fixed Fee)' : 'Guaranteed Fixed Fee'}</span>
                   </span>
                   <span className="text-[10px] px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 font-bold">
                     {lang === 'hi' ? 'सीधा संवाद' : '100% Direct'}
@@ -185,7 +185,7 @@ export const PricingConsultationSection: React.FC<PricingConsultationSectionProp
 
                 <p className="text-xs text-[#EAE2F4]/90 mt-2 font-light leading-relaxed">
                   {lang === 'hi'
-                    ? 'वैदिक अंकशास्त्र, टैरो मार्गदर्शन या समग्र जीवन परामर्श हेतु प्रामाणिक दक्षिणा।'
+                    ? 'अंकशास्त्र, टैरो या जीवन मार्गदर्शन सत्र के लिए निश्चित परामर्श फीस।'
                     : 'Standard verified fee for Vedic Numerology, Tarot Reading, or Integrated Life Coaching.'}
                 </p>
               </div>
@@ -197,8 +197,8 @@ export const PricingConsultationSection: React.FC<PricingConsultationSectionProp
                 </div>
                 <ul className="space-y-1.5 pl-6 list-disc text-[#EAE2F4]/80 text-[11px]">
                   <li>{lang === 'hi' ? 'डॉ. पूजा अवस्थी जी से सीधा संवाद' : 'Direct 1-on-1 dialogue with Dr. Pooja Awasthi'}</li>
-                  <li>{lang === 'hi' ? '100% गोपनीय और सुरक्षित वातावरण' : '100% confidential and non-judgmental space'}</li>
-                  <li>{lang === 'hi' ? 'व्हाट्सएप पर तत्काल समय की पुष्टि' : 'Instant appointment confirmation via WhatsApp'}</li>
+                  <li>{lang === 'hi' ? '100% गोपनीय और सुरक्षित बातचीत' : '100% confidential and non-judgmental space'}</li>
+                  <li>{lang === 'hi' ? 'व्हाट्सएप पर तुरंत समय की पुष्टि' : 'Instant appointment confirmation via WhatsApp'}</li>
                 </ul>
               </div>
             </div>
@@ -248,7 +248,7 @@ export const PricingConsultationSection: React.FC<PricingConsultationSectionProp
           <div className="lg:col-span-7 rounded-3xl bg-white p-8 sm:p-10 border border-[#EAE2F4] shadow-sm flex flex-col justify-between">
             <div>
               <h3 className="font-cinzel text-xl font-bold text-[#24152F] mb-6 border-b border-[#EAE2F4] pb-4">
-                {lang === 'hi' ? 'परामर्श सत्र में क्या सम्मिलित है:' : 'What Your Consultation Includes:'}
+                {lang === 'hi' ? 'परामर्श सत्र में आपको क्या मिलेगा:' : 'What Your Consultation Includes:'}
               </h3>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">

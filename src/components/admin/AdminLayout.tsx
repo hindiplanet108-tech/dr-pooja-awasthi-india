@@ -11,13 +11,14 @@ import {
   X,
   Sparkles,
   ShieldCheck,
-  ChevronRight
+  ChevronRight,
+  Search
 } from 'lucide-react';
 import { clearAdminAuth, getStoredAdminUser } from '../../utils/cmsApi';
 
 interface AdminLayoutProps {
-  currentTab: 'dashboard' | 'site-editor' | 'pages' | 'create-page' | 'media' | 'settings';
-  onSelectTab: (tab: 'dashboard' | 'site-editor' | 'pages' | 'create-page' | 'media' | 'settings') => void;
+  currentTab: 'dashboard' | 'site-editor' | 'pages' | 'create-page' | 'media' | 'settings' | 'seo';
+  onSelectTab: (tab: 'dashboard' | 'site-editor' | 'pages' | 'create-page' | 'media' | 'settings' | 'seo') => void;
   onLogout: () => void;
   onViewLiveSite: () => void;
   children: React.ReactNode;
@@ -48,6 +49,12 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({
       label: lang === 'hi' ? 'डैशबोर्ड' : 'Dashboard',
       icon: LayoutDashboard,
       badge: null,
+    },
+    {
+      id: 'seo',
+      label: lang === 'hi' ? 'एसईओ एवं गूगल इंडेक्सिंग' : 'SEO & Google Indexing',
+      icon: Search,
+      badge: 'Google',
     },
     {
       id: 'pages',

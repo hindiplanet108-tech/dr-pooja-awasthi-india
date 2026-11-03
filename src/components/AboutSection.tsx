@@ -26,10 +26,10 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ lang, onBookClick })
     {
       num: '01',
       title: bioLang === 'hi'
-        ? (aboutContent?.pillar1_title || 'सहानुभूतिपूर्ण श्रवण (Compassionate Listening)')
+        ? (aboutContent?.pillar1_title || 'अपनेपन से सुनना (Compassionate Listening)')
         : 'Compassionate Listening',
       desc: bioLang === 'hi'
-        ? (aboutContent?.pillar1_desc || 'बिना किसी पूर्वग्रह के आपकी चिंताओं को ध्यानपूर्वक सुनना और मानसिक शांति प्रदान करना।')
+        ? (aboutContent?.pillar1_desc || 'बिना किसी भेदभाव के आपकी हर बात ध्यानपूर्वक सुनना और मन को सच्ची शांति देना।')
         : 'Listening deeply to your unique circumstances without judgement to provide genuine peace.'
     },
     {
@@ -38,16 +38,16 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ lang, onBookClick })
         ? (aboutContent?.pillar2_title || 'वैदिक प्रामाणिकता (Authentic Vedic Insight)')
         : 'Authentic Vedic Insight',
       desc: bioLang === 'hi'
-        ? (aboutContent?.pillar2_desc || 'शास्त्रीय पाराशरी, अंकशास्त्रीय व चक्र सूत्रों का सूक्ष्म वैज्ञानिक विश्लेषण।')
+        ? (aboutContent?.pillar2_desc || 'वैदिक ज्योतिष, अंकशास्त्र और चक्रों के आधार पर आपकी स्थिति का सही व सटीक विश्लेषण।')
         : 'Rigorous calculation of birth and destiny numbers grounded in timeless Vedic tradition.'
     },
     {
       num: '03',
       title: bioLang === 'hi'
-        ? (aboutContent?.pillar3_title || 'सकारात्मक रूपांतरण (Conscious Transformation)')
+        ? (aboutContent?.pillar3_title || 'सकारात्मक बदलाव (Positive Transformation)')
         : 'Conscious Transformation',
       desc: bioLang === 'hi'
-        ? (aboutContent?.pillar3_desc || 'व्यावहारिक, सात्विक एवं भय-मुक्त मार्गदर्शन जो जीवन में स्थाई शांति और सफलता लाए।')
+        ? (aboutContent?.pillar3_desc || 'सरल, व्यावहारिक और बिना किसी डर का मार्गदर्शन जो जीवन में पक्की शांति और सफलता लाए।')
         : 'Practical, fear-free remedies empowering you to take charge of your life with calm courage.'
     }
   ];
@@ -124,14 +124,14 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ lang, onBookClick })
               <div className="pt-3 space-y-2">
                 <div className="text-[11px] font-bold uppercase tracking-wider text-[#6941A5] flex items-center gap-1.5">
                   <Award size={13} className="text-[#D6B574]" />
-                  <span>{bioLang === 'hi' ? 'विशेषज्ञता एवं साधना क्षेत्र' : 'Sacred Alignment Disciplines'}</span>
+                  <span>{bioLang === 'hi' ? 'विशेषज्ञता के मुख्य क्षेत्र' : 'Sacred Alignment Disciplines'}</span>
                 </div>
                 <ul className="text-xs text-[#29242E]/80 space-y-1.5 leading-relaxed">
                   <li className="flex items-start gap-2">
                     <span className="text-[#D6B574] mt-0.5">✦</span>
                     <span>
                       {bioLang === 'hi' ? (
-                        <><strong>वैदिक अंकशास्त्री</strong> एवं कील्डियन नाम तरंग विशेषज्ञ</>
+                        <><strong>वैदिक अंकशास्त्री</strong> एवं नाम स्पेलिंग संतुलन विशेषज्ञ</>
                       ) : (
                         <><strong>Vedic Numerologist</strong> & Chaldean Name Vibration Specialist</>
                       )}
@@ -141,7 +141,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ lang, onBookClick })
                     <span className="text-[#D6B574] mt-0.5">✦</span>
                     <span>
                       {bioLang === 'hi' ? (
-                        <><strong>सहज बोध टैरो</strong> एवं प्रतीक विज्ञान मार्गदर्शिका</>
+                        <><strong>सटीक टैरो कार्ड</strong> एवं जीवन दिशा मार्गदर्शन</>
                       ) : (
                         <><strong>Intuitive Tarot</strong> & Symbolic Archetypal Consultant</>
                       )}
@@ -151,7 +151,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ lang, onBookClick })
                     <span className="text-[#D6B574] mt-0.5">✦</span>
                     <span>
                       {bioLang === 'hi' ? (
-                        <><strong>आभा मंडल व चक्र हीलिंग</strong> ऊर्जा संतुलन विशेषज्ञ</>
+                        <><strong>ऑरा व चक्र हीलिंग</strong> (ऊर्जा संतुलन विशेषज्ञ)</>
                       ) : (
                         <><strong>Subtle Body Energy</strong> Cleanser & Chakra Harmonizer</>
                       )}
@@ -161,7 +161,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ lang, onBookClick })
                     <span className="text-[#D6B574] mt-0.5">✦</span>
                     <span>
                       {bioLang === 'hi' ? (
-                        <><strong>जीवन मार्गदर्शन</strong> एवं आध्यात्मिक परामर्शदाता</>
+                        <><strong>जीवन मार्गदर्शन</strong> एवं मेंटरशिप</>
                       ) : (
                         <><strong>Mindful Life Coach</strong> & Spiritual Mentor</>
                       )}
@@ -246,11 +246,11 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ lang, onBookClick })
               <div className="absolute -right-4 -bottom-4 w-28 h-28 bg-[#D6B574]/15 rounded-full blur-xl pointer-events-none" />
               <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#6941A5]">
                 <Sparkles size={14} className="text-[#D6B574]" />
-                <span>{bioLang === 'hi' ? 'पावन संकल्प' : 'Her Vision'}</span>
+                <span>{bioLang === 'hi' ? 'हमारा उद्देश्य' : 'Her Vision'}</span>
               </div>
               <blockquote className="font-cormorant text-xl md:text-2xl italic text-[#24152F] leading-snug">
                 {bioLang === 'hi'
-                  ? '“लोगों को उनके जीवन को अधिक जागरूकता, आत्मविश्वास और सकारात्मक दृष्टि से समझने में सहायता करना—ताकि वे अपनी आंतरिक शक्ति से जुड़ सकें और अपनी यात्रा को वास्तव में अर्थपूर्ण बना सकें।”'
+                  ? '“लोगों को उनके जीवन को अधिक समझ, आत्मविश्वास और सकारात्मक सोच के साथ जीने में मदद करना—ताकि वे अपनी अंदरूनी शक्ति को पहचानें और सही रास्ते पर आगे बढ़ सकें।”'
                   : '“Supporting individuals in understanding their lives with greater awareness, confidence, and a positive perspective—so they can connect with their inner strength and make their personal journey truly meaningful.”'}
               </blockquote>
             </div>
@@ -259,7 +259,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ lang, onBookClick })
             <div className="p-6 rounded-2xl bg-white border border-[#EAE2F4] shadow-sm space-y-4">
               <h3 className="font-cinzel text-base font-bold text-[#24152F] flex items-center gap-2 border-b border-[#EAE2F4] pb-3">
                 <Compass size={17} className="text-[#6941A5]" />
-                <span>{bioLang === 'hi' ? 'मार्गदर्शन के तीन पावन स्तंभ' : 'Three Sacred Pillars of Mentorship'}</span>
+                <span>{bioLang === 'hi' ? 'हमारे मार्गदर्शन के 3 मुख्य आधार' : 'Three Sacred Pillars of Mentorship'}</span>
               </h3>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -294,7 +294,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ lang, onBookClick })
                 className="px-5 py-3 bg-white hover:bg-[#FBF8F2] text-[#24152F] border border-[#D6B574] font-semibold text-xs uppercase tracking-wider rounded-lg transition-all shadow-xs inline-flex items-center gap-2"
               >
                 <Maximize2 size={13} className="text-[#6941A5]" />
-                <span>{bioLang === 'hi' ? 'मूल चित्र देखें' : 'View Original Photo (28.jpeg)'}</span>
+                <span>{bioLang === 'hi' ? 'बड़ी फोटो देखें' : 'View Original Photo (28.jpeg)'}</span>
               </button>
             </div>
           </div>

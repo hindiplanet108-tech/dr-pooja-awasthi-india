@@ -24,13 +24,16 @@ import { AdminPageBuilder } from './components/admin/AdminPageBuilder';
 import { AdminMediaLibrary } from './components/admin/AdminMediaLibrary';
 import { AdminSettings } from './components/admin/AdminSettings';
 import { AdminSiteEditor } from './components/admin/AdminSiteEditor';
+import { AdminSeoDashboard } from './components/admin/AdminSeoDashboard';
+import { SEOHead } from './components/SEOHead';
+import { SocialShare } from './components/SocialShare';
 import { SiteContentProvider } from './utils/siteContentContext';
 import { isUserAuthenticated, CMSPage } from './utils/cmsApi';
 import { MessageSquare, ArrowUp, QrCode } from 'lucide-react';
 import { getTranslation } from './data/translations';
 
 type ViewMode = 'home' | 'tariff' | 'admin' | 'dynamic-page';
-type AdminTab = 'dashboard' | 'site-editor' | 'pages' | 'create-page' | 'media' | 'settings';
+type AdminTab = 'dashboard' | 'site-editor' | 'pages' | 'create-page' | 'media' | 'settings' | 'seo';
 
 function MainApp() {
   const [lang, setLang] = useState<string>('en');
@@ -304,6 +307,8 @@ function MainApp() {
         {adminTab === 'media' && <AdminMediaLibrary lang={lang} />}
 
         {adminTab === 'settings' && <AdminSettings lang={lang} />}
+
+        {adminTab === 'seo' && <AdminSeoDashboard lang={lang} />}
       </AdminLayout>
     );
   }
@@ -311,8 +316,30 @@ function MainApp() {
   // ==========================================
   // RENDER: PUBLIC WEBSITE (Home, Tariff, Dynamic Pages)
   // ==========================================
+  const homeTitle = lang === 'hi' 
+    ? 'डॉ. पूजा अवस्थी — आध्यात्मिक मार्गदर्शन | वैदिक अंकशास्त्र, टैरो एवं चक्र हीलिंग'
+    : 'Dr. Pooja Awasthi — Spiritual Guidance | Vedic Numerology & Life Coaching';
+  const homeDesc = lang === 'hi'
+    ? 'डॉ. पूजा अवस्थी (गोल्ड मेडलिस्ट) से वैदिक अंकशास्त्र, इंट्यूटिव टैरो कार्ड रीडिंग, 7 चक्र हीलिंग व पास्ट लाइफ रिग्रेशन थेरेपी परामर्श प्राप्त करें। देहरादून, भारत।'
+    : 'Gold Medalist Dr. Pooja Awasthi provides certified Vedic Numerology, Intuitive Tarot Card Spread, Chakra Healing & Past Life Regression. Dehradun, India.';
+  const homeKeywords = lang === 'hi'
+    ? 'डॉ पूजा अवस्थी, वैदिक अंकशास्त्र, टैरो कार्ड रीडिंग, चक्र हीलिंग, पास्ट लाइफ रिग्रेशन, देहरादून ज्योतिषी'
+    : 'Dr Pooja Awasthi, Vedic Numerology, Tarot Card Reading, Chakra Healing, Past Life Regression, Dehradun Astrologer';
+
   return (
     <div className="min-h-screen bg-[#FBF8F2] text-[#29242E] flex flex-col font-sans selection:bg-[#EAE2F4] selection:text-[#24152F] relative">
+      {/* Dynamic SEO Meta, OpenGraph, Canonical & JSON-LD Structured Data */}
+      {currentView === 'home' && (
+        <SEOHead
+          title={homeTitle}
+          description={homeDesc}
+          canonical="https://dr-pooja-awasthi.vercel.app/"
+          keywords={homeKeywords}
+          type="website"
+          lang={lang}
+        />
+      )}
+
       {/* 1. Sticky Navigation with Language, Tariff, Pages & Bank details */}
       <Navbar
         lang={lang}
@@ -415,6 +442,15 @@ function MainApp() {
                 scrollToSection('contact');
               }}
             />
+
+            {/* Social Share & Promotion Widget */}
+            <div className="max-w-4xl mx-auto px-4 py-6">
+              <SocialShare
+                title={lang === 'hi' ? 'डॉ. पूजा अवस्थी — आध्यात्मिक मार्गदर्शन एवं वैदिक परामर्श' : 'Dr. Pooja Awasthi — Spiritual Guidance & Vedic Numerology'}
+                text={lang === 'hi' ? 'जीवन में स्पष्टता, शांति एवं सकारात्मक बदलाव हेतु डॉ. पूजा अवस्थी (गोल्ड मेडलिस्ट) से जुड़ें।' : 'Empowering clarity, peace of mind & positive transformation with Dr. Pooja Awasthi.'}
+                lang={lang}
+              />
+            </div>
 
             {/* 11. Contact & Direct WhatsApp Booking Form */}
             <ContactBookingSection

@@ -78,7 +78,7 @@ export const VedicCalculatorSection: React.FC<VedicCalculatorSectionProps> = ({ 
         <div className="text-center max-w-4xl mx-auto mb-12 space-y-3">
           <div className="inline-flex items-center justify-center gap-2 px-4 py-1.5 rounded-full bg-[#D6B574]/15 border border-[#D6B574]/30 text-xs font-semibold uppercase tracking-widest text-[#D6B574]">
             <Sparkles size={14} className="animate-pulse" />
-            <span>{lang === 'hi' ? 'दिव्य ज्यामितीय चक्र • Divine Geometric Matrix' : 'Divine Geometric Matrix • Vedic Numerology Engine'}</span>
+            <span>{lang === 'hi' ? 'अंक चक्र विश्लेषण • Divine Geometric Matrix' : 'Divine Geometric Matrix • Vedic Numerology Engine'}</span>
           </div>
 
           <h2 className="font-cinzel text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-wide leading-tight">
@@ -91,7 +91,7 @@ export const VedicCalculatorSection: React.FC<VedicCalculatorSectionProps> = ({ 
 
           <p className="text-sm sm:text-base text-[#EAE2F4]/90 max-w-3xl mx-auto font-light leading-relaxed pt-1">
             {lang === 'hi'
-              ? 'अपनी सटीक जन्मतिथि दर्ज करें और जानें अपना मूलांक (Driver), भाग्यांक (Conductor), कुआ अंक (Kua Number), 8 भाग्य योग (8 Planes of Destiny) तथा अनुपस्थित अंकों के दिव्य उपाय। दिव्य ज्यामितीय चक्र (Divine Geometric Matrix)।'
+              ? 'अपनी सही जन्मतिथि दर्ज करें और जानें अपना मूलांक (Driver Number), भाग्यांक (Conductor Number), कुआ अंक (Kua Number), 8 भाग्य योग तथा जन्मकुंडली में छूटे हुए अंकों (Missing Numbers) के आसान उपाय।'
               : 'Enter your exact date of birth to reveal your Driver (Mulank), Conductor (Bhagyank), Kua Number, 8 Planes of Destiny, and Missing Number remedies. Divine Geometric Matrix'}
           </p>
         </div>
@@ -115,7 +115,7 @@ export const VedicCalculatorSection: React.FC<VedicCalculatorSectionProps> = ({ 
                   className="w-full px-4 py-3 rounded-xl bg-black/50 border border-white/20 text-white text-sm focus:outline-none focus:border-[#D6B574] transition-colors"
                 />
                 <p className="text-[11px] text-[#EAE2F4]/60 mt-1">
-                  {lang === 'hi' ? 'दिन, माह व वर्ष की सही प्रविष्टि करें।' : 'DD/MM/YYYY for astrological alignment.'}
+                  {lang === 'hi' ? 'दिन, महीना और साल सही दर्ज करें।' : 'DD/MM/YYYY for astrological alignment.'}
                 </p>
               </div>
 
@@ -123,7 +123,7 @@ export const VedicCalculatorSection: React.FC<VedicCalculatorSectionProps> = ({ 
               <div>
                 <label className="block text-xs font-semibold uppercase tracking-wider text-[#D6B574] mb-2 flex items-center gap-1.5">
                   <Compass size={14} />
-                  <span>{lang === 'hi' ? 'लिंग (कुआ अंक हेतु अनिवार्य)' : 'Gender (Crucial for Kua Number)'}</span>
+                  <span>{lang === 'hi' ? 'लिंग (कुआ अंक जानने के लिए जरूरी)' : 'Gender (Crucial for Kua Number)'}</span>
                 </label>
                 <div className="grid grid-cols-2 gap-2">
                   <button
@@ -150,7 +150,7 @@ export const VedicCalculatorSection: React.FC<VedicCalculatorSectionProps> = ({ 
                   </button>
                 </div>
                 <p className="text-[11px] text-[#EAE2F4]/60 mt-1">
-                  {lang === 'hi' ? 'फेंगशुई/लो-शू में पुरुष व महिला का कुआ सूत्र अलग होता है।' : 'Male and female use distinct classical Kua formulas.'}
+                  {lang === 'hi' ? 'कुआ अंक की गणना पुरुष व महिला के लिए अलग-अलग नियम से होती है।' : 'Male and female use distinct classical Kua formulas.'}
                 </p>
               </div>
 
@@ -158,7 +158,7 @@ export const VedicCalculatorSection: React.FC<VedicCalculatorSectionProps> = ({ 
               <div>
                 <label className="block text-xs font-semibold uppercase tracking-wider text-[#D6B574] mb-2 flex items-center gap-1.5">
                   <User size={14} />
-                  <span>{lang === 'hi' ? 'पूरा नाम (कील्डियन अंक हेतु)' : 'Full Name (For Name Vibration)'}</span>
+                  <span>{lang === 'hi' ? 'पूरा नाम (नाम का शुभ अंक जानने के लिए)' : 'Full Name (For Name Vibration)'}</span>
                 </label>
                 <input
                   type="text"
@@ -168,7 +168,7 @@ export const VedicCalculatorSection: React.FC<VedicCalculatorSectionProps> = ({ 
                   className="w-full px-4 py-3 rounded-xl bg-black/50 border border-white/20 text-white text-sm focus:outline-none focus:border-[#D6B574] transition-colors"
                 />
                 <p className="text-[11px] text-[#EAE2F4]/60 mt-1">
-                  {lang === 'hi' ? 'नाम की ध्वनि ऊर्जा एवं संयुक्त अंक' : 'Evaluates Chaldean sound vibration.'}
+                  {lang === 'hi' ? 'नाम की स्पेलिंग व शुभ अंक का मिलान' : 'Evaluates Chaldean sound vibration.'}
                 </p>
               </div>
 
@@ -177,7 +177,7 @@ export const VedicCalculatorSection: React.FC<VedicCalculatorSectionProps> = ({ 
             {/* Quick Preset Buttons to verify authentic examples */}
             <div className="pt-2 border-t border-white/10 flex flex-wrap items-center justify-between gap-3 text-xs">
               <span className="text-[#EAE2F4]/70 font-medium">
-                {lang === 'hi' ? 'प्रामाणिक उदाहरण जांचें:' : 'Quick Benchmark Examples:'}
+                {lang === 'hi' ? 'सीधे उदाहरण चुनकर देखें:' : 'Quick Benchmark Examples:'}
               </span>
               <div className="flex flex-wrap gap-2">
                 <button
@@ -222,7 +222,7 @@ export const VedicCalculatorSection: React.FC<VedicCalculatorSectionProps> = ({ 
                 className="w-full sm:w-auto px-8 py-3.5 bg-gradient-to-r from-[#D6B574] via-[#eedbb3] to-[#D6B574] text-[#24152F] font-bold text-xs uppercase tracking-wider rounded-xl transition-all shadow-lg hover:shadow-[#D6B574]/40 hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2"
               >
                 <Sparkles size={16} />
-                <span>{lang === 'hi' ? 'संपूर्ण जन्मतिथि विश्लेषण डिकोड करें' : 'Decode Complete Numerology & Grids'}</span>
+                <span>{lang === 'hi' ? 'अंक चक्र विश्लेषण देखें (Decode)' : 'Decode Complete Numerology & Grids'}</span>
               </button>
               <span className="text-[11px] text-[#EAE2F4]/60 text-center sm:text-right">
                 {lang === 'hi'
@@ -232,7 +232,6 @@ export const VedicCalculatorSection: React.FC<VedicCalculatorSectionProps> = ({ 
             </div>
           </form>
         </div>
-
         {/* 4 Core Pillars of Destiny Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-10">
           
@@ -242,14 +241,14 @@ export const VedicCalculatorSection: React.FC<VedicCalculatorSectionProps> = ({ 
             <div className="space-y-2">
               <div className="flex items-center justify-between">
                 <span className="text-xs font-bold uppercase tracking-wider text-[#D6B574]">
-                  {lang === 'hi' ? 'मूलांक (Driver)' : 'Driver (Mulank)'}
+                  {lang === 'hi' ? 'मूलांक (Driver Number)' : 'Driver (Mulank)'}
                 </span>
                 <span className="text-[10px] px-2 py-0.5 rounded-full bg-white/10 text-[#EAE2F4]/80">
                   Day {result.day}
                 </span>
               </div>
               <div className="text-xs text-[#EAE2F4]/70">
-                {lang === 'hi' ? 'आंतरिक चेतना व स्वभाव' : 'Core Nature & Self'}
+                {lang === 'hi' ? 'आपका मूल स्वभाव व व्यक्तित्व' : 'Core Nature & Self'}
               </div>
               <div className="font-cormorant text-6xl font-light text-white my-1 tabular-nums">
                 {result.mulank}
@@ -272,14 +271,14 @@ export const VedicCalculatorSection: React.FC<VedicCalculatorSectionProps> = ({ 
             <div className="space-y-2">
               <div className="flex items-center justify-between">
                 <span className="text-xs font-bold uppercase tracking-wider text-[#D6B574]">
-                  {lang === 'hi' ? 'भाग्यांक (Conductor)' : 'Conductor (Bhagyank)'}
+                  {lang === 'hi' ? 'भाग्यांक (Conductor Number)' : 'Conductor (Bhagyank)'}
                 </span>
                 <span className="text-[10px] px-2 py-0.5 rounded-full bg-white/10 text-[#EAE2F4]/80">
                   Sum of Full DOB
                 </span>
               </div>
               <div className="text-xs text-[#EAE2F4]/70">
-                {lang === 'hi' ? 'कर्म पथ एवं जीवन लक्ष्य' : 'Destiny & Life Path'}
+                {lang === 'hi' ? 'जीवन का मुख्य लक्ष्य व कर्म पथ' : 'Destiny & Life Path'}
               </div>
               <div className="font-cormorant text-6xl font-light text-white my-1 tabular-nums">
                 {result.bhagyank}
@@ -303,7 +302,7 @@ export const VedicCalculatorSection: React.FC<VedicCalculatorSectionProps> = ({ 
               <div className="flex items-center justify-between">
                 <span className="text-xs font-bold uppercase tracking-wider text-[#D6B574] flex items-center gap-1">
                   <Compass size={13} />
-                  <span>{lang === 'hi' ? 'कुआ अंक (Kua)' : 'Kua Number'}</span>
+                  <span>{lang === 'hi' ? 'कुआ अंक (Kua Number)' : 'Kua Number'}</span>
                 </span>
                 <span className="text-[10px] px-2 py-0.5 rounded-full bg-[#D6B574]/20 text-[#D6B574] font-semibold">
                   {lang === 'hi' ? result.kuaProfile.group_hi : result.kuaProfile.group}
@@ -316,7 +315,7 @@ export const VedicCalculatorSection: React.FC<VedicCalculatorSectionProps> = ({ 
                   <Info size={11} className="shrink-0" />
                   <span>
                     {lang === 'hi'
-                      ? `सौर वर्ष नियम: जन्म ४ फरवरी से पूर्व होने से सौर वर्ष ${result.kuaProfile.solarYear} प्रयुक्त।`
+                      ? `सौर वर्ष नियम: जन्म 4 फरवरी से पहले होने के कारण सौर वर्ष ${result.kuaProfile.solarYear} से गणना की गई।`
                       : `Li Chun rule: Born before Feb 4, calculated using solar year ${result.kuaProfile.solarYear}.`}
                   </span>
                 </div>
@@ -328,7 +327,7 @@ export const VedicCalculatorSection: React.FC<VedicCalculatorSectionProps> = ({ 
                   <ShieldCheck size={11} className="shrink-0" />
                   <span>
                     {lang === 'hi'
-                      ? `विशेष नियम: अंक ५ बदलकर ${result.kuaProfile.kua} (${result.kuaProfile.trigram_hi}) बना।`
+                      ? `विशेष नियम: अंक 5 को बदलकर ${result.kuaProfile.kua} (${result.kuaProfile.trigram_hi}) किया गया।`
                       : `Rule of 5: Digit 5 converted to ${result.kuaProfile.kua} (${result.kuaProfile.trigram}).`}
                   </span>
                 </div>
@@ -347,7 +346,7 @@ export const VedicCalculatorSection: React.FC<VedicCalculatorSectionProps> = ({ 
 
             <div className="pt-3 mt-3 border-t border-white/10 text-[11px] text-[#EAE2F4]/75 space-y-1">
               <span className="block text-[#D6B574] font-semibold text-[10px] uppercase">
-                {lang === 'hi' ? 'गणना सूत्र प्रमाण (Proof):' : 'Formula Proof:'}
+                {lang === 'hi' ? 'गणना का तरीका (Formula):' : 'Formula Proof:'}
               </span>
               <p className="font-mono text-[10px] text-[#EAE2F4]/90 break-words">
                 {lang === 'hi' ? result.kuaProfile.formulaProof_hi : result.kuaProfile.formulaProof}
@@ -361,30 +360,30 @@ export const VedicCalculatorSection: React.FC<VedicCalculatorSectionProps> = ({ 
             <div className="space-y-2">
               <div className="flex items-center justify-between">
                 <span className="text-xs font-bold uppercase tracking-wider text-[#D6B574]">
-                  {lang === 'hi' ? 'नाम कंपन (Name Vibration)' : 'Name Vibration'}
+                  {lang === 'hi' ? 'नाम का शुभ अंक (Name Number)' : 'Name Vibration'}
                 </span>
                 <span className="text-[10px] px-2 py-0.5 rounded-full bg-white/10 text-[#EAE2F4]/80">
                   Chaldean
                 </span>
               </div>
               <div className="text-xs text-[#EAE2F4]/70">
-                {lang === 'hi' ? 'ध्वनि एवं नाम वर्तनी कंपन' : 'Sound & Spelling Energy'}
+                {lang === 'hi' ? 'नाम की स्पेलिंग व अंक प्रभाव' : 'Sound & Spelling Energy'}
               </div>
               <div className="font-cormorant text-6xl font-light text-white my-1 tabular-nums">
                 {result.nameSingle}
               </div>
               <div className="font-cinzel text-base font-bold text-white">
-                {lang === 'hi' ? `एकल कंपन ${result.nameSingle}` : `Vibration ${result.nameSingle}`}
+                {lang === 'hi' ? `एकल अंक ${result.nameSingle}` : `Vibration ${result.nameSingle}`}
               </div>
               <div className="text-xs font-semibold text-[#D6B574]">
                 {lang === 'hi'
-                  ? `संयुक्त योग: ${result.nameCompound} → एकल ${result.nameSingle}`
+                  ? `कुल जोड़: ${result.nameCompound} → एकल अंक ${result.nameSingle}`
                   : `Compound: ${result.nameCompound} → Single ${result.nameSingle}`}
               </div>
             </div>
             <p className="text-[11px] text-[#EAE2F4]/75 leading-relaxed font-light pt-3 mt-3 border-t border-white/10">
               {lang === 'hi'
-                ? 'नाम के अक्षरों के कंपन को मूलांक व भाग्यांक से संतुलित करने से जीवन में अवरोध समाप्त होते हैं।'
+                ? 'नाम की स्पेलिंग को मूलांक और भाग्यांक से मिलाने पर करियर और जीवन में आ रही रुकावटें दूर होती हैं।'
                 : 'Harmonizing your name spelling with your Driver number unlocks effortless social and career luck.'}
             </p>
           </div>
@@ -403,7 +402,7 @@ export const VedicCalculatorSection: React.FC<VedicCalculatorSectionProps> = ({ 
             }`}
           >
             <Grid size={14} />
-            <span>{lang === 'hi' ? '३×३ लो-शू व वैदिक चक्र (दोनों चक्र)' : '3×3 Lo Shu & Vedic Grids'}</span>
+            <span>{lang === 'hi' ? '3×3 लो-शू व वैदिक चक्र' : '3×3 Lo Shu & Vedic Grids'}</span>
           </button>
 
           <button
@@ -416,7 +415,7 @@ export const VedicCalculatorSection: React.FC<VedicCalculatorSectionProps> = ({ 
             }`}
           >
             <Star size={14} />
-            <span>{lang === 'hi' ? 'वैदिक अंक कुण्डली (3-1-9)' : 'Vedic Grid (3-1-9)'}</span>
+            <span>{lang === 'hi' ? 'वैदिक अंक ग्रिड (3-1-9)' : 'Vedic Grid (3-1-9)'}</span>
           </button>
 
           <button
@@ -429,7 +428,7 @@ export const VedicCalculatorSection: React.FC<VedicCalculatorSectionProps> = ({ 
             }`}
           >
             <Layers size={14} />
-            <span>{lang === 'hi' ? '8 राजयोग व तल' : '8 Planes of Destiny'}</span>
+            <span>{lang === 'hi' ? '8 भाग्य योग (Planes)' : '8 Planes of Destiny'}</span>
             <span className="px-1.5 py-0.2 rounded-full bg-white/20 text-[10px]">
               {result.destinyPlanes.filter((p) => p.status === 'Complete').length}
             </span>
@@ -445,7 +444,7 @@ export const VedicCalculatorSection: React.FC<VedicCalculatorSectionProps> = ({ 
             }`}
           >
             <Gem size={14} />
-            <span>{lang === 'hi' ? 'अनुपस्थित उपाय' : 'Missing Remedies'}</span>
+            <span>{lang === 'hi' ? 'मिसिंग नंबर उपाय' : 'Missing Remedies'}</span>
             <span className="px-1.5 py-0.2 rounded-full bg-rose-500/30 text-rose-300 text-[10px]">
               {result.missingNumbers.length}
             </span>
@@ -461,7 +460,7 @@ export const VedicCalculatorSection: React.FC<VedicCalculatorSectionProps> = ({ 
             }`}
           >
             <BookOpen size={14} />
-            <span>{lang === 'hi' ? 'कुआ अंक विधि' : 'Kua Formula'}</span>
+            <span>{lang === 'hi' ? 'कुआ अंक की जानकारी' : 'Kua Formula'}</span>
           </button>
         </div>
 

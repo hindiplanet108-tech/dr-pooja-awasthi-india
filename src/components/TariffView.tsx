@@ -19,6 +19,9 @@ import {
   Sparkles
 } from 'lucide-react';
 import poojaAuthenticPhoto from '../assets/images/pooja_awasthi_portrait.jpeg';
+import { SEOHead } from './SEOHead';
+import { Breadcrumb } from './Breadcrumb';
+import { SocialShare } from './SocialShare';
 
 interface TariffViewProps {
   onBackToHome: () => void;
@@ -46,14 +49,15 @@ export const TariffView: React.FC<TariffViewProps> = ({
   }, [lang]);
 
   const bankDetails = {
-    holder: bankInfo?.account_name || 'Dr. Pooja Awasthi',
+    holder: bankInfo?.account_name || 'Pooja Awasthi',
     bank: bankInfo?.bank_name || 'State Bank of India',
     accNumber: bankInfo?.account_number || '39876543210',
     ifsc: bankInfo?.ifsc_code || 'SBIN0001234',
     type: 'Savings Account',
     branch: bankInfo?.branch || 'Dehradun Main Branch, Uttarakhand',
     upiId: bankInfo?.upi_id || '9105731969@upi',
-    phone: siteContent?.contact?.phone || '+91 91057 31969'
+    phone: siteContent?.contact?.phone || '+91 91057 31969',
+    qrImage: bankInfo?.qr_code_image || 'https://api.qrserver.com/v1/create-qr-code/?size=350x350&data=upi%3A%2F%2Fpay%3Fpa%3D9105731969%40upi%26pn%3DPooja%20Awasthi%26cu%3DINR'
   };
 
   const handleCopy = (text: string, key: string) => {
@@ -118,20 +122,36 @@ export const TariffView: React.FC<TariffViewProps> = ({
     ? currentCatalog
     : currentCatalog.filter((item) => item.category === filter);
 
+  const tariffTitle = tariffLang === 'hi'
+    ? '11 आध्यात्मिक एवं हीलिंग सेवाओं की शुल्क सूची (Tariff Card) | डॉ. पूजा अवस्थी'
+    : 'Spiritual Consultation Tariff & Rate Card (11 Services) | Dr. Pooja Awasthi';
+  const tariffDesc = tariffLang === 'hi'
+    ? 'डॉ. पूजा अवस्थी की 11 वैदिक एवं आध्यात्मिक परामर्श सेवाओं की पूर्ण पारदर्शी शुल्क सूची, बैंक विवरण व यूपीआई आईडी (9105731969@upi)।'
+    : 'Complete transparent fee structure and rate card for all 11 spiritual healing services by Dr. Pooja Awasthi with UPI payment details.';
+
   return (
-    <div className="min-h-screen bg-[#FBF8F2] text-[#29242E] pt-32 md:pt-36 pb-20">
+    <div className="min-h-screen bg-[#FBF8F2] text-[#29242E] pt-28 md:pt-32 pb-20">
+      {/* Comprehensive SEO Head for Tariff & Rate Card */}
+      <SEOHead
+        title={tariffTitle}
+        description={tariffDesc}
+        canonical="https://dr-pooja-awasthi.vercel.app/tariff"
+        keywords="डॉ पूजा अवस्थी शुल्क, वैदिक ज्योतिष टैरिफ, टैरो कार्ड फीस, चक्र हीलिंग चार्ज, Spiritual consultation charges"
+        type="service"
+        lang={tariffLang}
+      />
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Top Control Bar with Language Switcher */}
-        <div className="flex flex-wrap items-center justify-between gap-4 mb-10 pb-6 border-b border-[#EAE2F4]">
-          <button
-            type="button"
-            onClick={onBackToHome}
-            className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#24152F] hover:text-[#6941A5] transition-colors"
-          >
-            <ArrowLeft size={16} />
-            <span>{tariffLang === 'hi' ? '← मुख्य पृष्ठ पर लौटें' : '← Back to Home'}</span>
-          </button>
+        {/* Top Control Bar with Breadcrumb and Language Switcher */}
+        <div className="flex flex-wrap items-center justify-between gap-4 mb-8 pb-4 border-b border-[#EAE2F4]">
+          <Breadcrumb
+            items={[
+              { label: tariffLang === 'hi' ? 'सेवाओं की शुल्क सूची (Tariff Card)' : 'Services Tariff & Rates' }
+            ]}
+            onNavigateHome={onBackToHome}
+            lang={tariffLang}
+          />
 
           <div className="flex flex-wrap items-center gap-2">
             {/* Bilingual View Toggle */}
@@ -313,9 +333,9 @@ export const TariffView: React.FC<TariffViewProps> = ({
             {[
               { id: 'all', label_en: 'All Services (11)', label_hi: 'सभी सेवाएँ (11)' },
               { id: 'healing', label_en: 'Energy & Healing (5)', label_hi: 'ऊर्जा एवं हीलिंग (5)' },
-              { id: 'numerology', label_en: 'Numerology Corrections (2)', label_hi: 'अंकशास्त्र शुद्धि (2)' },
-              { id: 'therapy', label_en: 'Mind Balance & Therapy (3)', label_hi: 'मानसिक संतुलन व विश्राम (3)' },
-              { id: 'regression', label_en: 'PLR Regression (1)', label_hi: 'पूर्व जन्म स्मृति सत्र (1)' },
+              { id: 'numerology', label_en: 'Numerology Corrections (2)', label_hi: 'अंकशास्त्र सुधार (2)' },
+              { id: 'therapy', label_en: 'Mind Balance & Therapy (3)', label_hi: 'मानसिक शांति व विश्राम (3)' },
+              { id: 'regression', label_en: 'PLR Regression (1)', label_hi: 'पूर्व जन्म सत्र - PLR (1)' },
             ].map((btn) => (
               <button
                 key={btn.id}
@@ -392,7 +412,7 @@ export const TariffView: React.FC<TariffViewProps> = ({
                     onClick={() => onBookService(`${tariffLang === 'hi' ? srv.title : srv.title_en} (${srv.feeFormatted})`)}
                     className="px-4 py-2 bg-[#24152F] hover:bg-[#341e44] text-[#D6B574] text-xs font-bold uppercase tracking-wider rounded-lg transition-colors shadow-xs"
                   >
-                    {tariffLang === 'hi' ? 'सत्र निर्धारित करें' : 'Book Session'}
+                    {tariffLang === 'hi' ? 'सत्र बुक करें' : 'Book Session'}
                   </button>
                 </div>
               </div>
@@ -412,7 +432,7 @@ export const TariffView: React.FC<TariffViewProps> = ({
               </h2>
               <p className="text-xs text-[#29242E]/70 mt-1">
                 {tariffLang === 'hi'
-                  ? 'परामर्श व हीलिंग दक्षिणा का सुरक्षित भुगतान सीधे UPI, PhonePe/GPay QR, अथवा नेट बैंकिंग द्वारा करें।'
+                  ? 'परामर्श व हीलिंग फीस का सुरक्षित भुगतान सीधे UPI, PhonePe/GPay QR, अथवा नेट बैंकिंग द्वारा करें।'
                   : 'Remit consultation & healing fees securely via direct UPI, PhonePe/GPay QR, or Net Banking transfer.'}
               </p>
             </div>
@@ -442,25 +462,26 @@ export const TariffView: React.FC<TariffViewProps> = ({
 
                 {/* QR Display Frame */}
                 <div className="p-6 rounded-2xl bg-white text-center flex flex-col items-center justify-center space-y-3 shadow-inner">
-                  {customQrImage ? (
+                  <div className="relative p-2 rounded-xl border-2 border-[#24152F] bg-white shadow-md">
                     <img
-                      src={customQrImage}
-                      alt="Official Payment QR"
+                      src={customQrImage || bankDetails.qrImage}
+                      alt={`UPI Payment QR Code - ${bankDetails.holder} (${bankDetails.upiId})`}
                       className="w-48 h-48 object-contain rounded-lg"
+                      loading="eager"
                     />
-                  ) : (
-                    /* Default Clean High-contrast QR Scanner Graphic */
-                    <div className="w-48 h-48 rounded-xl border-4 border-[#24152F] p-3 flex flex-col items-center justify-center space-y-2 bg-[#FBF8F2]">
-                      <QrCode size={110} className="text-[#24152F]" />
-                      <span className="font-mono text-[10px] font-bold text-[#24152F] select-all">
-                        {bankDetails.upiId}
-                      </span>
-                    </div>
-                  )}
+                  </div>
 
-                  <span className="text-[11px] text-[#24152F] font-bold">
-                    {tariffLang === 'hi' ? 'किसी भी UPI ऐप से स्कैन करें' : 'Scan with any UPI App'}
-                  </span>
+                  <div className="space-y-1">
+                    <span className="inline-block px-2.5 py-0.5 rounded bg-[#24152F] text-[#F5C242] text-[10px] font-bold">
+                      ✓ {bankDetails.holder}
+                    </span>
+                    <span className="font-mono text-xs font-bold text-[#24152F] block select-all">
+                      {bankDetails.upiId}
+                    </span>
+                    <span className="text-[11px] text-[#24152F]/80 font-medium block">
+                      {tariffLang === 'hi' ? 'गूगल पे, फोनपे, पेटीएम या किसी भी UPI ऐप से स्कैन करें' : 'Scan with Google Pay, PhonePe, Paytm or BHIM'}
+                    </span>
+                  </div>
                 </div>
 
                 <div className="pt-2 text-center">
@@ -613,8 +634,18 @@ export const TariffView: React.FC<TariffViewProps> = ({
           </div>
         </div>
 
+        {/* Social Share & Promotion Widget */}
+        <div className="pt-12 max-w-3xl mx-auto">
+          <SocialShare
+            title="Dr. Pooja Awasthi — 11 Spiritual Services Tariff & Fee Card"
+            text="Transparent consultation fees and verified payment details for Vedic Numerology, Tarot Reading, Chakra Healing & PLR."
+            url="https://dr-pooja-awasthi.vercel.app/tariff"
+            lang={tariffLang}
+          />
+        </div>
+
         {/* Bottom Back Home Button */}
-        <div className="pt-16 text-center">
+        <div className="pt-8 text-center">
           <button
             type="button"
             onClick={onBackToHome}
