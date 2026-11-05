@@ -34,6 +34,21 @@
   font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
 }
 
+/* Dedicated High-Definition Rupee & Currency Typography */
+.font-rupee,
+.currency-amount {
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  font-feature-settings: "tnum" 1, "cv01" 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.rupee-symbol {
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  font-weight: 900;
+  display: inline-block;
+  line-height: 1;
+}
+
 /* Custom subtle ambient glow */
 .gold-glow {
   box-shadow: 0 0 30px -5px rgba(214, 181, 116, 0.25);

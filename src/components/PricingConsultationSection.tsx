@@ -170,11 +170,11 @@ export const PricingConsultationSection: React.FC<PricingConsultationSectionProp
 
                 <div className="flex items-baseline gap-2">
                   {/* Extra bold ₹ sign and 5,100 */}
-                  <span className="inline-flex items-baseline">
-                    <strong className="font-black text-[#F5C242] text-4xl sm:text-5xl font-sans drop-shadow-[0_2px_10px_rgba(245,194,66,0.5)] mr-1 select-none">
+                  <span className="inline-flex items-baseline font-rupee">
+                    <strong className="font-black text-[#F5C242] text-4xl sm:text-5xl rupee-symbol drop-shadow-[0_2px_10px_rgba(245,194,66,0.5)] mr-1 select-none">
                       ₹
                     </strong>
-                    <strong className="font-cormorant text-5xl sm:text-6xl font-black text-white tabular-nums drop-shadow-[0_2px_14px_rgba(214,181,116,0.5)] tracking-tight">
+                    <strong className="text-5xl sm:text-6xl font-black text-white tabular-nums drop-shadow-[0_2px_14px_rgba(214,181,116,0.5)] tracking-tight">
                       5,100
                     </strong>
                   </span>
@@ -215,23 +215,25 @@ export const PricingConsultationSection: React.FC<PricingConsultationSectionProp
                 </span>
               </button>
 
-              <div className="grid grid-cols-2 gap-2 pt-1">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1">
                 {onOpenTariff && (
                   <button
                     type="button"
                     onClick={onOpenTariff}
-                    className="py-2.5 px-3 rounded-lg border border-[#D6B574]/50 bg-white/5 hover:bg-[#D6B574]/20 text-[#D6B574] text-[11px] font-semibold transition-all text-center"
+                    className="py-3 px-3.5 rounded-xl border-2 border-[#D6B574] bg-gradient-to-r from-[#D6B574]/20 to-[#24152F] hover:from-[#D6B574]/35 text-[#F5C242] text-xs font-bold transition-all text-center flex items-center justify-center gap-1.5 shadow-[0_0_12px_rgba(214,181,116,0.25)] hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
                   >
-                    {lang === 'hi' ? '★ संपूर्ण 11 सेवा शुल्क' : '★ 11 Services Tariff'}
+                    <Sparkles size={13} className="text-[#F5C242] shrink-0" />
+                    <span>{lang === 'hi' ? '★ 11 विशिष्ट हीलिंग सेवाएं व फीस' : '★ 11 Specialized Services & Fees'}</span>
                   </button>
                 )}
                 {onOpenBankUpi && (
                   <button
                     type="button"
                     onClick={onOpenBankUpi}
-                    className="py-2.5 px-3 rounded-lg border border-white/20 bg-white/5 hover:bg-white/15 text-white text-[11px] font-medium transition-all text-center"
+                    className="py-3 px-3.5 rounded-xl border-2 border-emerald-400 bg-gradient-to-r from-emerald-950/70 to-[#24152F] hover:from-emerald-900/80 text-emerald-300 text-xs font-bold transition-all text-center flex items-center justify-center gap-1.5 shadow-[0_0_12px_rgba(52,211,153,0.25)] hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
                   >
-                    {lang === 'hi' ? 'बैंक एवं यूपीआई' : 'Bank & UPI QR'}
+                    <ShieldCheck size={13} className="text-emerald-400 shrink-0" />
+                    <span>{lang === 'hi' ? '💳 Bank & UPI विवरण' : '💳 Bank & UPI Details'}</span>
                   </button>
                 )}
               </div>

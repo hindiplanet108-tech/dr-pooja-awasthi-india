@@ -15,7 +15,8 @@ import {
   HeartHandshake,
   Compass,
   Trophy,
-  Star
+  Star,
+  QrCode
 } from 'lucide-react';
 import { ALL_LANGUAGES } from '../data/translations';
 
@@ -138,16 +139,35 @@ export const Navbar: React.FC<NavbarProps> = ({
 
             <span className="hidden xl:inline-block text-[#D6B574]/30">|</span>
 
-            <a
-              href="https://dr-pooja-awasthi.vercel.app/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hidden xl:flex items-center gap-1 hover:text-[#D6B574] transition-colors text-[#EAE2F4]/80 text-[11px]"
-              title="Official Portal: dr-pooja-awasthi.vercel.app/"
-            >
-              <ExternalLink size={10} className="text-[#D6B574]" />
-              <span>dr-pooja-awasthi.vercel.app/</span>
-            </a>
+            {/* Highlighted Shortcut: 11 Specialized Healing & Correction Services + All 16 Divine Services */}
+            {onOpenTariff && (
+              <button
+                type="button"
+                onClick={onOpenTariff}
+                className="hidden md:inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#D6B574]/20 hover:bg-[#D6B574]/30 text-[#F5C242] font-bold border border-[#D6B574]/60 text-[11px] transition-all cursor-pointer shadow-xs"
+                title="11 Specialized Healing & Correction Services (Consultancy & Healing Services Fees - All 16 Divine Services)"
+              >
+                <Sparkles size={11} className="text-[#F5C242]" />
+                <span>
+                  {lang === 'hi'
+                    ? '★ 11 विशिष्ट हीलिंग एवं सुधार सेवाएं (सभी 16 दिव्य सेवाएं फीस)'
+                    : '★ 11 Specialized Healing & Correction Services (All 16 Divine Services)'}
+                </span>
+              </button>
+            )}
+
+            {/* Highlighted Shortcut: Bank & UPI Payment Details */}
+            {onOpenBankUpi && (
+              <button
+                type="button"
+                onClick={onOpenBankUpi}
+                className="hidden md:inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-300 font-bold border border-emerald-400/50 text-[11px] transition-all cursor-pointer shadow-xs"
+                title="Bank Account & UPI Payment Details (QR Code)"
+              >
+                <QrCode size={11} className="text-emerald-400" />
+                <span>{lang === 'hi' ? '💳 Bank & UPI: 9105731969@upi' : '💳 Bank & UPI: 9105731969@upi'}</span>
+              </button>
+            )}
           </div>
 
           {/* Right: Language Indicator & Selector Trigger */}
@@ -255,10 +275,10 @@ export const Navbar: React.FC<NavbarProps> = ({
                         className="w-full text-left px-3.5 py-2 text-xs text-[#EAE2F4] hover:text-[#D6B574] hover:bg-white/5 transition-colors flex items-center justify-between"
                       >
                         <span className="font-semibold text-[#D6B574]">
-                          {lang === 'hi' ? '★ संपूर्ण 11 सेवा शुल्क' : '★ Consultancy Tariff'}
+                          {lang === 'hi' ? '★ 11 विशिष्ट हीलिंग सेवाएं' : '★ 11 Specialized Services'}
                         </span>
-                        <span className="text-[10px] bg-[#D6B574]/20 text-[#D6B574] px-1.5 py-0.5 rounded">
-                          {lang === 'hi' ? '11 सेवाएँ' : '11 Services'}
+                        <span className="text-[10px] bg-[#D6B574]/20 text-[#D6B574] px-1.5 py-0.5 rounded font-bold">
+                          {lang === 'hi' ? '16 दिव्य सेवाएं' : '16 Services'}
                         </span>
                       </button>
                     )}
@@ -361,7 +381,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                       <span className="text-[10px] text-[#EAE2F4]/70">{lang === 'hi' ? '6 प्रमुख सेवाएँ' : '6 Offerings'}</span>
                     </div>
 
-                    {/* 1. 11 Healing Services Tariff */}
+                    {/* 1. 11 Specialized Healing & Correction Services + All 16 Divine Services */}
                     {onOpenTariff && (
                       <button
                         type="button"
@@ -369,15 +389,15 @@ export const Navbar: React.FC<NavbarProps> = ({
                           setSacredServicesOpen(false);
                           onOpenTariff();
                         }}
-                        className="w-full text-left px-3.5 py-2 text-xs hover:bg-[#D6B574]/10 transition-colors flex items-center gap-2 group border-b border-[#D6B574]/10"
+                        className="w-full text-left px-3.5 py-2.5 text-xs hover:bg-[#D6B574]/15 transition-colors flex items-center gap-2 group border-b border-[#D6B574]/15 bg-[#D6B574]/5"
                       >
-                        <FileText size={14} className="text-[#D6B574] shrink-0" />
+                        <Sparkles size={15} className="text-[#F5C242] shrink-0" />
                         <div>
-                          <div className="font-semibold text-[#D6B574] group-hover:text-white transition-colors">
-                            {lang === 'hi' ? '11 हीलिंग सेवाओं की फीस सूची' : '11 Healing Services Tariff'}
+                          <div className="font-bold text-[#F5C242] group-hover:text-white transition-colors">
+                            {lang === 'hi' ? '11 विशिष्ट हीलिंग एवं सुधार सेवाएं' : '11 Specialized Healing & Correction Services'}
                           </div>
-                          <div className="text-[10px] text-[#EAE2F4]/70">
-                            {lang === 'hi' ? 'पारदर्शी फीस एवं आधिकारिक दर सूची' : 'Transparent pricing & official rate card'}
+                          <div className="text-[10px] text-[#EAE2F4]/80">
+                            {lang === 'hi' ? 'परामर्श एवं हीलिंग सेवाएं फीस (सभी 16 दिव्य सेवाएं)' : 'Consultancy & Healing Services Fees (All 16 Divine Services)'}
                           </div>
                         </div>
                       </button>
@@ -436,29 +456,37 @@ export const Navbar: React.FC<NavbarProps> = ({
                 )}
               </div>
 
-              {/* Direct Quick Action: Consultancy Tariff */}
+              {/* Direct Quick Action: 11 Specialized Healing & Correction Services + All 16 Divine Services */}
               {onOpenTariff && (
                 <button
                   type="button"
                   onClick={onOpenTariff}
-                  className="px-2.5 py-1.5 rounded text-xs font-semibold text-[#D6B574] hover:bg-[#D6B574]/15 border border-[#D6B574]/40 transition-colors flex items-center gap-1.5"
-                  title="View 11 Healing Services Tariff & Rate Card"
+                  className="px-3 py-1.5 rounded-lg text-xs font-bold text-[#F5C242] bg-gradient-to-r from-[#D6B574]/20 via-[#24152F] to-[#D6B574]/25 hover:from-[#D6B574]/35 hover:to-[#D6B574]/30 border-2 border-[#D6B574] shadow-[0_0_12px_rgba(214,181,116,0.35)] transition-all flex items-center gap-1.5 hover:scale-[1.03] active:scale-[0.98] cursor-pointer"
+                  title="11 Specialized Healing & Correction Services — Consultancy Fees & All 16 Divine Services"
                 >
-                  <FileText size={12} className="text-[#D6B574]" />
-                  <span>{lang === 'hi' ? 'फीस सूची' : 'Consultancy Tariff'}</span>
+                  <Sparkles size={13} className="text-[#F5C242] shrink-0" />
+                  <span className="tracking-wide">
+                    {lang === 'hi' ? '11 विशिष्ट हीलिंग सेवाएं व फीस' : '11 Specialized Services & Fees'}
+                  </span>
+                  <span className="px-1.5 py-0.5 rounded-md bg-[#D6B574] text-[#1c0f26] font-black font-rupee text-[10px] tracking-tight ml-0.5 shadow-xs">
+                    16 दिव्य सेवाएं
+                  </span>
                 </button>
               )}
 
-              {/* Direct Quick Action: Bank & UPI Details */}
+              {/* Direct Quick Action: Highlighted Bank & UPI Details */}
               {onOpenBankUpi && (
                 <button
                   type="button"
                   onClick={onOpenBankUpi}
-                  className="px-2.5 py-1.5 rounded text-xs font-medium text-[#EAE2F4] hover:text-white hover:bg-white/10 border border-white/20 transition-colors flex items-center gap-1.5"
-                  title="Bank & UPI Payment Details"
+                  className="px-3 py-1.5 rounded-lg text-xs font-bold text-white bg-gradient-to-r from-emerald-950/70 via-[#24152F] to-teal-950/70 hover:from-emerald-900/90 hover:to-teal-900/90 border-2 border-emerald-400/80 shadow-[0_0_12px_rgba(52,211,153,0.35)] transition-all flex items-center gap-1.5 hover:scale-[1.03] active:scale-[0.98] cursor-pointer"
+                  title="Bank Account & UPI Payment Details (QR Code)"
                 >
-                  <CreditCard size={12} className="text-[#D6B574]" />
-                  <span>{lang === 'hi' ? 'बैंक एवं UPI' : 'Bank & UPI Details'}</span>
+                  <QrCode size={13} className="text-emerald-400 shrink-0 animate-pulse" />
+                  <span className="tracking-wide text-emerald-300">{lang === 'hi' ? '💳 Bank & UPI विवरण' : '💳 Bank & UPI Details'}</span>
+                  <span className="px-1.5 py-0.2 rounded-md bg-emerald-500 text-[#12281a] font-extrabold text-[9px] uppercase tracking-wider ml-0.5">
+                    QR कोड
+                  </span>
                 </button>
               )}
 
@@ -660,6 +688,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 {lang === 'hi' ? 'मुख्य पृष्ठ' : 'Home'}
               </button>
 
+              {/* Highlighted Mobile Card: 11 Services Fee & Tariff */}
               {onOpenTariff && (
                 <button
                   type="button"
@@ -667,15 +696,26 @@ export const Navbar: React.FC<NavbarProps> = ({
                     setMobileMenuOpen(false);
                     onOpenTariff();
                   }}
-                  className="w-full text-left py-2 px-3 text-xs font-semibold text-[#D6B574] bg-[#D6B574]/10 hover:bg-[#D6B574]/20 rounded border border-[#D6B574]/30 flex items-center justify-between"
+                  className="w-full text-left py-3 px-3.5 text-xs font-bold text-[#F5C242] bg-gradient-to-r from-[#D6B574]/25 via-[#2d193d] to-[#24152F] hover:from-[#D6B574]/35 rounded-xl border-2 border-[#D6B574] shadow-[0_0_14px_rgba(214,181,116,0.3)] flex items-center justify-between"
                 >
-                  <span>{lang === 'hi' ? '11 हीलिंग सेवाओं की फीस' : 'Consultancy Tariff'}</span>
-                  <span className="text-[10px] bg-[#D6B574] text-[#24152F] font-bold px-1.5 py-0.2 rounded">
-                    {lang === 'hi' ? '11 सेवाएँ' : '11 Services'}
+                  <div className="flex items-center gap-2.5">
+                    <Sparkles size={16} className="text-[#F5C242] shrink-0" />
+                    <div>
+                      <div className="leading-tight text-white font-bold">
+                        {lang === 'hi' ? '11 विशिष्ट हीलिंग एवं सुधार सेवाएं' : '11 Specialized Healing & Correction Services'}
+                      </div>
+                      <div className="text-[10px] font-medium text-[#F5C242] mt-0.5">
+                        {lang === 'hi' ? 'परामर्श एवं हीलिंग सेवाएं फीस (सभी 16 दिव्य सेवाएं)' : 'Consultancy & Healing Services Fees (All 16 Divine Services)'}
+                      </div>
+                    </div>
+                  </div>
+                  <span className="text-[10px] bg-[#D6B574] text-[#1c0f26] font-black font-rupee px-2 py-1 rounded-md shadow-sm shrink-0 tracking-tight">
+                    16 सेवाएं
                   </span>
                 </button>
               )}
 
+              {/* Highlighted Mobile Card: Bank & UPI Payment Details */}
               {onOpenBankUpi && (
                 <button
                   type="button"
@@ -683,10 +723,20 @@ export const Navbar: React.FC<NavbarProps> = ({
                     setMobileMenuOpen(false);
                     onOpenBankUpi();
                   }}
-                  className="w-full text-left py-2 px-3 text-xs font-medium text-[#EAE2F4] bg-white/5 hover:bg-white/10 rounded border border-white/10 flex items-center gap-2"
+                  className="w-full text-left py-3 px-3.5 text-xs font-bold text-white bg-gradient-to-r from-emerald-950/80 via-teal-950/60 to-[#24152F] hover:from-emerald-900/90 rounded-xl border-2 border-emerald-400/80 shadow-[0_0_14px_rgba(52,211,153,0.3)] flex items-center justify-between"
                 >
-                  <CreditCard size={13} className="text-[#D6B574]" />
-                  <span>{lang === 'hi' ? 'बैंक एवं UPI विवरण' : 'Bank & UPI Details'}</span>
+                  <div className="flex items-center gap-2">
+                    <QrCode size={16} className="text-emerald-400 shrink-0 animate-pulse" />
+                    <div>
+                      <div className="text-emerald-300 leading-tight">{lang === 'hi' ? '💳 बैंक एवं UPI भुगतान विवरण' : '💳 Bank & UPI Payment Details'}</div>
+                      <div className="text-[10px] font-normal font-mono text-emerald-200/80 mt-0.5">
+                        9105731969@upi (SBI)
+                      </div>
+                    </div>
+                  </div>
+                  <span className="text-[10px] bg-emerald-500 text-[#12281a] font-black px-2 py-1 rounded-md uppercase tracking-wider shrink-0">
+                    QR कोड
+                  </span>
                 </button>
               )}
 
@@ -779,7 +829,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   }}
                   className="w-full text-left py-2 px-3 text-xs text-[#D6B574] font-semibold bg-[#D6B574]/10 rounded border border-[#D6B574]/20"
                 >
-                  {lang === 'hi' ? '1. 11 हीलिंग सेवा शुल्क सूची' : '1. 11 Healing Services Tariff'}
+                  {lang === 'hi' ? '1. 11 विशिष्ट हीलिंग एवं सुधार सेवाएं (16 दिव्य सेवाएं)' : '1. 11 Specialized Healing & Correction Services (16 Divine Services)'}
                 </button>
               )}
               <button

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Phone, Mail, MessageSquare, ShieldCheck, Heart, X, Star } from 'lucide-react';
+import { Phone, Mail, MessageSquare, ShieldCheck, Heart, X, Star, CreditCard, FileText, Sparkles, QrCode } from 'lucide-react';
 import { getTranslation } from '../data/translations';
 
 interface FooterProps {
@@ -21,9 +21,121 @@ export const Footer: React.FC<FooterProps> = ({
   const t = getTranslation(lang);
 
   return (
-    <footer className="bg-[#180c1f] text-[#EAE2F4] pt-16 pb-12 border-t border-[#D6B574]/20 relative">
+    <footer className="bg-[#180c1f] text-[#EAE2F4] pt-14 pb-12 border-t border-[#D6B574]/30 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
+        {/* 🌟 PROMINENT HIGHLIGHTED SECTION: Fee Details & Bank/UPI Payment Portal */}
+        <div className="mb-14 p-6 sm:p-8 rounded-3xl bg-gradient-to-r from-[#24152F] via-[#2d183d] to-[#1c0f26] border-2 border-[#D6B574]/60 shadow-[0_4px_25px_rgba(214,181,116,0.15)] relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-[#D6B574]/10 rounded-full blur-3xl pointer-events-none" />
+          
+          <div className="flex items-center gap-2 mb-4">
+            <span className="w-2 h-2 rounded-full bg-[#D6B574] animate-ping" />
+            <span className="text-[11px] font-extrabold uppercase tracking-widest text-[#D6B574]">
+              {lang === 'hi' ? 'महत्वपूर्ण आधिकारिक जानकारी एवं त्वरित सेवा केंद्र' : 'Important Official Portals & Quick Actions'}
+            </span>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 relative z-10">
+            {/* Box 1: 11 Specialized Healing & Correction Services + All 16 Divine Services */}
+            <div className="p-5 sm:p-6 rounded-2xl bg-white/[0.06] border-2 border-[#D6B574]/70 hover:border-[#D6B574] shadow-lg transition-all flex flex-col justify-between group">
+              <div className="space-y-3">
+                <div className="flex flex-wrap items-center justify-between gap-2">
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#D6B574]/20 text-[#F5C242] text-xs font-bold uppercase tracking-wider border border-[#D6B574]/40">
+                    <Sparkles size={12} className="text-[#F5C242]" />
+                    <span>{lang === 'hi' ? '11 विशिष्ट हीलिंग एवं सुधार सेवाएं' : '11 Specialized Healing & Correction Services'}</span>
+                  </span>
+                  <span className="px-3 py-1 rounded-md bg-[#D6B574] text-[#1c0f26] font-black font-rupee text-xs shadow-md tracking-tight">
+                    {lang === 'hi' ? 'सभी 16 दिव्य सेवाएं फीस' : 'All 16 Divine Services Fees'}
+                  </span>
+                </div>
+
+                <h3 className="font-cinzel text-lg sm:text-xl font-bold text-white group-hover:text-[#F5C242] transition-colors flex items-center gap-2">
+                  <FileText size={20} className="text-[#D6B574] shrink-0" />
+                  <span>
+                    {lang === 'hi'
+                      ? '11 विशिष्ट हीलिंग एवं सुधार सेवाएं — परामर्श एवं हीलिंग सेवाएं फीस'
+                      : '11 Specialized Healing & Correction Services — Consultancy Fees'}
+                  </span>
+                </h3>
+
+                <p className="text-xs text-[#EAE2F4]/85 leading-relaxed font-light">
+                  {lang === 'hi'
+                    ? '11 विशिष्ट हीलिंग एवं सुधार सेवाओं तथा मुख्य वैदिक परामर्शों की एकीकृत, पारदर्शी व आधिकारिक शुल्क दर सूची (सभी 16 दिव्य सेवाएं)। पूर्ण गोपनीयता व प्रामाणिक वैदिक मार्गदर्शन।'
+                    : 'Complete official rate card and transparent fee breakdown merging 11 Specialized Healing & Correction Services with Core Consultations — presenting all 16 Divine Services.'}
+                </p>
+              </div>
+
+              {onOpenTariff && (
+                <div className="pt-5 mt-3 border-t border-white/10">
+                  <button
+                    type="button"
+                    onClick={onOpenTariff}
+                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-[#D6B574] via-[#F5C242] to-[#D6B574] text-[#1c0f26] font-black text-xs uppercase tracking-wider hover:brightness-110 active:scale-95 transition-all shadow-xl cursor-pointer"
+                  >
+                    <span>
+                      {lang === 'hi'
+                        ? '★ 11 विशिष्ट हीलिंग सेवाएं व फीस कार्ड खोलें (सभी 16 दिव्य सेवाएं)'
+                        : '★ 11 Specialized Healing Services & Fees (All 16 Divine Services)'}
+                    </span>
+                  </button>
+                </div>
+              )}
+            </div>
+
+            {/* Box 2: Bank Account & UPI Payment Details */}
+            <div className="p-5 sm:p-6 rounded-2xl bg-gradient-to-br from-emerald-950/60 via-teal-950/40 to-[#24152F] border-2 border-emerald-400/80 hover:border-emerald-300 shadow-lg transition-all flex flex-col justify-between group">
+              <div className="space-y-3">
+                <div className="flex flex-wrap items-center justify-between gap-2">
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 text-xs font-bold uppercase tracking-wider border border-emerald-500/40">
+                    <ShieldCheck size={12} className="text-emerald-400" />
+                    <span>{lang === 'hi' ? 'सत्यापित आधिकारिक भुगतान' : 'Verified Payment'}</span>
+                  </span>
+                  <span className="px-3 py-1 rounded-md bg-emerald-500 text-[#12281a] font-black text-xs shadow-md uppercase tracking-wider">
+                    UPI QR Code
+                  </span>
+                </div>
+
+                <h3 className="font-cinzel text-lg sm:text-xl font-bold text-white group-hover:text-emerald-300 transition-colors flex items-center gap-2">
+                  <CreditCard size={20} className="text-emerald-400 shrink-0" />
+                  <span>{lang === 'hi' ? 'बैंक खाता एवं सीधे UPI भुगतान विवरण' : 'Bank & UPI Payment Details'}</span>
+                </h3>
+
+                <div className="p-3 rounded-xl bg-black/50 border border-emerald-500/30 text-xs space-y-1.5">
+                  <div className="flex items-center justify-between">
+                    <span className="text-emerald-300 text-[11px]">UPI ID (GooglePay / PhonePe / Paytm):</span>
+                    <strong className="text-[#F5C242] font-mono font-bold select-all text-sm">9105731969@upi</strong>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-white/70 text-[11px]">खाताधारक (Beneficiary):</span>
+                    <strong className="text-white font-medium">Pooja Awasthi • SBI Dehradun</strong>
+                  </div>
+                </div>
+              </div>
+
+              {onOpenBankUpi && (
+                <div className="pt-5 mt-3 border-t border-emerald-500/20 flex flex-wrap items-center gap-3">
+                  <button
+                    type="button"
+                    onClick={onOpenBankUpi}
+                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-black text-xs uppercase tracking-wider active:scale-95 transition-all shadow-xl cursor-pointer"
+                  >
+                    <QrCode size={14} className="text-white" />
+                    <span>{lang === 'hi' ? '📷 बैंक विवरण व QR कोड देखें' : '📷 View Bank & UPI QR'}</span>
+                  </button>
+                  <a
+                    href="https://wa.me/919105731969?text=Namaste%20Dr.%20Pooja%20Awasthi,%20I%20have%20transferred%20the%20fee."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs text-emerald-300 hover:text-white underline font-semibold transition-colors"
+                  >
+                    {lang === 'hi' ? 'रसीद व्हाट्सएप पर भेजें →' : 'Send Payment Receipt →'}
+                  </a>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+
         {/* Main Footer Row */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b border-white/10">
           
@@ -78,9 +190,15 @@ export const Footer: React.FC<FooterProps> = ({
                   <button
                     type="button"
                     onClick={onOpenTariff}
-                    className="hover:text-[#D6B574] transition-colors text-left font-medium text-[#D6B574]"
+                    className="w-full text-left py-2 px-3 rounded-lg bg-[#D6B574]/15 hover:bg-[#D6B574]/25 text-[#F5C242] font-bold border border-[#D6B574]/60 flex items-center justify-between text-xs transition-all shadow-xs"
                   >
-                    ★ {lang === 'hi' ? '11 हीलिंग सेवाओं की फीस सूची' : '11 Healing Services Tariff'}
+                    <span className="flex items-center gap-1.5">
+                      <Sparkles size={13} className="text-[#F5C242] shrink-0" />
+                      <span>{lang === 'hi' ? '★ 11 विशिष्ट हीलिंग सेवाएं (16 दिव्य सेवाएं फीस)' : '11 Specialized Services (16 Divine Services Fees)'}</span>
+                    </span>
+                    <span className="text-[10px] bg-[#D6B574] text-[#1c0f26] font-black font-rupee px-1.5 py-0.5 rounded shadow-xs tracking-tight">
+                      16 सेवाएं
+                    </span>
                   </button>
                 </li>
               )}
@@ -89,9 +207,15 @@ export const Footer: React.FC<FooterProps> = ({
                   <button
                     type="button"
                     onClick={onOpenBankUpi}
-                    className="hover:text-[#D6B574] transition-colors text-left"
+                    className="w-full text-left py-1.5 px-3 rounded-lg bg-emerald-500/15 hover:bg-emerald-500/25 text-emerald-300 font-bold border border-emerald-400/60 flex items-center justify-between text-xs transition-all shadow-xs"
                   >
-                    {lang === 'hi' ? 'बैंक खाता एवं UPI विवरण' : 'Bank & UPI Details'}
+                    <span className="flex items-center gap-1.5">
+                      <QrCode size={13} className="text-emerald-400 shrink-0" />
+                      <span>{lang === 'hi' ? '💳 बैंक खाता एवं UPI विवरण' : 'Bank & UPI Details'}</span>
+                    </span>
+                    <span className="text-[10px] bg-emerald-500 text-[#12281a] font-black px-1.5 py-0.5 rounded shadow-xs uppercase">
+                      QR कोड
+                    </span>
                   </button>
                 </li>
               )}

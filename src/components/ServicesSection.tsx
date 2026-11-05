@@ -124,7 +124,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ lang, onSelect
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#24152F] via-[#24152F]/40 to-transparent" />
                   
-                  <div className="absolute top-4 right-4 px-3 py-1 rounded bg-[#24152F]/90 backdrop-blur-xs border border-[#D6B574]/50 text-[#D6B574] text-xs font-bold tabular-nums shadow-sm">
+                  <div className="absolute top-4 right-4 px-3 py-1 rounded-lg bg-[#24152F]/95 backdrop-blur-xs border border-[#D6B574]/60 text-[#F5C242] text-xs font-black font-rupee tabular-nums shadow-md tracking-tight">
                     {srv.baseFee}
                   </div>
 
@@ -239,7 +239,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ lang, onSelect
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#24152F] via-[#24152F]/40 to-transparent" />
 
-                    <div className="absolute top-3 right-3 px-2.5 py-1 rounded-md bg-[#24152F]/90 backdrop-blur-xs border border-[#D6B574]/50 text-[#D6B574] text-xs font-bold tabular-nums shadow-sm">
+                    <div className="absolute top-3 right-3 px-2.5 py-1 rounded-md bg-[#24152F]/95 backdrop-blur-xs border border-[#D6B574]/60 text-[#F5C242] text-xs font-black font-rupee tabular-nums shadow-md tracking-tight">
                       {item.feeFormatted}
                     </div>
 

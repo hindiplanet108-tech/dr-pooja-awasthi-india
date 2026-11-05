@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { CATALOG_SERVICES, CatalogServiceItem } from '../data/servicesData';
+import { ALL_16_DIVINE_SERVICES, DivineServiceItem } from '../data/servicesData';
 import { useSiteContent } from '../utils/siteContentContext';
 import {
   ArrowLeft,
@@ -39,7 +39,7 @@ export const TariffView: React.FC<TariffViewProps> = ({
   const { siteContent } = useSiteContent();
   const bankInfo = siteContent?.bankUpi;
   const [tariffLang, setTariffLang] = useState<'en' | 'hi'>(lang === 'hi' ? 'hi' : 'en');
-  const [filter, setFilter] = useState<'all' | 'healing' | 'numerology' | 'therapy' | 'regression'>('all');
+  const [filter, setFilter] = useState<'all' | 'specialized11' | 'core' | 'healing' | 'numerology' | 'therapy' | 'regression'>('all');
   const [copiedKey, setCopiedKey] = useState<string | null>(null);
   const [customQrImage, setCustomQrImage] = useState<string | null>(null);
   const qrInputRef = useRef<HTMLInputElement>(null);
@@ -98,36 +98,24 @@ export const TariffView: React.FC<TariffViewProps> = ({
     }
   };
 
-  const currentCatalog: CatalogServiceItem[] = siteContent?.services && siteContent.services.length > 0
-    ? siteContent.services.map((s, idx) => ({
-        id: s.id || `srv-${idx + 1}`,
-        number: s.number || (idx + 1),
-        title: s.title_hi || s.title,
-        title_en: s.title,
-        category: (s.category || 'numerology') as 'healing' | 'numerology' | 'therapy' | 'regression',
-        categoryLabel_hi: s.categoryLabel_hi || 'वैदिक सेवा',
-        categoryLabel_en: s.category || 'Vedic Service',
-        badge: s.badge,
-        badge_en: s.badge,
-        description: s.description || '',
-        description_en: s.description || '',
-        fee: s.fee ?? 5100,
-        feeFormatted: s.feeFormatted || `₹${(s.fee ?? 5100).toLocaleString()}`,
-        duration: s.duration || '60 मिनट',
-        duration_en: s.duration || '60 mins'
-      }))
-    : CATALOG_SERVICES;
+  const currentDivineServices: DivineServiceItem[] = ALL_16_DIVINE_SERVICES;
 
-  const filteredCatalog = filter === 'all'
-    ? currentCatalog
-    : currentCatalog.filter((item) => item.category === filter);
+  const filteredServices = currentDivineServices.filter((item) => {
+    if (filter === 'specialized11') return item.isSpecialized11;
+    if (filter === 'core') return item.category === 'core';
+    if (filter === 'healing') return item.category === 'healing';
+    if (filter === 'numerology') return item.category === 'numerology';
+    if (filter === 'therapy') return item.category === 'therapy';
+    if (filter === 'regression') return item.category === 'regression';
+    return true; // 'all'
+  });
 
   const tariffTitle = tariffLang === 'hi'
-    ? '11 आध्यात्मिक एवं हीलिंग सेवाओं की शुल्क सूची (Tariff Card) | डॉ. पूजा अवस्थी'
-    : 'Spiritual Consultation Tariff & Rate Card (11 Services) | Dr. Pooja Awasthi';
+    ? '11 विशिष्ट हीलिंग एवं सुधार सेवाएं + परामर्श शुल्क (सभी 16 दिव्य सेवाएं) | डॉ. पूजा अवस्थी'
+    : '11 Specialized Healing & Correction Services + Consultancy Fees (All 16 Divine Services) | Dr. Pooja Awasthi';
   const tariffDesc = tariffLang === 'hi'
-    ? 'डॉ. पूजा अवस्थी की 11 वैदिक एवं आध्यात्मिक परामर्श सेवाओं की पूर्ण पारदर्शी शुल्क सूची, बैंक विवरण व यूपीआई आईडी (9105731969@upi)।'
-    : 'Complete transparent fee structure and rate card for all 11 spiritual healing services by Dr. Pooja Awasthi with UPI payment details.';
+    ? '11 विशिष्ट हीलिंग एवं सुधार सेवाओं तथा सभी 16 दिव्य परामर्शों की आधिकारिक शुल्क सूची (Tariff Card)। निश्चित परामर्श ₹5,100, पारदर्शी दरें, बैंक व UPI विवरण।'
+    : 'Official Tariff Card for 11 Specialized Healing & Correction Services + Consultancy Fees merging All 16 Divine Services by Dr. Pooja Awasthi.';
 
   return (
     <div className="min-h-screen bg-[#FBF8F2] text-[#29242E] pt-28 md:pt-32 pb-20">
@@ -147,7 +135,7 @@ export const TariffView: React.FC<TariffViewProps> = ({
         <div className="flex flex-wrap items-center justify-between gap-4 mb-8 pb-4 border-b border-[#EAE2F4]">
           <Breadcrumb
             items={[
-              { label: tariffLang === 'hi' ? 'सेवाओं की शुल्क सूची (Tariff Card)' : 'Services Tariff & Rates' }
+              { label: tariffLang === 'hi' ? '11 विशिष्ट हीलिंग एवं सुधार सेवाएं + सभी 16 दिव्य सेवाएं फीस' : '11 Specialized Healing & Correction Services (All 16 Divine Services)' }
             ]}
             onNavigateHome={onBackToHome}
             lang={tariffLang}
@@ -208,29 +196,41 @@ export const TariffView: React.FC<TariffViewProps> = ({
           </div>
         </div>
 
-        {/* Page Title & Subtitle */}
-        <div className="max-w-3xl mb-12 space-y-3">
-          <span className="text-xs font-bold uppercase tracking-widest text-[#6941A5]">
-            {tariffLang === 'hi' ? 'आध्यात्मिक परामर्श व हीलिंग सेवाएँ' : 'Spiritual Guidance & Healing Services'}
-          </span>
-          <h1 className="font-cormorant text-4xl sm:text-5xl font-light text-[#24152F] leading-tight">
-            {tariffLang === 'hi' ? 'परामर्श एवं हीलिंग सेवा शुल्क सूची' : 'Consultancy & Healing Services Tariff'}
+        {/* Page Title & Subtitle - Merged 11 Specialized Services + Fees + All 16 Divine Services */}
+        <div className="max-w-4xl mb-12 space-y-3">
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full bg-[#6941A5]/10 text-[#6941A5] border border-[#6941A5]/25">
+              {tariffLang === 'hi' ? '11 विशिष्ट हीलिंग एवं सुधार सेवाएं' : '11 Specialized Healing & Correction Services'}
+            </span>
+            <span className="text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full bg-[#D6B574]/20 text-[#855e14] border border-[#D6B574]/40 font-semibold">
+              {tariffLang === 'hi' ? 'सभी 16 दिव्य सेवाएं' : 'All 16 Divine Services'}
+            </span>
+          </div>
+          <h1 className="font-cormorant text-3xl sm:text-4xl lg:text-5xl font-light text-[#24152F] leading-tight">
+            {tariffLang === 'hi'
+              ? '11 विशिष्ट हीलिंग एवं सुधार सेवाएं — परामर्श एवं हीलिंग सेवाएं फीस (सभी 16 दिव्य सेवाएं)'
+              : '11 Specialized Healing & Correction Services — Consultancy & Healing Services Fees (All 16 Divine Services)'}
           </h1>
           <p className="text-sm text-[#29242E]/75 leading-relaxed font-light">
             {tariffLang === 'hi'
-              ? 'पूर्ण गोपनीयता, पवित्र चेतना और गहन आध्यात्मिक ऊर्जा संतुलन के साथ व्यक्तिगत सत्र।'
-              : 'Dedicated 1-on-1 sessions designed with complete confidentiality, sacred awareness, and profound spiritual healing.'}
+              ? 'डॉ. पूजा अवस्थी की 11 विशिष्ट हीलिंग एवं सुधार सेवाओं तथा मुख्य वैदिक परामर्शों की एकीकृत, पारदर्शी व आधिकारिक शुल्क दर सूची (16 दिव्य सेवाएं)। पूर्ण गोपनीयता, पवित्र चेतना और गहन आध्यात्मिक ऊर्जा संतुलन के साथ व्यक्तिगत सत्र।'
+              : 'Official integrated rate card and directory merging 11 Specialized Healing & Correction Services with Core Consultations — presenting all 16 Divine Services with clear fee transparency, duration, and direct booking.'}
           </p>
 
           <div className="pt-2 flex flex-wrap items-center gap-4 text-xs text-[#29242E]/70 font-medium">
             <span className="flex items-center gap-1">
               <Check size={14} className="text-[#6941A5]" />
-              <span>{tariffLang === 'hi' ? '100% गोपनीय परामर्श' : '100% Confidential Guidance'}</span>
+              <span>{tariffLang === 'hi' ? '11 विशिष्ट हीलिंग व सुधार' : '11 Specialized Corrections'}</span>
             </span>
             <span aria-hidden="true">·</span>
             <span className="flex items-center gap-1">
               <Check size={14} className="text-[#6941A5]" />
-              <span>{tariffLang === 'hi' ? 'पूर्व-निर्धारित प्रामाणिक सत्र' : 'Pre-scheduled Authentic Sessions'}</span>
+              <span>{tariffLang === 'hi' ? 'सभी 16 दिव्य सेवाएं शामिल' : 'All 16 Divine Services Merged'}</span>
+            </span>
+            <span aria-hidden="true">·</span>
+            <span className="flex items-center gap-1">
+              <Check size={14} className="text-[#6941A5]" />
+              <span>{tariffLang === 'hi' ? 'निश्चित फीस ₹5,100 से पारदर्शी दरें' : 'Fixed Fee ₹5,100 & Transparent Rates'}</span>
             </span>
             <span aria-hidden="true">·</span>
             <span className="flex items-center gap-1">
@@ -284,16 +284,16 @@ export const TariffView: React.FC<TariffViewProps> = ({
 
             <div className="p-6 rounded-2xl bg-white/5 border border-white/10 shrink-0 text-center lg:text-right space-y-3">
               <div>
-                <span className="text-[11px] text-[#EAE2F4]/70 uppercase block">
+                <span className="text-[11px] text-[#EAE2F4]/80 uppercase block font-semibold tracking-wider">
                   {tariffLang === 'hi' ? 'परामर्श शुल्क' : 'Consultancy Fee'}
                 </span>
-                <div className="font-cormorant text-5xl font-black text-white tabular-nums drop-shadow-md flex items-center justify-center lg:justify-end">
-                  <strong className="font-black text-[#F5C242] text-4xl font-sans mr-1 select-none">
+                <div className="font-rupee text-5xl font-black text-white tabular-nums drop-shadow-md flex items-baseline justify-center lg:justify-end gap-1 my-1">
+                  <span className="font-black text-[#F5C242] text-4xl rupee-symbol select-none">
                     ₹
-                  </strong>
-                  <span className="font-black text-[#F3E5AB]">5,100</span>
+                  </span>
+                  <span className="font-black text-[#F3E5AB] tracking-tight">5,100</span>
                 </div>
-                <span className="text-[11px] text-[#EAE2F4]/60 block">
+                <span className="text-[11px] text-[#EAE2F4]/80 block font-medium">
                   {tariffLang === 'hi' ? 'प्रति सत्र (वीडियो / ऑडियो कॉल)' : 'Per session (Virtual / Telephonic)'}
                 </span>
               </div>
@@ -317,33 +317,56 @@ export const TariffView: React.FC<TariffViewProps> = ({
           </div>
         </div>
 
-        {/* 11 Specialized Healing & Correction Services */}
+        {/* Merged Directory: 11 Specialized Healing & Correction Services + All 16 Divine Services */}
         <div className="mb-20 space-y-8">
-          <div>
-            <span className="text-xs font-bold uppercase tracking-widest text-[#6941A5]">
-              {tariffLang === 'hi' ? 'विशिष्ट हीलिंग व ऊर्जा संतुलन' : 'Specialized Healing & Therapies'}
-            </span>
-            <h2 className="font-cinzel text-2xl sm:text-3xl font-bold text-[#24152F] mt-1">
-              {tariffLang === 'hi' ? '11 विशिष्ट हीलिंग एवं सुधार सेवाएँ' : '11 Specialized Healing & Correction Services'}
-            </h2>
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+            <div>
+              <span className="text-xs font-bold uppercase tracking-widest text-[#6941A5] flex items-center gap-1.5">
+                <Sparkles size={13} />
+                <span>
+                  {tariffLang === 'hi'
+                    ? '11 विशिष्ट हीलिंग एवं सुधार सेवाएं + मुख्य परामर्श'
+                    : '11 Specialized Healing & Correction Services + Core Guidance'}
+                </span>
+              </span>
+              <h2 className="font-cinzel text-2xl sm:text-3xl font-bold text-[#24152F] mt-1">
+                {tariffLang === 'hi'
+                  ? '11 विशिष्ट हीलिंग एवं सुधार सेवाएं — परामर्श एवं हीलिंग सेवाएं फीस (सभी 16 दिव्य सेवाएं)'
+                  : '11 Specialized Healing & Correction Services — Consultancy & Healing Services Fees (All 16 Divine Services)'}
+              </h2>
+              <p className="text-xs text-[#29242E]/70 mt-1">
+                {tariffLang === 'hi'
+                  ? 'नीचे दिए गए फ़िल्टर द्वारा 11 विशिष्ट हीलिंग सेवाओं अथवा सभी 16 दिव्य सेवाओं का विवरण व फीस देखें:'
+                  : 'Explore the complete directory of 11 Specialized Services and all 16 Divine Offerings with fixed rates:'}
+              </p>
+            </div>
+
+            <div className="text-xs px-3.5 py-1.5 rounded-xl bg-white border border-[#D6B574]/60 text-[#24152F] font-bold shadow-2xs shrink-0 flex items-center gap-1.5">
+              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+              <span>
+                {tariffLang === 'hi' ? `${filteredServices.length} सेवाएं प्रदर्शित` : `${filteredServices.length} Services Displayed`}
+              </span>
+            </div>
           </div>
 
           {/* Filter Pills */}
           <div className="flex flex-wrap items-center gap-2">
             {[
-              { id: 'all', label_en: 'All Services (11)', label_hi: 'सभी सेवाएँ (11)' },
-              { id: 'healing', label_en: 'Energy & Healing (5)', label_hi: 'ऊर्जा एवं हीलिंग (5)' },
-              { id: 'numerology', label_en: 'Numerology Corrections (2)', label_hi: 'अंकशास्त्र सुधार (2)' },
-              { id: 'therapy', label_en: 'Mind Balance & Therapy (3)', label_hi: 'मानसिक शांति व विश्राम (3)' },
-              { id: 'regression', label_en: 'PLR Regression (1)', label_hi: 'पूर्व जन्म सत्र - PLR (1)' },
+              { id: 'all', label_en: 'All 16 Divine Services (16)', label_hi: 'सभी 16 दिव्य सेवाएं (16)' },
+              { id: 'specialized11', label_en: '★ 11 Specialized Services (11)', label_hi: '★ 11 विशिष्ट सेवाएं (11)' },
+              { id: 'core', label_en: 'Core Consultations (5)', label_hi: 'मुख्य वैदिक परामर्श (5)' },
+              { id: 'healing', label_en: 'Energy & Chakras (4)', label_hi: 'ऊर्जा एवं चक्र हीलिंग (4)' },
+              { id: 'numerology', label_en: 'Numerology & Names (3)', label_hi: 'अंकशास्त्र व नाम शुद्धि (3)' },
+              { id: 'therapy', label_en: 'Therapies & Vastu (3)', label_hi: 'थेरेपी व वास्तु (3)' },
+              { id: 'regression', label_en: 'Past Life PLR (1)', label_hi: 'पूर्व जन्म सत्र - PLR (1)' },
             ].map((btn) => (
               <button
                 key={btn.id}
                 type="button"
                 onClick={() => setFilter(btn.id as any)}
-                className={`px-4 py-2 text-xs font-semibold rounded-xl transition-all ${
+                className={`px-3.5 py-2 text-xs font-semibold rounded-xl transition-all ${
                   filter === btn.id
-                    ? 'bg-[#24152F] text-white shadow-xs'
+                    ? 'bg-[#24152F] text-[#D6B574] shadow-md border border-[#D6B574]/40 font-bold'
                     : 'bg-white text-[#29242E]/70 hover:bg-[#EAE2F4]/50 border border-[#EAE2F4]'
                 }`}
               >
@@ -354,37 +377,41 @@ export const TariffView: React.FC<TariffViewProps> = ({
 
           {/* Cards Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredCatalog.map((srv) => (
+            {filteredServices.map((srv) => (
               <div
                 key={srv.id}
-                className="p-6 rounded-3xl bg-white border border-[#EAE2F4] hover:border-[#D6B574]/80 shadow-xs hover:shadow-xl transition-all flex flex-col justify-between space-y-5 group"
+                className="p-6 rounded-3xl bg-white border border-[#EAE2F4] hover:border-[#D6B574]/80 shadow-xs hover:shadow-xl transition-all flex flex-col justify-between space-y-5 group relative"
               >
                 <div className="space-y-3">
                   <div className="flex items-center justify-between">
-                    <span className="w-7 h-7 rounded-full bg-[#24152F] text-[#D6B574] font-cinzel text-xs font-bold flex items-center justify-center">
-                      {srv.number}
+                    <span className="w-8 h-8 rounded-full bg-[#24152F] text-[#D6B574] font-cinzel text-xs font-bold flex items-center justify-center shadow-xs">
+                      #{srv.number}
                     </span>
-                    <span className="text-[11px] font-bold text-[#6941A5] uppercase tracking-wider">
+                    <span className={`text-[10px] font-bold px-2.5 py-0.5 rounded-full ${
+                      srv.isSpecialized11
+                        ? 'bg-[#6941A5]/10 text-[#6941A5] border border-[#6941A5]/20'
+                        : 'bg-[#D6B574]/20 text-[#855e14] border border-[#D6B574]/30'
+                    }`}>
                       {tariffLang === 'hi' ? srv.categoryLabel_hi : srv.categoryLabel_en}
                     </span>
                   </div>
 
                   {(tariffLang === 'hi' ? (srv.badge || srv.badge_en) : srv.badge_en) && (
-                    <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-[#6941A5]/10 text-[#6941A5] inline-block">
+                    <span className="text-[10px] font-bold px-2 py-0.5 rounded-md bg-[#24152F] text-[#F5C242] inline-block shadow-2xs">
                       {tariffLang === 'hi' ? (srv.badge || srv.badge_en) : srv.badge_en}
                     </span>
                   )}
 
-                  <h3 className="font-cinzel text-xl font-bold text-[#24152F] group-hover:text-[#6941A5] transition-colors">
+                  <h3 className="font-cinzel text-lg sm:text-xl font-bold text-[#24152F] group-hover:text-[#6941A5] transition-colors leading-snug">
                     {tariffLang === 'hi' ? srv.title : srv.title_en}
                   </h3>
 
-                  <div className="flex items-baseline gap-2">
-                    <span className="font-cormorant text-3xl font-light text-[#24152F] font-bold tabular-nums">
+                  <div className="flex items-baseline gap-2 pt-1 border-t border-[#EAE2F4]/60">
+                    <span className="font-rupee text-2xl sm:text-3xl font-black text-[#24152F] tabular-nums tracking-tight">
                       {srv.feeFormatted}
                     </span>
                     {(tariffLang === 'hi' ? srv.duration : srv.duration_en) && (
-                      <span className="text-xs text-[#29242E]/60">
+                      <span className="text-xs text-[#29242E]/70 font-medium">
                         {tariffLang === 'hi' ? `अवधि: ${srv.duration}` : `Duration: ${srv.duration_en}`}
                       </span>
                     )}
@@ -393,24 +420,18 @@ export const TariffView: React.FC<TariffViewProps> = ({
                   <p className="text-xs text-[#29242E]/75 leading-relaxed font-light">
                     {tariffLang === 'hi' ? srv.description : srv.description_en}
                   </p>
-
-                  {(tariffLang === 'hi' ? (srv.importantDisclaimer || srv.importantDisclaimer_en) : srv.importantDisclaimer_en) && (
-                    <p className="text-[11px] text-amber-800 bg-amber-50 p-2.5 rounded-xl border border-amber-200/50 leading-relaxed">
-                      {tariffLang === 'hi' ? (srv.importantDisclaimer || srv.importantDisclaimer_en) : srv.importantDisclaimer_en}
-                    </p>
-                  )}
                 </div>
 
                 <div className="pt-4 border-t border-[#EAE2F4] flex items-center justify-between gap-4">
                   <span className="text-[11px] text-emerald-700 flex items-center gap-1 font-medium">
                     <Lock size={12} />
-                    <span>{tariffLang === 'hi' ? 'गोपनीय' : 'Confidential'}</span>
+                    <span>{tariffLang === 'hi' ? '100% गोपनीय' : '100% Confidential'}</span>
                   </span>
 
                   <button
                     type="button"
                     onClick={() => onBookService(`${tariffLang === 'hi' ? srv.title : srv.title_en} (${srv.feeFormatted})`)}
-                    className="px-4 py-2 bg-[#24152F] hover:bg-[#341e44] text-[#D6B574] text-xs font-bold uppercase tracking-wider rounded-lg transition-colors shadow-xs"
+                    className="px-4 py-2 bg-[#24152F] hover:bg-[#341e44] text-[#D6B574] text-xs font-bold uppercase tracking-wider rounded-lg transition-colors shadow-xs hover:scale-[1.02]"
                   >
                     {tariffLang === 'hi' ? 'सत्र बुक करें' : 'Book Session'}
                   </button>

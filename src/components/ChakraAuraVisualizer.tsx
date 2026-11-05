@@ -184,7 +184,7 @@ export const ChakraAuraVisualizer: React.FC<ChakraAuraVisualizerProps> = ({
               onClick={() => onSelectChakraForConsultation(`${activeChakra.name} Alignment & Healing`)}
               className="w-full sm:w-auto px-5 py-2.5 bg-[#D6B574] hover:bg-[#e4ca8c] text-[#24152F] text-xs font-bold uppercase tracking-wider rounded-md transition-all whitespace-nowrap shadow-md hover:scale-[1.02]"
             >
-              Align {activeChakra.name} (<strong className="font-black">₹5,100</strong>)
+              Align {activeChakra.name} (<span className="font-rupee font-black tracking-tight">₹5,100</span>)
             </button>
           </div>
         </div>

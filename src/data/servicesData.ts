@@ -402,3 +402,337 @@ export const CATALOG_SERVICES: CatalogServiceItem[] = [
     image: "/assets/images/salt_therapy_cleansing_1793624554656.jpg"
   }
 ];
+
+export interface DivineServiceItem {
+  id: string;
+  number: number;
+  title: string;
+  title_en: string;
+  fee: number;
+  feeFormatted: string;
+  duration: string;
+  duration_en: string;
+  description: string;
+  description_en: string;
+  category: 'core' | 'healing' | 'numerology' | 'therapy' | 'regression';
+  categoryLabel_hi: string;
+  categoryLabel_en: string;
+  badge?: string;
+  badge_en?: string;
+  isSpecialized11: boolean;
+  image: string;
+}
+
+export const ALL_16_DIVINE_SERVICES: DivineServiceItem[] = [
+  // 1. Core Consultation: Vedic Numerology
+  {
+    id: "core-numerology",
+    number: 1,
+    title: "वैदिक अंकशास्त्र परामर्श (मूलांक व भाग्यांक विश्लेषण)",
+    title_en: "Vedic Numerology Consultation (Mulank & Bhagyank)",
+    fee: 5100,
+    feeFormatted: "₹5,100",
+    duration: "60 मिनट",
+    duration_en: "60 mins",
+    description: "जन्मतिथि व नाम के अक्षरों का विस्तृत वैदिक विश्लेषण, जिससे आपका सही मूलांक, भाग्यांक, अनुकूल समय और करियर मार्गदर्शन स्पष्ट हो।",
+    description_en: "In-depth birth date and name matrix analysis uncovering your core Mulank, Bhagyank, career timing, and personal lucky remedies.",
+    category: "core",
+    categoryLabel_hi: "मुख्य वैदिक परामर्श",
+    categoryLabel_en: "Core Consultation",
+    badge: "सर्वाधिक लोकप्रिय",
+    badge_en: "Most Popular",
+    isSpecialized11: false,
+    image: "/assets/images/vedic_numerology_sacred_cosmos_1792557572243.jpg"
+  },
+  // 2. Core Consultation: Tarot Reading
+  {
+    id: "core-tarot",
+    number: 2,
+    title: "टैरो कार्ड दिव्य मार्गदर्शन (सटीक अंतर्दृष्टि सत्र)",
+    title_en: "Intuitive Tarot Life Reading & Spiritual Guidance",
+    fee: 5100,
+    feeFormatted: "₹5,100",
+    duration: "45-60 मिनट",
+    duration_en: "45-60 mins",
+    description: "रिश्तों, करियर, व्यापार या जीवन के कठिन निर्णयों में मन के संशय दूर कर स्पष्ट व सकारात्मक दिशा प्रदान करने वाला सत्र।",
+    description_en: "Clarity on complex life choices, romantic relationships, career crossroads, and spiritual energy through intuitive tarot spreads.",
+    category: "core",
+    categoryLabel_hi: "मुख्य वैदिक परामर्श",
+    categoryLabel_en: "Core Consultation",
+    badge: "स्पष्ट मार्गदर्शन",
+    badge_en: "Clarity Session",
+    isSpecialized11: false,
+    image: "/assets/images/tarot_intuitive_cards_luxury_1792557573151.jpg"
+  },
+  // 3. Core Consultation: Distance Energy & Chakra Healing
+  {
+    id: "core-chakra",
+    number: 3,
+    title: "डिस्टेंस ऊर्जा व चक्र हीलिंग (सप्त चक्र संतुलन)",
+    title_en: "Distance Energy & Chakra Alignment Session",
+    fee: 5100,
+    feeFormatted: "₹5,100",
+    duration: "50 मिनट",
+    duration_en: "50 mins",
+    description: "मानसिक तनाव, भारीपन व चिंता से मुक्ति हेतु 7 मुख्य चक्रों का दूरस्थ ऊर्जा संतुलन एवं शांत ध्यान सत्र।",
+    description_en: "Targeted distance energy healing to unblock 7 primary chakras, dissolve chronic stress, and restore vital prana flow.",
+    category: "core",
+    categoryLabel_hi: "मुख्य वैदिक परामर्श",
+    categoryLabel_en: "Core Consultation",
+    badge: "गहन ऊर्जा संतुलन",
+    badge_en: "Deep Healing",
+    isSpecialized11: false,
+    image: "/assets/images/chakras_aura_energy_flow_1792557572576.jpg"
+  },
+  // 4. Core Consultation: Life Coaching & Soul Mentorship
+  {
+    id: "core-coaching",
+    number: 4,
+    title: "सजग जीवन मार्गदर्शन व मेंटरशिप (कॉन्शियस लाइफ कोचिंग)",
+    title_en: "Conscious Life Coaching & Soul Mentorship",
+    fee: 5100,
+    feeFormatted: "₹5,100",
+    duration: "60 मिनट",
+    duration_en: "60 mins",
+    description: "आत्मविश्वास में वृद्धि, नकारात्मक सोच पर नियंत्रण, और जीवन के व्यक्तिगत व व्यावसायिक लक्ष्यों को प्राप्त करने का आत्मीय मार्गदर्शन।",
+    description_en: "Empowering 1-on-1 mentorship to dissolve overthinking, cultivate resilience, set healthy boundaries, and realize your vision.",
+    category: "core",
+    categoryLabel_hi: "मुख्य वैदिक परामर्श",
+    categoryLabel_en: "Core Consultation",
+    badge: "सकारात्मक जीवन",
+    badge_en: "Empowerment",
+    isSpecialized11: false,
+    image: "/assets/images/hero_celestial_sacred_geometry_1792557572251.jpg"
+  },
+  // 5. Signature Comprehensive Consultation
+  {
+    id: "core-signature",
+    number: 5,
+    title: "व्यक्तिगत समग्र आध्यात्मिक सत्र (लाइफ रोडमैप)",
+    title_en: "Personalized Comprehensive Spiritual Consultation",
+    fee: 5100,
+    feeFormatted: "₹5,100",
+    duration: "60 मिनट",
+    duration_en: "60 mins",
+    description: "डॉ. पूजा अवस्थी के साथ सीधा 1-on-1 सत्र जिसमें अंकशास्त्र, टैरो, ऑरा स्थिति व संपूर्ण आध्यात्मिक समाधान शामिल हैं।",
+    description_en: "Flagship private consultation with Dr. Pooja Awasthi combining numerology blueprint, intuitive reading, and healing prescription.",
+    category: "core",
+    categoryLabel_hi: "सिग्नेचर परामर्श",
+    categoryLabel_en: "Signature Session",
+    badge: "100% सीधा संवाद",
+    badge_en: "1-on-1 Direct",
+    isSpecialized11: false,
+    image: "/assets/images/pooja_awasthi_portrait.jpeg"
+  },
+
+  // 6 to 16: The 11 Specialized Healing & Correction Services
+  {
+    id: "spec-aura-cleaning",
+    number: 6,
+    title: "ऑरा क्लीनिंग (ऊर्जा मंडल की त्वरित शुद्धि)",
+    title_en: "Aura Cleansing (Energy Balance - Specialized #1)",
+    fee: 3100,
+    feeFormatted: "₹3,100",
+    duration: "20 मिनट",
+    duration_en: "20 mins",
+    description: "ऑरा (ऊर्जा मंडल) की शुद्धि आपके आसपास की नकारात्मक ऊर्जा को हटाकर मन को शांत, हल्का और सकारात्मक बनाती है।",
+    description_en: "Rapid cleansing session to strip away external psychic static, restore energetic purity, and ground emotional serenity.",
+    category: "healing",
+    categoryLabel_hi: "विशिष्ट हीलिंग सेवा #1",
+    categoryLabel_en: "Specialized Healing #1",
+    badge: "11 विशिष्ट सेवाएं #1",
+    badge_en: "Specialized #1",
+    isSpecialized11: true,
+    image: "/assets/images/chakras_aura_energy_flow_1792557572576.jpg"
+  },
+  {
+    id: "spec-salt-healing",
+    number: 7,
+    title: "सॉल्ट थेरेपी (नमक द्वारा नकारात्मकता निवारण)",
+    title_en: "Negativity Release & Salt Healing (Specialized #2)",
+    fee: 5100,
+    feeFormatted: "₹5,100",
+    duration: "30 मिनट",
+    duration_en: "30 mins",
+    description: "यह सत्र मन के नकारात्मक विचारों, तनाव, नजर दोष और भारीपन को दूर कर सच्ची शांति व सुरक्षा कवच प्रदान करता है।",
+    description_en: "Ancient salt vibrational therapy to neutralise heavy domestic toxicity, evil eye (nazar), and persistent fatigue.",
+    category: "healing",
+    categoryLabel_hi: "विशिष्ट हीलिंग सेवा #2",
+    categoryLabel_en: "Specialized Healing #2",
+    badge: "11 विशिष्ट सेवाएं #2",
+    badge_en: "Specialized #2",
+    isSpecialized11: true,
+    image: "/assets/images/salt_therapy_cleansing_1793624554656.jpg"
+  },
+  {
+    id: "spec-7day-chakra",
+    number: 8,
+    title: "7 चक्र हीलिंग (7 दिवसीय गहन साधना व संरेखन)",
+    title_en: "7-Day Intensive Chakra Alignment (Specialized #3)",
+    fee: 31000,
+    feeFormatted: "₹31,000",
+    duration: "7 दिन",
+    duration_en: "7 Days",
+    description: "शरीर के 7 मुख्य ऊर्जा चक्रों को संतुलित करने की 7 दिवसीय साधना, जिससे तन-मन में नई ऊर्जा, अच्छा स्वास्थ्य और शांति आती है।",
+    description_en: "Comprehensive 7-day intensive spiritual alignment clearing root-to-crown blockages for profound vitality.",
+    category: "healing",
+    categoryLabel_hi: "विशिष्ट हीलिंग सेवा #3",
+    categoryLabel_en: "Specialized Healing #3",
+    badge: "11 विशिष्ट सेवाएं #3",
+    badge_en: "Specialized #3",
+    isSpecialized11: true,
+    image: "/assets/images/chakras_aura_energy_flow_1792557572576.jpg"
+  },
+  {
+    id: "spec-mobile-correction",
+    number: 9,
+    title: "लकी मोबाइल नंबर सुधार (अंकशास्त्र सुधार)",
+    title_en: "Mobile Number Numerology Correction (Specialized #4)",
+    fee: 5100,
+    feeFormatted: "₹5,100",
+    duration: "45 मिनट",
+    duration_en: "45 mins",
+    description: "अपनी जन्मतिथि के अनुसार अपने मोबाइल नंबर के अंकों को शुभ बनाएं, ताकि आपके काम और कारोबार में सकारात्मक ऊर्जा बढ़े।",
+    description_en: "Telephonic digit frequency alignment ensuring your active contact number vibrates in complete sync with your wealth numbers.",
+    category: "numerology",
+    categoryLabel_hi: "विशिष्ट सुधार सेवा #4",
+    categoryLabel_en: "Specialized Correction #4",
+    badge: "11 विशिष्ट सेवाएं #4",
+    badge_en: "Specialized #4",
+    isSpecialized11: true,
+    image: "/assets/images/vedic_numerology_sacred_cosmos_1792557572243.jpg"
+  },
+  {
+    id: "spec-name-correction",
+    number: 10,
+    title: "लकी नेम स्पेलिंग सुधार (नाम अक्षरों का संतुलन)",
+    title_en: "Name Spelling Vibrational Correction (Specialized #5)",
+    fee: 1100,
+    feeFormatted: "₹1,100",
+    duration: "30 मिनट",
+    duration_en: "30 mins",
+    description: "अपने नाम के अक्षरों में सरल और शुभ अंकशास्त्रीय सुधार, जिससे आपके नाम की ऊर्जा जीवन में सफलता और यश लाए।",
+    description_en: "Subtle yet potent letter adjustments in legal or daily spelling to harmonise your compound name number (Namaank).",
+    category: "numerology",
+    categoryLabel_hi: "विशिष्ट सुधार सेवा #5",
+    categoryLabel_en: "Specialized Correction #5",
+    badge: "11 विशिष्ट सेवाएं #5",
+    badge_en: "Specialized #5",
+    isSpecialized11: true,
+    image: "/assets/images/vedic_numerology_sacred_cosmos_1792557572243.jpg"
+  },
+  {
+    id: "spec-relationship-harmony",
+    number: 11,
+    title: "रिश्तों में मधुरता व हीलिंग (आपसी समझ सुधार)",
+    title_en: "Relationship Healing & Harmony (Specialized #6)",
+    fee: 11000,
+    feeFormatted: "₹11,000",
+    duration: "60 मिनट",
+    duration_en: "60 mins",
+    description: "परिवार, पति-पत्नी या अपनों के बीच मनमुटाव और गलतफहमियों को दूर कर आपसी प्रेम, समझ और भरोसा बढ़ाने का सत्र।",
+    description_en: "Spiritual mediation and aura harmonisation dissolving karmic friction between spouses, family members, or business partners.",
+    category: "healing",
+    categoryLabel_hi: "विशिष्ट हीलिंग सेवा #6",
+    categoryLabel_en: "Specialized Healing #6",
+    badge: "11 विशिष्ट सेवाएं #6",
+    badge_en: "Specialized #6",
+    isSpecialized11: true,
+    image: "/assets/images/hero_celestial_sacred_geometry_1792557572251.jpg"
+  },
+  {
+    id: "spec-gemstone-resonance",
+    number: 12,
+    title: "क्रिस्टल एवं सिद्ध रत्न मार्गदर्शन (सही रत्न का चुनाव)",
+    title_en: "Crystal & Gemstone Resonance Guidance (Specialized #7)",
+    fee: 5100,
+    feeFormatted: "₹5,100",
+    duration: "45 मिनट",
+    duration_en: "45 mins",
+    description: "आपकी जन्मतिथि के अनुसार आपके लिए सबसे सही और असरदार प्राकृतिक क्रिस्टल व सिद्ध नवरत्न धारण करने का सटीक परामर्श।",
+    description_en: "Planetary frequency alignment recommending consecrated natural gemstones and certified crystals to activate dormant chakras.",
+    category: "therapy",
+    categoryLabel_hi: "विशिष्ट थेरेपी सेवा #7",
+    categoryLabel_en: "Specialized Therapy #7",
+    badge: "11 विशिष्ट सेवाएं #7",
+    badge_en: "Specialized #7",
+    isSpecialized11: true,
+    image: "/assets/images/crystal_gemstones_healing_1793624595121.jpg"
+  },
+  {
+    id: "spec-watch-therapy",
+    number: 13,
+    title: "वॉच थेरेपी (कलाई घड़ी का विश्लेषण व समय सुधार)",
+    title_en: "Watch Analysis & Sacred Time Therapy (Specialized #8)",
+    fee: 5100,
+    feeFormatted: "₹5,100",
+    duration: "45 मिनट",
+    duration_en: "45 mins",
+    description: "आपकी कलाई घड़ी का डायल, रंग, आकार व पट्टा आपके समय और भाग्य चक्र को कैसे प्रभावित करता है, उसका सरल विश्लेषण।",
+    description_en: "Specialized examination of your wristwatch's geometry, metal, dial colour, and movement to unlock auspicious time cycles.",
+    category: "therapy",
+    categoryLabel_hi: "विशिष्ट थेरेपी सेवा #8",
+    categoryLabel_en: "Specialized Therapy #8",
+    badge: "11 विशिष्ट सेवाएं #8",
+    badge_en: "Specialized #8",
+    isSpecialized11: true,
+    image: "/assets/images/watch_therapy_consultation_1793624573045.jpg"
+  },
+  {
+    id: "spec-vastu-harmonization",
+    number: 14,
+    title: "वास्तु दोष निवारण (बिना तोड़-फोड़ के सुख-शांति)",
+    title_en: "Vastu Harmonization & Spatial Energy (Specialized #9)",
+    fee: 5100,
+    feeFormatted: "₹5,100",
+    duration: "60-90 मिनट",
+    duration_en: "60-90 mins",
+    description: "घर, दुकान और कार्यालय में बिना किसी तोड़-फोड़ के वास्तु दोष दूर करना और सकारात्मक ऊर्जा का संचार करना।",
+    description_en: "Non-destructive energetic remedies, five-element rebalancing, and spatial grid purification for residential and commercial premises.",
+    category: "therapy",
+    categoryLabel_hi: "विशिष्ट थेरेपी सेवा #9",
+    categoryLabel_en: "Specialized Therapy #9",
+    badge: "11 विशिष्ट सेवाएं #9",
+    badge_en: "Specialized #9",
+    isSpecialized11: true,
+    image: "/assets/images/vastu_sacred_yantra_1793624613612.jpg"
+  },
+  {
+    id: "spec-plr-session",
+    number: 15,
+    title: "पास्ट लाइफ रिग्रेशन (पूर्व जन्म स्मृति सत्र - PLR)",
+    title_en: "Past Life Exploration & PLR (Specialized #10)",
+    fee: 15000,
+    feeFormatted: "₹15,000",
+    duration: "90-120 मिनट",
+    duration_en: "90-120 mins",
+    description: "गहरे ध्यान द्वारा पुरानी यादों व संचित कर्मों को समझना, ताकि वर्तमान जीवन के डर और उलझनों से छुटकारा मिल सके।",
+    description_en: "Deep guided subconscious soul journey to discover root causes of recurring phobias, unexplained attachments, and karmic bonds.",
+    category: "regression",
+    categoryLabel_hi: "विशिष्ट रिग्रेशन सत्र #10",
+    categoryLabel_en: "Specialized Regression #10",
+    badge: "11 विशिष्ट सेवाएं #10",
+    badge_en: "Specialized #10",
+    isSpecialized11: true,
+    image: "/assets/images/tarot_intuitive_cards_luxury_1792557573151.jpg"
+  },
+  {
+    id: "spec-karma-cord-cutting",
+    number: 16,
+    title: "कॉर्ड कटिंग (पुराने तनाव व नकारात्मक यादों से मुक्ति)",
+    title_en: "Karma Cord Cutting & Emotional Liberation (Specialized #11)",
+    fee: 5100,
+    feeFormatted: "₹5,100",
+    duration: "60 मिनट",
+    duration_en: "60 mins",
+    description: "अतीत के कष्टकारी बंधनों, टॉक्सिक रिश्तों और नकारात्मक यादों से मन को पूरी तरह हल्का व शांत करने का सत्र।",
+    description_en: "Energetic cord severance rituals liberating your psyche from toxic soul ties, emotional baggage, and lingering grief.",
+    category: "therapy",
+    categoryLabel_hi: "विशिष्ट थेरेपी सेवा #11",
+    categoryLabel_en: "Specialized Therapy #11",
+    badge: "11 विशिष्ट सेवाएं #11",
+    badge_en: "Specialized #11",
+    isSpecialized11: true,
+    image: "/assets/images/salt_therapy_cleansing_1793624554656.jpg"
+  }
+];
