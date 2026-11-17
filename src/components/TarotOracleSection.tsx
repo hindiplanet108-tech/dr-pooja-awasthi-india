@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { TAROT_DECK, TarotCard } from '../data/tarotData';
-import { Sparkles, RefreshCw, Compass, ArrowRight, ShieldCheck, Heart } from 'lucide-react';
+import { Sparkles, RefreshCw, Compass } from 'lucide-react';
 
 interface TarotOracleSectionProps {
   onBookTarot: (notes: string) => void;
@@ -9,11 +9,11 @@ interface TarotOracleSectionProps {
 
 export const TarotOracleSection: React.FC<TarotOracleSectionProps> = ({ onBookTarot, lang = 'en' }) => {
   const [spreadMode, setSpreadMode] = useState<'single' | 'three'>('single');
-  const [currentSingleCard, setCurrentSingleCard] = useState<TarotCard>(TAROT_DECK[0]); // The Star by default
+  const [currentSingleCard, setCurrentSingleCard] = useState<TarotCard>(TAROT_DECK[0]);
   const [threeSpread, setThreeSpread] = useState<{ past: TarotCard; present: TarotCard; future: TarotCard }>({
-    past: TAROT_DECK[4],    // High Priestess
-    present: TAROT_DECK[0],  // The Star
-    future: TAROT_DECK[1]   // The Sun
+    past: TAROT_DECK[4],
+    present: TAROT_DECK[0],
+    future: TAROT_DECK[1]
   });
   const [isFlipping, setIsFlipping] = useState(false);
 
@@ -31,48 +31,47 @@ export const TarotOracleSection: React.FC<TarotOracleSectionProps> = ({ onBookTa
         });
       }
       setIsFlipping(false);
-    }, 400);
+    }, 350);
   };
 
   return (
-    <section id="tarot" className="py-20 md:py-28 bg-[#1c0f26] text-white relative overflow-hidden border-t border-[#D6B574]/20">
-      {/* Dynamic ambient color glow */}
-      <div className="absolute top-1/3 right-1/4 w-[500px] h-[500px] bg-[#6941A5]/30 rounded-full blur-[140px] pointer-events-none" />
-      <div className="absolute bottom-10 left-10 w-80 h-80 bg-[#D6B574]/15 rounded-full blur-[100px] pointer-events-none" />
+    <section id="tarot" className="py-20 md:py-28 bg-[#FAF8F5] text-[#1E162B] relative overflow-hidden border-t border-[#E5DFD5]">
+      <div className="absolute top-1/3 right-1/4 w-[450px] h-[450px] bg-[#F4F0FA] rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-10 left-10 w-80 h-80 bg-[#FBF5E6] rounded-full blur-[100px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-12 space-y-3">
-          <div className="flex items-center justify-center gap-2 text-xs font-semibold uppercase tracking-widest text-[#D6B574]">
-            <Sparkles size={14} />
+          <div className="inline-flex items-center justify-center gap-2 text-xs font-bold uppercase tracking-widest text-[#522B8A]">
+            <Sparkles size={14} className="text-[#B48228]" />
             <span>{lang === 'hi' ? 'सहज बोध टैरो मार्गदर्शन' : 'Intuitive Oracle'}</span>
           </div>
 
-          <h2 className="font-cormorant text-3xl sm:text-4xl lg:text-5xl font-light text-white leading-tight">
+          <h2 className="font-cormorant text-3xl sm:text-4xl lg:text-5xl font-medium text-[#1E162B] leading-tight">
             {lang === 'hi' ? 'दैनिक टैरो कार्ड मार्गदर्शन —' : 'Daily Tarot Card Guidance —'} <br />
-            <span className="italic font-normal text-[#D6B574]">
+            <span className="italic font-semibold text-[#522B8A]">
               {lang === 'hi'
                 ? 'अपने मन को शांत करें, एक संकल्प लें और अपना मार्गदर्शन कार्ड चुनें'
                 : 'Quiet your thoughts, set an intention, and draw your guidance card'}
             </span>
           </h2>
 
-          <p className="text-sm text-[#EAE2F4]/75 max-w-2xl mx-auto font-light leading-relaxed">
+          <p className="text-sm text-[#4A4356] max-w-2xl mx-auto leading-relaxed">
             {lang === 'hi'
               ? 'टैरो कार्ड्स आपके अवचेतन मन, वर्तमान ऊर्जाओं और भविष्य की संभावनाओं को दर्शाने वाला एक पवित्र अंतर्ज्ञानी दर्पण हैं।'
               : 'The cards act as an intuitive sacred mirror reflecting your subconscious landscape, emotional currents, and emerging possibilities.'}
           </p>
 
-          {/* Mode switch */}
-          <div className="pt-4 flex items-center justify-center gap-2">
+          {/* Segmented Mode Switch */}
+          <div className="pt-4 inline-flex items-center justify-center gap-1 p-1 rounded-xl bg-white border border-[#E6DFD3] shadow-2xs">
             <button
               type="button"
               onClick={() => setSpreadMode('single')}
-              className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all ${
+              className={`px-4 py-2 rounded-lg text-xs font-bold transition-all cursor-pointer ${
                 spreadMode === 'single'
-                  ? 'bg-[#D6B574] text-[#24152F] shadow-md font-bold'
-                  : 'bg-white/10 text-white hover:bg-white/15 border border-white/10'
+                  ? 'bg-[#522B8A] text-white shadow-xs'
+                  : 'text-[#4A4356] hover:text-[#1E162B] hover:bg-[#FAF8F5]'
               }`}
             >
               {lang === 'hi' ? 'एकल कार्ड दर्शन' : 'Single Card Draw'}
@@ -80,10 +79,10 @@ export const TarotOracleSection: React.FC<TarotOracleSectionProps> = ({ onBookTa
             <button
               type="button"
               onClick={() => setSpreadMode('three')}
-              className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all ${
+              className={`px-4 py-2 rounded-lg text-xs font-bold transition-all cursor-pointer ${
                 spreadMode === 'three'
-                  ? 'bg-[#D6B574] text-[#24152F] shadow-md font-bold'
-                  : 'bg-white/10 text-white hover:bg-white/15 border border-white/10'
+                  ? 'bg-[#522B8A] text-white shadow-xs'
+                  : 'text-[#4A4356] hover:text-[#1E162B] hover:bg-[#FAF8F5]'
               }`}
             >
               {lang === 'hi' ? 'अतीत • वर्तमान • भविष्य त्रि-काल दर्शन' : 'Past • Present • Future Spread'}
@@ -94,35 +93,33 @@ export const TarotOracleSection: React.FC<TarotOracleSectionProps> = ({ onBookTa
         {/* Spread Display */}
         {spreadMode === 'single' ? (
           <div className="max-w-4xl mx-auto">
-            <div className={`grid grid-cols-1 md:grid-cols-12 gap-8 items-center p-6 sm:p-10 rounded-3xl bg-white/5 border border-[#D6B574]/30 backdrop-blur-md shadow-2xl transition-all duration-500 ${isFlipping ? 'opacity-40 scale-95' : 'opacity-100 scale-100'}`}>
+            <div className={`grid grid-cols-1 md:grid-cols-12 gap-8 items-center p-6 sm:p-10 rounded-3xl bg-white border border-[#E6DFD3] shadow-xl transition-all duration-500 ${isFlipping ? 'opacity-40 scale-95' : 'opacity-100 scale-100'}`}>
               
-              {/* Card Visual Graphic */}
+              {/* Card Visual Collectible Graphic */}
               <div className="md:col-span-5 flex flex-col items-center">
-                <div className="relative w-64 aspect-[3/5] rounded-2xl p-4 bg-gradient-to-b from-[#2a1738] via-[#1a0f24] to-[#120819] border-2 border-[#D6B574]/60 shadow-[0_0_35px_rgba(214,181,116,0.25)] flex flex-col justify-between text-center overflow-hidden group">
-                  <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-[#D6B574]/5 to-transparent pointer-events-none" />
-                  
-                  <div className="flex items-center justify-between text-[10px] uppercase font-bold text-[#D6B574] tracking-widest border-b border-[#D6B574]/20 pb-2">
+                <div className="relative w-64 aspect-[3/5] rounded-2xl p-4 bg-gradient-to-b from-[#FBF6EA] via-white to-[#F4F0FA] border-2 border-[#DEC38C] shadow-lg flex flex-col justify-between text-center overflow-hidden">
+                  <div className="flex items-center justify-between text-[10px] uppercase font-bold text-[#7A5311] tracking-widest border-b border-[#DEC38C]/50 pb-2">
                     <span>{currentSingleCard.arcana}</span>
                     <span>{currentSingleCard.element}</span>
                   </div>
 
                   {/* Sacred Card Center */}
                   <div className="py-6 space-y-2">
-                    <div className="w-16 h-16 rounded-full border border-[#D6B574]/40 flex items-center justify-center mx-auto text-[#D6B574] bg-[#D6B574]/10 shadow-inner">
-                      <Sparkles size={28} />
+                    <div className="w-16 h-16 rounded-full border border-[#DEC38C] flex items-center justify-center mx-auto text-[#522B8A] bg-[#FBF5E6] shadow-inner">
+                      <Sparkles size={28} className="text-[#B48228]" />
                     </div>
-                    <h3 className="font-cinzel text-xl font-bold text-white tracking-wide">
+                    <h3 className="font-cinzel text-xl font-bold text-[#1E162B] tracking-wide">
                       {lang === 'hi' ? currentSingleCard.name_hi : currentSingleCard.name}
                     </h3>
-                    <p className="text-xs text-[#D6B574]">
+                    <p className="text-xs text-[#522B8A] font-semibold">
                       {lang === 'hi' ? currentSingleCard.name : currentSingleCard.name_hi}
                     </p>
                   </div>
 
                   {/* Keywords footer on card */}
-                  <div className="pt-2 border-t border-[#D6B574]/20 flex items-center justify-center gap-1.5 text-[10px] text-[#EAE2F4]/80 font-medium">
+                  <div className="pt-2 border-t border-[#DEC38C]/50 flex flex-wrap items-center justify-center gap-1.5 text-[10px] text-[#4A4356] font-semibold">
                     {(lang === 'hi' ? (currentSingleCard.keywords_hi || currentSingleCard.keywords) : currentSingleCard.keywords).map((kw, i) => (
-                      <span key={i} className="px-1.5 py-0.5 rounded bg-white/5 border border-white/10">
+                      <span key={i} className="px-2 py-0.5 rounded bg-white border border-[#E6DFD3]">
                         {kw}
                       </span>
                     ))}
@@ -132,7 +129,7 @@ export const TarotOracleSection: React.FC<TarotOracleSectionProps> = ({ onBookTa
                 <button
                   type="button"
                   onClick={drawRandomCard}
-                  className="mt-6 px-5 py-2.5 rounded-full bg-white/10 hover:bg-white/20 text-[#D6B574] text-xs font-semibold flex items-center gap-2 border border-[#D6B574]/40 transition-all shadow-sm"
+                  className="mt-5 h-10 px-5 rounded-xl bg-[#FAF8F5] hover:bg-[#F4F0FA] text-[#522B8A] text-xs font-bold flex items-center gap-2 border border-[#DFD5F0] transition-all shadow-2xs cursor-pointer"
                 >
                   <RefreshCw size={13} className={isFlipping ? 'animate-spin' : ''} />
                   <span>{lang === 'hi' ? 'दूसरा कार्ड निकालें' : 'Draw Another Card'}</span>
@@ -142,50 +139,50 @@ export const TarotOracleSection: React.FC<TarotOracleSectionProps> = ({ onBookTa
               {/* Card Interpretation Prose */}
               <div className="md:col-span-7 space-y-5">
                 <div>
-                  <span className="text-xs font-bold uppercase tracking-widest text-[#D6B574]">
+                  <span className="text-xs font-bold uppercase tracking-widest text-[#7A5311]">
                     {currentSingleCard.arcana} • {lang === 'hi' ? 'आध्यात्मिक सार' : 'Upright Essence'}
                   </span>
-                  <h3 className="font-cinzel text-2xl font-bold text-white mt-1">
+                  <h3 className="font-cinzel text-2xl font-bold text-[#1E162B] mt-1">
                     {lang === 'hi' ? currentSingleCard.name_hi : currentSingleCard.name}
                   </h3>
-                  <p className="text-xs sm:text-sm text-[#EAE2F4]/85 leading-relaxed font-light mt-2">
+                  <p className="text-xs sm:text-sm text-[#4A4356] leading-relaxed mt-2">
                     {lang === 'hi' ? currentSingleCard.essence_hi : currentSingleCard.essence}
                   </p>
                 </div>
 
-                <div className="p-4 rounded-2xl bg-black/40 border border-white/10 space-y-2">
-                  <div className="text-xs font-bold text-[#D6B574] uppercase tracking-wider flex items-center gap-1.5">
-                    <Compass size={14} />
+                <div className="p-4 rounded-2xl bg-[#FAF8F5] border border-[#E6DFD3] space-y-1.5">
+                  <div className="text-xs font-bold text-[#522B8A] uppercase tracking-wider flex items-center gap-1.5">
+                    <Compass size={14} className="text-[#B48228]" />
                     <span>{lang === 'hi' ? 'आपके लिए अंतर्ज्ञानी मार्गदर्शन' : 'Intuitive Guidance for You'}</span>
                   </div>
-                  <p className="text-xs text-[#EAE2F4]/90 leading-relaxed font-light">
+                  <p className="text-xs text-[#4A4356] leading-relaxed">
                     {lang === 'hi' ? currentSingleCard.guidance_hi : currentSingleCard.guidance}
                   </p>
                 </div>
 
-                <div className="p-4 rounded-2xl bg-[#6941A5]/20 border border-[#6941A5]/40 space-y-1.5">
-                  <span className="text-[10px] font-bold text-[#D6B574] uppercase tracking-wider block">
+                <div className="p-4 rounded-2xl bg-[#F4F0FA] border border-[#DFD5F0] space-y-1.5">
+                  <span className="text-[10px] font-bold text-[#522B8A] uppercase tracking-wider block">
                     {lang === 'hi' ? 'दैनिक पावन संकल्प एवं सकारात्मक भाव' : 'Daily Sacred Affirmation'}
                   </span>
-                  <p className="font-cormorant text-base sm:text-lg italic text-white">
+                  <p className="font-cormorant text-base sm:text-lg italic font-semibold text-[#1E162B]">
                     {lang === 'hi' ? currentSingleCard.affirmation_hi : currentSingleCard.affirmation}
                   </p>
                 </div>
 
-                <p className="text-[11px] text-[#EAE2F4]/60">
-                  <span className="text-[#D6B574]">{lang === 'hi' ? 'प्रतीकात्मक अर्थ:' : 'Cosmic Symbolism:'}</span> {currentSingleCard.symbolism}
+                <p className="text-[11px] text-[#5D556A]">
+                  <span className="text-[#7A5311] font-semibold">{lang === 'hi' ? 'प्रतीकात्मक अर्थ:' : 'Cosmic Symbolism:'}</span> {currentSingleCard.symbolism}
                 </p>
 
                 <div className="pt-2">
                   <button
                     type="button"
                     onClick={() => onBookTarot(`Tarot Session — Inquiring after drawing "${currentSingleCard.name}"`)}
-                    className="w-full sm:w-auto px-6 py-3 bg-[#D6B574] hover:bg-[#e4ca8c] text-[#24152F] font-bold text-xs uppercase tracking-wider rounded-xl transition-all shadow-md hover:scale-[1.02]"
+                    className="w-full sm:w-auto h-11 px-6 bg-[#522B8A] hover:bg-[#412070] text-white font-bold text-xs uppercase tracking-wider rounded-xl transition-all shadow-sm hover:shadow-md cursor-pointer"
                   >
                     {lang === 'hi' ? (
-                      <>व्यक्तिगत टैरो सत्र प्राप्त करें (<strong className="font-black text-[#24152F]">₹5,100</strong>)</>
+                      <>व्यक्तिगत टैरो सत्र प्राप्त करें (<strong className="font-rupee font-black">₹5,100</strong>)</>
                     ) : (
-                      <>Book Personal Tarot Session (<strong className="font-black text-[#24152F]">₹5,100</strong>)</>
+                      <>Book Personal Tarot Session (<strong className="font-rupee font-black">₹5,100</strong>)</>
                     )}
                   </button>
                 </div>
@@ -194,7 +191,7 @@ export const TarotOracleSection: React.FC<TarotOracleSectionProps> = ({ onBookTa
             </div>
           </div>
         ) : (
-          /* 3-Card Spread (Past • Present • Future) */
+          /* 3-Card Spread */
           <div className="space-y-8">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {[
@@ -204,32 +201,32 @@ export const TarotOracleSection: React.FC<TarotOracleSectionProps> = ({ onBookTa
               ].map((pos, idx) => (
                 <div
                   key={idx}
-                  className="p-6 rounded-3xl bg-white/5 border border-[#D6B574]/30 backdrop-blur-md shadow-xl flex flex-col justify-between space-y-4"
+                  className="p-6 rounded-3xl bg-white border border-[#E6DFD3] shadow-sm flex flex-col justify-between space-y-4 hover:border-[#DEC38C] transition-all"
                 >
                   <div className="space-y-3">
-                    <span className="text-xs font-bold uppercase tracking-wider text-[#D6B574]">
+                    <span className="inline-block px-2.5 py-0.5 rounded-md bg-[#FBF5E6] text-[#7A5311] border border-[#DEC38C] text-[11px] font-bold uppercase tracking-wider">
                       {lang === 'hi' ? pos.label_hi : pos.label_en}
                     </span>
-                    <h3 className="font-cinzel text-xl font-bold text-white">
+                    <h3 className="font-cinzel text-xl font-bold text-[#1E162B]">
                       {lang === 'hi' ? pos.card.name_hi : pos.card.name}
                     </h3>
-                    <p className="text-xs text-[#EAE2F4]/80 leading-relaxed font-light">
+                    <p className="text-xs text-[#4A4356] leading-relaxed">
                       {lang === 'hi' ? pos.card.essence_hi : pos.card.essence}
                     </p>
                   </div>
 
-                  <div className="pt-3 border-t border-white/10 text-xs text-[#D6B574] font-medium">
+                  <div className="pt-3 border-t border-[#EFECE6] text-xs text-[#522B8A] font-semibold">
                     {(lang === 'hi' ? (pos.card.keywords_hi || pos.card.keywords) : pos.card.keywords).join(' · ')}
                   </div>
                 </div>
               ))}
             </div>
 
-            <div className="text-center pt-4">
+            <div className="text-center pt-2">
               <button
                 type="button"
                 onClick={drawRandomCard}
-                className="px-6 py-3 rounded-full bg-white/10 hover:bg-white/20 text-[#D6B574] text-xs font-semibold inline-flex items-center gap-2 border border-[#D6B574]/40 transition-all shadow-md"
+                className="h-11 px-6 rounded-xl bg-white hover:bg-[#F4F0FA] text-[#522B8A] text-xs font-bold inline-flex items-center gap-2 border border-[#DFD5F0] transition-all shadow-xs cursor-pointer"
               >
                 <RefreshCw size={14} className={isFlipping ? 'animate-spin' : ''} />
                 <span>{lang === 'hi' ? 'नया त्रि-काल कार्ड दर्शन प्राप्त करें' : 'Draw New 3-Card Spread'}</span>

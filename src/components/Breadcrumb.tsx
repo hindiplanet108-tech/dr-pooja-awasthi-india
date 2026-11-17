@@ -50,7 +50,7 @@ export const Breadcrumb: React.FC<BreadcrumbProps> = ({
   return (
     <nav
       aria-label="Breadcrumb"
-      className="py-3 px-4 rounded-xl bg-white/5 border border-white/10 backdrop-blur-md text-xs text-[#EAE2F4]/80 flex items-center flex-wrap gap-2"
+      className="py-2.5 px-4 rounded-xl bg-white border border-[#E6DFD3] shadow-2xs text-xs text-[#5D556A] flex items-center flex-wrap gap-2"
     >
       <script
         type="application/ld+json"
@@ -59,7 +59,7 @@ export const Breadcrumb: React.FC<BreadcrumbProps> = ({
       <button
         type="button"
         onClick={onNavigateHome || (() => { window.location.href = '/'; })}
-        className="flex items-center gap-1 text-[#D6B574] hover:text-white transition-colors font-medium"
+        className="flex items-center gap-1.5 text-[#522B8A] hover:text-[#B48228] transition-colors font-semibold cursor-pointer"
       >
         <Home size={13} />
         <span>{lang === 'hi' ? 'मुख्य पृष्ठ' : 'Home'}</span>
@@ -72,28 +72,28 @@ export const Breadcrumb: React.FC<BreadcrumbProps> = ({
 
         return (
           <React.Fragment key={index}>
-            <ChevronRight size={12} className="text-[#D6B574]/50 shrink-0" />
+            <ChevronRight size={12} className="text-[#B48228]/70 shrink-0" />
             {isLast ? (
-              <span className="font-semibold text-white truncate max-w-xs sm:max-w-md" aria-current="page">
+              <span className="font-semibold text-[#1E162B] truncate max-w-xs sm:max-w-md" aria-current="page">
                 {itemName}
               </span>
             ) : item.onClick ? (
               <button
                 type="button"
                 onClick={item.onClick}
-                className="text-[#EAE2F4] hover:text-[#D6B574] transition-colors font-medium cursor-pointer"
+                className="text-[#4A4356] hover:text-[#522B8A] transition-colors font-medium cursor-pointer"
               >
                 {itemName}
               </button>
             ) : itemUrl ? (
               <a
                 href={itemUrl}
-                className="text-[#EAE2F4] hover:text-[#D6B574] transition-colors font-medium"
+                className="text-[#4A4356] hover:text-[#522B8A] transition-colors font-medium"
               >
                 {itemName}
               </a>
             ) : (
-              <span className="text-[#EAE2F4]/80">{itemName}</span>
+              <span className="text-[#5D556A]">{itemName}</span>
             )}
           </React.Fragment>
         );

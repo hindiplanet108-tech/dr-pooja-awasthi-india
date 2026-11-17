@@ -50,15 +50,15 @@ export const SocialShare: React.FC<SocialShareProps> = ({
   };
 
   return (
-    <div className={`p-4 sm:p-5 rounded-2xl bg-white/5 border border-[#D6B574]/30 backdrop-blur-md space-y-3 ${className}`}>
+    <div className={`p-5 sm:p-6 rounded-2xl bg-white border border-[#E6DFD3] shadow-sm space-y-3.5 text-[#1E162B] ${className}`}>
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <Share2 size={15} className="text-[#D6B574]" />
-          <span className="text-xs font-bold uppercase tracking-wider text-white">
+          <Share2 size={15} className="text-[#B48228]" />
+          <span className="text-xs font-bold uppercase tracking-wider text-[#1E162B]">
             {lang === 'hi' ? 'मार्गदर्शन साझा करें' : 'Share Guidance'}
           </span>
         </div>
-        <span className="text-[10px] text-[#D6B574]/80 font-medium">
+        <span className="text-[11px] text-[#7A5311] font-semibold">
           {lang === 'hi' ? 'सोशल मीडिया व व्हाट्सएप' : 'WhatsApp & Social'}
         </span>
       </div>
@@ -69,7 +69,7 @@ export const SocialShare: React.FC<SocialShareProps> = ({
           href={`https://api.whatsapp.com/send?text=${encodedText}%20${encodedUrl}`}
           target="_blank"
           rel="noopener noreferrer"
-          className="px-3 py-2 rounded-xl bg-emerald-600/90 hover:bg-emerald-500 text-white text-xs font-bold flex items-center gap-1.5 transition-all shadow-xs hover:scale-105"
+          className="h-9 px-3.5 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-bold flex items-center gap-1.5 transition-all shadow-xs"
           title="Share via WhatsApp"
         >
           <MessageCircle size={14} />
@@ -81,7 +81,7 @@ export const SocialShare: React.FC<SocialShareProps> = ({
           href={`https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`}
           target="_blank"
           rel="noopener noreferrer"
-          className="px-3 py-2 rounded-xl bg-[#1877F2]/90 hover:bg-[#1877F2] text-white text-xs font-bold flex items-center gap-1.5 transition-all shadow-xs hover:scale-105"
+          className="h-9 px-3.5 rounded-xl bg-[#1877F2] hover:bg-[#1565D8] text-white text-xs font-bold flex items-center gap-1.5 transition-all shadow-xs"
           title="Share on Facebook"
         >
           <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
@@ -95,7 +95,7 @@ export const SocialShare: React.FC<SocialShareProps> = ({
           href={`https://twitter.com/intent/tweet?text=${encodedText}&url=${encodedUrl}`}
           target="_blank"
           rel="noopener noreferrer"
-          className="px-3 py-2 rounded-xl bg-black hover:bg-neutral-800 text-white text-xs font-bold flex items-center gap-1.5 border border-white/20 transition-all shadow-xs hover:scale-105"
+          className="h-9 px-3.5 rounded-xl bg-[#1E162B] hover:bg-[#312545] text-white text-xs font-bold flex items-center gap-1.5 transition-all shadow-xs"
           title="Share on X (Twitter)"
         >
           <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
@@ -109,7 +109,7 @@ export const SocialShare: React.FC<SocialShareProps> = ({
           href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`}
           target="_blank"
           rel="noopener noreferrer"
-          className="px-3 py-2 rounded-xl bg-[#0A66C2]/90 hover:bg-[#0A66C2] text-white text-xs font-bold flex items-center gap-1.5 transition-all shadow-xs hover:scale-105"
+          className="h-9 px-3.5 rounded-xl bg-[#0A66C2] hover:bg-[#08539E] text-white text-xs font-bold flex items-center gap-1.5 transition-all shadow-xs"
           title="Share on LinkedIn"
         >
           <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
@@ -123,7 +123,7 @@ export const SocialShare: React.FC<SocialShareProps> = ({
           href={`https://pinterest.com/pin/create/button/?url=${encodedUrl}&description=${encodedText}`}
           target="_blank"
           rel="noopener noreferrer"
-          className="px-3 py-2 rounded-xl bg-[#E60023]/90 hover:bg-[#E60023] text-white text-xs font-bold flex items-center gap-1.5 transition-all shadow-xs hover:scale-105"
+          className="h-9 px-3.5 rounded-xl bg-[#C91A2B] hover:bg-[#AD1221] text-white text-xs font-bold flex items-center gap-1.5 transition-all shadow-xs"
           title="Pin on Pinterest"
         >
           <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
@@ -136,9 +136,9 @@ export const SocialShare: React.FC<SocialShareProps> = ({
         <button
           type="button"
           onClick={handleCopy}
-          className="px-3.5 py-2 rounded-xl bg-white/10 hover:bg-[#D6B574] hover:text-[#24152F] text-white text-xs font-bold flex items-center gap-1.5 border border-white/15 transition-all shadow-xs"
+          className="h-9 px-3.5 rounded-xl bg-[#FAF8F5] hover:bg-[#F4F0FA] text-[#1E162B] text-xs font-bold flex items-center gap-1.5 border border-[#E6DFD3] transition-all shadow-2xs cursor-pointer"
         >
-          {copied ? <Check size={14} className="text-emerald-400" /> : <Copy size={14} />}
+          {copied ? <Check size={14} className="text-emerald-700" /> : <Copy size={14} className="text-[#522B8A]" />}
           <span>{copied ? (lang === 'hi' ? 'लिंक कॉपी हुआ!' : 'Copied!') : (lang === 'hi' ? 'लिंक कॉपी करें' : 'Copy Link')}</span>
         </button>
 
@@ -147,7 +147,7 @@ export const SocialShare: React.FC<SocialShareProps> = ({
           <button
             type="button"
             onClick={handleNativeShare}
-            className="px-3.5 py-2 rounded-xl bg-[#D6B574] hover:bg-[#edd8a6] text-[#24152F] text-xs font-bold flex items-center gap-1.5 transition-all shadow-xs ml-auto"
+            className="h-9 px-3.5 rounded-xl bg-[#522B8A] hover:bg-[#412070] text-white text-xs font-bold flex items-center gap-1.5 transition-all shadow-xs ml-auto cursor-pointer"
           >
             <Send size={13} />
             <span>{lang === 'hi' ? 'शेयर मेनू' : 'More...'}</span>

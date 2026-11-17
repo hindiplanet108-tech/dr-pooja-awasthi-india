@@ -31,6 +31,7 @@ import { SiteContentProvider } from './utils/siteContentContext';
 import { isUserAuthenticated, CMSPage } from './utils/cmsApi';
 import { MessageSquare, ArrowUp, QrCode, Sparkles } from 'lucide-react';
 import { getTranslation } from './data/translations';
+import { useTrafficTracker } from './utils/trafficApi';
 
 type ViewMode = 'home' | 'tariff' | 'admin' | 'dynamic-page';
 type AdminTab = 'dashboard' | 'site-editor' | 'pages' | 'create-page' | 'media' | 'settings' | 'seo';
@@ -52,6 +53,17 @@ function MainApp() {
   const [isBankUpiModalOpen, setIsBankUpiModalOpen] = useState(false);
   const [selectedService, setSelectedService] = useState<string>('Vedic Numerology (₹5,100)');
   const t = getTranslation(lang);
+
+  // Track real live visitors & page views starting from 1005
+  const activeTrackedPath =
+    currentView === 'tariff'
+      ? '/tariff'
+      : currentView === 'dynamic-page'
+      ? `/pages/${currentSlug}`
+      : currentView === 'admin'
+      ? '/admin'
+      : '/';
+  useTrafficTracker(activeTrackedPath);
 
   // Check auth state on mount
   useEffect(() => {
@@ -337,7 +349,7 @@ function MainApp() {
     : 'Dr Pooja Awasthi, Vedic Numerology, Tarot Card Reading, Chakra Healing, Past Life Regression, Dehradun Astrologer';
 
   return (
-    <div className="min-h-screen bg-[#FBF8F2] text-[#29242E] flex flex-col font-sans selection:bg-[#EAE2F4] selection:text-[#24152F] relative">
+    <div className="min-h-screen bg-[#FAF8F5] text-[#1E162B] flex flex-col font-sans selection:bg-[#EAE2F4] selection:text-[#522B8A] relative">
       {/* Dynamic SEO Meta, OpenGraph, Canonical & JSON-LD Structured Data */}
       {currentView === 'home' && (
         <SEOHead
@@ -502,11 +514,11 @@ function MainApp() {
           <button
             type="button"
             onClick={() => navigateToView('tariff', '/tariff')}
-            className="px-3.5 py-2.5 rounded-full bg-gradient-to-r from-[#24152F] via-[#331c44] to-[#24152F] hover:from-[#331c44] hover:to-[#44235c] text-[#F5C242] font-bold text-xs flex items-center gap-1.5 shadow-[0_4px_20px_rgba(214,181,116,0.35)] border-2 border-[#D6B574] hover:scale-105 active:scale-95 transition-all cursor-pointer"
+            className="h-10 px-3.5 rounded-full bg-white/95 hover:bg-[#FBF5E6] text-[#7A5311] font-bold text-xs flex items-center gap-1.5 shadow-lg border border-[#DEC38C] backdrop-blur-md transition-all cursor-pointer"
             title="11 Specialized Healing & Correction Services (Consultancy Fees - All 16 Divine Services)"
           >
-            <Sparkles size={13} className="text-[#F5C242]" />
-            <span>★ 11 विशिष्ट सेवाएं (<span className="font-rupee font-black text-white">16 सेवाएं</span>)</span>
+            <Sparkles size={13} className="text-[#B48228]" />
+            <span>★ 11 विशिष्ट सेवाएं (<span className="font-rupee font-black text-[#522B8A]">16 सेवाएं</span>)</span>
           </button>
         )}
 
@@ -514,10 +526,10 @@ function MainApp() {
         <button
           type="button"
           onClick={() => setIsBankUpiModalOpen(true)}
-          className="px-3 py-2.5 rounded-full bg-gradient-to-r from-emerald-950 via-[#1a3826] to-emerald-900 hover:from-emerald-900 hover:to-teal-900 text-emerald-300 hover:text-white shadow-[0_4px_20px_rgba(52,211,153,0.35)] border-2 border-emerald-400 font-bold text-xs flex items-center gap-1.5 hover:scale-105 active:scale-95 transition-all cursor-pointer"
+          className="h-10 px-3.5 rounded-full bg-emerald-50/95 hover:bg-emerald-100 text-emerald-800 shadow-lg border border-emerald-400 font-bold text-xs flex items-center gap-1.5 backdrop-blur-md transition-all cursor-pointer"
           title="Bank Account & UPI Payment Details (QR Code)"
         >
-          <QrCode size={16} className="text-emerald-400 animate-pulse" />
+          <QrCode size={15} className="text-emerald-700" />
           <span className="hidden sm:inline">Bank & UPI</span>
         </button>
 
@@ -527,9 +539,9 @@ function MainApp() {
           target="_blank"
           rel="noopener noreferrer"
           title="Direct WhatsApp Consultation"
-          className="px-4 py-2.5 rounded-full bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-semibold text-xs flex items-center gap-2 shadow-2xl border border-white/20 hover:scale-105 active:scale-95 transition-all"
+          className="h-10 px-4 rounded-full bg-emerald-700 hover:bg-emerald-800 text-white font-semibold text-xs flex items-center gap-2 shadow-lg transition-all"
         >
-          <MessageSquare size={16} />
+          <MessageSquare size={15} />
           <span className="hidden sm:inline">WhatsApp (<span className="font-rupee font-black">₹5,100</span>)</span>
         </a>
 
@@ -537,7 +549,7 @@ function MainApp() {
         <button
           type="button"
           onClick={scrollToTop}
-          className="p-2.5 rounded-full bg-[#24152F]/90 hover:bg-[#24152F] text-white/80 hover:text-[#D6B574] shadow-xl border border-white/10 hover:scale-105 active:scale-95 transition-all"
+          className="h-10 w-10 flex items-center justify-center rounded-full bg-white/95 hover:bg-[#F4F0FA] text-[#1E162B] hover:text-[#522B8A] shadow-lg border border-[#E6DFD3] backdrop-blur-md transition-all cursor-pointer"
           title="Scroll to Top"
         >
           <ArrowUp size={16} />

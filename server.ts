@@ -764,6 +764,203 @@ app.post('/api/reviews/:id/helpful', (req: Request, res: Response) => {
 });
 
 // ==========================================
+// 6b-2. ACTUAL LIVE VISITORS & TRAFFIC COUNTER (START FROM 1005)
+// ==========================================
+const TRAFFIC_FILE = path.join(DATA_DIR, 'traffic.json');
+const DEFAULT_TRAFFIC_START = 1005;
+const LIVE_SESSION_TTL_MS = 60 * 1000; // 60 seconds active heartbeat window
+
+interface TrafficDataStore {
+  startFrom: number;
+  recordedVisits: number;
+  recordedPageViews: number;
+  dailyVisits: Record<string, number>;
+  pageViews: Record<string, number>;
+  countedSessionIds: string[];
+  lastVisitAt: string | null;
+}
+
+interface LiveSessionEntry {
+  sessionId: string;
+  visitorId: string;
+  path: string;
+  firstSeen: number;
+  lastSeen: number;
+}
+
+const liveSessionsMap = new Map<string, LiveSessionEntry>();
+
+function getTodayDateKey(): string {
+  return new Date().toISOString().split('T')[0];
+}
+
+function readTrafficData(): TrafficDataStore {
+  const defaultStore: TrafficDataStore = {
+    startFrom: DEFAULT_TRAFFIC_START,
+    recordedVisits: 0,
+    recordedPageViews: 0,
+    dailyVisits: {},
+    pageViews: {},
+    countedSessionIds: [],
+    lastVisitAt: null,
+  };
+  const data = readJsonFile<TrafficDataStore>(TRAFFIC_FILE, defaultStore);
+  if (typeof data.startFrom !== 'number' || data.startFrom < 1005) {
+    data.startFrom = DEFAULT_TRAFFIC_START;
+  }
+  if (!Array.isArray(data.countedSessionIds)) data.countedSessionIds = [];
+  if (!data.dailyVisits || typeof data.dailyVisits !== 'object') data.dailyVisits = {};
+  if (!data.pageViews || typeof data.pageViews !== 'object') data.pageViews = {};
+  return data;
+}
+
+function pruneExpiredLiveSessions() {
+  const now = Date.now();
+  for (const [sid, entry] of liveSessionsMap.entries()) {
+    if (now - entry.lastSeen > LIVE_SESSION_TTL_MS) {
+      liveSessionsMap.delete(sid);
+    }
+  }
+}
+
+function buildTrafficStatsResponse(data: TrafficDataStore) {
+  pruneExpiredLiveSessions();
+  const todayKey = getTodayDateKey();
+
+  const activePathsMap: Record<string, number> = {};
+  for (const entry of liveSessionsMap.values()) {
+    const cleanPath = entry.path || '/';
+    activePathsMap[cleanPath] = (activePathsMap[cleanPath] || 0) + 1;
+  }
+
+  const topPages = Object.entries(data.pageViews || {})
+    .map(([pagePath, views]) => ({ path: pagePath, views }))
+    .sort((a, b) => b.views - a.views)
+    .slice(0, 8);
+
+  return {
+    startFrom: data.startFrom,
+    totalVisitors: data.startFrom + (data.recordedVisits || 0),
+    totalPageViews: data.startFrom + (data.recordedPageViews || 0),
+    recordedVisits: data.recordedVisits || 0,
+    recordedPageViews: data.recordedPageViews || 0,
+    todayVisitors: data.dailyVisits?.[todayKey] || 0,
+    liveNow: liveSessionsMap.size,
+    activePaths: activePathsMap,
+    topPages,
+    lastVisitAt: data.lastVisitAt,
+    serverTime: new Date().toISOString(),
+  };
+}
+
+// Track page visit / new session
+app.post('/api/traffic/track', (req: Request, res: Response) => {
+  const body = req.body || {};
+  const sessionId = typeof body.sessionId === 'string' && body.sessionId.trim()
+    ? body.sessionId.trim().slice(0, 128)
+    : crypto.randomUUID();
+  const visitorId = typeof body.visitorId === 'string' && body.visitorId.trim()
+    ? body.visitorId.trim().slice(0, 128)
+    : sessionId;
+  const currentPath = typeof body.path === 'string' && body.path.trim()
+    ? body.path.trim().slice(0, 200)
+    : '/';
+
+  const now = Date.now();
+  const existingLive = liveSessionsMap.get(sessionId);
+  liveSessionsMap.set(sessionId, {
+    sessionId,
+    visitorId,
+    path: currentPath,
+    firstSeen: existingLive?.firstSeen || now,
+    lastSeen: now,
+  });
+
+  const data = readTrafficData();
+  const todayKey = getTodayDateKey();
+  const sessionDateKey = `${todayKey}:${sessionId}`;
+
+  // Increment unique session visit only once per sessionId per day
+  if (!data.countedSessionIds.includes(sessionDateKey)) {
+    data.recordedVisits = (data.recordedVisits || 0) + 1;
+    data.dailyVisits[todayKey] = (data.dailyVisits[todayKey] || 0) + 1;
+    data.countedSessionIds.push(sessionDateKey);
+    // Keep stored session list bounded to recent 2000 entries
+    if (data.countedSessionIds.length > 2000) {
+      data.countedSessionIds = data.countedSessionIds.slice(-2000);
+    }
+  }
+
+  // Always record actual page view
+  data.recordedPageViews = (data.recordedPageViews || 0) + 1;
+  data.pageViews[currentPath] = (data.pageViews[currentPath] || 0) + 1;
+  data.lastVisitAt = new Date().toISOString();
+
+  writeJsonFile(TRAFFIC_FILE, data);
+  return res.json(buildTrafficStatsResponse(data));
+});
+
+// Active visitor heartbeat
+app.post('/api/traffic/heartbeat', (req: Request, res: Response) => {
+  const body = req.body || {};
+  const sessionId = typeof body.sessionId === 'string' ? body.sessionId.trim().slice(0, 128) : '';
+  const visitorId = typeof body.visitorId === 'string' ? body.visitorId.trim().slice(0, 128) : sessionId;
+  const currentPath = typeof body.path === 'string' && body.path.trim() ? body.path.trim().slice(0, 200) : '/';
+
+  if (sessionId) {
+    const now = Date.now();
+    const existing = liveSessionsMap.get(sessionId);
+    liveSessionsMap.set(sessionId, {
+      sessionId,
+      visitorId,
+      path: currentPath,
+      firstSeen: existing?.firstSeen || now,
+      lastSeen: now,
+    });
+  }
+
+  const data = readTrafficData();
+  return res.json(buildTrafficStatsResponse(data));
+});
+
+// Immediate session leave beacon (supports application/json or text/plain from navigator.sendBeacon)
+app.post('/api/traffic/leave', express.text({ type: '*/*' }), (req: Request, res: Response) => {
+  try {
+    let sessionId = '';
+    if (typeof req.body === 'string' && req.body.trim()) {
+      const parsed = JSON.parse(req.body);
+      sessionId = typeof parsed?.sessionId === 'string' ? parsed.sessionId.trim() : '';
+    } else if (req.body && typeof req.body === 'object') {
+      sessionId = typeof req.body.sessionId === 'string' ? req.body.sessionId.trim() : '';
+    }
+    if (sessionId) {
+      liveSessionsMap.delete(sessionId);
+    }
+  } catch {
+    // Ignore malformed leave beacons
+  }
+  return res.status(204).end();
+});
+
+// Public read endpoint for live counter display
+app.get('/api/traffic/stats', (_req: Request, res: Response) => {
+  res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate');
+  const data = readTrafficData();
+  return res.json(buildTrafficStatsResponse(data));
+});
+
+// Admin endpoint to inspect or update baseline startFrom (default 1005)
+app.put('/api/admin/traffic/config', requireAuth, (req: AuthRequest, res: Response) => {
+  const { startFrom } = req.body || {};
+  const data = readTrafficData();
+  if (typeof startFrom === 'number' && Number.isFinite(startFrom) && startFrom >= 0) {
+    data.startFrom = Math.floor(startFrom);
+    writeJsonFile(TRAFFIC_FILE, data);
+  }
+  return res.json({ success: true, stats: buildTrafficStatsResponse(data) });
+});
+
+// ==========================================
 // 6c. DYNAMIC SEARCH ENGINE SITEMAP & ROBOTS.TXT
 // ==========================================
 const SEO_SETTINGS_FILE = path.join(DATA_DIR, 'seo.json');

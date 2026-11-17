@@ -57,19 +57,19 @@ export const FaqSection: React.FC<FaqSectionProps> = ({ lang = 'en' }) => {
     : (customFaqs && customFaqs.length > 0 ? customFaqs : faqs_en);
 
   return (
-    <section id="faq" className="py-20 md:py-28 bg-[#FBF8F2] text-[#29242E] relative border-t border-[#EAE2F4]">
+    <section id="faq" className="py-20 md:py-28 bg-white text-[#1E162B] relative border-t border-[#E6DFD3]">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
         <div className="text-center mb-16 space-y-3">
-          <div className="flex items-center justify-center gap-2 text-xs font-semibold uppercase tracking-widest text-[#6941A5]">
-            <HelpCircle size={14} className="text-[#D6B574]" />
+          <div className="flex items-center justify-center gap-2 text-xs font-semibold uppercase tracking-widest text-[#522B8A]">
+            <HelpCircle size={14} className="text-[#B48228]" />
             <span>{lang === 'hi' ? 'जिज्ञासा एवं समाधान' : 'Clarifications & Questions'}</span>
           </div>
 
-          <h2 className="font-cormorant text-3xl sm:text-4xl lg:text-5xl font-light text-[#24152F] leading-tight">
+          <h2 className="font-cormorant text-3xl sm:text-4xl lg:text-5xl font-light text-[#1E162B] leading-tight">
             {lang === 'hi' ? 'प्रायः पूछे जाने वाले प्रश्न —' : 'Frequently Asked Questions —'} <br />
-            <span className="italic font-normal text-[#6941A5]">
+            <span className="italic font-normal text-[#522B8A]">
               {lang === 'hi'
                 ? 'समय निर्धारण, गोपनीयता एवं सत्र की प्रक्रिया से जुड़ी संपूर्ण जानकारी'
                 : 'Everything you need to know about scheduling, confidentiality, and what to expect'}
@@ -85,23 +85,23 @@ export const FaqSection: React.FC<FaqSectionProps> = ({ lang = 'en' }) => {
             return (
               <div
                 key={index}
-                className="rounded-2xl bg-white border border-[#EAE2F4] hover:border-[#D6B574]/60 transition-colors shadow-xs overflow-hidden"
+                className="rounded-2xl bg-[#FAF8F5] border border-[#E6DFD3] hover:border-[#DEC38C] transition-colors shadow-2xs overflow-hidden"
               >
                 <button
                   type="button"
                   onClick={() => setOpenIndex(isOpen ? null : index)}
-                  className="w-full p-6 text-left flex items-center justify-between gap-4 focus:outline-none"
+                  className="w-full p-6 text-left flex items-center justify-between gap-4 focus:outline-none cursor-pointer"
                 >
-                  <span className="font-cinzel text-base font-semibold text-[#24152F]">
+                  <span className="font-cinzel text-base font-semibold text-[#1E162B]">
                     {item.q}
                   </span>
-                  <div className={`p-1.5 rounded-full bg-[#FBF8F2] text-[#6941A5] transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}>
+                  <div className={`p-1.5 rounded-full bg-white border border-[#E6DFD3] text-[#522B8A] transition-transform duration-300 shrink-0 ${isOpen ? 'rotate-180' : ''}`}>
                     <ChevronDown size={18} />
                   </div>
                 </button>
 
                 {isOpen && (
-                  <div className="px-6 pb-6 pt-1 text-xs sm:text-sm text-[#29242E]/80 leading-relaxed font-light border-t border-[#EAE2F4]/60">
+                  <div className="px-6 pb-6 pt-3 text-xs sm:text-sm text-[#4A4356] leading-relaxed border-t border-[#EFECE6] bg-white">
                     {item.a}
                   </div>
                 )}
@@ -111,12 +111,12 @@ export const FaqSection: React.FC<FaqSectionProps> = ({ lang = 'en' }) => {
         </div>
 
         {/* Direct Team Help Box */}
-        <div className="p-8 rounded-3xl bg-[#24152F] text-white border border-[#D6B574]/40 shadow-xl space-y-4 text-center sm:text-left sm:flex sm:items-center sm:justify-between sm:space-y-0">
+        <div className="p-8 rounded-3xl bg-[#FBF5E6] text-[#1E162B] border-2 border-[#DEC38C] shadow-md space-y-4 text-center sm:text-left sm:flex sm:items-center sm:justify-between sm:space-y-0 gap-6">
           <div className="space-y-1">
-            <h4 className="font-cinzel text-lg font-bold text-white">
+            <h4 className="font-cinzel text-lg font-bold text-[#1E162B]">
               {lang === 'hi' ? 'कोई अन्य प्रश्न या विशेष परामर्श आवश्यकता?' : 'Still have questions or special requirements?'}
             </h4>
-            <p className="text-xs text-[#EAE2F4]/75">
+            <p className="text-xs text-[#4A4356]">
               {lang === 'hi'
                 ? 'पूजा जी की टीम से सीधे संपर्क करें। बुकिंग से पूर्व किसी भी जिज्ञासा के समाधान हेतु हम सदैव तत्पर हैं।'
                 : 'Connect directly with Pooja ji’s team. We are happy to clarify any questions prior to booking.'}
@@ -128,14 +128,14 @@ export const FaqSection: React.FC<FaqSectionProps> = ({ lang = 'en' }) => {
               href="https://wa.me/919105731969"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-semibold flex items-center gap-2 transition-colors shadow-sm"
+              className="h-10 px-4 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-semibold flex items-center gap-2 transition-colors shadow-xs"
             >
               <MessageSquare size={14} />
               <span>WhatsApp: +919105731969</span>
             </a>
             <a
               href="mailto:astro.poojaofficial@gmail.com"
-              className="px-4 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-[#D6B574] text-xs font-semibold flex items-center gap-2 border border-[#D6B574]/30 transition-colors"
+              className="h-10 px-4 rounded-xl bg-white hover:bg-[#FAF8F5] text-[#522B8A] text-xs font-semibold flex items-center gap-2 border border-[#DFD5F0] transition-colors shadow-2xs"
             >
               <Mail size={14} />
               <span>{lang === 'hi' ? 'ईमेल सहायता' : 'Email Support'}</span>

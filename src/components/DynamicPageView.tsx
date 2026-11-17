@@ -112,19 +112,19 @@ export const DynamicPageView: React.FC<DynamicPageViewProps> = ({
   if (error || !page) {
     return (
       <div className="min-h-[70vh] flex flex-col items-center justify-center p-6 text-center max-w-lg mx-auto">
-        <div className="w-16 h-16 rounded-3xl bg-[#24152F]/10 border border-[#D6B574]/40 flex items-center justify-center text-[#D6B574] mb-4">
+        <div className="w-16 h-16 rounded-3xl bg-[#F4F0FA] border border-[#DFD5F0] flex items-center justify-center text-[#522B8A] mb-4">
           <Compass size={32} />
         </div>
-        <h2 className="font-cinzel text-2xl font-bold text-[#24152F]">
+        <h2 className="font-cinzel text-2xl font-bold text-[#1E162B]">
           {lang === 'hi' ? 'पेज उपलब्ध नहीं है (Page Not Found)' : 'Page Not Found'}
         </h2>
-        <p className="text-xs text-[#29242E]/70 mt-2 leading-relaxed">
+        <p className="text-xs text-[#4A4356] mt-2 leading-relaxed">
           {error || 'यह पेज या तो हटा दिया गया है या अभी तक सार्वजनिक रूप से प्रकाशित नहीं हुआ है।'}
         </p>
         <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
           <button
             onClick={onBackToHome}
-            className="px-5 py-2.5 rounded-full bg-[#24152F] hover:bg-[#341e44] text-[#D6B574] text-xs font-semibold shadow-lg transition-all"
+            className="h-10 px-5 rounded-xl bg-[#522B8A] hover:bg-[#412070] text-white text-xs font-semibold shadow-md transition-all cursor-pointer"
           >
             ← मुख्य पृष्ठ पर लौटें (Home)
           </button>
@@ -132,7 +132,7 @@ export const DynamicPageView: React.FC<DynamicPageViewProps> = ({
             href="https://wa.me/919105731969"
             target="_blank"
             rel="noopener noreferrer"
-            className="px-5 py-2.5 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold shadow-lg transition-all"
+            className="h-10 px-5 flex items-center rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-semibold shadow-md transition-all"
           >
             व्हाट्सएप पर संपर्क करें
           </a>
@@ -142,7 +142,7 @@ export const DynamicPageView: React.FC<DynamicPageViewProps> = ({
   }
 
   return (
-    <div className="min-h-screen bg-[#FBF8F2] text-[#29242E] selection:bg-[#EAE2F4] selection:text-[#24152F] pb-20">
+    <div className="min-h-screen bg-[#FAF8F5] text-[#1E162B] selection:bg-[#EAE2F4] selection:text-[#522B8A] pb-20">
       {/* Comprehensive Dynamic SEO Head & Article Schema */}
       <SEOHead
         title={page.seo?.metaTitle || `${page.title} | डॉ. पूजा अवस्थी — आध्यात्मिक मार्गदर्शन`}
@@ -158,7 +158,7 @@ export const DynamicPageView: React.FC<DynamicPageViewProps> = ({
       />
 
       {/* Top Breadcrumb & Share Navigation Strip */}
-      <div className="bg-[#24152F] text-white border-b border-[#D6B574]/30 py-3 px-4 sm:px-8">
+      <div className="bg-[#F4F1EA] text-[#1E162B] border-b border-[#DEC38C]/60 py-3 px-4 sm:px-8 pt-24 md:pt-28">
         <div className="max-w-5xl mx-auto flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
           <Breadcrumb
             items={[
@@ -171,13 +171,13 @@ export const DynamicPageView: React.FC<DynamicPageViewProps> = ({
 
           <div className="flex items-center gap-2 self-end sm:self-auto shrink-0">
             {page.status === 'draft' && (
-              <span className="px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300 text-[10px] font-bold border border-amber-500/40">
+              <span className="px-2 py-0.5 rounded-full bg-amber-100 text-amber-800 text-[10px] font-bold border border-amber-300">
                 ड्राफ्ट पूर्वावलोकन (Draft Mode)
               </span>
             )}
             <button
               onClick={handleShare}
-              className="px-3 py-1.5 rounded-full bg-white/10 hover:bg-white/20 text-[#D6B574] text-xs font-semibold flex items-center gap-1.5 transition-all cursor-pointer"
+              className="h-8 px-3 rounded-lg bg-white hover:bg-[#FBF5E6] text-[#7A5311] border border-[#DEC38C] text-xs font-semibold flex items-center gap-1.5 transition-all cursor-pointer"
               title="पेज शेयर करें"
             >
               <Share2 size={13} />
@@ -196,28 +196,25 @@ export const DynamicPageView: React.FC<DynamicPageViewProps> = ({
             return (
               <section
                 key={hero.id}
-                className="rounded-3xl p-8 sm:p-14 text-center text-white relative overflow-hidden bg-cover bg-center shadow-2xl border-2 border-[#D6B574]/40"
+                className="rounded-3xl p-8 sm:p-14 text-center text-[#1E162B] relative overflow-hidden bg-cover bg-center shadow-lg border-2 border-[#DEC38C]"
                 style={{
                   backgroundImage: hero.bgImage
-                    ? `linear-gradient(rgba(24, 12, 33, 0.88), rgba(24, 12, 33, 0.88)), url(${hero.bgImage})`
-                    : 'linear-gradient(135deg, #24152F, #1c0f26)',
+                    ? `linear-gradient(rgba(255, 255, 255, 0.90), rgba(250, 248, 245, 0.92)), url(${hero.bgImage})`
+                    : 'linear-gradient(135deg, #FBF5E6, #FFFFFF 55%, #F4F0FA)',
                 }}
               >
-                {/* Subtle celestial particle glow */}
-                <div className="absolute top-0 right-0 w-80 h-80 bg-[#D6B574]/15 rounded-full blur-3xl pointer-events-none" />
-
                 <div className="relative z-10 space-y-4 max-w-3xl mx-auto">
-                  <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#D6B574]/20 border border-[#D6B574]/40 text-[#D6B574] text-xs font-semibold">
-                    <Sparkles size={12} />
+                  <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-white border border-[#DEC38C] text-[#7A5311] text-xs font-semibold shadow-2xs">
+                    <Sparkles size={12} className="text-[#B48228]" />
                     <span>{page.category || 'Vedic Guidance'}</span>
                   </div>
 
-                  <h1 className="font-cinzel text-2xl sm:text-4xl lg:text-5xl font-bold text-[#F3E5AB] leading-tight">
+                  <h1 className="font-cinzel text-2xl sm:text-4xl lg:text-5xl font-bold text-[#1E162B] leading-tight">
                     {hero.title}
                   </h1>
 
                   {hero.subtitle && (
-                    <p className="text-sm sm:text-base text-[#EAE2F4]/90 font-light leading-relaxed">
+                    <p className="text-sm sm:text-base text-[#4A4356] leading-relaxed">
                       {hero.subtitle}
                     </p>
                   )}
@@ -238,7 +235,7 @@ export const DynamicPageView: React.FC<DynamicPageViewProps> = ({
                             onSelectServiceForBooking(hero.title);
                           }
                         }}
-                        className="px-8 py-3.5 rounded-full bg-gradient-to-r from-[#D6B574] via-[#eedca2] to-[#D6B574] text-[#1c0f26] font-bold text-sm tracking-wide shadow-xl shadow-[#D6B574]/20 hover:brightness-105 active:scale-95 transition-all inline-flex items-center gap-2 cursor-pointer"
+                        className="h-12 px-8 rounded-xl bg-[#522B8A] hover:bg-[#412070] text-white font-bold text-sm tracking-wide shadow-md transition-all inline-flex items-center gap-2 cursor-pointer"
                       >
                         <span>{hero.ctaText}</span>
                         <span>→</span>
@@ -257,14 +254,14 @@ export const DynamicPageView: React.FC<DynamicPageViewProps> = ({
               <section key={rt.id} className="space-y-4 max-w-3xl mx-auto">
                 {rt.heading && (
                   <div className="space-y-2">
-                    <h2 className="font-cinzel text-xl sm:text-2xl font-bold text-[#24152F] tracking-wide">
+                    <h2 className="font-cinzel text-xl sm:text-2xl font-bold text-[#1E162B] tracking-wide">
                       {rt.heading}
                     </h2>
-                    <div className="h-0.5 w-16 bg-[#D6B574]" />
+                    <div className="h-0.5 w-16 bg-[#B48228]" />
                   </div>
                 )}
                 <div
-                  className="prose prose-base sm:prose-lg max-w-none text-[#29242E]/90 leading-relaxed font-sans space-y-3 [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:space-y-1.5 [&_li]:text-sm sm:[&_li]:text-base [&_strong]:text-[#24152F] [&_strong]:font-semibold"
+                  className="prose prose-base sm:prose-lg max-w-none text-[#4A4356] leading-relaxed font-sans space-y-3 [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:space-y-1.5 [&_li]:text-sm sm:[&_li]:text-base [&_strong]:text-[#1E162B] [&_strong]:font-semibold"
                   dangerouslySetInnerHTML={{ __html: rt.content }}
                 />
               </section>
@@ -277,21 +274,21 @@ export const DynamicPageView: React.FC<DynamicPageViewProps> = ({
             return (
               <section
                 key={vq.id}
-                className="p-8 sm:p-10 rounded-3xl bg-gradient-to-r from-[#24152F] via-[#2d1b3b] to-[#1c0f26] text-white border-2 border-[#D6B574]/50 shadow-xl text-center space-y-4 max-w-3xl mx-auto relative overflow-hidden"
+                className="p-8 sm:p-10 rounded-3xl bg-[#F4F0FA] text-[#1E162B] border-2 border-[#DEC38C] shadow-sm text-center space-y-4 max-w-3xl mx-auto relative overflow-hidden"
               >
-                <div className="absolute top-2 left-4 text-4xl text-[#D6B574]/20 font-serif select-none pointer-events-none">
+                <div className="absolute top-2 left-4 text-4xl text-[#B48228]/25 font-serif select-none pointer-events-none">
                   “
                 </div>
                 {vq.mantra && (
-                  <div className="inline-block px-4 py-1 rounded-full bg-[#D6B574]/15 border border-[#D6B574]/30 text-xs font-bold text-[#D6B574] tracking-widest uppercase font-mono">
+                  <div className="inline-block px-4 py-1 rounded-full bg-white border border-[#DEC38C] text-xs font-bold text-[#7A5311] tracking-widest uppercase font-mono">
                     {vq.mantra}
                   </div>
                 )}
-                <blockquote className="font-serif italic text-base sm:text-lg text-[#F3E5AB] leading-relaxed max-w-2xl mx-auto">
+                <blockquote className="font-serif italic text-base sm:text-lg text-[#522B8A] leading-relaxed max-w-2xl mx-auto">
                   "{vq.quote}"
                 </blockquote>
                 {vq.author && (
-                  <div className="text-xs text-[#EAE2F4]/80 font-cinzel font-semibold tracking-wider">
+                  <div className="text-xs text-[#7A5311] font-cinzel font-semibold tracking-wider">
                     — {vq.author}
                   </div>
                 )}
@@ -304,17 +301,17 @@ export const DynamicPageView: React.FC<DynamicPageViewProps> = ({
             const img = block as SingleImageBlock;
             return (
               <section key={img.id} className="text-center space-y-2.5 max-w-4xl mx-auto">
-                <div className="rounded-3xl overflow-hidden shadow-2xl border-2 border-[#D6B574]/40 bg-[#1c0f26] inline-block">
+                <div className="p-2 rounded-3xl overflow-hidden shadow-lg border border-[#E6DFD3] bg-white inline-block">
                   <img
                     src={img.url}
                     alt={img.altText || img.caption || 'Spiritual Image'}
-                    className="max-h-[500px] w-auto mx-auto object-cover hover:scale-[1.01] transition-transform duration-300 cursor-pointer"
+                    className="max-h-[500px] w-auto mx-auto rounded-2xl object-cover hover:scale-[1.01] transition-transform duration-300 cursor-pointer"
                     onClick={() => setActiveLightboxImg({ url: img.url, caption: img.caption })}
                     loading="lazy"
                   />
                 </div>
                 {img.caption && (
-                  <p className="text-xs text-[#29242E]/70 font-medium italic">
+                  <p className="text-xs text-[#5D556A] font-medium italic">
                     {img.caption}
                   </p>
                 )}
@@ -329,10 +326,10 @@ export const DynamicPageView: React.FC<DynamicPageViewProps> = ({
               <section key={gal.id} className="space-y-6">
                 {gal.heading && (
                   <div className="text-center space-y-2">
-                    <h3 className="font-cinzel text-xl sm:text-2xl font-bold text-[#24152F]">
+                    <h3 className="font-cinzel text-xl sm:text-2xl font-bold text-[#1E162B]">
                       {gal.heading}
                     </h3>
-                    <div className="h-0.5 w-16 bg-[#D6B574] mx-auto" />
+                    <div className="h-0.5 w-16 bg-[#B48228] mx-auto" />
                   </div>
                 )}
 
@@ -349,9 +346,9 @@ export const DynamicPageView: React.FC<DynamicPageViewProps> = ({
                     <div
                       key={i}
                       onClick={() => setActiveLightboxImg({ url: img.url, caption: img.caption })}
-                      className="group rounded-2xl overflow-hidden bg-[#24152F] border border-[#D6B574]/30 shadow-lg hover:border-[#D6B574] transition-all cursor-pointer flex flex-col justify-between"
+                      className="group rounded-2xl overflow-hidden bg-white border border-[#E6DFD3] shadow-sm hover:border-[#DEC38C] hover:shadow-md transition-all cursor-pointer flex flex-col justify-between p-2"
                     >
-                      <div className="aspect-[4/3] overflow-hidden bg-[#160b20]">
+                      <div className="aspect-[4/3] overflow-hidden rounded-xl bg-[#FAF8F5]">
                         <img
                           src={img.url}
                           alt={img.caption || 'Gallery Image'}
@@ -360,8 +357,8 @@ export const DynamicPageView: React.FC<DynamicPageViewProps> = ({
                         />
                       </div>
                       {img.caption && (
-                        <div className="p-3 bg-[#24152F] text-center border-t border-white/5">
-                          <p className="text-xs text-[#EAE2F4]/90 font-medium truncate">
+                        <div className="p-2.5 text-center">
+                          <p className="text-xs text-[#4A4356] font-medium truncate">
                             {img.caption}
                           </p>
                         </div>
@@ -381,34 +378,36 @@ export const DynamicPageView: React.FC<DynamicPageViewProps> = ({
               <section key={vid.id} className="space-y-4 max-w-3xl mx-auto text-center">
                 {vid.heading && (
                   <div className="space-y-2">
-                    <h3 className="font-cinzel text-xl sm:text-2xl font-bold text-[#24152F]">
+                    <h3 className="font-cinzel text-xl sm:text-2xl font-bold text-[#1E162B]">
                       {vid.heading}
                     </h3>
-                    <div className="h-0.5 w-16 bg-[#D6B574] mx-auto" />
+                    <div className="h-0.5 w-16 bg-[#B48228] mx-auto" />
                   </div>
                 )}
 
-                <div className="aspect-video w-full rounded-3xl overflow-hidden shadow-2xl border-2 border-[#D6B574]/40 bg-black">
-                  {isIframe ? (
-                    <iframe
-                      src={embedUrl}
-                      title={vid.heading || 'Video'}
-                      className="w-full h-full border-0"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowFullScreen
-                    />
-                  ) : (
-                    <video
-                      src={embedUrl || vid.videoUrl}
-                      controls
-                      poster={vid.posterImage}
-                      className="w-full h-full object-cover"
-                    />
-                  )}
+                <div className="aspect-video w-full rounded-3xl overflow-hidden shadow-lg border-2 border-[#DEC38C] bg-white p-1.5">
+                  <div className="w-full h-full rounded-2xl overflow-hidden bg-slate-950">
+                    {isIframe ? (
+                      <iframe
+                        src={embedUrl}
+                        title={vid.heading || 'Video'}
+                        className="w-full h-full border-0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                      />
+                    ) : (
+                      <video
+                        src={embedUrl || vid.videoUrl}
+                        controls
+                        poster={vid.posterImage}
+                        className="w-full h-full object-cover"
+                      />
+                    )}
+                  </div>
                 </div>
 
                 {vid.caption && (
-                  <p className="text-xs text-[#29242E]/70 font-medium italic">
+                  <p className="text-xs text-[#5D556A] font-medium italic">
                     {vid.caption}
                   </p>
                 )}
@@ -423,10 +422,10 @@ export const DynamicPageView: React.FC<DynamicPageViewProps> = ({
               <section key={fg.id} className="space-y-6">
                 {fg.heading && (
                   <div className="text-center space-y-2">
-                    <h3 className="font-cinzel text-xl sm:text-2xl font-bold text-[#24152F]">
+                    <h3 className="font-cinzel text-xl sm:text-2xl font-bold text-[#1E162B]">
                       {fg.heading}
                     </h3>
-                    <div className="h-0.5 w-16 bg-[#D6B574] mx-auto" />
+                    <div className="h-0.5 w-16 bg-[#B48228] mx-auto" />
                   </div>
                 )}
 
@@ -434,17 +433,17 @@ export const DynamicPageView: React.FC<DynamicPageViewProps> = ({
                   {fg.features?.map((f, i) => (
                     <div
                       key={i}
-                      className="p-6 rounded-3xl bg-white border border-[#D6B574]/40 shadow-xl space-y-2.5 relative group hover:border-[#D6B574] transition-all"
+                      className="p-6 rounded-3xl bg-white border border-[#E6DFD3] shadow-sm space-y-2.5 relative group hover:border-[#DEC38C] transition-all"
                     >
                       {f.badge && (
-                        <span className="inline-block px-2.5 py-0.5 rounded-full bg-[#24152F] text-[#D6B574] text-[10px] font-bold uppercase tracking-wider">
+                        <span className="inline-block px-2.5 py-0.5 rounded-full bg-[#FBF5E6] border border-[#DEC38C] text-[#7A5311] text-[10px] font-bold uppercase tracking-wider">
                           {f.badge}
                         </span>
                       )}
-                      <h4 className="font-cinzel text-base font-bold text-[#24152F] group-hover:text-[#D6B574] transition-colors">
+                      <h4 className="font-cinzel text-base font-bold text-[#1E162B] group-hover:text-[#522B8A] transition-colors">
                         {f.title}
                       </h4>
-                      <p className="text-xs text-[#29242E]/80 leading-relaxed font-sans">
+                      <p className="text-xs text-[#4A4356] leading-relaxed font-sans">
                         {f.desc}
                       </p>
                     </div>
@@ -473,13 +472,13 @@ export const DynamicPageView: React.FC<DynamicPageViewProps> = ({
                       onSelectServiceForBooking(cta.label);
                     }
                   }}
-                  className="px-8 py-3.5 rounded-full bg-gradient-to-r from-[#D6B574] via-[#eedca2] to-[#D6B574] text-[#1c0f26] font-bold text-sm tracking-wide shadow-xl shadow-[#D6B574]/20 hover:brightness-105 active:scale-95 transition-all inline-flex items-center gap-2 cursor-pointer"
+                  className="h-12 px-8 rounded-xl bg-[#522B8A] hover:bg-[#412070] text-white font-bold text-sm tracking-wide shadow-md transition-all inline-flex items-center gap-2 cursor-pointer"
                 >
                   <MessageSquare size={16} />
                   <span>{cta.label}</span>
                 </button>
                 {cta.subtext && (
-                  <p className="text-xs text-[#29242E]/60 italic">{cta.subtext}</p>
+                  <p className="text-xs text-[#5D556A] italic">{cta.subtext}</p>
                 )}
               </section>
             );
@@ -491,22 +490,20 @@ export const DynamicPageView: React.FC<DynamicPageViewProps> = ({
             return (
               <section
                 key={bc.id}
-                className="p-8 sm:p-10 rounded-3xl bg-gradient-to-r from-[#24152F] to-[#1c0f26] text-white border-2 border-[#D6B574] shadow-2xl flex flex-col md:flex-row items-center justify-between gap-6 relative overflow-hidden"
+                className="p-8 sm:p-10 rounded-3xl bg-white text-[#1E162B] border-2 border-[#DEC38C] shadow-lg flex flex-col md:flex-row items-center justify-between gap-6 relative overflow-hidden"
               >
-                <div className="absolute right-0 top-0 w-64 h-full bg-[#D6B574]/10 rounded-full blur-2xl pointer-events-none" />
-
                 <div className="space-y-2 text-center md:text-left relative z-10">
-                  <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-[#D6B574]/20 border border-[#D6B574]/40 text-[#D6B574] text-xs font-semibold">
-                    <Sparkles size={11} />
+                  <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-[#FBF5E6] border border-[#DEC38C] text-[#7A5311] text-xs font-semibold">
+                    <Sparkles size={11} className="text-[#B48228]" />
                     <span>व्यक्तिगत परामर्श स्लॉट</span>
                   </span>
-                  <h3 className="font-cinzel text-xl sm:text-2xl font-bold text-white">
+                  <h3 className="font-cinzel text-xl sm:text-2xl font-bold text-[#1E162B]">
                     {bc.serviceName}
                   </h3>
-                  <p className="text-xs text-[#EAE2F4]/80 max-w-xl leading-relaxed">
+                  <p className="text-xs text-[#4A4356] max-w-xl leading-relaxed">
                     {bc.description || 'डॉ. पूजा अवस्थी से सीधा संवाद, संपूर्ण वैदिक परीक्षण व समाधान।'}
                   </p>
-                  <div className="flex flex-wrap items-center justify-center md:justify-start gap-4 text-xs text-[#D6B574] pt-1 font-medium">
+                  <div className="flex flex-wrap items-center justify-center md:justify-start gap-4 text-xs text-[#7A5311] pt-1 font-semibold">
                     <span>⏱ {bc.duration || '60–90 मिनट'}</span>
                     <span>•</span>
                     <span>🔒 100% गोपनीय व व्यक्तिगत</span>
@@ -514,7 +511,7 @@ export const DynamicPageView: React.FC<DynamicPageViewProps> = ({
                 </div>
 
                 <div className="text-center md:text-right shrink-0 relative z-10 space-y-3">
-                  <div className="font-cinzel text-3xl font-bold text-[#D6B574]">
+                  <div className="font-rupee text-3xl font-black text-[#1E162B]">
                     {bc.price || '₹5,100'}
                   </div>
                   <button
@@ -522,7 +519,7 @@ export const DynamicPageView: React.FC<DynamicPageViewProps> = ({
                       onBackToHome();
                       onSelectServiceForBooking(bc.serviceName);
                     }}
-                    className="px-8 py-3.5 rounded-full bg-gradient-to-r from-[#D6B574] via-[#eedca2] to-[#D6B574] text-[#1c0f26] font-bold text-xs tracking-wide shadow-xl shadow-[#D6B574]/30 hover:brightness-105 active:scale-95 transition-all flex items-center gap-2 cursor-pointer"
+                    className="h-11 px-8 rounded-xl bg-[#522B8A] hover:bg-[#412070] text-white font-bold text-xs tracking-wide shadow-md transition-all flex items-center gap-2 cursor-pointer"
                   >
                     <span>परामर्श बुक करें</span>
                     <span>→</span>
@@ -536,9 +533,9 @@ export const DynamicPageView: React.FC<DynamicPageViewProps> = ({
           if (block.type === 'divider') {
             return (
               <div key={block.id} className="py-6 flex items-center justify-center gap-4">
-                <div className="h-px bg-gradient-to-r from-transparent via-[#D6B574]/40 to-transparent flex-1" />
-                <span className="text-[#D6B574] text-sm">⚜️ ॐ ⚜️</span>
-                <div className="h-px bg-gradient-to-r from-transparent via-[#D6B574]/40 to-transparent flex-1" />
+                <div className="h-px bg-gradient-to-r from-transparent via-[#DEC38C] to-transparent flex-1" />
+                <span className="text-[#B48228] text-sm">⚜️ ॐ ⚜️</span>
+                <div className="h-px bg-gradient-to-r from-transparent via-[#DEC38C] to-transparent flex-1" />
               </div>
             );
           }
@@ -557,10 +554,10 @@ export const DynamicPageView: React.FC<DynamicPageViewProps> = ({
         </div>
 
         {/* Bottom Back Button & Consultation Affordance */}
-        <div className="pt-8 border-t border-[#D6B574]/30 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="pt-8 border-t border-[#E6DFD3] flex flex-col sm:flex-row items-center justify-between gap-4">
           <button
             onClick={onBackToHome}
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#24152F] hover:bg-[#341e44] text-[#D6B574] font-semibold text-xs shadow-lg transition-all cursor-pointer"
+            className="h-11 inline-flex items-center gap-2 px-6 rounded-xl bg-[#522B8A] hover:bg-[#412070] text-white font-semibold text-xs shadow-md transition-all cursor-pointer"
           >
             <ArrowLeft size={16} />
             <span>← मुख्य वेबसाइट पर लौटें</span>
@@ -570,7 +567,7 @@ export const DynamicPageView: React.FC<DynamicPageViewProps> = ({
             href="https://wa.me/919105731969?text=Hello%20Dr.%20Pooja%20Awasthi,%20I%20am%20interested%20in%20your%20services."
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-emerald-600 to-teal-600 text-white font-semibold text-xs shadow-lg hover:brightness-105 transition-all"
+            className="h-11 inline-flex items-center gap-2 px-6 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white font-semibold text-xs shadow-md transition-all"
           >
             <MessageSquare size={16} />
             <span>व्हाट्सएप पर सीधा परामर्श (Direct Booking)</span>
@@ -582,22 +579,22 @@ export const DynamicPageView: React.FC<DynamicPageViewProps> = ({
       {activeLightboxImg && (
         <div
           onClick={() => setActiveLightboxImg(null)}
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-md animate-fade-in cursor-pointer"
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#1E162B]/75 backdrop-blur-md animate-fade-in cursor-pointer"
         >
-          <div className="relative max-w-4xl max-h-[90vh] flex flex-col items-center">
+          <div className="relative max-w-4xl max-h-[90vh] flex flex-col items-center bg-white p-3 rounded-3xl border border-[#E6DFD3] shadow-2xl">
             <button
               onClick={() => setActiveLightboxImg(null)}
-              className="absolute -top-12 right-0 p-2 text-white hover:text-[#D6B574] transition-colors"
+              className="absolute -top-12 right-0 p-2 rounded-full bg-white text-[#1E162B] hover:text-[#522B8A] transition-colors cursor-pointer"
             >
               <X size={24} />
             </button>
             <img
               src={activeLightboxImg.url}
               alt={activeLightboxImg.caption || 'Enlarged View'}
-              className="max-h-[80vh] w-auto rounded-2xl object-contain shadow-2xl border border-[#D6B574]/40"
+              className="max-h-[80vh] w-auto rounded-2xl object-contain"
             />
             {activeLightboxImg.caption && (
-              <p className="mt-3 text-xs text-white/90 text-center bg-[#24152F]/80 px-4 py-1.5 rounded-full border border-white/10">
+              <p className="mt-3 text-xs text-[#1E162B] text-center bg-[#FAF8F5] px-4 py-1.5 rounded-full border border-[#E6DFD3] font-medium">
                 {activeLightboxImg.caption}
               </p>
             )}

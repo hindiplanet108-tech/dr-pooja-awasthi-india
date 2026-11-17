@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Compass, Sparkles, Shield, CheckCircle, Maximize2, X, Award } from 'lucide-react';
+import { Compass, Sparkles, Shield, Maximize2, X, Award, ArrowRight } from 'lucide-react';
 import { getTranslation } from '../data/translations';
 import poojaAuthenticPhoto from '../assets/images/pooja_awasthi_portrait.jpeg';
 import { useSiteContent } from '../utils/siteContentContext';
@@ -53,117 +53,111 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ lang, onBookClick })
   ];
 
   return (
-    <section id="about" className="py-20 md:py-28 bg-[#FBF8F2] text-[#29242E] relative overflow-hidden">
-      {/* Delicate background decorative element with radiant glow */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-[#EAE2F4]/60 to-[#D6B574]/20 rounded-full blur-3xl pointer-events-none" />
+    <section id="about" className="py-20 md:py-28 bg-white text-[#1E162B] relative overflow-hidden border-b border-[#E5DFD5]">
+      <div className="absolute top-0 right-0 w-96 h-96 bg-[#F4F0FA]/80 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         {/* Section Header */}
-        <div className="max-w-3xl mb-16 space-y-3">
-          <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-[#6941A5]">
+        <div className="max-w-3xl mb-14 space-y-3">
+          <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#522B8A]">
             <span>{t.aboutNav}</span>
-            <span aria-hidden="true">·</span>
-            <span>{lang === 'hi' ? 'पावन संकल्प एवं दृष्टिकोण' : 'Vision & Philosophy'}</span>
+            <span aria-hidden="true" className="text-[#B48228]">·</span>
+            <span className="text-[#7A5311]">{lang === 'hi' ? 'पावन संकल्प एवं दृष्टिकोण' : 'Vision & Philosophy'}</span>
           </div>
-          <h2 className="font-cormorant text-3xl sm:text-4xl lg:text-5xl font-light text-[#24152F] leading-tight">
+          <h2 className="font-cormorant text-3xl sm:text-4xl lg:text-5xl font-medium text-[#1E162B] leading-tight">
             {t.aboutTitle} — <br />
-            <span className="italic font-normal text-[#6941A5]">{t.aboutSubtitle}</span>
+            <span className="italic font-semibold text-[#522B8A]">{t.aboutSubtitle}</span>
           </h2>
         </div>
 
-        {/* Editorial Layout: Founder Profile Photo Card + Biography & Pillars */}
+        {/* Editorial Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
           
-          {/* Left Column (5 cols): Authentic Founder Photo & Credentials Card */}
+          {/* Left Column: Matted Portrait & Credentials */}
           <div className="lg:col-span-5 space-y-6">
-            <div className="relative group rounded-2xl overflow-hidden bg-white border border-[#D6B574]/50 shadow-xl p-4 transition-all duration-300 hover:shadow-2xl">
-              {/* Outer gold decorative trim */}
-              <div className="absolute inset-0 border border-[#D6B574]/20 rounded-2xl pointer-events-none" />
-              
-              {/* Authentic Photo Container */}
+            <div className="relative group rounded-2xl overflow-hidden bg-[#FAF8F5] border border-[#E6DFD3] shadow-lg p-4 transition-all duration-300 hover:shadow-xl">
               <div
-                className="relative aspect-[3/4] rounded-xl overflow-hidden bg-[#24152F] cursor-pointer group/img"
+                className="relative aspect-[3/4] rounded-xl overflow-hidden bg-white border border-[#E6DFD3] cursor-pointer group/img"
                 onClick={() => setShowLightbox(true)}
               >
                 <img
                   src={displayPhoto}
                   alt="Dr. Pooja Awasthi with Tarot & Healing Crystals"
-                  className="w-full h-full object-cover object-top transition-transform duration-700 group-hover/img:scale-105"
+                  className="w-full h-full object-cover object-top transition-transform duration-700 group-hover/img:scale-[1.03]"
                   onError={(e) => {
                     const target = e.currentTarget;
                     if (target.src !== '/28.jpeg') target.src = '/28.jpeg';
                   }}
                 />
                 
-                {/* Gold gradient overlay at bottom */}
-                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#24152F] via-[#24152F]/70 to-transparent p-4 pt-10 text-white text-center">
-                  <p className="font-cinzel text-base font-semibold text-[#D6B574]">
+                {/* Restrained caption scrim at bottom */}
+                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-950/90 via-slate-900/40 to-transparent p-4 pt-12 text-white text-center">
+                  <p className="font-cinzel text-base font-bold text-white">
                     Dr. Pooja Awasthi
                   </p>
-                  <p className="text-[11px] text-[#EAE2F4]/80 tracking-wider uppercase mt-0.5">
+                  <p className="text-[11px] text-[#F3D899] tracking-wider uppercase font-semibold mt-0.5">
                     {bioLang === 'hi' ? 'आध्यात्मिक मार्गदर्शिका एवं सलाहकार' : 'Spiritual Guide & Sacred Consultant'}
                   </p>
                 </div>
 
-                {/* Lightbox zoom trigger badge */}
-                <div className="absolute top-3 right-3 p-2 rounded-full bg-[#24152F]/80 text-[#D6B574] hover:bg-[#24152F] hover:text-white border border-[#D6B574]/40 backdrop-blur-sm transition-colors shadow-md">
+                {/* Lightbox zoom trigger */}
+                <div className="absolute top-3 right-3 p-2 rounded-full bg-white/95 text-[#1E162B] hover:text-[#522B8A] border border-[#E5DFD5] transition-colors shadow-md">
                   <Maximize2 size={14} />
                 </div>
               </div>
 
-              {/* Photo Caption & Reference */}
-              <div className="pt-3 pb-1 text-center border-b border-[#EAE2F4]">
-                <p className="text-xs font-medium text-[#6941A5]">
+              <div className="pt-3.5 pb-2.5 text-center border-b border-[#E6DFD3]">
+                <p className="text-xs font-semibold text-[#522B8A]">
                   {bioLang === 'hi'
                     ? 'चित्र: डॉ. पूजा अवस्थी (टैरो कार्ड्स एवं हीलिंग क्रिस्टल्स सहित)'
-                    : 'Dr. Pooja Awasthi with Tarot & Healing Crystals (28.jpeg)'}
+                    : 'Dr. Pooja Awasthi with Tarot & Healing Crystals'}
                 </p>
               </div>
 
-              {/* Core Credentials & Mastery */}
-              <div className="pt-3 space-y-2">
-                <div className="text-[11px] font-bold uppercase tracking-wider text-[#6941A5] flex items-center gap-1.5">
-                  <Award size={13} className="text-[#D6B574]" />
+              {/* Core Credentials */}
+              <div className="pt-3.5 space-y-2">
+                <div className="text-[11px] font-bold uppercase tracking-wider text-[#522B8A] flex items-center gap-1.5">
+                  <Award size={13} className="text-[#B48228]" />
                   <span>{bioLang === 'hi' ? 'विशेषज्ञता के मुख्य क्षेत्र' : 'Sacred Alignment Disciplines'}</span>
                 </div>
-                <ul className="text-xs text-[#29242E]/80 space-y-1.5 leading-relaxed">
+                <ul className="text-xs text-[#4A4356] space-y-1.5 leading-relaxed">
                   <li className="flex items-start gap-2">
-                    <span className="text-[#D6B574] mt-0.5">✦</span>
+                    <span className="text-[#B48228] mt-0.5">✦</span>
                     <span>
                       {bioLang === 'hi' ? (
-                        <><strong>वैदिक अंकशास्त्री</strong> एवं नाम स्पेलिंग संतुलन विशेषज्ञ</>
+                        <><strong className="text-[#1E162B]">वैदिक अंकशास्त्री</strong> एवं नाम स्पेलिंग संतुलन विशेषज्ञ</>
                       ) : (
-                        <><strong>Vedic Numerologist</strong> & Chaldean Name Vibration Specialist</>
+                        <><strong className="text-[#1E162B]">Vedic Numerologist</strong> & Chaldean Name Vibration Specialist</>
                       )}
                     </span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-[#D6B574] mt-0.5">✦</span>
+                    <span className="text-[#B48228] mt-0.5">✦</span>
                     <span>
                       {bioLang === 'hi' ? (
-                        <><strong>सटीक टैरो कार्ड</strong> एवं जीवन दिशा मार्गदर्शन</>
+                        <><strong className="text-[#1E162B]">सटीक टैरो कार्ड</strong> एवं जीवन दिशा मार्गदर्शन</>
                       ) : (
-                        <><strong>Intuitive Tarot</strong> & Symbolic Archetypal Consultant</>
+                        <><strong className="text-[#1E162B]">Intuitive Tarot</strong> & Symbolic Archetypal Consultant</>
                       )}
                     </span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-[#D6B574] mt-0.5">✦</span>
+                    <span className="text-[#B48228] mt-0.5">✦</span>
                     <span>
                       {bioLang === 'hi' ? (
-                        <><strong>ऑरा व चक्र हीलिंग</strong> (ऊर्जा संतुलन विशेषज्ञ)</>
+                        <><strong className="text-[#1E162B]">ऑरा व चक्र हीलिंग</strong> (ऊर्जा संतुलन विशेषज्ञ)</>
                       ) : (
-                        <><strong>Subtle Body Energy</strong> Cleanser & Chakra Harmonizer</>
+                        <><strong className="text-[#1E162B]">Subtle Body Energy</strong> Cleanser & Chakra Harmonizer</>
                       )}
                     </span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-[#D6B574] mt-0.5">✦</span>
+                    <span className="text-[#B48228] mt-0.5">✦</span>
                     <span>
                       {bioLang === 'hi' ? (
-                        <><strong>जीवन मार्गदर्शन</strong> एवं मेंटरशिप</>
+                        <><strong className="text-[#1E162B]">जीवन मार्गदर्शन</strong> एवं मेंटरशिप</>
                       ) : (
-                        <><strong>Mindful Life Coach</strong> & Spiritual Mentor</>
+                        <><strong className="text-[#1E162B]">Mindful Life Coach</strong> & Spiritual Mentor</>
                       )}
                     </span>
                   </li>
@@ -172,12 +166,12 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ lang, onBookClick })
             </div>
 
             {/* Ethical Sanctuary Guarantee */}
-            <div className="p-5 rounded-2xl bg-gradient-to-br from-[#EAE2F4]/40 to-white border border-[#6941A5]/20 space-y-2 shadow-xs">
-              <div className="flex items-center gap-2 text-xs font-semibold text-[#24152F]">
-                <Shield size={16} className="text-[#6941A5]" />
+            <div className="p-5 rounded-2xl bg-[#F4F0FA] border border-[#DFD5F0] space-y-2 shadow-2xs">
+              <div className="flex items-center gap-2 text-xs font-bold text-[#522B8A]">
+                <Shield size={16} className="text-emerald-700" />
                 <span>{bioLang === 'hi' ? '100% नैतिक व सुरक्षित परामर्श' : '100% Ethical & Confidential Guidance'}</span>
               </div>
-              <p className="text-xs text-[#29242E]/75 leading-relaxed">
+              <p className="text-xs text-[#4A4356] leading-relaxed">
                 {bioLang === 'hi'
                   ? 'हम किसी भी तरह के भय या डराने वाले दावों से दूर रहते हैं। हर सत्र केवल आपकी मन की शांति, सही दिशा और आत्म-विश्वास के लिए समर्पित है।'
                   : 'Zero fear-based predictions or false promises. Every 1-on-1 session is an authentic, completely private space dedicated to your peace of mind and clarity.'}
@@ -185,23 +179,23 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ lang, onBookClick })
             </div>
           </div>
 
-          {/* Right Column (7 cols): Spiritual Biography, Vision, & 3 Pillars */}
-          <div className="lg:col-span-7 space-y-6 text-[#29242E]/85 leading-relaxed">
+          {/* Right Column: Spiritual Biography, Vision, & 3 Pillars */}
+          <div className="lg:col-span-7 space-y-6 text-[#4A4356] leading-relaxed">
             
-            {/* Bilingual Biography Header with Switcher */}
-            <div className="p-6 sm:p-7 rounded-2xl bg-white border border-[#EAE2F4] shadow-sm space-y-5">
-              <div className="flex items-center justify-between border-b border-[#EAE2F4] pb-3">
-                <span className="text-xs font-bold uppercase tracking-wider text-[#6941A5]">
+            {/* Bilingual Biography Card */}
+            <div className="p-6 sm:p-8 rounded-2xl bg-[#FAF8F5] border border-[#E6DFD3] shadow-xs space-y-5">
+              <div className="flex items-center justify-between border-b border-[#E6DFD3] pb-3.5">
+                <span className="text-xs font-bold uppercase tracking-wider text-[#522B8A]">
                   {bioLang === 'hi' ? 'आध्यात्मिक परिचय' : 'Spiritual Biography'}
                 </span>
-                <div className="inline-flex rounded-lg border border-[#D6B574]/40 p-0.5 bg-[#FBF8F2] text-xs">
+                <div className="inline-flex rounded-lg border border-[#DEC38C] p-0.5 bg-white text-xs shadow-2xs">
                   <button
                     type="button"
                     onClick={() => setBioLang('en')}
-                    className={`px-2.5 py-1 rounded-md font-medium transition-colors ${
+                    className={`px-3 py-1 rounded-md font-semibold transition-colors cursor-pointer ${
                       bioLang === 'en'
-                        ? 'bg-[#24152F] text-[#D6B574]'
-                        : 'text-[#29242E]/70 hover:text-[#24152F]'
+                        ? 'bg-[#522B8A] text-white'
+                        : 'text-[#5D556A] hover:text-[#1E162B]'
                     }`}
                   >
                     English
@@ -209,10 +203,10 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ lang, onBookClick })
                   <button
                     type="button"
                     onClick={() => setBioLang('hi')}
-                    className={`px-2.5 py-1 rounded-md font-medium transition-colors ${
+                    className={`px-3 py-1 rounded-md font-semibold transition-colors cursor-pointer ${
                       bioLang === 'hi'
-                        ? 'bg-[#24152F] text-[#D6B574]'
-                        : 'text-[#29242E]/70 hover:text-[#24152F]'
+                        ? 'bg-[#522B8A] text-white'
+                        : 'text-[#5D556A] hover:text-[#1E162B]'
                     }`}
                   >
                     हिन्दी
@@ -221,8 +215,8 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ lang, onBookClick })
               </div>
 
               {bioLang === 'hi' ? (
-                <div className="space-y-4 text-sm font-normal text-[#29242E]/90 leading-relaxed">
-                  <p className="text-base text-[#24152F] font-medium leading-relaxed">
+                <div className="space-y-4 text-sm text-[#4A4356] leading-relaxed">
+                  <p className="text-base text-[#1E162B] font-semibold leading-relaxed">
                     {aboutContent?.p1_hi || 'डॉ. पूजा अवस्थी एक समर्पित आध्यात्मिक मार्गदर्शिका हैं, जो वैदिक अंकशास्त्र, टैरो मार्गदर्शन, चक्र हीलिंग और जीवन कोचिंग के माध्यम से लोगों को जीवन में नई दिशा और आशा देती हैं।'}
                   </p>
                   <p>
@@ -230,8 +224,8 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ lang, onBookClick })
                   </p>
                 </div>
               ) : (
-                <div className="space-y-4 text-sm font-normal text-[#29242E]/90 leading-relaxed">
-                  <p className="text-base text-[#24152F] font-medium leading-relaxed">
+                <div className="space-y-4 text-sm text-[#4A4356] leading-relaxed">
+                  <p className="text-base text-[#1E162B] font-semibold leading-relaxed">
                     {aboutContent?.p1_en || 'Dr. Pooja Awasthi offers caring spiritual guidance through Vedic Numerology, Tarot Reading, Energy Healing, and Life Coaching to help you see your life with clarity and hope.'}
                   </p>
                   <p>
@@ -241,14 +235,13 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ lang, onBookClick })
               )}
             </div>
 
-            {/* Her Vision Quote */}
-            <div className="p-6 rounded-2xl bg-white border border-[#D6B574]/40 shadow-sm space-y-2 relative overflow-hidden group hover:border-[#D6B574] transition-colors">
-              <div className="absolute -right-4 -bottom-4 w-28 h-28 bg-[#D6B574]/15 rounded-full blur-xl pointer-events-none" />
-              <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#6941A5]">
-                <Sparkles size={14} className="text-[#D6B574]" />
+            {/* Vision Quote Card */}
+            <div className="p-6 sm:p-7 rounded-2xl bg-[#FBF5E6] border border-[#DEC38C] shadow-xs space-y-2.5">
+              <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#7A5311]">
+                <Sparkles size={14} className="text-[#B48228]" />
                 <span>{bioLang === 'hi' ? 'हमारा उद्देश्य' : 'Her Vision'}</span>
               </div>
-              <blockquote className="font-cormorant text-xl md:text-2xl italic text-[#24152F] leading-snug">
+              <blockquote className="font-cormorant text-xl md:text-2xl italic font-medium text-[#1E162B] leading-snug">
                 {bioLang === 'hi'
                   ? '“लोगों को उनके जीवन को अधिक समझ, आत्मविश्वास और सकारात्मक सोच के साथ जीने में मदद करना—ताकि वे अपनी अंदरूनी शक्ति को पहचानें और सही रास्ते पर आगे बढ़ सकें।”'
                   : '“Supporting individuals in understanding their lives with greater awareness, confidence, and a positive perspective—so they can connect with their inner strength and make their personal journey truly meaningful.”'}
@@ -256,22 +249,22 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ lang, onBookClick })
             </div>
 
             {/* Three Pillars of Mentorship */}
-            <div className="p-6 rounded-2xl bg-white border border-[#EAE2F4] shadow-sm space-y-4">
-              <h3 className="font-cinzel text-base font-bold text-[#24152F] flex items-center gap-2 border-b border-[#EAE2F4] pb-3">
-                <Compass size={17} className="text-[#6941A5]" />
+            <div className="p-6 rounded-2xl bg-[#FAF8F5] border border-[#E6DFD3] shadow-xs space-y-4">
+              <h3 className="font-cinzel text-base font-bold text-[#1E162B] flex items-center gap-2 border-b border-[#E6DFD3] pb-3">
+                <Compass size={17} className="text-[#522B8A]" />
                 <span>{bioLang === 'hi' ? 'हमारे मार्गदर्शन के 3 मुख्य आधार' : 'Three Sacred Pillars of Mentorship'}</span>
               </h3>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 {pillars.map((pillar) => (
-                  <div key={pillar.num} className="p-3.5 rounded-xl bg-[#FBF8F2] border border-[#EAE2F4] space-y-1.5">
+                  <div key={pillar.num} className="p-4 rounded-xl bg-white border border-[#E6DFD3] space-y-2 shadow-2xs">
                     <div className="flex items-center gap-2">
-                      <span className="font-cinzel text-xs font-bold text-[#D6B574] bg-[#24152F] px-2 py-0.5 rounded">
+                      <span className="font-cinzel text-xs font-bold text-white bg-[#522B8A] px-2.5 py-0.5 rounded-md">
                         {pillar.num}
                       </span>
-                      <h4 className="font-semibold text-xs text-[#24152F]">{pillar.title}</h4>
+                      <h4 className="font-bold text-xs text-[#1E162B]">{pillar.title}</h4>
                     </div>
-                    <p className="text-[11px] text-[#29242E]/75 leading-relaxed">
+                    <p className="text-[11px] text-[#4A4356] leading-relaxed">
                       {pillar.desc}
                     </p>
                   </div>
@@ -279,22 +272,23 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ lang, onBookClick })
               </div>
             </div>
 
-            {/* CTAs */}
-            <div className="pt-2 flex flex-wrap items-center gap-4">
+            {/* Clean Standardized Button Group */}
+            <div className="pt-2 flex flex-wrap items-center gap-3">
               <button
                 onClick={onBookClick}
                 type="button"
-                className="px-6 py-3 bg-[#24152F] hover:bg-[#341e44] text-[#D6B574] font-semibold text-xs uppercase tracking-wider rounded-lg transition-all shadow-md hover:scale-[1.02] inline-flex items-center gap-2"
+                className="h-11 px-6 bg-[#522B8A] hover:bg-[#412070] text-white font-bold text-xs uppercase tracking-wider rounded-xl transition-all shadow-sm hover:shadow-md inline-flex items-center gap-2 cursor-pointer"
               >
                 <span>{t.bookBtn}</span>
+                <ArrowRight size={14} />
               </button>
               <button
                 type="button"
                 onClick={() => setShowLightbox(true)}
-                className="px-5 py-3 bg-white hover:bg-[#FBF8F2] text-[#24152F] border border-[#D6B574] font-semibold text-xs uppercase tracking-wider rounded-lg transition-all shadow-xs inline-flex items-center gap-2"
+                className="h-11 px-5 bg-white hover:bg-[#FBF5E6] text-[#1E162B] border border-[#DEC38C] font-semibold text-xs uppercase tracking-wider rounded-xl transition-all shadow-2xs inline-flex items-center gap-2 cursor-pointer"
               >
-                <Maximize2 size={13} className="text-[#6941A5]" />
-                <span>{bioLang === 'hi' ? 'बड़ी फोटो देखें' : 'View Original Photo (28.jpeg)'}</span>
+                <Maximize2 size={13} className="text-[#B48228]" />
+                <span>{bioLang === 'hi' ? 'बड़ी फोटो देखें' : 'View Original Portrait'}</span>
               </button>
             </div>
           </div>
@@ -302,29 +296,29 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ lang, onBookClick })
         </div>
       </div>
 
-      {/* Full-resolution Lightbox for authentic portrait */}
+      {/* Clean Lightbox Modal */}
       {showLightbox && (
         <div
           role="dialog"
           aria-modal="true"
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-md"
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm"
           onClick={() => setShowLightbox(false)}
         >
           <div
-            className="relative max-w-2xl w-full max-h-[90vh] bg-[#24152F] rounded-2xl p-3 border border-[#D6B574]/60 shadow-2xl flex flex-col items-center"
+            className="relative max-w-2xl w-full max-h-[90vh] bg-white rounded-2xl p-4 border border-[#E6DFD3] shadow-2xl flex flex-col items-center"
             onClick={(e) => e.stopPropagation()}
           >
             <button
               type="button"
               onClick={() => setShowLightbox(false)}
-              className="absolute top-4 right-4 z-10 p-2 rounded-full bg-[#24152F]/90 text-white hover:text-[#D6B574] border border-[#D6B574]/40 transition-colors shadow-lg"
+              className="absolute top-4 right-4 z-10 p-2 rounded-full bg-white hover:bg-[#FAF8F5] text-[#1E162B] border border-[#E6DFD3] transition-colors shadow-md cursor-pointer"
             >
               <X size={20} />
             </button>
-            <div className="w-full overflow-hidden rounded-xl">
+            <div className="w-full overflow-hidden rounded-xl bg-[#FAF8F5]">
               <img
                 src={poojaAuthenticPhoto}
-                alt="Dr. Pooja Awasthi - Original Portrait (28.jpeg)"
+                alt="Dr. Pooja Awasthi - Original Portrait"
                 className="w-full max-h-[75vh] object-contain rounded-xl mx-auto"
                 onError={(e) => {
                   const target = e.currentTarget;
@@ -333,13 +327,13 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ lang, onBookClick })
               />
             </div>
             <div className="w-full pt-3 px-2 text-center">
-              <h3 className="font-cinzel text-lg font-bold text-[#D6B574]">
+              <h3 className="font-cinzel text-lg font-bold text-[#1E162B]">
                 Dr. Pooja Awasthi
               </h3>
-              <p className="text-xs text-[#EAE2F4]/80 mt-0.5">
+              <p className="text-xs text-[#5D556A] mt-0.5">
                 {bioLang === 'hi'
                   ? 'आध्यात्मिक मार्गदर्शिका एवं सलाहकार • प्रामाणिक स्वरूप'
-                  : 'Spiritual Guide & Sacred Consultant • Authentic Consecrated Portrait (28.jpeg)'}
+                  : 'Spiritual Guide & Sacred Consultant • Authentic Portrait'}
               </p>
             </div>
           </div>

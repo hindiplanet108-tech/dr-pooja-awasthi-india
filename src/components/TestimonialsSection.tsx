@@ -69,6 +69,7 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
   const [reviewerQuote, setReviewerQuote] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
+  const [reviewFormError, setReviewFormError] = useState<string | null>(null);
   const [helpfulVotedIds, setHelpfulVotedIds] = useState<Set<string>>(new Set());
 
   // Prevent background scrolling when modal is open
@@ -143,6 +144,7 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
   // Open the review modal
   const handleOpenReviewModal = () => {
     setSubmitSuccess(false);
+    setReviewFormError(null);
     setIsReviewModalOpen(true);
   };
 
@@ -150,9 +152,10 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
   const handleSubmitReview = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!reviewerName.trim() || !reviewerQuote.trim()) {
-      alert(lang === 'hi' ? 'कृपया अपना नाम और अनुभव दर्ज करें।' : 'Please enter your name and review story.');
+      setReviewFormError(lang === 'hi' ? 'कृपया अपना नाम और अनुभव दर्ज करें।' : 'Please enter your name and review story.');
       return;
     }
+    setReviewFormError(null);
 
     try {
       setIsSubmitting(true);
@@ -209,7 +212,7 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
         setIsReviewModalOpen(false);
       }, 2500);
     } catch (err: any) {
-      alert(`त्रुटि: ${err.message}`);
+      setReviewFormError(lang === 'hi' ? `त्रुटि: ${err.message}` : `Error: ${err.message}`);
     } finally {
       setIsSubmitting(false);
     }
@@ -255,36 +258,36 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
   return (
     <section
       id="reviews"
-      className="py-20 md:py-28 bg-[#FBF8F2] text-[#29242E] relative border-t border-[#EAE2F4] overflow-hidden scroll-mt-20"
+      className="py-20 md:py-28 bg-[#FAF8F5] text-[#1E162B] relative border-t border-[#E6DFD3] overflow-hidden scroll-mt-20"
     >
       {/* Target Anchor Hooks for #client-reviews-stories & #testimonials */}
       <div id="client-reviews-stories" className="absolute -top-24 pointer-events-none" />
       <div id="testimonials" className="absolute -top-24 pointer-events-none" />
 
-      {/* Background ambient accents */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-[#D6B574]/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#6941A5]/10 rounded-full blur-3xl pointer-events-none" />
+      {/* Subtle ambient washes */}
+      <div className="absolute top-0 right-0 w-80 h-80 bg-[#FBF5E6] rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-80 h-80 bg-[#F4F0FA] rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-12">
         {/* ==================================================================== */}
         {/* 1. SECTION HEADER WITH AGGREGATE 4.9★ RATING BANNER */}
         {/* ==================================================================== */}
         <div className="text-center max-w-4xl mx-auto space-y-4">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#6941A5]/10 border border-[#6941A5]/25 text-[#6941A5] text-xs font-semibold uppercase tracking-widest shadow-xs">
-            <Quote size={13} className="text-[#D6B574]" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#DEC38C] text-[#7A5311] text-xs font-semibold uppercase tracking-widest shadow-2xs">
+            <Quote size={13} className="text-[#B48228]" />
             <span>{lang === 'hi' ? 'सत्यापित साधक अनुभव एवं कहानियाँ' : 'Client Reviews & Sacred Stories'}</span>
             <span aria-hidden="true">·</span>
-            <span className="text-[#D6B574]">★ 4.9 / 5.0</span>
+            <span className="text-[#B48228] font-bold">★ 4.9 / 5.0</span>
           </div>
 
-          <h2 className="font-cormorant text-3xl sm:text-4xl lg:text-5xl font-light text-[#24152F] leading-tight">
+          <h2 className="font-cormorant text-3xl sm:text-4xl lg:text-5xl font-light text-[#1E162B] leading-tight">
             {lang === 'hi' ? 'संतुष्ट ग्राहकों के अनुभव एवं' : 'Client Reviews & Transformation Stories'} <br />
-            <span className="italic font-normal text-[#6941A5]">
+            <span className="italic font-normal text-[#522B8A]">
               {lang === 'hi' ? 'जीवन परिवर्तन की सत्य कहानियाँ' : 'Authentic Reflections from 1,450+ Seekers Worldwide'}
             </span>
           </h2>
 
-          <p className="text-sm text-[#29242E]/75 leading-relaxed max-w-2xl mx-auto font-light">
+          <p className="text-sm text-[#4A4356] leading-relaxed max-w-2xl mx-auto">
             {lang === 'hi'
               ? 'अक्सर पूछे जाने वाले प्रश्नों (FAQ) के बाद प्रस्तुत हैं वे वास्तविक अनुभव, जिन्होंने डॉ. पूजा अवस्थी जी के वैदिक अंक ज्योतिष, वॉच थेरेपी, सॉल्ट थेरेपी व हीलिंग से अपने जीवन में चमत्कारी बदलाव महसूस किया है।'
               : 'Real-life experiences from seekers across 24 countries who experienced deep clarity, career breakthroughs, and emotional peace under Dr. Pooja Awasthi’s divine guidance.'}
@@ -294,35 +297,33 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
         {/* ==================================================================== */}
         {/* 2. AGGREGATE STATS & TOP TRIGGER CARD */}
         {/* ==================================================================== */}
-        <div className="p-6 sm:p-8 rounded-3xl bg-gradient-to-r from-[#24152F] via-[#341d44] to-[#24152F] text-white border-2 border-[#D6B574]/40 shadow-2xl flex flex-col lg:flex-row items-center justify-between gap-6">
+        <div className="p-6 sm:p-8 rounded-3xl bg-white text-[#1E162B] border-2 border-[#DEC38C] shadow-lg flex flex-col lg:flex-row items-center justify-between gap-6">
           {/* Left: 4.9 Rating summary */}
           <div className="flex flex-col sm:flex-row items-center gap-5 text-center sm:text-left">
-            <div className="w-24 h-24 rounded-2xl bg-gradient-to-tr from-[#D6B574] via-[#F3E5AB] to-[#D6B574] p-1 shadow-lg shrink-0 flex items-center justify-center">
-              <div className="w-full h-full bg-[#1c0f26] rounded-xl flex flex-col items-center justify-center">
-                <span className="font-cormorant text-4xl font-bold text-[#D6B574] leading-none">4.9</span>
-                <div className="flex items-center text-[#D6B574] mt-1">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} size={11} fill="#D6B574" />
-                  ))}
-                </div>
+            <div className="w-24 h-24 rounded-2xl bg-[#FBF5E6] border-2 border-[#DEC38C] shadow-sm shrink-0 flex flex-col items-center justify-center">
+              <span className="font-cormorant text-4xl font-bold text-[#7A5311] leading-none">4.9</span>
+              <div className="flex items-center text-[#B48228] mt-1.5 gap-0.5">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} size={11} fill="#B48228" />
+                ))}
               </div>
             </div>
 
             <div className="space-y-1">
               <div className="flex items-center justify-center sm:justify-start gap-2">
-                <span className="text-base sm:text-lg font-cinzel font-bold text-white">
+                <span className="text-base sm:text-lg font-cinzel font-bold text-[#1E162B]">
                   {lang === 'hi' ? '४.९★ वैदिक संतुष्टि रेटिंग' : '4.9★ Global Satisfaction Rating'}
                 </span>
-                <span className="px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 text-[10px] font-bold">
+                <span className="px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200 text-[10px] font-bold">
                   ✓ Verified
                 </span>
               </div>
-              <p className="text-xs text-[#EAE2F4]/75 max-w-md font-light leading-relaxed">
+              <p className="text-xs text-[#4A4356] max-w-md leading-relaxed">
                 {lang === 'hi'
                   ? '१,४५०+ से अधिक सत्यापित परामर्शों पर आधारित। ९८% से अधिक साधकों ने ५-स्टार रेटिंग के साथ पूर्ण संतुष्टि व जीवन परिवर्तन व्यक्त किया।'
                   : 'Based on 1,450+ verified global consultations. Over 98% 5-star ratings across India, UAE, UK, USA & Singapore.'}
               </p>
-              <div className="flex flex-wrap items-center justify-center sm:justify-start gap-3 text-[11px] text-[#D6B574] font-medium pt-1">
+              <div className="flex flex-wrap items-center justify-center sm:justify-start gap-3 text-[11px] text-[#7A5311] font-semibold pt-1">
                 <span>✦ ९८% 5-Star Reviews</span>
                 <span>•</span>
                 <span>✦ १००% पूर्ण गोपनीयता</span>
@@ -337,9 +338,9 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
             <button
               type="button"
               onClick={handleOpenReviewModal}
-              className="w-full sm:w-auto px-6 py-3.5 rounded-2xl bg-gradient-to-r from-[#D6B574] via-[#eedca2] to-[#D6B574] text-[#1c0f26] font-bold text-xs uppercase tracking-wider shadow-xl shadow-[#D6B574]/25 hover:brightness-105 active:scale-95 transition-all flex items-center justify-center gap-2 cursor-pointer"
+              className="w-full sm:w-auto h-11 px-6 rounded-xl bg-[#522B8A] hover:bg-[#412070] text-white font-bold text-xs uppercase tracking-wider shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer"
             >
-              <Edit3 size={16} />
+              <Edit3 size={15} />
               <span>{lang === 'hi' ? '✍️ समीक्षा लिखें (Write a Review)' : '✍️ Write a Review'}</span>
             </button>
           </div>
@@ -348,14 +349,14 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
         {/* ==================================================================== */}
         {/* 3. FILTER TABS STRIP */}
         {/* ==================================================================== */}
-        <div className="flex flex-wrap items-center justify-center gap-2 border-b border-[#EAE2F4] pb-4">
+        <div className="flex flex-wrap items-center justify-center gap-2 border-b border-[#E6DFD3] pb-4">
           <button
             type="button"
             onClick={() => setSelectedCategory('all')}
             className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all cursor-pointer ${
               selectedCategory === 'all'
-                ? 'bg-[#24152F] text-[#D6B574] shadow-md font-bold'
-                : 'bg-white text-[#29242E]/70 hover:bg-gray-100'
+                ? 'bg-[#522B8A] text-white shadow-sm font-bold'
+                : 'bg-white text-[#4A4356] border border-[#E6DFD3] hover:bg-[#F4F0FA] hover:text-[#1E162B]'
             }`}
           >
             {lang === 'hi' ? `सभी समीक्षाएँ (${reviewsList.length})` : `All Reviews (${reviewsList.length})`}
@@ -366,11 +367,11 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
             onClick={() => setSelectedCategory('fiveStar')}
             className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all cursor-pointer flex items-center gap-1 ${
               selectedCategory === 'fiveStar'
-                ? 'bg-[#24152F] text-[#D6B574] shadow-md font-bold'
-                : 'bg-white text-[#29242E]/70 hover:bg-gray-100'
+                ? 'bg-[#522B8A] text-white shadow-sm font-bold'
+                : 'bg-white text-[#4A4356] border border-[#E6DFD3] hover:bg-[#F4F0FA] hover:text-[#1E162B]'
             }`}
           >
-            <Star size={13} fill="#D6B574" className="text-[#D6B574]" />
+            <Star size={13} fill="#B48228" className="text-[#B48228]" />
             <span>{lang === 'hi' ? 'केवल 5-Star (5★)' : '5★ Only'}</span>
           </button>
 
@@ -379,8 +380,8 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
             onClick={() => setSelectedCategory('watch')}
             className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all cursor-pointer ${
               selectedCategory === 'watch'
-                ? 'bg-[#24152F] text-[#D6B574] shadow-md font-bold'
-                : 'bg-white text-[#29242E]/70 hover:bg-gray-100'
+                ? 'bg-[#522B8A] text-white shadow-sm font-bold'
+                : 'bg-white text-[#4A4356] border border-[#E6DFD3] hover:bg-[#F4F0FA] hover:text-[#1E162B]'
             }`}
           >
             <span>{lang === 'hi' ? 'वॉच थेरेपी (Watch Therapy)' : 'Watch Therapy'}</span>
@@ -391,8 +392,8 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
             onClick={() => setSelectedCategory('numerology')}
             className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all cursor-pointer ${
               selectedCategory === 'numerology'
-                ? 'bg-[#24152F] text-[#D6B574] shadow-md font-bold'
-                : 'bg-white text-[#29242E]/70 hover:bg-gray-100'
+                ? 'bg-[#522B8A] text-white shadow-sm font-bold'
+                : 'bg-white text-[#4A4356] border border-[#E6DFD3] hover:bg-[#F4F0FA] hover:text-[#1E162B]'
             }`}
           >
             <span>{lang === 'hi' ? 'अंक ज्योतिष (Numerology)' : 'Numerology'}</span>
@@ -403,8 +404,8 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
             onClick={() => setSelectedCategory('salt')}
             className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all cursor-pointer ${
               selectedCategory === 'salt'
-                ? 'bg-[#24152F] text-[#D6B574] shadow-md font-bold'
-                : 'bg-white text-[#29242E]/70 hover:bg-gray-100'
+                ? 'bg-[#522B8A] text-white shadow-sm font-bold'
+                : 'bg-white text-[#4A4356] border border-[#E6DFD3] hover:bg-[#F4F0FA] hover:text-[#1E162B]'
             }`}
           >
             <span>{lang === 'hi' ? 'सॉल्ट व चक्र हीलिंग' : 'Salt & Chakra Healing'}</span>
@@ -415,8 +416,8 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
             onClick={() => setSelectedCategory('vastu')}
             className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all cursor-pointer ${
               selectedCategory === 'vastu'
-                ? 'bg-[#24152F] text-[#D6B574] shadow-md font-bold'
-                : 'bg-white text-[#29242E]/70 hover:bg-gray-100'
+                ? 'bg-[#522B8A] text-white shadow-sm font-bold'
+                : 'bg-white text-[#4A4356] border border-[#E6DFD3] hover:bg-[#F4F0FA] hover:text-[#1E162B]'
             }`}
           >
             <span>{lang === 'hi' ? 'वास्तु व क्रिस्टल (Vastu & Crystals)' : 'Vastu & Crystals'}</span>
@@ -432,43 +433,43 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
             return (
               <div
                 key={item.id}
-                className="p-8 rounded-3xl bg-white border border-[#EAE2F4] hover:border-[#D6B574] shadow-xs hover:shadow-xl transition-all flex flex-col justify-between space-y-6 group relative"
+                className="p-8 rounded-3xl bg-white border border-[#E6DFD3] hover:border-[#DEC38C] shadow-xs hover:shadow-lg transition-all flex flex-col justify-between space-y-6 group relative"
               >
                 <div className="space-y-4">
                   {/* Top Bar: Stars & Verified Badge */}
                   <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-1 text-[#D6B574]">
+                    <div className="flex items-center gap-1 text-[#B48228]">
                       {[...Array(item.rating)].map((_, i) => (
-                        <Star key={i} size={16} fill="#D6B574" />
+                        <Star key={i} size={16} fill="#B48228" />
                       ))}
                     </div>
 
-                    <div className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 text-[10px] font-bold">
-                      <ShieldCheck size={12} className="text-emerald-600" />
+                    <div className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200 text-[10px] font-bold">
+                      <ShieldCheck size={12} className="text-emerald-700" />
                       <span>{lang === 'hi' ? 'सत्यापित परामर्श' : 'Verified Seeker'}</span>
                     </div>
                   </div>
 
                   {/* Quote / Review Story */}
-                  <p className="font-cormorant text-lg sm:text-xl text-[#24152F] italic leading-relaxed group-hover:text-[#6941A5] transition-colors">
+                  <p className="font-cormorant text-lg sm:text-xl text-[#1E162B] italic leading-relaxed group-hover:text-[#522B8A] transition-colors">
                     “{lang === 'hi' ? item.quote_hi || item.quote : item.quote}”
                   </p>
                 </div>
 
                 {/* Footer Metadata & Helpful Button */}
-                <div className="pt-4 border-t border-[#EAE2F4] flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                <div className="pt-4 border-t border-[#EFECE6] flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                   <div>
-                    <h4 className="font-cinzel text-sm font-bold text-[#24152F]">{item.name}</h4>
-                    <div className="flex items-center gap-2 text-xs text-[#29242E]/60 mt-0.5">
+                    <h4 className="font-cinzel text-sm font-bold text-[#1E162B]">{item.name}</h4>
+                    <div className="flex items-center gap-2 text-xs text-[#5D556A] mt-0.5">
                       <span className="flex items-center gap-1">
-                        <MapPin size={12} className="text-[#6941A5]" />
+                        <MapPin size={12} className="text-[#522B8A]" />
                         <span>{lang === 'hi' ? item.location_hi || item.location : item.location}</span>
                       </span>
                       <span aria-hidden="true">·</span>
                       <span>{lang === 'hi' ? item.date_hi || item.date : item.date}</span>
                     </div>
                     <div className="mt-1">
-                      <span className="inline-block px-2 py-0.5 rounded-md bg-[#6941A5]/10 text-[#6941A5] text-[10px] font-semibold">
+                      <span className="inline-block px-2 py-0.5 rounded-md bg-[#F4F0FA] text-[#522B8A] text-[10px] font-semibold">
                         {lang === 'hi' ? item.service_hi || item.service : item.service}
                       </span>
                     </div>
@@ -482,12 +483,12 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
                       disabled={hasVoted}
                       className={`px-3 py-1.5 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-all cursor-pointer ${
                         hasVoted
-                          ? 'bg-emerald-50 text-emerald-700 border border-emerald-300 font-bold'
-                          : 'bg-[#FBF8F2] hover:bg-[#EAE2F4] text-[#24152F] border border-[#EAE2F4] active:scale-95'
+                          ? 'bg-emerald-50 text-emerald-800 border border-emerald-300 font-bold'
+                          : 'bg-[#FAF8F5] hover:bg-[#F4F0FA] text-[#1E162B] border border-[#E6DFD3]'
                       }`}
                       title="Mark review as helpful"
                     >
-                      <ThumbsUp size={13} className={hasVoted ? 'text-emerald-600' : 'text-[#6941A5]'} />
+                      <ThumbsUp size={13} className={hasVoted ? 'text-emerald-700' : 'text-[#522B8A]'} />
                       <span>{hasVoted ? (lang === 'hi' ? 'उपयोगी माना' : 'Helpful') : (lang === 'hi' ? 'उपयोगी' : 'Helpful')}</span>
                       <span className="px-1.5 py-0.2 rounded-full bg-black/5 text-[10px]">
                         {item.helpfulCount || 1}
@@ -503,19 +504,19 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
         {/* ==================================================================== */}
         {/* 5. BOTTOM BANNER WITH DUAL ACTIONS: WRITE REVIEW & BOOK CONSULTATION */}
         {/* ==================================================================== */}
-        <div className="p-8 rounded-3xl bg-gradient-to-r from-[#24152F] via-[#321c42] to-[#24152F] text-white border-2 border-[#D6B574]/40 shadow-xl text-center max-w-3xl mx-auto space-y-5">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#D6B574]/20 border border-[#D6B574]/30 text-[#D6B574] text-xs font-semibold">
-            <Sparkles size={13} />
+        <div className="p-8 rounded-3xl bg-white text-[#1E162B] border-2 border-[#DEC38C] shadow-lg text-center max-w-3xl mx-auto space-y-5">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FBF5E6] border border-[#DEC38C] text-[#7A5311] text-xs font-semibold">
+            <Sparkles size={13} className="text-[#B48228]" />
             <span>{lang === 'hi' ? 'संतुष्ट साधकों का अनुभव साझा मंच' : 'Join Our Satisfied Seekers Community'}</span>
           </div>
 
-          <h3 className="font-cinzel text-xl sm:text-2xl font-bold text-white">
+          <h3 className="font-cinzel text-xl sm:text-2xl font-bold text-[#1E162B]">
             {lang === 'hi'
               ? 'क्या आप भी अपना अनुभव साझा करना चाहते हैं?'
               : 'Would You Like to Share Your Experience?'}
           </h3>
 
-          <p className="text-xs text-[#EAE2F4]/80 max-w-lg mx-auto font-light leading-relaxed">
+          <p className="text-xs text-[#4A4356] max-w-lg mx-auto leading-relaxed">
             {lang === 'hi'
               ? 'यदि आपने डॉ. पूजा अवस्थी जी से परामर्श लिया है, तो नीचे दिए गए बटन से अपनी समीक्षा तुरंत प्रकाशित करें, अथवा नया व्यक्तिगत परामर्श बुक करें।'
               : 'If you have consulted Dr. Pooja Awasthi, submit your review instantly via the centered dialog, or book a personalized consultation.'}
@@ -526,7 +527,7 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
             <button
               type="button"
               onClick={handleOpenReviewModal}
-              className="w-full sm:w-auto px-6 py-3 rounded-2xl bg-gradient-to-r from-[#D6B574] via-[#eedca2] to-[#D6B574] text-[#1c0f26] font-bold text-xs uppercase tracking-wider shadow-lg shadow-[#D6B574]/25 hover:brightness-105 active:scale-95 transition-all flex items-center justify-center gap-2 cursor-pointer"
+              className="w-full sm:w-auto h-11 px-6 rounded-xl bg-[#522B8A] hover:bg-[#412070] text-white font-bold text-xs uppercase tracking-wider shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer"
             >
               <Edit3 size={15} />
               <span>{lang === 'hi' ? '✍️ समीक्षा लिखें (Write a Review)' : '✍️ Write a Review'}</span>
@@ -537,14 +538,14 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
               href="https://wa.me/919105731969?text=Hello%20Dr.%20Pooja%20Awasthi,%20I%20read%20the%20client%20reviews%20and%20would%20like%20to%20book%20a%20consultation."
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full sm:w-auto px-6 py-3 rounded-2xl bg-white/10 hover:bg-white/20 text-[#D6B574] hover:text-white border border-[#D6B574]/40 font-bold text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-2 cursor-pointer"
+              className="w-full sm:w-auto h-11 px-6 rounded-xl bg-[#FBF5E6] hover:bg-[#F5E8C8] text-[#7A5311] border border-[#DEC38C] font-bold text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-2 cursor-pointer"
             >
-              <MessageSquare size={15} className="text-[#25D366]" />
+              <MessageSquare size={15} className="text-emerald-700" />
               <span>
                 {lang === 'hi' ? (
-                  <>परामर्श बुक करें (<strong className="font-black text-[#F5C242]">₹5,100</strong>)</>
+                  <>परामर्श बुक करें (<strong className="font-black font-rupee text-[#1E162B]">₹5,100</strong>)</>
                 ) : (
-                  <>Book Consultation (<strong className="font-black text-[#F5C242]">₹5,100</strong>)</>
+                  <>Book Consultation (<strong className="font-black font-rupee text-[#1E162B]">₹5,100</strong>)</>
                 )}
               </span>
             </a>
@@ -615,8 +616,13 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
               </div>
             ) : (
               <form onSubmit={handleSubmitReview} className="space-y-4">
+                {reviewFormError && (
+                  <div className="p-3 rounded-xl bg-rose-50 border border-rose-200 text-xs text-rose-800 font-medium">
+                    {reviewFormError}
+                  </div>
+                )}
                 {/* 5-Star Interactive Rating Selector */}
-                <div className="p-4 rounded-2xl bg-[#FBF8F2] border border-[#EAE2F4] space-y-1.5">
+                <div className="p-4 rounded-2xl bg-[#FAF8F5] border border-[#E6DFD3] space-y-1.5">
                   <label className="text-xs font-semibold text-[#24152F] block">
                     {lang === 'hi' ? '१ से ५ स्टार रेटिंग चुनें (Star Rating) *' : 'Select Star Rating (1 to 5 Stars) *'}
                   </label>
@@ -747,7 +753,7 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-[#D6B574] via-[#ecd6a4] to-[#D6B574] text-[#1c0f26] font-bold text-xs uppercase tracking-wider shadow-lg shadow-[#D6B574]/20 hover:brightness-105 active:scale-95 transition-all flex items-center gap-2 cursor-pointer disabled:opacity-50"
+                    className="h-10 px-6 rounded-xl bg-[#522B8A] hover:bg-[#412070] text-white font-bold text-xs uppercase tracking-wider shadow-md transition-all flex items-center gap-2 cursor-pointer disabled:opacity-50"
                   >
                     <Send size={14} />
                     <span>

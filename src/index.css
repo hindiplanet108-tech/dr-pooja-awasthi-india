@@ -2,13 +2,17 @@
 
 @layer base {
   :root {
-    --color-midnight: #24152F;
-    --color-amethyst: #6941A5;
-    --color-gold: #D6B574;
-    --color-gold-light: #EAD8B1;
-    --color-ivory: #FBF8F2;
+    --color-canvas: #FAF8F5;
+    --color-surface: #FFFFFF;
+    --color-muted: #F4F0FA;
+    --color-champagne: #F5F1E9;
+    --color-midnight: #1E162B;
+    --color-amethyst: #522B8A;
+    --color-gold: #B48228;
+    --color-gold-light: #E8D5AA;
+    --color-ivory: #FAF8F5;
     --color-lavender: #EAE2F4;
-    --color-charcoal: #29242E;
+    --color-charcoal: #1E162B;
   }
 
   html {
@@ -17,8 +21,8 @@
   }
 
   body {
-    background-color: #FBF8F2;
-    color: #29242E;
+    background-color: #FAF8F5;
+    color: #1E162B;
   }
 }
 
@@ -49,11 +53,17 @@
   line-height: 1;
 }
 
-/* Custom subtle ambient glow */
+/* Editorial Luxury Light Accents */
 .gold-glow {
-  box-shadow: 0 0 30px -5px rgba(214, 181, 116, 0.25);
+  box-shadow: 0 12px 32px -8px rgba(180, 130, 40, 0.16);
 }
 
 .gold-border {
-  border-color: rgba(214, 181, 116, 0.35);
+  border-color: rgba(180, 130, 40, 0.35);
+}
+
+.gallery-frame {
+  background-color: #FFFFFF;
+  border: 1px solid #E6DFD3;
+  box-shadow: 0 10px 30px -10px rgba(30, 22, 43, 0.08);
 }

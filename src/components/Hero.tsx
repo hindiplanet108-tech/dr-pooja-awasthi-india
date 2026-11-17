@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Sparkles, Award, Trophy, ShieldCheck, ArrowRight, Camera, Upload, CheckCircle2, Maximize2, X } from 'lucide-react';
+import { Sparkles, Award, Trophy, ShieldCheck, ArrowRight, Camera, CheckCircle2, Maximize2, X } from 'lucide-react';
 import { getStoredMedia, saveStoredMedia } from '../utils/photoStorage';
 import { getTranslation } from '../data/translations';
 import { CelestialStarfield } from './CelestialStarfield';
@@ -17,7 +17,6 @@ interface HeroProps {
 export const Hero: React.FC<HeroProps> = ({
   lang,
   onBookClick,
-  onExploreClick,
   onOpenTariff,
   onCalculateVedic
 }) => {
@@ -25,13 +24,11 @@ export const Hero: React.FC<HeroProps> = ({
   const heroContent = siteContent?.hero;
   const [photoUrl, setPhotoUrl] = useState<string>(poojaAuthenticPhoto);
   const [showLightbox, setShowLightbox] = useState(false);
-  const [isUploading, setIsUploading] = useState(false);
   const [uploadSuccess, setUploadSuccess] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const t = getTranslation(lang);
 
   useEffect(() => {
-    // Only use custom uploaded photo if user explicitly uploaded one during this session or as data URL
     getStoredMedia('founder_custom_upload').then((stored) => {
       if (stored && stored.startsWith('data:image/')) {
         setPhotoUrl(stored);
@@ -43,14 +40,12 @@ export const Hero: React.FC<HeroProps> = ({
     const file = e.target.files?.[0];
     if (!file) return;
 
-    setIsUploading(true);
     const reader = new FileReader();
     reader.onload = async (event) => {
       const dataUrl = event.target?.result as string;
       if (dataUrl) {
         await saveStoredMedia('founder_custom_upload', dataUrl);
         setPhotoUrl(dataUrl);
-        setIsUploading(false);
         setUploadSuccess(lang === 'hi' ? 'चित्र सफलतापूर्वक सुरक्षित हुआ' : 'Portrait updated successfully');
         setTimeout(() => setUploadSuccess(null), 3000);
       }
@@ -59,7 +54,6 @@ export const Hero: React.FC<HeroProps> = ({
   };
 
   const handleImageError = () => {
-    // Fallback cascade to ensure original photo is always visible
     if (photoUrl === poojaAuthenticPhoto) {
       setPhotoUrl('/28.jpeg');
     } else if (photoUrl === '/28.jpeg') {
@@ -73,137 +67,141 @@ export const Hero: React.FC<HeroProps> = ({
   const displayDesc = lang === 'hi' ? (heroContent?.desc_hi || t.heroDesc) : (heroContent?.desc_en || t.heroDesc);
   const displayFee = heroContent?.fee_badge || '₹5,100';
   const displayCta = lang === 'hi' ? (heroContent?.cta_primary_hi || t.bookBtn) : (heroContent?.cta_primary_en || t.bookBtn);
-  const displayBadge = lang === 'hi' ? (heroContent?.badge_text_hi || '★ 40+ राष्ट्रीय सम्मान व पावन दीर्घा') : (heroContent?.badge_text_en || '★ 40+ National Honors & Archive');
+  const displayBadge = lang === 'hi' ? (heroContent?.badge_text_hi || '40+ राष्ट्रीय सम्मान व पावन दीर्घा') : (heroContent?.badge_text_en || '40+ National Honors & Archive');
 
   return (
-    <section className="relative pt-32 pb-16 md:pt-38 md:pb-24 overflow-hidden bg-[#24152F] text-white">
-      {/* Background celestial sacred geometry */}
-      <div className="absolute inset-0 pointer-events-none opacity-25 mix-blend-screen">
+    <section className="relative pt-32 pb-16 md:pt-38 md:pb-24 overflow-hidden bg-gradient-to-br from-[#FAF8F5] via-white to-[#F3EFFA] text-[#1E162B] border-b border-[#E5DFD5]">
+      {/* Subtle Sacred Geometry Watermark */}
+      <div className="absolute inset-0 pointer-events-none opacity-[0.045]">
         <img
           src="/src/assets/images/hero_celestial_sacred_geometry_1792557572251.jpg"
-          alt="Celestial Sacred Geometry Mandala"
-          className="w-full h-full object-cover object-center animate-[spin_180s_linear_infinite]"
+          alt=""
+          className="w-full h-full object-cover object-center animate-[spin_200s_linear_infinite]"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#24152F]/85 via-transparent to-[#24152F]" />
       </div>
 
-      {/* Floating Animated Celestial Starfield Canvas */}
+      {/* Subtle Ambient Gold & Amethyst Silk Orbs */}
       <CelestialStarfield />
-
-      {/* Colorful, radiant ambient glow orbs */}
-      <div className="absolute top-1/4 left-1/3 -translate-x-1/2 w-[500px] h-[500px] bg-gradient-to-r from-[#6941A5]/30 to-[#D6B574]/20 rounded-full blur-3xl pointer-events-none animate-pulse duration-1000" />
-      <div className="absolute -top-10 right-10 w-80 h-80 bg-[#D6B574]/20 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-12 left-1/4 w-[420px] h-[420px] bg-[#E8DCF8]/55 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-8 right-12 w-80 h-80 bg-[#F4E6C8]/50 rounded-full blur-3xl pointer-events-none" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-10 items-center">
           
           {/* Left Column: Editorial Headline & Value proposition */}
           <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
-            {/* Clean unboxed kicker */}
-            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2 text-xs md:text-sm font-medium text-[#D6B574] tracking-widest uppercase">
-              <span>{t.taglineSub}</span>
-              <span aria-hidden="true">·</span>
-              <a href="#honors" className="hover:underline flex items-center gap-1">
-                <Trophy size={13} />
+            {/* Editorial Kicker */}
+            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2.5 text-xs font-bold text-[#7A5311] tracking-widest uppercase">
+              <span className="text-[#522B8A]">{t.taglineSub}</span>
+              <span aria-hidden="true" className="text-[#B48228]">·</span>
+              <a href="#honors" className="hover:underline inline-flex items-center gap-1 text-[#7A5311]">
+                <Trophy size={13} className="text-[#B48228]" />
                 <span>{displayBadge}</span>
               </a>
-              <span aria-hidden="true">·</span>
-              <span>{lang === 'hi' ? 'गोपनीय व पावन संवाद' : '1-on-1 Sanctuary'}</span>
+              <span aria-hidden="true" className="text-[#B48228]">·</span>
+              <span className="text-[#5D556A]">{lang === 'hi' ? 'गोपनीय व्यक्तिगत परामर्श' : '1-on-1 Sanctuary'}</span>
             </div>
 
-            <h1 className="font-cormorant text-4xl sm:text-5xl lg:text-6xl font-light text-white leading-tight tracking-tight text-balance">
+            <h1 className="font-cormorant text-4xl sm:text-5xl lg:text-6xl font-medium text-[#1E162B] leading-[1.12] tracking-tight text-balance">
               {displayHeadline1} <br />
-              <span className="italic font-normal bg-gradient-to-r from-[#D6B574] via-[#eedbb3] to-[#D6B574] bg-clip-text text-transparent">
+              <span className="italic font-semibold text-[#522B8A]">
                 {displayHeadline2}
               </span>
             </h1>
 
-            <p className="text-base sm:text-lg text-[#EAE2F4]/85 max-w-2xl mx-auto lg:mx-0 font-light leading-relaxed">
+            <p className="text-base sm:text-lg text-[#4A4356] max-w-2xl mx-auto lg:mx-0 font-normal leading-relaxed">
               {displayDesc}
             </p>
 
-            {/* CTAs */}
-            <div className="pt-2 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3">
+            {/* Standardized Balanced Button Layout */}
+            <div className="pt-2 flex flex-wrap items-center justify-center lg:justify-start gap-3">
               <button
                 onClick={onBookClick}
                 type="button"
-                className="w-full sm:w-auto px-7 py-3.5 bg-gradient-to-r from-[#D6B574] via-[#e2c78a] to-[#D6B574] hover:brightness-105 text-[#24152F] font-bold text-xs uppercase tracking-wider rounded-md transition-all shadow-lg hover:shadow-[#D6B574]/30 hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2"
+                className="w-full sm:w-auto h-12 px-7 bg-[#522B8A] hover:bg-[#412070] text-white font-bold text-xs uppercase tracking-wider rounded-xl transition-all shadow-md hover:shadow-lg active:scale-[0.98] flex items-center justify-center gap-2 cursor-pointer"
               >
                 <span>{displayCta}</span>
                 <ArrowRight size={15} />
               </button>
 
+              {onOpenTariff && (
+                <button
+                  onClick={onOpenTariff}
+                  type="button"
+                  className="w-full sm:w-auto h-12 px-5 bg-[#FBF5E6] hover:bg-[#F5E8C8] text-[#7A5311] border border-[#DEC38C] rounded-xl font-bold text-xs tracking-wide transition-all flex items-center justify-center gap-2 shadow-xs cursor-pointer"
+                >
+                  <Sparkles size={14} className="text-[#B48228]" />
+                  <span>{lang === 'hi' ? '11 विशिष्ट सेवाएं व फीस (16)' : '11 Specialized Services & Fees'}</span>
+                </button>
+              )}
+
               <a
                 href="#honors"
-                className="w-full sm:w-auto px-5 py-3.5 bg-gradient-to-r from-[#D6B574]/20 to-[#6941A5]/30 hover:bg-[#D6B574]/30 text-[#D6B574] hover:text-white border border-[#D6B574]/50 rounded-md font-semibold text-xs tracking-wider transition-all flex items-center justify-center gap-2 shadow-sm"
+                className="w-full sm:w-auto h-12 px-5 bg-white hover:bg-[#F4F0FA] text-[#522B8A] border border-[#DFD5F0] rounded-xl font-semibold text-xs tracking-wide transition-all flex items-center justify-center gap-2 shadow-xs"
               >
-                <Trophy size={14} className="text-[#D6B574]" />
-                <span>{lang === 'hi' ? '40+ सम्मान व चित्र दीर्घा देखें' : 'View 40+ Honors Gallery'}</span>
+                <Trophy size={14} className="text-[#B48228]" />
+                <span>{lang === 'hi' ? '40+ सम्मान दीर्घा' : '40+ Honors Gallery'}</span>
               </a>
 
               {onCalculateVedic && (
                 <button
                   onClick={onCalculateVedic}
                   type="button"
-                  className="w-full sm:w-auto px-5 py-3.5 bg-[#6941A5]/30 hover:bg-[#6941A5]/50 text-[#D6B574] hover:text-white border border-[#D6B574]/40 rounded-md font-semibold text-xs tracking-wider transition-all flex items-center justify-center gap-2"
+                  className="w-full sm:w-auto h-12 px-5 bg-white hover:bg-[#FAF8F5] text-[#1E162B] border border-[#E5DFD5] rounded-xl font-semibold text-xs tracking-wide transition-all flex items-center justify-center gap-2 shadow-xs cursor-pointer"
                 >
-                  <Sparkles size={14} className="text-[#D6B574]" />
-                  <span>{lang === 'hi' ? 'मूलांक-भाग्यांक' : 'Calculate'}</span>
+                  <Sparkles size={14} className="text-[#522B8A]" />
+                  <span>{lang === 'hi' ? 'मूलांक-भाग्यांक निकालें' : 'Numerology Calculator'}</span>
                 </button>
               )}
             </div>
 
-            {/* Micro assurance metadata */}
-            <div className="pt-4 flex flex-wrap items-center justify-center lg:justify-start gap-6 text-xs text-[#EAE2F4]/75">
+            {/* Clean Trust Metadata Strip */}
+            <div className="pt-4 flex flex-wrap items-center justify-center lg:justify-start gap-x-6 gap-y-2 text-xs text-[#4A4356] font-medium">
               <div className="flex items-center gap-1.5">
-                <ShieldCheck size={15} className="text-[#D6B574]" />
+                <ShieldCheck size={15} className="text-emerald-700" />
                 <span>{t.confidentialBadge}</span>
               </div>
               <div className="flex items-center gap-1.5">
-                <Award size={15} className="text-[#D6B574]" />
+                <Award size={15} className="text-[#B48228]" />
                 <span>{t.governorBadge}</span>
               </div>
               <div className="flex items-center gap-1.5">
-                <Sparkles size={15} className="text-[#D6B574]" />
-                <span>{t.feeBadge}</span>
+                <Sparkles size={15} className="text-[#522B8A]" />
+                <span className="font-rupee font-bold text-[#1E162B]">{t.feeBadge}</span>
               </div>
             </div>
           </div>
 
-          {/* Right Column: Authentic Portrait Frame */}
+          {/* Right Column: Museum Gallery Matted Portrait Frame */}
           <div className="lg:col-span-5 flex flex-col items-center justify-center">
-            <div className="relative group/frame max-w-sm sm:max-w-md w-full">
-              {/* Outer decorative gold hairline frame with radiant glow */}
-              <div className="absolute -inset-3 rounded-2xl border border-[#D6B574]/40 pointer-events-none transition-transform duration-500 group-hover/frame:scale-[1.02] shadow-[0_0_30px_rgba(214,181,116,0.2)]" />
-              <div className="absolute -inset-1 rounded-xl bg-gradient-to-tr from-[#6941A5]/50 via-transparent to-[#D6B574]/40 blur-md pointer-events-none" />
-
-              {/* Main portrait container */}
-              <div className="relative rounded-xl overflow-hidden bg-[#24152F] border border-[#D6B574]/60 shadow-2xl aspect-[3/4]">
+            <div className="relative group/frame max-w-sm sm:max-w-md w-full bg-white p-3 rounded-2xl border border-[#E6DFD3] shadow-2xl">
+              {/* Subtle Gold Corner Accent Border */}
+              <div className="relative rounded-xl overflow-hidden bg-[#FAF8F5] border border-[#DEC38C]/50 aspect-[3/4]">
                 <img
                   src={displayPhoto}
                   alt="Dr. Pooja Awasthi - Spiritual Guide & Vedic Numerologist"
-                  className="w-full h-full object-cover object-top transition-transform duration-700 group-hover/frame:scale-105 cursor-pointer"
+                  className="w-full h-full object-cover object-top transition-transform duration-700 group-hover/frame:scale-[1.03] cursor-pointer"
                   onClick={() => setShowLightbox(true)}
                   onError={handleImageError}
                 />
 
-                {/* Scrim overlay with caption */}
-                <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-[#24152F] via-[#24152F]/85 to-transparent p-4 pt-10 text-center pointer-events-none">
-                  <p className="font-cinzel text-base font-semibold text-white tracking-wide">
+                {/* Clean bottom contrast scrim strictly for caption readability */}
+                <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-slate-950/90 via-slate-900/45 to-transparent p-4 pt-12 text-center pointer-events-none">
+                  <p className="font-cinzel text-base font-bold text-white tracking-wide drop-shadow-xs">
                     {t.brandTitle}
                   </p>
-                  <p className="text-xs text-[#D6B574] font-medium tracking-wider uppercase mt-0.5">
+                  <p className="text-[11px] text-[#F3D899] font-semibold tracking-wider uppercase mt-0.5">
                     {t.taglineSub}
                   </p>
                 </div>
 
-                {/* Top action buttons: View Full Size & Upload */}
+                {/* Top action buttons on crisp light surface */}
                 <div className="absolute top-3 right-3 flex items-center gap-1.5 z-20">
                   <button
                     type="button"
                     onClick={() => setShowLightbox(true)}
                     title="View Full Size Photo"
-                    className="p-2 rounded-full bg-[#24152F]/80 text-[#D6B574] hover:bg-[#24152F] hover:text-white border border-[#D6B574]/40 backdrop-blur-sm transition-colors shadow-md"
+                    className="p-2 rounded-full bg-white/90 hover:bg-white text-[#1E162B] hover:text-[#522B8A] border border-[#E5DFD5] shadow-md transition-colors cursor-pointer"
                   >
                     <Maximize2 size={14} />
                   </button>
@@ -211,7 +209,7 @@ export const Hero: React.FC<HeroProps> = ({
                     type="button"
                     onClick={() => fileInputRef.current?.click()}
                     title="Upload / Update Photo"
-                    className="p-2 rounded-full bg-[#24152F]/80 text-[#D6B574] hover:bg-[#24152F] hover:text-white border border-[#D6B574]/40 backdrop-blur-sm transition-colors shadow-md"
+                    className="p-2 rounded-full bg-white/90 hover:bg-white text-[#1E162B] hover:text-[#522B8A] border border-[#E5DFD5] shadow-md transition-colors cursor-pointer"
                   >
                     <Camera size={14} />
                   </button>
@@ -227,7 +225,7 @@ export const Hero: React.FC<HeroProps> = ({
 
               {/* Upload success notification */}
               {uploadSuccess && (
-                <div className="mt-2 flex items-center justify-center gap-1.5 text-xs text-[#D6B574] font-medium">
+                <div className="mt-2.5 flex items-center justify-center gap-1.5 text-xs text-emerald-700 font-semibold">
                   <CheckCircle2 size={14} />
                   <span>{uploadSuccess}</span>
                 </div>
@@ -238,73 +236,73 @@ export const Hero: React.FC<HeroProps> = ({
         </div>
       </div>
 
-      {/* Verified credentials 4-point strip */}
-      <div className="mt-14 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 p-4 rounded-xl bg-white/5 border border-[#D6B574]/25 backdrop-blur-md shadow-lg">
-          <div className="text-center p-3 border-r border-[#D6B574]/15 last:border-0">
-            <div className="font-cinzel text-xl md:text-2xl font-bold text-[#D6B574] tabular-nums">26</div>
-            <div className="text-xs text-[#EAE2F4]/80 mt-1">
+      {/* Clean Elevated 4-Point Credentials Strip */}
+      <div className="mt-14 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <div className="grid grid-cols-2 md:grid-cols-4 divide-y md:divide-y-0 md:divide-x divide-[#EFECE6] p-4 rounded-2xl bg-white border border-[#E6DFD3] shadow-sm">
+          <div className="text-center p-3">
+            <div className="font-cinzel text-2xl md:text-3xl font-bold text-[#522B8A] tabular-nums">40+</div>
+            <div className="text-xs text-[#4A4356] font-medium mt-1">
               {t.awardsNav}
             </div>
           </div>
-          <div className="text-center p-3 border-r border-[#D6B574]/15 last:border-0">
-            <div className="font-cinzel text-xl md:text-2xl font-bold text-[#D6B574]">
+          <div className="text-center p-3">
+            <div className="font-cinzel text-2xl md:text-3xl font-bold text-[#7A5311]">
               {lang === 'hi' ? 'वैदिक' : 'Vedic'}
             </div>
-            <div className="text-xs text-[#EAE2F4]/80 mt-1">
+            <div className="text-xs text-[#4A4356] font-medium mt-1">
               {lang === 'hi' ? 'अंकशास्त्र एवं चक्र हीलिंग' : 'Numerology & Chakras'}
             </div>
           </div>
-          <div className="text-center p-3 border-r border-[#D6B574]/15 last:border-0">
-            <div className="font-cinzel text-xl md:text-2xl font-bold text-[#D6B574] tabular-nums">{displayFee}</div>
-            <div className="text-xs text-[#EAE2F4]/80 mt-1">
+          <div className="text-center p-3">
+            <div className="font-rupee text-2xl md:text-3xl font-black text-[#1E162B] tabular-nums">{displayFee}</div>
+            <div className="text-xs text-[#4A4356] font-medium mt-1">
               {t.feeBadge}
             </div>
           </div>
           <div className="text-center p-3">
-            <div className="font-cinzel text-xl md:text-2xl font-bold text-[#D6B574]">100%</div>
-            <div className="text-xs text-[#EAE2F4]/80 mt-1">
-              {lang === 'hi' ? 'गोपनीय व सुरक्षित' : 'Confidential'}
+            <div className="font-cinzel text-2xl md:text-3xl font-bold text-emerald-700">100%</div>
+            <div className="text-xs text-[#4A4356] font-medium mt-1">
+              {lang === 'hi' ? 'गोपनीय व सुरक्षित' : 'Confidential Sanctuary'}
             </div>
           </div>
         </div>
       </div>
 
-      {/* Full-resolution Lightbox for authentic portrait */}
+      {/* Clean Gallery Lightbox */}
       {showLightbox && (
         <div
           role="dialog"
           aria-modal="true"
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-md"
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm"
           onClick={() => setShowLightbox(false)}
         >
           <div
-            className="relative max-w-2xl w-full max-h-[90vh] bg-[#24152F] rounded-2xl p-3 border border-[#D6B574]/60 shadow-2xl flex flex-col items-center"
+            className="relative max-w-2xl w-full max-h-[90vh] bg-white rounded-2xl p-4 border border-[#E6DFD3] shadow-2xl flex flex-col items-center"
             onClick={(e) => e.stopPropagation()}
           >
             <button
               type="button"
               onClick={() => setShowLightbox(false)}
-              className="absolute top-4 right-4 z-10 p-2 rounded-full bg-[#24152F]/90 text-white hover:text-[#D6B574] border border-[#D6B574]/40 transition-colors shadow-lg"
+              className="absolute top-4 right-4 z-10 p-2 rounded-full bg-white hover:bg-[#FAF8F5] text-[#1E162B] border border-[#E6DFD3] transition-colors shadow-md cursor-pointer"
             >
               <X size={20} />
             </button>
-            <div className="w-full overflow-hidden rounded-xl">
+            <div className="w-full overflow-hidden rounded-xl bg-[#FAF8F5]">
               <img
                 src={photoUrl}
-                alt="Dr. Pooja Awasthi - Original Portrait (28.jpeg)"
+                alt="Dr. Pooja Awasthi - Original Portrait"
                 className="w-full max-h-[75vh] object-contain rounded-xl mx-auto"
                 onError={handleImageError}
               />
             </div>
             <div className="w-full pt-3 px-2 text-center">
-              <h3 className="font-cinzel text-lg font-bold text-[#D6B574]">
+              <h3 className="font-cinzel text-lg font-bold text-[#1E162B]">
                 Dr. Pooja Awasthi
               </h3>
-              <p className="text-xs text-[#EAE2F4]/80 mt-0.5">
+              <p className="text-xs text-[#5D556A] mt-0.5">
                 {lang === 'hi'
                   ? 'आध्यात्मिक मार्गदर्शिका एवं वैदिक अंकशास्त्री • प्रामाणिक स्वरूप'
-                  : 'Spiritual Guide & Vedic Numerologist • Authentic Consecrated Portrait (28.jpeg)'}
+                  : 'Spiritual Guide & Vedic Numerologist • Authentic Portrait'}
               </p>
             </div>
           </div>

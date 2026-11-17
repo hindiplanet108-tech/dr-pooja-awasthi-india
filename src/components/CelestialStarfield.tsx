@@ -4,7 +4,6 @@ export const CelestialStarfield: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
   useEffect(() => {
-    // Respect user motion preference
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       return;
     }
@@ -25,12 +24,11 @@ export const CelestialStarfield: React.FC = () => {
     };
     window.addEventListener('resize', handleResize);
 
-    // Particle palette: champagne gold, royal amethyst, soft ivory, diamond cyan
+    // Subtle luxury light-theme sparkles: antique gold & soft amethyst dust
     const colors = [
-      'rgba(214, 181, 116, ', // Champagne Gold
-      'rgba(105, 65, 165, ',  // Royal Amethyst
-      'rgba(234, 226, 244, ', // Soft Lavender
-      'rgba(255, 235, 180, ', // Warm Starlight
+      'rgba(180, 130, 40, ',  // Imperial Antique Gold
+      'rgba(82, 43, 138, ',   // Royal Amethyst
+      'rgba(197, 150, 62, ',  // Warm Champagne Gold
     ];
 
     interface Particle {
@@ -46,17 +44,17 @@ export const CelestialStarfield: React.FC = () => {
     }
 
     const particles: Particle[] = [];
-    const count = Math.min(65, Math.floor((width * height) / 18000));
+    const count = Math.min(48, Math.floor((width * height) / 22000));
 
     for (let i = 0; i < count; i++) {
       particles.push({
         x: Math.random() * width,
         y: Math.random() * height,
-        radius: Math.random() * 1.8 + 0.6,
+        radius: Math.random() * 1.6 + 0.6,
         colorBase: colors[Math.floor(Math.random() * colors.length)],
-        alpha: Math.random() * 0.7 + 0.2,
-        speedX: (Math.random() - 0.5) * 0.2,
-        speedY: (Math.random() - 0.5) * 0.2,
+        alpha: Math.random() * 0.35 + 0.12,
+        speedX: (Math.random() - 0.5) * 0.16,
+        speedY: (Math.random() - 0.5) * 0.16,
         pulseSpeed: Math.random() * 0.02 + 0.005,
         pulseOffset: Math.random() * Math.PI * 2
       });
@@ -72,19 +70,16 @@ export const CelestialStarfield: React.FC = () => {
         p.x += p.speedX;
         p.y += p.speedY;
 
-        // Wrap around boundaries
         if (p.x < 0) p.x = width;
         if (p.x > width) p.x = 0;
         if (p.y < 0) p.y = height;
         if (p.y > height) p.y = 0;
 
-        const dynamicAlpha = Math.max(0.1, p.alpha + Math.sin(time * p.pulseSpeed + p.pulseOffset) * 0.25);
+        const dynamicAlpha = Math.max(0.08, p.alpha + Math.sin(time * p.pulseSpeed + p.pulseOffset) * 0.14);
 
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
         ctx.fillStyle = `${p.colorBase}${dynamicAlpha})`;
-        ctx.shadowBlur = p.radius * 3;
-        ctx.shadowColor = '#D6B574';
         ctx.fill();
       }
 
@@ -102,7 +97,7 @@ export const CelestialStarfield: React.FC = () => {
   return (
     <canvas
       ref={canvasRef}
-      className="absolute inset-0 pointer-events-none w-full h-full opacity-60 mix-blend-screen"
+      className="absolute inset-0 pointer-events-none w-full h-full opacity-55"
     />
   );
 };

@@ -14,9 +14,13 @@ import {
   Server,
   Layers,
   ArrowRight,
-  RefreshCw
+  RefreshCw,
+  Users,
+  Activity,
+  TrendingUp
 } from 'lucide-react';
 import { DashboardStats, getDashboardStats, CMSPage, deletePage } from '../../utils/cmsApi';
+import { useTrafficStats, fetchTrafficStats } from '../../utils/trafficApi';
 
 interface AdminDashboardProps {
   onNavigateTab: (tab: 'dashboard' | 'site-editor' | 'pages' | 'create-page' | 'media' | 'settings' | 'seo') => void;
@@ -35,12 +39,13 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [deletingId, setDeletingId] = useState<string | null>(null);
+  const trafficStats = useTrafficStats();
 
   const fetchStats = async () => {
     try {
       setLoading(true);
       setError(null);
-      const data = await getDashboardStats();
+      const [data] = await Promise.all([getDashboardStats(), fetchTrafficStats()]);
       setStats(data);
     } catch (err: any) {
       setError(err.message || 'डैशबोर्ड डेटा लोड करने में त्रुटि');
@@ -231,6 +236,117 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
             {lang === 'hi' ? 'स्थाई सर्वर स्टोरेज' : 'Persistent Cloud Disk'}
           </div>
         </div>
+      </div>
+
+      {/* Actual Live Visitors & Website Traffic Counter (Start Base: 1,005) */}
+      <div className="rounded-3xl bg-gradient-to-r from-[#24152F] via-[#2b1838] to-[#1c0f26] border border-[#D6B574]/40 shadow-xl p-6 space-y-5">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-white/10 pb-4">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-xl bg-emerald-500/15 border border-emerald-400/40 flex items-center justify-center shrink-0">
+              <Activity size={20} className="text-emerald-400" />
+            </div>
+            <div>
+              <div className="flex items-center gap-2">
+                <span className="relative flex h-2.5 w-2.5">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-400" />
+                </span>
+                <h2 className="font-cinzel text-base sm:text-lg font-bold text-white">
+                  {lang === 'hi' ? 'लाइव विज़िटर्स एवं वेबसाइट ट्रैफ़िक काउंटर' : 'Actual Live Visitors & Traffic Counter'}
+                </h2>
+              </div>
+              <p className="text-xs text-[#EAE2F4]/65 mt-0.5">
+                {lang === 'hi'
+                  ? `रियल-टाइम सत्र आधारित वास्तविक ट्रैफ़िक (प्रारंभिक संख्या: ${trafficStats.startFrom.toLocaleString('en-IN')})`
+                  : `Real-time session & page view counter (Starting Base: ${trafficStats.startFrom.toLocaleString('en-IN')})`}
+              </p>
+            </div>
+          </div>
+
+          <button
+            type="button"
+            onClick={() => fetchTrafficStats()}
+            className="self-start sm:self-auto px-3 py-1.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-xs text-[#D6B574] font-semibold flex items-center gap-1.5 transition-colors cursor-pointer"
+          >
+            <RefreshCw size={13} />
+            <span>{lang === 'hi' ? 'लाइव डेटा रिफ्रेश' : 'Refresh Live'}</span>
+          </button>
+        </div>
+
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="p-4 rounded-2xl bg-emerald-950/40 border border-emerald-500/35 space-y-1">
+            <div className="flex items-center justify-between text-xs text-emerald-300 font-semibold">
+              <span>{lang === 'hi' ? 'अभी लाइव विज़िटर्स' : 'Live Online Now'}</span>
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+            </div>
+            <div className="font-rupee text-3xl font-black text-white tabular-nums">
+              {Math.max(1, trafficStats.liveNow)}
+            </div>
+            <p className="text-[11px] text-emerald-300/75">
+              {lang === 'hi' ? 'सक्रिय ब्राउज़र सत्र' : 'Active browser sessions'}
+            </p>
+          </div>
+
+          <div className="p-4 rounded-2xl bg-white/[0.05] border border-[#D6B574]/40 space-y-1">
+            <div className="flex items-center justify-between text-xs text-[#D6B574] font-semibold">
+              <span>{lang === 'hi' ? 'कुल विज़िटर्स' : 'Total Visitors'}</span>
+              <Users size={15} />
+            </div>
+            <div className="font-rupee text-3xl font-black text-[#F5C242] tabular-nums">
+              {trafficStats.totalVisitors.toLocaleString('en-IN')}
+            </div>
+            <p className="text-[11px] text-[#EAE2F4]/65">
+              {lang === 'hi'
+                ? `${trafficStats.startFrom} से प्रारंभ + ${trafficStats.recordedVisits} नए`
+                : `Base ${trafficStats.startFrom} + ${trafficStats.recordedVisits} tracked`}
+            </p>
+          </div>
+
+          <div className="p-4 rounded-2xl bg-white/[0.05] border border-sky-500/30 space-y-1">
+            <div className="flex items-center justify-between text-xs text-sky-300 font-semibold">
+              <span>{lang === 'hi' ? 'आज के विज़िटर्स' : "Today's Visits"}</span>
+              <TrendingUp size={15} />
+            </div>
+            <div className="font-rupee text-3xl font-black text-sky-300 tabular-nums">
+              {trafficStats.todayVisitors.toLocaleString('en-IN')}
+            </div>
+            <p className="text-[11px] text-[#EAE2F4]/65">
+              {lang === 'hi' ? 'आज के अद्वितीय सत्र' : 'Unique sessions today'}
+            </p>
+          </div>
+
+          <div className="p-4 rounded-2xl bg-white/[0.05] border border-purple-500/30 space-y-1">
+            <div className="flex items-center justify-between text-xs text-purple-300 font-semibold">
+              <span>{lang === 'hi' ? 'कुल पेज व्यूज़' : 'Total Page Views'}</span>
+              <Eye size={15} />
+            </div>
+            <div className="font-rupee text-3xl font-black text-purple-200 tabular-nums">
+              {trafficStats.totalPageViews.toLocaleString('en-IN')}
+            </div>
+            <p className="text-[11px] text-[#EAE2F4]/65">
+              {lang === 'hi'
+                ? `${trafficStats.recordedPageViews} वास्तविक हिट्स दर्ज`
+                : `${trafficStats.recordedPageViews} real page hits`}
+            </p>
+          </div>
+        </div>
+
+        {trafficStats.topPages && trafficStats.topPages.length > 0 && (
+          <div className="pt-2 flex flex-wrap items-center gap-2 text-[11px] text-[#EAE2F4]/80">
+            <span className="font-semibold text-[#D6B574]">
+              {lang === 'hi' ? 'शीर्ष देखे गए पेज:' : 'Top Pages:'}
+            </span>
+            {trafficStats.topPages.map((tp) => (
+              <span
+                key={tp.path}
+                className="px-2.5 py-1 rounded-lg bg-white/5 border border-white/10 font-mono text-[11px] flex items-center gap-1.5"
+              >
+                <span className="text-white">{tp.path}</span>
+                <span className="text-[#F5C242] font-bold tabular-nums">({tp.views})</span>
+              </span>
+            ))}
+          </div>
+        )}
       </div>
 
       {/* Quick Action Feature Banners */}

@@ -118,7 +118,7 @@ export const TariffView: React.FC<TariffViewProps> = ({
     : 'Official Tariff Card for 11 Specialized Healing & Correction Services + Consultancy Fees merging All 16 Divine Services by Dr. Pooja Awasthi.';
 
   return (
-    <div className="min-h-screen bg-[#FBF8F2] text-[#29242E] pt-28 md:pt-32 pb-20">
+    <div className="min-h-screen bg-[#FAF8F5] text-[#1E162B] pt-28 md:pt-32 pb-20">
       {/* Comprehensive SEO Head for Tariff & Rate Card */}
       <SEOHead
         title={tariffTitle}
@@ -132,7 +132,7 @@ export const TariffView: React.FC<TariffViewProps> = ({
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Top Control Bar with Breadcrumb and Language Switcher */}
-        <div className="flex flex-wrap items-center justify-between gap-4 mb-8 pb-4 border-b border-[#EAE2F4]">
+        <div className="flex flex-wrap items-center justify-between gap-4 mb-8 pb-4 border-b border-[#E6DFD3]">
           <Breadcrumb
             items={[
               { label: tariffLang === 'hi' ? '11 विशिष्ट हीलिंग एवं सुधार सेवाएं + सभी 16 दिव्य सेवाएं फीस' : '11 Specialized Healing & Correction Services (All 16 Divine Services)' }
@@ -143,14 +143,14 @@ export const TariffView: React.FC<TariffViewProps> = ({
 
           <div className="flex flex-wrap items-center gap-2">
             {/* Bilingual View Toggle */}
-            <div className="inline-flex rounded-lg border border-[#D6B574]/40 p-0.5 bg-white text-xs shadow-2xs">
+            <div className="inline-flex rounded-lg border border-[#DEC38C] p-0.5 bg-white text-xs shadow-2xs">
               <button
                 type="button"
                 onClick={() => setTariffLang('en')}
-                className={`px-2.5 py-1 rounded-md font-medium transition-colors ${
+                className={`px-2.5 py-1 rounded-md font-semibold transition-colors cursor-pointer ${
                   tariffLang === 'en'
-                    ? 'bg-[#24152F] text-[#D6B574]'
-                    : 'text-[#29242E]/70 hover:text-[#24152F]'
+                    ? 'bg-[#522B8A] text-white'
+                    : 'text-[#4A4356] hover:text-[#1E162B]'
                 }`}
               >
                 English
@@ -158,10 +158,10 @@ export const TariffView: React.FC<TariffViewProps> = ({
               <button
                 type="button"
                 onClick={() => setTariffLang('hi')}
-                className={`px-2.5 py-1 rounded-md font-medium transition-colors ${
+                className={`px-2.5 py-1 rounded-md font-semibold transition-colors cursor-pointer ${
                   tariffLang === 'hi'
-                    ? 'bg-[#24152F] text-[#D6B574]'
-                    : 'text-[#29242E]/70 hover:text-[#24152F]'
+                    ? 'bg-[#522B8A] text-white'
+                    : 'text-[#4A4356] hover:text-[#1E162B]'
                 }`}
               >
                 हिन्दी
@@ -241,16 +241,16 @@ export const TariffView: React.FC<TariffViewProps> = ({
         </div>
 
         {/* Most Popular Feature Card */}
-        <div className="mb-16 rounded-3xl bg-gradient-to-r from-[#24152F] via-[#2a1738] to-[#1c0f26] text-white p-8 sm:p-10 border border-[#D6B574]/40 shadow-2xl relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-80 h-80 bg-[#6941A5]/25 rounded-full blur-3xl pointer-events-none" />
+        <div className="mb-16 rounded-3xl bg-white text-[#1E162B] p-8 sm:p-10 border-2 border-[#DEC38C] shadow-lg relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-72 h-72 bg-[#F4F0FA]/80 rounded-full blur-3xl pointer-events-none" />
 
           <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-8">
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 max-w-2xl">
-              <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl overflow-hidden border-2 border-[#D6B574] shrink-0 shadow-xl aspect-square bg-[#24152F]">
+              <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl overflow-hidden border border-[#E6DFD3] bg-[#FAF8F5] p-1.5 shrink-0 shadow-md aspect-square">
                 <img
                   src={poojaAuthenticPhoto}
                   alt="Dr. Pooja Awasthi"
-                  className="w-full h-full object-cover object-top"
+                  className="w-full h-full object-cover object-top rounded-xl"
                   onError={(e) => {
                     const target = e.currentTarget;
                     if (target.src !== '/28.jpeg') target.src = '/28.jpeg';
@@ -259,21 +259,21 @@ export const TariffView: React.FC<TariffViewProps> = ({
               </div>
 
               <div className="space-y-3">
-                <span className="text-[11px] font-bold uppercase tracking-widest px-3 py-1 rounded-full bg-[#D6B574] text-[#24152F] inline-block shadow-sm">
+                <span className="text-[11px] font-bold uppercase tracking-widest px-3 py-1 rounded-full bg-[#FBF5E6] border border-[#DEC38C] text-[#7A5311] inline-block">
                   {tariffLang === 'hi' ? 'सर्वाधिक लोकप्रिय · व्यक्तिगत मार्गदर्शन' : 'Most Popular · 1-on-1 Guidance'}
                 </span>
-                <h2 className="font-cinzel text-2xl sm:text-3xl font-bold text-white">
+                <h2 className="font-cinzel text-2xl sm:text-3xl font-bold text-[#1E162B]">
                   {tariffLang === 'hi' ? 'व्यक्तिगत आध्यात्मिक व अंकशास्त्रीय परामर्श' : 'Personalized Spiritual Consultation'}
                 </h2>
-                <p className="text-sm text-[#EAE2F4]/85 leading-relaxed font-light">
+                <p className="text-sm text-[#4A4356] leading-relaxed">
                   {tariffLang === 'hi'
                     ? 'डॉ. पूजा अवस्थी के साथ 45-60 मिनट का गहन व्यक्तिगत सत्र, जिसमें आपके जीवन की उलझनों, मूलांक, भाग्यांक और ग्रह चक्रों का संपूर्ण विश्लेषण किया जाता है।'
                     : 'A personalized 1-on-1 consultation session dedicated to understanding your queries, life circumstances, and life path through Vedic wisdom with Dr. Pooja Awasthi.'}
                 </p>
 
-                <div className="flex flex-wrap items-center gap-4 text-xs text-[#D6B574]">
+                <div className="flex flex-wrap items-center gap-4 text-xs text-[#7A5311] font-semibold">
                   <span className="flex items-center gap-1">
-                    <Clock size={13} />
+                    <Clock size={13} className="text-[#B48228]" />
                     <span>{tariffLang === 'hi' ? 'अवधि: 45-60 मिनट' : 'Duration: 45-60 mins'}</span>
                   </span>
                   <span aria-hidden="true">·</span>
@@ -282,18 +282,18 @@ export const TariffView: React.FC<TariffViewProps> = ({
               </div>
             </div>
 
-            <div className="p-6 rounded-2xl bg-white/5 border border-white/10 shrink-0 text-center lg:text-right space-y-3">
+            <div className="p-6 rounded-2xl bg-[#FBF5E6] border-2 border-[#DEC38C] shrink-0 text-center lg:text-right space-y-3 shadow-xs">
               <div>
-                <span className="text-[11px] text-[#EAE2F4]/80 uppercase block font-semibold tracking-wider">
+                <span className="text-[11px] text-[#7A5311] uppercase block font-bold tracking-wider">
                   {tariffLang === 'hi' ? 'परामर्श शुल्क' : 'Consultancy Fee'}
                 </span>
-                <div className="font-rupee text-5xl font-black text-white tabular-nums drop-shadow-md flex items-baseline justify-center lg:justify-end gap-1 my-1">
-                  <span className="font-black text-[#F5C242] text-4xl rupee-symbol select-none">
+                <div className="font-rupee text-5xl font-black text-[#1E162B] tabular-nums flex items-baseline justify-center lg:justify-end gap-1 my-1">
+                  <span className="font-black text-[#B48228] text-4xl rupee-symbol select-none">
                     ₹
                   </span>
-                  <span className="font-black text-[#F3E5AB] tracking-tight">5,100</span>
+                  <span className="font-black text-[#1E162B] tracking-tight">5,100</span>
                 </div>
-                <span className="text-[11px] text-[#EAE2F4]/80 block font-medium">
+                <span className="text-[11px] text-[#5D556A] block font-medium">
                   {tariffLang === 'hi' ? 'प्रति सत्र (वीडियो / ऑडियो कॉल)' : 'Per session (Virtual / Telephonic)'}
                 </span>
               </div>
@@ -302,13 +302,13 @@ export const TariffView: React.FC<TariffViewProps> = ({
                 <button
                   type="button"
                   onClick={() => onBookService('Personalized Spiritual Consultation (₹5,100)')}
-                  className="px-6 py-3 bg-[#D6B574] hover:bg-[#e4ca8c] text-[#24152F] font-bold text-xs uppercase tracking-wider rounded-xl transition-all shadow-md"
+                  className="h-11 px-6 bg-[#522B8A] hover:bg-[#412070] text-white font-bold text-xs uppercase tracking-wider rounded-xl transition-all shadow-md cursor-pointer"
                 >
                   {tariffLang === 'hi' ? 'परामर्श सत्र प्राप्त करें' : 'Book Consultation'}
                 </button>
                 <a
                   href="#payment-gateway"
-                  className="px-5 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs font-semibold text-center transition-colors border border-white/10"
+                  className="h-9 px-5 flex items-center justify-center rounded-xl bg-white hover:bg-[#FAF8F5] text-[#1E162B] text-xs font-semibold text-center transition-colors border border-[#E6DFD3]"
                 >
                   {tariffLang === 'hi' ? 'भुगतान विवरण' : 'Payment Info'}
                 </a>
@@ -321,28 +321,28 @@ export const TariffView: React.FC<TariffViewProps> = ({
         <div className="mb-20 space-y-8">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
             <div>
-              <span className="text-xs font-bold uppercase tracking-widest text-[#6941A5] flex items-center gap-1.5">
-                <Sparkles size={13} />
+              <span className="text-xs font-bold uppercase tracking-widest text-[#522B8A] flex items-center gap-1.5">
+                <Sparkles size={13} className="text-[#B48228]" />
                 <span>
                   {tariffLang === 'hi'
                     ? '11 विशिष्ट हीलिंग एवं सुधार सेवाएं + मुख्य परामर्श'
                     : '11 Specialized Healing & Correction Services + Core Guidance'}
                 </span>
               </span>
-              <h2 className="font-cinzel text-2xl sm:text-3xl font-bold text-[#24152F] mt-1">
+              <h2 className="font-cinzel text-2xl sm:text-3xl font-bold text-[#1E162B] mt-1">
                 {tariffLang === 'hi'
                   ? '11 विशिष्ट हीलिंग एवं सुधार सेवाएं — परामर्श एवं हीलिंग सेवाएं फीस (सभी 16 दिव्य सेवाएं)'
                   : '11 Specialized Healing & Correction Services — Consultancy & Healing Services Fees (All 16 Divine Services)'}
               </h2>
-              <p className="text-xs text-[#29242E]/70 mt-1">
+              <p className="text-xs text-[#4A4356] mt-1">
                 {tariffLang === 'hi'
                   ? 'नीचे दिए गए फ़िल्टर द्वारा 11 विशिष्ट हीलिंग सेवाओं अथवा सभी 16 दिव्य सेवाओं का विवरण व फीस देखें:'
                   : 'Explore the complete directory of 11 Specialized Services and all 16 Divine Offerings with fixed rates:'}
               </p>
             </div>
 
-            <div className="text-xs px-3.5 py-1.5 rounded-xl bg-white border border-[#D6B574]/60 text-[#24152F] font-bold shadow-2xs shrink-0 flex items-center gap-1.5">
-              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+            <div className="text-xs px-3.5 py-1.5 rounded-xl bg-white border border-[#DEC38C] text-[#1E162B] font-bold shadow-2xs shrink-0 flex items-center gap-1.5">
+              <span className="w-2 h-2 rounded-full bg-emerald-600 animate-pulse" />
               <span>
                 {tariffLang === 'hi' ? `${filteredServices.length} सेवाएं प्रदर्शित` : `${filteredServices.length} Services Displayed`}
               </span>
@@ -364,10 +364,10 @@ export const TariffView: React.FC<TariffViewProps> = ({
                 key={btn.id}
                 type="button"
                 onClick={() => setFilter(btn.id as any)}
-                className={`px-3.5 py-2 text-xs font-semibold rounded-xl transition-all ${
+                className={`px-3.5 py-2 text-xs font-semibold rounded-xl transition-all cursor-pointer ${
                   filter === btn.id
-                    ? 'bg-[#24152F] text-[#D6B574] shadow-md border border-[#D6B574]/40 font-bold'
-                    : 'bg-white text-[#29242E]/70 hover:bg-[#EAE2F4]/50 border border-[#EAE2F4]'
+                    ? 'bg-[#522B8A] text-white shadow-sm font-bold'
+                    : 'bg-white text-[#4A4356] hover:bg-[#F4F0FA] hover:text-[#1E162B] border border-[#E6DFD3]'
                 }`}
               >
                 {tariffLang === 'hi' ? btn.label_hi : btn.label_en}
@@ -380,49 +380,49 @@ export const TariffView: React.FC<TariffViewProps> = ({
             {filteredServices.map((srv) => (
               <div
                 key={srv.id}
-                className="p-6 rounded-3xl bg-white border border-[#EAE2F4] hover:border-[#D6B574]/80 shadow-xs hover:shadow-xl transition-all flex flex-col justify-between space-y-5 group relative"
+                className="p-6 rounded-3xl bg-white border border-[#E6DFD3] hover:border-[#DEC38C] shadow-xs hover:shadow-lg transition-all flex flex-col justify-between space-y-5 group relative"
               >
                 <div className="space-y-3">
                   <div className="flex items-center justify-between">
-                    <span className="w-8 h-8 rounded-full bg-[#24152F] text-[#D6B574] font-cinzel text-xs font-bold flex items-center justify-center shadow-xs">
+                    <span className="w-8 h-8 rounded-full bg-[#F4F0FA] border border-[#DFD5F0] text-[#522B8A] font-cinzel text-xs font-bold flex items-center justify-center">
                       #{srv.number}
                     </span>
                     <span className={`text-[10px] font-bold px-2.5 py-0.5 rounded-full ${
                       srv.isSpecialized11
-                        ? 'bg-[#6941A5]/10 text-[#6941A5] border border-[#6941A5]/20'
-                        : 'bg-[#D6B574]/20 text-[#855e14] border border-[#D6B574]/30'
+                        ? 'bg-[#F4F0FA] text-[#522B8A] border border-[#DFD5F0]'
+                        : 'bg-[#FBF5E6] text-[#7A5311] border border-[#DEC38C]'
                     }`}>
                       {tariffLang === 'hi' ? srv.categoryLabel_hi : srv.categoryLabel_en}
                     </span>
                   </div>
 
                   {(tariffLang === 'hi' ? (srv.badge || srv.badge_en) : srv.badge_en) && (
-                    <span className="text-[10px] font-bold px-2 py-0.5 rounded-md bg-[#24152F] text-[#F5C242] inline-block shadow-2xs">
+                    <span className="text-[10px] font-bold px-2.5 py-0.5 rounded-md bg-[#FBF5E6] text-[#7A5311] border border-[#DEC38C] inline-block">
                       {tariffLang === 'hi' ? (srv.badge || srv.badge_en) : srv.badge_en}
                     </span>
                   )}
 
-                  <h3 className="font-cinzel text-lg sm:text-xl font-bold text-[#24152F] group-hover:text-[#6941A5] transition-colors leading-snug">
+                  <h3 className="font-cinzel text-lg sm:text-xl font-bold text-[#1E162B] group-hover:text-[#522B8A] transition-colors leading-snug">
                     {tariffLang === 'hi' ? srv.title : srv.title_en}
                   </h3>
 
-                  <div className="flex items-baseline gap-2 pt-1 border-t border-[#EAE2F4]/60">
-                    <span className="font-rupee text-2xl sm:text-3xl font-black text-[#24152F] tabular-nums tracking-tight">
+                  <div className="flex items-baseline gap-2 pt-2 border-t border-[#EFECE6]">
+                    <span className="font-rupee text-2xl sm:text-3xl font-black text-[#1E162B] tabular-nums tracking-tight">
                       {srv.feeFormatted}
                     </span>
                     {(tariffLang === 'hi' ? srv.duration : srv.duration_en) && (
-                      <span className="text-xs text-[#29242E]/70 font-medium">
+                      <span className="text-xs text-[#5D556A] font-medium">
                         {tariffLang === 'hi' ? `अवधि: ${srv.duration}` : `Duration: ${srv.duration_en}`}
                       </span>
                     )}
                   </div>
 
-                  <p className="text-xs text-[#29242E]/75 leading-relaxed font-light">
+                  <p className="text-xs text-[#4A4356] leading-relaxed">
                     {tariffLang === 'hi' ? srv.description : srv.description_en}
                   </p>
                 </div>
 
-                <div className="pt-4 border-t border-[#EAE2F4] flex items-center justify-between gap-4">
+                <div className="pt-4 border-t border-[#EFECE6] flex items-center justify-between gap-4">
                   <span className="text-[11px] text-emerald-700 flex items-center gap-1 font-medium">
                     <Lock size={12} />
                     <span>{tariffLang === 'hi' ? '100% गोपनीय' : '100% Confidential'}</span>
@@ -431,7 +431,7 @@ export const TariffView: React.FC<TariffViewProps> = ({
                   <button
                     type="button"
                     onClick={() => onBookService(`${tariffLang === 'hi' ? srv.title : srv.title_en} (${srv.feeFormatted})`)}
-                    className="px-4 py-2 bg-[#24152F] hover:bg-[#341e44] text-[#D6B574] text-xs font-bold uppercase tracking-wider rounded-lg transition-colors shadow-xs hover:scale-[1.02]"
+                    className="h-9 px-4 bg-[#522B8A] hover:bg-[#412070] text-white text-xs font-bold uppercase tracking-wider rounded-xl transition-colors shadow-xs cursor-pointer"
                   >
                     {tariffLang === 'hi' ? 'सत्र बुक करें' : 'Book Session'}
                   </button>
@@ -445,13 +445,13 @@ export const TariffView: React.FC<TariffViewProps> = ({
         <div id="payment-gateway" className="pt-8 space-y-8">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
             <div>
-              <span className="text-xs font-bold uppercase tracking-widest text-[#6941A5]">
+              <span className="text-xs font-bold uppercase tracking-widest text-[#522B8A]">
                 {tariffLang === 'hi' ? 'आधिकारिक भुगतान व्यवस्था' : 'Official Payment Gateway'}
               </span>
-              <h2 className="font-cinzel text-2xl sm:text-3xl font-bold text-[#24152F] mt-1">
+              <h2 className="font-cinzel text-2xl sm:text-3xl font-bold text-[#1E162B] mt-1">
                 {tariffLang === 'hi' ? 'बैंक खाता, UPI एवं QR स्कैनर विवरण' : 'Bank Account, UPI & QR Scanner Details'}
               </h2>
-              <p className="text-xs text-[#29242E]/70 mt-1">
+              <p className="text-xs text-[#4A4356] mt-1">
                 {tariffLang === 'hi'
                   ? 'परामर्श व हीलिंग फीस का सुरक्षित भुगतान सीधे UPI, PhonePe/GPay QR, अथवा नेट बैंकिंग द्वारा करें।'
                   : 'Remit consultation & healing fees securely via direct UPI, PhonePe/GPay QR, or Net Banking transfer.'}
@@ -461,7 +461,7 @@ export const TariffView: React.FC<TariffViewProps> = ({
             <button
               type="button"
               onClick={onOpenBrandSettings}
-              className="px-4 py-2 bg-white border border-[#D6B574] text-[#24152F] hover:bg-[#24152F] hover:text-[#D6B574] rounded-xl text-xs font-semibold transition-all shadow-xs self-start sm:self-end"
+              className="h-10 px-4 bg-white border border-[#DEC38C] text-[#7A5311] hover:bg-[#FBF5E6] rounded-xl text-xs font-semibold transition-all shadow-2xs self-start sm:self-end cursor-pointer"
             >
               {tariffLang === 'hi' ? 'बैंक / UPI विवरण बदलें' : 'Update Bank / UPI Details'}
             </button>
@@ -470,20 +470,20 @@ export const TariffView: React.FC<TariffViewProps> = ({
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
             
             {/* Left: UPI QR Scanner Card */}
-            <div className="lg:col-span-5 rounded-3xl bg-[#24152F] text-white p-8 border border-[#D6B574]/40 shadow-xl flex flex-col justify-between space-y-6">
+            <div className="lg:col-span-5 rounded-3xl bg-white text-[#1E162B] p-8 border-2 border-[#DEC38C] shadow-lg flex flex-col justify-between space-y-6">
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-bold uppercase tracking-wider text-[#D6B574]">
+                  <span className="text-xs font-bold uppercase tracking-wider text-[#7A5311]">
                     {tariffLang === 'hi' ? 'UPI QR कोड स्कैनर' : 'UPI QR Code Scanner'}
                   </span>
-                  <span className="text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 font-semibold border border-emerald-500/30">
+                  <span className="text-[10px] px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-800 font-semibold border border-emerald-200">
                     GPay • PhonePe • Paytm
                   </span>
                 </div>
 
                 {/* QR Display Frame */}
-                <div className="p-6 rounded-2xl bg-white text-center flex flex-col items-center justify-center space-y-3 shadow-inner">
-                  <div className="relative p-2 rounded-xl border-2 border-[#24152F] bg-white shadow-md">
+                <div className="p-6 rounded-2xl bg-[#FAF8F5] border border-[#E6DFD3] text-center flex flex-col items-center justify-center space-y-3 shadow-inner">
+                  <div className="relative p-2.5 rounded-xl border border-[#E6DFD3] bg-white shadow-sm">
                     <img
                       src={customQrImage || bankDetails.qrImage}
                       alt={`UPI Payment QR Code - ${bankDetails.holder} (${bankDetails.upiId})`}
@@ -493,20 +493,20 @@ export const TariffView: React.FC<TariffViewProps> = ({
                   </div>
 
                   <div className="space-y-1">
-                    <span className="inline-block px-2.5 py-0.5 rounded bg-[#24152F] text-[#F5C242] text-[10px] font-bold">
+                    <span className="inline-block px-3 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200 text-[10px] font-bold">
                       ✓ {bankDetails.holder}
                     </span>
-                    <span className="font-mono text-xs font-bold text-[#24152F] block select-all">
+                    <span className="font-mono text-xs font-bold text-[#1E162B] block select-all">
                       {bankDetails.upiId}
                     </span>
-                    <span className="text-[11px] text-[#24152F]/80 font-medium block">
+                    <span className="text-[11px] text-[#5D556A] font-medium block">
                       {tariffLang === 'hi' ? 'गूगल पे, फोनपे, पेटीएम या किसी भी UPI ऐप से स्कैन करें' : 'Scan with Google Pay, PhonePe, Paytm or BHIM'}
                     </span>
                   </div>
                 </div>
 
                 <div className="pt-2 text-center">
-                  <label className="cursor-pointer inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-[#D6B574] text-xs font-medium border border-[#D6B574]/30 transition-colors">
+                  <label className="cursor-pointer inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-[#F4F0FA] hover:bg-[#EAE2F4] text-[#522B8A] text-xs font-semibold border border-[#DFD5F0] transition-colors">
                     <Upload size={13} />
                     <span>{tariffLang === 'hi' ? 'क्यूआर स्कैनर छवि अपलोड करें' : 'Upload Scanner QR Image'}</span>
                     <input
@@ -521,23 +521,23 @@ export const TariffView: React.FC<TariffViewProps> = ({
               </div>
 
               {/* UPI ID Copy Bar */}
-              <div className="p-4 rounded-2xl bg-black/40 border border-white/10 space-y-2">
+              <div className="p-4 rounded-2xl bg-[#FBF5E6] border border-[#DEC38C] space-y-2">
                 <div className="flex items-center justify-between">
-                  <span className="text-[11px] text-[#EAE2F4]/70 uppercase">
+                  <span className="text-[11px] text-[#7A5311] font-bold uppercase">
                     {tariffLang === 'hi' ? 'आधिकारिक UPI ID' : 'Official UPI ID'}
                   </span>
-                  <span className="text-[10px] text-[#D6B574] font-medium">
+                  <span className="text-[10px] text-[#522B8A] font-semibold">
                     {tariffLang === 'hi' ? 'त्वरित कॉपी' : '1-Click Copy'}
                   </span>
                 </div>
                 <div className="flex items-center justify-between gap-2">
-                  <span className="font-mono text-sm font-bold text-white select-all">
+                  <span className="font-mono text-sm font-bold text-[#1E162B] select-all">
                     {bankDetails.upiId}
                   </span>
                   <button
                     type="button"
                     onClick={() => handleCopy(bankDetails.upiId, 'upi')}
-                    className="px-3 py-1.5 rounded-lg bg-[#D6B574] hover:bg-[#e4ca8c] text-[#24152F] text-xs font-bold flex items-center gap-1 transition-all"
+                    className="h-8 px-3 rounded-lg bg-[#522B8A] hover:bg-[#412070] text-white text-xs font-bold flex items-center gap-1 transition-all cursor-pointer"
                   >
                     {copiedKey === 'upi' ? <Check size={13} /> : <Copy size={13} />}
                     <span>{copiedKey === 'upi' ? (tariffLang === 'hi' ? 'कॉपी हुआ' : 'Copied') : (tariffLang === 'hi' ? 'कॉपी' : 'Copy')}</span>
@@ -547,89 +547,89 @@ export const TariffView: React.FC<TariffViewProps> = ({
             </div>
 
             {/* Right: Direct Bank Account Transfer Card */}
-            <div className="lg:col-span-7 rounded-3xl bg-white p-8 sm:p-10 border border-[#EAE2F4] shadow-sm flex flex-col justify-between space-y-6">
+            <div className="lg:col-span-7 rounded-3xl bg-white p-8 sm:p-10 border border-[#E6DFD3] shadow-sm flex flex-col justify-between space-y-6">
               <div className="space-y-5">
-                <div className="flex items-center justify-between border-b border-[#EAE2F4] pb-4">
+                <div className="flex items-center justify-between border-b border-[#EFECE6] pb-4">
                   <div className="flex items-center gap-2">
-                    <Building2 size={18} className="text-[#6941A5]" />
-                    <h3 className="font-cinzel text-lg font-bold text-[#24152F]">
+                    <Building2 size={18} className="text-[#522B8A]" />
+                    <h3 className="font-cinzel text-lg font-bold text-[#1E162B]">
                       {tariffLang === 'hi' ? 'सीधा बैंक खाता अंतरण (NEFT / IMPS / RTGS)' : 'Direct Bank Transfer (NEFT / IMPS / RTGS)'}
                     </h3>
                   </div>
-                  <span className="text-[11px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">
+                  <span className="text-[11px] font-bold text-emerald-800 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">
                     {tariffLang === 'hi' ? 'प्रमाणित' : 'Verified'}
                   </span>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
-                  <div className="p-3.5 rounded-xl bg-[#FBF8F2] border border-[#EAE2F4] space-y-1">
-                    <span className="text-[10px] text-[#29242E]/60 uppercase block">
+                  <div className="p-3.5 rounded-xl bg-[#FAF8F5] border border-[#E6DFD3] space-y-1">
+                    <span className="text-[10px] text-[#5D556A] uppercase block">
                       {tariffLang === 'hi' ? 'खाताधारक का नाम' : 'Account Holder Name'}
                     </span>
-                    <span className="font-semibold text-sm text-[#24152F] block">{bankDetails.holder}</span>
+                    <span className="font-semibold text-sm text-[#1E162B] block">{bankDetails.holder}</span>
                   </div>
 
-                  <div className="p-3.5 rounded-xl bg-[#FBF8F2] border border-[#EAE2F4] space-y-1">
-                    <span className="text-[10px] text-[#29242E]/60 uppercase block">
+                  <div className="p-3.5 rounded-xl bg-[#FAF8F5] border border-[#E6DFD3] space-y-1">
+                    <span className="text-[10px] text-[#5D556A] uppercase block">
                       {tariffLang === 'hi' ? 'बैंक का नाम' : 'Bank Name'}
                     </span>
-                    <span className="font-semibold text-sm text-[#24152F] block">{bankDetails.bank}</span>
+                    <span className="font-semibold text-sm text-[#1E162B] block">{bankDetails.bank}</span>
                   </div>
 
-                  <div className="p-3.5 rounded-xl bg-[#FBF8F2] border border-[#EAE2F4] flex items-center justify-between">
+                  <div className="p-3.5 rounded-xl bg-[#FAF8F5] border border-[#E6DFD3] flex items-center justify-between">
                     <div>
-                      <span className="text-[10px] text-[#29242E]/60 uppercase block">
+                      <span className="text-[10px] text-[#5D556A] uppercase block">
                         {tariffLang === 'hi' ? 'खाता संख्या' : 'Account Number'}
                       </span>
-                      <span className="font-mono text-sm font-bold text-[#24152F] select-all">
+                      <span className="font-mono text-sm font-bold text-[#1E162B] select-all">
                         {bankDetails.accNumber}
                       </span>
                     </div>
                     <button
                       type="button"
                       onClick={() => handleCopy(bankDetails.accNumber, 'acc')}
-                      className="px-2.5 py-1 text-[11px] rounded bg-white hover:bg-[#EAE2F4] text-[#24152F] font-medium border border-[#EAE2F4] transition-colors"
+                      className="px-2.5 py-1 text-[11px] rounded-lg bg-white hover:bg-[#F4F0FA] text-[#1E162B] font-medium border border-[#E6DFD3] transition-colors cursor-pointer"
                     >
                       {copiedKey === 'acc' ? (tariffLang === 'hi' ? 'कॉपी हुआ' : 'Copied') : (tariffLang === 'hi' ? 'नंबर कॉपी करें' : 'Copy Number')}
                     </button>
                   </div>
 
-                  <div className="p-3.5 rounded-xl bg-[#FBF8F2] border border-[#EAE2F4] flex items-center justify-between">
+                  <div className="p-3.5 rounded-xl bg-[#FAF8F5] border border-[#E6DFD3] flex items-center justify-between">
                     <div>
-                      <span className="text-[10px] text-[#29242E]/60 uppercase block">IFSC कोड</span>
-                      <span className="font-mono text-sm font-bold text-[#24152F] select-all">
+                      <span className="text-[10px] text-[#5D556A] uppercase block">IFSC कोड</span>
+                      <span className="font-mono text-sm font-bold text-[#1E162B] select-all">
                         {bankDetails.ifsc}
                       </span>
                     </div>
                     <button
                       type="button"
                       onClick={() => handleCopy(bankDetails.ifsc, 'ifsc')}
-                      className="px-2.5 py-1 text-[11px] rounded bg-white hover:bg-[#EAE2F4] text-[#24152F] font-medium border border-[#EAE2F4] transition-colors"
+                      className="px-2.5 py-1 text-[11px] rounded-lg bg-white hover:bg-[#F4F0FA] text-[#1E162B] font-medium border border-[#E6DFD3] transition-colors cursor-pointer"
                     >
                       {copiedKey === 'ifsc' ? (tariffLang === 'hi' ? 'कॉपी हुआ' : 'Copied') : (tariffLang === 'hi' ? 'IFSC कॉपी करें' : 'Copy IFSC')}
                     </button>
                   </div>
 
-                  <div className="p-3.5 rounded-xl bg-[#FBF8F2] border border-[#EAE2F4] space-y-1">
-                    <span className="text-[10px] text-[#29242E]/60 uppercase block">
+                  <div className="p-3.5 rounded-xl bg-[#FAF8F5] border border-[#E6DFD3] space-y-1">
+                    <span className="text-[10px] text-[#5D556A] uppercase block">
                       {tariffLang === 'hi' ? 'खाता प्रकार' : 'Account Type'}
                     </span>
-                    <span className="font-semibold text-sm text-[#24152F] block">
+                    <span className="font-semibold text-sm text-[#1E162B] block">
                       {tariffLang === 'hi' ? 'बचत खाता' : bankDetails.type}
                     </span>
                   </div>
 
-                  <div className="p-3.5 rounded-xl bg-[#FBF8F2] border border-[#EAE2F4] space-y-1">
-                    <span className="text-[10px] text-[#29242E]/60 uppercase block">
+                  <div className="p-3.5 rounded-xl bg-[#FAF8F5] border border-[#E6DFD3] space-y-1">
+                    <span className="text-[10px] text-[#5D556A] uppercase block">
                       {tariffLang === 'hi' ? 'शाखा एवं स्थान' : 'Branch & Location'}
                     </span>
-                    <span className="font-semibold text-xs text-[#24152F] block">{bankDetails.branch}</span>
+                    <span className="font-semibold text-xs text-[#1E162B] block">{bankDetails.branch}</span>
                   </div>
                 </div>
               </div>
 
               {/* Next Step Action Box */}
-              <div className="p-5 rounded-2xl bg-emerald-50 border border-emerald-200/80 flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div className="p-5 rounded-2xl bg-emerald-50 border border-emerald-200 flex flex-col sm:flex-row items-center justify-between gap-4">
                 <div className="space-y-1">
                   <span className="text-xs font-bold text-emerald-900 uppercase tracking-wide block">
                     {tariffLang === 'hi' ? 'भुगतान के बाद अगला कदम' : 'Next Step After Payment'}
@@ -645,7 +645,7 @@ export const TariffView: React.FC<TariffViewProps> = ({
                   href="https://wa.me/919105731969?text=Hello%20Dr.%20Pooja%20Awasthi,%20I%20have%20transferred%20the%20consultation%20fee.%20Attached%20is%20the%20screenshot."
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold uppercase tracking-wider transition-colors shrink-0 shadow-sm"
+                  className="h-10 px-5 flex items-center rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-bold uppercase tracking-wider transition-colors shrink-0 shadow-sm"
                 >
                   {tariffLang === 'hi' ? 'स्क्रीनशॉट भेजें' : 'Send Screenshot'}
                 </a>
@@ -670,7 +670,7 @@ export const TariffView: React.FC<TariffViewProps> = ({
           <button
             type="button"
             onClick={onBackToHome}
-            className="px-8 py-3 bg-[#24152F] hover:bg-[#341e44] text-[#D6B574] font-bold text-xs uppercase tracking-wider rounded-xl transition-all shadow-md"
+            className="h-11 px-8 bg-[#522B8A] hover:bg-[#412070] text-white font-bold text-xs uppercase tracking-wider rounded-xl transition-all shadow-md cursor-pointer"
           >
             {tariffLang === 'hi' ? '← मुख्य पृष्ठ पर लौटें' : '← Back to Home'}
           </button>

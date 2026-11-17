@@ -11,11 +11,8 @@ import {
   CheckCircle2,
   FolderHeart,
   Info,
-  Calendar,
   MapPin,
-  Users,
-  Image as ImageIcon,
-  Check
+  Users
 } from 'lucide-react';
 import { getStoredMedia, saveStoredMedia } from '../utils/photoStorage';
 import { getTranslation } from '../data/translations';
@@ -35,7 +32,6 @@ export const AwardsSection: React.FC<AwardsSectionProps> = ({ lang }) => {
   const t = getTranslation(lang);
 
   useEffect(() => {
-    // Load custom uploaded award photos from IndexedDB / storage if any
     AWARDS_DATA.forEach((award) => {
       getStoredMedia(`award_${award.id}`).then((stored) => {
         if (stored) {
@@ -59,7 +55,6 @@ export const AwardsSection: React.FC<AwardsSectionProps> = ({ lang }) => {
     reader.readAsDataURL(file);
   };
 
-  // Smart matching algorithm to map uploaded files to awards
   const handleBulkUpload = async (files: FileList | null) => {
     if (!files || files.length === 0) return;
 
@@ -70,19 +65,16 @@ export const AwardsSection: React.FC<AwardsSectionProps> = ({ lang }) => {
       const file = files[i];
       const fileNameLower = file.name.toLowerCase();
 
-      // Find the best matching award
       const matchedAward = AWARDS_DATA.find((award) => {
         const awardFileLower = award.filename.toLowerCase();
         if (awardFileLower === fileNameLower) return true;
         
-        // Exact normalized name check
         const cleanA = awardFileLower.replace(/[^a-z0-9]/g, '');
         const cleanB = fileNameLower.replace(/[^a-z0-9]/g, '');
         if (cleanA && cleanB && (cleanA === cleanB || cleanA.includes(cleanB) || cleanB.includes(cleanA))) {
           return true;
         }
 
-        // Specific signature matching
         if (fileNameLower.includes('immt-6') && award.id === 'iimt-1') return true;
         if (fileNameLower.includes('immt-5') && award.id === 'iimt-2') return true;
         if (fileNameLower.includes('immt-3') && award.id === 'iimt-5') return true;
@@ -186,62 +178,60 @@ export const AwardsSection: React.FC<AwardsSectionProps> = ({ lang }) => {
   ];
 
   return (
-    <section id="honors" className="py-20 md:py-28 bg-[#24152F] text-white relative overflow-hidden">
-      {/* Background ambient lighting */}
-      <div className="absolute top-1/2 left-0 w-96 h-96 bg-[#6941A5]/25 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-10 right-10 w-96 h-96 bg-[#D6B574]/15 rounded-full blur-3xl pointer-events-none" />
+    <section id="honors" className="py-20 md:py-28 bg-white text-[#1E162B] relative overflow-hidden border-t border-[#E5DFD5]">
+      <div className="absolute top-1/2 left-0 w-96 h-96 bg-[#F4F0FA] rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
         <div className="max-w-4xl mb-8 space-y-3">
-          <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-[#D6B574]">
-            <Trophy size={14} />
-            <span>{t.awardsNav}</span>
-            <span aria-hidden="true">·</span>
+          <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#7A5311]">
+            <Trophy size={14} className="text-[#B48228]" />
+            <span className="text-[#522B8A]">{t.awardsNav}</span>
+            <span aria-hidden="true" className="text-[#B48228]">·</span>
             <span className="tabular-nums font-bold">
               {lang === 'hi' ? '40+ प्रमाणित राष्ट्रीय सम्मान व चित्र दीर्घा' : '40+ Verified Felicitations & Photo Archive'}
             </span>
           </div>
 
-          <h2 className="font-cormorant text-3xl sm:text-4xl lg:text-5xl font-light text-white leading-tight">
+          <h2 className="font-cormorant text-3xl sm:text-4xl lg:text-5xl font-medium text-[#1E162B] leading-tight">
             {t.awardsTitle} — <br />
-            <span className="italic font-normal text-[#D6B574]">
+            <span className="italic font-semibold text-[#522B8A]">
               {lang === 'hi' ? 'सत्य, निष्ठा एवं सनातन ज्ञान का राष्ट्रीय गौरव' : t.awardsSubtitle}
             </span>
           </h2>
 
-          <p className="text-sm text-[#EAE2F4]/80 leading-relaxed font-light">
+          <p className="text-sm text-[#4A4356] leading-relaxed">
             {lang === 'hi'
               ? 'उत्तराखंड के माननीय राज्यपाल ले. ज. गुरमीत सिंह, आईआईएमटी विश्वविद्यालय मेरठ में पूज्य जैनाचार्य 108 सौरभ सागर जी महाराज, काशी हिन्दू विश्वविद्यालय (BHU) के ज्योतिष विभागाध्यक्ष आचार्य चंद्रमौली उपाध्याय जी, महाकाल उज्जैन के प्रधान पुरोहित दिनेश जी, एवं नाफेड के नेशनल डायरेक्टर माननीय अशोक ठाकुर जी द्वारा सम्मानित।'
               : 'Conferred with highest state and academic honors by distinguished dignitaries including Hon. Governor of Uttarakhand Lt. Gen. Gurmeet Singh, Jainacharya 108 Saurabh Sagar Ji Maharaj at IIMT University, BHU Jyotish Head Acharya Chandramouli Upadhyay, and revered spiritual authorities across national conclaves.'}
           </p>
         </div>
 
-        {/* WHERE ARE THESE IMAGES LISTED? Guide Banner answering user's question */}
+        {/* Guide Banner */}
         {showGuideBanner && (
-          <div className="mb-8 p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-[#6941A5]/30 via-[#24152F] to-[#D6B574]/20 border border-[#D6B574]/40 backdrop-blur-md shadow-lg relative flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+          <div className="mb-8 p-4 sm:p-5 rounded-2xl bg-[#FAF8F5] border border-[#DEC38C] shadow-xs relative flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
             <div className="flex items-start gap-3">
-              <div className="w-10 h-10 rounded-xl bg-[#D6B574]/20 border border-[#D6B574]/40 flex items-center justify-center shrink-0 text-[#D6B574] mt-0.5">
+              <div className="w-10 h-10 rounded-xl bg-[#FBF5E6] border border-[#DEC38C] flex items-center justify-center shrink-0 text-[#B48228] mt-0.5">
                 <Info size={20} />
               </div>
               <div className="space-y-1">
-                <h4 className="font-cinzel text-sm sm:text-base font-bold text-white flex items-center gap-2">
-                  <span>{lang === 'hi' ? '📍 ये चित्र एवं सम्मान कहाँ दिख रहे हैं?' : '📍 Where Are These Images Listed on the Website?'}</span>
-                  <span className="text-[11px] px-2 py-0.5 rounded-full bg-[#D6B574]/20 text-[#D6B574] font-mono border border-[#D6B574]/30">
+                <h4 className="font-cinzel text-sm sm:text-base font-bold text-[#1E162B] flex items-center gap-2">
+                  <span>{lang === 'hi' ? 'ये चित्र एवं सम्मान कहाँ दिख रहे हैं?' : 'Where Are These Images Listed on the Website?'}</span>
+                  <span className="text-[11px] px-2 py-0.5 rounded-md bg-[#F4F0FA] text-[#522B8A] font-mono border border-[#DFD5F0]">
                     #honors
                   </span>
                 </h4>
-                <p className="text-xs text-[#EAE2F4]/85 leading-relaxed max-w-3xl">
+                <p className="text-xs text-[#4A4356] leading-relaxed max-w-3xl">
                   {lang === 'hi'
-                    ? 'आपकी सभी 40+ तस्वीरें और सम्मान इसी पावन अनुभाग (#honors) में 8 प्रमुख श्रेणियों में सूचीबद्ध हैं: आईआईएमटी मेरठ, लखनऊ महोपाध्याय, महाकाल उज्जैन, उत्तराखंड राजभवन, बीएचयू वाराणसी, नाफेड डायनामिक एक्सीलेंस आदि। किसी भी कार्ड पर क्लिक करके आप बड़ा चित्र एवं प्रशस्ति पत्र देख सकते हैं।'
-                    : 'All 40+ photos and honors are categorized right here in this #honors section across 8 major event groups: IIMT Meerut, Lucknow Conclave, Mahakal Ujjain, Uttarakhand Governor, BHU Varanasi, Dynamic Excellence Delhi, etc. Click any card to inspect full high-resolution citations.'}
+                    ? 'आपकी सभी 40+ तस्वीरें और सम्मान इसी पावन अनुभाग (#honors) में 8 प्रमुख श्रेणियों में सूचीबद्ध हैं। किसी भी कार्ड पर क्लिक करके बड़ा चित्र एवं प्रशस्ति पत्र देखें।'
+                    : 'All 40+ photos and honors are categorized right here in #honors across 8 major event groups. Click any card to inspect full high-resolution citations.'}
                 </p>
               </div>
             </div>
 
             <div className="flex items-center gap-2 shrink-0 self-end md:self-center">
-              <label className="cursor-pointer inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-gradient-to-r from-[#D6B574] to-[#c79c53] text-[#24152F] text-xs font-bold shadow-md hover:scale-[1.02] transition-all">
+              <label className="cursor-pointer inline-flex items-center gap-1.5 h-9 px-3.5 rounded-xl bg-[#522B8A] hover:bg-[#412070] text-white text-xs font-bold shadow-xs transition-all">
                 <Upload size={14} />
                 <span>{lang === 'hi' ? 'सभी 41 चित्र अपलोड करें' : 'Upload All Photos'}</span>
                 <input
@@ -256,7 +246,7 @@ export const AwardsSection: React.FC<AwardsSectionProps> = ({ lang }) => {
               <button
                 type="button"
                 onClick={() => setShowGuideBanner(false)}
-                className="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-[#EAE2F4]/70 hover:text-white"
+                className="p-2 rounded-lg bg-white hover:bg-[#F4F0FA] text-[#5D556A] hover:text-[#1E162B] border border-[#E6DFD3] cursor-pointer"
                 title="Dismiss"
               >
                 <X size={16} />
@@ -265,30 +255,29 @@ export const AwardsSection: React.FC<AwardsSectionProps> = ({ lang }) => {
           </div>
         )}
 
-        {/* Upload feedback banner */}
         {bulkUploadMsg && (
-          <div className="mb-6 p-4 rounded-xl bg-[#6941A5]/40 border border-[#D6B574] text-white flex items-center gap-3 animate-fade-in shadow-xl">
-            <CheckCircle2 size={18} className="text-[#D6B574] shrink-0" />
-            <span className="text-xs sm:text-sm font-medium">{bulkUploadMsg}</span>
+          <div className="mb-6 p-4 rounded-xl bg-emerald-50 border border-emerald-300 text-emerald-900 flex items-center gap-3 shadow-xs">
+            <CheckCircle2 size={18} className="text-emerald-700 shrink-0" />
+            <span className="text-xs sm:text-sm font-semibold">{bulkUploadMsg}</span>
           </div>
         )}
 
         {/* TOP HONOREE SPOTLIGHT CARDS */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
           
-          {/* Spotlight 1: IIMT University Lifetime Achievement Award */}
+          {/* Spotlight 1 */}
           <div 
             onClick={() => {
               const iimtAward = AWARDS_DATA.find((a) => a.id === 'iimt-1') || AWARDS_DATA[0];
               setSelectedAward(iimtAward);
             }}
-            className="p-5 sm:p-6 rounded-2xl bg-white/5 border border-[#D6B574]/40 backdrop-blur-md flex flex-col sm:flex-row items-center gap-5 shadow-xl relative overflow-hidden group cursor-pointer hover:border-[#D6B574] hover:bg-white/[0.08] transition-all"
+            className="p-5 sm:p-6 rounded-2xl bg-[#FAF8F5] border border-[#DEC38C] flex flex-col sm:flex-row items-center gap-5 shadow-sm hover:shadow-xl group cursor-pointer hover:bg-[#FBF5E6]/50 transition-all"
           >
-            <div className="w-28 h-36 sm:w-32 sm:h-40 rounded-xl overflow-hidden border-2 border-[#D6B574] shrink-0 shadow-lg relative bg-[#1c0f26]">
+            <div className="w-28 h-36 sm:w-32 sm:h-40 rounded-xl overflow-hidden border border-[#E6DFD3] bg-white p-1.5 shrink-0 shadow-md">
               <img
                 src={customPhotos['iimt-1'] || "/assets/awards/IMMT-6.jpeg"}
                 alt="आईआईएमटी विश्वविद्यालय मेरठ - लाइफटाइम अचीवमेंट सम्मान प्रशस्ति पत्र"
-                className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300"
+                className="w-full h-full object-cover object-top rounded-lg group-hover:scale-105 transition-transform duration-300"
                 onError={(e) => {
                   const target = e.currentTarget;
                   if (target.src !== '/IMMT-6.jpeg') target.src = '/IMMT-6.jpeg';
@@ -296,42 +285,42 @@ export const AwardsSection: React.FC<AwardsSectionProps> = ({ lang }) => {
               />
             </div>
             <div className="space-y-1.5 text-center sm:text-left flex-1">
-              <div className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#D6B574]/20 border border-[#D6B574]/40 text-[#D6B574] text-[10px] font-bold">
-                <Sparkles size={10} />
+              <div className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md bg-white border border-[#DEC38C] text-[#7A5311] text-[10px] font-bold">
+                <Sparkles size={10} className="text-[#B48228]" />
                 <span>{lang === 'hi' ? 'लाइफटाइम अचीवमेंट सम्मान (प्रशस्ति पत्र)' : 'Lifetime Achievement Award Citation'}</span>
               </div>
-              <h3 className="font-cinzel text-base sm:text-lg font-bold text-white group-hover:text-[#D6B574] transition-colors">
+              <h3 className="font-cinzel text-base sm:text-lg font-bold text-[#1E162B] group-hover:text-[#522B8A] transition-colors">
                 {lang === 'hi' ? 'आईआईएमटी विश्वविद्यालय, मेरठ' : 'IIMT University, Meerut'}
               </h3>
-              <p className="text-xs font-semibold text-[#D6B574]">
+              <p className="text-xs font-semibold text-[#7A5311]">
                 {lang === 'hi'
                   ? 'परम पूज्य जैनाचार्य 108 श्री सौरभ सागर जी महाराज के सानिध्य में सम्मानित'
                   : 'In presence of Param Pujya Jainacharya 108 Sourabh Sagar Ji Maharaj'}
               </p>
-              <p className="text-[11px] text-[#EAE2F4]/75 line-clamp-2">
+              <p className="text-[11px] text-[#4A4356] line-clamp-2">
                 {lang === 'hi'
                   ? 'ज्योतिष शास्त्र एवं भारतीय ज्ञान परंपरा (IKS) में आजीवन योगदान हेतु प्रशस्ति पत्र एवं स्वर्ण शील्ड से अलंकृत।'
                   : 'Conferred for distinguished lifelong contribution to Jyotish Shastra and Indian Knowledge System.'}
               </p>
-              <div className="pt-1 flex items-center justify-center sm:justify-start gap-1 text-[11px] text-[#D6B574] font-medium">
+              <div className="pt-1 flex items-center justify-center sm:justify-start gap-1 text-[11px] text-[#522B8A] font-bold">
                 <span>{lang === 'hi' ? 'प्रशस्ति पत्र व विवरण देखें →' : 'View Full Citation & Certificate →'}</span>
               </div>
             </div>
           </div>
 
-          {/* Spotlight 2: Dynamic Excellence Awards - NAFED National Director */}
+          {/* Spotlight 2 */}
           <div 
             onClick={() => {
               const nafeedAward = AWARDS_DATA.find((a) => a.id === 'nafeed-1') || null;
               if (nafeedAward) setSelectedAward(nafeedAward);
             }}
-            className="p-5 sm:p-6 rounded-2xl bg-white/5 border border-[#D6B574]/40 backdrop-blur-md flex flex-col sm:flex-row items-center gap-5 shadow-xl relative overflow-hidden group cursor-pointer hover:border-[#D6B574] hover:bg-white/[0.08] transition-all"
+            className="p-5 sm:p-6 rounded-2xl bg-[#FAF8F5] border border-[#DEC38C] flex flex-col sm:flex-row items-center gap-5 shadow-sm hover:shadow-xl group cursor-pointer hover:bg-[#FBF5E6]/50 transition-all"
           >
-            <div className="w-28 h-36 sm:w-32 sm:h-40 rounded-xl overflow-hidden border-2 border-[#D6B574] shrink-0 shadow-lg relative bg-[#1c0f26]">
+            <div className="w-28 h-36 sm:w-32 sm:h-40 rounded-xl overflow-hidden border border-[#E6DFD3] bg-white p-1.5 shrink-0 shadow-md">
               <img
                 src={customPhotos['nafeed-1'] || "/assets/awards/ashok_thakur_nafeed_award_2025.jpeg"}
                 alt="माननीय अशोक ठाकुर National Director of Nafeed द्वारा सम्मानित"
-                className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300"
+                className="w-full h-full object-cover object-top rounded-lg group-hover:scale-105 transition-transform duration-300"
                 onError={(e) => {
                   const target = e.currentTarget;
                   if (target.src !== '/ashok_thakur_nafeed_award_2025.jpeg') target.src = '/ashok_thakur_nafeed_award_2025.jpeg';
@@ -339,24 +328,24 @@ export const AwardsSection: React.FC<AwardsSectionProps> = ({ lang }) => {
               />
             </div>
             <div className="space-y-1.5 text-center sm:text-left flex-1">
-              <div className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#D6B574]/20 border border-[#D6B574]/40 text-[#D6B574] text-[10px] font-bold">
-                <Sparkles size={10} />
+              <div className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md bg-white border border-[#DEC38C] text-[#7A5311] text-[10px] font-bold">
+                <Sparkles size={10} className="text-[#B48228]" />
                 <span>{lang === 'hi' ? 'विशेष राष्ट्रीय मंच अलंकरण' : 'Featured National Honor'}</span>
               </div>
-              <h3 className="font-cinzel text-base sm:text-lg font-bold text-white group-hover:text-[#D6B574] transition-colors">
+              <h3 className="font-cinzel text-base sm:text-lg font-bold text-[#1E162B] group-hover:text-[#522B8A] transition-colors">
                 {lang === 'hi' ? 'डायनामिक एक्सीलेंस अवार्ड्स 2025' : 'Dynamic Excellence Awards 2025'}
               </h3>
-              <p className="text-xs font-semibold text-[#D6B574]">
+              <p className="text-xs font-semibold text-[#7A5311]">
                 {lang === 'hi'
                   ? 'माननीय अशोक ठाकुर (National Director of Nafeed) द्वारा सम्मानित'
                   : 'Honored by Shri Ashok Thakur, National Director of NAFED'}
               </p>
-              <p className="text-[11px] text-[#EAE2F4]/75 line-clamp-2">
+              <p className="text-[11px] text-[#4A4356] line-clamp-2">
                 {lang === 'hi'
                   ? 'इंडिया इंटरनेशनल सेन्टर (IIC) नई दिल्ली के मुख्य मंच पर नाफेड नेशनल डायरेक्टर द्वारा विशिष्ट सम्मान अर्पण।'
                   : 'Conferred at India International Centre (IIC), New Delhi in recognition of conscious guidance.'}
               </p>
-              <div className="pt-1 flex items-center justify-center sm:justify-start gap-1 text-[11px] text-[#D6B574] font-medium">
+              <div className="pt-1 flex items-center justify-center sm:justify-start gap-1 text-[11px] text-[#522B8A] font-bold">
                 <span>{lang === 'hi' ? 'सम्मान विवरण देखें →' : 'View Full Details →'}</span>
               </div>
             </div>
@@ -367,11 +356,11 @@ export const AwardsSection: React.FC<AwardsSectionProps> = ({ lang }) => {
         {/* EVENT GROUP FILTER TABS */}
         <div className="space-y-3 mb-10">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-semibold text-[#D6B574] uppercase tracking-wider flex items-center gap-1.5">
-              <FolderHeart size={14} />
+            <span className="text-xs font-bold text-[#522B8A] uppercase tracking-wider flex items-center gap-1.5">
+              <FolderHeart size={14} className="text-[#B48228]" />
               <span>{lang === 'hi' ? 'समारोह अनुसार तस्वीरें देखें:' : 'Filter by Landmark Conclave / Event:'}</span>
             </span>
-            <span className="text-xs text-[#EAE2F4]/60">
+            <span className="text-xs font-semibold text-[#5D556A]">
               {filteredAwards.length} {lang === 'hi' ? 'सम्मान' : 'items'}
             </span>
           </div>
@@ -384,14 +373,14 @@ export const AwardsSection: React.FC<AwardsSectionProps> = ({ lang }) => {
                   key={tab.id}
                   type="button"
                   onClick={() => setActiveGroup(tab.id)}
-                  className={`px-3.5 py-2 text-xs font-semibold rounded-xl transition-all flex items-center gap-1.5 ${
+                  className={`px-3.5 py-2 text-xs font-semibold rounded-xl transition-all flex items-center gap-1.5 cursor-pointer ${
                     isActive
-                      ? 'bg-gradient-to-r from-[#D6B574] via-[#eedbb3] to-[#D6B574] text-[#24152F] shadow-md font-bold'
-                      : 'bg-white/5 hover:bg-white/10 text-[#EAE2F4]/85 border border-[#D6B574]/20'
+                      ? 'bg-[#522B8A] text-white shadow-sm font-bold'
+                      : 'bg-[#FAF8F5] hover:bg-[#F4F0FA] text-[#4A4356] border border-[#E6DFD3]'
                   }`}
                 >
                   <span>{lang === 'hi' ? tab.label_hi : tab.label_en}</span>
-                  <span className={`text-[10px] px-1.5 py-0.2 rounded-full ${isActive ? 'bg-[#24152F]/20 text-[#24152F]' : 'bg-white/10 text-[#D6B574]'}`}>
+                  <span className={`text-[10px] px-1.5 py-0.2 rounded-full font-bold ${isActive ? 'bg-white/20 text-white' : 'bg-white text-[#522B8A] border border-[#E6DFD3]'}`}>
                     {tab.count}
                   </span>
                 </button>
@@ -400,20 +389,19 @@ export const AwardsSection: React.FC<AwardsSectionProps> = ({ lang }) => {
           </div>
         </div>
 
-        {/* 40+ AWARDS GRID */}
+        {/* 40+ AWARDS MUSEUM GALLERY GRID */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredAwards.map((award, index) => {
-            const hasCustomPhoto = !!customPhotos[award.id];
             const currentImg = customPhotos[award.id] || award.imageUrl;
 
             return (
               <div
                 key={award.id}
-                className="group rounded-2xl bg-white/5 border border-[#D6B574]/20 hover:border-[#D6B574]/80 p-5 flex flex-col justify-between transition-all duration-300 hover:bg-white/[0.08] shadow-md hover:shadow-2xl"
+                className="group rounded-2xl bg-[#FAF8F5] border border-[#E6DFD3] hover:border-[#DEC38C] p-4 flex flex-col justify-between transition-all duration-300 hover:bg-white shadow-xs hover:shadow-xl"
               >
                 <div className="space-y-4">
-                  {/* Photo Display Frame with Upload Affordance */}
-                  <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-[#1c0f26] border border-[#D6B574]/30 flex items-center justify-center text-center">
+                  {/* Gallery Matted Photo Frame */}
+                  <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-white border border-[#E6DFD3] flex items-center justify-center text-center shadow-2xs">
                     {currentImg ? (
                       <div
                         className="relative w-full h-full overflow-hidden group/thumb cursor-pointer"
@@ -422,54 +410,53 @@ export const AwardsSection: React.FC<AwardsSectionProps> = ({ lang }) => {
                         <img
                           src={currentImg}
                           alt={award.alt}
-                          className="w-full h-full object-cover object-top opacity-95 transition-transform duration-500 group-hover:scale-105"
+                          className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
                           onError={(e) => {
                             const target = e.currentTarget;
                             if (target.src !== '/28.jpeg') target.src = '/28.jpeg';
                           }}
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-[#1c0f26] via-[#1c0f26]/30 to-transparent" />
+                        <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-slate-950/75 via-slate-900/20 to-transparent pointer-events-none" />
                       </div>
                     ) : (
-                      /* Ceremonial Insignia Fallback Badge */
                       <div
-                        className="w-full h-full flex flex-col items-center justify-center p-4 bg-gradient-to-b from-[#2a1738] to-[#160b20] cursor-pointer"
+                        className="w-full h-full flex flex-col items-center justify-center p-4 bg-gradient-to-b from-[#FAF8F5] to-[#F4F0FA] cursor-pointer"
                         onClick={() => setSelectedAward(award)}
                       >
-                        <div className="w-12 h-12 rounded-full border border-[#D6B574]/40 bg-[#D6B574]/10 flex items-center justify-center text-[#D6B574] mb-2 shadow-inner">
+                        <div className="w-12 h-12 rounded-full border border-[#DEC38C] bg-[#FBF5E6] flex items-center justify-center text-[#B48228] mb-2 shadow-xs">
                           <Trophy size={22} />
                         </div>
-                        <h4 className="font-cinzel text-xs font-bold text-[#D6B574] line-clamp-1">
+                        <h4 className="font-cinzel text-xs font-bold text-[#1E162B] line-clamp-1">
                           {award.eventGroup_hi}
                         </h4>
-                        <p className="text-[10px] text-[#EAE2F4]/70 mt-1 line-clamp-2 px-2">
+                        <p className="text-[10px] text-[#5D556A] mt-1 line-clamp-2 px-2">
                           {award.event_hi}
                         </p>
                       </div>
                     )}
 
-                    {/* Bottom strip on image */}
-                    <div className="absolute bottom-2 inset-x-2 flex items-center justify-between px-2 pointer-events-none">
-                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-[#24152F]/90 border border-[#D6B574]/50 text-[10px] text-[#D6B574] font-bold">
-                        <Award size={11} />
+                    {/* Bottom strip */}
+                    <div className="absolute bottom-2 inset-x-2 flex items-center justify-between px-1.5 pointer-events-none">
+                      <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md bg-white/95 border border-[#E6DFD3] text-[10px] text-[#1E162B] font-bold shadow-xs">
+                        <Award size={11} className="text-[#B48228]" />
                         <span>{lang === 'hi' ? `सम्मान #${index + 1}` : `Honor #${index + 1}`}</span>
                       </span>
-                      <span className="text-[9px] text-[#D6B574]/90 font-mono truncate max-w-[130px] bg-[#24152F]/80 px-1.5 py-0.5 rounded">
+                      <span className="text-[9px] text-white/90 font-mono truncate max-w-[125px] bg-slate-900/75 px-1.5 py-0.5 rounded">
                         {award.filename}
                       </span>
                     </div>
 
-                    {/* Category tag */}
-                    <div className="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded-full bg-[#24152F]/90 backdrop-blur-xs text-[10px] font-semibold text-[#D6B574] border border-[#D6B574]/30 uppercase tracking-wider">
+                    {/* Category badge */}
+                    <div className="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded-md bg-white/95 backdrop-blur-xs text-[10px] font-bold text-[#522B8A] border border-[#E6DFD3] uppercase tracking-wider shadow-xs">
                       {lang === 'hi'
                         ? (award.category === 'conclave' ? 'महासम्मेलन' : award.category === 'felicitation' ? 'मंच सम्मान' : award.category === 'memento' ? 'स्मृति चिन्ह' : 'समाचार')
                         : (award.category === 'conclave' ? 'Conclave' : award.category === 'felicitation' ? 'Felicitation' : award.category === 'memento' ? 'Memento' : 'Press')}
                     </div>
 
-                    {/* Single Photo Upload Affordance */}
+                    {/* Upload affordance */}
                     <label
                       title={lang === 'hi' ? "इस सम्मान का चित्र बदलें / अपलोड करें" : "Upload photo for this award"}
-                      className="absolute top-2.5 right-2.5 p-1.5 rounded-full bg-[#24152F]/90 text-[#D6B574] hover:bg-[#D6B574] hover:text-[#24152F] border border-[#D6B574]/40 cursor-pointer transition-all shadow-md z-10"
+                      className="absolute top-2.5 right-2.5 p-1.5 rounded-full bg-white/95 text-[#1E162B] hover:bg-[#522B8A] hover:text-white border border-[#E6DFD3] cursor-pointer transition-all shadow-md z-10"
                     >
                       <Camera size={13} />
                       <input
@@ -485,36 +472,36 @@ export const AwardsSection: React.FC<AwardsSectionProps> = ({ lang }) => {
                   </div>
 
                   {/* Text Details */}
-                  <div className="space-y-2">
-                    <div className="text-[11px] font-bold text-[#D6B574] tracking-wide uppercase">
+                  <div className="space-y-1.5">
+                    <div className="text-[11px] font-bold text-[#7A5311] tracking-wide uppercase">
                       {award.eventGroup_hi}
                     </div>
 
-                    <h3 className="font-cinzel text-sm sm:text-base font-semibold text-white leading-snug group-hover:text-[#D6B574] transition-colors">
+                    <h3 className="font-cinzel text-sm sm:text-base font-bold text-[#1E162B] leading-snug group-hover:text-[#522B8A] transition-colors">
                       {lang === 'hi' ? award.event_hi : award.event}
                     </h3>
 
                     {award.caption && (
-                      <p className="text-xs text-[#EAE2F4]/75 leading-relaxed font-light line-clamp-3">
+                      <p className="text-xs text-[#4A4356] leading-relaxed line-clamp-3">
                         {award.caption}
                       </p>
                     )}
                   </div>
                 </div>
 
-                {/* Card Footer Actions */}
-                <div className="pt-4 mt-4 border-t border-[#D6B574]/15 flex items-center justify-between text-xs">
-                  <div className="flex items-center gap-1 text-[11px] text-[#EAE2F4]/60 truncate max-w-[150px]">
-                    <MapPin size={11} className="text-[#D6B574] shrink-0" />
+                {/* Footer */}
+                <div className="pt-3.5 mt-4 border-t border-[#E6DFD3] flex items-center justify-between text-xs">
+                  <div className="flex items-center gap-1 text-[11px] text-[#5D556A] truncate max-w-[155px]">
+                    <MapPin size={11} className="text-[#B48228] shrink-0" />
                     <span className="truncate">{award.venue || 'भारत'}</span>
                   </div>
 
                   <button
                     type="button"
                     onClick={() => setSelectedAward(award)}
-                    className="font-medium text-[#D6B574] hover:text-white flex items-center gap-1 transition-colors group-hover:translate-x-0.5"
+                    className="font-bold text-[#522B8A] hover:text-[#B48228] flex items-center gap-1 transition-colors cursor-pointer"
                   >
-                    <span>{lang === 'hi' ? 'सम्मान विवरण देखें' : 'View Citation'}</span>
+                    <span>{lang === 'hi' ? 'विवरण देखें' : 'View Citation'}</span>
                     <ExternalLink size={12} />
                   </button>
                 </div>
@@ -525,42 +512,41 @@ export const AwardsSection: React.FC<AwardsSectionProps> = ({ lang }) => {
 
       </div>
 
-      {/* FULL CITATION / LIGHTBOX MODAL */}
+      {/* CLEAN LIGHTBOX CITATION MODAL */}
       {selectedAward && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md animate-fade-in">
-          <div className="relative w-full max-w-2xl bg-[#24152F] text-white rounded-2xl border border-[#D6B574]/60 shadow-2xl p-6 sm:p-8 space-y-6 max-h-[90vh] overflow-y-auto">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm animate-fade-in">
+          <div className="relative w-full max-w-2xl bg-white text-[#1E162B] rounded-2xl border border-[#E6DFD3] shadow-2xl p-6 sm:p-8 space-y-6 max-h-[90vh] overflow-y-auto">
             
-            <div className="flex items-start justify-between gap-4 border-b border-[#D6B574]/30 pb-4">
+            <div className="flex items-start justify-between gap-4 border-b border-[#E6DFD3] pb-4">
               <div className="space-y-1">
-                <span className="text-xs font-bold uppercase tracking-wider text-[#D6B574]">
+                <span className="text-xs font-bold uppercase tracking-wider text-[#7A5311]">
                   {selectedAward.eventGroup_hi} · {lang === 'hi' ? 'प्रमाणित राष्ट्रीय अभिलेख' : 'VERIFIED RECORD'}
                 </span>
-                <h3 className="font-cinzel text-xl sm:text-2xl font-bold text-white">
+                <h3 className="font-cinzel text-xl sm:text-2xl font-bold text-[#1E162B]">
                   {lang === 'hi' ? selectedAward.event_hi : selectedAward.event}
                 </h3>
               </div>
               <button
                 type="button"
                 onClick={() => setSelectedAward(null)}
-                className="p-1.5 rounded-full hover:bg-white/10 text-[#EAE2F4]"
+                className="p-2 rounded-full bg-[#FAF8F5] hover:bg-[#F4F0FA] text-[#1E162B] border border-[#E6DFD3] cursor-pointer"
               >
                 <X size={20} />
               </button>
             </div>
 
-            {/* Photo Preview Container */}
-            <div className="rounded-xl overflow-hidden bg-black/50 border border-[#D6B574]/40 aspect-video relative flex items-center justify-center shadow-inner">
+            <div className="rounded-xl overflow-hidden bg-[#FAF8F5] border border-[#E6DFD3] aspect-video relative flex items-center justify-center p-2">
               <img
                 src={customPhotos[selectedAward.id] || selectedAward.imageUrl || poojaAuthenticPhoto}
                 alt={selectedAward.alt}
-                className="w-full h-full object-contain bg-[#1c0f26]"
+                className="w-full h-full object-contain rounded-lg"
                 onError={(e) => {
                   const target = e.currentTarget;
                   if (target.src !== '/28.jpeg') target.src = '/28.jpeg';
                 }}
               />
               <div className="absolute bottom-3 right-3">
-                <label className="cursor-pointer inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#24152F]/90 hover:bg-[#24152F] text-[#D6B574] border border-[#D6B574]/50 text-xs font-semibold backdrop-blur-sm transition-all shadow-md">
+                <label className="cursor-pointer inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white hover:bg-[#FAF8F5] text-[#522B8A] border border-[#E6DFD3] text-xs font-bold shadow-md transition-all">
                   <Camera size={13} />
                   <span>{lang === 'hi' ? 'फोटो अपडेट करें' : 'Update Photo'}</span>
                   <input
@@ -576,36 +562,35 @@ export const AwardsSection: React.FC<AwardsSectionProps> = ({ lang }) => {
               </div>
             </div>
 
-            {/* Citation & Dignitaries Details */}
-            <div className="space-y-3 text-xs sm:text-sm text-[#EAE2F4]/90 leading-relaxed bg-white/5 p-4 rounded-xl border border-white/10">
+            <div className="space-y-3 text-xs sm:text-sm text-[#4A4356] leading-relaxed bg-[#FAF8F5] p-4 rounded-xl border border-[#E6DFD3]">
               <div>
-                <span className="font-bold text-[#D6B574] uppercase text-xs block mb-1">
+                <span className="font-bold text-[#522B8A] uppercase text-xs block mb-1">
                   {lang === 'hi' ? 'प्रशस्ति विवरण:' : 'Citation Statement:'}
                 </span>
-                <p>{selectedAward.caption || selectedAward.event}</p>
+                <p className="text-[#1E162B]">{selectedAward.caption || selectedAward.event}</p>
               </div>
 
               {selectedAward.dignitaries && (
-                <div className="pt-2 border-t border-white/10 flex items-start gap-2">
-                  <Users size={14} className="text-[#D6B574] shrink-0 mt-0.5" />
+                <div className="pt-2 border-t border-[#E6DFD3] flex items-start gap-2">
+                  <Users size={14} className="text-[#B48228] shrink-0 mt-0.5" />
                   <div>
-                    <span className="font-semibold text-white">{lang === 'hi' ? 'विशिष्ट सानिध्य व अतिथि: ' : 'Dignitaries: '}</span>
-                    <span className="text-[#EAE2F4]/80">{selectedAward.dignitaries}</span>
+                    <span className="font-bold text-[#1E162B]">{lang === 'hi' ? 'विशिष्ट सानिध्य व अतिथि: ' : 'Dignitaries: '}</span>
+                    <span>{selectedAward.dignitaries}</span>
                   </div>
                 </div>
               )}
 
               {selectedAward.venue && (
                 <div className="pt-1 flex items-start gap-2">
-                  <MapPin size={14} className="text-[#D6B574] shrink-0 mt-0.5" />
+                  <MapPin size={14} className="text-[#B48228] shrink-0 mt-0.5" />
                   <div>
-                    <span className="font-semibold text-white">{lang === 'hi' ? 'स्थान व तिथि: ' : 'Venue & Date: '}</span>
-                    <span className="text-[#EAE2F4]/80">{selectedAward.venue}</span>
+                    <span className="font-bold text-[#1E162B]">{lang === 'hi' ? 'स्थान व तिथि: ' : 'Venue & Date: '}</span>
+                    <span>{selectedAward.venue}</span>
                   </div>
                 </div>
               )}
 
-              <p className="text-[11px] text-[#EAE2F4]/60 pt-2 border-t border-white/10 font-mono">
+              <p className="text-[11px] text-[#5D556A] pt-2 border-t border-[#E6DFD3] font-mono">
                 {lang === 'hi' ? 'मूल फ़ाइल संदर्भ:' : 'Asset Reference:'} {selectedAward.filename}
               </p>
             </div>
@@ -614,7 +599,7 @@ export const AwardsSection: React.FC<AwardsSectionProps> = ({ lang }) => {
               <button
                 type="button"
                 onClick={() => setSelectedAward(null)}
-                className="px-6 py-2.5 bg-gradient-to-r from-[#D6B574] to-[#c79c53] text-[#24152F] font-bold text-xs uppercase tracking-wider rounded-xl transition-all shadow-md hover:scale-[1.02]"
+                className="px-6 py-2.5 bg-[#522B8A] hover:bg-[#412070] text-white font-bold text-xs uppercase tracking-wider rounded-xl transition-all shadow-sm cursor-pointer"
               >
                 {lang === 'hi' ? 'बंद करें' : 'Close'}
               </button>
