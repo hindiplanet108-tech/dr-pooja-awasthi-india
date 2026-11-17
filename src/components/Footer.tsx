@@ -22,11 +22,11 @@ export const Footer: React.FC<FooterProps> = ({
   const t = getTranslation(lang);
 
   return (
-    <footer className="bg-[#F4F1EA] text-[#1E162B] pt-14 pb-12 border-t border-[#DEC38C] relative overflow-hidden">
+    <footer className="bg-[#F4F1EA] text-[#1E162B] pt-10 pb-8 border-t border-[#DEC38C] relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* 🌟 PROMINENT HIGHLIGHTED SECTION: Fee Details & Bank/UPI Payment Portal */}
-        <div className="mb-14 p-6 sm:p-8 rounded-3xl bg-white border-2 border-[#DEC38C] shadow-lg relative overflow-hidden">
+        <div className="mb-8 p-5 sm:p-6 rounded-3xl bg-white border-2 border-[#DEC38C] shadow-lg relative overflow-hidden">
           <div className="flex items-center gap-2 mb-4">
             <span className="w-2 h-2 rounded-full bg-[#B48228] animate-ping" />
             <span className="text-[11px] font-extrabold uppercase tracking-widest text-[#7A5311]">
@@ -136,7 +136,7 @@ export const Footer: React.FC<FooterProps> = ({
         </div>
 
         {/* Main Footer Row */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b border-[#DEC38C]/50">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 pb-8 border-b border-[#DEC38C]/50">
           
           {/* Brand info */}
           <div className="lg:col-span-5 space-y-4">

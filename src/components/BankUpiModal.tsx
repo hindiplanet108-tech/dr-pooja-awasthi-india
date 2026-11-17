@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { X, Copy, Check, QrCode, ShieldCheck, ArrowRight, MessageSquare, Building2, Smartphone } from 'lucide-react';
 import { useSiteContent } from '../utils/siteContentContext';
+import { UpiQrCode } from './UpiQrCode';
 
 interface BankUpiModalProps {
   isOpen: boolean;
@@ -15,9 +16,7 @@ export const BankUpiModal: React.FC<BankUpiModalProps> = ({ isOpen, onClose, lan
   if (!isOpen) return null;
 
   const bankInfo = siteContent?.bankUpi;
-  const qrCodeUrl =
-    bankInfo?.qr_code_image ||
-    'https://api.qrserver.com/v1/create-qr-code/?size=350x350&data=upi%3A%2F%2Fpay%3Fpa%3D9105731969%40upi%26pn%3DPooja%20Awasthi%26cu%3DINR';
+  const qrCodeUrl = bankInfo?.qr_code_image || '/upi-qr-9105731969.svg';
 
   const paymentData = {
     accountHolder: bankInfo?.account_name || 'Pooja Awasthi',
@@ -88,11 +87,12 @@ export const BankUpiModal: React.FC<BankUpiModalProps> = ({ isOpen, onClose, lan
             {/* Scannable QR Code Card */}
             <div className="p-4 rounded-2xl bg-white border border-[#E6DFD3] text-center flex flex-col sm:flex-row items-center justify-center gap-5 shadow-xs">
               <div className="relative p-2 rounded-xl border border-[#E6DFD3] bg-white shrink-0 shadow-2xs">
-                <img
-                  src={paymentData.qrImage}
+                <UpiQrCode
+                  upiId={paymentData.upiId}
+                  accountHolder={paymentData.accountHolder}
+                  customImageUrl={paymentData.qrImage}
                   alt={`UPI QR Code - ${paymentData.accountHolder} (${paymentData.upiId})`}
                   className="w-40 h-40 object-contain rounded-lg"
-                  loading="eager"
                 />
               </div>
 

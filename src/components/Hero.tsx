@@ -70,7 +70,7 @@ export const Hero: React.FC<HeroProps> = ({
   const displayBadge = lang === 'hi' ? (heroContent?.badge_text_hi || '40+ राष्ट्रीय सम्मान व पावन दीर्घा') : (heroContent?.badge_text_en || '40+ National Honors & Archive');
 
   return (
-    <section className="relative pt-32 pb-16 md:pt-38 md:pb-24 overflow-hidden bg-gradient-to-br from-[#FAF8F5] via-white to-[#F3EFFA] text-[#1E162B] border-b border-[#E5DFD5]">
+    <section className="relative pt-28 pb-10 md:pt-32 md:pb-12 overflow-hidden bg-gradient-to-br from-[#FAF8F5] via-white to-[#F3EFFA] text-[#1E162B] border-b border-[#E5DFD5]">
       {/* Subtle Sacred Geometry Watermark */}
       <div className="absolute inset-0 pointer-events-none opacity-[0.045]">
         <img
@@ -86,7 +86,7 @@ export const Hero: React.FC<HeroProps> = ({
       <div className="absolute bottom-8 right-12 w-80 h-80 bg-[#F4E6C8]/50 rounded-full blur-3xl pointer-events-none" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-10 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
           
           {/* Left Column: Editorial Headline & Value proposition */}
           <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
@@ -237,7 +237,7 @@ export const Hero: React.FC<HeroProps> = ({
       </div>
 
       {/* Clean Elevated 4-Point Credentials Strip */}
-      <div className="mt-14 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+      <div className="mt-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="grid grid-cols-2 md:grid-cols-4 divide-y md:divide-y-0 md:divide-x divide-[#EFECE6] p-4 rounded-2xl bg-white border border-[#E6DFD3] shadow-sm">
           <div className="text-center p-3">
             <div className="font-cinzel text-2xl md:text-3xl font-bold text-[#522B8A] tabular-nums">40+</div>

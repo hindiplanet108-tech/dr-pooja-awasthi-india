@@ -200,7 +200,7 @@ export const AdminPageBuilder: React.FC<AdminPageBuilderProps> = ({
           id: uniqueId,
           type: 'video',
           heading: 'वीडियो व्याख्यान',
-          videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+          videoUrl: '',
           caption: 'डॉ. पूजा अवस्थी द्वारा विशेष मार्गदर्शन व्याख्यान',
         } as VideoBlock;
         break;

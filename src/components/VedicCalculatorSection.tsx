@@ -67,7 +67,7 @@ export const VedicCalculatorSection: React.FC<VedicCalculatorSectionProps> = ({ 
   };
 
   return (
-    <section id="calculator" className="py-20 md:py-28 bg-[#F4F0FA] text-[#1E162B] relative overflow-hidden border-t border-[#DFD5F0]">
+    <section id="calculator" className="py-12 md:py-16 bg-[#F4F0FA] text-[#1E162B] relative overflow-hidden border-t border-[#DFD5F0]">
       {/* Subtle luminous ambient washes */}
       <div className="absolute top-1/4 left-1/4 w-[560px] h-[560px] bg-white/70 rounded-full blur-[150px] pointer-events-none" />
       <div className="absolute bottom-10 right-10 w-[460px] h-[460px] bg-[#FBF5E6]/90 rounded-full blur-[140px] pointer-events-none" />
@@ -75,7 +75,7 @@ export const VedicCalculatorSection: React.FC<VedicCalculatorSectionProps> = ({ 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Header */}
-        <div className="text-center max-w-4xl mx-auto mb-12 space-y-3">
+        <div className="text-center max-w-4xl mx-auto mb-8 space-y-2.5">
           <div className="inline-flex items-center justify-center gap-2 px-4 py-1.5 rounded-full bg-white border border-[#DEC38C] text-xs font-semibold uppercase tracking-widest text-[#7A5311] shadow-2xs">
             <Sparkles size={14} className="text-[#B48228]" />
             <span>{lang === 'hi' ? 'अंक चक्र विश्लेषण • Divine Geometric Matrix' : 'Divine Geometric Matrix • Vedic Numerology Engine'}</span>
@@ -97,7 +97,7 @@ export const VedicCalculatorSection: React.FC<VedicCalculatorSectionProps> = ({ 
         </div>
 
         {/* Interactive Input Form */}
-        <div className="max-w-4xl mx-auto mb-12 p-6 sm:p-8 rounded-3xl bg-white border border-[#DFD5F0] shadow-xl">
+        <div className="max-w-4xl mx-auto mb-8 p-6 sm:p-7 rounded-3xl bg-white border border-[#DFD5F0] shadow-xl">
           <form onSubmit={handleCalculate} className="space-y-6">
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
               

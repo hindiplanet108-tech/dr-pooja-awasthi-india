@@ -6,7 +6,6 @@ import { ServicesSection } from './components/ServicesSection';
 import { VedicCalculatorSection } from './components/VedicCalculatorSection';
 import { TarotOracleSection } from './components/TarotOracleSection';
 import { AwardsSection } from './components/AwardsSection';
-import { VideoSpotlightSection } from './components/VideoSpotlightSection';
 import { PricingConsultationSection } from './components/PricingConsultationSection';
 import { FaqSection } from './components/FaqSection';
 import { TestimonialsSection } from './components/TestimonialsSection';
@@ -442,9 +441,6 @@ function MainApp() {
             {/* 7. 40+ National Awards, Conclaves & Honors */}
             <AwardsSection lang={lang} />
 
-            {/* 7b. Video Spotlight (Editable via Admin Panel) */}
-            <VideoSpotlightSection lang={lang} />
-
             {/* 8. Consultation Charges & 4-Step Process */}
             <PricingConsultationSection
               lang={lang}
@@ -466,7 +462,7 @@ function MainApp() {
             />
 
             {/* Social Share & Promotion Widget */}
-            <div className="max-w-4xl mx-auto px-4 py-6">
+            <div className="max-w-4xl mx-auto px-4 pb-8 pt-0">
               <SocialShare
                 title={lang === 'hi' ? 'डॉ. पूजा अवस्थी — आध्यात्मिक मार्गदर्शन एवं वैदिक परामर्श' : 'Dr. Pooja Awasthi — Spiritual Guidance & Vedic Numerology'}
                 text={lang === 'hi' ? 'जीवन में स्पष्टता, शांति एवं सकारात्मक बदलाव हेतु डॉ. पूजा अवस्थी (गोल्ड मेडलिस्ट) से जुड़ें।' : 'Empowering clarity, peace of mind & positive transformation with Dr. Pooja Awasthi.'}

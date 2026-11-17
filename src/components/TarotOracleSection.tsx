@@ -35,14 +35,14 @@ export const TarotOracleSection: React.FC<TarotOracleSectionProps> = ({ onBookTa
   };
 
   return (
-    <section id="tarot" className="py-20 md:py-28 bg-[#FAF8F5] text-[#1E162B] relative overflow-hidden border-t border-[#E5DFD5]">
+    <section id="tarot" className="py-12 md:py-16 bg-[#FAF8F5] text-[#1E162B] relative overflow-hidden border-t border-[#E5DFD5]">
       <div className="absolute top-1/3 right-1/4 w-[450px] h-[450px] bg-[#F4F0FA] rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute bottom-10 left-10 w-80 h-80 bg-[#FBF5E6] rounded-full blur-[100px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12 space-y-3">
+        <div className="text-center max-w-3xl mx-auto mb-8 space-y-2.5">
           <div className="inline-flex items-center justify-center gap-2 text-xs font-bold uppercase tracking-widest text-[#522B8A]">
             <Sparkles size={14} className="text-[#B48228]" />
             <span>{lang === 'hi' ? 'सहज बोध टैरो मार्गदर्शन' : 'Intuitive Oracle'}</span>

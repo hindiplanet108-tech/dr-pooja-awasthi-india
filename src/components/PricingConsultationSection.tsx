@@ -80,11 +80,11 @@ export const PricingConsultationSection: React.FC<PricingConsultationSectionProp
   ];
 
   return (
-    <section id="charges" className="py-20 md:py-28 bg-[#FAF8F5] text-[#1E162B] relative border-t border-[#E5DFD5]">
+    <section id="charges" className="py-12 md:py-16 bg-[#FAF8F5] text-[#1E162B] relative border-t border-[#E5DFD5]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
+        <div className="text-center max-w-3xl mx-auto mb-10 space-y-2.5">
           <div className="flex items-center justify-center gap-2 text-xs font-bold uppercase tracking-widest text-[#522B8A]">
             <Sparkles size={14} className="text-[#B48228]" />
             <span>{t.chargesNav}</span>
@@ -105,7 +105,7 @@ export const PricingConsultationSection: React.FC<PricingConsultationSectionProp
         </div>
 
         {/* Pricing Card & Deliverables Split */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch mb-20">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch mb-10">
           
           {/* Luxury Editorial Light Signature Fee Card */}
           <div className="lg:col-span-5 rounded-3xl bg-white text-[#1E162B] p-8 sm:p-10 border-2 border-[#DEC38C] shadow-xl flex flex-col justify-between relative overflow-hidden">

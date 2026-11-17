@@ -258,7 +258,7 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
   return (
     <section
       id="reviews"
-      className="py-20 md:py-28 bg-[#FAF8F5] text-[#1E162B] relative border-t border-[#E6DFD3] overflow-hidden scroll-mt-20"
+      className="py-12 md:py-16 bg-[#FAF8F5] text-[#1E162B] relative border-t border-[#E6DFD3] overflow-hidden scroll-mt-20"
     >
       {/* Target Anchor Hooks for #client-reviews-stories & #testimonials */}
       <div id="client-reviews-stories" className="absolute -top-24 pointer-events-none" />
@@ -268,7 +268,7 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
       <div className="absolute top-0 right-0 w-80 h-80 bg-[#FBF5E6] rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-80 h-80 bg-[#F4F0FA] rounded-full blur-3xl pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-8">
         {/* ==================================================================== */}
         {/* 1. SECTION HEADER WITH AGGREGATE 4.9★ RATING BANNER */}
         {/* ==================================================================== */}
@@ -504,7 +504,7 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
         {/* ==================================================================== */}
         {/* 5. BOTTOM BANNER WITH DUAL ACTIONS: WRITE REVIEW & BOOK CONSULTATION */}
         {/* ==================================================================== */}
-        <div className="p-8 rounded-3xl bg-white text-[#1E162B] border-2 border-[#DEC38C] shadow-lg text-center max-w-3xl mx-auto space-y-5">
+        <div className="p-6 sm:p-7 rounded-3xl bg-white text-[#1E162B] border-2 border-[#DEC38C] shadow-lg text-center max-w-3xl mx-auto space-y-4">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FBF5E6] border border-[#DEC38C] text-[#7A5311] text-xs font-semibold">
             <Sparkles size={13} className="text-[#B48228]" />
             <span>{lang === 'hi' ? 'संतुष्ट साधकों का अनुभव साझा मंच' : 'Join Our Satisfied Seekers Community'}</span>

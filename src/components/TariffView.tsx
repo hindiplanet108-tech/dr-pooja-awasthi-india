@@ -22,6 +22,7 @@ import poojaAuthenticPhoto from '../assets/images/pooja_awasthi_portrait.jpeg';
 import { SEOHead } from './SEOHead';
 import { Breadcrumb } from './Breadcrumb';
 import { SocialShare } from './SocialShare';
+import { UpiQrCode } from './UpiQrCode';
 
 interface TariffViewProps {
   onBackToHome: () => void;
@@ -57,7 +58,7 @@ export const TariffView: React.FC<TariffViewProps> = ({
     branch: bankInfo?.branch || 'Dehradun Main Branch, Uttarakhand',
     upiId: bankInfo?.upi_id || '9105731969@upi',
     phone: siteContent?.contact?.phone || '+91 91057 31969',
-    qrImage: bankInfo?.qr_code_image || 'https://api.qrserver.com/v1/create-qr-code/?size=350x350&data=upi%3A%2F%2Fpay%3Fpa%3D9105731969%40upi%26pn%3DPooja%20Awasthi%26cu%3DINR'
+    qrImage: bankInfo?.qr_code_image || '/upi-qr-9105731969.svg'
   };
 
   const handleCopy = (text: string, key: string) => {
@@ -118,7 +119,7 @@ export const TariffView: React.FC<TariffViewProps> = ({
     : 'Official Tariff Card for 11 Specialized Healing & Correction Services + Consultancy Fees merging All 16 Divine Services by Dr. Pooja Awasthi.';
 
   return (
-    <div className="min-h-screen bg-[#FAF8F5] text-[#1E162B] pt-28 md:pt-32 pb-20">
+    <div className="min-h-screen bg-[#FAF8F5] text-[#1E162B] pt-24 md:pt-28 pb-12">
       {/* Comprehensive SEO Head for Tariff & Rate Card */}
       <SEOHead
         title={tariffTitle}
@@ -197,7 +198,7 @@ export const TariffView: React.FC<TariffViewProps> = ({
         </div>
 
         {/* Page Title & Subtitle - Merged 11 Specialized Services + Fees + All 16 Divine Services */}
-        <div className="max-w-4xl mb-12 space-y-3">
+        <div className="max-w-4xl mb-8 space-y-2.5">
           <div className="flex flex-wrap items-center gap-2">
             <span className="text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full bg-[#6941A5]/10 text-[#6941A5] border border-[#6941A5]/25">
               {tariffLang === 'hi' ? '11 विशिष्ट हीलिंग एवं सुधार सेवाएं' : '11 Specialized Healing & Correction Services'}
@@ -241,7 +242,7 @@ export const TariffView: React.FC<TariffViewProps> = ({
         </div>
 
         {/* Most Popular Feature Card */}
-        <div className="mb-16 rounded-3xl bg-white text-[#1E162B] p-8 sm:p-10 border-2 border-[#DEC38C] shadow-lg relative overflow-hidden">
+        <div className="mb-10 rounded-3xl bg-white text-[#1E162B] p-6 sm:p-8 border-2 border-[#DEC38C] shadow-lg relative overflow-hidden">
           <div className="absolute top-0 right-0 w-72 h-72 bg-[#F4F0FA]/80 rounded-full blur-3xl pointer-events-none" />
 
           <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-8">
@@ -318,7 +319,7 @@ export const TariffView: React.FC<TariffViewProps> = ({
         </div>
 
         {/* Merged Directory: 11 Specialized Healing & Correction Services + All 16 Divine Services */}
-        <div className="mb-20 space-y-8">
+        <div className="mb-12 space-y-6">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
             <div>
               <span className="text-xs font-bold uppercase tracking-widest text-[#522B8A] flex items-center gap-1.5">
@@ -484,11 +485,12 @@ export const TariffView: React.FC<TariffViewProps> = ({
                 {/* QR Display Frame */}
                 <div className="p-6 rounded-2xl bg-[#FAF8F5] border border-[#E6DFD3] text-center flex flex-col items-center justify-center space-y-3 shadow-inner">
                   <div className="relative p-2.5 rounded-xl border border-[#E6DFD3] bg-white shadow-sm">
-                    <img
-                      src={customQrImage || bankDetails.qrImage}
+                    <UpiQrCode
+                      upiId={bankDetails.upiId}
+                      accountHolder={bankDetails.holder}
+                      customImageUrl={customQrImage || bankDetails.qrImage}
                       alt={`UPI Payment QR Code - ${bankDetails.holder} (${bankDetails.upiId})`}
                       className="w-48 h-48 object-contain rounded-lg"
-                      loading="eager"
                     />
                   </div>
 
@@ -656,7 +658,7 @@ export const TariffView: React.FC<TariffViewProps> = ({
         </div>
 
         {/* Social Share & Promotion Widget */}
-        <div className="pt-12 max-w-3xl mx-auto">
+        <div className="pt-8 max-w-3xl mx-auto">
           <SocialShare
             title="Dr. Pooja Awasthi — 11 Spiritual Services Tariff & Fee Card"
             text="Transparent consultation fees and verified payment details for Vedic Numerology, Tarot Reading, Chakra Healing & PLR."

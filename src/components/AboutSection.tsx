@@ -53,12 +53,12 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ lang, onBookClick })
   ];
 
   return (
-    <section id="about" className="py-20 md:py-28 bg-white text-[#1E162B] relative overflow-hidden border-b border-[#E5DFD5]">
+    <section id="about" className="py-12 md:py-16 bg-white text-[#1E162B] relative overflow-hidden border-b border-[#E5DFD5]">
       <div className="absolute top-0 right-0 w-96 h-96 bg-[#F4F0FA]/80 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         {/* Section Header */}
-        <div className="max-w-3xl mb-14 space-y-3">
+        <div className="max-w-3xl mb-8 space-y-2.5">
           <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#522B8A]">
             <span>{t.aboutNav}</span>
             <span aria-hidden="true" className="text-[#B48228]">·</span>

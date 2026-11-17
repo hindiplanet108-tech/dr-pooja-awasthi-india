@@ -57,11 +57,11 @@ export const FaqSection: React.FC<FaqSectionProps> = ({ lang = 'en' }) => {
     : (customFaqs && customFaqs.length > 0 ? customFaqs : faqs_en);
 
   return (
-    <section id="faq" className="py-20 md:py-28 bg-white text-[#1E162B] relative border-t border-[#E6DFD3]">
+    <section id="faq" className="py-12 md:py-16 bg-white text-[#1E162B] relative border-t border-[#E6DFD3]">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="text-center mb-16 space-y-3">
+        <div className="text-center mb-10 space-y-2.5">
           <div className="flex items-center justify-center gap-2 text-xs font-semibold uppercase tracking-widest text-[#522B8A]">
             <HelpCircle size={14} className="text-[#B48228]" />
             <span>{lang === 'hi' ? 'जिज्ञासा एवं समाधान' : 'Clarifications & Questions'}</span>
@@ -78,7 +78,7 @@ export const FaqSection: React.FC<FaqSectionProps> = ({ lang = 'en' }) => {
         </div>
 
         {/* Accordion List */}
-        <div className="space-y-4 mb-14">
+        <div className="space-y-3 mb-8">
           {faqs.map((item, index) => {
             const isOpen = openIndex === index;
 
@@ -90,7 +90,7 @@ export const FaqSection: React.FC<FaqSectionProps> = ({ lang = 'en' }) => {
                 <button
                   type="button"
                   onClick={() => setOpenIndex(isOpen ? null : index)}
-                  className="w-full p-6 text-left flex items-center justify-between gap-4 focus:outline-none cursor-pointer"
+                  className="w-full p-4 sm:p-5 text-left flex items-center justify-between gap-4 focus:outline-none cursor-pointer"
                 >
                   <span className="font-cinzel text-base font-semibold text-[#1E162B]">
                     {item.q}
@@ -101,7 +101,7 @@ export const FaqSection: React.FC<FaqSectionProps> = ({ lang = 'en' }) => {
                 </button>
 
                 {isOpen && (
-                  <div className="px-6 pb-6 pt-3 text-xs sm:text-sm text-[#4A4356] leading-relaxed border-t border-[#EFECE6] bg-white">
+                  <div className="px-4 sm:px-5 pb-4 pt-3 text-xs sm:text-sm text-[#4A4356] leading-relaxed border-t border-[#EFECE6] bg-white">
                     {item.a}
                   </div>
                 )}
@@ -111,7 +111,7 @@ export const FaqSection: React.FC<FaqSectionProps> = ({ lang = 'en' }) => {
         </div>
 
         {/* Direct Team Help Box */}
-        <div className="p-8 rounded-3xl bg-[#FBF5E6] text-[#1E162B] border-2 border-[#DEC38C] shadow-md space-y-4 text-center sm:text-left sm:flex sm:items-center sm:justify-between sm:space-y-0 gap-6">
+        <div className="p-6 sm:p-7 rounded-3xl bg-[#FBF5E6] text-[#1E162B] border-2 border-[#DEC38C] shadow-md space-y-4 text-center sm:text-left sm:flex sm:items-center sm:justify-between sm:space-y-0 gap-6">
           <div className="space-y-1">
             <h4 className="font-cinzel text-lg font-bold text-[#1E162B]">
               {lang === 'hi' ? 'कोई अन्य प्रश्न या विशेष परामर्श आवश्यकता?' : 'Still have questions or special requirements?'}

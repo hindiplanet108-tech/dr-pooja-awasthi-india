@@ -178,13 +178,13 @@ export const AwardsSection: React.FC<AwardsSectionProps> = ({ lang }) => {
   ];
 
   return (
-    <section id="honors" className="py-20 md:py-28 bg-white text-[#1E162B] relative overflow-hidden border-t border-[#E5DFD5]">
+    <section id="honors" className="py-12 md:py-16 bg-white text-[#1E162B] relative overflow-hidden border-t border-[#E5DFD5]">
       <div className="absolute top-1/2 left-0 w-96 h-96 bg-[#F4F0FA] rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
-        <div className="max-w-4xl mb-8 space-y-3">
+        <div className="max-w-4xl mb-6 space-y-2.5">
           <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#7A5311]">
             <Trophy size={14} className="text-[#B48228]" />
             <span className="text-[#522B8A]">{t.awardsNav}</span>
@@ -210,7 +210,7 @@ export const AwardsSection: React.FC<AwardsSectionProps> = ({ lang }) => {
 
         {/* Guide Banner */}
         {showGuideBanner && (
-          <div className="mb-8 p-4 sm:p-5 rounded-2xl bg-[#FAF8F5] border border-[#DEC38C] shadow-xs relative flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+          <div className="mb-6 p-4 rounded-2xl bg-[#FAF8F5] border border-[#DEC38C] shadow-xs relative flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
             <div className="flex items-start gap-3">
               <div className="w-10 h-10 rounded-xl bg-[#FBF5E6] border border-[#DEC38C] flex items-center justify-center shrink-0 text-[#B48228] mt-0.5">
                 <Info size={20} />

@@ -34,11 +34,11 @@ const defaultSiteContent: SiteContent = {
     pillar3_desc: "व्यावहारिक, सात्विक एवं भय-मुक्त मार्गदर्शन जो जीवन में स्थाई शांति और सफलता लाए।"
   },
   videoSpotlight: {
-    heading_hi: "आईआईएमटी विश्वविद्यालय महासमागम - शोध व्याख्यान",
-    heading_en: "Keynote Address at IIMT Jyotish Mahasamagam",
-    video_url: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-    caption_hi: "आईआईएमटी विश्वविद्यालय परिसर मेरठ में देश-विदेश के 90+ विद्वानों के समक्ष डॉ. पूजा अवस्थी का विशेष संबोधन।",
-    caption_en: "Address by Dr. Pooja Awasthi before 90+ eminent Vedic scholars at IIMT University Conclave."
+    heading_hi: "",
+    heading_en: "",
+    video_url: "",
+    caption_hi: "",
+    caption_en: ""
   },
   services: [
     {
@@ -255,12 +255,12 @@ const defaultSiteContent: SiteContent = {
   },
   bankUpi: {
     bank_name: "State Bank of India (SBI)",
-    account_name: "Dr. Pooja Awasthi",
+    account_name: "Pooja Awasthi",
     account_number: "39876543210",
     ifsc_code: "SBIN0001234",
     branch: "Dehradun Main Branch, Uttarakhand",
     upi_id: "9105731969@upi",
-    qr_code_image: "/assets/awards/pooja_portrait.jpeg"
+    qr_code_image: "/upi-qr-9105731969.svg"
   }
 };
 

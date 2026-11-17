@@ -43,13 +43,13 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ lang, onSelect
     : currentCatalog.filter(item => item.category === catalogFilter);
 
   return (
-    <section id="services" className="py-20 md:py-28 bg-[#FAF8F5] text-[#1E162B] relative border-b border-[#E5DFD5] overflow-hidden">
+    <section id="services" className="py-12 md:py-16 bg-[#FAF8F5] text-[#1E162B] relative border-b border-[#E5DFD5] overflow-hidden">
       <div className="absolute top-1/3 left-0 w-96 h-96 bg-[#F4F0FA] rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-5">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
           <div className="max-w-2xl space-y-2.5">
             <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#522B8A]">
               <span>{t.servicesNav}</span>

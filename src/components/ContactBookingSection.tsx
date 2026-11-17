@@ -57,16 +57,16 @@ export const ContactBookingSection: React.FC<ContactBookingSectionProps> = ({
   };
 
   return (
-    <section id="contact" className="py-20 md:py-28 bg-[#F4F0FA] text-[#1E162B] relative overflow-hidden border-t border-[#DFD5F0]">
+    <section id="contact" className="py-12 md:py-16 bg-[#F4F0FA] text-[#1E162B] relative overflow-hidden border-t border-[#DFD5F0]">
       {/* Subtle luminous background accents */}
       <div className="absolute top-10 right-10 w-80 h-80 bg-white/80 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-10 left-10 w-80 h-80 bg-[#FBF5E6]/90 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
           
           {/* Left Column: Verified Contact Details */}
-          <div className="lg:col-span-5 space-y-8">
+          <div className="lg:col-span-5 space-y-6">
             <div className="space-y-3">
               <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-[#7A5311]">
                 <MessageSquare size={14} className="text-[#B48228]" />

@@ -142,7 +142,7 @@ export const DynamicPageView: React.FC<DynamicPageViewProps> = ({
   }
 
   return (
-    <div className="min-h-screen bg-[#FAF8F5] text-[#1E162B] selection:bg-[#EAE2F4] selection:text-[#522B8A] pb-20">
+    <div className="min-h-screen bg-[#FAF8F5] text-[#1E162B] selection:bg-[#EAE2F4] selection:text-[#522B8A] pb-12">
       {/* Comprehensive Dynamic SEO Head & Article Schema */}
       <SEOHead
         title={page.seo?.metaTitle || `${page.title} | डॉ. पूजा अवस्थी — आध्यात्मिक मार्गदर्शन`}
@@ -158,7 +158,7 @@ export const DynamicPageView: React.FC<DynamicPageViewProps> = ({
       />
 
       {/* Top Breadcrumb & Share Navigation Strip */}
-      <div className="bg-[#F4F1EA] text-[#1E162B] border-b border-[#DEC38C]/60 py-3 px-4 sm:px-8 pt-24 md:pt-28">
+      <div className="bg-[#F4F1EA] text-[#1E162B] border-b border-[#DEC38C]/60 py-3 px-4 sm:px-8 pt-24">
         <div className="max-w-5xl mx-auto flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
           <Breadcrumb
             items={[
@@ -188,7 +188,7 @@ export const DynamicPageView: React.FC<DynamicPageViewProps> = ({
       </div>
 
       {/* Main Dynamic Blocks Container */}
-      <div className="max-w-5xl mx-auto px-4 sm:px-8 pt-8 space-y-12">
+      <div className="max-w-5xl mx-auto px-4 sm:px-8 pt-6 space-y-8">
         {page.blocks.map((block) => {
           // 1. HERO BLOCK
           if (block.type === 'hero') {
