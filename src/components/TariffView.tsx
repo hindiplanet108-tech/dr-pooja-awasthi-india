@@ -245,8 +245,8 @@ export const TariffView: React.FC<TariffViewProps> = ({
         <div className="mb-10 rounded-3xl bg-white text-[#1E162B] p-6 sm:p-8 border-2 border-[#DEC38C] shadow-lg relative overflow-hidden">
           <div className="absolute top-0 right-0 w-72 h-72 bg-[#F4F0FA]/80 rounded-full blur-3xl pointer-events-none" />
 
-          <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-8">
-            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 max-w-2xl">
+          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+            <div className="lg:col-span-5 flex flex-col sm:flex-row lg:flex-col xl:flex-row items-start sm:items-center lg:items-start xl:items-center gap-5">
               <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl overflow-hidden border border-[#E6DFD3] bg-[#FAF8F5] p-1.5 shrink-0 shadow-md aspect-square">
                 <img
                   src={poojaAuthenticPhoto}
@@ -259,7 +259,7 @@ export const TariffView: React.FC<TariffViewProps> = ({
                 />
               </div>
 
-              <div className="space-y-3">
+              <div className="space-y-2.5">
                 <span className="text-[11px] font-bold uppercase tracking-widest px-3 py-1 rounded-full bg-[#FBF5E6] border border-[#DEC38C] text-[#7A5311] inline-block">
                   {tariffLang === 'hi' ? 'सर्वाधिक लोकप्रिय · व्यक्तिगत मार्गदर्शन' : 'Most Popular · 1-on-1 Guidance'}
                 </span>
@@ -272,7 +272,7 @@ export const TariffView: React.FC<TariffViewProps> = ({
                     : 'A personalized 1-on-1 consultation session dedicated to understanding your queries, life circumstances, and life path through Vedic wisdom with Dr. Pooja Awasthi.'}
                 </p>
 
-                <div className="flex flex-wrap items-center gap-4 text-xs text-[#7A5311] font-semibold">
+                <div className="flex flex-wrap items-center gap-3 text-xs text-[#7A5311] font-semibold">
                   <span className="flex items-center gap-1">
                     <Clock size={13} className="text-[#B48228]" />
                     <span>{tariffLang === 'hi' ? 'अवधि: 45-60 मिनट' : 'Duration: 45-60 mins'}</span>
@@ -283,7 +283,33 @@ export const TariffView: React.FC<TariffViewProps> = ({
               </div>
             </div>
 
-            <div className="p-6 rounded-2xl bg-[#FBF5E6] border-2 border-[#DEC38C] shrink-0 text-center lg:text-right space-y-3 shadow-xs">
+            {/* Verified UPI QR Scanner Box */}
+            <div className="lg:col-span-3 p-4 rounded-2xl bg-[#FAF8F5] border border-[#DEC38C] text-center flex flex-col items-center justify-center space-y-2 shadow-2xs">
+              <span className="text-[10px] font-bold uppercase tracking-wider text-[#7A5311]">
+                {tariffLang === 'hi' ? 'सत्यापित UPI स्कैनर' : 'Verified UPI Scanner'}
+              </span>
+              <div className="p-2 rounded-xl bg-white border border-[#E6DFD3] shadow-2xs">
+                <img
+                  src="/assets/aistudio/Screenshot_2026-11-17_120046_1b5aa9a9.png"
+                  alt={`UPI QR Code - ${bankDetails.holder} (${bankDetails.upiId})`}
+                  className="w-28 h-28 object-contain rounded-lg"
+                  onError={(e) => {
+                    const target = e.currentTarget;
+                    if (!target.src.includes('upi-qr-9105731969.svg')) {
+                      target.src = '/upi-qr-9105731969.svg';
+                    }
+                  }}
+                />
+              </div>
+              <span className="inline-block px-2 py-0.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-[10px] font-bold">
+                ✓ {bankDetails.holder}
+              </span>
+              <span className="font-mono text-[11px] font-bold text-[#1E162B] block select-all">
+                {bankDetails.upiId}
+              </span>
+            </div>
+
+            <div className="lg:col-span-4 p-6 rounded-2xl bg-[#FBF5E6] border-2 border-[#DEC38C] shrink-0 text-center lg:text-right space-y-3 shadow-xs">
               <div>
                 <span className="text-[11px] text-[#7A5311] uppercase block font-bold tracking-wider">
                   {tariffLang === 'hi' ? 'परामर्श शुल्क' : 'Consultancy Fee'}
@@ -299,7 +325,7 @@ export const TariffView: React.FC<TariffViewProps> = ({
                 </span>
               </div>
 
-              <div className="pt-2 flex flex-col sm:flex-row lg:flex-col gap-2">
+              <div className="pt-2 flex flex-col gap-2">
                 <button
                   type="button"
                   onClick={() => onBookService('Personalized Spiritual Consultation (₹5,100)')}

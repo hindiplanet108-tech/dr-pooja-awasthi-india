@@ -4,13 +4,21 @@ import { ArrowRight, Check, Clock, Sparkles, X } from 'lucide-react';
 import { getTranslation } from '../data/translations';
 import { ChakraAuraVisualizer } from './ChakraAuraVisualizer';
 import { useSiteContent } from '../utils/siteContentContext';
+import { SpecializedServicesFeeBanner } from './SpecializedServicesFeeBanner';
 
 interface ServicesSectionProps {
   lang: string;
   onSelectServiceForBooking: (serviceName: string) => void;
+  onOpenTariff?: () => void;
+  onOpenBankUpi?: () => void;
 }
 
-export const ServicesSection: React.FC<ServicesSectionProps> = ({ lang, onSelectServiceForBooking }) => {
+export const ServicesSection: React.FC<ServicesSectionProps> = ({
+  lang,
+  onSelectServiceForBooking,
+  onOpenTariff,
+  onOpenBankUpi,
+}) => {
   const [activeTab, setActiveTab] = useState<'core' | 'catalog' | 'chakras'>('core');
   const [selectedServiceModal, setSelectedServiceModal] = useState<CoreService | null>(null);
   const [catalogFilter, setCatalogFilter] = useState<'all' | 'healing' | 'numerology' | 'therapy' | 'regression'>('all');
@@ -308,6 +316,16 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ lang, onSelect
           />
         )}
 
+        {/* Unified 11 Specialized Healing & Correction Services + Consultancy Fee ₹5,100 Screen */}
+        <div className="mt-10 pt-8 border-t border-[#E6DFD3]">
+          <SpecializedServicesFeeBanner
+            lang={lang}
+            onBookService={onSelectServiceForBooking}
+            onOpenTariff={onOpenTariff}
+            onOpenBankUpi={onOpenBankUpi}
+          />
+        </div>
+
       </div>
 
       {/* Modal for Core Service details */}
@@ -382,11 +400,43 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ lang, onSelect
                   ))}
                 </div>
               </div>
+              {/* Standardized Fee + Direct Verified UPI QR Preview */}
+              <div className="p-4 rounded-2xl bg-[#FBF5E6] border border-[#DEC38C] flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div className="space-y-1 text-center sm:text-left">
+                  <div className="flex flex-wrap items-center justify-center sm:justify-start gap-1.5">
+                    <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-white text-[#522B8A] border border-[#DFD5F0]">
+                      11 Specialized Services
+                    </span>
+                    <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-white text-[#7A5311] border border-[#DEC38C]">
+                      All 16 Divine Services
+                    </span>
+                  </div>
+                  <div className="font-rupee text-2xl font-black text-[#1E162B] tracking-tight pt-1">
+                    {selectedServiceModal.baseFee || '₹5,100'}
+                  </div>
+                  <p className="text-[11px] text-[#5D556A] font-medium">
+                    {lang === 'hi' ? 'प्रति सत्र (वीडियो / ऑडियो कॉल)' : 'Per session (Virtual / Telephonic)'} · 9105731969@upi
+                  </p>
+                </div>
+                <div className="p-1.5 rounded-xl bg-white border border-[#E6DFD3] shrink-0 shadow-2xs">
+                  <img
+                    src="/assets/aistudio/Screenshot_2026-11-17_120046_1b5aa9a9.png"
+                    alt="UPI QR Code - Pooja Awasthi (9105731969@upi)"
+                    className="w-20 h-20 object-contain rounded-lg"
+                    onError={(e) => {
+                      const target = e.currentTarget;
+                      if (!target.src.includes('upi-qr-9105731969.svg')) {
+                        target.src = '/upi-qr-9105731969.svg';
+                      }
+                    }}
+                  />
+                </div>
+              </div>
             </div>
 
             <div className="p-4 sm:p-6 bg-[#FAF8F5] border-t border-[#E6DFD3] flex items-center justify-between">
               <div className="text-xs text-[#4A4356]">
-                <span className="font-semibold">{lang === 'hi' ? 'मानक परामर्श दक्षिणा: ' : 'Standard Fee: '}</span>
+                <span className="font-semibold">{lang === 'hi' ? 'परामर्श शुल्क: ' : 'Consultancy Fee: '}</span>
                 <span className="font-rupee text-lg font-black text-[#1E162B]">{selectedServiceModal.baseFee}</span>
               </div>
               <button

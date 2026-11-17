@@ -32,11 +32,14 @@ import {
 import { SEOHead } from './SEOHead';
 import { Breadcrumb } from './Breadcrumb';
 import { SocialShare } from './SocialShare';
+import { SpecializedServicesFeeBanner } from './SpecializedServicesFeeBanner';
 
 interface DynamicPageViewProps {
   slug: string;
   onBackToHome: () => void;
   onSelectServiceForBooking: (serviceName: string) => void;
+  onOpenTariff?: () => void;
+  onOpenBankUpi?: () => void;
   lang?: string;
 }
 
@@ -44,6 +47,8 @@ export const DynamicPageView: React.FC<DynamicPageViewProps> = ({
   slug,
   onBackToHome,
   onSelectServiceForBooking,
+  onOpenTariff,
+  onOpenBankUpi,
   lang = 'hi',
 }) => {
   const [page, setPage] = useState<CMSPage | null>(null);
@@ -543,8 +548,21 @@ export const DynamicPageView: React.FC<DynamicPageViewProps> = ({
           return null;
         })}
 
+        {/* Unified 11 Specialized Healing & Correction Services + Consultancy Fee ₹5,100 Screen */}
+        <section className="pt-4">
+          <SpecializedServicesFeeBanner
+            lang={lang}
+            onBookService={(srv) => {
+              onBackToHome();
+              onSelectServiceForBooking(srv);
+            }}
+            onOpenTariff={onOpenTariff}
+            onOpenBankUpi={onOpenBankUpi}
+          />
+        </section>
+
         {/* Social Sharing & Promotion Block */}
-        <div className="pt-6">
+        <div className="pt-4">
           <SocialShare
             title={`${page.title} — डॉ. पूजा अवस्थी`}
             text={page.excerpt || page.subtitle || ''}

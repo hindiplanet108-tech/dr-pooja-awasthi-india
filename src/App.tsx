@@ -383,6 +383,8 @@ function MainApp() {
               navigateToView('home', '/');
               handleSelectServiceForBooking(srv);
             }}
+            onOpenTariff={() => navigateToView('tariff', '/tariff')}
+            onOpenBankUpi={() => setIsBankUpiModalOpen(true)}
             lang={lang}
           />
         ) : currentView === 'tariff' ? (
@@ -418,6 +420,8 @@ function MainApp() {
             <ServicesSection
               lang={lang}
               onSelectServiceForBooking={handleSelectServiceForBooking}
+              onOpenTariff={() => navigateToView('tariff', '/tariff')}
+              onOpenBankUpi={() => setIsBankUpiModalOpen(true)}
             />
 
             {/* 5. Interactive Vedic Numerology Calculator */}
