@@ -67,10 +67,12 @@ export const LanguageSelectorModal: React.FC<LanguageSelectorModalProps> = ({
             </div>
             <div>
               <h3 className="font-cinzel text-lg sm:text-xl font-bold text-[#1E162B]">
-                Choose Language / भाषा चुनें
+                {currentLang === 'hi' ? 'अपनी भाषा चुनें / Choose Language' : 'Choose Language / भाषा चुनें'}
               </h3>
               <p className="text-xs text-[#7A5311]">
-                11 National Languages (Indian) & 11 International Languages
+                {currentLang === 'hi'
+                  ? '11 भारतीय भाषाएं और 11 अंतर्राष्ट्रीय भाषाएं'
+                  : '11 National Languages (Indian) & 11 International Languages'}
               </p>
             </div>
           </div>
@@ -92,7 +94,7 @@ export const LanguageSelectorModal: React.FC<LanguageSelectorModalProps> = ({
             <div className="flex items-center gap-2 border-b border-[#EFECE6] pb-2">
               <span className="text-base">🇮🇳</span>
               <h4 className="font-cinzel text-sm sm:text-base font-bold text-[#522B8A] uppercase tracking-wider">
-                11 National Languages (भारतीय भाषाएँ)
+                {currentLang === 'hi' ? '11 भारतीय भाषाएं (National Languages)' : '11 National Languages (भारतीय भाषाएँ)'}
               </h4>
             </div>
 
@@ -106,7 +108,7 @@ export const LanguageSelectorModal: React.FC<LanguageSelectorModalProps> = ({
             <div className="flex items-center gap-2 border-b border-[#EFECE6] pb-2">
               <span className="text-base">🌐</span>
               <h4 className="font-cinzel text-sm sm:text-base font-bold text-[#522B8A] uppercase tracking-wider">
-                11 International Languages (वैश्विक भाषाएँ)
+                {currentLang === 'hi' ? '11 विश्व भाषाएं (International Languages)' : '11 International Languages (वैश्विक भाषाएँ)'}
               </h4>
             </div>
 
@@ -119,13 +121,16 @@ export const LanguageSelectorModal: React.FC<LanguageSelectorModalProps> = ({
 
         {/* Footer */}
         <div className="p-4 bg-[#FAF8F5] border-t border-[#EFECE6] flex items-center justify-between text-xs text-[#5D556A]">
-          <span>Active: {ALL_LANGUAGES.find(l => l.code === currentLang)?.nativeName} ({currentLang.toUpperCase()})</span>
+          <span>
+            {currentLang === 'hi' ? 'चुनी गई भाषा:' : 'Active:'}{' '}
+            {ALL_LANGUAGES.find(l => l.code === currentLang)?.nativeName} ({currentLang.toUpperCase()})
+          </span>
           <button
             type="button"
             onClick={onClose}
             className="h-9 px-5 bg-[#522B8A] hover:bg-[#412070] text-white rounded-lg transition-colors font-semibold cursor-pointer"
           >
-            Done
+            {currentLang === 'hi' ? 'ठीक है' : 'Done'}
           </button>
         </div>
       </div>

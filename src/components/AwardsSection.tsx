@@ -190,20 +190,20 @@ export const AwardsSection: React.FC<AwardsSectionProps> = ({ lang }) => {
             <span className="text-[#522B8A]">{t.awardsNav}</span>
             <span aria-hidden="true" className="text-[#B48228]">·</span>
             <span className="tabular-nums font-bold">
-              {lang === 'hi' ? '40+ प्रमाणित राष्ट्रीय सम्मान व चित्र दीर्घा' : '40+ Verified Felicitations & Photo Archive'}
+              {lang === 'hi' ? '40+ राष्ट्रीय सम्मान व फोटो गैलरी' : '40+ Verified Felicitations & Photo Archive'}
             </span>
           </div>
 
           <h2 className="font-cormorant text-3xl sm:text-4xl lg:text-5xl font-medium text-[#1E162B] leading-tight">
             {t.awardsTitle} — <br />
             <span className="italic font-semibold text-[#522B8A]">
-              {lang === 'hi' ? 'सत्य, निष्ठा एवं सनातन ज्ञान का राष्ट्रीय गौरव' : t.awardsSubtitle}
+              {lang === 'hi' ? 'विश्वास, अनुभव और राष्ट्रीय सम्मान की पहचान' : t.awardsSubtitle}
             </span>
           </h2>
 
           <p className="text-sm text-[#4A4356] leading-relaxed">
             {lang === 'hi'
-              ? 'उत्तराखंड के माननीय राज्यपाल ले. ज. गुरमीत सिंह, आईआईएमटी विश्वविद्यालय मेरठ में पूज्य जैनाचार्य 108 सौरभ सागर जी महाराज, काशी हिन्दू विश्वविद्यालय (BHU) के ज्योतिष विभागाध्यक्ष आचार्य चंद्रमौली उपाध्याय जी, महाकाल उज्जैन के प्रधान पुरोहित दिनेश जी, एवं नाफेड के नेशनल डायरेक्टर माननीय अशोक ठाकुर जी द्वारा सम्मानित।'
+              ? 'उत्तराखंड के माननीय राज्यपाल ले. ज. गुरमीत सिंह, आईआईएमटी विश्वविद्यालय मेरठ में पूज्य जैनाचार्य 108 सौरभ सागर जी महाराज, काशी हिन्दू विश्वविद्यालय (BHU) के ज्योतिष विभागाध्यक्ष आचार्य चंद्रमौली उपाध्याय जी, महाकाल उज्जैन के प्रधान पुरोहित दिनेश जी, और नाफेड के नेशनल डायरेक्टर माननीय अशोक ठाकुर जी द्वारा सम्मानित।'
               : 'Conferred with highest state and academic honors by distinguished dignitaries including Hon. Governor of Uttarakhand Lt. Gen. Gurmeet Singh, Jainacharya 108 Saurabh Sagar Ji Maharaj at IIMT University, BHU Jyotish Head Acharya Chandramouli Upadhyay, and revered spiritual authorities across national conclaves.'}
           </p>
         </div>
@@ -217,14 +217,14 @@ export const AwardsSection: React.FC<AwardsSectionProps> = ({ lang }) => {
               </div>
               <div className="space-y-1">
                 <h4 className="font-cinzel text-sm sm:text-base font-bold text-[#1E162B] flex items-center gap-2">
-                  <span>{lang === 'hi' ? 'ये चित्र एवं सम्मान कहाँ दिख रहे हैं?' : 'Where Are These Images Listed on the Website?'}</span>
+                  <span>{lang === 'hi' ? 'समारोहों की तस्वीरें व सम्मान यहां देखें' : 'Where Are These Images Listed on the Website?'}</span>
                   <span className="text-[11px] px-2 py-0.5 rounded-md bg-[#F4F0FA] text-[#522B8A] font-mono border border-[#DFD5F0]">
                     #honors
                   </span>
                 </h4>
                 <p className="text-xs text-[#4A4356] leading-relaxed max-w-3xl">
                   {lang === 'hi'
-                    ? 'आपकी सभी 40+ तस्वीरें और सम्मान इसी पावन अनुभाग (#honors) में 8 प्रमुख श्रेणियों में सूचीबद्ध हैं। किसी भी कार्ड पर क्लिक करके बड़ा चित्र एवं प्रशस्ति पत्र देखें।'
+                    ? 'आपकी सभी 40+ तस्वीरें और सम्मान इसी सेक्शन (#honors) में 8 मुख्य कार्यक्रमों के अनुसार दिए गए हैं। किसी भी फोटो पर क्लिक करके बड़ी तस्वीर और पूरी जानकारी देखें।'
                     : 'All 40+ photos and honors are categorized right here in #honors across 8 major event groups. Click any card to inspect full high-resolution citations.'}
                 </p>
               </div>
@@ -520,7 +520,7 @@ export const AwardsSection: React.FC<AwardsSectionProps> = ({ lang }) => {
             <div className="flex items-start justify-between gap-4 border-b border-[#E6DFD3] pb-4">
               <div className="space-y-1">
                 <span className="text-xs font-bold uppercase tracking-wider text-[#7A5311]">
-                  {selectedAward.eventGroup_hi} · {lang === 'hi' ? 'प्रमाणित राष्ट्रीय अभिलेख' : 'VERIFIED RECORD'}
+                  {selectedAward.eventGroup_hi} · {lang === 'hi' ? 'प्रमाणित राष्ट्रीय सम्मान' : 'VERIFIED RECORD'}
                 </span>
                 <h3 className="font-cinzel text-xl sm:text-2xl font-bold text-[#1E162B]">
                   {lang === 'hi' ? selectedAward.event_hi : selectedAward.event}
@@ -548,7 +548,7 @@ export const AwardsSection: React.FC<AwardsSectionProps> = ({ lang }) => {
               <div className="absolute bottom-3 right-3">
                 <label className="cursor-pointer inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white hover:bg-[#FAF8F5] text-[#522B8A] border border-[#E6DFD3] text-xs font-bold shadow-md transition-all">
                   <Camera size={13} />
-                  <span>{lang === 'hi' ? 'फोटो अपडेट करें' : 'Update Photo'}</span>
+                  <span>{lang === 'hi' ? 'फोटो बदलें' : 'Update Photo'}</span>
                   <input
                     type="file"
                     accept="image/*"
@@ -565,7 +565,7 @@ export const AwardsSection: React.FC<AwardsSectionProps> = ({ lang }) => {
             <div className="space-y-3 text-xs sm:text-sm text-[#4A4356] leading-relaxed bg-[#FAF8F5] p-4 rounded-xl border border-[#E6DFD3]">
               <div>
                 <span className="font-bold text-[#522B8A] uppercase text-xs block mb-1">
-                  {lang === 'hi' ? 'प्रशस्ति विवरण:' : 'Citation Statement:'}
+                  {lang === 'hi' ? 'सम्मान की जानकारी:' : 'Citation Statement:'}
                 </span>
                 <p className="text-[#1E162B]">{selectedAward.caption || selectedAward.event}</p>
               </div>
@@ -574,7 +574,7 @@ export const AwardsSection: React.FC<AwardsSectionProps> = ({ lang }) => {
                 <div className="pt-2 border-t border-[#E6DFD3] flex items-start gap-2">
                   <Users size={14} className="text-[#B48228] shrink-0 mt-0.5" />
                   <div>
-                    <span className="font-bold text-[#1E162B]">{lang === 'hi' ? 'विशिष्ट सानिध्य व अतिथि: ' : 'Dignitaries: '}</span>
+                    <span className="font-bold text-[#1E162B]">{lang === 'hi' ? 'विशिष्ट अतिथि: ' : 'Dignitaries: '}</span>
                     <span>{selectedAward.dignitaries}</span>
                   </div>
                 </div>
@@ -584,14 +584,14 @@ export const AwardsSection: React.FC<AwardsSectionProps> = ({ lang }) => {
                 <div className="pt-1 flex items-start gap-2">
                   <MapPin size={14} className="text-[#B48228] shrink-0 mt-0.5" />
                   <div>
-                    <span className="font-bold text-[#1E162B]">{lang === 'hi' ? 'स्थान व तिथि: ' : 'Venue & Date: '}</span>
+                    <span className="font-bold text-[#1E162B]">{lang === 'hi' ? 'स्थान व तारीख: ' : 'Venue & Date: '}</span>
                     <span>{selectedAward.venue}</span>
                   </div>
                 </div>
               )}
 
               <p className="text-[11px] text-[#5D556A] pt-2 border-t border-[#E6DFD3] font-mono">
-                {lang === 'hi' ? 'मूल फ़ाइल संदर्भ:' : 'Asset Reference:'} {selectedAward.filename}
+                {lang === 'hi' ? 'फोटो संदर्भ:' : 'Asset Reference:'} {selectedAward.filename}
               </p>
             </div>
 

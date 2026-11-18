@@ -22,6 +22,7 @@ export const Breadcrumb: React.FC<BreadcrumbProps> = ({
 }) => {
   const getItemName = (item: BreadcrumbItem) => item.label || item.name || '';
   const getItemUrl = (item: BreadcrumbItem) => item.path || item.url;
+  const origin = typeof window !== 'undefined' ? window.location.origin : '';
 
   const schemaBreadcrumbs = {
     '@context': 'https://schema.org',
@@ -30,8 +31,8 @@ export const Breadcrumb: React.FC<BreadcrumbProps> = ({
       {
         '@type': 'ListItem',
         position: 1,
-        name: lang === 'hi' ? 'मुख्य पृष्ठ' : 'Home',
-        item: 'https://dr-pooja-awasthi-india.netlify.app/',
+        name: lang === 'hi' ? 'होम' : 'Home',
+        item: `${origin}/`,
       },
       ...items.map((item, idx) => {
         const itemUrl = getItemUrl(item);
@@ -40,8 +41,8 @@ export const Breadcrumb: React.FC<BreadcrumbProps> = ({
           position: idx + 2,
           name: getItemName(item),
           item: itemUrl
-            ? `https://dr-pooja-awasthi-india.netlify.app${itemUrl.startsWith('/') ? '' : '/'}${itemUrl}`
-            : undefined,
+            ? `${origin}${itemUrl.startsWith('/') ? '' : '/'}${itemUrl}`
+            : `${origin}${typeof window !== 'undefined' ? window.location.pathname : '/'}`,
         };
       }),
     ],
@@ -50,7 +51,7 @@ export const Breadcrumb: React.FC<BreadcrumbProps> = ({
   return (
     <nav
       aria-label="Breadcrumb"
-      className="py-2.5 px-4 rounded-xl bg-white border border-[#E6DFD3] shadow-2xs text-xs text-[#5D556A] flex items-center flex-wrap gap-2"
+      className="py-2.5 px-3.5 sm:px-4 rounded-xl bg-white border border-[#E6DFD3] shadow-2xs text-xs text-[#5D556A] flex items-center flex-wrap gap-1.5 sm:gap-2 max-w-full"
     >
       <script
         type="application/ld+json"
@@ -62,7 +63,7 @@ export const Breadcrumb: React.FC<BreadcrumbProps> = ({
         className="flex items-center gap-1.5 text-[#522B8A] hover:text-[#B48228] transition-colors font-semibold cursor-pointer"
       >
         <Home size={13} />
-        <span>{lang === 'hi' ? 'मुख्य पृष्ठ' : 'Home'}</span>
+        <span>{lang === 'hi' ? 'होम' : 'Home'}</span>
       </button>
 
       {items.map((item, index) => {

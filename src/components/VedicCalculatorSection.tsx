@@ -78,26 +78,26 @@ export const VedicCalculatorSection: React.FC<VedicCalculatorSectionProps> = ({ 
         <div className="text-center max-w-4xl mx-auto mb-8 space-y-2.5">
           <div className="inline-flex items-center justify-center gap-2 px-4 py-1.5 rounded-full bg-white border border-[#DEC38C] text-xs font-semibold uppercase tracking-widest text-[#7A5311] shadow-2xs">
             <Sparkles size={14} className="text-[#B48228]" />
-            <span>{lang === 'hi' ? 'अंक चक्र विश्लेषण • Divine Geometric Matrix' : 'Divine Geometric Matrix • Vedic Numerology Engine'}</span>
+            <span>{lang === 'hi' ? 'अंक चक्र जांच • वैदिक अंकशास्त्र कैलकुलेटर' : 'Divine Geometric Matrix • Vedic Numerology Engine'}</span>
           </div>
 
           <h2 className="font-cinzel text-3xl sm:text-4xl lg:text-5xl font-bold text-[#1E162B] tracking-wide leading-tight">
-            DECODE YOUR DATE OF BIRTH
+            {lang === 'hi' ? 'अपनी जन्मतिथि के अंकों को समझें' : 'DECODE YOUR DATE OF BIRTH'}
           </h2>
 
           <h3 className="font-cormorant text-2xl sm:text-3xl text-[#522B8A] italic font-normal tracking-wide">
-            CHANGE YOUR LIFE AND DESTINY.
+            {lang === 'hi' ? 'अपने जीवन और भाग्य को बेहतर बनाएं।' : 'CHANGE YOUR LIFE AND DESTINY.'}
           </h3>
 
           <p className="text-sm sm:text-base text-[#4A4356] max-w-3xl mx-auto font-normal leading-relaxed pt-1">
             {lang === 'hi'
-              ? 'अपनी सही जन्मतिथि दर्ज करें और जानें अपना मूलांक (Driver Number), भाग्यांक (Conductor Number), कुआ अंक (Kua Number), 8 भाग्य योग तथा जन्मकुंडली में छूटे हुए अंकों (Missing Numbers) के आसान उपाय।'
+              ? 'अपनी जन्मतिथि डालें और जानें अपना मूलांक (Driver), भाग्यांक (Conductor), कुआ अंक (Kua), 8 भाग्य योग और मिसिंग नंबर के आसान उपाय।'
               : 'Enter your exact date of birth to reveal your Driver (Mulank), Conductor (Bhagyank), Kua Number, 8 Planes of Destiny, and Missing Number remedies. Divine Geometric Matrix'}
           </p>
         </div>
 
         {/* Interactive Input Form */}
-        <div className="max-w-4xl mx-auto mb-8 p-6 sm:p-7 rounded-3xl bg-white border border-[#DFD5F0] shadow-xl">
+        <div className="max-w-4xl mx-auto mb-8 p-4 sm:p-7 rounded-3xl bg-white border border-[#DFD5F0] shadow-xl">
           <form onSubmit={handleCalculate} className="space-y-6">
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
               
@@ -186,7 +186,7 @@ export const VedicCalculatorSection: React.FC<VedicCalculatorSectionProps> = ({ 
                   className="px-3 py-1.5 rounded-lg bg-[#FBF5E6] hover:bg-[#F5E8C8] text-[#7A5311] border border-[#DEC38C] font-semibold transition-colors cursor-pointer"
                   title="1967 Male: 10-4=6"
                 >
-                  1967 (Male → Kua 6)
+                  {lang === 'hi' ? '1967 (पुरुष → कुआ 6)' : '1967 (Male → Kua 6)'}
                 </button>
                 <button
                   type="button"
@@ -194,7 +194,7 @@ export const VedicCalculatorSection: React.FC<VedicCalculatorSectionProps> = ({ 
                   className="px-3 py-1.5 rounded-lg bg-[#FBF5E6] hover:bg-[#F5E8C8] text-[#7A5311] border border-[#DEC38C] font-semibold transition-colors cursor-pointer"
                   title="1967 Female: 4+5=9"
                 >
-                  1967 (Female → Kua 9)
+                  {lang === 'hi' ? '1967 (महिला → कुआ 9)' : '1967 (Female → Kua 9)'}
                 </button>
                 <button
                   type="button"
@@ -202,7 +202,7 @@ export const VedicCalculatorSection: React.FC<VedicCalculatorSectionProps> = ({ 
                   className="px-3 py-1.5 rounded-lg bg-[#F4F0FA] hover:bg-[#EAE2F4] text-[#522B8A] border border-[#DFD5F0] font-semibold transition-colors cursor-pointer"
                   title="15 Jan 1967 (Li Chun test: uses 1966 -> Male Kua 7)"
                 >
-                  15 Jan 1967 (Li Chun Spring Test)
+                  {lang === 'hi' ? '15 जन 1967 (सौर वर्ष टेस्ट)' : '15 Jan 1967 (Li Chun Spring Test)'}
                 </button>
                 <button
                   type="button"
@@ -210,7 +210,7 @@ export const VedicCalculatorSection: React.FC<VedicCalculatorSectionProps> = ({ 
                   className="px-3 py-1.5 rounded-lg bg-[#FBF5E6] hover:bg-[#F5E8C8] text-[#7A5311] border border-[#DEC38C] font-semibold transition-colors cursor-pointer"
                   title="21st Century Male: 9-5=4"
                 >
-                  2005 (21st Century)
+                  {lang === 'hi' ? '2005 (नई सदी)' : '2005 (21st Century)'}
                 </button>
               </div>
             </div>
@@ -245,7 +245,7 @@ export const VedicCalculatorSection: React.FC<VedicCalculatorSectionProps> = ({ 
                   {lang === 'hi' ? 'मूलांक (Driver Number)' : 'Driver (Mulank)'}
                 </span>
                 <span className="text-[10px] px-2.5 py-0.5 rounded-full bg-[#F4F0FA] text-[#522B8A] font-semibold">
-                  Day {result.day}
+                  {lang === 'hi' ? `तिथि ${result.day}` : `Day ${result.day}`}
                 </span>
               </div>
               <div className="text-xs text-[#5D556A]">
@@ -275,7 +275,7 @@ export const VedicCalculatorSection: React.FC<VedicCalculatorSectionProps> = ({ 
                   {lang === 'hi' ? 'भाग्यांक (Conductor Number)' : 'Conductor (Bhagyank)'}
                 </span>
                 <span className="text-[10px] px-2.5 py-0.5 rounded-full bg-[#F4F0FA] text-[#522B8A] font-semibold">
-                  Sum of Full DOB
+                  {lang === 'hi' ? 'जन्मतिथि का पूरा जोड़' : 'Sum of Full DOB'}
                 </span>
               </div>
               <div className="text-xs text-[#5D556A]">
@@ -361,7 +361,7 @@ export const VedicCalculatorSection: React.FC<VedicCalculatorSectionProps> = ({ 
                   {lang === 'hi' ? 'नाम का शुभ अंक (Name Number)' : 'Name Vibration'}
                 </span>
                 <span className="text-[10px] px-2.5 py-0.5 rounded-full bg-[#F4F0FA] text-[#522B8A] font-semibold">
-                  Chaldean
+                  {lang === 'hi' ? 'कैल्डियन (Chaldean)' : 'Chaldean'}
                 </span>
               </div>
               <div className="text-xs text-[#5D556A]">
@@ -393,7 +393,7 @@ export const VedicCalculatorSection: React.FC<VedicCalculatorSectionProps> = ({ 
           <button
             type="button"
             onClick={() => setActiveTab('loshu')}
-            className={`px-4 py-2.5 rounded-xl text-xs font-semibold transition-all flex items-center gap-1.5 cursor-pointer ${
+            className={`px-3 sm:px-4 py-2.5 rounded-xl text-xs font-semibold transition-all flex items-center gap-1.5 cursor-pointer ${
               activeTab === 'loshu'
                 ? 'bg-[#522B8A] text-white shadow-md'
                 : 'bg-white text-[#4A4356] border border-[#E6DFD3] hover:bg-[#FAF8F5] hover:text-[#1E162B]'
@@ -471,7 +471,7 @@ export const VedicCalculatorSection: React.FC<VedicCalculatorSectionProps> = ({ 
         {/* ========================================================================= */}
         {activeTab === 'loshu' && (
           <div className="space-y-6 animate-fadeIn">
-            <div className="p-6 sm:p-8 rounded-3xl bg-white border border-[#E6DFD3] shadow-lg">
+            <div className="p-4 sm:p-8 rounded-3xl bg-white border border-[#E6DFD3] shadow-lg">
               <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-3 mb-6 pb-4 border-b border-[#EFECE6]">
                 <div>
                   <h3 className="font-cinzel text-xl sm:text-2xl font-bold text-[#1E162B] flex items-center gap-2">
@@ -497,9 +497,9 @@ export const VedicCalculatorSection: React.FC<VedicCalculatorSectionProps> = ({ 
               </div>
 
               {/* Lo Shu 3x3 Grid Graphic */}
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-center">
                 <div className="lg:col-span-7 flex justify-center">
-                  <div className="w-full max-w-md aspect-square bg-[#FAF8F5] p-3 sm:p-4 rounded-3xl border-2 border-[#DEC38C] shadow-inner grid grid-cols-3 gap-2.5 sm:gap-3">
+                  <div className="w-full max-w-md aspect-square bg-[#FAF8F5] p-2 sm:p-4 rounded-2xl sm:rounded-3xl border-2 border-[#DEC38C] shadow-inner grid grid-cols-3 gap-1.5 sm:gap-3">
                     
                     {/* Row 0: 4, 9, 2 */}
                     {result.loShuGrid.row0.map((cell) => {
@@ -507,26 +507,26 @@ export const VedicCalculatorSection: React.FC<VedicCalculatorSectionProps> = ({ 
                       return (
                         <div
                           key={cell.num}
-                          className={`rounded-2xl p-2.5 sm:p-3 flex flex-col items-center justify-between transition-all border ${
+                          className={`rounded-xl sm:rounded-2xl p-1.5 sm:p-3 flex flex-col items-center justify-between transition-all border ${
                             isPresent
                               ? 'bg-gradient-to-b from-[#FBF5E6] to-white border-[#DEC38C] shadow-sm'
                               : 'bg-[#F4F1EA]/60 border-[#E6DFD3] opacity-75'
                           }`}
                         >
-                          <span className={`text-[10px] font-semibold text-center leading-tight ${isPresent ? 'text-[#7A5311]' : 'text-[#5D556A]'}`}>
-                            {cell.name}
+                          <span className={`text-[9px] sm:text-[10px] font-semibold text-center leading-tight ${isPresent ? 'text-[#7A5311]' : 'text-[#5D556A]'}`}>
+                            {lang === 'hi' ? cell.name_hi : cell.name}
                           </span>
-                          <div className={`text-3xl sm:text-4xl font-cormorant font-bold my-1 tabular-nums ${isPresent ? 'text-[#1E162B]' : 'text-[#8C849A]'}`}>
+                          <div className={`text-2xl sm:text-4xl font-cormorant font-bold my-0.5 sm:my-1 tabular-nums ${isPresent ? 'text-[#1E162B]' : 'text-[#8C849A]'}`}>
                             {cell.num}
                           </div>
-                          <div className="text-[10px]">
+                          <div className="text-[9px] sm:text-[10px]">
                             {isPresent ? (
-                              <span className="px-2 py-0.5 rounded-full bg-[#522B8A] text-white font-bold">
-                                {cell.count}x {cell.count > 1 ? 'Repeated' : 'Active'}
+                              <span className="px-1.5 sm:px-2 py-0.5 rounded-full bg-[#522B8A] text-white font-bold text-[8px] sm:text-[10px]">
+                                {lang === 'hi' ? `${cell.count} बार` : `${cell.count}x ${cell.count > 1 ? 'Rep' : 'Active'}`}
                               </span>
                             ) : (
-                              <span className="text-[#8C849A] italic">
-                                {lang === 'hi' ? 'अनुपस्थित' : 'Missing'}
+                              <span className="text-[#8C849A] italic text-[8px] sm:text-[10px]">
+                                {lang === 'hi' ? 'खाली' : 'Missing'}
                               </span>
                             )}
                           </div>
@@ -540,7 +540,7 @@ export const VedicCalculatorSection: React.FC<VedicCalculatorSectionProps> = ({ 
                       return (
                         <div
                           key={cell.num}
-                          className={`rounded-2xl p-2.5 sm:p-3 flex flex-col items-center justify-between transition-all border ${
+                          className={`rounded-xl sm:rounded-2xl p-1.5 sm:p-3 flex flex-col items-center justify-between transition-all border ${
                             cell.num === 5 && isPresent
                               ? 'bg-gradient-to-b from-[#FBF5E6] via-[#FFF9EB] to-white border-[#B48228] ring-2 ring-[#DEC38C]/60 shadow-md'
                               : isPresent
@@ -548,20 +548,20 @@ export const VedicCalculatorSection: React.FC<VedicCalculatorSectionProps> = ({ 
                               : 'bg-[#F4F1EA]/60 border-[#E6DFD3] opacity-75'
                           }`}
                         >
-                          <span className={`text-[10px] font-semibold text-center leading-tight ${isPresent ? 'text-[#7A5311]' : 'text-[#5D556A]'}`}>
-                            {cell.name}
+                          <span className={`text-[9px] sm:text-[10px] font-semibold text-center leading-tight ${isPresent ? 'text-[#7A5311]' : 'text-[#5D556A]'}`}>
+                            {lang === 'hi' ? cell.name_hi : cell.name}
                           </span>
-                          <div className={`text-3xl sm:text-4xl font-cormorant font-bold my-1 tabular-nums ${isPresent ? 'text-[#1E162B]' : 'text-[#8C849A]'}`}>
+                          <div className={`text-2xl sm:text-4xl font-cormorant font-bold my-0.5 sm:my-1 tabular-nums ${isPresent ? 'text-[#1E162B]' : 'text-[#8C849A]'}`}>
                             {cell.num}
                           </div>
-                          <div className="text-[10px]">
+                          <div className="text-[9px] sm:text-[10px]">
                             {isPresent ? (
-                              <span className="px-2 py-0.5 rounded-full bg-[#522B8A] text-white font-bold">
-                                {cell.count}x {cell.count > 1 ? 'Repeated' : 'Active'}
+                              <span className="px-1.5 sm:px-2 py-0.5 rounded-full bg-[#522B8A] text-white font-bold text-[8px] sm:text-[10px]">
+                                {lang === 'hi' ? `${cell.count} बार` : `${cell.count}x ${cell.count > 1 ? 'Rep' : 'Active'}`}
                               </span>
                             ) : (
-                              <span className="text-[#8C849A] italic">
-                                {lang === 'hi' ? 'अनुपस्थित' : 'Missing'}
+                              <span className="text-[#8C849A] italic text-[8px] sm:text-[10px]">
+                                {lang === 'hi' ? 'खाली' : 'Missing'}
                               </span>
                             )}
                           </div>
@@ -575,26 +575,26 @@ export const VedicCalculatorSection: React.FC<VedicCalculatorSectionProps> = ({ 
                       return (
                         <div
                           key={cell.num}
-                          className={`rounded-2xl p-2.5 sm:p-3 flex flex-col items-center justify-between transition-all border ${
+                          className={`rounded-xl sm:rounded-2xl p-1.5 sm:p-3 flex flex-col items-center justify-between transition-all border ${
                             isPresent
                               ? 'bg-gradient-to-b from-[#FBF5E6] to-white border-[#DEC38C] shadow-sm'
                               : 'bg-[#F4F1EA]/60 border-[#E6DFD3] opacity-75'
                           }`}
                         >
-                          <span className={`text-[10px] font-semibold text-center leading-tight ${isPresent ? 'text-[#7A5311]' : 'text-[#5D556A]'}`}>
-                            {cell.name}
+                          <span className={`text-[9px] sm:text-[10px] font-semibold text-center leading-tight ${isPresent ? 'text-[#7A5311]' : 'text-[#5D556A]'}`}>
+                            {lang === 'hi' ? cell.name_hi : cell.name}
                           </span>
-                          <div className={`text-3xl sm:text-4xl font-cormorant font-bold my-1 tabular-nums ${isPresent ? 'text-[#1E162B]' : 'text-[#8C849A]'}`}>
+                          <div className={`text-2xl sm:text-4xl font-cormorant font-bold my-0.5 sm:my-1 tabular-nums ${isPresent ? 'text-[#1E162B]' : 'text-[#8C849A]'}`}>
                             {cell.num}
                           </div>
-                          <div className="text-[10px]">
+                          <div className="text-[9px] sm:text-[10px]">
                             {isPresent ? (
-                              <span className="px-2 py-0.5 rounded-full bg-[#522B8A] text-white font-bold">
-                                {cell.count}x {cell.count > 1 ? 'Repeated' : 'Active'}
+                              <span className="px-1.5 sm:px-2 py-0.5 rounded-full bg-[#522B8A] text-white font-bold text-[8px] sm:text-[10px]">
+                                {lang === 'hi' ? `${cell.count} बार` : `${cell.count}x ${cell.count > 1 ? 'Rep' : 'Active'}`}
                               </span>
                             ) : (
-                              <span className="text-[#8C849A] italic">
-                                {lang === 'hi' ? 'अनुपस्थित' : 'Missing'}
+                              <span className="text-[#8C849A] italic text-[8px] sm:text-[10px]">
+                                {lang === 'hi' ? 'खाली' : 'Missing'}
                               </span>
                             )}
                           </div>
@@ -609,14 +609,16 @@ export const VedicCalculatorSection: React.FC<VedicCalculatorSectionProps> = ({ 
                 <div className="lg:col-span-5 space-y-4">
                   <div className="p-4 rounded-2xl bg-[#FAF8F5] border border-[#E6DFD3] space-y-2">
                     <span className="text-xs font-bold uppercase tracking-wider text-[#7A5311] block">
-                      {lang === 'hi' ? 'चक्र में समाविष्ट अंक (Input Breakdown)' : 'Input Breakdown'}
+                      {lang === 'hi' ? 'चक्र में शामिल अंक' : 'Input Breakdown'}
                     </span>
                     <p className="text-xs text-[#1E162B] leading-relaxed font-mono font-medium">
-                      DOB: {dob} | Mulank: {result.mulank} | Bhagyank: {result.bhagyank} | Kua: {result.kuaProfile.kua}
+                      {lang === 'hi'
+                        ? `जन्मतिथि: ${dob} | मूलांक: ${result.mulank} | भाग्यांक: ${result.bhagyank} | कुआ: ${result.kuaProfile.kua}`
+                        : `DOB: ${dob} | Mulank: ${result.mulank} | Bhagyank: ${result.bhagyank} | Kua: ${result.kuaProfile.kua}`}
                     </p>
                     <p className="text-[11px] text-[#5D556A]">
                       {lang === 'hi'
-                        ? `कुल प्रविष्ट अंक: [${result.allExtractedDigits.join(', ')}] (शून्य को छोड़कर)`
+                        ? `कुंडली में आए अंक: [${result.allExtractedDigits.join(', ')}] (0 को छोड़कर)`
                         : `Extracted Digits: [${result.allExtractedDigits.join(', ')}] (Excluding 0)`}
                     </p>
                   </div>
@@ -658,21 +660,21 @@ export const VedicCalculatorSection: React.FC<VedicCalculatorSectionProps> = ({ 
             {/* ========================================================================= */}
             {/* DIRECTLY BELOW LO-SHU GRID: YOUR 3×3 VEDIC GRID (SANATAN NAVAGRAHA KUNDALI) */}
             {/* ========================================================================= */}
-            <div className="p-6 sm:p-8 rounded-3xl bg-white border-2 border-[#DEC38C] shadow-lg relative overflow-hidden">
+            <div className="p-4 sm:p-8 rounded-3xl bg-white border-2 border-[#DEC38C] shadow-lg relative overflow-hidden">
               {/* Header */}
               <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-3 mb-6 pb-4 border-b border-[#EFECE6] relative z-10">
                 <div>
                   <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FBF5E6] border border-[#DEC38C] text-[#7A5311] text-xs font-semibold mb-2">
                     <Star size={13} className="text-[#B48228]" />
-                    <span>{lang === 'hi' ? 'सनातन वैदिक अंक कुण्डली' : 'Sanatan Navagraha Vedic Grid'}</span>
+                    <span>{lang === 'hi' ? 'सनातन वैदिक अंक चक्र' : 'Sanatan Navagraha Vedic Grid'}</span>
                   </div>
                   <h3 className="font-cinzel text-xl sm:text-2xl font-bold text-[#1E162B] flex items-center gap-2">
                     <Star className="text-[#B48228]" size={24} />
-                    <span>{lang === 'hi' ? 'आपका ३×३ वैदिक चक्र (Your 3×3 Vedic Grid)' : 'Your 3×3 Vedic Grid (Sanatan Ank Kundali)'}</span>
+                    <span>{lang === 'hi' ? 'आपका 3×3 वैदिक चक्र (Vedic Grid)' : 'Your 3×3 Vedic Grid (Sanatan Ank Kundali)'}</span>
                   </h3>
                   <p className="text-xs text-[#4A4356] mt-1 max-w-2xl leading-relaxed">
                     {lang === 'hi'
-                      ? 'लो-शू के ठीक नीचे वैदिक अंक चक्र: पंक्ति १ (गुरु ३ - सूर्य १ - मंगल ९), पंक्ति २ (शुक्र ६ - केतु ७ - बुध ५), पंक्ति ३ (चन्द्र २ - शनि ८ - राहु ४)। इसमें जन्मतिथि के सभी अंक + मूलांक + भाग्यांक समाविष्ट हैं।'
+                      ? 'लो-शू के ठीक नीचे वैदिक अंक चक्र: पहली लाइन (गुरु 3 - सूर्य 1 - मंगल 9), दूसरी लाइन (शुक्र 6 - केतु 7 - बुध 5), तीसरी लाइन (चन्द्र 2 - शनि 8 - राहु 4)। इसमें आपकी जन्मतिथि के सभी अंक, मूलांक और भाग्यांक शामिल हैं।'
                       : 'Positioned directly below the Lo Shu Grid: Row 1 (Guru 3 - Surya 1 - Mangal 9), Row 2 (Shukra 6 - Ketu 7 - Budh 5), Row 3 (Chandra 2 - Shani 8 - Rahu 4). Populated with full DOB digits + Driver + Conductor.'}
                   </p>
                 </div>
@@ -685,9 +687,9 @@ export const VedicCalculatorSection: React.FC<VedicCalculatorSectionProps> = ({ 
               </div>
 
               {/* Vedic Grid Graphic & Planetary Distribution */}
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center mb-8 relative z-10">
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-center mb-8 relative z-10">
                 <div className="lg:col-span-7 flex justify-center">
-                  <div className="w-full max-w-md aspect-square bg-[#F4F0FA] p-3 sm:p-4 rounded-3xl border-2 border-[#DEC38C] shadow-inner grid grid-cols-3 gap-2.5 sm:gap-3">
+                  <div className="w-full max-w-md aspect-square bg-[#F4F0FA] p-2 sm:p-4 rounded-2xl sm:rounded-3xl border-2 border-[#DEC38C] shadow-inner grid grid-cols-3 gap-1.5 sm:gap-3">
                     
                     {/* Row 0: 3 (Guru), 1 (Surya), 9 (Mangal) */}
                     {result.vedicGrid.row0.map((cell) => {
@@ -695,26 +697,26 @@ export const VedicCalculatorSection: React.FC<VedicCalculatorSectionProps> = ({ 
                       return (
                         <div
                           key={cell.num}
-                          className={`rounded-2xl p-2.5 sm:p-3 flex flex-col items-center justify-between transition-all border ${
+                          className={`rounded-xl sm:rounded-2xl p-1.5 sm:p-3 flex flex-col items-center justify-between transition-all border ${
                             isPresent
                               ? 'bg-gradient-to-b from-[#FBF5E6] to-white border-[#DEC38C] shadow-sm'
                               : 'bg-white/70 border-[#E6DFD3] opacity-70'
                           }`}
                         >
-                          <span className={`text-[10px] font-bold text-center leading-tight ${isPresent ? 'text-[#7A5311]' : 'text-[#5D556A]'}`}>
+                          <span className={`text-[9px] sm:text-[10px] font-bold text-center leading-tight ${isPresent ? 'text-[#7A5311]' : 'text-[#5D556A]'}`}>
                             {lang === 'hi' ? cell.planet_hi : cell.planet}
                           </span>
-                          <div className={`text-3xl sm:text-4xl font-cormorant font-bold my-1 tabular-nums ${isPresent ? 'text-[#1E162B]' : 'text-[#8C849A]'}`}>
+                          <div className={`text-2xl sm:text-4xl font-cormorant font-bold my-0.5 sm:my-1 tabular-nums ${isPresent ? 'text-[#1E162B]' : 'text-[#8C849A]'}`}>
                             {cell.num}
                           </div>
-                          <div className="text-[10px]">
+                          <div className="text-[9px] sm:text-[10px]">
                             {isPresent ? (
-                              <span className="px-2 py-0.5 rounded-full bg-[#522B8A] text-white font-bold text-[9px]">
-                                {cell.count}x {cell.count > 1 ? 'Repeated' : 'Active'}
+                              <span className="px-1.5 sm:px-2 py-0.5 rounded-full bg-[#522B8A] text-white font-bold text-[8px] sm:text-[9px]">
+                                {lang === 'hi' ? `${cell.count} बार` : `${cell.count}x ${cell.count > 1 ? 'Rep' : 'Active'}`}
                               </span>
                             ) : (
-                              <span className="text-[#8C849A] italic text-[9px]">
-                                {lang === 'hi' ? 'रिक्त' : 'Empty'}
+                              <span className="text-[#8C849A] italic text-[8px] sm:text-[9px]">
+                                {lang === 'hi' ? 'खाली' : 'Empty'}
                               </span>
                             )}
                           </div>
@@ -728,26 +730,26 @@ export const VedicCalculatorSection: React.FC<VedicCalculatorSectionProps> = ({ 
                       return (
                         <div
                           key={cell.num}
-                          className={`rounded-2xl p-2.5 sm:p-3 flex flex-col items-center justify-between transition-all border ${
+                          className={`rounded-xl sm:rounded-2xl p-1.5 sm:p-3 flex flex-col items-center justify-between transition-all border ${
                             isPresent
                               ? 'bg-gradient-to-b from-[#FBF5E6] to-white border-[#DEC38C] shadow-sm'
                               : 'bg-white/70 border-[#E6DFD3] opacity-70'
                           }`}
                         >
-                          <span className={`text-[10px] font-bold text-center leading-tight ${isPresent ? 'text-[#7A5311]' : 'text-[#5D556A]'}`}>
+                          <span className={`text-[9px] sm:text-[10px] font-bold text-center leading-tight ${isPresent ? 'text-[#7A5311]' : 'text-[#5D556A]'}`}>
                             {lang === 'hi' ? cell.planet_hi : cell.planet}
                           </span>
-                          <div className={`text-3xl sm:text-4xl font-cormorant font-bold my-1 tabular-nums ${isPresent ? 'text-[#1E162B]' : 'text-[#8C849A]'}`}>
+                          <div className={`text-2xl sm:text-4xl font-cormorant font-bold my-0.5 sm:my-1 tabular-nums ${isPresent ? 'text-[#1E162B]' : 'text-[#8C849A]'}`}>
                             {cell.num}
                           </div>
-                          <div className="text-[10px]">
+                          <div className="text-[9px] sm:text-[10px]">
                             {isPresent ? (
-                              <span className="px-2 py-0.5 rounded-full bg-[#522B8A] text-white font-bold text-[9px]">
-                                {cell.count}x {cell.count > 1 ? 'Repeated' : 'Active'}
+                              <span className="px-1.5 sm:px-2 py-0.5 rounded-full bg-[#522B8A] text-white font-bold text-[8px] sm:text-[9px]">
+                                {lang === 'hi' ? `${cell.count} बार` : `${cell.count}x ${cell.count > 1 ? 'Rep' : 'Active'}`}
                               </span>
                             ) : (
-                              <span className="text-[#8C849A] italic text-[9px]">
-                                {lang === 'hi' ? 'रिक्त' : 'Empty'}
+                              <span className="text-[#8C849A] italic text-[8px] sm:text-[9px]">
+                                {lang === 'hi' ? 'खाली' : 'Empty'}
                               </span>
                             )}
                           </div>
@@ -761,26 +763,26 @@ export const VedicCalculatorSection: React.FC<VedicCalculatorSectionProps> = ({ 
                       return (
                         <div
                           key={cell.num}
-                          className={`rounded-2xl p-2.5 sm:p-3 flex flex-col items-center justify-between transition-all border ${
+                          className={`rounded-xl sm:rounded-2xl p-1.5 sm:p-3 flex flex-col items-center justify-between transition-all border ${
                             isPresent
                               ? 'bg-gradient-to-b from-[#FBF5E6] to-white border-[#DEC38C] shadow-sm'
                               : 'bg-white/70 border-[#E6DFD3] opacity-70'
                           }`}
                         >
-                          <span className={`text-[10px] font-bold text-center leading-tight ${isPresent ? 'text-[#7A5311]' : 'text-[#5D556A]'}`}>
+                          <span className={`text-[9px] sm:text-[10px] font-bold text-center leading-tight ${isPresent ? 'text-[#7A5311]' : 'text-[#5D556A]'}`}>
                             {lang === 'hi' ? cell.planet_hi : cell.planet}
                           </span>
-                          <div className={`text-3xl sm:text-4xl font-cormorant font-bold my-1 tabular-nums ${isPresent ? 'text-[#1E162B]' : 'text-[#8C849A]'}`}>
+                          <div className={`text-2xl sm:text-4xl font-cormorant font-bold my-0.5 sm:my-1 tabular-nums ${isPresent ? 'text-[#1E162B]' : 'text-[#8C849A]'}`}>
                             {cell.num}
                           </div>
-                          <div className="text-[10px]">
+                          <div className="text-[9px] sm:text-[10px]">
                             {isPresent ? (
-                              <span className="px-2 py-0.5 rounded-full bg-[#522B8A] text-white font-bold text-[9px]">
-                                {cell.count}x {cell.count > 1 ? 'Repeated' : 'Active'}
+                              <span className="px-1.5 sm:px-2 py-0.5 rounded-full bg-[#522B8A] text-white font-bold text-[8px] sm:text-[9px]">
+                                {lang === 'hi' ? `${cell.count} बार` : `${cell.count}x ${cell.count > 1 ? 'Rep' : 'Active'}`}
                               </span>
                             ) : (
-                              <span className="text-[#8C849A] italic text-[9px]">
-                                {lang === 'hi' ? 'रिक्त' : 'Empty'}
+                              <span className="text-[#8C849A] italic text-[8px] sm:text-[9px]">
+                                {lang === 'hi' ? 'खाली' : 'Empty'}
                               </span>
                             )}
                           </div>
@@ -796,11 +798,11 @@ export const VedicCalculatorSection: React.FC<VedicCalculatorSectionProps> = ({ 
                   <div className="p-4 rounded-2xl bg-[#FAF8F5] border border-[#E6DFD3] space-y-2">
                     <span className="text-xs font-bold uppercase tracking-wider text-[#7A5311] flex items-center gap-1.5">
                       <Sparkles size={13} className="text-[#B48228]" />
-                      <span>{lang === 'hi' ? 'वैदिक अंक गणना प्रमाण (Vedic Proof)' : 'Vedic Calculation Proof'}</span>
+                      <span>{lang === 'hi' ? 'अंक गणना की पूरी जानकारी (Vedic Proof)' : 'Vedic Calculation Proof'}</span>
                     </span>
                     <div className="space-y-1.5 text-[#4A4356] font-mono text-[11px]">
                       <div className="flex items-center justify-between border-b border-[#EFECE6] pb-1">
-                        <span className="text-[#7A5311]">{lang === 'hi' ? 'जन्मतिथि अंक (DOB Digits):' : 'DOB Digits:'}</span>
+                        <span className="text-[#7A5311]">{lang === 'hi' ? 'जन्मतिथि के अंक (DOB Digits):' : 'DOB Digits:'}</span>
                         <span className="text-[#1E162B] font-bold">{dob}</span>
                       </div>
                       <div className="flex items-center justify-between border-b border-[#EFECE6] pb-1">
@@ -812,7 +814,7 @@ export const VedicCalculatorSection: React.FC<VedicCalculatorSectionProps> = ({ 
                         <span className="text-[#1E162B] font-bold">{result.bhagyank} ({lang === 'hi' ? result.bhagyankProfile.ruler_hi : result.bhagyankProfile.ruler})</span>
                       </div>
                       <div className="flex items-center justify-between">
-                        <span className="text-[#7A5311]">{lang === 'hi' ? 'वैदिक चक्र समाविष्ट अंक:' : 'Extracted Vedic Digits:'}</span>
+                        <span className="text-[#7A5311]">{lang === 'hi' ? 'वैदिक चक्र में शामिल अंक:' : 'Extracted Vedic Digits:'}</span>
                         <span className="text-[#522B8A] font-bold">[{result.allExtractedDigits.join(', ')}]</span>
                       </div>
                     </div>
@@ -824,7 +826,7 @@ export const VedicCalculatorSection: React.FC<VedicCalculatorSectionProps> = ({ 
                     </span>
                     <p className="text-[#4A4356] leading-relaxed text-[11px]">
                       {lang === 'hi'
-                        ? `वैदिक अंक शास्त्र में ३-१-९ ज्ञान व धर्म, ६-७-५ ऐश्वर्य व व्यापार तथा २-८-४ कर्म व सुरक्षा को नियंत्रित करते हैं। आपके चक्र में ${result.presentNumbers.length} ग्रह ऊर्जावान हैं।`
+                        ? `वैदिक अंक शास्त्र में 3-1-9 ज्ञान व धर्म, 6-7-5 सुख-समृद्धि व व्यापार तथा 2-8-4 कर्म व सुरक्षा को दिखाते हैं। आपकी कुंडली में ${result.presentNumbers.length} ग्रह मजबूत हैं।`
                         : `In Sanatan Vedic Numerology, 3-1-9 governs Wisdom & Dharma, 6-7-5 governs Prosperity & Trade, and 2-8-4 governs Karma & Security. ${result.presentNumbers.length} planetary energies are active.`}
                     </p>
                   </div>
@@ -837,17 +839,18 @@ export const VedicCalculatorSection: React.FC<VedicCalculatorSectionProps> = ({ 
                   <div>
                     <h4 className="font-cinzel text-base sm:text-lg font-bold text-[#1E162B] flex items-center gap-2">
                       <Layers className="text-[#B48228]" size={18} />
-                      <span>{lang === 'hi' ? '८ वैदिक राजयोग एवं त्रिकोण (8 Vedic Planes of Destiny)' : '8 Vedic Planes of Destiny (Yogas)'}</span>
+                      <span>{lang === 'hi' ? '8 वैदिक राजयोग और त्रिकोण' : '8 Vedic Planes of Destiny (Yogas)'}</span>
                     </h4>
                     <p className="text-[11px] text-[#5D556A]">
                       {lang === 'hi'
-                        ? '३ वैदिक त्रिकोण (धर्म, अर्थ, कर्म) एवं ५ पवित्र वैदिक राजयोगों का विशद विश्लेषण'
+                        ? '3 वैदिक त्रिकोण (धर्म, अर्थ, कर्म) और 5 खास राजयोगों की पूरी जांच'
                         : 'Comprehensive analysis of 3 Vedic Trines (Dharma, Artha, Karma) and 5 Sacred Planetary Yogas'}
                     </p>
                   </div>
                   <span className="text-xs text-[#522B8A] font-semibold">
-                    {result.vedicAnalysis.vedicPlanes.filter((p) => p.status === 'Complete').length} Complete /{' '}
-                    {result.vedicAnalysis.vedicPlanes.filter((p) => p.status === 'Semi-Active').length} Semi-Active
+                    {lang === 'hi'
+                      ? `${result.vedicAnalysis.vedicPlanes.filter((p) => p.status === 'Complete').length} पूर्ण / ${result.vedicAnalysis.vedicPlanes.filter((p) => p.status === 'Semi-Active').length} मध्यम`
+                      : `${result.vedicAnalysis.vedicPlanes.filter((p) => p.status === 'Complete').length} Complete / ${result.vedicAnalysis.vedicPlanes.filter((p) => p.status === 'Semi-Active').length} Semi-Active`}
                   </span>
                 </div>
 
@@ -983,7 +986,7 @@ export const VedicCalculatorSection: React.FC<VedicCalculatorSectionProps> = ({ 
         {/* ========================================================================= */}
         {activeTab === 'vedic' && (
           <div className="space-y-8 animate-fadeIn">
-            <div className="p-6 sm:p-8 rounded-3xl bg-white border border-[#E6DFD3] shadow-lg">
+            <div className="p-4 sm:p-8 rounded-3xl bg-white border border-[#E6DFD3] shadow-lg">
               <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 mb-6 pb-4 border-b border-[#EFECE6]">
                 <div>
                   <h3 className="font-cinzel text-xl sm:text-2xl font-bold text-[#1E162B] flex items-center gap-2">
@@ -1002,9 +1005,9 @@ export const VedicCalculatorSection: React.FC<VedicCalculatorSectionProps> = ({ 
               </div>
 
               {/* Vedic Grid 3x3 Layout */}
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-center">
                 <div className="lg:col-span-7 flex justify-center">
-                  <div className="w-full max-w-md aspect-square bg-[#F4F0FA] p-3 sm:p-4 rounded-3xl border-2 border-[#DEC38C] shadow-inner grid grid-cols-3 gap-2.5 sm:gap-3">
+                  <div className="w-full max-w-md aspect-square bg-[#F4F0FA] p-2 sm:p-4 rounded-2xl sm:rounded-3xl border-2 border-[#DEC38C] shadow-inner grid grid-cols-3 gap-1.5 sm:gap-3">
                     
                     {/* Row 0 */}
                     {result.vedicGrid.row0.map((cell) => {
@@ -1012,26 +1015,26 @@ export const VedicCalculatorSection: React.FC<VedicCalculatorSectionProps> = ({ 
                       return (
                         <div
                           key={cell.num}
-                          className={`rounded-2xl p-2.5 sm:p-3 flex flex-col items-center justify-between transition-all border ${
+                          className={`rounded-xl sm:rounded-2xl p-1.5 sm:p-3 flex flex-col items-center justify-between transition-all border ${
                             isPresent
                               ? 'bg-gradient-to-b from-[#FBF5E6] to-white border-[#DEC38C] shadow-sm'
                               : 'bg-white/70 border-[#E6DFD3] opacity-70'
                           }`}
                         >
-                          <span className={`text-[10px] font-semibold text-center leading-tight ${isPresent ? 'text-[#7A5311]' : 'text-[#5D556A]'}`}>
+                          <span className={`text-[9px] sm:text-[10px] font-semibold text-center leading-tight ${isPresent ? 'text-[#7A5311]' : 'text-[#5D556A]'}`}>
                             {lang === 'hi' ? cell.planet_hi : cell.planet}
                           </span>
-                          <div className={`text-3xl sm:text-4xl font-cormorant font-bold my-1 tabular-nums ${isPresent ? 'text-[#1E162B]' : 'text-[#8C849A]'}`}>
+                          <div className={`text-2xl sm:text-4xl font-cormorant font-bold my-0.5 sm:my-1 tabular-nums ${isPresent ? 'text-[#1E162B]' : 'text-[#8C849A]'}`}>
                             {cell.num}
                           </div>
-                          <div className="text-[10px]">
+                          <div className="text-[9px] sm:text-[10px]">
                             {isPresent ? (
-                              <span className="px-2 py-0.5 rounded-full bg-[#522B8A] text-white font-bold">
+                              <span className="px-1.5 sm:px-2 py-0.5 rounded-full bg-[#522B8A] text-white font-bold text-[8px] sm:text-[10px]">
                                 {cell.count}x
                               </span>
                             ) : (
-                              <span className="text-[#8C849A] italic">
-                                {lang === 'hi' ? 'रिक्त कक्ष' : 'Empty'}
+                              <span className="text-[#8C849A] italic text-[8px] sm:text-[10px]">
+                                {lang === 'hi' ? 'रिक्त' : 'Empty'}
                               </span>
                             )}
                           </div>
@@ -1045,26 +1048,26 @@ export const VedicCalculatorSection: React.FC<VedicCalculatorSectionProps> = ({ 
                       return (
                         <div
                           key={cell.num}
-                          className={`rounded-2xl p-2.5 sm:p-3 flex flex-col items-center justify-between transition-all border ${
+                          className={`rounded-xl sm:rounded-2xl p-1.5 sm:p-3 flex flex-col items-center justify-between transition-all border ${
                             isPresent
                               ? 'bg-gradient-to-b from-[#FBF5E6] to-white border-[#DEC38C] shadow-sm'
                               : 'bg-white/70 border-[#E6DFD3] opacity-70'
                           }`}
                         >
-                          <span className={`text-[10px] font-semibold text-center leading-tight ${isPresent ? 'text-[#7A5311]' : 'text-[#5D556A]'}`}>
+                          <span className={`text-[9px] sm:text-[10px] font-semibold text-center leading-tight ${isPresent ? 'text-[#7A5311]' : 'text-[#5D556A]'}`}>
                             {lang === 'hi' ? cell.planet_hi : cell.planet}
                           </span>
-                          <div className={`text-3xl sm:text-4xl font-cormorant font-bold my-1 tabular-nums ${isPresent ? 'text-[#1E162B]' : 'text-[#8C849A]'}`}>
+                          <div className={`text-2xl sm:text-4xl font-cormorant font-bold my-0.5 sm:my-1 tabular-nums ${isPresent ? 'text-[#1E162B]' : 'text-[#8C849A]'}`}>
                             {cell.num}
                           </div>
-                          <div className="text-[10px]">
+                          <div className="text-[9px] sm:text-[10px]">
                             {isPresent ? (
-                              <span className="px-2 py-0.5 rounded-full bg-[#522B8A] text-white font-bold">
+                              <span className="px-1.5 sm:px-2 py-0.5 rounded-full bg-[#522B8A] text-white font-bold text-[8px] sm:text-[10px]">
                                 {cell.count}x
                               </span>
                             ) : (
-                              <span className="text-[#8C849A] italic">
-                                {lang === 'hi' ? 'रिक्त कक्ष' : 'Empty'}
+                              <span className="text-[#8C849A] italic text-[8px] sm:text-[10px]">
+                                {lang === 'hi' ? 'रिक्त' : 'Empty'}
                               </span>
                             )}
                           </div>
@@ -1078,26 +1081,26 @@ export const VedicCalculatorSection: React.FC<VedicCalculatorSectionProps> = ({ 
                       return (
                         <div
                           key={cell.num}
-                          className={`rounded-2xl p-2.5 sm:p-3 flex flex-col items-center justify-between transition-all border ${
+                          className={`rounded-xl sm:rounded-2xl p-1.5 sm:p-3 flex flex-col items-center justify-between transition-all border ${
                             isPresent
                               ? 'bg-gradient-to-b from-[#FBF5E6] to-white border-[#DEC38C] shadow-sm'
                               : 'bg-white/70 border-[#E6DFD3] opacity-70'
                           }`}
                         >
-                          <span className={`text-[10px] font-semibold text-center leading-tight ${isPresent ? 'text-[#7A5311]' : 'text-[#5D556A]'}`}>
+                          <span className={`text-[9px] sm:text-[10px] font-semibold text-center leading-tight ${isPresent ? 'text-[#7A5311]' : 'text-[#5D556A]'}`}>
                             {lang === 'hi' ? cell.planet_hi : cell.planet}
                           </span>
-                          <div className={`text-3xl sm:text-4xl font-cormorant font-bold my-1 tabular-nums ${isPresent ? 'text-[#1E162B]' : 'text-[#8C849A]'}`}>
+                          <div className={`text-2xl sm:text-4xl font-cormorant font-bold my-0.5 sm:my-1 tabular-nums ${isPresent ? 'text-[#1E162B]' : 'text-[#8C849A]'}`}>
                             {cell.num}
                           </div>
-                          <div className="text-[10px]">
+                          <div className="text-[9px] sm:text-[10px]">
                             {isPresent ? (
-                              <span className="px-2 py-0.5 rounded-full bg-[#522B8A] text-white font-bold">
+                              <span className="px-1.5 sm:px-2 py-0.5 rounded-full bg-[#522B8A] text-white font-bold text-[8px] sm:text-[10px]">
                                 {cell.count}x
                               </span>
                             ) : (
-                              <span className="text-[#8C849A] italic">
-                                {lang === 'hi' ? 'रिक्त कक्ष' : 'Empty'}
+                              <span className="text-[#8C849A] italic text-[8px] sm:text-[10px]">
+                                {lang === 'hi' ? 'रिक्त' : 'Empty'}
                               </span>
                             )}
                           </div>
@@ -1161,7 +1164,7 @@ export const VedicCalculatorSection: React.FC<VedicCalculatorSectionProps> = ({ 
         {/* ========================================================================= */}
         {activeTab === 'planes' && (
           <div className="space-y-6 animate-fadeIn">
-            <div className="p-6 sm:p-8 rounded-3xl bg-white border border-[#E6DFD3] shadow-lg">
+            <div className="p-4 sm:p-8 rounded-3xl bg-white border border-[#E6DFD3] shadow-lg">
               <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6 pb-4 border-b border-[#EFECE6]">
                 <div>
                   <h3 className="font-cinzel text-xl sm:text-2xl font-bold text-[#1E162B] flex items-center gap-2">
@@ -1222,7 +1225,7 @@ export const VedicCalculatorSection: React.FC<VedicCalculatorSectionProps> = ({ 
                           }`}
                         >
                           {lang === 'hi'
-                            ? `${plane.percentage}% पूर्णता (${plane.presentNumbers.length}/३ अंक उपस्थित)`
+                            ? `${plane.percentage}% (${plane.presentNumbers.length}/3 अंक मौजूद)`
                             : `${plane.status} (${plane.percentage}%)`}
                         </span>
                       </div>
@@ -1247,12 +1250,12 @@ export const VedicCalculatorSection: React.FC<VedicCalculatorSectionProps> = ({ 
 
                       <div className="flex items-center justify-between text-[11px] pt-2 border-t border-[#EFECE6]">
                         <span className="text-emerald-700 font-semibold">
-                          {lang === 'hi' ? 'उपस्थित:' : 'Present:'}{' '}
-                          {plane.presentNumbers.length > 0 ? plane.presentNumbers.join(', ') : 'None'}
+                          {lang === 'hi' ? 'मौजूद:' : 'Present:'}{' '}
+                          {plane.presentNumbers.length > 0 ? plane.presentNumbers.join(', ') : (lang === 'hi' ? 'कोई नहीं' : 'None')}
                         </span>
                         <span className="text-rose-700 font-semibold">
-                          {lang === 'hi' ? 'अनुपस्थित:' : 'Missing:'}{' '}
-                          {plane.missingNumbers.length > 0 ? plane.missingNumbers.join(', ') : 'None (100% Active)'}
+                          {lang === 'hi' ? 'कम/खाली:' : 'Missing:'}{' '}
+                          {plane.missingNumbers.length > 0 ? plane.missingNumbers.join(', ') : (lang === 'hi' ? 'कोई नहीं (100% पूरा)' : 'None (100% Active)')}
                         </span>
                       </div>
                     </div>
@@ -1269,7 +1272,7 @@ export const VedicCalculatorSection: React.FC<VedicCalculatorSectionProps> = ({ 
         {/* ========================================================================= */}
         {activeTab === 'remedies' && (
           <div className="space-y-6 animate-fadeIn">
-            <div className="p-6 sm:p-8 rounded-3xl bg-white border border-[#E6DFD3] shadow-lg">
+            <div className="p-4 sm:p-8 rounded-3xl bg-white border border-[#E6DFD3] shadow-lg">
               <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6 pb-4 border-b border-[#EFECE6]">
                 <div>
                   <h3 className="font-cinzel text-xl sm:text-2xl font-bold text-[#1E162B] flex items-center gap-2">
@@ -1311,7 +1314,7 @@ export const VedicCalculatorSection: React.FC<VedicCalculatorSectionProps> = ({ 
 
               {/* Detailed Remedy Card */}
               {selectedMissingNum && (
-                <div className="p-6 sm:p-8 rounded-3xl bg-[#FAF8F5] border border-[#DEC38C] shadow-sm space-y-6">
+                <div className="p-4 sm:p-8 rounded-3xl bg-[#FAF8F5] border border-[#DEC38C] shadow-sm space-y-6">
                   {(() => {
                     const remedy = result.missingRemedies.find((r) => r.number === selectedMissingNum);
                     if (!remedy) return null;
@@ -1349,37 +1352,47 @@ export const VedicCalculatorSection: React.FC<VedicCalculatorSectionProps> = ({ 
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-xs">
                           <div className="p-4 rounded-2xl bg-white border border-[#E6DFD3] space-y-1.5">
                             <span className="text-[10px] font-bold uppercase tracking-wider text-[#7A5311] block">
-                              {lang === 'hi' ? '१. वैदिक यंत्र एवं मूर्ति' : '1. Sacred Yantra / Idol'}
+                              {lang === 'hi' ? '1. यंत्र व मूर्ति' : '1. Sacred Yantra / Idol'}
                             </span>
-                            <p className="text-[#1E162B] font-medium">{remedy.remedies.yantra}</p>
+                            <p className="text-[#1E162B] font-medium">
+                              {lang === 'hi' ? (remedy.remedies_hi?.yantra || remedy.remedies.yantra) : remedy.remedies.yantra}
+                            </p>
                           </div>
 
                           <div className="p-4 rounded-2xl bg-white border border-[#E6DFD3] space-y-1.5">
                             <span className="text-[10px] font-bold uppercase tracking-wider text-[#7A5311] block">
-                              {lang === 'hi' ? '२. सिद्ध रुद्राक्ष' : '2. Rudraksha Bead'}
+                              {lang === 'hi' ? '2. रुद्राक्ष' : '2. Rudraksha Bead'}
                             </span>
-                            <p className="text-[#1E162B] font-medium">{remedy.remedies.rudraksha}</p>
+                            <p className="text-[#1E162B] font-medium">
+                              {lang === 'hi' ? (remedy.remedies_hi?.rudraksha || remedy.remedies.rudraksha) : remedy.remedies.rudraksha}
+                            </p>
                           </div>
 
                           <div className="p-4 rounded-2xl bg-white border border-[#E6DFD3] space-y-1.5">
                             <span className="text-[10px] font-bold uppercase tracking-wider text-[#7A5311] block">
-                              {lang === 'hi' ? '३. रत्न व क्रिस्टल' : '3. Crystal / Gemstone'}
+                              {lang === 'hi' ? '3. रत्न व क्रिस्टल' : '3. Crystal / Gemstone'}
                             </span>
-                            <p className="text-[#1E162B] font-medium">{remedy.remedies.gemstone}</p>
+                            <p className="text-[#1E162B] font-medium">
+                              {lang === 'hi' ? (remedy.remedies_hi?.gemstone || remedy.remedies.gemstone) : remedy.remedies.gemstone}
+                            </p>
                           </div>
 
                           <div className="p-4 rounded-2xl bg-white border border-[#E6DFD3] space-y-1.5">
                             <span className="text-[10px] font-bold uppercase tracking-wider text-[#7A5311] block">
-                              {lang === 'hi' ? '४. रंग चिकित्सा (Color Therapy)' : '4. Auspicious Colors'}
+                              {lang === 'hi' ? '4. शुभ रंग (Color Therapy)' : '4. Auspicious Colors'}
                             </span>
-                            <p className="text-[#1E162B] font-medium">{remedy.remedies.colorTherapy}</p>
+                            <p className="text-[#1E162B] font-medium">
+                              {lang === 'hi' ? (remedy.remedies_hi?.colorTherapy || remedy.remedies.colorTherapy) : remedy.remedies.colorTherapy}
+                            </p>
                           </div>
 
                           <div className="p-4 rounded-2xl bg-white border border-[#E6DFD3] space-y-1.5 md:col-span-2">
                             <span className="text-[10px] font-bold uppercase tracking-wider text-[#7A5311] block">
-                              {lang === 'hi' ? '५. वास्तु दिशात्मक संरेखण' : '5. Vastu Energy Alignment'}
+                              {lang === 'hi' ? '5. आसान वास्तु उपाय' : '5. Vastu Energy Alignment'}
                             </span>
-                            <p className="text-[#1E162B] font-medium leading-relaxed">{remedy.remedies.vastuAction}</p>
+                            <p className="text-[#1E162B] font-medium leading-relaxed">
+                              {lang === 'hi' ? (remedy.remedies_hi?.vastuAction || remedy.remedies.vastuAction) : remedy.remedies.vastuAction}
+                            </p>
                           </div>
                         </div>
 
@@ -1387,14 +1400,14 @@ export const VedicCalculatorSection: React.FC<VedicCalculatorSectionProps> = ({ 
                         <div className="p-4 rounded-2xl bg-[#FBF5E6] border border-[#DEC38C] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
                           <div>
                             <span className="text-[10px] font-bold uppercase tracking-wider text-[#7A5311] block">
-                              {lang === 'hi' ? 'दिव्य मंत्र साधना:' : 'Sacred Harmonic Mantra:'}
+                              {lang === 'hi' ? 'लाभकारी मंत्र:' : 'Sacred Harmonic Mantra:'}
                             </span>
                             <span className="font-mono text-sm text-[#1E162B] font-semibold">
-                              {remedy.remedies.mantra}
+                              {lang === 'hi' ? (remedy.remedies_hi?.mantra || remedy.remedies.mantra) : remedy.remedies.mantra}
                             </span>
                           </div>
                           <span className="text-[11px] text-[#522B8A] font-semibold whitespace-nowrap">
-                            {lang === 'hi' ? 'प्रतिदिन १०८ बार जपें' : 'Chant 108 times daily'}
+                            {lang === 'hi' ? 'रोजाना 108 बार जपें' : 'Chant 108 times daily'}
                           </span>
                         </div>
                       </>
@@ -1412,15 +1425,15 @@ export const VedicCalculatorSection: React.FC<VedicCalculatorSectionProps> = ({ 
         {/* ========================================================================= */}
         {activeTab === 'kuaGuide' && (
           <div className="space-y-6 animate-fadeIn">
-            <div className="p-6 sm:p-8 rounded-3xl bg-white border border-[#E6DFD3] shadow-lg space-y-6">
+            <div className="p-4 sm:p-8 rounded-3xl bg-white border border-[#E6DFD3] shadow-lg space-y-6">
               <div className="pb-4 border-b border-[#EFECE6]">
                 <h3 className="font-cinzel text-xl sm:text-2xl font-bold text-[#1E162B] flex items-center gap-2">
                   <BookOpen className="text-[#B48228]" size={22} />
-                  <span>{lang === 'hi' ? 'कुआ अंक की प्रामाणिक वैदिक एवं फेंगशुई गणना विधि' : 'Authentic Kua Calculation Methodology & Benchmark Guide'}</span>
+                  <span>{lang === 'hi' ? 'कुआ अंक (Kua Number) निकालने का आसान तरीका' : 'Authentic Kua Calculation Methodology & Benchmark Guide'}</span>
                 </h3>
                 <p className="text-xs text-[#4A4356] mt-1">
                   {lang === 'hi'
-                    ? '20वीं व 21वीं सदी के सूत्र, सौर नववर्ष (Li Chun) नियम, एवं अंक ५ का परिवर्तन नियम।'
+                    ? '20वीं व 21वीं सदी के नियम, सौर नववर्ष (Li Chun) नियम और अंक 5 का नियम।'
                     : '20th & 21st Century Formulas, Li Chun Spring Solar Rule, and the Rule of 5 conversion.'}
                 </p>
               </div>
@@ -1428,11 +1441,11 @@ export const VedicCalculatorSection: React.FC<VedicCalculatorSectionProps> = ({ 
               {/* 1967 Benchmark Table */}
               <div className="p-5 rounded-2xl bg-[#FAF8F5] border border-[#DEC38C] space-y-3">
                 <span className="text-xs font-bold uppercase tracking-wider text-[#7A5311] block">
-                  {lang === 'hi' ? 'वर्ष १९६७ का प्रामाणिक उदाहरण (Benchmark 1967):' : 'Authentic Benchmark: Year 1967'}
+                  {lang === 'hi' ? 'साल 1967 का आसान उदाहरण:' : 'Authentic Benchmark: Year 1967'}
                 </span>
                 <p className="text-xs text-[#4A4356] leading-relaxed">
                   {lang === 'hi'
-                    ? 'वर्ष 1967 के अंतिम दो अंकों का योग: 6 + 7 = 13 → 1 + 3 = 4.'
+                    ? 'साल 1967 के आखिरी दो अंकों का जोड़: 6 + 7 = 13 → 1 + 3 = 4.'
                     : 'Sum of last two digits of 1967: 6 + 7 = 13 → 1 + 3 = 4.'}
                 </p>
 
@@ -1440,22 +1453,22 @@ export const VedicCalculatorSection: React.FC<VedicCalculatorSectionProps> = ({ 
                   <table className="w-full text-xs text-left">
                     <thead className="bg-[#F4F0FA] text-[#522B8A]">
                       <tr>
-                        <th className="p-3 rounded-l-xl">{lang === 'hi' ? 'जन्म वर्ष' : 'Birth Year'}</th>
-                        <th className="p-3">{lang === 'hi' ? 'अंतिम २ अंकों का योग' : 'Last 2 Digits Sum'}</th>
+                        <th className="p-3 rounded-l-xl">{lang === 'hi' ? 'जन्म का साल' : 'Birth Year'}</th>
+                        <th className="p-3">{lang === 'hi' ? 'आखिरी 2 अंकों का जोड़' : 'Last 2 Digits Sum'}</th>
                         <th className="p-3">{lang === 'hi' ? 'पुरुष (Male): 10 - Sum' : 'Male (10 - Sum)'}</th>
                         <th className="p-3 rounded-r-xl">{lang === 'hi' ? 'महिला (Female): Sum + 5' : 'Female (Sum + 5)'}</th>
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-[#EFECE6] text-[#4A4356]">
                       <tr>
-                        <td className="p-3 font-semibold text-[#1E162B]">1967 (सामान्य)</td>
+                        <td className="p-3 font-semibold text-[#1E162B]">1967 ({lang === 'hi' ? 'सामान्य' : 'Standard'})</td>
                         <td className="p-3">6 + 7 = 13 → 4</td>
                         <td className="p-3 font-bold text-[#7A5311]">6 (Qian Metal / NW)</td>
                         <td className="p-3 font-bold text-emerald-700">9 (Li Fire / South)</td>
                       </tr>
                       <tr>
-                        <td className="p-3 font-semibold text-[#522B8A]">15 Jan 1967 (Li Chun पूर्व)</td>
-                        <td className="p-3">सौर वर्ष 1966 → 6+6=12 → 3</td>
+                        <td className="p-3 font-semibold text-[#522B8A]">15 Jan 1967 (Li Chun {lang === 'hi' ? 'से पहले' : 'Before'})</td>
+                        <td className="p-3">{lang === 'hi' ? 'सौर वर्ष 1966 → 6+6=12 → 3' : 'Solar Year 1966 → 6+6=12 → 3'}</td>
                         <td className="p-3 font-bold text-[#7A5311]">10 - 3 = 7 (Dui Metal / West)</td>
                         <td className="p-3 font-bold text-emerald-700">3 + 5 = 8 (Gen Earth / NE)</td>
                       </tr>
@@ -1468,32 +1481,42 @@ export const VedicCalculatorSection: React.FC<VedicCalculatorSectionProps> = ({ 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-5 text-xs">
                 <div className="p-5 rounded-2xl bg-[#FAF8F5] border border-[#E6DFD3] space-y-2">
                   <span className="text-xs font-bold uppercase tracking-wider text-[#7A5311] block">
-                    {lang === 'hi' ? '१. बीसवीं सदी (1900-1999)' : '1. 20th Century (1900-1999)'}
+                    {lang === 'hi' ? '1. बीसवीं सदी (1900-1999)' : '1. 20th Century (1900-1999)'}
                   </span>
                   <p className="text-[#4A4356] leading-relaxed">
-                    <strong>पुरुष (Male):</strong> 10 - एकल योग<br />
-                    <strong>महिला (Female):</strong> एकल योग + 5 (यदि &gt; 9 तो पुनः जोड़ें)
+                    <strong>{lang === 'hi' ? 'पुरुष (Male):' : 'Male:'}</strong> {lang === 'hi' ? '10 - एकल जोड़' : '10 - Single Sum'}<br />
+                    <strong>{lang === 'hi' ? 'महिला (Female):' : 'Female:'}</strong> {lang === 'hi' ? 'एकल जोड़ + 5 (9 से ज्यादा हो तो फिर जोड़ें)' : 'Single Sum + 5 (reduce if > 9)'}
                   </p>
                 </div>
 
                 <div className="p-5 rounded-2xl bg-[#FAF8F5] border border-[#E6DFD3] space-y-2">
                   <span className="text-xs font-bold uppercase tracking-wider text-[#7A5311] block">
-                    {lang === 'hi' ? '२. इक्कीसवीं सदी (2000+)' : '2. 21st Century (2000+)'}
+                    {lang === 'hi' ? '2. इक्कीसवीं सदी (2000+)' : '2. 21st Century (2000+)'}
                   </span>
                   <p className="text-[#4A4356] leading-relaxed">
-                    <strong>पुरुष (Male):</strong> 9 - एकल योग (यदि परिणाम 0 हो तो 9)<br />
-                    <strong>महिला (Female):</strong> एकल योग + 6
+                    <strong>{lang === 'hi' ? 'पुरुष (Male):' : 'Male:'}</strong> {lang === 'hi' ? '9 - एकल जोड़ (0 आने पर 9 लें)' : '9 - Single Sum (9 if 0)'}<br />
+                    <strong>{lang === 'hi' ? 'महिला (Female):' : 'Female:'}</strong> {lang === 'hi' ? 'एकल जोड़ + 6' : 'Single Sum + 6'}
                   </p>
                 </div>
 
                 <div className="p-5 rounded-2xl bg-[#FAF8F5] border border-[#E6DFD3] space-y-2">
                   <span className="text-xs font-bold uppercase tracking-wider text-[#7A5311] block">
-                    {lang === 'hi' ? '३. अंक ५ का विशेष नियम (Rule of 5)' : '3. Special Rule of 5'}
+                    {lang === 'hi' ? '3. अंक 5 का खास नियम (Rule of 5)' : '3. Special Rule of 5'}
                   </span>
                   <p className="text-[#4A4356] leading-relaxed">
-                    बागुआ के 8 कोणों में अंक 5 का कोई कोण नहीं होता।<br />
-                    <strong>पुरुष के लिए:</strong> 5 बदलकर <strong>2 (कुन / दक्षिण-पश्चिम)</strong> बनता है।<br />
-                    <strong>महिला के लिए:</strong> 5 बदलकर <strong>8 (गेन / उत्तर-पूर्व)</strong> बनता है।
+                    {lang === 'hi' ? (
+                      <>
+                        8 दिशाओं में अंक 5 का कोई स्थान नहीं होता।<br />
+                        <strong>पुरुष के लिए:</strong> 5 बदलकर <strong>2 (कुन / दक्षिण-पश्चिम)</strong> बनता है।<br />
+                        <strong>महिला के लिए:</strong> 5 बदलकर <strong>8 (गेन / उत्तर-पूर्व)</strong> बनता है।
+                      </>
+                    ) : (
+                      <>
+                        Digit 5 has no Bagua sector.<br />
+                        <strong>For Male:</strong> 5 converts to <strong>2 (Kun / SW)</strong>.<br />
+                        <strong>For Female:</strong> 5 converts to <strong>8 (Gen / NE)</strong>.
+                      </>
+                    )}
                   </p>
                 </div>
               </div>
@@ -1501,11 +1524,11 @@ export const VedicCalculatorSection: React.FC<VedicCalculatorSectionProps> = ({ 
               {/* Solar Year Rule Explanation */}
               <div className="p-5 rounded-2xl bg-[#FBF5E6] border border-[#DEC38C] text-xs space-y-2">
                 <span className="text-xs font-bold uppercase tracking-wider text-[#7A5311] block">
-                  {lang === 'hi' ? 'सौर नववर्ष (Li Chun / वसंत ऋतु) का नियम:' : 'Li Chun Solar Spring Calendar Rule:'}
+                  {lang === 'hi' ? 'सौर नववर्ष (Li Chun) का नियम:' : 'Li Chun Solar Spring Calendar Rule:'}
                 </span>
                 <p className="text-[#4A4356] leading-relaxed">
                   {lang === 'hi'
-                    ? 'यदि जातक का जन्म १ जनवरी से ३ फरवरी के बीच हुआ है, तो चीनी सौर कैलेंडर (Li Chun) ४ फरवरी से शुरू होने के कारण कुआ अंक की गणना पिछले सौर वर्ष (Year - 1) के आधार पर स्वतः की जाती है। जैसे: १५ जनवरी १९६७ को जन्मे जातक का सौर वर्ष १९६६ मानकर पुरुष का कुआ अंक ७ तथा महिला का कुआ अंक ८ निकाला जाता है।'
+                    ? 'अगर किसी का जन्म 1 जनवरी से 3 फरवरी के बीच हुआ है, तो सौर वर्ष 4 फरवरी से शुरू होने के कारण कुआ अंक पिछले साल (Year - 1) से निकाला जाता है। जैसे: 15 जनवरी 1967 को जन्मे व्यक्ति के लिए साल 1966 मानकर पुरुष का कुआ अंक 7 और महिला का कुआ अंक 8 निकाला जाता है।'
                     : 'If born between January 1 and February 3, the Chinese Solar Year begins on Li Chun (February 4). The calculation automatically uses the preceding solar year (Year - 1). For example, Jan 15, 1967 is evaluated using solar year 1966.'}
                 </p>
               </div>
@@ -1515,7 +1538,7 @@ export const VedicCalculatorSection: React.FC<VedicCalculatorSectionProps> = ({ 
         )}
 
         {/* Auspicious Guidance & Planetary Synergy Card */}
-        <div className="mt-10 p-6 sm:p-8 rounded-3xl bg-white border-2 border-[#DEC38C] shadow-lg space-y-6">
+        <div className="mt-10 p-4 sm:p-8 rounded-3xl bg-white border-2 border-[#DEC38C] shadow-lg space-y-6">
           <div className="border-b border-[#EFECE6] pb-4 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
             <div>
               <span className="text-xs font-bold uppercase tracking-widest text-[#7A5311] block">
@@ -1526,7 +1549,9 @@ export const VedicCalculatorSection: React.FC<VedicCalculatorSectionProps> = ({ 
               </p>
             </div>
             <div className="text-xs font-semibold text-[#522B8A] px-3.5 py-1.5 rounded-full bg-[#F4F0FA] border border-[#DFD5F0] shrink-0">
-              {result.kuaProfile.group} ({result.kuaProfile.element})
+              {lang === 'hi'
+                ? `${result.kuaProfile.group_hi} (${result.kuaProfile.element_hi})`
+                : `${result.kuaProfile.group} (${result.kuaProfile.element})`}
             </div>
           </div>
 
@@ -1560,10 +1585,12 @@ export const VedicCalculatorSection: React.FC<VedicCalculatorSectionProps> = ({ 
 
             <div className="p-3.5 rounded-2xl bg-[#FAF8F5] border border-[#E6DFD3] space-y-1">
               <span className="text-[10px] uppercase font-bold text-[#7A5311] block">
-                {lang === 'hi' ? 'कुआ दिशाएं' : 'Favorable Directions'}
+                {lang === 'hi' ? 'शुभ कुआ दिशाएं' : 'Favorable Directions'}
               </span>
               <span className="text-[#1E162B] font-medium">
-                {result.kuaProfile.direction} ({result.kuaProfile.favorableDirections[0]?.name.split(' ')[0]})
+                {lang === 'hi'
+                  ? `${result.kuaProfile.direction_hi} (${result.kuaProfile.favorableDirections[0]?.name_hi || ''})`
+                  : `${result.kuaProfile.direction} (${result.kuaProfile.favorableDirections[0]?.name.split(' ')[0]})`}
               </span>
             </div>
           </div>
@@ -1572,7 +1599,7 @@ export const VedicCalculatorSection: React.FC<VedicCalculatorSectionProps> = ({ 
           <div className="pt-4 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-[#EFECE6]">
             <p className="text-xs text-[#4A4356]">
               {lang === 'hi'
-                ? 'क्या आप व्यक्तिगत वैदिक कुंडली मिलान, नाम वर्तनी संतुलन या वास्तु उपाय परामर्श चाहते हैं?'
+                ? 'क्या आप अपनी पूरी जन्मकुंडली, नाम की स्पेलिंग सुधार या वास्तु के लिए सलाह लेना चाहते हैं?'
                 : 'Looking for 1-on-1 personalized Kundli alignment, name-spelling correction, or Vastu direction remedies?'}
             </p>
             <button
@@ -1582,10 +1609,10 @@ export const VedicCalculatorSection: React.FC<VedicCalculatorSectionProps> = ({ 
                   `DOB: ${dob}, Gender: ${gender}, Name: ${name} (Mulank: ${result.mulank}, Bhagyank: ${result.bhagyank}, Kua: ${result.kuaProfile.kua})`
                 )
               }
-              className="w-full sm:w-auto h-11 px-6 bg-[#522B8A] hover:bg-[#412070] text-white font-bold text-xs uppercase tracking-wider rounded-xl transition-all shadow-md whitespace-nowrap flex items-center justify-center gap-2 cursor-pointer"
+              className="w-full sm:w-auto min-h-[44px] px-5 sm:px-6 py-2.5 bg-[#522B8A] hover:bg-[#412070] text-white font-bold text-xs uppercase tracking-wider rounded-xl transition-all shadow-md sm:whitespace-nowrap flex items-center justify-center gap-2 cursor-pointer text-center"
             >
               <span>{lang === 'hi' ? 'डॉ. पूजा जी से संपूर्ण परामर्श प्राप्त करें' : 'Book Complete Reading with Dr. Pooja Ji'}</span>
-              <ArrowRight size={14} />
+              <ArrowRight size={14} className="shrink-0" />
             </button>
           </div>
         </div>

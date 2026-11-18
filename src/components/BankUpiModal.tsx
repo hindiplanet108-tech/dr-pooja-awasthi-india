@@ -46,7 +46,7 @@ export const BankUpiModal: React.FC<BankUpiModalProps> = ({ isOpen, onClose, lan
               </h3>
               <p className="text-xs text-[#7A5311]">
                 {lang === 'hi' ? (
-                  <>परामर्श फीस: <strong className="font-black font-rupee text-[#1E162B] text-sm tracking-tight">{paymentData.consultancyFee}</strong> · केवल UPI एवं QR कोड द्वारा भुगतान</>
+                  <>परामर्श फीस: <strong className="font-black font-rupee text-[#1E162B] text-sm tracking-tight">{paymentData.consultancyFee}</strong> · केवल UPI और QR कोड से भुगतान</>
                 ) : (
                   <>Consultation Fee: <strong className="font-black font-rupee text-[#1E162B] text-sm tracking-tight">{paymentData.consultancyFee}</strong> · UPI & QR Code Only</>
                 )}
@@ -71,7 +71,7 @@ export const BankUpiModal: React.FC<BankUpiModalProps> = ({ isOpen, onClose, lan
             <div className="flex items-center justify-between gap-2 flex-wrap">
               <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#7A5311]">
                 <Smartphone size={16} className="text-[#B48228]" />
-                <span>{lang === 'hi' ? 'स्कैन करें एवं तुरंत UPI भुगतान' : 'Scan & Pay via UPI'}</span>
+                <span>{lang === 'hi' ? 'QR स्कैन करें और तुरंत UPI से पेमेंट करें' : 'Scan & Pay via UPI'}</span>
               </div>
               <span className="text-[10px] px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-800 font-semibold border border-emerald-200">
                 GPay · PhonePe · Paytm · BHIM
@@ -115,7 +115,7 @@ export const BankUpiModal: React.FC<BankUpiModalProps> = ({ isOpen, onClose, lan
                   href={`upi://pay?pa=${paymentData.upiId}&pn=${encodeURIComponent(paymentData.accountHolder)}&cu=INR`}
                   className="inline-flex items-center gap-1.5 text-xs font-bold text-[#522B8A] hover:underline pt-1"
                 >
-                  <span>{lang === 'hi' ? 'मोबाइल UPI ऐप में सीधे खोलें →' : 'Open in Mobile UPI App →'}</span>
+                  <span>{lang === 'hi' ? 'सीधे मोबाइल UPI ऐप में खोलें →' : 'Open in Mobile UPI App →'}</span>
                 </a>
               </div>
             </div>
@@ -163,7 +163,7 @@ export const BankUpiModal: React.FC<BankUpiModalProps> = ({ isOpen, onClose, lan
             </div>
             <div className="p-3.5 rounded-xl bg-amber-50 border border-amber-200 text-xs text-amber-900 font-medium">
               {lang === 'hi'
-                ? 'नोट: हम केवल QR कोड एवं UPI (GPay / PhonePe / Paytm / BHIM) द्वारा ही भुगतान स्वीकार करते हैं।'
+                ? 'ध्यान दें: हम केवल QR कोड और UPI (GPay / PhonePe / Paytm / BHIM) से ही पेमेंट लेते हैं।'
                 : 'Note: We strictly accept payments via Verified QR Code and UPI Apps only (GPay / PhonePe / Paytm / BHIM).'}
             </div>
           </div>
@@ -173,7 +173,7 @@ export const BankUpiModal: React.FC<BankUpiModalProps> = ({ isOpen, onClose, lan
             <ShieldCheck size={18} className="text-emerald-700 shrink-0 mt-0.5" />
             <p>
               {lang === 'hi'
-                ? 'कृपया भुगतान पूर्ण होने के उपरांत रसीद का स्क्रीनशॉट या यूटीआर (UTR) संख्या आधिकारिक व्हाट्सएप (+91 91057 31969) पर भेजें। पुष्टि होते ही आपका व्यक्तिगत परामर्श समय तुरंत निश्चित कर दिया जाएगा।'
+                ? 'भुगतान पूरा होने के बाद रसीद का स्क्रीनशॉट या UTR नंबर व्हाट्सएप (+91 91057 31969) पर भेजें। पुष्टि होते ही आपका परामर्श समय तय कर दिया जाएगा।'
                 : 'After completing payment, please share the screenshot or UTR number directly to official WhatsApp (+91 91057 31969). Your private consultation slot will be scheduled immediately.'}
             </p>
           </div>

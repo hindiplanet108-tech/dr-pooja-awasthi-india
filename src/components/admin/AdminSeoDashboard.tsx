@@ -64,24 +64,26 @@ export const AdminSeoDashboard: React.FC<{ lang?: string }> = ({ lang = 'hi' }) 
   const [copiedKey, setCopiedKey] = useState<string | null>(null);
   const [pingStatus, setPingStatus] = useState<string | null>(null);
 
+  const liveOrigin = typeof window !== 'undefined' ? window.location.origin : '';
+
   // Editable settings state
   const [formSettings, setFormSettings] = useState<SeoSettings>({
-    canonicalDomain: 'https://dr-pooja-awasthi-india.netlify.app',
+    canonicalDomain: liveOrigin,
     googleVerificationCode: '',
     bingVerificationCode: '',
     googleAnalyticsId: '',
     metaTitleTemplate: '%s | Dr. Pooja Awasthi',
-    defaultMetaDescription: 'Discover Your Path. Transform Your Life. Professional Vedic Numerology, Tarot Guidance, Energy Healing, and Life Coaching with Dr. Pooja Awasthi.',
-    defaultKeywords: 'Pooja Awasthi, Vedic Numerology, Tarot Reading, Energy Healing, Chakra Alignment, Mulank, Bhagyank, Dehradun',
+    defaultMetaDescription: 'Get certified Vedic Numerology, Intuitive Tarot, Chakra Healing & Vastu guidance with Dr. Pooja Awasthi. Book your 1-on-1 session today.',
+    defaultKeywords: 'Pooja Awasthi, Vedic Numerology, Tarot Reading, Energy Healing, Chakra Alignment, Vastu, Mulank, Bhagyank, Dehradun',
     indexNowKey: 'poojaawasthi_indexnow_2026',
     autoPingSearchEngines: true,
   });
 
   // Preview state
   const [previewSnippet, setPreviewSnippet] = useState({
-    title: 'Dr. Pooja Awasthi — Spiritual Guidance | Vedic Numerology & Life Coaching',
-    url: 'https://dr-pooja-awasthi-india.netlify.app',
-    description: 'Discover Your Path. Transform Your Life. Professional Vedic Numerology, Tarot Guidance, Energy Healing, and Life Coaching with Dr. Pooja Awasthi.',
+    title: 'Dr. Pooja Awasthi – Vedic Numerology, Tarot & Healing',
+    url: liveOrigin,
+    description: 'Get certified Vedic Numerology, Intuitive Tarot, Chakra Healing & Vastu guidance with Dr. Pooja Awasthi. Book your 1-on-1 session today.',
   });
 
   const [activeSubTab, setActiveSubTab] = useState<'overview' | 'meta' | 'verification' | 'checklist'>('overview');
@@ -249,7 +251,7 @@ export const AdminSeoDashboard: React.FC<{ lang?: string }> = ({ lang = 'hi' }) 
                 </span>
               </div>
               <div className="font-cormorant text-3xl font-bold text-white">
-                {data?.stats.totalPages || 12} URLs
+                {data?.stats.totalPages || 6} URLs
               </div>
               <p className="text-[11px] text-[#EAE2F4]/70">
                 {lang === 'hi' ? 'स्वचालित गतिशील XML साइटमैप सक्रिय' : 'Dynamic XML sitemap auto-updating'}
@@ -331,13 +333,13 @@ export const AdminSeoDashboard: React.FC<{ lang?: string }> = ({ lang = 'hi' }) 
                     rel="noopener noreferrer"
                     className="font-mono text-white hover:text-[#D6B574] transition-colors truncate block"
                   >
-                    {data?.stats?.sitemapUrl || 'https://dr-pooja-awasthi-india.netlify.app/sitemap.xml'}
+                    {data?.stats?.sitemapUrl || `${liveOrigin}/sitemap.xml`}
                   </a>
                 </div>
                 <div className="flex items-center gap-1.5 shrink-0">
                   <button
                     type="button"
-                    onClick={() => copyToClipboard(data?.stats?.sitemapUrl || 'https://dr-pooja-awasthi-india.netlify.app/sitemap.xml', 'sitemap')}
+                    onClick={() => copyToClipboard(data?.stats?.sitemapUrl || `${liveOrigin}/sitemap.xml`, 'sitemap')}
                     className="p-2 rounded-lg bg-white/10 hover:bg-[#D6B574] hover:text-[#1c0f26] transition-all"
                     title="Copy URL"
                   >
@@ -358,13 +360,13 @@ export const AdminSeoDashboard: React.FC<{ lang?: string }> = ({ lang = 'hi' }) 
                     rel="noopener noreferrer"
                     className="font-mono text-white hover:text-[#D6B574] transition-colors truncate block"
                   >
-                    {data?.stats?.robotsUrl || 'https://dr-pooja-awasthi-india.netlify.app/robots.txt'}
+                    {data?.stats?.robotsUrl || `${liveOrigin}/robots.txt`}
                   </a>
                 </div>
                 <div className="flex items-center gap-1.5 shrink-0">
                   <button
                     type="button"
-                    onClick={() => copyToClipboard(data?.stats?.robotsUrl || 'https://dr-pooja-awasthi-india.netlify.app/robots.txt', 'robots')}
+                    onClick={() => copyToClipboard(data?.stats?.robotsUrl || `${liveOrigin}/robots.txt`, 'robots')}
                     className="p-2 rounded-lg bg-white/10 hover:bg-[#D6B574] hover:text-[#1c0f26] transition-all"
                     title="Copy URL"
                   >
@@ -465,7 +467,8 @@ export const AdminSeoDashboard: React.FC<{ lang?: string }> = ({ lang = 'hi' }) 
                 </p>
                 <input
                   type="text"
-                  value={formSettings.canonicalDomain || 'https://dr-pooja-awasthi-india.netlify.app'}
+                  value={formSettings.canonicalDomain || ''}
+                  placeholder={liveOrigin || 'Auto-detected from live host'}
                   onChange={(e) => setFormSettings({ ...formSettings, canonicalDomain: e.target.value })}
                   className="w-full px-4 py-2.5 rounded-xl bg-black/40 border border-white/15 text-white font-mono text-xs focus:outline-none focus:border-[#D6B574]"
                 />
@@ -598,7 +601,7 @@ export const AdminSeoDashboard: React.FC<{ lang?: string }> = ({ lang = 'hi' }) 
             {[
               {
                 title: 'Dynamic XML Sitemap (/sitemap.xml)',
-                desc: 'Includes all 11 core routes + dynamic published CMS pages with lastmod and image tags.',
+                desc: 'Includes all clean indexable routes + published CMS pages with lastmod, hreflang alternates, and image tags.',
                 status: 'Passed',
               },
               {

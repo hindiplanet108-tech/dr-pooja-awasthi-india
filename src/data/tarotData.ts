@@ -3,7 +3,9 @@ export interface TarotCard {
   name: string;
   name_hi: string;
   arcana: 'Major' | 'Minor';
+  arcana_hi: string;
   element: string;
+  element_hi: string;
   keywords: string[];
   keywords_hi: string[];
   essence: string;
@@ -13,6 +15,7 @@ export interface TarotCard {
   affirmation: string;
   affirmation_hi: string;
   symbolism: string;
+  symbolism_hi: string;
 }
 
 export const TAROT_DECK: TarotCard[] = [
@@ -21,95 +24,113 @@ export const TAROT_DECK: TarotCard[] = [
     name: 'The Star',
     name_hi: 'द स्टार (नक्षत्र)',
     arcana: 'Major',
+    arcana_hi: 'मुख्य कार्ड',
     element: 'Air',
+    element_hi: 'वायु तत्व',
     keywords: ['Hope', 'Healing', 'Divine Faith'],
-    keywords_hi: ['आशा', 'उपचार', 'ईश्वरीय विश्वास'],
+    keywords_hi: ['नई उम्मीद', 'मन की शांति', 'ईश्वर पर भरोसा'],
     essence: 'A shower of divine grace after difficult times. Your authentic desires are aligning with cosmic support. Trust that your wounds are transmuting into sacred wisdom.',
-    essence_hi: 'कठिन समय के बाद ईश्वरीय अनुग्रह की वर्षा। आपके अंतर की सच्ची इच्छाएं ब्रह्मांडीय सहायता से जुड़ रही हैं।',
+    essence_hi: 'मुश्किल समय के बाद अब ईश्वर की कृपा बरसने का समय है। आपके मन की सच्ची इच्छाएं पूरी होने के लिए रास्ता बन रहा है।',
     guidance: 'Open your heart to hope. Release the lingering anxiety of past struggles; the universe is replenishing your inner well with quiet grace.',
-    guidance_hi: 'अपने हृदय को आशा से भरें। अतीत के संघर्षों की चिंता को त्यागें; ब्रह्मांड आपकी ऊर्जा को पुनः पवित्र कर रहा है।',
+    guidance_hi: 'अपने मन में नई उम्मीद जगाएं। बीते समय की चिंता छोड़ दें; प्रकृति आपकी ऊर्जा को फिर से ताजा और शांत कर रही है।',
     affirmation: '“I am healed, guided, and deeply aligned with my highest light.”',
-    affirmation_hi: '“मैं रोगमुक्त, मार्गदर्शित और अपने सर्वोच्च प्रकाश के साथ एकाकार हूँ।”',
-    symbolism: 'Seven radiant stars, pure waters of conscious renewal, and unbounded starlight.'
+    affirmation_hi: '“मैं शांत, स्वस्थ और ईश्वर के सही मार्गदर्शन के साथ जुड़ा हुआ हूँ।”',
+    symbolism: 'Seven radiant stars, pure waters of conscious renewal, and unbounded starlight.',
+    symbolism_hi: 'सात चमकते तारे, ताजगी देता शुद्ध जल और अनंत सकारात्मक रोशनी।'
   },
   {
     id: 'the-sun',
     name: 'The Sun',
     name_hi: 'द सन (सूर्य)',
     arcana: 'Major',
+    arcana_hi: 'मुख्य कार्ड',
     element: 'Fire',
+    element_hi: 'अग्नि तत्व',
     keywords: ['Joy', 'Vitality', 'Triumph'],
-    keywords_hi: ['आनंद', 'प्राण ऊर्जा', 'विजय'],
+    keywords_hi: ['खुशहाली', 'नई ऊर्जा', 'सफलता'],
     essence: 'Radiant clarity, unbounded warmth, and glorious alignment. Shadows dissolve under the golden warmth of total truth and authentic self-expression.',
-    essence_hi: 'प्रकाशमान स्पष्टता, असीम ऊर्जा और विजय। सत्य के प्रकाश में भ्रम और भय समाप्त होते हैं।',
+    essence_hi: 'मन में साफ सोच, सकारात्मक ऊर्जा और बड़ी सफलता का संकेत। सच्चाई और भरोसे से हर तरह का डर दूर होता है।',
     guidance: 'Step into the light without hesitation. Share your gifts freely, as this cycle heralds recognition, warmth, and vitality.',
-    guidance_hi: 'बिना किसी संकोच के आत्मविश्वास से आगे बढ़ें। यह समय आपके यश, सम्मान और प्रचुरता का है।',
+    guidance_hi: 'बिना किसी झिझक के पूरे आत्मविश्वास से आगे बढ़ें। यह समय आपके मान-सम्मान और खुशियों के बढ़ने का है।',
     affirmation: '“My inner light shines without fear; abundance and joy flow naturally to me.”',
-    affirmation_hi: '“मेरा आंतरिक प्रकाश निर्भीक चमकता है; आनंद और प्रचुरता मेरे जीवन में सहज बहते हैं।”',
-    symbolism: 'A radiant golden child on a white steed beneath the blessing of thirty-two sunrays.'
+    affirmation_hi: '“मेरा आत्मविश्वास बिना किसी डर के चमकता है; मेरे जीवन में सुख और सफलता आसानी से आते हैं।”',
+    symbolism: 'A radiant golden child on a white steed beneath the blessing of thirty-two sunrays.',
+    symbolism_hi: 'सफेद घोड़े पर सवार तेजस्वी बालक और सूर्य की 32 चमकती किरणें।'
   },
   {
     id: 'the-empress',
     name: 'The Empress',
     name_hi: 'दी एम्प्रेस (महारानी)',
     arcana: 'Major',
+    arcana_hi: 'मुख्य कार्ड',
     element: 'Earth',
+    element_hi: 'पृथ्वी तत्व',
     keywords: ['Abundance', 'Fertility', 'Creativity'],
-    keywords_hi: ['समृद्धि', 'सृजन', 'मातृत्व प्रेम'],
+    keywords_hi: ['सुख-समृद्धि', 'रचनात्मकता', 'प्रेम व अपनापन'],
     essence: 'The fertile embodiment of Mother Nature. Creative projects, relationships, and wealth are ready to blossom into lush manifestation.',
-    essence_hi: 'प्रकृति स्वरूपा उर्वर शक्ति। नए विचार, संबंध और व्यावसायिक योजनाएं फलीभूत होने को तत्पर हैं।',
+    essence_hi: 'प्रकृति की तरह समृद्धि और पोषण देने वाली ऊर्जा। आपके नए विचार, रिश्ते और काम की योजनाएं अब सफल होने को तैयार हैं।',
     guidance: 'Nurture what you cherish with gentle patience. Allow natural incubation before rushing into aggressive action.',
-    guidance_hi: 'अपने सपनों को धैर्य और प्रेम से सींचें। जल्दबाजी के स्थान पर स्वाभाविक विकास पर विश्वास करें।',
+    guidance_hi: 'अपने सपनों और रिश्तों को धैर्य और प्यार से संवारें। जल्दबाजी करने के बजाय सही समय पर भरोसा रखें।',
     affirmation: '“I am fertile ground for joy, creative abundance, and loving connection.”',
-    affirmation_hi: '“मैं प्रचुरता, प्रेम और रचनात्मक ऊर्जा का जीवंत केंद्र हूँ।”',
-    symbolism: 'A crown of twelve twelve-pointed stars, pomegranates of fertility, and golden wheat fields.'
+    affirmation_hi: '“मेरे जीवन में खुशी, रचनात्मकता और प्यार भरी समृद्धि हमेशा बढ़ती रहती है।”',
+    symbolism: 'A crown of twelve twelve-pointed stars, pomegranates of fertility, and golden wheat fields.',
+    symbolism_hi: '12 सितारों का मुकुट, समृद्धि के प्रतीक अनार और सुनहरे गेहूं के खेत।'
   },
   {
     id: 'the-magician',
     name: 'The Magician',
     name_hi: 'द मैजिशियन (जादूगर)',
     arcana: 'Major',
+    arcana_hi: 'मुख्य कार्ड',
     element: 'Air / Fire',
+    element_hi: 'वायु / अग्नि तत्व',
     keywords: ['Manifestation', 'Resourcefulness', 'Willpower'],
-    keywords_hi: ['संकल्प शक्ति', 'साधन संपन्नता', 'अभिव्यक्ति'],
+    keywords_hi: ['मजबूत इरादा', 'सही साधन', 'सपने सच करना'],
     essence: 'As above, so below. You hold all four elemental tools—fire, water, air, and earth—to transmute your inner visions into tangible reality.',
-    essence_hi: 'जैसा ऊपर, वैसा नीचे। आपके पास अपने विचारों को वास्तविकता में बदलने के सभी साधन विद्यमान हैं।',
+    essence_hi: 'आपके भीतर वह सारी क्षमता और साधन मौजूद हैं जिनसे आप अपने विचारों को सच कर सकते हैं।',
     guidance: 'Focus your intent with unwavering clarity. The power to transform your current situation rests squarely in your own hands.',
-    guidance_hi: 'अपनी एकाग्रता को साधें। अपनी परिस्थितियों को बदलने की संपूर्ण शक्ति आपके स्वयं के हाथों में है।',
+    guidance_hi: 'अपना ध्यान एक लक्ष्य पर लगाएं। अपनी स्थिति को बेहतर बनाने की पूरी ताकत आपके अपने हाथों में है।',
     affirmation: '“I have all the tools, wisdom, and clarity needed to create my desired reality.”',
-    affirmation_hi: '“मेरे पास अपने सपनों को साकार करने के लिए सभी साधन और विवेक उपलब्ध हैं।”',
-    symbolism: 'Infinity symbol (lemniscate), sacred wand pointing to the heavens, four elemental tokens.'
+    affirmation_hi: '“मेरे पास अपने सपनों को सच करने के लिए पूरी समझ, साधन और हिम्मत मौजूद है।”',
+    symbolism: 'Infinity symbol (lemniscate), sacred wand pointing to the heavens, four elemental tokens.',
+    symbolism_hi: 'अनंत ऊर्जा का चिह्न, आकाश की ओर उठती शक्ति छड़ी और चार तत्वों के प्रतीक।'
   },
   {
     id: 'high-priestess',
     name: 'The High Priestess',
     name_hi: 'द हाई प्रीस्टेस (महापुरोहित)',
     arcana: 'Major',
+    arcana_hi: 'मुख्य कार्ड',
     element: 'Water',
+    element_hi: 'जल तत्व',
     keywords: ['Intuition', 'Sacred Mystery', 'Subconscious'],
-    keywords_hi: ['अंतर्ज्ञान', 'दिव्य रहस्य', 'अवचेतन विवेक'],
+    keywords_hi: ['दिल की आवाज', 'गहरी समझ', 'आंतरिक संकेत'],
     essence: 'Guardian of the veil between worlds. Wisdom that cannot be spoken, only felt in the stillness of deep meditation and intuitive communion.',
-    essence_hi: 'रहस्यों की संरक्षिका। वह ज्ञान जो शब्दों में नहीं, अपितु मौन और अंतर्मन की गहराइयों में अनुभव होता है।',
+    essence_hi: 'वह गहरी समझ जो शब्दों से नहीं, बल्कि शांत मन और ध्यान से महसूस होती है। आपके भीतर हर सवाल का सही जवाब मौजूद है।',
     guidance: 'Look beyond surface logic. Pay intimate attention to your dreams, synchronicities, and quiet gut feelings.',
-    guidance_hi: 'तर्क से परे जाकर अपने अंतर्ज्ञान की सुनें। आपके स्वप्न और आंतरिक संकेत आपको सही दिशा दिखा रहे हैं।',
+    guidance_hi: 'सिर्फ बाहरी बातों पर न जाएं, अपने दिल की आवाज (इंट्यूशन) और अंदरूनी संकेतों पर ध्यान दें।',
     affirmation: '“I trust the quiet wisdom of my soul; my intuition never misguides me.”',
-    affirmation_hi: '“मैं अपनी अंतरात्मा की सूक्ष्म आवाज पर विश्वास करता हूँ।”',
-    symbolism: 'The twin pillars of Boaz and Jachin, pomegranate veil, crescent moon at her feet.'
+    affirmation_hi: '“मैं अपने मन की सच्ची आवाज पर भरोसा करता हूँ; मेरा अंतर्मन मुझे हमेशा सही राह दिखाता है।”',
+    symbolism: 'The twin pillars of Boaz and Jachin, pomegranate veil, crescent moon at her feet.',
+    symbolism_hi: 'संतुलन के दो स्तंभ, अनार का पर्दा और पैरों के पास अर्ध-चंद्रमा।'
   },
   {
     id: 'wheel-of-fortune',
     name: 'Wheel of Fortune',
     name_hi: 'व्हील ऑफ फॉर्च्यून (भाग्य चक्र)',
     arcana: 'Major',
+    arcana_hi: 'मुख्य कार्ड',
     element: 'Fire / Space',
+    element_hi: 'अग्नि / आकाश तत्व',
     keywords: ['Karmic Shift', 'Cosmic Timing', 'Opportunity'],
-    keywords_hi: ['कर्म चक्र', 'शुभ समय', 'अवसर'],
+    keywords_hi: ['समय का बदलाव', 'सही मौका', 'भाग्य का साथ'],
     essence: 'The eternal wheel turns. A pivotal transition is unfolding, shifting challenges into breakthroughs and ushering in an auspicious cycle.',
-    essence_hi: 'भाग्य का पहिया घूम रहा है। रुकावटें दूर हो रही हैं और आपके जीवन में नए शुभ अवसरों का चक्र प्रारंभ हो रहा है।',
+    essence_hi: 'भाग्य का पहिया आपके पक्ष में घूम रहा है। पुरानी रुकावटें खत्म हो रही हैं और जीवन में नए व अच्छे मौके आ रहे हैं।',
     guidance: 'Surrender the need to micro-manage the universe. Align with the current and prepare to seize the emerging door of opportunity.',
-    guidance_hi: 'परिस्थितियों से लड़ने के स्थान पर समय के प्रवाह के साथ तालमेल बनाएं। नया द्वार खुल रहा है।',
+    guidance_hi: 'हालात से लड़ने के बजाय समय के अच्छे बदलाव के साथ आगे बढ़ें। तरक्की का नया दरवाजा खुल रहा है।',
     affirmation: '“The universe turns in my favor; I welcome auspicious destiny with open arms.”',
-    affirmation_hi: '“ब्रह्मांड मेरे अनुकूल घूम रहा है; मैं शुभ प्रारब्ध का सहर्ष स्वागत करता हूँ।”',
-    symbolism: 'The four sacred beasts of the zodiac, the rotating cosmic wheel inscribed with sacred letters.'
+    affirmation_hi: '“समय मेरे पक्ष में बदल रहा है; मैं अपने जीवन में आने वाले हर अच्छे अवसर का स्वागत करता हूँ।”',
+    symbolism: 'The four sacred beasts of the zodiac, the rotating cosmic wheel inscribed with sacred letters.',
+    symbolism_hi: 'चार दिशाओं के शुभ प्रतीक और जीवन में बदलाव को दर्शाता घूमता हुआ भाग्य चक्र।'
   }
 ];

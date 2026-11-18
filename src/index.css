@@ -18,11 +18,15 @@
   html {
     scroll-behavior: smooth;
     font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    max-width: 100%;
+    overflow-x: clip;
   }
 
   body {
     background-color: #FAF8F5;
     color: #1E162B;
+    max-width: 100%;
+    overflow-x: clip;
   }
 }
 
@@ -66,4 +70,12 @@
   background-color: #FFFFFF;
   border: 1px solid #E6DFD3;
   box-shadow: 0 10px 30px -10px rgba(30, 22, 43, 0.08);
+}
+
+@media print {
+  header,
+  footer,
+  .fixed {
+    display: none !important;
+  }
 }

@@ -4,6 +4,4 @@ Disallow: /admin
 Disallow: /admin/
 Disallow: /api/
 
-# Host & Canonical Sitemap
-Host: https://dr-pooja-awasthi-india.netlify.app
-Sitemap: https://dr-pooja-awasthi-india.netlify.app/sitemap.xml
+Sitemap: https://ais-pre-nlqo2str7nscfkjk6osns7-729015245670.asia-east1.run.app/sitemap.xml

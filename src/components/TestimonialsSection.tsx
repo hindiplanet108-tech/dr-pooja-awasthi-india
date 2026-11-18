@@ -31,25 +31,28 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
   const t = getTranslation(lang);
   const { siteContent } = useSiteContent();
 
-  // State for all reviews
+  // State for all reviews (preserving bilingual EN/HI fallback when CMS testimonials omit English text)
   const [reviewsList, setReviewsList] = useState<TestimonialItem[]>(() => {
     if (siteContent?.testimonials && siteContent.testimonials.length > 0) {
-      const merged: TestimonialItem[] = siteContent.testimonials.map((item, idx) => ({
-        id: item.id || `cms-test-${idx}`,
-        name: item.name,
-        location: item.location || 'India',
-        location_hi: item.location || 'भारत',
-        service: item.service || 'Vedic Consultation',
-        service_hi: item.service || 'वैदिक परामर्श',
-        category: 'numerology',
-        quote: item.quote,
-        quote_hi: item.quote,
-        rating: item.rating || 5,
-        date: item.date || '2026',
-        date_hi: item.date || '2026',
-        helpfulCount: 15 + (idx * 7) % 35,
-        verified: true,
-      }));
+      const merged: TestimonialItem[] = siteContent.testimonials.map((item, idx) => {
+        const baseFallback = TESTIMONIALS_DATA[idx % TESTIMONIALS_DATA.length];
+        return {
+          id: item.id || baseFallback?.id || `cms-test-${idx}`,
+          name: item.name,
+          location: (item as any).location_en || baseFallback?.location || item.location || 'India',
+          location_hi: item.location || baseFallback?.location_hi || 'भारत',
+          service: (item as any).service_en || baseFallback?.service || item.service || 'Vedic Consultation',
+          service_hi: item.service || baseFallback?.service_hi || 'वैदिक परामर्श',
+          category: baseFallback?.category || 'numerology',
+          quote: (item as any).quote_en || baseFallback?.quote || item.quote,
+          quote_hi: item.quote || baseFallback?.quote_hi || item.quote,
+          rating: item.rating || 5,
+          date: baseFallback?.date || item.date || '2026',
+          date_hi: item.date || baseFallback?.date_hi || '2026',
+          helpfulCount: 15 + (idx * 7) % 35,
+          verified: true,
+        };
+      });
       return merged;
     }
     return TESTIMONIALS_DATA;
@@ -280,7 +283,7 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
 
           <p className="text-sm text-[#4A4356] leading-relaxed max-w-2xl mx-auto">
             {lang === 'hi'
-              ? 'अक्सर पूछे जाने वाले प्रश्नों (FAQ) के बाद प्रस्तुत हैं वे वास्तविक अनुभव, जिन्होंने डॉ. पूजा अवस्थी जी के वैदिक अंक ज्योतिष, क्रिस्टल हीलिंग, सॉल्ट थेरेपी व ऊर्जा उपचार से अपने जीवन में चमत्कारी बदलाव महसूस किया है।'
+              ? 'यहां उन लोगों के सच्चे अनुभव हैं, जिन्होंने डॉ. पूजा अवस्थी जी की अंकशास्त्र, क्रिस्टल हीलिंग, सॉल्ट थेरेपी और वास्तु सलाह से अपने जीवन में पॉजिटिव बदलाव महसूस किया है।'
               : 'Real-life experiences from seekers across 24 countries who experienced deep clarity, career breakthroughs, and emotional peace under Dr. Pooja Awasthi’s divine guidance.'}
           </p>
         </div>
@@ -288,7 +291,7 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
         {/* ==================================================================== */}
         {/* 2. AGGREGATE STATS & TOP TRIGGER CARD */}
         {/* ==================================================================== */}
-        <div className="p-6 sm:p-8 rounded-3xl bg-white text-[#1E162B] border-2 border-[#DEC38C] shadow-lg flex flex-col lg:flex-row items-center justify-between gap-6">
+        <div className="p-5 sm:p-8 rounded-3xl bg-white text-[#1E162B] border-2 border-[#DEC38C] shadow-lg flex flex-col lg:flex-row items-center justify-between gap-6">
           {/* Left: 4.9 Rating summary */}
           <div className="flex flex-col sm:flex-row items-center gap-5 text-center sm:text-left">
             <div className="w-24 h-24 rounded-2xl bg-[#FBF5E6] border-2 border-[#DEC38C] shadow-sm shrink-0 flex flex-col items-center justify-center">
@@ -303,23 +306,23 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
             <div className="space-y-1">
               <div className="flex items-center justify-center sm:justify-start gap-2">
                 <span className="text-base sm:text-lg font-cinzel font-bold text-[#1E162B]">
-                  {lang === 'hi' ? '४.९★ वैदिक संतुष्टि रेटिंग' : '4.9★ Global Satisfaction Rating'}
+                  {lang === 'hi' ? '4.9★ संतुष्टि रेटिंग' : '4.9★ Global Satisfaction Rating'}
                 </span>
                 <span className="px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200 text-[10px] font-bold">
-                  ✓ Verified
+                  {lang === 'hi' ? '✓ सत्यापित' : '✓ Verified'}
                 </span>
               </div>
               <p className="text-xs text-[#4A4356] max-w-md leading-relaxed">
                 {lang === 'hi'
-                  ? '१,४५०+ से अधिक सत्यापित परामर्शों पर आधारित। ९८% से अधिक साधकों ने ५-स्टार रेटिंग के साथ पूर्ण संतुष्टि व जीवन परिवर्तन व्यक्त किया।'
+                  ? '1,450+ से ज्यादा लोगों के भरोसेमंद परामर्श पर आधारित। 98% से ज्यादा लोगों ने 5-स्टार रेटिंग के साथ खुशी जताई है।'
                   : 'Based on 1,450+ verified global consultations. Over 98% 5-star ratings across India, UAE, UK, USA & Singapore.'}
               </p>
               <div className="flex flex-wrap items-center justify-center sm:justify-start gap-3 text-[11px] text-[#7A5311] font-semibold pt-1">
-                <span>✦ ९८% 5-Star Reviews</span>
+                <span>{lang === 'hi' ? '✦ 98% 5-स्टार समीक्षाएं' : '✦ 98% 5-Star Reviews'}</span>
                 <span>•</span>
-                <span>✦ १००% पूर्ण गोपनीयता</span>
+                <span>{lang === 'hi' ? '✦ 100% गोपनीय बातचीत' : '✦ 100% Confidentiality'}</span>
                 <span>•</span>
-                <span>✦ १८+ वर्ष पावन परंपरा</span>
+                <span>{lang === 'hi' ? '✦ 18+ साल का अनुभव' : '✦ 18+ Years Experience'}</span>
               </div>
             </div>
           </div>
@@ -332,7 +335,7 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
               className="w-full sm:w-auto h-11 px-6 rounded-xl bg-[#522B8A] hover:bg-[#412070] text-white font-bold text-xs uppercase tracking-wider shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer"
             >
               <Edit3 size={15} />
-              <span>{lang === 'hi' ? '✍️ समीक्षा लिखें (Write a Review)' : '✍️ Write a Review'}</span>
+              <span>{lang === 'hi' ? '✍️ अपनी समीक्षा लिखें' : '✍️ Write a Review'}</span>
             </button>
           </div>
         </div>
@@ -412,11 +415,11 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
             return (
               <div
                 key={item.id}
-                className="p-8 rounded-3xl bg-white border border-[#E6DFD3] hover:border-[#DEC38C] shadow-xs hover:shadow-lg transition-all flex flex-col justify-between space-y-6 group relative"
+                className="p-5 sm:p-8 rounded-3xl bg-white border border-[#E6DFD3] hover:border-[#DEC38C] shadow-xs hover:shadow-lg transition-all flex flex-col justify-between space-y-5 sm:space-y-6 group relative"
               >
                 <div className="space-y-4">
                   {/* Top Bar: Stars & Verified Badge */}
-                  <div className="flex items-center justify-between">
+                  <div className="flex flex-wrap items-center justify-between gap-2">
                     <div className="flex items-center gap-1 text-[#B48228]">
                       {[...Array(item.rating)].map((_, i) => (
                         <Star key={i} size={16} fill="#B48228" />
@@ -603,7 +606,7 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
                 {/* 5-Star Interactive Rating Selector */}
                 <div className="p-4 rounded-2xl bg-[#FAF8F5] border border-[#E6DFD3] space-y-1.5">
                   <label className="text-xs font-semibold text-[#24152F] block">
-                    {lang === 'hi' ? '१ से ५ स्टार रेटिंग चुनें (Star Rating) *' : 'Select Star Rating (1 to 5 Stars) *'}
+                    {lang === 'hi' ? '1 से 5 स्टार रेटिंग चुनें (Star Rating) *' : 'Select Star Rating (1 to 5 Stars) *'}
                   </label>
                   <div className="flex items-center gap-1.5 flex-wrap">
                     {[1, 2, 3, 4, 5].map((starVal) => (
@@ -685,14 +688,14 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
                     <option value="लकी मोबाइल नंबर एवं नाम सुधार (Lucky Mobile & Name)">
                       लकी मोबाइल नंबर एवं नाम सुधार (Lucky Mobile & Name)
                     </option>
-                    <option value="३६ गुण मिलान एवं दांपत्य हीलिंग (36 Gun Milan)">
-                      ३६ गुण मिलान एवं दांपत्य हीलिंग (36 Gun Milan)
+                    <option value="36 गुण मिलान एवं शादी-रिश्तों में मधुरता (36 Gun Milan)">
+                      36 गुण मिलान एवं शादी-रिश्तों में मधुरता (36 Gun Milan)
                     </option>
-                    <option value="वास्तु दोष निवारण एवं क्रिस्टल ग्रिड (Vastu & Crystals)">
-                      वास्तु दोष निवारण एवं क्रिस्टल ग्रिड (Vastu & Crystals)
+                    <option value="वास्तु दोष सुधार व क्रिस्टल ग्रिड (Vastu & Crystals)">
+                      वास्तु दोष सुधार व क्रिस्टल ग्रिड (Vastu & Crystals)
                     </option>
-                    <option value="टैरो कार्ड इंट्यूटिव परामर्श (Tarot Reading)">
-                      टैरो कार्ड इंट्यूटिव परामर्श (Tarot Reading)
+                    <option value="टैरो कार्ड मार्गदर्शन (Tarot Reading)">
+                      टैरो कार्ड मार्गदर्शन (Tarot Reading)
                     </option>
                   </select>
                 </div>
@@ -700,14 +703,14 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
                 {/* Detailed Review Text */}
                 <div className="space-y-1">
                   <label className="text-xs font-semibold text-[#24152F] block">
-                    {lang === 'hi' ? 'अपना विस्तृत अनुभव व समीक्षा लिखें *' : 'Your Detailed Experience / Transformation Story *'}
+                    {lang === 'hi' ? 'अपना अनुभव विस्तार से लिखें *' : 'Your Detailed Experience / Transformation Story *'}
                   </label>
                   <textarea
                     rows={4}
                     required
                     placeholder={
                       lang === 'hi'
-                        ? 'डॉ. पूजा अवस्थी जी से परामर्श के बाद आपके जीवन, करियर, स्वास्थ्य, व्यापार या संबंधों में क्या सकारात्मक बदलाव आया, विस्तार से लिखें...'
+                        ? 'डॉ. पूजा अवस्थी जी से सलाह लेने के बाद आपके जीवन, काम, सेहत या रिश्तों में क्या अच्छा बदलाव आया, यहां लिखें...'
                         : 'Describe your consultation experience and the positive breakthroughs you observed in your life, career, finances or relationships...'
                     }
                     value={reviewerQuote}
@@ -723,7 +726,7 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
                     onClick={() => setIsReviewModalOpen(false)}
                     className="px-5 py-2.5 rounded-xl border border-gray-300 hover:bg-gray-100 text-xs font-semibold text-gray-700 transition-colors cursor-pointer"
                   >
-                    {lang === 'hi' ? 'रद्द करें (Cancel)' : 'Cancel'}
+                    {lang === 'hi' ? 'रद्द करें' : 'Cancel'}
                   </button>
 
                   <button
@@ -734,8 +737,8 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
                     <Send size={14} />
                     <span>
                       {isSubmitting
-                        ? (lang === 'hi' ? 'प्रकाशन हो रहा है...' : 'Publishing...')
-                        : (lang === 'hi' ? 'Publish Review Instantly (तुरंत समीक्षा सबमिट करें)' : 'Publish Review Instantly')}
+                        ? (lang === 'hi' ? 'भेजा जा रहा है...' : 'Publishing...')
+                        : (lang === 'hi' ? 'तुरंत समीक्षा भेजें' : 'Publish Review Instantly')}
                     </span>
                   </button>
                 </div>

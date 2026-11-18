@@ -52,7 +52,7 @@ export const SpecializedServicesFeeBanner: React.FC<SpecializedServicesFeeBanner
 
         <p className="text-xs sm:text-sm text-[#4A4356] leading-relaxed">
           {lang === 'hi'
-            ? 'डॉ. पूजा अवस्थी की 11 विशिष्ट हीलिंग एवं सुधार सेवाओं तथा मुख्य वैदिक परामर्शों की एकीकृत, पारदर्शी व आधिकारिक शुल्क दर सूची (सभी 16 दिव्य सेवाएं)।'
+            ? 'डॉ. पूजा अवस्थी की 11 विशिष्ट हीलिंग व सुधार सेवाओं और मुख्य वैदिक परामर्श की साफ व पूरी फीस सूची (सभी 16 दिव्य सेवाएं)।'
             : 'Official integrated directory merging 11 Specialized Healing & Correction Services with Core Consultations — presenting all 16 Divine Services with fixed fee transparency and verified UPI scanner.'}
         </p>
 
@@ -69,12 +69,12 @@ export const SpecializedServicesFeeBanner: React.FC<SpecializedServicesFeeBanner
           <span aria-hidden="true">·</span>
           <span className="flex items-center gap-1">
             <Check size={14} className="text-[#522B8A]" />
-            <span>{lang === 'hi' ? 'निश्चित फीस ₹5,100 से पारदर्शी दरें' : 'Fixed Fee ₹5,100 & Transparent Rates'}</span>
+            <span>{lang === 'hi' ? '₹5,100 से साफ और तय फीस' : 'Fixed Fee ₹5,100 & Transparent Rates'}</span>
           </span>
           <span aria-hidden="true">·</span>
           <span className="flex items-center gap-1">
             <Check size={14} className="text-[#522B8A]" />
-            <span>{lang === 'hi' ? 'केवल UPI व QR कोड भुगतान' : 'UPI & QR Code Payment Only'}</span>
+            <span>{lang === 'hi' ? 'केवल UPI और QR कोड से भुगतान' : 'UPI & QR Code Payment Only'}</span>
           </span>
         </div>
       </div>
@@ -100,23 +100,23 @@ export const SpecializedServicesFeeBanner: React.FC<SpecializedServicesFeeBanner
 
             <div className="space-y-2">
               <span className="text-[11px] font-bold uppercase tracking-widest px-3 py-1 rounded-full bg-[#FBF5E6] border border-[#DEC38C] text-[#7A5311] inline-block">
-                {lang === 'hi' ? 'सर्वाधिक लोकप्रिय · व्यक्तिगत मार्गदर्शन' : 'Most Popular · 1-on-1 Guidance'}
+                {lang === 'hi' ? 'सबसे खास · पर्सनल मार्गदर्शन' : 'Most Popular · 1-on-1 Guidance'}
               </span>
               <h3 className="font-cinzel text-xl sm:text-2xl font-bold text-[#1E162B]">
-                {lang === 'hi' ? 'व्यक्तिगत आध्यात्मिक व अंकशास्त्रीय परामर्श' : 'Personalized Spiritual Consultation'}
+                {lang === 'hi' ? 'पर्सनल अंकशास्त्र और आध्यात्मिक परामर्श' : 'Personalized Spiritual Consultation'}
               </h3>
               <p className="text-xs sm:text-sm text-[#4A4356] leading-relaxed">
                 {lang === 'hi'
-                  ? 'डॉ. पूजा अवस्थी के साथ 45-60 मिनट का गहन व्यक्तिगत सत्र, जिसमें आपके जीवन की उलझनों, मूलांक, भाग्यांक और ग्रह चक्रों का संपूर्ण विश्लेषण किया जाता है।'
+                  ? 'डॉ. पूजा अवस्थी के साथ 45-60 मिनट की खास 1-on-1 बातचीत, जिसमें आपके सवालों, मूलांक, भाग्यांक और जीवन की समस्याओं की पूरी जांच और सही सलाह दी जाती है।'
                   : 'A personalized 1-on-1 consultation session dedicated to understanding your queries, life circumstances, and life path through Vedic wisdom with Dr. Pooja Awasthi.'}
               </p>
               <div className="flex flex-wrap items-center gap-3 text-xs text-[#7A5311] font-semibold">
                 <span className="flex items-center gap-1">
                   <Clock size={13} className="text-[#B48228]" />
-                  <span>{lang === 'hi' ? 'अवधि: 45-60 मिनट' : 'Duration: 45-60 mins'}</span>
+                  <span>{lang === 'hi' ? 'समय: 45-60 मिनट' : 'Duration: 45-60 mins'}</span>
                 </span>
                 <span aria-hidden="true">·</span>
-                <span>{lang === 'hi' ? 'व्यक्तिगत विस्तृत विश्लेषण' : 'Personalized In-depth Analysis'}</span>
+                <span>{lang === 'hi' ? 'पूरी जांच और सही सलाह' : 'Personalized In-depth Analysis'}</span>
               </div>
             </div>
           </div>
@@ -182,7 +182,7 @@ export const SpecializedServicesFeeBanner: React.FC<SpecializedServicesFeeBanner
                 onClick={() => onBookService('Personalized Spiritual Consultation (₹5,100)')}
                 className="h-11 px-5 bg-[#522B8A] hover:bg-[#412070] text-white font-bold text-xs uppercase tracking-wider rounded-xl transition-all shadow-md flex items-center justify-center gap-1.5 cursor-pointer"
               >
-                <span>{lang === 'hi' ? 'परामर्श सत्र प्राप्त करें' : 'Book Consultation'}</span>
+                <span>{lang === 'hi' ? 'परामर्श बुक करें' : 'Book Consultation'}</span>
                 <ArrowRight size={14} />
               </button>
 

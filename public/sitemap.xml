@@ -1,115 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
-  <!-- 1. Primary Homepage -->
+  <!-- Note: Live deployments serve /sitemap.xml dynamically via server.ts using APP_URL / request host -->
   <url>
-    <loc>https://dr-pooja-awasthi-india.netlify.app/</loc>
-    <lastmod>2026-11-03</lastmod>
+    <loc>https://ais-pre-nlqo2str7nscfkjk6osns7-729015245670.asia-east1.run.app/</loc>
+    <lastmod>2026-11-18</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ais-pre-nlqo2str7nscfkjk6osns7-729015245670.asia-east1.run.app/" />
+    <xhtml:link rel="alternate" hreflang="hi" href="https://ais-pre-nlqo2str7nscfkjk6osns7-729015245670.asia-east1.run.app/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ais-pre-nlqo2str7nscfkjk6osns7-729015245670.asia-east1.run.app/" />
     <image:image>
-      <image:loc>https://dr-pooja-awasthi-india.netlify.app/28.jpeg</image:loc>
+      <image:loc>https://ais-pre-nlqo2str7nscfkjk6osns7-729015245670.asia-east1.run.app/assets/aistudio/28_91acc32c.jpeg</image:loc>
       <image:title>Dr. Pooja Awasthi — Vedic Numerologist &amp; Spiritual Guide</image:title>
-      <image:caption>Acclaimed Spiritual Mentor &amp; Lifetime Achievement Awardee</image:caption>
+      <image:caption>Gold Medalist Spiritual Mentor, Tarot Reader &amp; Chakra Healer</image:caption>
     </image:image>
   </url>
 
-  <!-- 2. Complete 11 Healing Services Tariff Rate Card -->
   <url>
-    <loc>https://dr-pooja-awasthi-india.netlify.app/tariff</loc>
-    <lastmod>2026-11-03</lastmod>
+    <loc>https://ais-pre-nlqo2str7nscfkjk6osns7-729015245670.asia-east1.run.app/tariff</loc>
+    <lastmod>2026-11-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
 
-  <!-- 3. Client Reviews & Stories (Instant Submission) -->
   <url>
-    <loc>https://dr-pooja-awasthi-india.netlify.app/reviews</loc>
-    <lastmod>2026-11-03</lastmod>
+    <loc>https://ais-pre-nlqo2str7nscfkjk6osns7-729015245670.asia-east1.run.app/reviews</loc>
+    <lastmod>2026-11-18</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.90</priority>
   </url>
 
-  <!-- 4. Vedic Date of Birth & Lo Shu Matrix Calculator -->
   <url>
-    <loc>https://dr-pooja-awasthi-india.netlify.app/#calculator</loc>
-    <lastmod>2026-11-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.90</priority>
-  </url>
-
-  <!-- 5. Daily Intuitive Tarot Oracle Guidance -->
-  <url>
-    <loc>https://dr-pooja-awasthi-india.netlify.app/#tarot</loc>
-    <lastmod>2026-11-03</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.85</priority>
-  </url>
-
-  <!-- 6. Spiritual Guidance Core Services -->
-  <url>
-    <loc>https://dr-pooja-awasthi-india.netlify.app/#services</loc>
-    <lastmod>2026-11-03</lastmod>
+    <loc>https://ais-pre-nlqo2str7nscfkjk6osns7-729015245670.asia-east1.run.app/pages/kundali-analysis</loc>
+    <lastmod>2026-11-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
 
-  <!-- 7. Lifetime Achievement Honors & Photo Gallery (40+) -->
   <url>
-    <loc>https://dr-pooja-awasthi-india.netlify.app/#honors</loc>
-    <lastmod>2026-11-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.80</priority>
-  </url>
-
-  <!-- 8. About Dr. Pooja Awasthi & Spiritual Philosophy -->
-  <url>
-    <loc>https://dr-pooja-awasthi-india.netlify.app/#about</loc>
-    <lastmod>2026-11-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.80</priority>
-  </url>
-
-  <!-- 9. Consultation Charges & ₹5,100 Session Assurances -->
-  <url>
-    <loc>https://dr-pooja-awasthi-india.netlify.app/#charges</loc>
-    <lastmod>2026-11-03</lastmod>
+    <loc>https://ais-pre-nlqo2str7nscfkjk6osns7-729015245670.asia-east1.run.app/pages/rudraksha-ratna-therapy</loc>
+    <lastmod>2026-11-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
 
-  <!-- 10. Frequently Asked Questions (FAQ) -->
   <url>
-    <loc>https://dr-pooja-awasthi-india.netlify.app/#faq</loc>
-    <lastmod>2026-11-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.80</priority>
-  </url>
-
-  <!-- 11. Direct Appointment Booking & Verified Contact -->
-  <url>
-    <loc>https://dr-pooja-awasthi-india.netlify.app/#contact</loc>
-    <lastmod>2026-11-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.90</priority>
-  </url>
-
-  <!-- 12. Dynamic CMS Published Articles -->
-  <url>
-    <loc>https://dr-pooja-awasthi-india.netlify.app/pages/kundali-analysis</loc>
-    <lastmod>2026-11-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://dr-pooja-awasthi-india.netlify.app/pages/rudraksha-ratna-therapy</loc>
-    <lastmod>2026-11-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://dr-pooja-awasthi-india.netlify.app/pages/vastu-aura-cleansing</loc>
-    <lastmod>2026-11-03</lastmod>
+    <loc>https://ais-pre-nlqo2str7nscfkjk6osns7-729015245670.asia-east1.run.app/pages/vastu-aura-cleansing</loc>
+    <lastmod>2026-11-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>

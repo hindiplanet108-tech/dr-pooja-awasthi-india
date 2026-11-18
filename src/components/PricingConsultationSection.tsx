@@ -99,7 +99,7 @@ export const PricingConsultationSection: React.FC<PricingConsultationSectionProp
 
           <p className="text-sm text-[#4A4356] leading-relaxed max-w-2xl mx-auto">
             {lang === 'hi'
-              ? 'प्रत्येक सत्र डॉ. पूजा अवस्थी द्वारा स्वयं संचालित किया जाता है। बिना किसी हड़बड़ी के, आपके प्रश्नों को पूरी संवेदनशीलता के साथ सुना और सुलझाया जाता है।'
+              ? 'हर परामर्श डॉ. पूजा अवस्थी खुद करती हैं। बिना किसी जल्दबाजी के, आपकी हर बात पूरे ध्यान से सुनी और सुलझाई जाती है।'
               : 'Every single consultation is conducted personally by Dr. Pooja Awasthi. Dedicated 60 minutes with 100% focused attention on your karmic matrix.'}
           </p>
         </div>
@@ -108,7 +108,7 @@ export const PricingConsultationSection: React.FC<PricingConsultationSectionProp
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch mb-10">
           
           {/* Luxury Editorial Light Signature Fee Card */}
-          <div className="lg:col-span-5 rounded-3xl bg-white text-[#1E162B] p-8 sm:p-10 border-2 border-[#DEC38C] shadow-xl flex flex-col justify-between relative overflow-hidden">
+          <div className="lg:col-span-5 rounded-3xl bg-white text-[#1E162B] p-5 sm:p-10 border-2 border-[#DEC38C] shadow-xl flex flex-col justify-between relative overflow-hidden">
             <div className="space-y-6 relative z-10">
               {/* Portrait Header */}
               <div className="p-4 rounded-2xl bg-[#FAF8F5] border border-[#E6DFD3]">
@@ -160,12 +160,12 @@ export const PricingConsultationSection: React.FC<PricingConsultationSectionProp
                   </span>
                 </div>
 
-                <div className="flex items-baseline gap-2">
+                <div className="flex flex-wrap items-baseline gap-2">
                   <span className="inline-flex items-baseline font-rupee">
-                    <strong className="font-black text-[#B48228] text-4xl sm:text-5xl rupee-symbol mr-1 select-none">
+                    <strong className="font-black text-[#B48228] text-3xl sm:text-5xl rupee-symbol mr-1 select-none">
                       ₹
                     </strong>
-                    <strong className="text-5xl sm:text-6xl font-black text-[#1E162B] tabular-nums tracking-tight">
+                    <strong className="text-4xl sm:text-6xl font-black text-[#1E162B] tabular-nums tracking-tight">
                       5,100
                     </strong>
                   </span>
@@ -232,14 +232,14 @@ export const PricingConsultationSection: React.FC<PricingConsultationSectionProp
 
               <p className="text-[11px] text-[#5D556A] text-center">
                 {lang === 'hi'
-                  ? 'व्हाट्सएप द्वारा आधिकारिक समय निर्धारण एवं पुष्टि'
+                  ? 'व्हाट्सएप पर तुरंत अपॉइंटमेंट और समय कन्फर्म करें'
                   : 'Official booking & calendar confirmation via WhatsApp'}
               </p>
             </div>
           </div>
 
           {/* Deliverables Checklist */}
-          <div className="lg:col-span-7 rounded-3xl bg-white p-8 sm:p-10 border border-[#E6DFD3] shadow-sm flex flex-col justify-between">
+          <div className="lg:col-span-7 rounded-3xl bg-white p-5 sm:p-10 border border-[#E6DFD3] shadow-sm flex flex-col justify-between">
             <div>
               <h3 className="font-cinzel text-xl font-bold text-[#1E162B] mb-6 border-b border-[#EFECE6] pb-4">
                 {lang === 'hi' ? 'परामर्श सत्र में आपको क्या मिलेगा:' : 'What Your Consultation Includes:'}
@@ -281,10 +281,10 @@ export const PricingConsultationSection: React.FC<PricingConsultationSectionProp
         <div className="space-y-8">
           <div className="text-center max-w-2xl mx-auto space-y-2">
             <span className="text-xs font-bold uppercase tracking-widest text-[#522B8A]">
-              {lang === 'hi' ? 'सरल एवं पारदर्शी प्रक्रिया' : 'Seamless Workflow'}
+              {lang === 'hi' ? 'आसान व साफ प्रक्रिया' : 'Seamless Workflow'}
             </span>
             <h3 className="font-cormorant text-2xl sm:text-3xl font-medium text-[#1E162B]">
-              {lang === 'hi' ? 'स्पष्टता और मार्गदर्शन के 4 सरल चरण' : 'Your 4-Step Journey to Clarity'}
+              {lang === 'hi' ? 'सही सलाह व शांति के 4 आसान कदम' : 'Your 4-Step Journey to Clarity'}
             </h3>
           </div>
 

@@ -22,6 +22,7 @@ import { LiveTrafficCounter } from './LiveTrafficCounter';
 interface NavbarProps {
   lang: string;
   onOpenLangModal: () => void;
+  onToggleLang?: () => void;
   onBookClick: () => void;
   onOpenTariff?: () => void;
   onOpenBankUpi?: () => void;
@@ -33,6 +34,7 @@ interface NavbarProps {
 export const Navbar: React.FC<NavbarProps> = ({
   lang,
   onOpenLangModal,
+  onToggleLang,
   onBookClick,
   onOpenTariff,
   onOpenBankUpi,
@@ -164,19 +166,29 @@ export const Navbar: React.FC<NavbarProps> = ({
             )}
           </div>
 
-          {/* Right: Live Visitors Indicator & Language Selector Trigger */}
-          <div className="flex items-center gap-2 ml-auto">
+          {/* Right: Live Visitors Indicator, Quick EN/HI Switch & Language Selector Trigger */}
+          <div className="flex items-center gap-1.5 sm:gap-2 ml-auto">
             <LiveTrafficCounter lang={lang} variant="compact" />
+            {onToggleLang && (
+              <button
+                type="button"
+                onClick={onToggleLang}
+                className="px-2.5 py-1 rounded-full bg-[#522B8A] hover:bg-[#412070] text-white font-bold text-[11px] transition-all shadow-2xs cursor-pointer flex items-center gap-1"
+                title={lang === 'hi' ? 'Switch to English' : 'हिन्दी में देखें'}
+              >
+                <span>{lang === 'hi' ? 'English' : 'हिन्दी'}</span>
+              </button>
+            )}
             <button
               onClick={onOpenLangModal}
               type="button"
               className="group flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white hover:bg-[#F4F0FA] border border-[#E5DFD5] hover:border-[#522B8A]/40 transition-all text-[#4A4356] hover:text-[#1E162B] shadow-2xs cursor-pointer"
-              title="Choose from 11 National & 11 International Languages"
+              title={lang === 'hi' ? '11 भारतीय और 11 अंतर्राष्ट्रीय भाषाएं चुनें' : 'Choose from 11 National & 11 International Languages'}
             >
               <Globe size={11} className="text-[#522B8A] group-hover:rotate-12 transition-transform" />
-              <span className="text-[#7A5311] font-medium">{lang === 'hi' ? 'भाषा:' : 'Lang:'}</span>
+              <span className="hidden sm:inline text-[#7A5311] font-medium">{lang === 'hi' ? 'भाषा:' : 'Lang:'}</span>
               <span className="font-semibold text-[#1E162B]">
-                {currentLangObj.code === 'en' ? 'English' : `${currentLangObj.nativeName}`}
+                {currentLangObj.code === 'en' ? 'EN' : `${currentLangObj.nativeName}`}
               </span>
               <span className="text-[11px]">{currentLangObj.flag}</span>
             </button>
@@ -213,14 +225,14 @@ export const Navbar: React.FC<NavbarProps> = ({
                     Dr. Pooja Awasthi
                   </span>
                   <span className="text-[11px] sm:text-xs text-[#8F651D] italic font-cormorant font-semibold tracking-wide leading-tight mt-0.5">
-                    {lang === 'hi' ? '“अपनी राह पहचानें। अपना जीवन रूपांतरित करें।”' : '“Discover Your Path. Transform Your Life.”'}
+                    {lang === 'hi' ? '“अपनी राह पहचानें। अपना जीवन बेहतर बनाएं।”' : '“Discover Your Path. Transform Your Life.”'}
                   </span>
                 </div>
               </a>
             </div>
 
             {/* Zone 2: Desktop Navigation Menus */}
-            <nav className="hidden lg:flex items-center gap-1.5 xl:gap-2 text-xs font-semibold text-[#3C3547]">
+            <nav className="hidden lg:flex items-center gap-1 xl:gap-2 text-xs font-semibold text-[#3C3547]">
               <button
                 type="button"
                 onClick={() => {
@@ -229,7 +241,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 }}
                 className="hover:text-[#522B8A] hover:bg-[#F4F0FA] transition-colors px-2.5 py-2 rounded-lg cursor-pointer"
               >
-                {lang === 'hi' ? 'मुख्य पृष्ठ' : 'Home'}
+                {lang === 'hi' ? 'होम' : 'Home'}
               </button>
 
               {/* Dropdown 1: More Services */}
@@ -294,7 +306,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                       className="w-full text-left px-3.5 py-2.5 text-xs text-[#522B8A] hover:bg-[#F4F0FA] transition-colors flex items-center gap-2 font-semibold cursor-pointer"
                     >
                       <Trophy size={13} className="text-[#B48228]" />
-                      <span>{lang === 'hi' ? '★ 40+ राष्ट्रीय सम्मान व दीर्घा' : '★ 40+ Honors & Photo Gallery'}</span>
+                      <span>{lang === 'hi' ? '★ 40+ सम्मान व फोटो गैलरी' : '★ 40+ Honors & Photo Gallery'}</span>
                     </button>
                     <button
                       type="button"
@@ -383,7 +395,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 className="hover:text-[#522B8A] hover:bg-[#F4F0FA] transition-colors px-2.5 py-2 flex items-center gap-1.5 text-[#3C3547] rounded-lg cursor-pointer"
               >
                 <Trophy size={13} className="text-[#B48228]" />
-                <span>{lang === 'hi' ? 'सम्मान दीर्घा' : 'Honors (40+)'}</span>
+                <span>{lang === 'hi' ? 'सम्मान गैलरी' : 'Honors (40+)'}</span>
               </button>
 
               {/* Dropdown 3: Custom CMS Pages */}
@@ -401,7 +413,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   aria-expanded={pagesDropdownOpen}
                 >
                   <FileText size={13} className="text-[#522B8A]" />
-                  <span>{lang === 'hi' ? 'लेख / पृष्ठ' : 'Guides'}</span>
+                  <span>{lang === 'hi' ? 'विशेष लेख' : 'Guides'}</span>
                   <ChevronDown
                     size={13}
                     className={`transition-transform duration-200 ${pagesDropdownOpen ? 'rotate-180 text-[#522B8A]' : 'opacity-65'}`}
@@ -411,7 +423,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 {pagesDropdownOpen && (
                   <div className="absolute right-0 mt-2 w-72 rounded-xl bg-white border border-[#E5DFD5] shadow-xl py-2 z-50 animate-in fade-in slide-in-from-top-1 duration-150">
                     <div className="px-3.5 py-1.5 text-[10px] uppercase tracking-wider text-[#522B8A] font-bold border-b border-[#EFECE6] flex items-center justify-between">
-                      <span>{lang === 'hi' ? 'वैदिक लेख एवं मार्गदर्शन' : 'Articles & Special Guides'}</span>
+                      <span>{lang === 'hi' ? 'उपयोगी लेख व जानकारी' : 'Articles & Special Guides'}</span>
                       <span className="text-[9px] bg-[#F4F0FA] text-[#522B8A] px-1.5 py-0.5 rounded font-bold">CMS</span>
                     </div>
 
@@ -465,7 +477,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                           }}
                           className="w-full text-left px-3.5 py-2 text-xs text-[#522B8A] hover:bg-[#F4F0FA] transition-colors flex items-center justify-between font-bold cursor-pointer"
                         >
-                          <span>{lang === 'hi' ? 'Admin Panel व पेज जोड़ें' : 'Admin CMS Portal'}</span>
+                          <span>{lang === 'hi' ? 'Admin पैनल (CMS)' : 'Admin CMS Portal'}</span>
                           <span className="text-[10px] bg-[#522B8A] text-white px-2 py-0.5 rounded font-bold">Admin</span>
                         </button>
                       </div>
@@ -502,8 +514,8 @@ export const Navbar: React.FC<NavbarProps> = ({
       {mobileMenuOpen && (
         <div className="lg:hidden bg-[#FAF8F5] border-b border-[#E5DFD5] shadow-2xl max-h-[85vh] overflow-y-auto px-4 pt-4 pb-8 space-y-5 animate-in fade-in slide-in-from-top-2 duration-200">
           {/* Header Summary Card */}
-          <div className="bg-white p-4 rounded-xl border border-[#E5DFD5] shadow-2xs space-y-2">
-            <div className="font-cinzel text-base font-bold text-[#1E162B] flex items-center justify-between">
+          <div className="bg-white p-4 rounded-xl border border-[#E5DFD5] shadow-2xs space-y-2.5">
+            <div className="font-cinzel text-base font-bold text-[#1E162B] flex flex-wrap items-center justify-between gap-2">
               <span>Dr. Pooja Awasthi</span>
               <span className="text-[10px] font-sans text-[#522B8A] bg-[#F4F0FA] border border-[#DFD5F0] px-2.5 py-0.5 rounded-full font-semibold">
                 {lang === 'hi' ? 'आध्यात्मिक मार्गदर्शन' : 'Spiritual Guidance'}
@@ -517,10 +529,13 @@ export const Navbar: React.FC<NavbarProps> = ({
                 ? 'वैदिक अंकशास्त्र, टैरो मार्गदर्शन, ऑरा एवं चक्र हीलिंग तथा जीवन मार्गदर्शन का संगम।'
                 : 'Spiritual guidance combining Vedic Numerology, Tarot Reading, Energy Healing and Life Coaching.'}
             </p>
+            <div className="pt-1">
+              <LiveTrafficCounter lang={lang} variant="compact" alwaysShow />
+            </div>
           </div>
 
           {/* Language Switcher Card */}
-          <div className="bg-white rounded-xl p-3.5 border border-[#E5DFD5] flex items-center justify-between shadow-2xs">
+          <div className="bg-white rounded-xl p-3.5 border border-[#E5DFD5] flex flex-wrap items-center justify-between gap-2 shadow-2xs">
             <div>
               <div className="text-[10px] uppercase tracking-wider text-[#7A5311] font-bold">
                 {lang === 'hi' ? 'भाषा:' : 'Language:'}
@@ -531,16 +546,29 @@ export const Navbar: React.FC<NavbarProps> = ({
                 <span>{currentLangObj.flag}</span>
               </div>
             </div>
-            <button
-              onClick={() => {
-                setMobileMenuOpen(false);
-                onOpenLangModal();
-              }}
-              type="button"
-              className="text-xs font-bold px-3 py-1.5 rounded-lg bg-[#F4F0FA] hover:bg-[#EAE2F4] text-[#522B8A] border border-[#DFD5F0]"
-            >
-              {lang === 'hi' ? 'भाषा बदलें' : 'Change'}
-            </button>
+            <div className="flex items-center gap-2">
+              {onToggleLang && (
+                <button
+                  onClick={() => {
+                    onToggleLang();
+                  }}
+                  type="button"
+                  className="text-xs font-bold px-3 py-1.5 rounded-lg bg-[#522B8A] hover:bg-[#412070] text-white"
+                >
+                  {lang === 'hi' ? 'English' : 'हिन्दी'}
+                </button>
+              )}
+              <button
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  onOpenLangModal();
+                }}
+                type="button"
+                className="text-xs font-bold px-3 py-1.5 rounded-lg bg-[#F4F0FA] hover:bg-[#EAE2F4] text-[#522B8A] border border-[#DFD5F0]"
+              >
+                {lang === 'hi' ? 'अन्य भाषा' : 'Change'}
+              </button>
+            </div>
           </div>
 
           {/* Quick Links & Highlighted Portals */}
@@ -608,7 +636,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 className="w-full text-left py-2.5 px-3 text-xs text-[#1E162B] font-semibold bg-white rounded-lg border border-[#E5DFD5] flex items-center gap-2"
               >
                 <Trophy size={14} className="text-[#B48228]" />
-                <span>{lang === 'hi' ? '★ 40+ प्रमाण-पत्र एवं सम्मान दीर्घा' : '★ 40+ Honors & Photo Gallery'}</span>
+                <span>{lang === 'hi' ? '★ 40+ सम्मान व फोटो गैलरी' : '★ 40+ Honors & Photo Gallery'}</span>
               </button>
 
               <button
@@ -675,13 +703,13 @@ export const Navbar: React.FC<NavbarProps> = ({
                 <span>astro.poojaofficial@gmail.com</span>
               </a>
               <a
-                href="https://dr-pooja-awasthi-india.netlify.app/"
+                href={typeof window !== 'undefined' ? window.location.origin : '/'}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 text-[#522B8A] p-1.5 rounded bg-[#FAF8F5]"
+                className="flex items-center gap-2 text-[#522B8A] p-2 rounded bg-[#FAF8F5] min-w-0"
               >
                 <ExternalLink size={13} className="shrink-0" />
-                <span>dr-pooja-awasthi-india.netlify.app</span>
+                <span className="truncate">{typeof window !== 'undefined' ? window.location.host : 'Official Sanctuary'}</span>
               </a>
             </div>
           </div>
@@ -708,7 +736,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 }}
                 className="w-full text-left py-2 px-3 text-xs text-[#522B8A] font-bold bg-[#F4F0FA] hover:bg-[#EAE2F4] rounded-lg border border-[#DFD5F0] flex items-center justify-between"
               >
-                <span>{lang === 'hi' ? 'व्यवस्थापक Admin CMS पोर्टल' : 'Admin CMS Portal'}</span>
+                <span>{lang === 'hi' ? 'Admin पैनल (CMS)' : 'Admin CMS Portal'}</span>
                 <span className="text-[9px] bg-[#522B8A] text-white px-2 py-0.5 rounded font-bold">Admin</span>
               </button>
             )}

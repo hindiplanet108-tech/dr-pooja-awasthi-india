@@ -103,22 +103,44 @@ export const TariffView: React.FC<TariffViewProps> = ({
     return true; // 'all'
   });
 
+  const liveOrigin = typeof window !== 'undefined' ? window.location.origin : '';
+  const tariffUrl = liveOrigin ? `${liveOrigin}/tariff` : '/tariff';
+
   const tariffTitle = tariffLang === 'hi'
-    ? '11 विशिष्ट हीलिंग एवं सुधार सेवाएं + परामर्श शुल्क (सभी 16 दिव्य सेवाएं) | डॉ. पूजा अवस्थी'
-    : '11 Specialized Healing & Correction Services + Consultancy Fees (All 16 Divine Services) | Dr. Pooja Awasthi';
+    ? '11 विशिष्ट सेवाएं व फीस (सभी 16 दिव्य सेवाएं) | डॉ. पूजा अवस्थी'
+    : '11 Specialized Services & Fees (16) | Dr. Pooja Awasthi';
   const tariffDesc = tariffLang === 'hi'
-    ? '11 विशिष्ट हीलिंग एवं सुधार सेवाओं तथा दिव्य परामर्शों की आधिकारिक शुल्क सूची (Tariff Card)। निश्चित परामर्श ₹5,100, पारदर्शी दरें, केवल UPI एवं QR कोड भुगतान।'
-    : 'Official Tariff Card for Specialized Healing & Correction Services + Consultancy Fees by Dr. Pooja Awasthi. UPI & QR Code Payment Only.';
+    ? '11 विशिष्ट हीलिंग एवं सुधार सेवाओं व मुख्य परामर्शों की आधिकारिक शुल्क दर सूची। ₹5,100 से ₹21,000, केवल UPI व QR कोड भुगतान।'
+    : 'Official rate card for 11 Specialized Healing & Correction Services and all 16 Divine Consultations (₹5,100–₹21,000) via UPI & QR.';
+
+  const tariffSchemaData = {
+    '@context': 'https://schema.org',
+    '@type': 'OfferCatalog',
+    name: '11 Specialized Healing & Correction Services — Consultancy Fees (All 16 Divine Services)',
+    url: tariffUrl,
+    itemListElement: currentDivineServices.map((srv, idx) => ({
+      '@type': 'Offer',
+      position: idx + 1,
+      itemOffered: {
+        '@type': 'Service',
+        name: srv.title_en,
+        description: srv.description_en,
+      },
+      price: String(srv.fee),
+      priceCurrency: 'INR',
+    })),
+  };
 
   return (
-    <div className="min-h-screen bg-[#FAF8F5] text-[#1E162B] pt-24 md:pt-28 pb-12">
+    <div className="min-h-screen bg-[#FAF8F5] text-[#1E162B] pt-28 md:pt-32 pb-12 overflow-x-clip">
       {/* Comprehensive SEO Head for Tariff & Rate Card */}
       <SEOHead
         title={tariffTitle}
         description={tariffDesc}
-        canonical="https://dr-pooja-awasthi-india.netlify.app/tariff"
-        keywords="डॉ पूजा अवस्थी शुल्क, वैदिक ज्योतिष टैरिफ, टैरो कार्ड फीस, चक्र हीलिंग चार्ज, Spiritual consultation charges"
+        canonical={tariffUrl}
+        keywords="डॉ पूजा अवस्थी शुल्क, वैदिक ज्योतिष टैरिफ, टैरो कार्ड फीस, क्रिस्टल हीलिंग, वास्तु निवारण, PLR, Spiritual consultation charges"
         type="service"
+        schemaData={tariffSchemaData}
         lang={tariffLang}
       />
 
@@ -167,7 +189,7 @@ export const TariffView: React.FC<TariffViewProps> = ({
               className="px-3.5 py-1.5 rounded-lg bg-white border border-[#EAE2F4] text-xs font-medium text-[#29242E]/80 hover:text-[#24152F] hover:border-[#D6B574] transition-all flex items-center gap-1.5 shadow-2xs"
             >
               <Share2 size={13} />
-              <span>{shareSuccess ? (tariffLang === 'hi' ? 'कॉपी हुआ!' : 'Copied!') : (tariffLang === 'hi' ? 'साझा करें' : 'Share')}</span>
+              <span>{shareSuccess ? (tariffLang === 'hi' ? 'कॉपी हुआ!' : 'Copied!') : (tariffLang === 'hi' ? 'शेयर करें' : 'Share')}</span>
             </button>
             <button
               type="button"
@@ -206,7 +228,7 @@ export const TariffView: React.FC<TariffViewProps> = ({
           </h1>
           <p className="text-sm text-[#29242E]/75 leading-relaxed font-light">
             {tariffLang === 'hi'
-              ? 'डॉ. पूजा अवस्थी की 11 विशिष्ट हीलिंग एवं सुधार सेवाओं तथा मुख्य वैदिक परामर्शों की एकीकृत, पारदर्शी व आधिकारिक शुल्क दर सूची (16 दिव्य सेवाएं)। पूर्ण गोपनीयता, पवित्र चेतना और गहन आध्यात्मिक ऊर्जा संतुलन के साथ व्यक्तिगत सत्र।'
+              ? 'डॉ. पूजा अवस्थी की 11 खास हीलिंग व सुधार सेवाओं और मुख्य वैदिक परामर्श की पूरी और साफ फीस सूची (सभी 16 दिव्य सेवाएं)। यहां हर सत्र पूरी गोपनीयता, शांति और सही मार्गदर्शन के साथ किया जाता है।'
               : 'Official integrated rate card and directory merging 11 Specialized Healing & Correction Services with Core Consultations — presenting all 16 Divine Services with clear fee transparency, duration, and direct booking.'}
           </p>
 
@@ -223,12 +245,12 @@ export const TariffView: React.FC<TariffViewProps> = ({
             <span aria-hidden="true">·</span>
             <span className="flex items-center gap-1">
               <Check size={14} className="text-[#6941A5]" />
-              <span>{tariffLang === 'hi' ? 'निश्चित फीस ₹5,100 से पारदर्शी दरें' : 'Fixed Fee ₹5,100 & Transparent Rates'}</span>
+              <span>{tariffLang === 'hi' ? '₹5,100 से साफ और तय फीस' : 'Fixed Fee ₹5,100 & Transparent Rates'}</span>
             </span>
             <span aria-hidden="true">·</span>
             <span className="flex items-center gap-1">
               <Check size={14} className="text-[#6941A5]" />
-              <span>{tariffLang === 'hi' ? 'केवल UPI एवं QR कोड भुगतान' : 'UPI & QR Code Payment Only'}</span>
+              <span>{tariffLang === 'hi' ? 'केवल UPI और QR कोड से भुगतान' : 'UPI & QR Code Payment Only'}</span>
             </span>
           </div>
         </div>
@@ -253,24 +275,24 @@ export const TariffView: React.FC<TariffViewProps> = ({
 
               <div className="space-y-2.5">
                 <span className="text-[11px] font-bold uppercase tracking-widest px-3 py-1 rounded-full bg-[#FBF5E6] border border-[#DEC38C] text-[#7A5311] inline-block">
-                  {tariffLang === 'hi' ? 'सर्वाधिक लोकप्रिय · व्यक्तिगत मार्गदर्शन' : 'Most Popular · 1-on-1 Guidance'}
+                  {tariffLang === 'hi' ? 'सबसे खास · पर्सनल मार्गदर्शन' : 'Most Popular · 1-on-1 Guidance'}
                 </span>
                 <h2 className="font-cinzel text-2xl sm:text-3xl font-bold text-[#1E162B]">
-                  {tariffLang === 'hi' ? 'व्यक्तिगत आध्यात्मिक व अंकशास्त्रीय परामर्श' : 'Personalized Spiritual Consultation'}
+                  {tariffLang === 'hi' ? 'पर्सनल अंकशास्त्र और आध्यात्मिक परामर्श' : 'Personalized Spiritual Consultation'}
                 </h2>
                 <p className="text-sm text-[#4A4356] leading-relaxed">
                   {tariffLang === 'hi'
-                    ? 'डॉ. पूजा अवस्थी के साथ 45-60 मिनट का गहन व्यक्तिगत सत्र, जिसमें आपके जीवन की उलझनों, मूलांक, भाग्यांक और ग्रह चक्रों का संपूर्ण विश्लेषण किया जाता है।'
+                    ? 'डॉ. पूजा अवस्थी के साथ 45-60 मिनट की खास 1-on-1 बातचीत, जिसमें आपके सवालों, मूलांक, भाग्यांक और जीवन की समस्याओं की पूरी जांच और सही सलाह दी जाती है।'
                     : 'A personalized 1-on-1 consultation session dedicated to understanding your queries, life circumstances, and life path through Vedic wisdom with Dr. Pooja Awasthi.'}
                 </p>
 
                 <div className="flex flex-wrap items-center gap-3 text-xs text-[#7A5311] font-semibold">
                   <span className="flex items-center gap-1">
                     <Clock size={13} className="text-[#B48228]" />
-                    <span>{tariffLang === 'hi' ? 'अवधि: 45-60 मिनट' : 'Duration: 45-60 mins'}</span>
+                    <span>{tariffLang === 'hi' ? 'समय: 45-60 मिनट' : 'Duration: 45-60 mins'}</span>
                   </span>
                   <span aria-hidden="true">·</span>
-                  <span>{tariffLang === 'hi' ? 'व्यक्तिगत विस्तृत विश्लेषण' : 'Personalized In-depth Analysis'}</span>
+                  <span>{tariffLang === 'hi' ? 'पूरी जांच और सही सलाह' : 'Personalized In-depth Analysis'}</span>
                 </div>
               </div>
             </div>
@@ -306,8 +328,8 @@ export const TariffView: React.FC<TariffViewProps> = ({
                 <span className="text-[11px] text-[#7A5311] uppercase block font-bold tracking-wider">
                   {tariffLang === 'hi' ? 'परामर्श शुल्क' : 'Consultancy Fee'}
                 </span>
-                <div className="font-rupee text-5xl font-black text-[#1E162B] tabular-nums flex items-baseline justify-center lg:justify-end gap-1 my-1">
-                  <span className="font-black text-[#B48228] text-4xl rupee-symbol select-none">
+                <div className="font-rupee text-4xl sm:text-5xl font-black text-[#1E162B] tabular-nums flex items-baseline justify-center lg:justify-end gap-1 my-1">
+                  <span className="font-black text-[#B48228] text-3xl sm:text-4xl rupee-symbol select-none">
                     ₹
                   </span>
                   <span className="font-black text-[#1E162B] tracking-tight">5,100</span>
@@ -323,13 +345,13 @@ export const TariffView: React.FC<TariffViewProps> = ({
                   onClick={() => onBookService('Personalized Spiritual Consultation (₹5,100)')}
                   className="h-11 px-6 bg-[#522B8A] hover:bg-[#412070] text-white font-bold text-xs uppercase tracking-wider rounded-xl transition-all shadow-md cursor-pointer"
                 >
-                  {tariffLang === 'hi' ? 'परामर्श सत्र प्राप्त करें' : 'Book Consultation'}
+                  {tariffLang === 'hi' ? 'परामर्श बुक करें' : 'Book Consultation'}
                 </button>
                 <a
                   href="#payment-gateway"
                   className="h-9 px-5 flex items-center justify-center rounded-xl bg-white hover:bg-[#FAF8F5] text-[#1E162B] text-xs font-semibold text-center transition-colors border border-[#E6DFD3]"
                 >
-                  {tariffLang === 'hi' ? 'भुगतान विवरण' : 'Payment Info'}
+                  {tariffLang === 'hi' ? 'पेमेंट की जानकारी' : 'Payment Info'}
                 </a>
               </div>
             </div>
@@ -355,7 +377,7 @@ export const TariffView: React.FC<TariffViewProps> = ({
               </h2>
               <p className="text-xs text-[#4A4356] mt-1">
                 {tariffLang === 'hi'
-                  ? 'नीचे दिए गए फ़िल्टर द्वारा 11 विशिष्ट हीलिंग सेवाओं अथवा सभी 16 दिव्य सेवाओं का विवरण व फीस देखें:'
+                  ? 'नीचे दिए गए बटन से 11 खास हीलिंग सेवाओं या सभी 16 सेवाओं की जानकारी और फीस देखें:'
                   : 'Explore the complete directory of 11 Specialized Services and all 16 Divine Offerings with fixed rates:'}
               </p>
             </div>
@@ -363,7 +385,7 @@ export const TariffView: React.FC<TariffViewProps> = ({
             <div className="text-xs px-3.5 py-1.5 rounded-xl bg-white border border-[#DEC38C] text-[#1E162B] font-bold shadow-2xs shrink-0 flex items-center gap-1.5">
               <span className="w-2 h-2 rounded-full bg-emerald-600 animate-pulse" />
               <span>
-                {tariffLang === 'hi' ? `${filteredServices.length} सेवाएं प्रदर्शित` : `${filteredServices.length} Services Displayed`}
+                {tariffLang === 'hi' ? `${filteredServices.length} सेवाएं दिख रही हैं` : `${filteredServices.length} Services Displayed`}
               </span>
             </div>
           </div>
@@ -372,12 +394,12 @@ export const TariffView: React.FC<TariffViewProps> = ({
           <div className="flex flex-wrap items-center gap-2">
             {[
               { id: 'all', label_en: `All Divine Services (${currentDivineServices.length})`, label_hi: `सभी दिव्य सेवाएं (${currentDivineServices.length})` },
-              { id: 'specialized11', label_en: `★ Specialized Services (${currentDivineServices.filter(s => s.isSpecialized11).length})`, label_hi: `★ विशिष्ट सेवाएं (${currentDivineServices.filter(s => s.isSpecialized11).length})` },
+              { id: 'specialized11', label_en: `★ Specialized Services (${currentDivineServices.filter(s => s.isSpecialized11).length})`, label_hi: `★ खास सेवाएं (${currentDivineServices.filter(s => s.isSpecialized11).length})` },
               { id: 'core', label_en: `Core Consultations (${currentDivineServices.filter(s => s.category === 'core').length})`, label_hi: `मुख्य वैदिक परामर्श (${currentDivineServices.filter(s => s.category === 'core').length})` },
-              { id: 'healing', label_en: `Energy & Chakras (${currentDivineServices.filter(s => s.category === 'healing').length})`, label_hi: `ऊर्जा एवं चक्र हीलिंग (${currentDivineServices.filter(s => s.category === 'healing').length})` },
-              { id: 'numerology', label_en: `Numerology & Names (${currentDivineServices.filter(s => s.category === 'numerology').length})`, label_hi: `अंकशास्त्र व नाम शुद्धि (${currentDivineServices.filter(s => s.category === 'numerology').length})` },
+              { id: 'healing', label_en: `Energy & Chakras (${currentDivineServices.filter(s => s.category === 'healing').length})`, label_hi: `ऊर्जा व चक्र हीलिंग (${currentDivineServices.filter(s => s.category === 'healing').length})` },
+              { id: 'numerology', label_en: `Numerology & Names (${currentDivineServices.filter(s => s.category === 'numerology').length})`, label_hi: `अंकशास्त्र व नाम सुधार (${currentDivineServices.filter(s => s.category === 'numerology').length})` },
               { id: 'therapy', label_en: `Therapies & Vastu (${currentDivineServices.filter(s => s.category === 'therapy').length})`, label_hi: `थेरेपी व वास्तु (${currentDivineServices.filter(s => s.category === 'therapy').length})` },
-              { id: 'regression', label_en: `Past Life PLR (${currentDivineServices.filter(s => s.category === 'regression').length})`, label_hi: `पूर्व जन्म सत्र - PLR (${currentDivineServices.filter(s => s.category === 'regression').length})` },
+              { id: 'regression', label_en: `Past Life PLR (${currentDivineServices.filter(s => s.category === 'regression').length})`, label_hi: `पास्ट लाइफ ध्यान - PLR (${currentDivineServices.filter(s => s.category === 'regression').length})` },
             ].map((btn) => (
               <button
                 key={btn.id}
@@ -431,7 +453,7 @@ export const TariffView: React.FC<TariffViewProps> = ({
                     </span>
                     {(tariffLang === 'hi' ? srv.duration : srv.duration_en) && (
                       <span className="text-xs text-[#5D556A] font-medium">
-                        {tariffLang === 'hi' ? `अवधि: ${srv.duration}` : `Duration: ${srv.duration_en}`}
+                        {tariffLang === 'hi' ? `समय: ${srv.duration}` : `Duration: ${srv.duration_en}`}
                       </span>
                     )}
                   </div>
@@ -468,11 +490,11 @@ export const TariffView: React.FC<TariffViewProps> = ({
                 {tariffLang === 'hi' ? 'आधिकारिक भुगतान व्यवस्था' : 'Official Payment Gateway'}
               </span>
               <h2 className="font-cinzel text-2xl sm:text-3xl font-bold text-[#1E162B] mt-1">
-                {tariffLang === 'hi' ? 'केवल UPI एवं QR स्कैनर भुगतान विवरण' : 'UPI & QR Code Payment Details Only'}
+                {tariffLang === 'hi' ? 'केवल UPI और QR स्कैनर से भुगतान' : 'UPI & QR Code Payment Details Only'}
               </h2>
               <p className="text-xs text-[#4A4356] mt-1">
                 {tariffLang === 'hi'
-                  ? 'परामर्श व हीलिंग फीस का सुरक्षित भुगतान केवल नीचे दिए गए सत्यापित UPI ID एवं QR कोड द्वारा करें।'
+                  ? 'परामर्श और हीलिंग फीस का सुरक्षित भुगतान केवल नीचे दिए गए सत्यापित UPI ID और QR कोड से करें।'
                   : 'We strictly accept consultation & healing fees only via our verified UPI ID & QR Code Scanner below.'}
               </p>
             </div>
@@ -489,7 +511,7 @@ export const TariffView: React.FC<TariffViewProps> = ({
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
             
             {/* Left: UPI QR Scanner Card */}
-            <div className="lg:col-span-5 rounded-3xl bg-white text-[#1E162B] p-8 border-2 border-[#DEC38C] shadow-lg flex flex-col justify-between space-y-6">
+            <div className="lg:col-span-5 rounded-3xl bg-white text-[#1E162B] p-5 sm:p-8 border-2 border-[#DEC38C] shadow-lg flex flex-col justify-between space-y-6">
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
                   <span className="text-xs font-bold uppercase tracking-wider text-[#7A5311]">
@@ -532,7 +554,7 @@ export const TariffView: React.FC<TariffViewProps> = ({
                 <div className="pt-2 text-center">
                   <label className="cursor-pointer inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-[#F4F0FA] hover:bg-[#EAE2F4] text-[#522B8A] text-xs font-semibold border border-[#DFD5F0] transition-colors">
                     <Upload size={13} />
-                    <span>{tariffLang === 'hi' ? 'क्यूआर स्कैनर छवि अपलोड करें' : 'Upload Scanner QR Image'}</span>
+                    <span>{tariffLang === 'hi' ? 'नया QR कोड अपलोड करें' : 'Upload Scanner QR Image'}</span>
                     <input
                       type="file"
                       ref={qrInputRef}
@@ -571,7 +593,7 @@ export const TariffView: React.FC<TariffViewProps> = ({
             </div>
 
             {/* Right: UPI & QR Code Payment Instructions Card */}
-            <div className="lg:col-span-7 rounded-3xl bg-white p-8 sm:p-10 border border-[#E6DFD3] shadow-sm flex flex-col justify-between space-y-6">
+            <div className="lg:col-span-7 rounded-3xl bg-white p-5 sm:p-8 lg:p-10 border border-[#E6DFD3] shadow-sm flex flex-col justify-between space-y-6">
               <div className="space-y-5">
                 <div className="flex items-center justify-between border-b border-[#EFECE6] pb-4">
                   <div className="flex items-center gap-2">
@@ -588,7 +610,7 @@ export const TariffView: React.FC<TariffViewProps> = ({
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
                   <div className="p-3.5 rounded-xl bg-[#FAF8F5] border border-[#E6DFD3] space-y-1">
                     <span className="text-[10px] text-[#5D556A] uppercase block">
-                      {tariffLang === 'hi' ? 'प्राप्तकर्ता का नाम (Beneficiary)' : 'Verified Recipient Name'}
+                      {tariffLang === 'hi' ? 'पेमेंट पाने वाले का नाम' : 'Verified Recipient Name'}
                     </span>
                     <span className="font-semibold text-sm text-[#1E162B] block">{bankDetails.holder}</span>
                   </div>
@@ -643,7 +665,7 @@ export const TariffView: React.FC<TariffViewProps> = ({
                   <ShieldCheck size={16} className="text-[#B48228] shrink-0 mt-0.5" />
                   <span>
                     {tariffLang === 'hi'
-                      ? 'महत्वपूर्ण सूचना: सभी परामर्श व हीलिंग सेवा शुल्क केवल सत्यापित UPI ID (9105731969@upi) या बाईं ओर दिए गए QR कोड स्कैनर के माध्यम से ही स्वीकार किए जाते हैं।'
+                      ? 'जरूरी सूचना: सभी परामर्श और हीलिंग सेवाओं की फीस केवल सत्यापित UPI ID (9105731969@upi) या बाईं ओर दिए गए QR कोड स्कैनर से ही ली जाती है।'
                       : 'Important: We accept consultation & healing fee payments strictly through the verified QR Code scanner or Official UPI ID (9105731969@upi) only.'}
                   </span>
                 </div>
@@ -657,7 +679,7 @@ export const TariffView: React.FC<TariffViewProps> = ({
                   </span>
                   <p className="text-xs text-emerald-800 leading-relaxed">
                     {tariffLang === 'hi'
-                      ? 'भुगतान रसीद का स्क्रीनशॉट आधिकारिक व्हाट्सएप (+91 91057 31969) पर भेजें ताकि समय तुरंत निश्चित हो सके।'
+                      ? 'पेमेंट रसीद का स्क्रीनशॉट व्हाट्सएप (+91 91057 31969) पर भेजें ताकि आपका समय तुरंत तय हो सके।'
                       : 'Send transaction screenshot to WhatsApp (+91 91057 31969) for instant appointment confirmation.'}
                   </p>
                 </div>
@@ -679,9 +701,17 @@ export const TariffView: React.FC<TariffViewProps> = ({
         {/* Social Share & Promotion Widget */}
         <div className="pt-8 max-w-3xl mx-auto">
           <SocialShare
-            title="Dr. Pooja Awasthi — 11 Spiritual Services Tariff & Fee Card"
-            text="Transparent consultation fees and verified payment details for Vedic Numerology, Tarot Reading, Chakra Healing & PLR."
-            url="https://dr-pooja-awasthi-india.netlify.app/tariff"
+            title={
+              tariffLang === 'hi'
+                ? 'डॉ. पूजा अवस्थी — 11 खास सेवाएं व सभी 16 दिव्य सेवाओं की फीस'
+                : 'Dr. Pooja Awasthi — 11 Specialized Services & All 16 Divine Services Fees'
+            }
+            text={
+              tariffLang === 'hi'
+                ? 'वैदिक अंकशास्त्र, टैरो कार्ड रीडिंग, क्रिस्टल हीलिंग, वास्तु और PLR की साफ फीस व सत्यापित UPI और QR कोड पेमेंट जानकारी।'
+                : 'Transparent consultation fees and verified UPI & QR payment details for Vedic Numerology, Tarot Reading, Crystal Healing, Vastu & PLR.'
+            }
+            url={tariffUrl}
             lang={tariffLang}
           />
         </div>
@@ -693,7 +723,7 @@ export const TariffView: React.FC<TariffViewProps> = ({
             onClick={onBackToHome}
             className="h-11 px-8 bg-[#522B8A] hover:bg-[#412070] text-white font-bold text-xs uppercase tracking-wider rounded-xl transition-all shadow-md cursor-pointer"
           >
-            {tariffLang === 'hi' ? '← मुख्य पृष्ठ पर लौटें' : '← Back to Home'}
+            {tariffLang === 'hi' ? '← होम पर वापस जाएं' : '← Back to Home'}
           </button>
         </div>
 

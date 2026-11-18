@@ -17,7 +17,11 @@ export const SocialShare: React.FC<SocialShareProps> = ({
   className = '',
 }) => {
   const [copied, setCopied] = useState(false);
-  const currentUrl = url || (typeof window !== 'undefined' ? window.location.href : 'https://dr-pooja-awasthi.vercel.app');
+  const currentUrl =
+    url ||
+    (typeof window !== 'undefined'
+      ? `${window.location.origin}${window.location.pathname}`
+      : '/');
 
   const encodedUrl = encodeURIComponent(currentUrl);
   const encodedTitle = encodeURIComponent(title);
@@ -55,7 +59,7 @@ export const SocialShare: React.FC<SocialShareProps> = ({
         <div className="flex items-center gap-2">
           <Share2 size={15} className="text-[#B48228]" />
           <span className="text-xs font-bold uppercase tracking-wider text-[#1E162B]">
-            {lang === 'hi' ? 'मार्गदर्शन साझा करें' : 'Share Guidance'}
+            {lang === 'hi' ? 'यह जानकारी शेयर करें' : 'Share Guidance'}
           </span>
         </div>
         <span className="text-[11px] text-[#7A5311] font-semibold">

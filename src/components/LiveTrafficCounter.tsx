@@ -5,11 +5,13 @@ import { useTrafficStats } from '../utils/trafficApi';
 interface LiveTrafficCounterProps {
   lang?: string;
   variant?: 'footer' | 'compact';
+  alwaysShow?: boolean;
 }
 
 export const LiveTrafficCounter: React.FC<LiveTrafficCounterProps> = ({
   lang = 'en',
   variant = 'footer',
+  alwaysShow = false,
 }) => {
   const stats = useTrafficStats();
 
@@ -21,7 +23,7 @@ export const LiveTrafficCounter: React.FC<LiveTrafficCounterProps> = ({
   if (variant === 'compact') {
     return (
       <div
-        className="hidden xl:inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-[#E6DFD3] text-[11px] text-[#4A4356] shadow-2xs"
+        className={`${alwaysShow ? 'inline-flex' : 'hidden sm:inline-flex'} items-center gap-2 px-2.5 sm:px-3 py-1 rounded-full bg-white border border-[#E6DFD3] text-[11px] text-[#4A4356] shadow-2xs`}
         title={
           lang === 'hi'
             ? `लाइव विज़िटर्स: ${liveCount} | कुल विज़िटर्स: ${formattedTotalVisitors} | आज के विज़िटर्स: ${formattedToday}`
@@ -61,13 +63,13 @@ export const LiveTrafficCounter: React.FC<LiveTrafficCounterProps> = ({
               </span>
               <h4 className="font-cinzel text-xs sm:text-sm font-bold uppercase tracking-wider text-[#1E162B]">
                 {lang === 'hi'
-                  ? 'वास्तविक लाइव विज़िटर्स एवं वेबसाइट ट्रैफ़िक काउंटर'
+                  ? 'लाइव विज़िटर्स और वेबसाइट ट्रैफ़िक काउंटर'
                   : 'Actual Live Visitors & Website Traffic Counter'}
               </h4>
             </div>
             <p className="text-[11px] text-[#5D556A] mt-0.5">
               {lang === 'hi'
-                ? 'रियल-टाइम सक्रिय उपयोगकर्ता एवं प्रामाणिक विज़िटर गणना (प्रारंभ: 1,005 से)'
+                ? 'अभी ऑनलाइन लोग और कुल विज़िटर्स की असली गिनती (1,005 से शुरू)'
                 : 'Real-time active sessions & verified visitor statistics (Starting Base: 1,005)'}
             </p>
           </div>

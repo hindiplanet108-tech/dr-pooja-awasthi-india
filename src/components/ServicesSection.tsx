@@ -26,24 +26,29 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
   const { siteContent } = useSiteContent();
 
   const currentCatalog: CatalogServiceItem[] = siteContent?.services && siteContent.services.length > 0
-    ? siteContent.services.map((s, idx) => ({
-        id: s.id || `srv-${idx + 1}`,
-        number: s.number || (idx + 1),
-        title: s.title_hi || s.title,
-        title_en: s.title,
-        category: (s.category || 'numerology') as 'healing' | 'numerology' | 'therapy' | 'regression',
-        categoryLabel_hi: s.categoryLabel_hi || 'वैदिक सेवा',
-        categoryLabel_en: s.category || 'Vedic Service',
-        badge: s.badge,
-        badge_en: s.badge,
-        description: s.description || '',
-        description_en: s.description || '',
-        fee: s.fee ?? 5100,
-        feeFormatted: s.feeFormatted || `₹${(s.fee ?? 5100).toLocaleString()}`,
-        duration: s.duration || '60 मिनट',
-        duration_en: s.duration || '60 mins',
-        image: s.image || CATALOG_SERVICES[idx]?.image || '/assets/images/vedic_numerology_sacred_cosmos_1792557572243.jpg'
-      }))
+    ? siteContent.services
+        .filter((s) => s.id !== 'watch-analysis' && s.id !== 'spec-watch-analysis')
+        .map((s, idx) => {
+          const fallbackItem = CATALOG_SERVICES.find((c) => c.id === s.id) || CATALOG_SERVICES[idx];
+          return {
+            id: s.id || fallbackItem?.id || `srv-${idx + 1}`,
+            number: s.number || (idx + 1),
+            title: s.title_hi || fallbackItem?.title || s.title,
+            title_en: s.title || fallbackItem?.title_en || '',
+            category: (s.category || fallbackItem?.category || 'numerology') as 'healing' | 'numerology' | 'therapy' | 'regression',
+            categoryLabel_hi: s.categoryLabel_hi || fallbackItem?.categoryLabel_hi || 'वैदिक सेवा',
+            categoryLabel_en: fallbackItem?.categoryLabel_en || s.category || 'Vedic Service',
+            badge: s.badge || fallbackItem?.badge,
+            badge_en: fallbackItem?.badge_en || s.badge,
+            description: s.description || fallbackItem?.description || '',
+            description_en: (s as any).description_en || fallbackItem?.description_en || s.description || '',
+            fee: s.fee ?? fallbackItem?.fee ?? 5100,
+            feeFormatted: s.feeFormatted || fallbackItem?.feeFormatted || `₹${(s.fee ?? 5100).toLocaleString()}`,
+            duration: s.duration || fallbackItem?.duration || '60 मिनट',
+            duration_en: (s as any).duration_en || fallbackItem?.duration_en || s.duration || '60 mins',
+            image: s.image || fallbackItem?.image || '/assets/images/vedic_numerology_sacred_cosmos_1792557572243.jpg'
+          };
+        })
     : CATALOG_SERVICES;
 
   const filteredCatalog = catalogFilter === 'all'
@@ -62,7 +67,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
             <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#522B8A]">
               <span>{t.servicesNav}</span>
               <span aria-hidden="true" className="text-[#B48228]">·</span>
-              <span className="text-[#7A5311]">1-on-1 Guidance</span>
+              <span className="text-[#7A5311]">{lang === 'hi' ? 'सीधी 1-on-1 बातचीत' : '1-on-1 Guidance'}</span>
             </div>
             <h2 className="font-cormorant text-3xl sm:text-4xl lg:text-5xl font-medium text-[#1E162B] leading-tight">
               {t.servicesTitle} — <br />
@@ -81,7 +86,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
                   : 'text-[#4A4356] hover:text-[#1E162B] hover:bg-[#FAF8F5]'
               }`}
             >
-              {lang === 'hi' ? 'प्रमुख साधना क्षेत्र' : 'Core Disciplines'}
+              {lang === 'hi' ? 'मुख्य सेवाएं' : 'Core Disciplines'}
             </button>
             <button
               type="button"
@@ -92,7 +97,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
                   : 'text-[#4A4356] hover:text-[#1E162B] hover:bg-[#FAF8F5]'
               }`}
             >
-              {lang === 'hi' ? `संपूर्ण सेवा सूची (${currentCatalog.length})` : `Complete Catalog (${currentCatalog.length})`}
+              {lang === 'hi' ? `सभी सेवाएं (${currentCatalog.length})` : `Complete Catalog (${currentCatalog.length})`}
             </button>
             <button
               type="button"
@@ -104,7 +109,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
               }`}
             >
               <Sparkles size={13} className={activeTab === 'chakras' ? 'text-[#F3D899]' : 'text-[#B48228]'} />
-              <span>{lang === 'hi' ? 'सप्त चक्र एवं आभा मंडल' : 'Animated 7 Chakras'}</span>
+              <span>{lang === 'hi' ? '7 चक्र और ऊर्जा संतुलन' : 'Animated 7 Chakras'}</span>
             </button>
           </div>
         </div>
@@ -182,11 +187,11 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
                         onClick={() => setSelectedServiceModal(srv)}
                         className="h-9 px-3.5 rounded-lg bg-[#FAF8F5] hover:bg-[#F4F0FA] border border-[#E6DFD3] text-xs font-semibold text-[#1E162B] hover:text-[#522B8A] transition-colors cursor-pointer"
                       >
-                        {lang === 'hi' ? 'विस्तार से जानें' : 'Learn More'}
+                        {lang === 'hi' ? 'पूरी जानकारी देखें' : 'Learn More'}
                       </button>
                       <button
                         type="button"
-                        onClick={() => onSelectServiceForBooking(srv.title)}
+                        onClick={() => onSelectServiceForBooking(lang === 'hi' ? srv.title_hi : srv.title)}
                         className="h-9 px-4 bg-[#522B8A] hover:bg-[#412070] text-white text-xs font-bold rounded-lg transition-colors flex items-center gap-1.5 shadow-sm cursor-pointer"
                       >
                         <span>{lang === 'hi' ? 'सत्र बुक करें' : 'Book Session'}</span>
@@ -205,11 +210,11 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
           <div className="space-y-8">
             <div className="flex flex-wrap items-center gap-2">
               {[
-                { id: 'all', label: lang === 'hi' ? 'सभी 11 सेवाएँ' : 'All 11 Offerings' },
-                { id: 'healing', label: lang === 'hi' ? 'ऊर्जा एवं हीलिंग (5)' : 'Energy & Healing (5)' },
-                { id: 'numerology', label: lang === 'hi' ? 'अंकशास्त्र शुद्धि (2)' : 'Numerology Corrections (2)' },
-                { id: 'therapy', label: lang === 'hi' ? 'मानसिक संतुलन व विश्राम (3)' : 'Mind Balance & Therapy (3)' },
-                { id: 'regression', label: lang === 'hi' ? 'पूर्व जन्म स्मृति सत्र (1)' : 'Past Life Regression (1)' },
+                { id: 'all', label: lang === 'hi' ? `सभी ${currentCatalog.length} सेवाएं` : `All ${currentCatalog.length} Offerings` },
+                { id: 'healing', label: lang === 'hi' ? 'ऊर्जा व हीलिंग' : 'Energy & Healing' },
+                { id: 'numerology', label: lang === 'hi' ? 'अंकशास्त्र सुधार' : 'Numerology Corrections' },
+                { id: 'therapy', label: lang === 'hi' ? 'मन की शांति व वास्तु' : 'Mind Balance & Therapy' },
+                { id: 'regression', label: lang === 'hi' ? 'पास्ट लाइफ ध्यान सत्र' : 'Past Life Regression' },
               ].map((btn) => (
                 <button
                   key={btn.id}
@@ -250,7 +255,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
 
                       {item.badge && (
                         <div className="absolute top-3 left-3 px-2.5 py-0.5 rounded-md bg-[#522B8A] text-white text-[10px] font-bold shadow-xs">
-                          {item.badge_en || item.badge}
+                          {lang === 'hi' ? item.badge : (item.badge_en || item.badge)}
                         </div>
                       )}
 
@@ -280,14 +285,16 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
 
                       {item.importantDisclaimer && (
                         <p className="text-[11px] text-amber-900 bg-amber-50 p-2.5 rounded-lg border border-amber-200 leading-relaxed">
-                          {item.importantDisclaimer_en}
+                          {lang === 'hi' ? item.importantDisclaimer : (item.importantDisclaimer_en || item.importantDisclaimer)}
                         </p>
                       )}
                     </div>
 
                     <div className="pt-4 border-t border-[#EFECE6] flex items-center justify-between gap-4">
                       <div>
-                        <span className="text-[10px] uppercase text-[#5D556A] font-semibold block">परामर्श शुल्क</span>
+                        <span className="text-[10px] uppercase text-[#5D556A] font-semibold block">
+                          {lang === 'hi' ? 'परामर्श शुल्क' : 'Consultancy Fee'}
+                        </span>
                         <span className="font-rupee text-base font-black text-[#1E162B] tabular-nums">
                           {item.feeFormatted}
                         </span>
@@ -312,6 +319,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
         {/* TAB 3: Animated 7 Chakras Visualizer */}
         {activeTab === 'chakras' && (
           <ChakraAuraVisualizer
+            lang={lang}
             onSelectChakraForConsultation={(name) => onSelectServiceForBooking(name)}
           />
         )}
@@ -405,10 +413,10 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
                 <div className="space-y-1 text-center sm:text-left">
                   <div className="flex flex-wrap items-center justify-center sm:justify-start gap-1.5">
                     <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-white text-[#522B8A] border border-[#DFD5F0]">
-                      11 Specialized Services
+                      {lang === 'hi' ? '11 विशेष सेवाएं' : '11 Specialized Services'}
                     </span>
                     <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-white text-[#7A5311] border border-[#DEC38C]">
-                      All 16 Divine Services
+                      {lang === 'hi' ? 'सभी 16 सेवाएं' : 'All 16 Divine Services'}
                     </span>
                   </div>
                   <div className="font-rupee text-2xl font-black text-[#1E162B] tracking-tight pt-1">

@@ -4,6 +4,7 @@ import { getStoredMedia, saveStoredMedia } from '../utils/photoStorage';
 import { getTranslation } from '../data/translations';
 import { CelestialStarfield } from './CelestialStarfield';
 import poojaAuthenticPhoto from '../assets/images/pooja_awasthi_portrait.jpeg';
+import heroGeometryBg from '../assets/images/hero_celestial_sacred_geometry_1792557572251.jpg';
 import { useSiteContent } from '../utils/siteContentContext';
 
 interface HeroProps {
@@ -67,14 +68,14 @@ export const Hero: React.FC<HeroProps> = ({
   const displayDesc = lang === 'hi' ? (heroContent?.desc_hi || t.heroDesc) : (heroContent?.desc_en || t.heroDesc);
   const displayFee = heroContent?.fee_badge || '₹5,100';
   const displayCta = lang === 'hi' ? (heroContent?.cta_primary_hi || t.bookBtn) : (heroContent?.cta_primary_en || t.bookBtn);
-  const displayBadge = lang === 'hi' ? (heroContent?.badge_text_hi || '40+ राष्ट्रीय सम्मान व पावन दीर्घा') : (heroContent?.badge_text_en || '40+ National Honors & Archive');
+  const displayBadge = lang === 'hi' ? (heroContent?.badge_text_hi || '40+ राष्ट्रीय सम्मान व फोटो गैलरी') : (heroContent?.badge_text_en || '40+ National Honors & Archive');
 
   return (
-    <section className="relative pt-28 pb-10 md:pt-32 md:pb-12 overflow-hidden bg-gradient-to-br from-[#FAF8F5] via-white to-[#F3EFFA] text-[#1E162B] border-b border-[#E5DFD5]">
+    <section className="relative pt-32 pb-10 sm:pt-36 md:pt-32 md:pb-12 overflow-hidden bg-gradient-to-br from-[#FAF8F5] via-white to-[#F3EFFA] text-[#1E162B] border-b border-[#E5DFD5]">
       {/* Subtle Sacred Geometry Watermark */}
       <div className="absolute inset-0 pointer-events-none opacity-[0.045]">
         <img
-          src="/src/assets/images/hero_celestial_sacred_geometry_1792557572251.jpg"
+          src={heroGeometryBg}
           alt=""
           className="w-full h-full object-cover object-center animate-[spin_200s_linear_infinite]"
         />
@@ -99,10 +100,10 @@ export const Hero: React.FC<HeroProps> = ({
                 <span>{displayBadge}</span>
               </a>
               <span aria-hidden="true" className="text-[#B48228]">·</span>
-              <span className="text-[#5D556A]">{lang === 'hi' ? 'गोपनीय व्यक्तिगत परामर्श' : '1-on-1 Sanctuary'}</span>
+              <span className="text-[#5D556A]">{lang === 'hi' ? '100% गोपनीय व्यक्तिगत सलाह' : '1-on-1 Sanctuary'}</span>
             </div>
 
-            <h1 className="font-cormorant text-4xl sm:text-5xl lg:text-6xl font-medium text-[#1E162B] leading-[1.12] tracking-tight text-balance">
+            <h1 className="font-cormorant text-3xl sm:text-5xl lg:text-6xl font-medium text-[#1E162B] leading-[1.14] tracking-tight text-balance">
               {displayHeadline1} <br />
               <span className="italic font-semibold text-[#522B8A]">
                 {displayHeadline2}
@@ -131,7 +132,7 @@ export const Hero: React.FC<HeroProps> = ({
                   className="w-full sm:w-auto h-12 px-5 bg-[#FBF5E6] hover:bg-[#F5E8C8] text-[#7A5311] border border-[#DEC38C] rounded-xl font-bold text-xs tracking-wide transition-all flex items-center justify-center gap-2 shadow-xs cursor-pointer"
                 >
                   <Sparkles size={14} className="text-[#B48228]" />
-                  <span>{lang === 'hi' ? '11 विशिष्ट सेवाएं व फीस (16)' : '11 Specialized Services & Fees'}</span>
+                  <span>{lang === 'hi' ? '11 विशेष सेवाएं व फीस (16)' : '11 Specialized Services & Fees'}</span>
                 </button>
               )}
 
@@ -140,7 +141,7 @@ export const Hero: React.FC<HeroProps> = ({
                 className="w-full sm:w-auto h-12 px-5 bg-white hover:bg-[#F4F0FA] text-[#522B8A] border border-[#DFD5F0] rounded-xl font-semibold text-xs tracking-wide transition-all flex items-center justify-center gap-2 shadow-xs"
               >
                 <Trophy size={14} className="text-[#B48228]" />
-                <span>{lang === 'hi' ? '40+ सम्मान दीर्घा' : '40+ Honors Gallery'}</span>
+                <span>{lang === 'hi' ? '40+ सम्मान गैलरी' : '40+ Honors Gallery'}</span>
               </a>
 
               {onCalculateVedic && (
@@ -301,7 +302,7 @@ export const Hero: React.FC<HeroProps> = ({
               </h3>
               <p className="text-xs text-[#5D556A] mt-0.5">
                 {lang === 'hi'
-                  ? 'आध्यात्मिक मार्गदर्शिका एवं वैदिक अंकशास्त्री • प्रामाणिक स्वरूप'
+                  ? 'आध्यात्मिक मार्गदर्शिका व वैदिक अंकशास्त्री • असली फोटो'
                   : 'Spiritual Guide & Vedic Numerologist • Authentic Portrait'}
               </p>
             </div>

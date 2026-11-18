@@ -22,7 +22,7 @@ export const Footer: React.FC<FooterProps> = ({
   const t = getTranslation(lang);
 
   return (
-    <footer className="bg-[#F4F1EA] text-[#1E162B] pt-10 pb-8 border-t border-[#DEC38C] relative overflow-hidden">
+    <footer className="bg-[#F4F1EA] text-[#1E162B] pt-10 pb-24 sm:pb-10 border-t border-[#DEC38C] relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* 🌟 PROMINENT HIGHLIGHTED SECTION: Fee Details & Bank/UPI Payment Portal */}
@@ -69,7 +69,7 @@ export const Footer: React.FC<FooterProps> = ({
                   <button
                     type="button"
                     onClick={onOpenTariff}
-                    className="w-full sm:w-auto h-11 inline-flex items-center justify-center gap-2 px-6 rounded-xl bg-[#522B8A] hover:bg-[#412070] text-white font-bold text-xs uppercase tracking-wider transition-all shadow-md cursor-pointer"
+                    className="w-full sm:w-auto min-h-[44px] inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-2.5 rounded-xl bg-[#522B8A] hover:bg-[#412070] text-white font-bold text-xs uppercase tracking-wider transition-all shadow-md cursor-pointer text-center"
                   >
                     <span>
                       {lang === 'hi'
@@ -105,7 +105,7 @@ export const Footer: React.FC<FooterProps> = ({
                     <strong className="text-[#522B8A] font-mono font-bold select-all text-sm">9105731969@upi</strong>
                   </div>
                   <div className="flex items-center justify-between gap-2">
-                    <span className="text-[#5D556A] text-[11px]">प्राप्तकर्ता (Recipient):</span>
+                    <span className="text-[#5D556A] text-[11px]">{lang === 'hi' ? 'प्राप्तकर्ता (Recipient):' : 'Recipient:'}</span>
                     <strong className="text-[#1E162B] font-semibold">Pooja Awasthi • UPI & QR Only</strong>
                   </div>
                 </div>
@@ -189,14 +189,14 @@ export const Footer: React.FC<FooterProps> = ({
                   <button
                     type="button"
                     onClick={onOpenTariff}
-                    className="w-full text-left py-2 px-3 rounded-xl bg-[#FBF5E6] hover:bg-[#F5E8C8] text-[#7A5311] font-bold border border-[#DEC38C] flex items-center justify-between text-xs transition-all shadow-2xs cursor-pointer"
+                    className="w-full text-left py-2 px-3 rounded-xl bg-[#FBF5E6] hover:bg-[#F5E8C8] text-[#7A5311] font-bold border border-[#DEC38C] flex items-center justify-between gap-2 text-xs transition-all shadow-2xs cursor-pointer"
                   >
-                    <span className="flex items-center gap-1.5">
-                      <Sparkles size={13} className="text-[#B48228] shrink-0" />
-                      <span>{lang === 'hi' ? '★ 11 विशिष्ट हीलिंग सेवाएं (16 दिव्य सेवाएं फीस)' : '11 Specialized Services (16 Divine Services Fees)'}</span>
+                    <span className="flex items-start gap-1.5 min-w-0">
+                      <Sparkles size={13} className="text-[#B48228] shrink-0 mt-0.5" />
+                      <span className="whitespace-normal break-words">{lang === 'hi' ? '★ 11 विशिष्ट हीलिंग सेवाएं (16 दिव्य सेवाएं फीस)' : '11 Specialized Services (16 Divine Services Fees)'}</span>
                     </span>
                     <span className="text-[10px] bg-[#522B8A] text-white font-bold font-rupee px-1.5 py-0.5 rounded shadow-2xs tracking-tight shrink-0">
-                      16 सेवाएं
+                      {lang === 'hi' ? '16 सेवाएं' : '16 Services'}
                     </span>
                   </button>
                 </li>
@@ -206,14 +206,14 @@ export const Footer: React.FC<FooterProps> = ({
                   <button
                     type="button"
                     onClick={onOpenBankUpi}
-                    className="w-full text-left py-1.5 px-3 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-emerald-800 font-bold border border-emerald-300 flex items-center justify-between text-xs transition-all shadow-2xs cursor-pointer"
+                    className="w-full text-left py-1.5 px-3 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-emerald-800 font-bold border border-emerald-300 flex items-center justify-between gap-2 text-xs transition-all shadow-2xs cursor-pointer"
                   >
-                    <span className="flex items-center gap-1.5">
+                    <span className="flex items-center gap-1.5 min-w-0">
                       <QrCode size={13} className="text-emerald-700 shrink-0" />
-                      <span>{lang === 'hi' ? '💳 UPI एवं QR भुगतान विवरण' : 'UPI & QR Payment'}</span>
+                      <span className="whitespace-normal break-words">{lang === 'hi' ? '💳 UPI एवं QR भुगतान विवरण' : 'UPI & QR Payment'}</span>
                     </span>
                     <span className="text-[10px] bg-emerald-700 text-white font-bold px-1.5 py-0.5 rounded shadow-2xs uppercase shrink-0">
-                      QR कोड
+                      {lang === 'hi' ? 'QR कोड' : 'QR Code'}
                     </span>
                   </button>
                 </li>
@@ -225,7 +225,7 @@ export const Footer: React.FC<FooterProps> = ({
               </li>
               <li>
                 <a href="#faq" className="hover:text-[#522B8A] transition-colors">
-                  {lang === 'hi' ? 'अक्सर पूछे जाने वाले प्रश्न' : 'Frequently Asked Questions'}
+                  {lang === 'hi' ? 'अक्सर पूछे जाने वाले सवाल' : 'Frequently Asked Questions'}
                 </a>
               </li>
               <li>
@@ -235,7 +235,7 @@ export const Footer: React.FC<FooterProps> = ({
                   title="Client Reviews & Stories"
                 >
                   <Star size={12} fill="#B48228" className="text-[#B48228] shrink-0" />
-                  <span>★ {lang === 'hi' ? 'ग्राहकों के अनुभव व समीक्षाएं (Reviews)' : 'Client Reviews & Stories'}</span>
+                  <span>★ {lang === 'hi' ? 'लोगों के अनुभव व समीक्षाएं' : 'Client Reviews & Stories'}</span>
                 </a>
               </li>
               {onOpenDynamicPage && (
@@ -246,7 +246,7 @@ export const Footer: React.FC<FooterProps> = ({
                       onClick={() => onOpenDynamicPage('kundali-analysis')}
                       className="hover:text-[#522B8A] transition-colors text-left cursor-pointer"
                     >
-                      {lang === 'hi' ? 'कुण्डली विश्लेषण एवं दोष निवारण' : 'Vedic Kundali Analysis'}
+                      {lang === 'hi' ? 'कुंडली जांच व सरल उपाय' : 'Vedic Kundali Analysis'}
                     </button>
                   </li>
                   <li>
@@ -255,7 +255,7 @@ export const Footer: React.FC<FooterProps> = ({
                       onClick={() => onOpenDynamicPage('rudraksha-ratna-therapy')}
                       className="hover:text-[#522B8A] transition-colors text-left cursor-pointer"
                     >
-                      {lang === 'hi' ? 'रुद्राक्ष एवं सिद्ध रत्न चिकित्सा' : 'Rudraksha & Gemstone Therapy'}
+                      {lang === 'hi' ? 'रुद्राक्ष व असली रत्न सलाह' : 'Rudraksha & Gemstone Therapy'}
                     </button>
                   </li>
                 </>
@@ -324,16 +324,16 @@ export const Footer: React.FC<FooterProps> = ({
         <div className="pt-8 pb-6 border-b border-[#DEC38C]/40 text-[11px] text-[#5D556A] leading-relaxed">
           <p>
             <span className="font-semibold text-[#7A5311]">
-              {lang === 'hi' ? 'नैतिक एवं विधिक सूचना: ' : 'Ethical & Legal Notice: '}
+              {lang === 'hi' ? 'जरूरी सूचना: ' : 'Ethical & Legal Notice: '}
             </span>
             {t.disclaimer}
           </p>
         </div>
 
         {/* Bottom copyright row */}
-        <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#5D556A]">
+        <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#5D556A] text-center sm:text-left">
           <p>{lang === 'hi' ? `© ${new Date().getFullYear()} ${t.brandTitle}। सर्वाधिकार सुरक्षित।` : `© ${new Date().getFullYear()} ${t.brandTitle}. All rights reserved.`}</p>
-          <div className="flex items-center gap-4">
+          <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4">
             <button
               type="button"
               onClick={() => setShowLegalModal('privacy')}
@@ -386,18 +386,50 @@ export const Footer: React.FC<FooterProps> = ({
 
             <div className="space-y-3 text-xs text-[#4A4356] leading-relaxed max-h-[60vh] overflow-y-auto pr-2">
               {showLegalModal === 'privacy' ? (
+                lang === 'hi' ? (
+                  <>
+                    <p className="font-semibold text-[#1E162B]">
+                      1. बातचीत की पूरी गोपनीयता:
+                    </p>
+                    <p>
+                      डॉ. पूजा अवस्थी के साथ परामर्श के दौरान साझा की गई आपकी जन्मतिथि, नाम, निजी सवाल और बातें पूरी तरह गोपनीय रखी जाती हैं। इन्हें किसी तीसरे व्यक्ति के साथ साझा नहीं किया जाता।
+                    </p>
+                    <p className="font-semibold text-[#1E162B]">
+                      2. जानकारी का उपयोग:
+                    </p>
+                    <p>
+                      इस वेबसाइट पर दी गई आपकी जानकारी का उपयोग केवल आपसे संपर्क करने और आपका अपॉइंटमेंट समय तय करने के लिए किया जाता है।
+                    </p>
+                  </>
+                ) : (
+                  <>
+                    <p className="font-semibold text-[#1E162B]">
+                      1. Complete Session Discretion:
+                    </p>
+                    <p>
+                      All personal birth details, conversations, questions, and circumstances shared during consultations with Dr. Pooja Awasthi are kept in strict confidentiality and never shared with third parties.
+                    </p>
+                    <p className="font-semibold text-[#1E162B]">
+                      2. Data Retention:
+                    </p>
+                    <p>
+                      Coordinates submitted through this website are utilized solely to contact you to schedule your requested appointment.
+                    </p>
+                  </>
+                )
+              ) : lang === 'hi' ? (
                 <>
                   <p className="font-semibold text-[#1E162B]">
-                    1. Complete Session Discretion:
+                    1. अपॉइंटमेंट का नियम:
                   </p>
                   <p>
-                    All personal birth details, conversations, questions, and circumstances shared during consultations with Dr. Pooja Awasthi are kept in strict confidentiality and never shared with third parties.
+                    परामर्श पहले से तय समय पर वीडियो या फोन कॉल के जरिए होते हैं। अगर आपको समय बदलना हो, तो कम से कम 24 घंटे पहले व्हाट्सएप पर जरूर बताएं।
                   </p>
                   <p className="font-semibold text-[#1E162B]">
-                    2. Data Retention:
+                    2. परामर्श फीस:
                   </p>
                   <p>
-                    Coordinates submitted through this website are utilized solely to contact you to schedule your requested appointment.
+                    सामान्य परामर्श फीस (<span className="font-rupee font-bold">₹5,100</span>) में डॉ. पूजा अवस्थी के साथ 60 मिनट का पूरा समय और आपकी जन्मतिथि व सवालों की व्यक्तिगत जांच शामिल है।
                   </p>
                 </>
               ) : (
@@ -424,7 +456,7 @@ export const Footer: React.FC<FooterProps> = ({
                 onClick={() => setShowLegalModal(null)}
                 className="h-9 px-5 bg-[#522B8A] hover:bg-[#412070] text-white text-xs font-bold rounded-lg transition-colors cursor-pointer"
               >
-                Acknowledge
+                {lang === 'hi' ? 'ठीक है / समझ गया' : 'Acknowledge'}
               </button>
             </div>
           </div>

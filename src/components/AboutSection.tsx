@@ -62,7 +62,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ lang, onBookClick })
           <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#522B8A]">
             <span>{t.aboutNav}</span>
             <span aria-hidden="true" className="text-[#B48228]">·</span>
-            <span className="text-[#7A5311]">{lang === 'hi' ? 'पावन संकल्प एवं दृष्टिकोण' : 'Vision & Philosophy'}</span>
+            <span className="text-[#7A5311]">{lang === 'hi' ? 'सोच और मार्गदर्शन का तरीका' : 'Vision & Philosophy'}</span>
           </div>
           <h2 className="font-cormorant text-3xl sm:text-4xl lg:text-5xl font-medium text-[#1E162B] leading-tight">
             {t.aboutTitle} — <br />
@@ -217,10 +217,10 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ lang, onBookClick })
               {bioLang === 'hi' ? (
                 <div className="space-y-4 text-sm text-[#4A4356] leading-relaxed">
                   <p className="text-base text-[#1E162B] font-semibold leading-relaxed">
-                    {aboutContent?.p1_hi || 'डॉ. पूजा अवस्थी एक समर्पित आध्यात्मिक मार्गदर्शिका हैं, जो वैदिक अंकशास्त्र, टैरो मार्गदर्शन, चक्र हीलिंग और जीवन कोचिंग के माध्यम से लोगों को जीवन में नई दिशा और आशा देती हैं।'}
+                    {aboutContent?.p1_hi || 'डॉ. पूजा अवस्थी एक अनुभवी आध्यात्मिक मार्गदर्शिका हैं, जो वैदिक अंकशास्त्र, टैरो कार्ड, चक्र हीलिंग और लाइफ कोचिंग के जरिए लोगों को जीवन में नई दिशा और उम्मीद देती हैं।'}
                   </p>
                   <p>
-                    {aboutContent?.p2_hi || 'उनका दृष्टिकोण प्राचीन भारतीय ज्ञान परंपरा और आधुनिक समझ का सामंजस्यपूर्ण समन्वय है। वे किसी भय या अंधविश्वास के बिना साधकों को स्पष्ट, व्यावहारिक और आत्मिक मार्गदर्शन प्रदान करती हैं।'}
+                    {aboutContent?.p2_hi || 'उनका तरीका पुराने भारतीय ज्ञान और आज की व्यावहारिक समझ का सुंदर मेल है। वे बिना किसी डर या अंधविश्वास के लोगों को साफ, आसान और सही सलाह देती हैं।'}
                   </p>
                 </div>
               ) : (
@@ -332,7 +332,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ lang, onBookClick })
               </h3>
               <p className="text-xs text-[#5D556A] mt-0.5">
                 {bioLang === 'hi'
-                  ? 'आध्यात्मिक मार्गदर्शिका एवं सलाहकार • प्रामाणिक स्वरूप'
+                  ? 'आध्यात्मिक मार्गदर्शिका व सलाहकार • असली फोटो'
                   : 'Spiritual Guide & Sacred Consultant • Authentic Portrait'}
               </p>
             </div>

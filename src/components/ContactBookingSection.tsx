@@ -34,6 +34,12 @@ export const ContactBookingSection: React.FC<ContactBookingSectionProps> = ({
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const t = getTranslation(lang);
 
+  React.useEffect(() => {
+    if (preSelectedService) {
+      setFormData((prev) => ({ ...prev, service: preSelectedService }));
+    }
+  }, [preSelectedService]);
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.name.trim() || !formData.phone.trim() || !formData.email.trim()) {
@@ -123,7 +129,7 @@ export const ContactBookingSection: React.FC<ContactBookingSectionProps> = ({
                 <div>
                   <a
                     href={`mailto:${currentEmail}`}
-                    className="font-cinzel text-sm sm:text-base font-semibold text-[#1E162B] group-hover:text-[#522B8A] transition-colors block"
+                    className="font-cinzel text-sm sm:text-base font-semibold text-[#1E162B] group-hover:text-[#522B8A] transition-colors block break-all sm:break-normal"
                   >
                     {currentEmail}
                   </a>
@@ -143,7 +149,7 @@ export const ContactBookingSection: React.FC<ContactBookingSectionProps> = ({
           </div>
 
           {/* Right Column: Interactive Consultation Booking Form */}
-          <div className="lg:col-span-7 rounded-3xl bg-white text-[#1E162B] p-8 sm:p-10 shadow-xl border border-[#DFD5F0]">
+          <div className="lg:col-span-7 rounded-3xl bg-white text-[#1E162B] p-5 sm:p-10 shadow-xl border border-[#DFD5F0]">
             {submitted ? (
               <div className="py-12 text-center space-y-4">
                 <div className="w-16 h-16 rounded-full bg-emerald-50 text-emerald-700 mx-auto flex items-center justify-center border border-emerald-200">
@@ -189,7 +195,7 @@ export const ContactBookingSection: React.FC<ContactBookingSectionProps> = ({
                   </h3>
                   <p className="text-xs text-[#5D556A] mt-1">
                     {lang === 'hi'
-                      ? 'सही जन्म विवरण से अंकशास्त्र का सटीक और सही विश्लेषण संभव होता है।'
+                      ? 'सही जन्मतिथि देने से अंकशास्त्र की जांच ज्यादा सटीक होती है।'
                       : 'Birth coordinates ensure pinpoint accuracy for Vedic numerological analysis.'}
                   </p>
                 </div>
@@ -284,6 +290,9 @@ export const ContactBookingSection: React.FC<ContactBookingSectionProps> = ({
                     onChange={(e) => setFormData({ ...formData, service: e.target.value })}
                     className="w-full px-3.5 py-2.5 rounded-xl border border-[#E6DFD3] text-xs text-[#1E162B] focus:outline-none focus:border-[#522B8A] bg-[#FAF8F5]"
                   >
+                    {preSelectedService && (
+                      <option value={preSelectedService}>{preSelectedService}</option>
+                    )}
                     <option value="Vedic Numerology (₹5,100)">
                       {lang === 'hi' ? 'वैदिक अंकशास्त्र परामर्श — ₹5,100' : 'Vedic Numerology Consultation — ₹5,100'}
                     </option>
@@ -291,10 +300,10 @@ export const ContactBookingSection: React.FC<ContactBookingSectionProps> = ({
                       {lang === 'hi' ? 'टैरो कार्ड मार्गदर्शन — ₹5,100' : 'Tarot Intuitive Guidance — ₹5,100'}
                     </option>
                     <option value="Energy Chakras & Healing (₹5,100)">
-                      {lang === 'hi' ? 'ऑरा एवं चक्र हीलिंग (ऊर्जा संतुलन) — ₹5,100' : 'Energy Chakras & Aura Healing — ₹5,100'}
+                      {lang === 'hi' ? 'ऑरा व चक्र हीलिंग (ऊर्जा संतुलन) — ₹5,100' : 'Energy Chakras & Aura Healing — ₹5,100'}
                     </option>
                     <option value="Life Coaching & Mentorship (₹5,100)">
-                      {lang === 'hi' ? 'जीवन मार्गदर्शन एवं पर्सनल कोचिंग — ₹5,100' : 'Life Coaching & Conscious Mentorship — ₹5,100'}
+                      {lang === 'hi' ? 'लाइफ कोचिंग व सही जीवन मार्गदर्शन — ₹5,100' : 'Life Coaching & Conscious Mentorship — ₹5,100'}
                     </option>
                     <option value="Combined Guidance Session (₹5,100)">
                       {lang === 'hi' ? 'संयुक्त परामर्श सत्र (अंकशास्त्र + टैरो + हीलिंग) — ₹5,100' : 'Combined Multi-Disciplinary Session — ₹5,100'}
@@ -306,19 +315,19 @@ export const ContactBookingSection: React.FC<ContactBookingSectionProps> = ({
                       {lang === 'hi' ? 'नाम की स्पेलिंग सुधार — ₹5,100/-' : 'Name Spelling Vibrational Correction — ₹5,100/-'}
                     </option>
                     <option value="Aura Cleansing (₹3,100)">
-                      {lang === 'hi' ? 'ऑरा शुद्धि (ऊर्जा संतुलन - 20 मिनट) — ₹3,100' : 'Aura Cleansing (20 min) — ₹3,100'}
+                      {lang === 'hi' ? 'ऑरा सफाई (ऊर्जा संतुलन - 20 मिनट) — ₹3,100' : 'Aura Cleansing (20 min) — ₹3,100'}
                     </option>
                     <option value="Crystal Healing and Charging (₹11,000/-)">
-                      {lang === 'hi' ? 'क्रिस्टल हीलिंग एवं चार्जिंग — ₹11,000/-' : 'Crystal Healing and Charging — ₹11,000/-'}
+                      {lang === 'hi' ? 'क्रिस्टल हीलिंग व चार्जिंग — ₹11,000/-' : 'Crystal Healing and Charging — ₹11,000/-'}
                     </option>
                     <option value="Vastu Harmonization (₹11,000/-)">
-                      {lang === 'hi' ? 'वास्तु दोष निवारण (40-60 मिनट) — ₹11,000/-' : 'Vastu Harmonization & Spatial Energy (40-60 Mins) — ₹11,000/-'}
+                      {lang === 'hi' ? 'वास्तु सुधार (40-60 मिनट) — ₹11,000/-' : 'Vastu Harmonization & Spatial Energy (40-60 Mins) — ₹11,000/-'}
                     </option>
                     <option value="Karma Cord Cutting (₹11,000/-)">
-                      {lang === 'hi' ? 'कॉर्ड कटिंग व भावनात्मक मुक्ति (30-40 मिनट) — ₹11,000/-' : 'Karma Cord Cutting & Emotional Liberation (30-40 Mins) — ₹11,000/-'}
+                      {lang === 'hi' ? 'कॉर्ड कटिंग व पुराने तनाव से मुक्ति (30-40 मिनट) — ₹11,000/-' : 'Karma Cord Cutting & Emotional Liberation (30-40 Mins) — ₹11,000/-'}
                     </option>
                     <option value="Past Life Regression PLR (₹21,000/-)">
-                      {lang === 'hi' ? 'पास्ट लाइफ रिग्रेशन (पूर्व जन्म सत्र - PLR) — ₹21,000/-' : 'Past Life Regression (PLR) Session — ₹21,000/-'}
+                      {lang === 'hi' ? 'पास्ट लाइफ रिग्रेशन (पिछले जन्म का सत्र - PLR) — ₹21,000/-' : 'Past Life Regression (PLR) Session — ₹21,000/-'}
                     </option>
                     <option value="7-Day Chakra Intensive (₹31,000)">
                       {lang === 'hi' ? '7 चक्र हीलिंग सत्र (7 दिन का कोर्स) — ₹31,000' : '7-Day Intensive Chakra Alignment — ₹31,000'}

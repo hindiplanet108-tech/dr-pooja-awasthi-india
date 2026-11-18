@@ -48,13 +48,13 @@ export const FaqSection: React.FC<FaqSectionProps> = ({ lang = 'en' }) => {
     }
   ];
 
-  const customFaqs = siteContent?.faqs && siteContent.faqs.length > 0
+  const customFaqsHi = siteContent?.faqs && siteContent.faqs.length > 0
     ? siteContent.faqs.map(f => ({ q: f.q, a: f.a }))
     : null;
 
-  const faqs = lang === 'hi' 
-    ? (customFaqs || default_faqs_hi) 
-    : (customFaqs && customFaqs.length > 0 ? customFaqs : faqs_en);
+  const faqs = lang === 'hi'
+    ? (customFaqsHi || default_faqs_hi)
+    : faqs_en;
 
   return (
     <section id="faq" className="py-12 md:py-16 bg-white text-[#1E162B] relative border-t border-[#E6DFD3]">
@@ -64,14 +64,14 @@ export const FaqSection: React.FC<FaqSectionProps> = ({ lang = 'en' }) => {
         <div className="text-center mb-10 space-y-2.5">
           <div className="flex items-center justify-center gap-2 text-xs font-semibold uppercase tracking-widest text-[#522B8A]">
             <HelpCircle size={14} className="text-[#B48228]" />
-            <span>{lang === 'hi' ? 'जिज्ञासा एवं समाधान' : 'Clarifications & Questions'}</span>
+            <span>{lang === 'hi' ? 'सवाल और जवाब' : 'Clarifications & Questions'}</span>
           </div>
 
           <h2 className="font-cormorant text-3xl sm:text-4xl lg:text-5xl font-light text-[#1E162B] leading-tight">
-            {lang === 'hi' ? 'प्रायः पूछे जाने वाले प्रश्न —' : 'Frequently Asked Questions —'} <br />
+            {lang === 'hi' ? 'अक्सर पूछे जाने वाले सवाल —' : 'Frequently Asked Questions —'} <br />
             <span className="italic font-normal text-[#522B8A]">
               {lang === 'hi'
-                ? 'समय निर्धारण, गोपनीयता एवं सत्र की प्रक्रिया से जुड़ी संपूर्ण जानकारी'
+                ? 'बुकिंग, गोपनीयता और परामर्श के तरीके की पूरी जानकारी'
                 : 'Everything you need to know about scheduling, confidentiality, and what to expect'}
             </span>
           </h2>
@@ -114,11 +114,11 @@ export const FaqSection: React.FC<FaqSectionProps> = ({ lang = 'en' }) => {
         <div className="p-6 sm:p-7 rounded-3xl bg-[#FBF5E6] text-[#1E162B] border-2 border-[#DEC38C] shadow-md space-y-4 text-center sm:text-left sm:flex sm:items-center sm:justify-between sm:space-y-0 gap-6">
           <div className="space-y-1">
             <h4 className="font-cinzel text-lg font-bold text-[#1E162B]">
-              {lang === 'hi' ? 'कोई अन्य प्रश्न या विशेष परामर्श आवश्यकता?' : 'Still have questions or special requirements?'}
+              {lang === 'hi' ? 'कोई और सवाल या खास जानकारी चाहिए?' : 'Still have questions or special requirements?'}
             </h4>
             <p className="text-xs text-[#4A4356]">
               {lang === 'hi'
-                ? 'पूजा जी की टीम से सीधे संपर्क करें। बुकिंग से पूर्व किसी भी जिज्ञासा के समाधान हेतु हम सदैव तत्पर हैं।'
+                ? 'पूजा जी की टीम से सीधे बात करें। बुकिंग से पहले आपके हर सवाल का जवाब देने के लिए हम हमेशा मदद के लिए तैयार हैं।'
                 : 'Connect directly with Pooja ji’s team. We are happy to clarify any questions prior to booking.'}
             </p>
           </div>

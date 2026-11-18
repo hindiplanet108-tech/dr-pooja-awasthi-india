@@ -64,19 +64,8 @@ export const DynamicPageView: React.FC<DynamicPageViewProps> = ({
         setError(null);
         const data = await getPageBySlug(slug);
         setPage(data);
-
-        // Dynamic SEO Tags
-        if (data.seo?.metaTitle || data.title) {
-          document.title = `${data.seo?.metaTitle || data.title} | डॉ. पूजा अवस्थी`;
-        }
-
-        // Meta description update
-        const descMeta = document.querySelector('meta[name="description"]');
-        if (descMeta && (data.seo?.metaDescription || data.excerpt)) {
-          descMeta.setAttribute('content', data.seo?.metaDescription || data.excerpt || '');
-        }
       } catch (err: any) {
-        setError(err.message || 'पेज नहीं मिला अथवा अभी अप्रकाशित है।');
+        setError(err.message || (lang === 'hi' ? 'यह पेज नहीं मिला या अभी उपलब्ध नहीं है।' : 'Page not found or unpublished.'));
       } finally {
         setLoading(false);
       }
@@ -89,7 +78,7 @@ export const DynamicPageView: React.FC<DynamicPageViewProps> = ({
   const handleShare = () => {
     if (navigator.share) {
       navigator.share({
-        title: page?.title || 'डॉ. पूजा अवस्थी',
+        title: page?.title || (lang === 'hi' ? 'डॉ. पूजा अवस्थी' : 'Dr. Pooja Awasthi'),
         text: page?.excerpt || page?.subtitle || '',
         url: window.location.href,
       }).catch(() => {});
@@ -105,10 +94,10 @@ export const DynamicPageView: React.FC<DynamicPageViewProps> = ({
       <div className="min-h-[70vh] flex flex-col items-center justify-center p-6 text-center">
         <div className="w-12 h-12 rounded-full border-4 border-[#D6B574] border-t-transparent animate-spin mb-4" />
         <h2 className="font-cinzel text-lg font-bold text-[#24152F]">
-          {lang === 'hi' ? 'वैदिक सामग्री लोड हो रही है...' : 'Loading Spiritual Content...'}
+          {lang === 'hi' ? 'जानकारी लोड हो रही है...' : 'Loading Content...'}
         </h2>
         <p className="text-xs text-[#29242E]/60 mt-1">
-          {lang === 'hi' ? 'कृपया प्रतीक्षा करें...' : 'Please wait a moment...'}
+          {lang === 'hi' ? 'बस एक पल रुकें...' : 'Please wait a moment...'}
         </p>
       </div>
     );
@@ -121,17 +110,17 @@ export const DynamicPageView: React.FC<DynamicPageViewProps> = ({
           <Compass size={32} />
         </div>
         <h2 className="font-cinzel text-2xl font-bold text-[#1E162B]">
-          {lang === 'hi' ? 'पेज उपलब्ध नहीं है (Page Not Found)' : 'Page Not Found'}
+          {lang === 'hi' ? 'पेज नहीं मिला (Page Not Found)' : 'Page Not Found'}
         </h2>
         <p className="text-xs text-[#4A4356] mt-2 leading-relaxed">
-          {error || 'यह पेज या तो हटा दिया गया है या अभी तक सार्वजनिक रूप से प्रकाशित नहीं हुआ है।'}
+          {error || (lang === 'hi' ? 'यह पेज हटा दिया गया है या अभी उपलब्ध नहीं है।' : 'This page has either been removed or is not yet published.')}
         </p>
         <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
           <button
             onClick={onBackToHome}
             className="h-10 px-5 rounded-xl bg-[#522B8A] hover:bg-[#412070] text-white text-xs font-semibold shadow-md transition-all cursor-pointer"
           >
-            ← मुख्य पृष्ठ पर लौटें (Home)
+            {lang === 'hi' ? '← होम पर वापस जाएं' : '← Home'}
           </button>
           <a
             href="https://wa.me/919105731969"
@@ -139,35 +128,59 @@ export const DynamicPageView: React.FC<DynamicPageViewProps> = ({
             rel="noopener noreferrer"
             className="h-10 px-5 flex items-center rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-semibold shadow-md transition-all"
           >
-            व्हाट्सएप पर संपर्क करें
+            {lang === 'hi' ? 'व्हाट्सएप पर बात करें' : 'Contact on WhatsApp'}
           </a>
         </div>
       </div>
     );
   }
 
+  const liveOrigin = typeof window !== 'undefined' ? window.location.origin : '';
+  const pageUrl = `${liveOrigin}/pages/${page.slug}`;
+  const articleSchemaData = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: page.seo?.metaTitle || page.title,
+    description: page.seo?.metaDescription || page.excerpt || page.subtitle || '',
+    image: page.seo?.ogImage
+      ? `${liveOrigin}${page.seo.ogImage.startsWith('/') ? '' : '/'}${page.seo.ogImage}`
+      : `${liveOrigin}/assets/aistudio/28_91acc32c.jpeg`,
+    datePublished: page.publishedAt || page.createdAt,
+    dateModified: page.updatedAt || page.createdAt,
+    author: {
+      '@type': 'Person',
+      name: page.author || 'Dr. Pooja Awasthi',
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'Dr. Pooja Awasthi Spiritual Guidance',
+    },
+    mainEntityOfPage: pageUrl,
+  };
+
   return (
-    <div className="min-h-screen bg-[#FAF8F5] text-[#1E162B] selection:bg-[#EAE2F4] selection:text-[#522B8A] pb-12">
+    <div className="min-h-screen bg-[#FAF8F5] text-[#1E162B] selection:bg-[#EAE2F4] selection:text-[#522B8A] pb-12 overflow-x-clip">
       {/* Comprehensive Dynamic SEO Head & Article Schema */}
       <SEOHead
-        title={page.seo?.metaTitle || `${page.title} | डॉ. पूजा अवस्थी — आध्यात्मिक मार्गदर्शन`}
+        title={page.seo?.metaTitle || `${page.title} | डॉ. पूजा अवस्थी`}
         description={page.seo?.metaDescription || page.excerpt || page.subtitle || `${page.title} - डॉ. पूजा अवस्थी द्वारा विशेष वैदिक अंतर्दृष्टि एवं आध्यात्मिक मार्गदर्शन।`}
-        canonical={`https://dr-pooja-awasthi-india.netlify.app/pages/${page.slug}`}
+        canonical={pageUrl}
         ogImage={page.seo?.ogImage}
         keywords={page.seo?.focusKeywords || `${page.title}, डॉ पूजा अवस्थी, वैदिक मार्गदर्शन`}
         type="article"
         publishDate={page.publishedAt || page.createdAt}
         modifiedDate={page.updatedAt}
         author="Dr. Pooja Awasthi"
+        schemaData={articleSchemaData}
         lang={lang}
       />
 
       {/* Top Breadcrumb & Share Navigation Strip */}
-      <div className="bg-[#F4F1EA] text-[#1E162B] border-b border-[#DEC38C]/60 py-3 px-4 sm:px-8 pt-24">
+      <div className="bg-[#F4F1EA] text-[#1E162B] border-b border-[#DEC38C]/60 py-3 px-4 sm:px-8 pt-28 md:pt-28">
         <div className="max-w-5xl mx-auto flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
           <Breadcrumb
             items={[
-              { label: lang === 'hi' ? 'विशेष मार्गदर्शन पृष्ठ' : 'Special Guides', path: '/' },
+              { label: lang === 'hi' ? 'विशेष जानकारी पेज' : 'Special Guides', path: '/' },
               { label: page.title }
             ]}
             onNavigateHome={onBackToHome}
@@ -177,16 +190,16 @@ export const DynamicPageView: React.FC<DynamicPageViewProps> = ({
           <div className="flex items-center gap-2 self-end sm:self-auto shrink-0">
             {page.status === 'draft' && (
               <span className="px-2 py-0.5 rounded-full bg-amber-100 text-amber-800 text-[10px] font-bold border border-amber-300">
-                ड्राफ्ट पूर्वावलोकन (Draft Mode)
+                {lang === 'hi' ? 'ड्राफ्ट प्रिव्यू (Draft)' : 'Draft Preview'}
               </span>
             )}
             <button
               onClick={handleShare}
               className="h-8 px-3 rounded-lg bg-white hover:bg-[#FBF5E6] text-[#7A5311] border border-[#DEC38C] text-xs font-semibold flex items-center gap-1.5 transition-all cursor-pointer"
-              title="पेज शेयर करें"
+              title={lang === 'hi' ? 'पेज शेयर करें' : 'Share page'}
             >
               <Share2 size={13} />
-              <span>{copiedLink ? 'लिंक कॉपी हुआ!' : 'शेयर करें'}</span>
+              <span>{copiedLink ? (lang === 'hi' ? 'लिंक कॉपी हुआ!' : 'Copied!') : (lang === 'hi' ? 'शेयर करें' : 'Share')}</span>
             </button>
           </div>
         </div>
@@ -201,7 +214,7 @@ export const DynamicPageView: React.FC<DynamicPageViewProps> = ({
             return (
               <section
                 key={hero.id}
-                className="rounded-3xl p-8 sm:p-14 text-center text-[#1E162B] relative overflow-hidden bg-cover bg-center shadow-lg border-2 border-[#DEC38C]"
+                className="rounded-3xl p-5 sm:p-10 lg:p-14 text-center text-[#1E162B] relative overflow-hidden bg-cover bg-center shadow-lg border-2 border-[#DEC38C]"
                 style={{
                   backgroundImage: hero.bgImage
                     ? `linear-gradient(rgba(255, 255, 255, 0.90), rgba(250, 248, 245, 0.92)), url(${hero.bgImage})`
@@ -500,18 +513,20 @@ export const DynamicPageView: React.FC<DynamicPageViewProps> = ({
                 <div className="space-y-2 text-center md:text-left relative z-10">
                   <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-[#FBF5E6] border border-[#DEC38C] text-[#7A5311] text-xs font-semibold">
                     <Sparkles size={11} className="text-[#B48228]" />
-                    <span>व्यक्तिगत परामर्श स्लॉट</span>
+                    <span>{lang === 'hi' ? 'पर्सनल परामर्श स्लॉट' : 'Private Consultation Slot'}</span>
                   </span>
                   <h3 className="font-cinzel text-xl sm:text-2xl font-bold text-[#1E162B]">
                     {bc.serviceName}
                   </h3>
                   <p className="text-xs text-[#4A4356] max-w-xl leading-relaxed">
-                    {bc.description || 'डॉ. पूजा अवस्थी से सीधा संवाद, संपूर्ण वैदिक परीक्षण व समाधान।'}
+                    {bc.description || (lang === 'hi'
+                      ? 'डॉ. पूजा अवस्थी से सीधी बात, पूरी जांच और सही सलाह।'
+                      : 'Direct 1-on-1 guidance, complete Vedic analysis & practical solutions with Dr. Pooja Awasthi.')}
                   </p>
                   <div className="flex flex-wrap items-center justify-center md:justify-start gap-4 text-xs text-[#7A5311] pt-1 font-semibold">
-                    <span>⏱ {bc.duration || '60–90 मिनट'}</span>
+                    <span>⏱ {bc.duration || (lang === 'hi' ? '60–90 मिनट' : '60–90 mins')}</span>
                     <span>•</span>
-                    <span>🔒 100% गोपनीय व व्यक्तिगत</span>
+                    <span>🔒 {lang === 'hi' ? '100% गोपनीय और पर्सनल' : '100% Confidential & Private'}</span>
                   </div>
                 </div>
 
@@ -526,7 +541,7 @@ export const DynamicPageView: React.FC<DynamicPageViewProps> = ({
                     }}
                     className="h-11 px-8 rounded-xl bg-[#522B8A] hover:bg-[#412070] text-white font-bold text-xs tracking-wide shadow-md transition-all flex items-center gap-2 cursor-pointer"
                   >
-                    <span>परामर्श बुक करें</span>
+                    <span>{lang === 'hi' ? 'परामर्श बुक करें' : 'Book Consultation'}</span>
                     <span>→</span>
                   </button>
                 </div>
@@ -564,9 +579,9 @@ export const DynamicPageView: React.FC<DynamicPageViewProps> = ({
         {/* Social Sharing & Promotion Block */}
         <div className="pt-4">
           <SocialShare
-            title={`${page.title} — डॉ. पूजा अवस्थी`}
+            title={lang === 'hi' ? `${page.title} — डॉ. पूजा अवस्थी` : `${page.title} — Dr. Pooja Awasthi`}
             text={page.excerpt || page.subtitle || ''}
-            url={`https://dr-pooja-awasthi-india.netlify.app/pages/${page.slug}`}
+            url={pageUrl}
             lang={lang}
           />
         </div>
@@ -578,7 +593,7 @@ export const DynamicPageView: React.FC<DynamicPageViewProps> = ({
             className="h-11 inline-flex items-center gap-2 px-6 rounded-xl bg-[#522B8A] hover:bg-[#412070] text-white font-semibold text-xs shadow-md transition-all cursor-pointer"
           >
             <ArrowLeft size={16} />
-            <span>← मुख्य वेबसाइट पर लौटें</span>
+            <span>{lang === 'hi' ? 'होम पेज पर वापस जाएं' : 'Back to Main Website'}</span>
           </button>
 
           <a
@@ -588,7 +603,7 @@ export const DynamicPageView: React.FC<DynamicPageViewProps> = ({
             className="h-11 inline-flex items-center gap-2 px-6 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white font-semibold text-xs shadow-md transition-all"
           >
             <MessageSquare size={16} />
-            <span>व्हाट्सएप पर सीधा परामर्श (Direct Booking)</span>
+            <span>{lang === 'hi' ? 'व्हाट्सएप पर सीधी बुकिंग' : 'Direct WhatsApp Booking'}</span>
           </a>
         </div>
       </div>

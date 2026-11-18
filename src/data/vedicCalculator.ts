@@ -27,218 +27,218 @@ export const VEDIC_NUMBERS_MAP: Record<number, VedicNumberProfile> = {
   1: {
     number: 1,
     title: "The Pioneer, Sovereign & Trailblazer",
-    title_hi: "प्रणेता, संप्रभु एवं पथप्रदर्शक",
+    title_hi: "नेतृत्व करने वाले, आत्मनिर्भर व राह दिखाने वाले",
     ruler: "Sun (Surya Dev)",
     ruler_hi: "सूर्य देव",
     archetype: "The Solar Visionary",
-    archetype_hi: "सौर दूरदर्शी",
+    archetype_hi: "तेजस्वी और दूर की सोच रखने वाले",
     element: "Water in Lo Shu / Fire in Vedic",
     element_hi: "लो-शू में जल / वैदिक में अग्नि",
     direction: "North (Lo Shu) / East (Vedic)",
     direction_hi: "उत्तर (लो-शू) / पूर्व (वैदिक)",
     luckyColors: "Gold, Copper, Ruby Red, Saffron",
-    luckyColors_hi: "सुनहरा, तांबा, गहरा लाल, केसरिया",
+    luckyColors_hi: "सुनहरा, तांबा रंग, गहरा लाल, केसरिया",
     luckyDays: "Sunday, Monday",
     luckyDays_hi: "रविवार, सोमवार",
     harmonicMantra: "Om Hram Hreem Hroum Sah Suryaya Namaha (ॐ ह्रां ह्रीं ह्रौं सः सूर्याय नमः)",
     gemstone: "Ruby (माणिक्य)",
-    gemstone_hi: "माणिक्य (Ruby) अथवा गार्नेट",
+    gemstone_hi: "माणिक्य (Ruby) या गार्नेट",
     rudraksha: "1-Mukhi or 12-Mukhi",
-    rudraksha_hi: "१-मुखी अथवा १२-मुखी रुद्राक्ष",
+    rudraksha_hi: "1-मुखी या 12-मुखी रुद्राक्ष",
     description: "Blessed with the vitalizing brilliance of Surya, you possess innate leadership, strong willpower, and executive charisma to initiate new ventures.",
-    description_hi: "भगवान सूर्य के तेज से संपन्न, आपमें जन्मजात नेतृत्व क्षमता, दृढ़ इच्छाशक्ति और नई पहलों को साकार करने का अद्वितीय ओज है।"
+    description_hi: "सूर्य देव के प्रभाव से आपमें जन्म से ही लीडर बनने के गुण, मजबूत इरादा और नए काम की शुरुआत करने की अच्छी क्षमता होती है।"
   },
   2: {
     number: 2,
     title: "The Empath, Intuitive & Harmonizer",
-    title_hi: "संवेदनशील, अंतर्ज्ञानी एवं शांतिदूत",
+    title_hi: "संवेदनशील, शांत और दिल से जुड़ने वाले",
     ruler: "Moon (Chandra Dev)",
     ruler_hi: "चन्द्र देव",
     archetype: "The Lunar Mystic",
-    archetype_hi: "चंद्र रहस्यवादी",
+    archetype_hi: "शांत स्वभाव और गहरी समझ",
     element: "Earth in Lo Shu / Water in Vedic",
     element_hi: "लो-शू में पृथ्वी / वैदिक में जल",
     direction: "South-West (Lo Shu) / North-West (Vedic)",
     direction_hi: "दक्षिण-पश्चिम (लो-शू) / उत्तर-पश्चिम (वैदिक)",
     luckyColors: "Pearl White, Silver, Cream, Pale Green",
-    luckyColors_hi: "मोती जैसा सफेद, चांदी, क्रीम, हल्का हरा",
+    luckyColors_hi: "सफेद, सिल्वर, क्रीम, हल्का हरा",
     luckyDays: "Monday, Sunday",
     luckyDays_hi: "सोमवार, रविवार",
     harmonicMantra: "Om Shram Shreem Shroum Sah Chandraya Namaha (ॐ श्रां श्रीं श्रौं सः चन्द्राय नमः)",
     gemstone: "Pearl / Moonstone (मोती / चंद्रकांत मणि)",
-    gemstone_hi: "सच्चा मोती अथवा मूनस्टोन",
+    gemstone_hi: "सच्चा मोती या मूनस्टोन",
     rudraksha: "2-Mukhi Rudraksha",
-    rudraksha_hi: "२-मुखी रुद्राक्ष (अर्धनारीश्वर)",
+    rudraksha_hi: "2-मुखी रुद्राक्ष",
     description: "Under Chandra's calming radiance, your gift lies in deep emotional intelligence, diplomacy, intuitive foresight, and collaborative unity.",
-    description_hi: "चंद्रमा की शीतल आभा से पोषित, आपमें गहरी संवेदनशीलता, अंतर्ज्ञान, सौहार्द और रिश्तों को सहेजने की अलौकिक कला है।"
+    description_hi: "चंद्रमा की शांत ऊर्जा के कारण आप दूसरों की भावनाओं को जल्दी समझते हैं, मिलनसार हैं और रिश्तों को जोड़कर रखना बखूबी जानते हैं।"
   },
   3: {
     number: 3,
     title: "The Wise Mentor, Creator & Communicator",
-    title_hi: "ज्ञानी मार्गदर्शक, सृजनशील एवं दार्शनिक",
+    title_hi: "समझदार सलाहकार, रचनात्मक और ज्ञानी",
     ruler: "Jupiter (Brihaspati / Guru)",
     ruler_hi: "बृहस्पति देव (गुरु)",
     archetype: "The Sacred Preceptor",
-    archetype_hi: "पवित्र गुरु व शिक्षक",
+    archetype_hi: "सही सलाह देने वाले गुरु",
     element: "Wood (Lo Shu) / Ether (Akash Vedic)",
     element_hi: "काष्ठ तत्व (लो-शू) / आकाश तत्व (वैदिक)",
     direction: "East (Lo Shu) / North-East (Vedic)",
     direction_hi: "पूर्व (लो-शू) / उत्तर-पूर्व (वैदिक)",
     luckyColors: "Bright Yellow, Golden Amber, Ochre",
-    luckyColors_hi: "चमकीला पीला, सुनहरा, गेरुआ",
+    luckyColors_hi: "चमकीला पीला, सुनहरा, हल्का नारंगी",
     luckyDays: "Thursday, Tuesday",
     luckyDays_hi: "गुरुवार, मंगलवार",
     harmonicMantra: "Om Gram Greem Groum Sah Guruve Namaha (ॐ ग्रां ग्रीं ग्रौं सः गुरवे नमः)",
     gemstone: "Yellow Sapphire (पुखराज)",
-    gemstone_hi: "पीला पुखराज (Yellow Sapphire) या सुनहला",
+    gemstone_hi: "पीला पुखराज या सुनहला",
     rudraksha: "5-Mukhi Rudraksha",
-    rudraksha_hi: "५-मुखी रुद्राक्ष (गुरु कृपा)",
+    rudraksha_hi: "5-मुखी रुद्राक्ष",
     description: "Guided by Brihaspati, you possess expansive wisdom, expressive articulation, optimistic foresight, and an innate capacity to advise and uplift others.",
-    description_hi: "गुरु बृहस्पति की कृपा से आप ज्ञान, उच्च विवेक, रचनात्मक अभिव्यक्ति और दूसरों को सही मार्ग दिखाने में अद्वितीय हैं।"
+    description_hi: "गुरु बृहस्पति की कृपा से आपकी समझ बहुत गहरी है। आप अपनी बातों से दूसरों को सही राह दिखाने और प्रेरित करने में बहुत आगे रहते हैं।"
   },
   4: {
     number: 4,
     title: "The Architect, Strategist & Rebel",
-    title_hi: "रणनीतिकार, संगठक एवं क्रांतिदर्शी",
+    title_hi: "पक्की योजना बनाने वाले, मेहनती और अलग सोच वाले",
     ruler: "Rahu (North Lunar Node)",
     ruler_hi: "राहु देव",
     archetype: "The Structural Reformer",
-    archetype_hi: "व्यवस्था सुधारक",
+    archetype_hi: "नए बदलाव लाने वाले",
     element: "Wood in Lo Shu / Airy Shadow in Vedic",
-    element_hi: "लो-शू में काष्ठ / वैदिक में वायु-छाया",
+    element_hi: "लो-शू में काष्ठ / वैदिक में वायु तत्व",
     direction: "South-East (Lo Shu) / South-West (Vedic)",
     direction_hi: "दक्षिण-पूर्व (लो-शू) / दक्षिण-पश्चिम (वैदिक)",
     luckyColors: "Electric Blue, Charcoal Grey, Khaki",
-    luckyColors_hi: "गहरा नीला, धूसर (ग्रे), खाकी",
+    luckyColors_hi: "गहरा नीला, ग्रे, खाकी रंग",
     luckyDays: "Sunday, Saturday",
     luckyDays_hi: "रविवार, शनिवार",
     harmonicMantra: "Om Bhram Bhreem Bhroum Sah Rahave Namaha (ॐ भ्रां भ्रीं भ्रौं सः राहवे नमः)",
     gemstone: "Hessonite Garnet (गोमेद)",
-    gemstone_hi: "गोमेद (Hessonite Garnet)",
+    gemstone_hi: "गोमेद (Hessonite)",
     rudraksha: "8-Mukhi Rudraksha",
-    rudraksha_hi: "८-मुखी रुद्राक्ष (विघ्नहर्ता गणेश)",
+    rudraksha_hi: "8-मुखी रुद्राक्ष",
     description: "Influenced by Rahu, you bring revolutionary thinking, unconventional mastery, acute technical strategy, and perseverance against all odds.",
-    description_hi: "राहु के प्रभाव से आप लीक से हटकर सोचने वाले, सटीक रणनीतिकार और अप्रत्याशित चुनौतियों को अवसर में बदलने वाले हैं।"
+    description_hi: "राहु के प्रभाव से आप भीड़ से अलग सोचते हैं, अच्छी योजना बनाते हैं और मुश्किल हालात को भी अपने पक्ष में बदलना जानते हैं।"
   },
   5: {
     number: 5,
     title: "The Alchemist, Communicator & Free Spirit",
-    title_hi: "वाकपटु, गतिशील एवं बहुमुखी प्रतिभा",
+    title_hi: "बोलने में कुशल, तेज दिमाग और हर माहौल में ढलने वाले",
     ruler: "Mercury (Budh Dev)",
     ruler_hi: "बुध देव",
     archetype: "The Mercurial Polymath",
-    archetype_hi: "बुध प्रतिभा",
+    archetype_hi: "बुद्धिमान और बहुमुखी प्रतिभा",
     element: "Earth (Prithvi / Center)",
-    element_hi: "पृथ्वी तत्व (ब्रह्मस्थान / मध्य)",
+    element_hi: "पृथ्वी तत्व (केंद्र / मध्य)",
     direction: "Center / Brahmasthan (लो-शू व वैदिक)",
-    direction_hi: "केंद्र / ब्रह्मस्थान (Center)",
+    direction_hi: "केंद्र / बीच का स्थान",
     luckyColors: "Emerald Green, Mint, Turquoise",
-    luckyColors_hi: "पन्ना हरा, हल्का हरा, फिरोजी",
+    luckyColors_hi: "हरा, हल्का हरा, फिरोजी",
     luckyDays: "Wednesday, Friday",
     luckyDays_hi: "बुधवार, शुक्रवार",
     harmonicMantra: "Om Bram Breem Broum Sah Budhaya Namaha (ॐ ब्रां ब्रीं ब्रौं सः बुधाय नमः)",
     gemstone: "Emerald (पन्ना)",
-    gemstone_hi: "पन्ना (Emerald) अथवा ओनेक्स",
+    gemstone_hi: "पन्ना (Emerald) या ओनेक्स",
     rudraksha: "4-Mukhi Rudraksha",
-    rudraksha_hi: "४-मुखी रुद्राक्ष (ब्रह्म चेतना)",
+    rudraksha_hi: "4-मुखी रुद्राक्ष",
     description: "Governed by Budh, you excel in commercial acumen, sharp analytical intellect, adaptive versatility, and engaging interpersonal communication.",
-    description_hi: "बुध देव की कृपा से आपकी बुद्धि अत्यंत कुशाग्र, व्यापार में पारखी और किसी भी नए वातावरण में शीघ्र सामंजस्य बैठाने वाली है।"
+    description_hi: "बुध देव की कृपा से आपका दिमाग बहुत तेज चलता है। बिजनेस की समझ, लोगों से बातचीत और नए बदलावों को अपनाना आपकी खास ताकत है।"
   },
   6: {
     number: 6,
     title: "The Harmonizer, Healer & Aesthetician",
-    title_hi: "सौंदर्य, प्रेम, संतुलन एवं कल्याणकर्ता",
+    title_hi: "प्रेम, कला, परिवार और सुख-शांति चाहने वाले",
     ruler: "Venus (Shukra Dev)",
     ruler_hi: "शुक्र देव",
     archetype: "The Sacred Harmonizer",
-    archetype_hi: "सौंदर्य व कल्याणकर्ता",
+    archetype_hi: "सौंदर्य और सुख लाने वाले",
     element: "Metal in Lo Shu / Water in Vedic",
     element_hi: "लो-शू में धातु / वैदिक में जल",
     direction: "North-West (Lo Shu) / South-East (Vedic)",
     direction_hi: "उत्तर-पश्चिम (लो-शू) / दक्षिण-पूर्व (वैदिक)",
     luckyColors: "Rose Pink, Silk White, Sky Blue",
-    luckyColors_hi: "गुलाबी, श्वेत (सफेद), आसमानी नीला",
+    luckyColors_hi: "गुलाबी, सफेद, आसमानी नीला",
     luckyDays: "Friday, Wednesday",
     luckyDays_hi: "शुक्रवार, बुधवार",
     harmonicMantra: "Om Dram Dreem Droum Sah Shukraya Namaha (ॐ द्रां द्रीं द्रौं सः शुक्राय नमः)",
     gemstone: "Diamond / White Zircon / Opal",
-    gemstone_hi: "हीरा, सफेद जरकन अथवा ओपल",
+    gemstone_hi: "हीरा, सफेद जरकन या ओपल",
     rudraksha: "6-Mukhi Rudraksha",
-    rudraksha_hi: "६-मुखी रुद्राक्ष (कार्तिकेय रूप)",
+    rudraksha_hi: "6-मुखी रुद्राक्ष",
     description: "Under Shukra's radiant blessing, your presence brings soothing beauty and healing comfort. You have natural aesthetic genius and deep familial fidelity.",
-    description_hi: "शुक्र देव के पावन आशीष से आपका व्यक्तित्व आकर्षक, कलात्मक, करुणामयी और दूसरों के जीवन में सुख-शांति लाने वाला है।"
+    description_hi: "शुक्र देव के आशीर्वाद से आपका स्वभाव आकर्षक, प्यार भरा और कलात्मक है। आप अपने परिवार और आसपास के लोगों के जीवन में खुशी लाते हैं।"
   },
   7: {
     number: 7,
     title: "The Seeker, Mystic & Truth Finder",
-    title_hi: "तत्वज्ञानी, साधक एवं शोधकर्ता",
+    title_hi: "गहरी सोच वाले, सच्चाई खोजने वाले और आध्यात्मिक",
     ruler: "Ketu (South Lunar Node)",
     ruler_hi: "केतु देव",
     archetype: "The Introspective Sage",
-    archetype_hi: "अंतर्मुखी ज्ञानी",
+    archetype_hi: "शांत और खोजी स्वभाव",
     element: "Metal in Lo Shu / Fiery Shadow in Vedic",
-    element_hi: "लो-शू में धातु / वैदिक में अग्नि-छाया",
+    element_hi: "लो-शू में धातु / वैदिक में अग्नि तत्व",
     direction: "West (Lo Shu) / North-East (Vedic)",
     direction_hi: "पश्चिम (लो-शू) / उत्तर-पूर्व (वैदिक)",
     luckyColors: "Sea Green, Light Yellow, Pearl Grey",
-    luckyColors_hi: "समुद्री हरा, हल्का पीला, मोती जैसा स्लेटी",
+    luckyColors_hi: "हल्का हरा, हल्का पीला, स्लेटी",
     luckyDays: "Monday, Thursday",
     luckyDays_hi: "सोमवार, गुरुवार",
     harmonicMantra: "Om Sram Sreem Sroum Sah Ketave Namaha (ॐ स्रां स्रीं स्रौं सः केतवे नमः)",
     gemstone: "Cat's Eye (लहसुनिया)",
-    gemstone_hi: "वैदूर्य / लहसुनिया (Cat's Eye)",
+    gemstone_hi: "लहसुनिया (Cat's Eye)",
     rudraksha: "9-Mukhi Rudraksha",
-    rudraksha_hi: "९-मुखी रुद्राक्ष (नवदुर्गा शक्ति)",
+    rudraksha_hi: "9-मुखी रुद्राक्ष",
     description: "Charged with Ketu's introspective current, you penetrate beyond surface illusions. You possess profound spiritual inclinations and metaphysical depth.",
-    description_hi: "केतु के प्रभाव से आप बाहरी दिखावे से दूर, गूढ़ सत्यों को जानने वाले, उच्च आध्यात्मिक दृष्टि और अंतर्मुखी साधक हैं।"
+    description_hi: "केतु के प्रभाव से आप दिखावे से दूर रहकर हर बात की गहराई में जाते हैं। आपका झुकाव रिसर्च, ध्यान और आध्यात्मिक ज्ञान की ओर ज्यादा होता है।"
   },
   8: {
     number: 8,
     title: "The Sovereign, Karmic Judge & Material Master",
-    title_hi: "कर्मयोगी, न्यायी एवं संगठन शिल्पी",
+    title_hi: "मेहनती, न्यायप्रिय और बड़े काम संभालने वाले",
     ruler: "Saturn (Shani Dev)",
     ruler_hi: "शनि देव",
     archetype: "The Karmic Pillar",
-    archetype_hi: "कर्म न्याय स्तंभ",
+    archetype_hi: "धैर्य और पक्के इरादे वाले",
     element: "Earth in Lo Shu / Air in Vedic",
     element_hi: "लो-शू में पृथ्वी / वैदिक में वायु",
     direction: "North-East (Lo Shu) / West (Vedic)",
     direction_hi: "उत्तर-पूर्व (लो-शू) / पश्चिम (वैदिक)",
     luckyColors: "Midnight Blue, Black, Dark Violet",
-    luckyColors_hi: "गहरा नीला, काला, गहरा बैंगनी",
+    luckyColors_hi: "गहरा नीला, काला, बैंगनी",
     luckyDays: "Saturday, Wednesday",
     luckyDays_hi: "शनिवार, बुधवार",
     harmonicMantra: "Om Pram Preem Proum Sah Shanaishcharaya Namaha (ॐ प्रां प्रीं प्रौं सः शनैश्चराय नमः)",
     gemstone: "Blue Sapphire / Amethyst (नीलम / जमुनिया)",
-    gemstone_hi: "नीलम (Blue Sapphire) अथवा जमुनिया",
+    gemstone_hi: "नीलम या जमुनिया (Amethyst)",
     rudraksha: "7-Mukhi or 14-Mukhi",
-    rudraksha_hi: "७-मुखी रुद्राक्ष (महालक्ष्मी स्वरूप)",
+    rudraksha_hi: "7-मुखी या 14-मुखी रुद्राक्ष",
     description: "Tempered by Shani Dev, you represent endurance, justice, institutional authority, and massive long-term accomplishments forged through discipline.",
-    description_hi: "शनि देव की छत्रछाया में आप धैर्य, कर्मठता, न्यायप्रियता और दीर्घकालिक परिश्रम से विशाल उपलब्धियां हासिल करने वाले कर्मयोगी हैं।"
+    description_hi: "शनि देव के प्रभाव से आपमें गजब का धैर्य, मेहनत और सच का साथ देने की ताकत है। आप अपनी लगन से धीरे-धीरे बड़ी सफलता हासिल करते हैं।"
   },
   9: {
     number: 9,
     title: "The Warrior, Humanitarian & Transmuter",
-    title_hi: "साहसी, परोपकारी एवं ऊर्जावान सेनानी",
+    title_hi: "साहसी, दूसरों की मदद करने वाले और ऊर्जा से भरपूर",
     ruler: "Mars (Mangal Dev)",
     ruler_hi: "मंगल देव",
     archetype: "The Noble Protector",
-    archetype_hi: "धर्मरक्षक योद्धा",
+    archetype_hi: "हिम्मत और सेवा भावना वाले",
     element: "Fire (Agni)",
     element_hi: "अग्नि तत्व",
     direction: "South (Lo Shu / Vedic)",
-    direction_hi: "दक्षिण (South)",
+    direction_hi: "दक्षिण दिशा",
     luckyColors: "Crimson Red, Scarlet, Coral, Maroon",
-    luckyColors_hi: "लाल, गहरा लाल, मूंगा रंग, कत्थई",
+    luckyColors_hi: "लाल, गहरा लाल, मूंगा रंग, मैरून",
     luckyDays: "Tuesday, Thursday",
     luckyDays_hi: "मंगलवार, गुरुवार",
     harmonicMantra: "Om Kram Kreem Kroum Sah Bhaumaya Namaha (ॐ क्रां क्रीं क्रौं सः भौमाय नमः)",
     gemstone: "Red Coral (लाल मूंगा)",
-    gemstone_hi: "इटालियन लाल मूंगा (Red Coral)",
+    gemstone_hi: "लाल मूंगा (Red Coral)",
     rudraksha: "3-Mukhi Rudraksha",
-    rudraksha_hi: "३-मुखी रुद्राक्ष (अग्नि स्वरूप)",
+    rudraksha_hi: "3-मुखी रुद्राक्ष",
     description: "Infused with Mangal's boundless valor, you are fierce, protective, idealistic, and driven to champion noble causes and protect the vulnerable.",
-    description_hi: "मंगल देव के असीम साहस से युक्त, आप निर्भीक, ऊर्जावान, परोपकारी और किसी भी संकट में डटकर खड़े रहने वाले साहसी नायक हैं।"
+    description_hi: "मंगल देव की ऊर्जा के कारण आप निडर, उत्साही और दूसरों की मदद के लिए हमेशा तैयार रहते हैं। मुश्किल समय में भी आप डटकर खड़े रहते हैं।"
   }
 };
 
@@ -357,11 +357,11 @@ export function calculateKuaProfile(
     if (gender === 'male') {
       finalKua = 2; // Male 5 converts to 2 (Kun Earth, South-West)
       formulaProof += ` -> Rule of 5: Male 5 converts to 2 (Kun Earth / South-West)`;
-      formulaProof_hi += ` -> अंक ५ का विशेष नियम: पुरुष के लिए ५ बदलकर २ (कुन पृथ्वी / दक्षिण-पश्चिम) बनता है।`;
+      formulaProof_hi += ` -> अंक 5 का नियम: पुरुष के लिए 5 बदलकर 2 (दक्षिण-पश्चिम) बनता है।`;
     } else {
       finalKua = 8; // Female 5 converts to 8 (Gen Earth, North-East)
       formulaProof += ` -> Rule of 5: Female 5 converts to 8 (Gen Earth / North-East)`;
-      formulaProof_hi += ` -> अंक ५ का विशेष नियम: महिला के लिए ५ बदलकर ८ (गेन पर्वत पृथ्वी / उत्तर-पूर्व) बनता है।`;
+      formulaProof_hi += ` -> अंक 5 का नियम: महिला के लिए 5 बदलकर 8 (उत्तर-पूर्व) बनता है।`;
     }
   }
 
@@ -711,6 +711,14 @@ export interface MissingNumberRemedy {
     vastuAction: string;
     mantra: string;
   };
+  remedies_hi: {
+    yantra: string;
+    rudraksha: string;
+    gemstone: string;
+    colorTherapy: string;
+    vastuAction: string;
+    mantra: string;
+  };
 }
 
 export const MISSING_NUMBERS_REMEDIES: Record<number, MissingNumberRemedy> = {
@@ -721,9 +729,9 @@ export const MISSING_NUMBERS_REMEDIES: Record<number, MissingNumberRemedy> = {
     element: "Water / Fire",
     element_hi: "जल / अग्नि",
     direction: "North / East",
-    direction_hi: "उत्तर (Lo Shu) / पूर्व (Vedic)",
+    direction_hi: "उत्तर (लो-शू) / पूर्व (वैदिक)",
     effects: "Lack of career clarity, low self-esteem, hesitation in asserting oneself, weak leadership, communication bottlenecks.",
-    effects_hi: "करियर में दिशाहीनता, आत्मविश्वास की कमी, स्वयं को अभिव्यक्त करने में संकोच, नेतृत्व क्षमता का अभाव और पिता से मतभेद।",
+    effects_hi: "करियर में सही दिशा न मिलना, आत्मविश्वास में कमी, अपनी बात रखने में झिझक और नेतृत्व करने में संकोच।",
     remedies: {
       yantra: "Surya Yantra in East / Brass Surya idol on entrance",
       rudraksha: "1-Mukhi or 12-Mukhi Rudraksha",
@@ -731,6 +739,14 @@ export const MISSING_NUMBERS_REMEDIES: Record<number, MissingNumberRemedy> = {
       colorTherapy: "Incorporate Ruby Red, Gold, Saffron; avoid excess black",
       vastuAction: "Place a small clean water fountain or aquatic imagery in North; ensure North is clutter-free. Offer water (Arghya) to Sun at sunrise.",
       mantra: "Om Suryaya Namaha (ॐ सूर्याय नमः) 108 times on Sundays"
+    },
+    remedies_hi: {
+      yantra: "घर की पूर्व दिशा में सूर्य यंत्र या पीतल का सूर्य लगाएं",
+      rudraksha: "1-मुखी या 12-मुखी रुद्राक्ष धारण करें",
+      gemstone: "तांबे या सोने में माणिक्य (Ruby) या गार्नेट पहनें",
+      colorTherapy: "लाल, सुनहरा और केसरिया रंग ज्यादा पहनें; काले रंग से बचें",
+      vastuAction: "उत्तर दिशा को साफ-सुथरा रखें और वहां पानी का छोटा झरना या बहते पानी की तस्वीर लगाएं। रोज सुबह उगते सूरज को जल चढ़ाएं।",
+      mantra: "रविवार को 108 बार 'ॐ सूर्याय नमः' का जाप करें"
     }
   },
   2: {
@@ -740,9 +756,9 @@ export const MISSING_NUMBERS_REMEDIES: Record<number, MissingNumberRemedy> = {
     element: "Earth (SW) / Water",
     element_hi: "पृथ्वी (दक्षिण-पश्चिम) / जल",
     direction: "South-West / North-West",
-    direction_hi: "दक्षिण-पश्चिम (Lo Shu) / उत्तर-पश्चिम (Vedic)",
+    direction_hi: "दक्षिण-पश्चिम (लो-शू) / उत्तर-पश्चिम (वैदिक)",
     effects: "Emotional instability, mood swings, insecurity in partnerships, lack of patience, relationship discord.",
-    effects_hi: "भावनात्मक अस्थिरता, रिश्तों में अविश्वास, अधीरता, मानसिक तनाव, माता के स्वास्थ्य की चिंता और दांपत्य में तालमेल की कमी।",
+    effects_hi: "मन का जल्दी परेशान होना, मूड बदलना, रिश्तों में अनबन, धैर्य की कमी और मानसिक तनाव।",
     remedies: {
       yantra: "Chandra Yantra / Sri Yantra in North-West",
       rudraksha: "2-Mukhi Rudraksha (Ardhanarishwara)",
@@ -750,6 +766,14 @@ export const MISSING_NUMBERS_REMEDIES: Record<number, MissingNumberRemedy> = {
       colorTherapy: "Wear Pearl White, Silver, Light Cream colors on Mondays",
       vastuAction: "Place a pair of Rose Quartz crystals or ceramic earth artifact in South-West to stabilize marital harmony. Respect motherly figures.",
       mantra: "Om Som Somaya Namaha (ॐ सों सोमाय नमः)"
+    },
+    remedies_hi: {
+      yantra: "उत्तर-पश्चिम दिशा में चंद्र यंत्र या श्री यंत्र रखें",
+      rudraksha: "2-मुखी रुद्राक्ष पहनें",
+      gemstone: "चांदी की अंगूठी में असली मोती या मूनस्टोन सबसे छोटी उंगली में पहनें",
+      colorTherapy: "सोमवार को सफेद, सिल्वर या हल्का क्रीम रंग पहनें",
+      vastuAction: "दक्षिण-पश्चिम कोने में रोज़ क्वार्ट्ज़ का जोड़ा या मिट्टी का सजावटी सामान रखें। मां और घर की महिलाओं का सम्मान करें।",
+      mantra: "सोमवार को 'ॐ सों सोमाय नमः' का जाप करें"
     }
   },
   3: {
@@ -759,9 +783,9 @@ export const MISSING_NUMBERS_REMEDIES: Record<number, MissingNumberRemedy> = {
     element: "Wood (East) / Ether",
     element_hi: "काष्ठ (पूर्व) / आकाश",
     direction: "East / North-East",
-    direction_hi: "पूर्व (Lo Shu) / उत्तर-पूर्व (Vedic)",
+    direction_hi: "पूर्व (लो-शू) / उत्तर-पूर्व (वैदिक)",
     effects: "Difficulty focusing on higher studies, indecisiveness, absence of wise mentorship, delayed creative output.",
-    effects_hi: "ज्ञान व विवेक में असमंजस, उच्च शिक्षा में बाधा, योग्य गुरु या मार्गदर्शक का अभाव, निर्णय न ले पाना एवं रचनात्मकता में कमी।",
+    effects_hi: "पढ़ाई में मन न लगना, सही फैसला लेने में दिक्कत, अच्छे सलाहकार की कमी और काम अटकना।",
     remedies: {
       yantra: "Brihaspati Yantra / Golden Vishnu Yantra",
       rudraksha: "5-Mukhi Rudraksha mala",
@@ -769,6 +793,14 @@ export const MISSING_NUMBERS_REMEDIES: Record<number, MissingNumberRemedy> = {
       colorTherapy: "Wear Bright Yellow, Ochre, Golden fabrics on Thursdays",
       vastuAction: "Place fresh green bamboo plants or Tulsi in East zone. Apply saffron/turmeric tilak on forehead daily. Respect teachers and elders.",
       mantra: "Om Gram Greem Groum Sah Guruve Namaha (ॐ ग्रां ग्रीं ग्रौं सः गुरवे नमः)"
+    },
+    remedies_hi: {
+      yantra: "बृहस्पति यंत्र या पीतल का विष्णु यंत्र पूजा घर में रखें",
+      rudraksha: "5-मुखी रुद्राक्ष की माला या दाना धारण करें",
+      gemstone: "सोने या पीतल में पीला पुखराज या सुनहला (Citrine) पहनें",
+      colorTherapy: "गुरुवार को पीला या सुनहरा रंग पहनें",
+      vastuAction: "पूर्व दिशा में हरा पौधा या तुलसी लगाएं। रोज माथे पर हल्दी या केसर का तिलक लगाएं। गुरु व बड़ों का सम्मान करें।",
+      mantra: "गुरुवार को 'ॐ ग्रां ग्रीं ग्रौं सः गुरवे नमः' का जाप करें"
     }
   },
   4: {
@@ -776,11 +808,11 @@ export const MISSING_NUMBERS_REMEDIES: Record<number, MissingNumberRemedy> = {
     planet: "Rahu",
     planet_hi: "राहु देव",
     element: "Wood (SE) / Airy Shadow",
-    element_hi: "काष्ठ (दक्षिण-पूर्व) / वायु-छाया",
+    element_hi: "काष्ठ (दक्षिण-पूर्व) / वायु",
     direction: "South-East / South-West",
-    direction_hi: "दक्षिण-पूर्व (Lo Shu) / दक्षिण-पश्चिम (Vedic)",
+    direction_hi: "दक्षिण-पूर्व (लो-शू) / दक्षिण-पश्चिम (वैदिक)",
     effects: "Financial discipline leaks, impulsive expenditure, disorganization, difficulty structuring business contracts.",
-    effects_hi: "धन का अनायास खर्च, आर्थिक अनुशासन की कमी, अव्यवस्थित जीवनशैली, कानूनी या कागजी अड़चनें और अप्रत्याशित वित्तीय उतार-चढ़ाव।",
+    effects_hi: "बिना वजह पैसे खर्च होना, बचत न हो पाना, कामों का बिखराव और पैसों के मामले में उतार-चढ़ाव।",
     remedies: {
       yantra: "Rahu Yantra / Kuber Yantra in South-East",
       rudraksha: "8-Mukhi Rudraksha",
@@ -788,6 +820,14 @@ export const MISSING_NUMBERS_REMEDIES: Record<number, MissingNumberRemedy> = {
       colorTherapy: "Incorporate Electric Blue, Smoke Grey, Khaki accents",
       vastuAction: "Place a 4-rod wooden wind chime or lush healthy Money Plant in South-East (Wealth corner). Keep South-East clean and well-lit.",
       mantra: "Om Bhram Bhreem Bhroum Sah Rahave Namaha (ॐ भ्रां भ्रीं भ्रौं सः राहवे नमः)"
+    },
+    remedies_hi: {
+      yantra: "दक्षिण-पूर्व दिशा में राहु यंत्र या कुबेर यंत्र रखें",
+      rudraksha: "8-मुखी रुद्राक्ष धारण करें",
+      gemstone: "पंचधातु में गोमेद (सलाह लेकर) धारण करें",
+      colorTherapy: "नीला, ग्रे और खाकी रंगों का इस्तेमाल बढ़ाएं",
+      vastuAction: "दक्षिण-पूर्व कोने (धन के कोने) में 4 रॉड वाली लकड़ी की विंड चाइम या हरा मनी प्लांट लगाएं और इस कोने को रोशन व साफ रखें।",
+      mantra: "'ॐ भ्रां भ्रीं भ्रौं सः राहवे नमः' मंत्र का जाप करें"
     }
   },
   5: {
@@ -795,11 +835,11 @@ export const MISSING_NUMBERS_REMEDIES: Record<number, MissingNumberRemedy> = {
     planet: "Mercury (Budh)",
     planet_hi: "बुध देव",
     element: "Earth (Center / Brahmasthan)",
-    element_hi: "पृथ्वी तत्व (ब्रह्मस्थान / केंद्र)",
+    element_hi: "पृथ्वी तत्व (घर का केंद्र)",
     direction: "Center / Brahmasthan",
-    direction_hi: "मध्य केंद्र (Center)",
+    direction_hi: "बीच का केंद्र स्थान",
     effects: "Loss of core balance, lack of perseverance, restlessness, speech anxiety, frequent shifts without concluding projects.",
-    effects_hi: "जीवन में संतुलन का अभाव, बेचैनी, व्यापार में उतार-चढ़ाव, एकाग्रता की कमी, काम बीच में छोड़ देना और पाचन विकार।",
+    effects_hi: "जीवन में स्थिरता की कमी, मन बेचैन रहना, काम बीच में रुक जाना और व्यापार में उतार-चढ़ाव।",
     remedies: {
       yantra: "Budh Yantra / Sri Chakra placed in center of home",
       rudraksha: "4-Mukhi Rudraksha",
@@ -807,6 +847,14 @@ export const MISSING_NUMBERS_REMEDIES: Record<number, MissingNumberRemedy> = {
       colorTherapy: "Wear Emerald Green, Mint Green, Parrot Green on Wednesdays",
       vastuAction: "Keep the center (Brahmasthan) of home light, open, unburdened, and spotlessly clean. Place a natural quartz crystal globe or green plant in center.",
       mantra: "Om Bram Breem Broum Sah Budhaya Namaha (ॐ ब्रां ब्रीं ब्रौं सः बुधाय नमः)"
+    },
+    remedies_hi: {
+      yantra: "घर के बीच वाले हिस्से में बुध यंत्र या श्री यंत्र रखें",
+      rudraksha: "4-मुखी रुद्राक्ष धारण करें",
+      gemstone: "चांदी में पन्ना (Emerald) या हरा जेड स्टोन पहनें",
+      colorTherapy: "बुधवार को हरा या हल्का हरा रंग पहनें",
+      vastuAction: "घर के बीच के स्थान (ब्रह्मस्थान) को हमेशा खाली, हल्का और साफ रखें। वहां असली क्रिस्टल बॉल या छोटा हरा पौधा रख सकते हैं।",
+      mantra: "बुधवार को 'ॐ ब्रां ब्रीं ब्रौं सः बुधाय नमः' का जाप करें"
     }
   },
   6: {
@@ -816,9 +864,9 @@ export const MISSING_NUMBERS_REMEDIES: Record<number, MissingNumberRemedy> = {
     element: "Metal (NW) / Water",
     element_hi: "धातु (उत्तर-पश्चिम) / जल",
     direction: "North-West / South-East",
-    direction_hi: "उत्तर-पश्चिम (Lo Shu) / दक्षिण-पूर्व (Vedic)",
+    direction_hi: "उत्तर-पश्चिम (लो-शू) / दक्षिण-पूर्व (वैदिक)",
     effects: "Absence of mentors or helpful allies, deprivation of luxury/comfort, delayed family bliss, struggles in attracting resources.",
-    effects_hi: "सहायक मित्रों और शुभचिंतकों की कमी, सुख-सुविधाओं का अभाव, आकर्षण में कमी, वैवाहिक जीवन में असंतोष और भौतिक संघर्ष।",
+    effects_hi: "सही समय पर लोगों की मदद न मिलना, घर में आराम व खुशियों की कमी और शादीशुदा जिंदगी में असंतोष।",
     remedies: {
       yantra: "Shukra Yantra / Maha Lakshmi Yantra in North-West",
       rudraksha: "6-Mukhi Rudraksha",
@@ -826,6 +874,14 @@ export const MISSING_NUMBERS_REMEDIES: Record<number, MissingNumberRemedy> = {
       colorTherapy: "Wear Soft Rose Pink, Silken White, Light Sky Blue on Fridays",
       vastuAction: "Hang a 6-rod hollow metallic wind chime in North-West to activate helpful people (Mentors / Kuan Yin energy). Use gentle pleasant fragrances.",
       mantra: "Om Shum Shukraya Namaha (ॐ शुं शुक्राय नमः)"
+    },
+    remedies_hi: {
+      yantra: "उत्तर-पश्चिम दिशा में शुक्र यंत्र या महालक्ष्मी यंत्र रखें",
+      rudraksha: "6-मुखी रुद्राक्ष धारण करें",
+      gemstone: "चांदी में सफेद जरकन, ओपल या हीरा धारण करें",
+      colorTherapy: "शुक्रवार को गुलाबी, सफेद या हल्का आसमानी रंग पहनें",
+      vastuAction: "उत्तर-पश्चिम कोने में 6 रॉड वाली धातु की विंड चाइम लटकाएं ताकि अच्छे लोगों का सहयोग मिले। घर में हल्की अच्छी खुशबू रखें।",
+      mantra: "शुक्रवार को 'ॐ शुं शुक्राय नमः' का जाप करें"
     }
   },
   7: {
@@ -833,11 +889,11 @@ export const MISSING_NUMBERS_REMEDIES: Record<number, MissingNumberRemedy> = {
     planet: "Ketu",
     planet_hi: "केतु देव",
     element: "Metal (West) / Fiery Shadow",
-    element_hi: "धातु (पश्चिम) / अग्नि-छाया",
+    element_hi: "धातु (पश्चिम) / अग्नि तत्व",
     direction: "West / North-East",
-    direction_hi: "पश्चिम (Lo Shu) / उत्तर-पूर्व (Vedic)",
+    direction_hi: "पश्चिम (लो-शू) / उत्तर-पूर्व (वैदिक)",
     effects: "Difficulty meditating, skepticism towards spirituality, detachment from children or creative heirs, scattered insights.",
-    effects_hi: "आध्यात्मिक भटकाव, ध्यान में मन न लगना, संतान सुख या बच्चों से जुड़ाव में कमी, निराशावादी सोच और गूढ़ विद्याओं से दूरी।",
+    effects_hi: "ध्यान न लगना, मन भटकते रहना, संतान से जुड़ी चिंता और हर बात में नकारात्मक सोच आना।",
     remedies: {
       yantra: "Ganesh Yantra / Ketu Yantra in West",
       rudraksha: "9-Mukhi Rudraksha (Durga Shakti)",
@@ -845,6 +901,14 @@ export const MISSING_NUMBERS_REMEDIES: Record<number, MissingNumberRemedy> = {
       colorTherapy: "Wear Sea Green, Light Smoky Grey, Pale Yellow",
       vastuAction: "Place metal decorative accents or brass singing bowls in West. Feed street dogs with roti/milk on Saturdays. Worship Lord Ganesha.",
       mantra: "Om Kem Ketave Namaha (ॐ कें केतवे नमः)"
+    },
+    remedies_hi: {
+      yantra: "पश्चिम दिशा में गणेश यंत्र या केतु यंत्र रखें",
+      rudraksha: "9-मुखी रुद्राक्ष धारण करें",
+      gemstone: "चांदी में लहसुनिया (Cat's Eye) सलाह लेकर पहनें",
+      colorTherapy: "समुद्री हरा, हल्का स्लेटी या हल्का पीला रंग पहनें",
+      vastuAction: "पश्चिम दिशा में धातु की सुंदर वस्तु या पीतल का सजावटी कटोरा रखें। शनिवार को कुत्ते को रोटी या दूध दें और गणेश जी की पूजा करें।",
+      mantra: "'ॐ कें केतवे नमः' मंत्र का जाप करें"
     }
   },
   8: {
@@ -852,11 +916,11 @@ export const MISSING_NUMBERS_REMEDIES: Record<number, MissingNumberRemedy> = {
     planet: "Saturn (Shani)",
     planet_hi: "शनि देव",
     element: "Earth (NE) / Air",
-    element_hi: "पर्वत पृथ्वी (उत्तर-पूर्व) / वायु",
+    element_hi: "पृथ्वी (उत्तर-पूर्व) / वायु",
     direction: "North-East / West",
-    direction_hi: "उत्तर-पूर्व (Lo Shu) / पश्चिम (Vedic)",
+    direction_hi: "उत्तर-पूर्व (लो-शू) / पश्चिम (वैदिक)",
     effects: "Impatience, poor financial planning, inability to master deep technical crafts, weak endurance when facing obstacles.",
-    effects_hi: "धैर्य की कमी, वित्तीय प्रबंधन में चूक, अचल संपत्ति अर्जन में बाधा, अनुशासनात्मक कमजोरी और परिश्रम का त्वरित फल न मिलना।",
+    effects_hi: "धैर्य की कमी, पैसों का सही हिसाब न रख पाना, प्रॉपर्टी के कामों में देरी और मेहनत का पूरा फल न मिलना।",
     remedies: {
       yantra: "Shani Yantra / Hanuman Yantra",
       rudraksha: "7-Mukhi or 14-Mukhi Rudraksha",
@@ -864,6 +928,14 @@ export const MISSING_NUMBERS_REMEDIES: Record<number, MissingNumberRemedy> = {
       colorTherapy: "Wear Navy Blue, Midnight Blue, Dark Grey on Saturdays",
       vastuAction: "Place a natural crystal geode or earthen pot in North-East. Avoid making North-East heavy with iron scrap. Recite Hanuman Chalisa or Shani Chalisa.",
       mantra: "Om Sham Shanaishcharaya Namaha (ॐ शं शनैश्चराय नमः)"
+    },
+    remedies_hi: {
+      yantra: "शनि यंत्र या हनुमान यंत्र की स्थापना करें",
+      rudraksha: "7-मुखी या 14-मुखी रुद्राक्ष धारण करें",
+      gemstone: "चांदी या लोहे में जमुनिया (Amethyst) या नीलम पहनें",
+      colorTherapy: "शनिवार को गहरा नीला या गहरा ग्रे रंग पहनें",
+      vastuAction: "उत्तर-पूर्व दिशा में क्रिस्टल या मिट्टी का साफ बर्तन रखें; वहां भारी लोहा या कबाड़ न जमा करें। हनुमान चालीसा का पाठ करें।",
+      mantra: "शनिवार को 'ॐ शं शनैश्चराय नमः' का जाप करें"
     }
   },
   9: {
@@ -873,9 +945,9 @@ export const MISSING_NUMBERS_REMEDIES: Record<number, MissingNumberRemedy> = {
     element: "Fire (South)",
     element_hi: "अग्नि तत्व (दक्षिण)",
     direction: "South",
-    direction_hi: "दक्षिण दिशा (South)",
+    direction_hi: "दक्षिण दिशा",
     effects: "Low energy, lack of passion, difficulty gaining public recognition or fame, sluggish drive, timid in confrontation.",
-    effects_hi: "ऊर्जा व उत्साह की कमी, सामाजिक ख्याति या मान-सम्मान का अभाव, आलस्य, अन्याय के विरुद्ध आवाज उठाने में झिझक।",
+    effects_hi: "शरीर में ऊर्जा व उत्साह की कमी, मान-सम्मान मिलने में देरी, आलस्य और हिम्मत की कमी महसूस होना।",
     remedies: {
       yantra: "Mangal Yantra / Hanuman Yantra in South",
       rudraksha: "3-Mukhi Rudraksha (Agni स्वरूप)",
@@ -883,6 +955,14 @@ export const MISSING_NUMBERS_REMEDIES: Record<number, MissingNumberRemedy> = {
       colorTherapy: "Incorporate Crimson Red, Scarlet, Warm Coral accents",
       vastuAction: "Place bright red lighting, a red candle, or copper pyramid in South zone to ignite fire energy and fame. Recite Sundarkand on Tuesdays.",
       mantra: "Om Angarakaya Namaha (ॐ अंगारकाय नमः)"
+    },
+    remedies_hi: {
+      yantra: "दक्षिण दिशा में मंगल यंत्र या हनुमान यंत्र रखें",
+      rudraksha: "3-मुखी रुद्राक्ष धारण करें",
+      gemstone: "तांबे या सोने में लाल मूंगा (Red Coral) धारण करें",
+      colorTherapy: "गहरा लाल और मूंगा (Coral) रंग ज्यादा इस्तेमाल करें",
+      vastuAction: "दक्षिण दिशा में लाल रंग का बल्ब, लाल मोमबत्ती या तांबे का पिरामिड रखें। मंगलवार को सुंदरकांड या हनुमान चालीसा पढ़ें।",
+      mantra: "मंगलवार को 'ॐ अंगारकाय नमः' का जाप करें"
     }
   }
 };
@@ -938,9 +1018,9 @@ export interface FullProfileResult {
 
   // Grids & Planes
   loShuGrid: {
-    row0: { num: number; count: number; name: string }[];
-    row1: { num: number; count: number; name: string }[];
-    row2: { num: number; count: number; name: string }[];
+    row0: { num: number; count: number; name: string; name_hi: string }[];
+    row1: { num: number; count: number; name: string; name_hi: string }[];
+    row2: { num: number; count: number; name: string; name_hi: string }[];
   };
   vedicGrid: {
     row0: { num: number; count: number; planet: string; planet_hi: string }[];
@@ -1047,19 +1127,19 @@ export function calculateFullNumerologyProfile(
   // Row 2: 8 (NE - Earth), 1 (N - Water), 6 (NW - Metal)
   const loShuGrid = {
     row0: [
-      { num: 4, count: countsMap[4] || 0, name: "South-East (Wood)" },
-      { num: 9, count: countsMap[9] || 0, name: "South (Fire)" },
-      { num: 2, count: countsMap[2] || 0, name: "South-West (Earth)" }
+      { num: 4, count: countsMap[4] || 0, name: "South-East (Wood)", name_hi: "दक्षिण-पूर्व (काष्ठ)" },
+      { num: 9, count: countsMap[9] || 0, name: "South (Fire)", name_hi: "दक्षिण (अग्नि)" },
+      { num: 2, count: countsMap[2] || 0, name: "South-West (Earth)", name_hi: "दक्षिण-पश्चिम (पृथ्वी)" }
     ],
     row1: [
-      { num: 3, count: countsMap[3] || 0, name: "East (Wood)" },
-      { num: 5, count: countsMap[5] || 0, name: "Center (Earth)" },
-      { num: 7, count: countsMap[7] || 0, name: "West (Metal)" }
+      { num: 3, count: countsMap[3] || 0, name: "East (Wood)", name_hi: "पूर्व (काष्ठ)" },
+      { num: 5, count: countsMap[5] || 0, name: "Center (Earth)", name_hi: "केंद्र (पृथ्वी)" },
+      { num: 7, count: countsMap[7] || 0, name: "West (Metal)", name_hi: "पश्चिम (धातु)" }
     ],
     row2: [
-      { num: 8, count: countsMap[8] || 0, name: "North-East (Earth)" },
-      { num: 1, count: countsMap[1] || 0, name: "North (Water)" },
-      { num: 6, count: countsMap[6] || 0, name: "North-West (Metal)" }
+      { num: 8, count: countsMap[8] || 0, name: "North-East (Earth)", name_hi: "उत्तर-पूर्व (पृथ्वी)" },
+      { num: 1, count: countsMap[1] || 0, name: "North (Water)", name_hi: "उत्तर (जल)" },
+      { num: 6, count: countsMap[6] || 0, name: "North-West (Metal)", name_hi: "उत्तर-पश्चिम (धातु)" }
     ]
   };
 
@@ -1144,10 +1224,10 @@ export function calculateFullNumerologyProfile(
   let synergy_hi = "शुभ ग्रह सामंजस्य";
   if (mulank === bhagyank) {
     synergy = `Unified Cosmic Frequency (${mulank} & ${bhagyank}): Your core soul instinct (Driver) and outward destiny (Conductor) vibrate under the same planetary lord (${mulankProfile.ruler}), granting direct focus, swift manifestation, and strong personal conviction.`;
-    synergy_hi = `अति शुभ एकात्मता (${mulank} एवं ${bhagyank}): आपका आंतरिक स्वभाव (मूलांक) और कर्म पथ (भाग्यांक) दोनों एक ही ग्रह स्वामी (${mulankProfile.ruler_hi}) के अधीन हैं। यह लक्ष्यों की त्वरित प्राप्ति और स्पष्ट जीवन दृष्टि प्रदान करता है।`;
+    synergy_hi = `बहुत अच्छा तालमेल (${mulank} और ${bhagyank}): आपका मूलांक और भाग्यांक दोनों एक ही ग्रह (${mulankProfile.ruler_hi}) से जुड़े हैं। इससे आपको लक्ष्य पर ध्यान लगाने और जल्दी सफलता पाने में मदद मिलती है।`;
   } else {
     synergy = `Dynamic Complementary Synergy (${mulank} & ${bhagyank}): Your Driver ${mulank} (${mulankProfile.ruler}) provides initiation energy, while your Conductor ${bhagyank} (${bhagyankProfile.ruler}) governs life milestones. When aligned with Kua ${kuaProfile.kua}, material and spiritual objectives flourish.`;
-    synergy_hi = `पूरक ग्रह सामंजस्य (${mulank} एवं ${bhagyank}): आपका मूलांक ${mulank} (${mulankProfile.ruler_hi}) आपको स्वभाविक ऊर्जा देता है, जबकि भाग्यांक ${bhagyank} (${bhagyankProfile.ruler_hi}) आपके जीवन की दिशा तय करता है। कुआ अंक ${kuaProfile.kua} से वास्तु संरेखण करने पर सफलता का मार्ग प्रशस्त होता है।`;
+    synergy_hi = `अच्छा पूरक तालमेल (${mulank} और ${bhagyank}): आपका मूलांक ${mulank} (${mulankProfile.ruler_hi}) आपका स्वभाव बताता है, जबकि भाग्यांक ${bhagyank} (${bhagyankProfile.ruler_hi}) जीवन की दिशा तय करता है। कुआ अंक ${kuaProfile.kua} की सही दिशा के साथ मिलने से जीवन में बड़ी तरक्की होती है।`;
   }
 
   // 10. Vedic Grid Yogas and Predictions (8 Vedic Planes)
@@ -1155,82 +1235,82 @@ export function calculateFullNumerologyProfile(
     {
       id: "v-dharma",
       name: "Dharma & Thought Trine (3-1-9)",
-      name_hi: "ज्ञान व धर्म त्रिकोण (3-1-9)",
+      name_hi: "ज्ञान व धर्म योग (3-1-9)",
       numbers: [3, 1, 9],
       planets: "Jupiter (3), Sun (1), Mars (9)",
       planets_hi: "गुरु (3), सूर्य (1), मंगल (9)",
       prediction: "High intellectual authority, vision, moral principles, and executive command. Blessed with natural leadership and respect in governance or higher learning.",
-      prediction_hi: "प्रखर ज्ञान, आत्म-सम्मान, नेतृत्व शक्ति एवं दृढ़ सिद्धांत। यह त्रिकोण व्यक्ति को समाज, शिक्षा, शासन अथवा उच्च पद पर अद्वितीय प्रतिष्ठा दिलाता है।"
+      prediction_hi: "अच्छी समझ, आत्म-सम्मान, नेतृत्व की क्षमता और सही सिद्धांत। यह योग व्यक्ति को समाज, पढ़ाई-लिखाई, प्रशासन और ऊंचे पद पर सम्मान दिलाता है।"
     },
     {
       id: "v-artha",
       name: "Artha & Prosperity Trine (6-7-5)",
-      name_hi: "ऐश्वर्य व व्यापार त्रिकोण (6-7-5)",
+      name_hi: "धन व व्यापार योग (6-7-5)",
       numbers: [6, 7, 5],
       planets: "Venus (6), Ketu (7), Mercury (5)",
       planets_hi: "शुक्र (6), केतु (7), बुध (5)",
       prediction: "Commercial acumen, artistic eloquence, financial shrewdness, and magnetic charisma. Brings sudden fortune, trading success, and luxury aesthetics.",
-      prediction_hi: "व्यापारिक सूझबूझ, वाकपटुता, भौतिक वैभव एवं चुंबकीय व्यक्तित्व। यह योग व्यापार, कला, संचार व आकस्मिक धन लाभ हेतु अत्यंत शुभ माना जाता है।"
+      prediction_hi: "बिजनेस की अच्छी समझ, बढ़िया बातचीत की कला, सुख-सुविधाएं और आकर्षक व्यक्तित्व। यह योग व्यापार, कला और धन लाभ के लिए बहुत शुभ है।"
     },
     {
       id: "v-karma",
       name: "Karma & Stability Trine (2-8-4)",
-      name_hi: "कर्म व कर्मफल त्रिकोण (2-8-4)",
+      name_hi: "मेहनत व सफलता योग (2-8-4)",
       numbers: [2, 8, 4],
       planets: "Moon (2), Saturn (8), Rahu (4)",
       planets_hi: "चन्द्र (2), शनि (8), राहु (4)",
       prediction: "Patience, technical resilience, worldly triumph over adversities, and ability to steer large-scale enterprises or complex organizations.",
-      prediction_hi: "धैर्य, कठोर परिश्रम, तकनीकी दक्षता और कठिन से कठिन बाधाओं को पार करने की अद्भुत क्षमता। उद्योग, भूमि एवं संगठन प्रबंधन में सफलता।"
+      prediction_hi: "धैर्य, कड़ी मेहनत, तकनीकी समझ और मुश्किल हालात से बाहर निकलने की ताकत। उद्योग, जमीन और टीम प्रबंधन में अच्छी सफलता मिलती है।"
     },
     {
       id: "v-gyan",
       name: "Gyan & Advisory Yoga (3-6-2)",
-      name_hi: "ज्ञान व मंत्रणा योग (3-6-2)",
+      name_hi: "ज्ञान व सलाहकार योग (3-6-2)",
       numbers: [3, 6, 2],
       planets: "Jupiter (3), Venus (6), Moon (2)",
       planets_hi: "गुरु (3), शुक्र (6), चन्द्र (2)",
       prediction: "Exceptional advisory aptitude, emotional diplomacy, aesthetic appreciation, and deep wisdom that inspires and guides large communities.",
-      prediction_hi: "अद्वितीय परामर्श क्षमता, भावनात्मक परिपक्वता, कलात्मक दृष्टि और दूसरों को सही राह दिखाने का स्वाभाविक वरदान।"
+      prediction_hi: "लोगों को सही सलाह देने का गुण, भावनाओं की समझ और सबको साथ लेकर चलने की कला।"
     },
     {
       id: "v-tapas",
       name: "Tapas & Rajyash Yoga (1-7-8)",
-      name_hi: "तप व राजयश योग (1-7-8)",
+      name_hi: "तप व सम्मान योग (1-7-8)",
       numbers: [1, 7, 8],
       planets: "Sun (1), Ketu (7), Saturn (8)",
       planets_hi: "सूर्य (1), केतु (7), शनि (8)",
       prediction: "Unshakeable perseverance, research depth, administrative or state honors, and ascetic inner discipline that withstands all trials.",
-      prediction_hi: "अविचल संकल्प, गूढ़ शोध, सरकारी व राजकीय क्षेत्रों से सम्मान तथा गहन आत्म-अनुशासन जो हर संकट में ढाल बनता है।"
+      prediction_hi: "मजबूत इरादा, गहराई से काम करने की आदत, सरकारी क्षेत्रों में सम्मान और हर चुनौती का सामना करने का अनुशासन।"
     },
     {
       id: "v-parakram",
       name: "Parakram & Siddhi Yoga (9-5-4)",
-      name_hi: "पराक्रम व सिद्धि योग (9-5-4)",
+      name_hi: "साहस व सफलता योग (9-5-4)",
       numbers: [9, 5, 4],
       planets: "Mars (9), Mercury (5), Rahu (4)",
       planets_hi: "मंगल (9), बुध (5), राहु (4)",
       prediction: "Fast tactical thinking, real estate and technological mastery, courageous enterprise, and sudden breakthroughs against competitors.",
-      prediction_hi: "त्वरित रणनीतिक सोच, अचल संपत्ति व तकनीकी क्षेत्र में विजय, साहसी निर्णय और प्रतिद्वंद्वियों पर सहज बढ़त।"
+      prediction_hi: "तेज सोच, प्रॉपर्टी व टेक्नोलॉजी के काम में लाभ, हिम्मत भरे फैसले और प्रतिस्पर्धा में जीत।"
     },
     {
       id: "v-adhyatma",
       name: "Maha Adhyatma Diagonal (3-7-4)",
-      name_hi: "अध्यात्म व मोक्ष महायोग (3-7-4)",
+      name_hi: "अध्यात्म व अंतर्ज्ञान योग (3-7-4)",
       numbers: [3, 7, 4],
       planets: "Jupiter (3), Ketu (7), Rahu (4)",
       planets_hi: "गुरु (3), केतु (7), राहु (4)",
       prediction: "Rare spiritual awakening, psychic intuition, ability to decode hidden universal laws, and triumph in occult or esoteric sciences.",
-      prediction_hi: "दुर्लभ आध्यात्मिक जागृति, अंतर्ज्ञान, गूढ़ ब्रह्मांडीय सूत्रों की समझ और पराशक्तियों अथवा उच्च साधना में सिद्धि।"
+      prediction_hi: "गहरी आध्यात्मिक समझ, तेज अंतर्ज्ञान (इंट्यूशन) और गूढ़ विषयों को समझने की खास क्षमता।"
     },
     {
       id: "v-drishti",
       name: "Siddha Drishti Diagonal (9-7-2)",
-      name_hi: "सिद्ध दृष्टि व अंतर्ज्ञान योग (9-7-2)",
+      name_hi: "तेज समझ व सुरक्षा योग (9-7-2)",
       numbers: [9, 7, 2],
       planets: "Mars (9), Ketu (7), Moon (2)",
       planets_hi: "मंगल (9), केतु (7), चन्द्र (2)",
       prediction: "Fierce intuitive radar, energetic perception, high creative emotional intelligence, and warrior-like mental resilience.",
-      prediction_hi: "अति संवेदनशील अंतर्ज्ञान, आभामंडल व ऊर्जा पहचानने की शक्ति, भावनात्मक साहस और आध्यात्मिक सुरक्षा कवच।"
+      prediction_hi: "लोगों और माहौल की ऊर्जा को जल्दी भांप लेने की शक्ति, भावनात्मक मजबूती और मानसिक साहस।"
     }
   ];
 
@@ -1240,7 +1320,7 @@ export function calculateFullNumerologyProfile(
     const countPresent = presentInPlane.length;
     let percentage = 0;
     let status: 'Complete' | 'Semi-Active' | 'Inactive' = 'Inactive';
-    let status_hi = 'निष्क्रिय / दुर्बल';
+    let status_hi = 'कमजोर / अधूरा';
 
     if (countPresent === 3) {
       percentage = 100;
@@ -1296,8 +1376,8 @@ export function calculateFullNumerologyProfile(
         ? `Double/Multiple Planetary Activation (${countsMap[num]}x): Extremely pronounced influence on personality and decisions.`
         : `Balanced Solar/Planetary Chamber (1x): Steady, harmonious influence.`,
       effect_hi: countsMap[num] > 1
-        ? `प्रबल ग्रह संरेखण (${countsMap[num]}x): व्यक्तित्व, निर्णयों एवं जीवन पर इस ग्रह का गहरा व प्रभावशाली प्रभाव।`
-        : `संतुलित ग्रह प्रभाव (1x): जीवन में स्थिर और सकारात्मक ऊर्जा का प्रवाह।`
+        ? `मजबूत प्रभाव (${countsMap[num]}x): आपके स्वभाव और फैसलों पर इस ग्रह का गहरा असर है।`
+        : `संतुलित प्रभाव (1x): जीवन में इस ग्रह की ऊर्जा का सही और स्थिर साथ।`
     }))
     .sort((a, b) => b.count - a.count);
 
@@ -1306,7 +1386,7 @@ export function calculateFullNumerologyProfile(
     planet: PLANET_NAMES_MAP[num].name,
     planet_hi: PLANET_NAMES_MAP[num].name_hi,
     remedy: MISSING_NUMBERS_REMEDIES[num]?.remedies?.vastuAction || "Chant Beej Mantra and wear prescribed gemstones.",
-    remedy_hi: MISSING_NUMBERS_REMEDIES[num]?.effects_hi || "वैदिक बीज मंत्र का जप एवं ग्रह शांति के उपाय करें।",
+    remedy_hi: MISSING_NUMBERS_REMEDIES[num]?.remedies_hi?.vastuAction || "संबंधित ग्रह के मंत्र का जाप और आसान उपाय करें।",
     mantra: MISSING_NUMBERS_REMEDIES[num]?.remedies?.mantra || VEDIC_NUMBERS_MAP[num]?.harmonicMantra || ""
   }));
 
@@ -1320,27 +1400,27 @@ export function calculateFullNumerologyProfile(
     : `Driven by Mulank ${mulank} and Bhagyank ${bhagyank}, your career path flourishes when combining structured focus with ethical principles.`;
 
   const careerGuidance_hi = hasDharma
-    ? "आपकी कुंडली में ज्ञान व धर्म त्रिकोण (3-1-9) प्रदीप्त है, जो आपको नेतृत्व, परामर्श, प्रशासनिक पदों अथवा शोध व शिक्षा में सर्वोच्च मान-सम्मान प्रदान करता है।"
-    : `मूलांक ${mulank} एवं भाग्यांक ${bhagyank} के समन्वय से आपका करियर तब सर्वाधिक चमकेगा जब आप अपने ज्ञान और व्यावहारिक अनुशासन को एक साथ लेकर चलेंगे।`;
+    ? "आपकी कुंडली में ज्ञान व धर्म योग (3-1-9) सक्रिय है, जो नेतृत्व, परामर्श, सरकारी काम या शिक्षा के क्षेत्र में बड़ी सफलता और सम्मान देता है।"
+    : `मूलांक ${mulank} और भाग्यांक ${bhagyank} के अनुसार जब आप अपनी समझ और अनुशासन को साथ लेकर चलेंगे, तो करियर में लगातार तरक्की होगी।`;
 
   const wealthGuidance = hasArtha
     ? "Your Artha Trine (6-7-5) creates enduring commercial magnetism, prosperity through intellect, and fine asset acquisition."
     : `Financial stability grows consistently through careful budgeting, regular savings, and activating missing financial remedies.`;
 
   const wealthGuidance_hi = hasArtha
-    ? "ऐश्वर्य व व्यापार त्रिकोण (6-7-5) की उपस्थिति आपके लिए वित्तीय समृद्धि, व्यापारिक लाभ और भौतिक सुख-सुविधाओं का निरंतर प्रवाह सुनिश्चित करती है।"
-    : `वित्तीय संवृद्धि अनुशासित निवेश, समय पर सही निर्णय तथा अनुपस्थित अंकों के वैदिक उपायों से निरंतर बढ़ती रहेगी।`;
+    ? "धन व व्यापार योग (6-7-5) की मौजूदगी से बिजनेस में लाभ, पैसों की बचत और जीवन में अच्छी सुख-सुविधाएं मिलती रहती हैं।"
+    : `सही बजट, नियमित बचत और अनुपस्थित अंकों के आसान उपाय करने से आपकी आर्थिक स्थिति लगातार मजबूत होगी।`;
 
   const relationshipGuidance = countsMap[2] > 0 && countsMap[6] > 0
     ? "Blessed with Chandra (2) and Shukra (6), your emotional radar is warm, diplomatic, and deeply understanding."
     : "Maintain calm transparency and avoid impulsive expectations in intimate partnerships.";
 
   const relationshipGuidance_hi = countsMap[2] > 0 && countsMap[6] > 0
-    ? "चंद्रमा (2) एवं शुक्र (6) के प्रभाव से आपके संबंधों में स्वाभाविक माधुर्य, संवेदनशीलता और आपसी विश्वास बना रहता है।"
-    : "रिश्तों में पारदर्शिता, धैर्य और अहंकार-मुक्त संवाद रखने से दांपत्य एवं पारिवारिक जीवन में असीम शांति बनी रहेगी।";
+    ? "चंद्र (2) और शुक्र (6) के अच्छे प्रभाव से आपके रिश्तों में प्यार, अपनापन और आपसी भरोसा बना रहता है।"
+    : "रिश्तों में साफ बातचीत, धैर्य और एक-दूसरे की भावनाओं का सम्मान करने से घर-परिवार में शांति बनी रहेगी।";
 
   const spiritualGuidance = `Chant your personal Driver mantra daily: "${mulankProfile.harmonicMantra}" for aura radiance and internal peace.`;
-  const spiritualGuidance_hi = `प्रतिदिन अपने मूलांक के पावन बीज मंत्र: "${mulankProfile.harmonicMantra}" का जप करें। इससे आपके आभामंडल में दिव्य शांति और तेज का संचार होगा।`;
+  const spiritualGuidance_hi = `रोज सुबह अपने मूलांक का मंत्र: "${mulankProfile.harmonicMantra}" पढ़ें। इससे मन शांत रहेगा और सकारात्मक ऊर्जा बढ़ेगी।`;
 
   const vedicAnalysis: VedicGridAnalysis = {
     vedicPlanes,

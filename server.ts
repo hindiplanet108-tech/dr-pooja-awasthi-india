@@ -965,124 +965,45 @@ app.put('/api/admin/traffic/config', requireAuth, (req: AuthRequest, res: Respon
 // ==========================================
 const SEO_SETTINGS_FILE = path.join(DATA_DIR, 'seo.json');
 
-app.get('/sitemap.xml', (req: Request, res: Response) => {
-  try {
-    const settings = readJsonFile<any>(SETTINGS_FILE, {});
-    const seoSettings = readJsonFile<any>(SEO_SETTINGS_FILE, {});
-    
-    // Determine canonical base URL
-    const canonicalBase = seoSettings.canonicalDomain || 'https://dr-pooja-awasthi-india.netlify.app';
-    const pages = readJsonFile<any[]>(PAGES_FILE, []);
-    const publishedPages = pages.filter((p) => p.status === 'published');
-    const today = new Date().toISOString().split('T')[0];
+const LEGACY_PLACEHOLDER_DOMAINS = new Set([
+  'https://dr-pooja-awasthi-india.netlify.app',
+  'https://dr-pooja-awasthi.vercel.app',
+]);
 
-    const xmlUrls = [
-      `  <url>
-    <loc>${canonicalBase}/</loc>
-    <lastmod>${today}</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>1.0</priority>
-    <image:image>
-      <image:loc>${canonicalBase}/28.jpeg</image:loc>
-      <image:title>Dr. Pooja Awasthi — Vedic Numerologist &amp; Spiritual Guide</image:title>
-    </image:image>
-  </url>`,
-      `  <url>
-    <loc>${canonicalBase}/tariff</loc>
-    <lastmod>${today}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.95</priority>
-  </url>`,
-      `  <url>
-    <loc>${canonicalBase}/reviews</loc>
-    <lastmod>${today}</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.90</priority>
-  </url>`,
-      `  <url>
-    <loc>${canonicalBase}/#calculator</loc>
-    <lastmod>${today}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.90</priority>
-  </url>`,
-      `  <url>
-    <loc>${canonicalBase}/#tarot</loc>
-    <lastmod>${today}</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.85</priority>
-  </url>`,
-      `  <url>
-    <loc>${canonicalBase}/#services</loc>
-    <lastmod>${today}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
-  </url>`,
-      `  <url>
-    <loc>${canonicalBase}/#charges</loc>
-    <lastmod>${today}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
-  </url>`,
-      `  <url>
-    <loc>${canonicalBase}/#about</loc>
-    <lastmod>${today}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.80</priority>
-  </url>`,
-      `  <url>
-    <loc>${canonicalBase}/#honors</loc>
-    <lastmod>${today}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.80</priority>
-  </url>`,
-      `  <url>
-    <loc>${canonicalBase}/#faq</loc>
-    <lastmod>${today}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.80</priority>
-  </url>`,
-      `  <url>
-    <loc>${canonicalBase}/#contact</loc>
-    <lastmod>${today}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.90</priority>
-  </url>`,
-    ];
-
-    // Append published custom CMS pages
-    publishedPages.forEach((page) => {
-      const pageDate = page.updatedAt
-        ? new Date(page.updatedAt).toISOString().split('T')[0]
-        : page.createdAt
-        ? new Date(page.createdAt).toISOString().split('T')[0]
-        : today;
-
-      xmlUrls.push(`  <url>
-    <loc>${canonicalBase}/pages/${encodeURIComponent(page.slug)}</loc>
-    <lastmod>${pageDate}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>${
-      page.seo?.ogImage
-        ? `\n    <image:image>\n      <image:loc>${canonicalBase}${page.seo.ogImage.startsWith('/') ? '' : '/'}${page.seo.ogImage}</image:loc>\n      <image:title>${escapeXml(page.title || '')}</image:title>\n    </image:image>`
-        : ''
-    }
-  </url>`);
-    });
-
-    const sitemapContent = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
-${xmlUrls.join('\n')}
-</urlset>`;
-
-    res.setHeader('Content-Type', 'application/xml; charset=utf-8');
-    res.setHeader('Cache-Control', 'public, max-age=3600');
-    return res.status(200).send(sitemapContent);
-  } catch (err) {
-    console.error('Error generating sitemap:', err);
-    return res.status(500).send('Error generating sitemap');
+function resolvePublicBaseUrl(req: Request, seoSettings?: any): string {
+  const custom = typeof seoSettings?.canonicalDomain === 'string'
+    ? seoSettings.canonicalDomain.trim().replace(/\/+$/, '')
+    : '';
+  if (custom && !LEGACY_PLACEHOLDER_DOMAINS.has(custom)) {
+    return custom;
   }
-});
+  const appUrl = (process.env.APP_URL || '').trim().replace(/\/+$/, '');
+  if (appUrl) {
+    return appUrl;
+  }
+  const forwardedProto = (req.headers['x-forwarded-proto'] as string | undefined)?.split(',')[0]?.trim();
+  const forwardedHost = (req.headers['x-forwarded-host'] as string | undefined)?.split(',')[0]?.trim();
+  const proto = forwardedProto || req.protocol || 'http';
+  const host = forwardedHost || req.get('host') || `localhost:${PORT}`;
+  return `${proto}://${host}`;
+}
+
+function buildDefaultSeoSettings(baseUrl: string) {
+  return {
+    canonicalDomain: '',
+    resolvedBaseUrl: baseUrl,
+    googleVerificationCode: '',
+    bingVerificationCode: '',
+    googleAnalyticsId: '',
+    metaTitleTemplate: '%s | Dr. Pooja Awasthi',
+    defaultMetaDescription:
+      'Get certified Vedic Numerology, Intuitive Tarot, Chakra Healing & Vastu guidance with Dr. Pooja Awasthi. Book your 1-on-1 session today.',
+    defaultKeywords:
+      'Pooja Awasthi, Vedic Numerology, Tarot Reading, Energy Healing, Chakra Alignment, Vastu, Past Life Regression, Mulank, Bhagyank, Dehradun',
+    indexNowKey: 'poojaawasthi_indexnow_2026',
+    autoPingSearchEngines: true,
+  };
+}
 
 function escapeXml(unsafe: string): string {
   return unsafe.replace(/[<>&'"]/g, (c) => {
@@ -1097,9 +1018,121 @@ function escapeXml(unsafe: string): string {
   });
 }
 
+function formatXmlUrlEntry(opts: {
+  loc: string;
+  lastmod: string;
+  changefreq: string;
+  priority: string;
+  images?: Array<{ loc: string; title: string; caption?: string }>;
+}): string {
+  const safeLoc = escapeXml(opts.loc);
+  const imageTags = (opts.images || [])
+    .map(
+      (img) => `    <image:image>
+      <image:loc>${escapeXml(img.loc)}</image:loc>
+      <image:title>${escapeXml(img.title)}</image:title>${
+        img.caption ? `\n      <image:caption>${escapeXml(img.caption)}</image:caption>` : ''
+      }
+    </image:image>`
+    )
+    .join('\n');
+
+  return `  <url>
+    <loc>${safeLoc}</loc>
+    <lastmod>${opts.lastmod}</lastmod>
+    <changefreq>${opts.changefreq}</changefreq>
+    <priority>${opts.priority}</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="${safeLoc}" />
+    <xhtml:link rel="alternate" hreflang="hi" href="${safeLoc}" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="${safeLoc}" />${
+      imageTags ? `\n${imageTags}` : ''
+    }
+  </url>`;
+}
+
+app.get('/sitemap.xml', (req: Request, res: Response) => {
+  try {
+    const seoSettings = readJsonFile<any>(SEO_SETTINGS_FILE, {});
+    const canonicalBase = resolvePublicBaseUrl(req, seoSettings);
+    const pages = readJsonFile<any[]>(PAGES_FILE, []);
+    const publishedPages = pages.filter((p) => p.status === 'published');
+    const today = new Date().toISOString().split('T')[0];
+
+    const xmlUrls: string[] = [
+      formatXmlUrlEntry({
+        loc: `${canonicalBase}/`,
+        lastmod: today,
+        changefreq: 'daily',
+        priority: '1.0',
+        images: [
+          {
+            loc: `${canonicalBase}/assets/aistudio/28_91acc32c.jpeg`,
+            title: 'Dr. Pooja Awasthi — Vedic Numerologist & Spiritual Guide',
+            caption: 'Gold Medalist Spiritual Mentor, Tarot Reader & Chakra Healer',
+          },
+          {
+            loc: `${canonicalBase}/28.jpeg`,
+            title: 'Dr. Pooja Awasthi Official Consultation Portrait',
+          },
+        ],
+      }),
+      formatXmlUrlEntry({
+        loc: `${canonicalBase}/tariff`,
+        lastmod: today,
+        changefreq: 'weekly',
+        priority: '0.95',
+      }),
+      formatXmlUrlEntry({
+        loc: `${canonicalBase}/reviews`,
+        lastmod: today,
+        changefreq: 'daily',
+        priority: '0.90',
+      }),
+    ];
+
+    publishedPages.forEach((page) => {
+      const pageDate = page.updatedAt
+        ? new Date(page.updatedAt).toISOString().split('T')[0]
+        : page.createdAt
+        ? new Date(page.createdAt).toISOString().split('T')[0]
+        : today;
+
+      const ogPath = page.seo?.ogImage
+        ? `${canonicalBase}${page.seo.ogImage.startsWith('/') ? '' : '/'}${page.seo.ogImage}`
+        : undefined;
+
+      xmlUrls.push(
+        formatXmlUrlEntry({
+          loc: `${canonicalBase}/pages/${encodeURIComponent(page.slug)}`,
+          lastmod: pageDate,
+          changefreq: 'weekly',
+          priority: '0.85',
+          images: ogPath
+            ? [{ loc: ogPath, title: page.title || 'Dr. Pooja Awasthi Guide' }]
+            : undefined,
+        })
+      );
+    });
+
+    const sitemapContent = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+${xmlUrls.join('\n')}
+</urlset>`;
+
+    res.setHeader('Content-Type', 'application/xml; charset=utf-8');
+    res.setHeader('Cache-Control', 'public, max-age=300');
+    return res.status(200).send(sitemapContent);
+  } catch (err) {
+    console.error('Error generating sitemap:', err);
+    return res.status(500).send('Error generating sitemap');
+  }
+});
+
 app.get('/robots.txt', (req: Request, res: Response) => {
   const seoSettings = readJsonFile<any>(SEO_SETTINGS_FILE, {});
-  const canonicalBase = seoSettings.canonicalDomain || 'https://dr-pooja-awasthi-india.netlify.app';
+  const canonicalBase = resolvePublicBaseUrl(req, seoSettings);
 
   const robotsContent = [
     'User-agent: *',
@@ -1108,8 +1141,7 @@ app.get('/robots.txt', (req: Request, res: Response) => {
     'Disallow: /admin/',
     'Disallow: /api/',
     '',
-    '# Canonical Domain & Sitemap Reference',
-    `Host: ${canonicalBase}`,
+    '# Dynamic Canonical Sitemap Reference',
     `Sitemap: ${canonicalBase}/sitemap.xml`,
     '',
   ].join('\n');
@@ -1119,18 +1151,18 @@ app.get('/robots.txt', (req: Request, res: Response) => {
 });
 
 // SEO Overview & Settings APIs for Admin Panel
-app.get('/api/seo/overview', (_req: Request, res: Response) => {
-  const seoSettings = readJsonFile<any>(SEO_SETTINGS_FILE, {
-    canonicalDomain: 'https://dr-pooja-awasthi-india.netlify.app',
-    googleVerificationCode: '',
-    bingVerificationCode: '',
-    googleAnalyticsId: '',
-    metaTitleTemplate: '%s | Dr. Pooja Awasthi',
-    defaultMetaDescription: 'Discover Your Path. Transform Your Life. Professional Vedic Numerology, Tarot Guidance, Energy Healing, and Life Coaching with Dr. Pooja Awasthi.',
-    defaultKeywords: 'Pooja Awasthi, Vedic Numerology, Tarot Reading, Energy Healing, Chakra Alignment, Mulank, Bhagyank, Dehradun',
-    indexNowKey: 'poojaawasthi_indexnow_2026',
-    autoPingSearchEngines: true,
-  });
+app.get('/api/seo/overview', (req: Request, res: Response) => {
+  const fallbackBase = resolvePublicBaseUrl(req);
+  const rawSettings = readJsonFile<any>(SEO_SETTINGS_FILE, buildDefaultSeoSettings(fallbackBase));
+  const canonicalBase = resolvePublicBaseUrl(req, rawSettings);
+  const seoSettings = {
+    ...buildDefaultSeoSettings(canonicalBase),
+    ...rawSettings,
+    canonicalDomain:
+      rawSettings?.canonicalDomain && !LEGACY_PLACEHOLDER_DOMAINS.has(rawSettings.canonicalDomain.trim())
+        ? rawSettings.canonicalDomain
+        : canonicalBase,
+  };
 
   const pages = readJsonFile<any[]>(PAGES_FILE, []);
   const publishedPages = pages.filter((p) => p.status === 'published');
@@ -1139,10 +1171,10 @@ app.get('/api/seo/overview', (_req: Request, res: Response) => {
   return res.json({
     seoSettings,
     stats: {
-      canonicalDomain: seoSettings.canonicalDomain,
-      sitemapUrl: `${seoSettings.canonicalDomain}/sitemap.xml`,
-      robotsUrl: `${seoSettings.canonicalDomain}/robots.txt`,
-      totalPages: publishedPages.length + 11, // 11 core routes + dynamic
+      canonicalDomain: canonicalBase,
+      sitemapUrl: `${canonicalBase}/sitemap.xml`,
+      robotsUrl: `${canonicalBase}/robots.txt`,
+      totalPages: publishedPages.length + 3, // /, /tariff, /reviews + published CMS pages
       dynamicPagesCount: publishedPages.length,
       publishedPages: publishedPages.map((p) => ({
         id: p.id,
@@ -1160,33 +1192,20 @@ app.get('/api/seo/overview', (_req: Request, res: Response) => {
   });
 });
 
-app.get('/api/seo/settings', (_req: Request, res: Response) => {
-  const seoSettings = readJsonFile<any>(SEO_SETTINGS_FILE, {
-    canonicalDomain: 'https://dr-pooja-awasthi.vercel.app',
-    googleVerificationCode: '',
-    bingVerificationCode: '',
-    googleAnalyticsId: '',
-    metaTitleTemplate: '%s | Dr. Pooja Awasthi',
-    defaultMetaDescription: 'Discover Your Path. Transform Your Life. Professional Vedic Numerology, Tarot Guidance, Energy Healing, and Life Coaching with Dr. Pooja Awasthi.',
-    defaultKeywords: 'Pooja Awasthi, Vedic Numerology, Tarot Reading, Energy Healing, Chakra Alignment, Mulank, Bhagyank, Dehradun',
-    indexNowKey: 'poojaawasthi_indexnow_2026',
-    autoPingSearchEngines: true,
+app.get('/api/seo/settings', (req: Request, res: Response) => {
+  const fallbackBase = resolvePublicBaseUrl(req);
+  const rawSettings = readJsonFile<any>(SEO_SETTINGS_FILE, buildDefaultSeoSettings(fallbackBase));
+  const canonicalBase = resolvePublicBaseUrl(req, rawSettings);
+  return res.json({
+    ...buildDefaultSeoSettings(canonicalBase),
+    ...rawSettings,
+    canonicalDomain: canonicalBase,
   });
-  return res.json(seoSettings);
 });
 
 app.put('/api/seo/settings', requireAuth, (req: AuthRequest, res: Response) => {
-  const current = readJsonFile<any>(SEO_SETTINGS_FILE, {
-    canonicalDomain: 'https://dr-pooja-awasthi-india.netlify.app',
-    googleVerificationCode: '',
-    bingVerificationCode: '',
-    googleAnalyticsId: '',
-    metaTitleTemplate: '%s | Dr. Pooja Awasthi',
-    defaultMetaDescription: 'Discover Your Path. Transform Your Life. Professional Vedic Numerology, Tarot Guidance, Energy Healing, and Life Coaching with Dr. Pooja Awasthi.',
-    defaultKeywords: 'Pooja Awasthi, Vedic Numerology, Tarot Reading, Energy Healing, Chakra Alignment, Mulank, Bhagyank, Dehradun',
-    indexNowKey: 'poojaawasthi_indexnow_2026',
-    autoPingSearchEngines: true,
-  });
+  const fallbackBase = resolvePublicBaseUrl(req);
+  const current = readJsonFile<any>(SEO_SETTINGS_FILE, buildDefaultSeoSettings(fallbackBase));
 
   const updated = {
     ...current,
@@ -1199,11 +1218,11 @@ app.put('/api/seo/settings', requireAuth, (req: AuthRequest, res: Response) => {
 });
 
 // Ping Search Engines / IndexNow endpoint
-app.post('/api/seo/ping-sitemap', requireAuth, (_req: AuthRequest, res: Response) => {
+app.post('/api/seo/ping-sitemap', requireAuth, (req: AuthRequest, res: Response) => {
   const seoSettings = readJsonFile<any>(SEO_SETTINGS_FILE, {});
-  const sitemapUrl = `${seoSettings.canonicalDomain || 'https://dr-pooja-awasthi-india.netlify.app'}/sitemap.xml`;
+  const canonicalBase = resolvePublicBaseUrl(req, seoSettings);
+  const sitemapUrl = `${canonicalBase}/sitemap.xml`;
 
-  // Provide realistic verification guidance for Google & Bing
   return res.json({
     success: true,
     message: 'Sitemap ping prepared. Submit sitemap URL to Google Search Console and Bing Webmaster Tools.',
