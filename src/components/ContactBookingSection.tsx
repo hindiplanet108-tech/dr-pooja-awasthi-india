@@ -302,14 +302,23 @@ export const ContactBookingSection: React.FC<ContactBookingSectionProps> = ({
                     <option value="Mobile Number Correction (₹5,100)">
                       {lang === 'hi' ? 'लकी मोबाइल नंबर अंक सुधार — ₹5,100' : 'Mobile Number Numerology Correction — ₹5,100'}
                     </option>
-                    <option value="Name Spelling Correction (₹1,100)">
-                      {lang === 'hi' ? 'नाम की स्पेलिंग सुधार — ₹1,100' : 'Name Spelling Vibrational Correction — ₹1,100'}
+                    <option value="Name Spelling Correction (₹5,100/-)">
+                      {lang === 'hi' ? 'नाम की स्पेलिंग सुधार — ₹5,100/-' : 'Name Spelling Vibrational Correction — ₹5,100/-'}
                     </option>
                     <option value="Aura Cleansing (₹3,100)">
                       {lang === 'hi' ? 'ऑरा शुद्धि (ऊर्जा संतुलन - 20 मिनट) — ₹3,100' : 'Aura Cleansing (20 min) — ₹3,100'}
                     </option>
-                    <option value="Past Life Regression PLR (₹15,000)">
-                      {lang === 'hi' ? 'पास्ट लाइफ रिग्रेशन (पूर्व जन्म सत्र - PLR) — ₹15,000' : 'Past Life Regression (PLR) Session — ₹15,000'}
+                    <option value="Crystal Healing and Charging (₹11,000/-)">
+                      {lang === 'hi' ? 'क्रिस्टल हीलिंग एवं चार्जिंग — ₹11,000/-' : 'Crystal Healing and Charging — ₹11,000/-'}
+                    </option>
+                    <option value="Vastu Harmonization (₹11,000/-)">
+                      {lang === 'hi' ? 'वास्तु दोष निवारण (40-60 मिनट) — ₹11,000/-' : 'Vastu Harmonization & Spatial Energy (40-60 Mins) — ₹11,000/-'}
+                    </option>
+                    <option value="Karma Cord Cutting (₹11,000/-)">
+                      {lang === 'hi' ? 'कॉर्ड कटिंग व भावनात्मक मुक्ति (30-40 मिनट) — ₹11,000/-' : 'Karma Cord Cutting & Emotional Liberation (30-40 Mins) — ₹11,000/-'}
+                    </option>
+                    <option value="Past Life Regression PLR (₹21,000/-)">
+                      {lang === 'hi' ? 'पास्ट लाइफ रिग्रेशन (पूर्व जन्म सत्र - PLR) — ₹21,000/-' : 'Past Life Regression (PLR) Session — ₹21,000/-'}
                     </option>
                     <option value="7-Day Chakra Intensive (₹31,000)">
                       {lang === 'hi' ? '7 चक्र हीलिंग सत्र (7 दिन का कोर्स) — ₹31,000' : '7-Day Intensive Chakra Alignment — ₹31,000'}

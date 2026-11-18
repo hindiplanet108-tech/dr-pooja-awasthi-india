@@ -74,7 +74,7 @@ export const SpecializedServicesFeeBanner: React.FC<SpecializedServicesFeeBanner
           <span aria-hidden="true">·</span>
           <span className="flex items-center gap-1">
             <Check size={14} className="text-[#522B8A]" />
-            <span>{lang === 'hi' ? 'UPI, QR व डायरेक्ट बैंक ट्रांसफर' : 'UPI, QR & Direct Bank Transfer'}</span>
+            <span>{lang === 'hi' ? 'केवल UPI व QR कोड भुगतान' : 'UPI & QR Code Payment Only'}</span>
           </span>
         </div>
       </div>
@@ -206,7 +206,7 @@ export const SpecializedServicesFeeBanner: React.FC<SpecializedServicesFeeBanner
                     }`}
                   >
                     <QrCode size={12} className="text-emerald-700" />
-                    <span>{lang === 'hi' ? 'बैंक / UPI QR' : 'Payment Info'}</span>
+                    <span>{lang === 'hi' ? 'UPI QR कोड' : 'UPI & QR Pay'}</span>
                   </button>
                 )}
               </div>

@@ -57,14 +57,14 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
 
   // Filter state
   const [selectedCategory, setSelectedCategory] = useState<
-    'all' | 'fiveStar' | 'numerology' | 'watch' | 'salt' | 'vastu'
+    'all' | 'fiveStar' | 'numerology' | 'salt' | 'vastu'
   >('all');
 
   // Centered Modal Review submission state
   const [isReviewModalOpen, setIsReviewModalOpen] = useState(false);
   const [reviewerName, setReviewerName] = useState('');
   const [reviewerLocation, setReviewerLocation] = useState('');
-  const [reviewerService, setReviewerService] = useState('वॉच थेरेपी एवं समय ऊर्जा संतुलन (Watch Therapy)');
+  const [reviewerService, setReviewerService] = useState('वैदिक अंक ज्योतिष एवं मूलांक-भाग्यांक (Vedic Numerology)');
   const [reviewerRating, setReviewerRating] = useState<number>(5);
   const [reviewerQuote, setReviewerQuote] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -159,9 +159,7 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
 
     try {
       setIsSubmitting(true);
-      const categoryVal: 'watch' | 'salt' | 'vastu' | 'numerology' = reviewerService.includes('वॉच')
-        ? 'watch'
-        : reviewerService.includes('सॉल्ट')
+      const categoryVal: 'salt' | 'vastu' | 'numerology' = reviewerService.includes('सॉल्ट')
         ? 'salt'
         : reviewerService.includes('वास्तु')
         ? 'vastu'
@@ -222,13 +220,6 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
   const filteredReviews = reviewsList.filter((item) => {
     if (selectedCategory === 'all') return true;
     if (selectedCategory === 'fiveStar') return item.rating === 5;
-    if (selectedCategory === 'watch') {
-      return (
-        item.category === 'watch' ||
-        item.service.toLowerCase().includes('watch') ||
-        (item.service_hi && item.service_hi.includes('वॉच'))
-      );
-    }
     if (selectedCategory === 'salt') {
       return (
         item.category === 'salt' ||
@@ -289,7 +280,7 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
 
           <p className="text-sm text-[#4A4356] leading-relaxed max-w-2xl mx-auto">
             {lang === 'hi'
-              ? 'अक्सर पूछे जाने वाले प्रश्नों (FAQ) के बाद प्रस्तुत हैं वे वास्तविक अनुभव, जिन्होंने डॉ. पूजा अवस्थी जी के वैदिक अंक ज्योतिष, वॉच थेरेपी, सॉल्ट थेरेपी व हीलिंग से अपने जीवन में चमत्कारी बदलाव महसूस किया है।'
+              ? 'अक्सर पूछे जाने वाले प्रश्नों (FAQ) के बाद प्रस्तुत हैं वे वास्तविक अनुभव, जिन्होंने डॉ. पूजा अवस्थी जी के वैदिक अंक ज्योतिष, क्रिस्टल हीलिंग, सॉल्ट थेरेपी व ऊर्जा उपचार से अपने जीवन में चमत्कारी बदलाव महसूस किया है।'
               : 'Real-life experiences from seekers across 24 countries who experienced deep clarity, career breakthroughs, and emotional peace under Dr. Pooja Awasthi’s divine guidance.'}
           </p>
         </div>
@@ -373,18 +364,6 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
           >
             <Star size={13} fill="#B48228" className="text-[#B48228]" />
             <span>{lang === 'hi' ? 'केवल 5-Star (5★)' : '5★ Only'}</span>
-          </button>
-
-          <button
-            type="button"
-            onClick={() => setSelectedCategory('watch')}
-            className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all cursor-pointer ${
-              selectedCategory === 'watch'
-                ? 'bg-[#522B8A] text-white shadow-sm font-bold'
-                : 'bg-white text-[#4A4356] border border-[#E6DFD3] hover:bg-[#F4F0FA] hover:text-[#1E162B]'
-            }`}
-          >
-            <span>{lang === 'hi' ? 'वॉच थेरेपी (Watch Therapy)' : 'Watch Therapy'}</span>
           </button>
 
           <button
@@ -691,9 +670,6 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
                     onChange={(e) => setReviewerService(e.target.value)}
                     className="w-full px-3.5 py-2.5 rounded-xl border border-[#D6B574]/40 focus:border-[#6941A5] outline-hidden text-xs bg-[#FBF8F2] text-[#24152F] cursor-pointer"
                   >
-                    <option value="वॉच थेरेपी एवं समय ऊर्जा संतुलन (Watch Therapy)">
-                      वॉच थेरेपी एवं समय ऊर्जा संतुलन (Watch Therapy)
-                    </option>
                     <option value="वैदिक अंक ज्योतिष एवं मूलांक-भाग्यांक (Vedic Numerology)">
                       वैदिक अंक ज्योतिष एवं मूलांक-भाग्यांक (Vedic Numerology)
                     </option>
@@ -703,8 +679,8 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
                     <option value="चक्र हीलिंग एवं ऊर्जा संतुलन (Chakra Healing)">
                       चक्र हीलिंग एवं ऊर्जा संतुलन (Chakra Healing)
                     </option>
-                    <option value="सिद्ध रत्न एवं रुद्राक्ष परामर्श (Gemstone & Rudraksha)">
-                      सिद्ध रत्न एवं रुद्राक्ष परामर्श (Gemstone & Rudraksha)
+                    <option value="क्रिस्टल हीलिंग एवं चार्जिंग (Crystal Healing and Charging)">
+                      क्रिस्टल हीलिंग एवं चार्जिंग (Crystal Healing and Charging)
                     </option>
                     <option value="लकी मोबाइल नंबर एवं नाम सुधार (Lucky Mobile & Name)">
                       लकी मोबाइल नंबर एवं नाम सुधार (Lucky Mobile & Name)

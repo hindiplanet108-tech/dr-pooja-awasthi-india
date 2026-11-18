@@ -96,19 +96,6 @@ const defaultSiteContent: SiteContent = {
     {
       id: "srv-5",
       number: 5,
-      title: "Watch Analysis & Clock Therapy Consultation",
-      title_hi: "घड़ी का विश्लेषण एवं चिकित्सीय परामर्श",
-      fee: 5100,
-      feeFormatted: "₹5,100",
-      duration: "45 मिनट",
-      category: "therapy",
-      categoryLabel_hi: "समय विज्ञान",
-      badge: "अनोखा शोध",
-      description: "आपकी कलाई घड़ी का डायल, रंग व पट्टा आपके समय और जीवन चक्र को कैसे प्रभावित करता है उसका विश्लेषण।"
-    },
-    {
-      id: "srv-6",
-      number: 6,
       title: "Pranic Energy Healing Session",
       title_hi: "प्राणिक ऊर्जा उपचार सत्र",
       fee: 5100,
@@ -120,34 +107,34 @@ const defaultSiteContent: SiteContent = {
       description: "स्पर्श-रहित प्राणिक ऊर्जा चिकित्सा द्वारा शारीरिक व मानसिक तनाव से मुक्ति।"
     },
     {
-      id: "srv-7",
-      number: 7,
-      title: "Crystal & Gemstone Resonance Guidance",
-      title_hi: "क्रिस्टल एवं सिद्ध रत्न ऊर्जा चिकित्सा",
-      fee: 5100,
-      feeFormatted: "₹5,100",
+      id: "srv-6",
+      number: 6,
+      title: "Crystal Healing and Charging",
+      title_hi: "क्रिस्टल हीलिंग एवं चार्जिंग (Crystal Healing and Charging)",
+      fee: 11000,
+      feeFormatted: "₹11,000/-",
       duration: "45 मिनट",
       category: "therapy",
-      categoryLabel_hi: "रत्न विज्ञान",
-      badge: "सिद्ध प्राण-प्रतिष्ठा",
-      description: "आपकी ऊर्जा आवृत्ति के अनुसार सही प्राकृतिक क्रिस्टल व नवरत्न धारण करने का परामर्श।"
+      categoryLabel_hi: "क्रिस्टल हीलिंग एवं चार्जिंग",
+      badge: "सिद्ध चार्जिंग",
+      description: "आपकी ऊर्जा और जन्मतिथि के अनुसार प्राकृतिक क्रिस्टल का चयन, प्राण-प्रतिष्ठा एवं विशेष हीलिंग चार्जिंग परामर्श।"
     },
     {
-      id: "srv-8",
-      number: 8,
+      id: "srv-7",
+      number: 7,
       title: "Vastu Harmonization & Spatial Energy",
       title_hi: "वास्तु दोष निवारण एवं औरा शुद्धि अनुष्ठान",
-      fee: 5100,
-      feeFormatted: "₹5,100",
-      duration: "60–90 मिनट",
+      fee: 11000,
+      feeFormatted: "₹11,000/-",
+      duration: "40–60 मिनट",
       category: "healing",
       categoryLabel_hi: "वास्तु विज्ञान",
       badge: "बिना तोड़-फोड़",
       description: "घर और प्रतिष्ठान में पंचतत्व संतुलन और सकारात्मक ऊर्जा का निर्बाध प्रवाह।"
     },
     {
-      id: "srv-9",
-      number: 9,
+      id: "srv-8",
+      number: 8,
       title: "Relationship Harmony & Soul Connection",
       title_hi: "दांपत्य एवं संबंध सामंजस्य परामर्श",
       fee: 5100,
@@ -159,25 +146,25 @@ const defaultSiteContent: SiteContent = {
       description: "अंक और ऊर्जा मिलान द्वारा वैवाहिक जीवन और संबंधों में प्रेम व समझ की पुनर्स्थापना।"
     },
     {
-      id: "srv-10",
-      number: 10,
+      id: "srv-9",
+      number: 9,
       title: "Karma Cord Cutting & Emotional Liberation",
       title_hi: "कार्मिक कॉर्ड कटिंग एवं भावनात्मक मुक्ति",
-      fee: 5100,
-      feeFormatted: "₹5,100",
-      duration: "60 मिनट",
+      fee: 11000,
+      feeFormatted: "₹11,000/-",
+      duration: "30–40 मिनट",
       category: "healing",
       categoryLabel_hi: "आत्मिक शुद्धि",
       badge: "गहरी मुक्ति",
       description: "अतीत के कष्टकारी बंधनों और नकारात्मक यादों से आत्मिक ऊर्जा को मुक्त करने का सत्र।"
     },
     {
-      id: "srv-11",
-      number: 11,
+      id: "srv-10",
+      number: 10,
       title: "Past Life Regression Exploration",
       title_hi: "पूर्व जन्म स्मृति अन्वेषण (PLR)",
-      fee: 5100,
-      feeFormatted: "₹5,100",
+      fee: 21000,
+      feeFormatted: "₹21,000/-",
       duration: "90–120 मिनट",
       category: "regression",
       categoryLabel_hi: "गहन चेतना",
@@ -254,13 +241,13 @@ const defaultSiteContent: SiteContent = {
     address: "देहरादून, उत्तराखंड • विश्वभर में ऑनलाइन परामर्श"
   },
   bankUpi: {
-    bank_name: "State Bank of India (SBI)",
+    bank_name: "",
     account_name: "Pooja Awasthi",
-    account_number: "39876543210",
-    ifsc_code: "SBIN0001234",
-    branch: "Dehradun Main Branch, Uttarakhand",
+    account_number: "",
+    ifsc_code: "",
+    branch: "",
     upi_id: "9105731969@upi",
-    qr_code_image: "/upi-qr-9105731969.svg"
+    qr_code_image: "/assets/aistudio/Screenshot_2026-11-17_120046_1b5aa9a9.png"
   }
 };
 

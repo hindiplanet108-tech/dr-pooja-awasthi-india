@@ -150,16 +150,16 @@ export const Navbar: React.FC<NavbarProps> = ({
               </button>
             )}
 
-            {/* Highlighted Shortcut: Bank & UPI Payment Details */}
+            {/* Highlighted Shortcut: UPI & QR Payment Details */}
             {onOpenBankUpi && (
               <button
                 type="button"
                 onClick={onOpenBankUpi}
                 className="hidden md:inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md bg-emerald-50 hover:bg-emerald-100 text-emerald-800 font-bold border border-emerald-300 text-[11px] transition-all cursor-pointer shadow-2xs"
-                title="Bank Account & UPI Payment Details (QR Code)"
+                title="UPI & QR Code Payment Details Only"
               >
                 <QrCode size={11} className="text-emerald-700" />
-                <span>Bank & UPI: 9105731969@upi</span>
+                <span>UPI & QR Pay: 9105731969@upi</span>
               </button>
             )}
           </div>
@@ -285,7 +285,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                         className="w-full text-left px-3.5 py-2.5 text-xs text-emerald-800 hover:bg-emerald-50 transition-colors flex items-center gap-2 font-semibold cursor-pointer"
                       >
                         <CreditCard size={13} className="text-emerald-700" />
-                        <span>{lang === 'hi' ? 'बैंक एवं UPI भुगतान विवरण' : 'Bank & UPI Payment Details'}</span>
+                        <span>{lang === 'hi' ? 'UPI एवं QR भुगतान विवरण' : 'UPI & QR Payment Details'}</span>
                       </button>
                     )}
                     <button
@@ -364,16 +364,16 @@ export const Navbar: React.FC<NavbarProps> = ({
                 </button>
               )}
 
-              {/* Direct Quick Action: Highlighted Bank & UPI Details */}
+              {/* Direct Quick Action: Highlighted UPI & QR Payment */}
               {onOpenBankUpi && (
                 <button
                   type="button"
                   onClick={onOpenBankUpi}
                   className="px-3 py-2 rounded-lg text-xs font-bold text-emerald-800 bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 transition-all flex items-center gap-1.5 shadow-2xs cursor-pointer"
-                  title="Bank Account & UPI Payment Details (QR Code)"
+                  title="UPI & QR Code Payment Details Only"
                 >
                   <QrCode size={13} className="text-emerald-700 shrink-0" />
-                  <span className="whitespace-nowrap">{lang === 'hi' ? 'Bank & UPI विवरण' : 'Bank & UPI'}</span>
+                  <span className="whitespace-nowrap">{lang === 'hi' ? 'UPI व QR भुगतान' : 'UPI & QR Pay'}</span>
                 </button>
               )}
 
@@ -589,10 +589,10 @@ export const Navbar: React.FC<NavbarProps> = ({
                     <QrCode size={16} className="text-emerald-700 shrink-0" />
                     <div>
                       <div className="text-emerald-950 leading-tight font-bold">
-                        {lang === 'hi' ? 'बैंक एवं UPI भुगतान विवरण' : 'Bank & UPI Payment Details'}
+                        {lang === 'hi' ? 'UPI एवं QR भुगतान विवरण' : 'UPI & QR Payment Details'}
                       </div>
                       <div className="text-[10px] font-mono text-emerald-800 mt-0.5">
-                        9105731969@upi (Pooja Awasthi)
+                        9105731969@upi (Pooja Awasthi · QR Only)
                       </div>
                     </div>
                   </div>

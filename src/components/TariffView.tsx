@@ -2,21 +2,18 @@ import React, { useState, useRef } from 'react';
 import { ALL_16_DIVINE_SERVICES, DivineServiceItem } from '../data/servicesData';
 import { useSiteContent } from '../utils/siteContentContext';
 import {
-  ArrowLeft,
   Share2,
   Printer,
   MessageSquare,
-  ShieldCheck,
   Check,
   Copy,
   QrCode,
-  Building2,
   Smartphone,
   Upload,
   Lock,
   Clock,
-  ExternalLink,
-  Sparkles
+  Sparkles,
+  ShieldCheck
 } from 'lucide-react';
 import poojaAuthenticPhoto from '../assets/images/pooja_awasthi_portrait.jpeg';
 import { SEOHead } from './SEOHead';
@@ -51,14 +48,9 @@ export const TariffView: React.FC<TariffViewProps> = ({
 
   const bankDetails = {
     holder: bankInfo?.account_name || 'Pooja Awasthi',
-    bank: bankInfo?.bank_name || 'State Bank of India',
-    accNumber: bankInfo?.account_number || '39876543210',
-    ifsc: bankInfo?.ifsc_code || 'SBIN0001234',
-    type: 'Savings Account',
-    branch: bankInfo?.branch || 'Dehradun Main Branch, Uttarakhand',
     upiId: bankInfo?.upi_id || '9105731969@upi',
     phone: siteContent?.contact?.phone || '+91 91057 31969',
-    qrImage: bankInfo?.qr_code_image || '/upi-qr-9105731969.svg'
+    qrImage: bankInfo?.qr_code_image || '/assets/aistudio/Screenshot_2026-11-17_120046_1b5aa9a9.png'
   };
 
   const handleCopy = (text: string, key: string) => {
@@ -115,8 +107,8 @@ export const TariffView: React.FC<TariffViewProps> = ({
     ? '11 विशिष्ट हीलिंग एवं सुधार सेवाएं + परामर्श शुल्क (सभी 16 दिव्य सेवाएं) | डॉ. पूजा अवस्थी'
     : '11 Specialized Healing & Correction Services + Consultancy Fees (All 16 Divine Services) | Dr. Pooja Awasthi';
   const tariffDesc = tariffLang === 'hi'
-    ? '11 विशिष्ट हीलिंग एवं सुधार सेवाओं तथा सभी 16 दिव्य परामर्शों की आधिकारिक शुल्क सूची (Tariff Card)। निश्चित परामर्श ₹5,100, पारदर्शी दरें, बैंक व UPI विवरण।'
-    : 'Official Tariff Card for 11 Specialized Healing & Correction Services + Consultancy Fees merging All 16 Divine Services by Dr. Pooja Awasthi.';
+    ? '11 विशिष्ट हीलिंग एवं सुधार सेवाओं तथा दिव्य परामर्शों की आधिकारिक शुल्क सूची (Tariff Card)। निश्चित परामर्श ₹5,100, पारदर्शी दरें, केवल UPI एवं QR कोड भुगतान।'
+    : 'Official Tariff Card for Specialized Healing & Correction Services + Consultancy Fees by Dr. Pooja Awasthi. UPI & QR Code Payment Only.';
 
   return (
     <div className="min-h-screen bg-[#FAF8F5] text-[#1E162B] pt-24 md:pt-28 pb-12">
@@ -236,7 +228,7 @@ export const TariffView: React.FC<TariffViewProps> = ({
             <span aria-hidden="true">·</span>
             <span className="flex items-center gap-1">
               <Check size={14} className="text-[#6941A5]" />
-              <span>{tariffLang === 'hi' ? 'UPI, QR व डायरेक्ट बैंक ट्रांसफर' : 'UPI, QR & Direct Bank Transfer'}</span>
+              <span>{tariffLang === 'hi' ? 'केवल UPI एवं QR कोड भुगतान' : 'UPI & QR Code Payment Only'}</span>
             </span>
           </div>
         </div>
@@ -379,13 +371,13 @@ export const TariffView: React.FC<TariffViewProps> = ({
           {/* Filter Pills */}
           <div className="flex flex-wrap items-center gap-2">
             {[
-              { id: 'all', label_en: 'All 16 Divine Services (16)', label_hi: 'सभी 16 दिव्य सेवाएं (16)' },
-              { id: 'specialized11', label_en: '★ 11 Specialized Services (11)', label_hi: '★ 11 विशिष्ट सेवाएं (11)' },
-              { id: 'core', label_en: 'Core Consultations (5)', label_hi: 'मुख्य वैदिक परामर्श (5)' },
-              { id: 'healing', label_en: 'Energy & Chakras (4)', label_hi: 'ऊर्जा एवं चक्र हीलिंग (4)' },
-              { id: 'numerology', label_en: 'Numerology & Names (3)', label_hi: 'अंकशास्त्र व नाम शुद्धि (3)' },
-              { id: 'therapy', label_en: 'Therapies & Vastu (3)', label_hi: 'थेरेपी व वास्तु (3)' },
-              { id: 'regression', label_en: 'Past Life PLR (1)', label_hi: 'पूर्व जन्म सत्र - PLR (1)' },
+              { id: 'all', label_en: `All Divine Services (${currentDivineServices.length})`, label_hi: `सभी दिव्य सेवाएं (${currentDivineServices.length})` },
+              { id: 'specialized11', label_en: `★ Specialized Services (${currentDivineServices.filter(s => s.isSpecialized11).length})`, label_hi: `★ विशिष्ट सेवाएं (${currentDivineServices.filter(s => s.isSpecialized11).length})` },
+              { id: 'core', label_en: `Core Consultations (${currentDivineServices.filter(s => s.category === 'core').length})`, label_hi: `मुख्य वैदिक परामर्श (${currentDivineServices.filter(s => s.category === 'core').length})` },
+              { id: 'healing', label_en: `Energy & Chakras (${currentDivineServices.filter(s => s.category === 'healing').length})`, label_hi: `ऊर्जा एवं चक्र हीलिंग (${currentDivineServices.filter(s => s.category === 'healing').length})` },
+              { id: 'numerology', label_en: `Numerology & Names (${currentDivineServices.filter(s => s.category === 'numerology').length})`, label_hi: `अंकशास्त्र व नाम शुद्धि (${currentDivineServices.filter(s => s.category === 'numerology').length})` },
+              { id: 'therapy', label_en: `Therapies & Vastu (${currentDivineServices.filter(s => s.category === 'therapy').length})`, label_hi: `थेरेपी व वास्तु (${currentDivineServices.filter(s => s.category === 'therapy').length})` },
+              { id: 'regression', label_en: `Past Life PLR (${currentDivineServices.filter(s => s.category === 'regression').length})`, label_hi: `पूर्व जन्म सत्र - PLR (${currentDivineServices.filter(s => s.category === 'regression').length})` },
             ].map((btn) => (
               <button
                 key={btn.id}
@@ -476,12 +468,12 @@ export const TariffView: React.FC<TariffViewProps> = ({
                 {tariffLang === 'hi' ? 'आधिकारिक भुगतान व्यवस्था' : 'Official Payment Gateway'}
               </span>
               <h2 className="font-cinzel text-2xl sm:text-3xl font-bold text-[#1E162B] mt-1">
-                {tariffLang === 'hi' ? 'बैंक खाता, UPI एवं QR स्कैनर विवरण' : 'Bank Account, UPI & QR Scanner Details'}
+                {tariffLang === 'hi' ? 'केवल UPI एवं QR स्कैनर भुगतान विवरण' : 'UPI & QR Code Payment Details Only'}
               </h2>
               <p className="text-xs text-[#4A4356] mt-1">
                 {tariffLang === 'hi'
-                  ? 'परामर्श व हीलिंग फीस का सुरक्षित भुगतान सीधे UPI, PhonePe/GPay QR, अथवा नेट बैंकिंग द्वारा करें।'
-                  : 'Remit consultation & healing fees securely via direct UPI, PhonePe/GPay QR, or Net Banking transfer.'}
+                  ? 'परामर्श व हीलिंग फीस का सुरक्षित भुगतान केवल नीचे दिए गए सत्यापित UPI ID एवं QR कोड द्वारा करें।'
+                  : 'We strictly accept consultation & healing fees only via our verified UPI ID & QR Code Scanner below.'}
               </p>
             </div>
 
@@ -490,7 +482,7 @@ export const TariffView: React.FC<TariffViewProps> = ({
               onClick={onOpenBrandSettings}
               className="h-10 px-4 bg-white border border-[#DEC38C] text-[#7A5311] hover:bg-[#FBF5E6] rounded-xl text-xs font-semibold transition-all shadow-2xs self-start sm:self-end cursor-pointer"
             >
-              {tariffLang === 'hi' ? 'बैंक / UPI विवरण बदलें' : 'Update Bank / UPI Details'}
+              {tariffLang === 'hi' ? 'UPI / QR विवरण देखें' : 'Open UPI / QR Modal'}
             </button>
           </div>
 
@@ -511,12 +503,16 @@ export const TariffView: React.FC<TariffViewProps> = ({
                 {/* QR Display Frame */}
                 <div className="p-6 rounded-2xl bg-[#FAF8F5] border border-[#E6DFD3] text-center flex flex-col items-center justify-center space-y-3 shadow-inner">
                   <div className="relative p-2.5 rounded-xl border border-[#E6DFD3] bg-white shadow-sm">
-                    <UpiQrCode
-                      upiId={bankDetails.upiId}
-                      accountHolder={bankDetails.holder}
-                      customImageUrl={customQrImage || bankDetails.qrImage}
+                    <img
+                      src={customQrImage || bankDetails.qrImage}
                       alt={`UPI Payment QR Code - ${bankDetails.holder} (${bankDetails.upiId})`}
                       className="w-48 h-48 object-contain rounded-lg"
+                      onError={(e) => {
+                        const target = e.currentTarget;
+                        if (!target.src.includes('upi-qr-9105731969.svg')) {
+                          target.src = '/upi-qr-9105731969.svg';
+                        }
+                      }}
                     />
                   </div>
 
@@ -574,85 +570,82 @@ export const TariffView: React.FC<TariffViewProps> = ({
               </div>
             </div>
 
-            {/* Right: Direct Bank Account Transfer Card */}
+            {/* Right: UPI & QR Code Payment Instructions Card */}
             <div className="lg:col-span-7 rounded-3xl bg-white p-8 sm:p-10 border border-[#E6DFD3] shadow-sm flex flex-col justify-between space-y-6">
               <div className="space-y-5">
                 <div className="flex items-center justify-between border-b border-[#EFECE6] pb-4">
                   <div className="flex items-center gap-2">
-                    <Building2 size={18} className="text-[#522B8A]" />
+                    <Smartphone size={18} className="text-[#522B8A]" />
                     <h3 className="font-cinzel text-lg font-bold text-[#1E162B]">
-                      {tariffLang === 'hi' ? 'सीधा बैंक खाता अंतरण (NEFT / IMPS / RTGS)' : 'Direct Bank Transfer (NEFT / IMPS / RTGS)'}
+                      {tariffLang === 'hi' ? 'केवल UPI एवं QR कोड द्वारा भुगतान' : 'UPI & QR Code Payment Only'}
                     </h3>
                   </div>
                   <span className="text-[11px] font-bold text-emerald-800 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">
-                    {tariffLang === 'hi' ? 'प्रमाणित' : 'Verified'}
+                    {tariffLang === 'hi' ? 'प्रमाणित UPI' : 'Verified UPI'}
                   </span>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
                   <div className="p-3.5 rounded-xl bg-[#FAF8F5] border border-[#E6DFD3] space-y-1">
                     <span className="text-[10px] text-[#5D556A] uppercase block">
-                      {tariffLang === 'hi' ? 'खाताधारक का नाम' : 'Account Holder Name'}
+                      {tariffLang === 'hi' ? 'प्राप्तकर्ता का नाम (Beneficiary)' : 'Verified Recipient Name'}
                     </span>
                     <span className="font-semibold text-sm text-[#1E162B] block">{bankDetails.holder}</span>
-                  </div>
-
-                  <div className="p-3.5 rounded-xl bg-[#FAF8F5] border border-[#E6DFD3] space-y-1">
-                    <span className="text-[10px] text-[#5D556A] uppercase block">
-                      {tariffLang === 'hi' ? 'बैंक का नाम' : 'Bank Name'}
-                    </span>
-                    <span className="font-semibold text-sm text-[#1E162B] block">{bankDetails.bank}</span>
                   </div>
 
                   <div className="p-3.5 rounded-xl bg-[#FAF8F5] border border-[#E6DFD3] flex items-center justify-between">
                     <div>
                       <span className="text-[10px] text-[#5D556A] uppercase block">
-                        {tariffLang === 'hi' ? 'खाता संख्या' : 'Account Number'}
+                        {tariffLang === 'hi' ? 'आधिकारिक UPI ID' : 'Official UPI ID'}
                       </span>
                       <span className="font-mono text-sm font-bold text-[#1E162B] select-all">
-                        {bankDetails.accNumber}
+                        {bankDetails.upiId}
                       </span>
                     </div>
                     <button
                       type="button"
-                      onClick={() => handleCopy(bankDetails.accNumber, 'acc')}
+                      onClick={() => handleCopy(bankDetails.upiId, 'upi2')}
                       className="px-2.5 py-1 text-[11px] rounded-lg bg-white hover:bg-[#F4F0FA] text-[#1E162B] font-medium border border-[#E6DFD3] transition-colors cursor-pointer"
                     >
-                      {copiedKey === 'acc' ? (tariffLang === 'hi' ? 'कॉपी हुआ' : 'Copied') : (tariffLang === 'hi' ? 'नंबर कॉपी करें' : 'Copy Number')}
+                      {copiedKey === 'upi2' ? (tariffLang === 'hi' ? 'कॉपी हुआ' : 'Copied') : (tariffLang === 'hi' ? 'UPI कॉपी करें' : 'Copy UPI')}
                     </button>
                   </div>
 
                   <div className="p-3.5 rounded-xl bg-[#FAF8F5] border border-[#E6DFD3] flex items-center justify-between">
                     <div>
-                      <span className="text-[10px] text-[#5D556A] uppercase block">IFSC कोड</span>
+                      <span className="text-[10px] text-[#5D556A] uppercase block">
+                        {tariffLang === 'hi' ? 'UPI मोबाइल नंबर' : 'UPI Linked Mobile'}
+                      </span>
                       <span className="font-mono text-sm font-bold text-[#1E162B] select-all">
-                        {bankDetails.ifsc}
+                        {bankDetails.phone}
                       </span>
                     </div>
                     <button
                       type="button"
-                      onClick={() => handleCopy(bankDetails.ifsc, 'ifsc')}
+                      onClick={() => handleCopy('9105731969', 'phone')}
                       className="px-2.5 py-1 text-[11px] rounded-lg bg-white hover:bg-[#F4F0FA] text-[#1E162B] font-medium border border-[#E6DFD3] transition-colors cursor-pointer"
                     >
-                      {copiedKey === 'ifsc' ? (tariffLang === 'hi' ? 'कॉपी हुआ' : 'Copied') : (tariffLang === 'hi' ? 'IFSC कॉपी करें' : 'Copy IFSC')}
+                      {copiedKey === 'phone' ? (tariffLang === 'hi' ? 'कॉपी हुआ' : 'Copied') : (tariffLang === 'hi' ? 'नंबर कॉपी करें' : 'Copy Phone')}
                     </button>
                   </div>
 
                   <div className="p-3.5 rounded-xl bg-[#FAF8F5] border border-[#E6DFD3] space-y-1">
                     <span className="text-[10px] text-[#5D556A] uppercase block">
-                      {tariffLang === 'hi' ? 'खाता प्रकार' : 'Account Type'}
+                      {tariffLang === 'hi' ? 'समर्थित ऐप्स' : 'Accepted Payment Apps'}
                     </span>
-                    <span className="font-semibold text-sm text-[#1E162B] block">
-                      {tariffLang === 'hi' ? 'बचत खाता' : bankDetails.type}
+                    <span className="font-semibold text-xs text-[#1E162B] block">
+                      Google Pay · PhonePe · Paytm · BHIM
                     </span>
                   </div>
+                </div>
 
-                  <div className="p-3.5 rounded-xl bg-[#FAF8F5] border border-[#E6DFD3] space-y-1">
-                    <span className="text-[10px] text-[#5D556A] uppercase block">
-                      {tariffLang === 'hi' ? 'शाखा एवं स्थान' : 'Branch & Location'}
-                    </span>
-                    <span className="font-semibold text-xs text-[#1E162B] block">{bankDetails.branch}</span>
-                  </div>
+                <div className="p-4 rounded-xl bg-[#FBF5E6] border border-[#DEC38C] text-xs text-[#7A5311] leading-relaxed flex items-start gap-2.5">
+                  <ShieldCheck size={16} className="text-[#B48228] shrink-0 mt-0.5" />
+                  <span>
+                    {tariffLang === 'hi'
+                      ? 'महत्वपूर्ण सूचना: सभी परामर्श व हीलिंग सेवा शुल्क केवल सत्यापित UPI ID (9105731969@upi) या बाईं ओर दिए गए QR कोड स्कैनर के माध्यम से ही स्वीकार किए जाते हैं।'
+                      : 'Important: We accept consultation & healing fee payments strictly through the verified QR Code scanner or Official UPI ID (9105731969@upi) only.'}
+                  </span>
                 </div>
               </div>
 
@@ -670,7 +663,7 @@ export const TariffView: React.FC<TariffViewProps> = ({
                 </div>
 
                 <a
-                  href="https://wa.me/919105731969?text=Hello%20Dr.%20Pooja%20Awasthi,%20I%20have%20transferred%20the%20consultation%20fee.%20Attached%20is%20the%20screenshot."
+                  href="https://wa.me/919105731969?text=Hello%20Dr.%20Pooja%20Awasthi,%20I%20have%20paid%20the%20consultation%20fee%20via%20UPI.%20Attached%20is%20the%20screenshot."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="h-10 px-5 flex items-center rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-bold uppercase tracking-wider transition-colors shrink-0 shadow-sm"

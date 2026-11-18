@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { X, Copy, Check, QrCode, ShieldCheck, ArrowRight, MessageSquare, Building2, Smartphone } from 'lucide-react';
+import { X, Copy, Check, QrCode, ShieldCheck, MessageSquare, Smartphone } from 'lucide-react';
 import { useSiteContent } from '../utils/siteContentContext';
-import { UpiQrCode } from './UpiQrCode';
 
 interface BankUpiModalProps {
   isOpen: boolean;
@@ -16,15 +15,10 @@ export const BankUpiModal: React.FC<BankUpiModalProps> = ({ isOpen, onClose, lan
   if (!isOpen) return null;
 
   const bankInfo = siteContent?.bankUpi;
-  const qrCodeUrl = bankInfo?.qr_code_image || '/upi-qr-9105731969.svg';
+  const qrCodeUrl = bankInfo?.qr_code_image || '/assets/aistudio/Screenshot_2026-11-17_120046_1b5aa9a9.png';
 
   const paymentData = {
     accountHolder: bankInfo?.account_name || 'Pooja Awasthi',
-    bankName: bankInfo?.bank_name || 'State Bank of India (SBI)',
-    branch: bankInfo?.branch || 'Dehradun Main Branch, Uttarakhand',
-    accountNumber: bankInfo?.account_number || '39876543210',
-    ifscCode: bankInfo?.ifsc_code || 'SBIN0001234',
-    accountType: 'Savings Account',
     upiId: bankInfo?.upi_id || '9105731969@upi',
     phone: siteContent?.contact?.phone || '+91 91057 31969',
     consultancyFee: siteContent?.contact?.consultation_fee || '₹5,100',
@@ -48,13 +42,13 @@ export const BankUpiModal: React.FC<BankUpiModalProps> = ({ isOpen, onClose, lan
             </div>
             <div>
               <h3 className="font-cinzel text-lg sm:text-xl font-bold text-[#1E162B]">
-                {lang === 'hi' ? 'बैंक एवं UPI भुगतान विवरण' : 'Bank & UPI Payment Details'}
+                {lang === 'hi' ? 'UPI एवं QR कोड भुगतान विवरण' : 'UPI & QR Code Payment Details'}
               </h3>
               <p className="text-xs text-[#7A5311]">
                 {lang === 'hi' ? (
-                  <>परामर्श फीस: <strong className="font-black font-rupee text-[#1E162B] text-sm tracking-tight">{paymentData.consultancyFee}</strong> · प्रामाणिक व सत्यापित खाते</>
+                  <>परामर्श फीस: <strong className="font-black font-rupee text-[#1E162B] text-sm tracking-tight">{paymentData.consultancyFee}</strong> · केवल UPI एवं QR कोड द्वारा भुगतान</>
                 ) : (
-                  <>Consultation Fee: <strong className="font-black font-rupee text-[#1E162B] text-sm tracking-tight">{paymentData.consultancyFee}</strong> · Direct Verified Accounts</>
+                  <>Consultation Fee: <strong className="font-black font-rupee text-[#1E162B] text-sm tracking-tight">{paymentData.consultancyFee}</strong> · UPI & QR Code Only</>
                 )}
               </p>
             </div>
@@ -87,12 +81,16 @@ export const BankUpiModal: React.FC<BankUpiModalProps> = ({ isOpen, onClose, lan
             {/* Scannable QR Code Card */}
             <div className="p-4 rounded-2xl bg-white border border-[#E6DFD3] text-center flex flex-col sm:flex-row items-center justify-center gap-5 shadow-xs">
               <div className="relative p-2 rounded-xl border border-[#E6DFD3] bg-white shrink-0 shadow-2xs">
-                <UpiQrCode
-                  upiId={paymentData.upiId}
-                  accountHolder={paymentData.accountHolder}
-                  customImageUrl={paymentData.qrImage}
+                <img
+                  src={paymentData.qrImage}
                   alt={`UPI QR Code - ${paymentData.accountHolder} (${paymentData.upiId})`}
                   className="w-40 h-40 object-contain rounded-lg"
+                  onError={(e) => {
+                    const target = e.currentTarget;
+                    if (!target.src.includes('upi-qr-9105731969.svg')) {
+                      target.src = '/upi-qr-9105731969.svg';
+                    }
+                  }}
                 />
               </div>
 
@@ -163,72 +161,10 @@ export const BankUpiModal: React.FC<BankUpiModalProps> = ({ isOpen, onClose, lan
                 </button>
               </div>
             </div>
-          </div>
-
-          {/* Bank Transfer (NEFT / RTGS / IMPS) */}
-          <div className="p-5 rounded-2xl bg-[#FAF8F5] border border-[#E6DFD3] space-y-4">
-            <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#522B8A]">
-              <Building2 size={16} className="text-[#B48228]" />
-              <span>{lang === 'hi' ? 'सीधा बैंक अंतरण (NEFT / IMPS / RTGS)' : 'Direct Bank Account Transfer (NEFT / IMPS)'}</span>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
-              <div className="p-3 rounded-xl bg-white border border-[#E6DFD3] space-y-1">
-                <span className="text-[10px] text-[#5D556A] uppercase block">
-                  {lang === 'hi' ? 'खाताधारक का नाम' : 'Account Holder'}
-                </span>
-                <span className="font-semibold text-[#1E162B] block">{paymentData.accountHolder}</span>
-              </div>
-
-              <div className="p-3 rounded-xl bg-white border border-[#E6DFD3] space-y-1">
-                <span className="text-[10px] text-[#5D556A] uppercase block">
-                  {lang === 'hi' ? 'बैंक का नाम' : 'Bank Name'}
-                </span>
-                <span className="font-semibold text-[#1E162B] block">{paymentData.bankName}</span>
-              </div>
-
-              <div className="p-3 rounded-xl bg-white border border-[#E6DFD3] flex items-center justify-between">
-                <div>
-                  <span className="text-[10px] text-[#5D556A] uppercase block">
-                    {lang === 'hi' ? 'खाता संख्या' : 'Account Number'}
-                  </span>
-                  <span className="font-mono text-sm font-bold text-[#1E162B] select-all">
-                    {paymentData.accountNumber}
-                  </span>
-                </div>
-                <button
-                  type="button"
-                  onClick={() => copyToClipboard(paymentData.accountNumber, 'acc')}
-                  className="p-1.5 rounded-lg hover:bg-[#F4F0FA] text-[#522B8A] transition-colors cursor-pointer"
-                >
-                  {copiedField === 'acc' ? <Check size={14} className="text-emerald-600" /> : <Copy size={14} />}
-                </button>
-              </div>
-
-              <div className="p-3 rounded-xl bg-white border border-[#E6DFD3] flex items-center justify-between">
-                <div>
-                  <span className="text-[10px] text-[#5D556A] uppercase block">
-                    {lang === 'hi' ? 'IFSC कोड' : 'IFSC Code'}
-                  </span>
-                  <span className="font-mono text-sm font-bold text-[#1E162B] select-all">
-                    {paymentData.ifscCode}
-                  </span>
-                </div>
-                <button
-                  type="button"
-                  onClick={() => copyToClipboard(paymentData.ifscCode, 'ifsc')}
-                  className="p-1.5 rounded-lg hover:bg-[#F4F0FA] text-[#522B8A] transition-colors cursor-pointer"
-                >
-                  {copiedField === 'ifsc' ? <Check size={14} className="text-emerald-600" /> : <Copy size={14} />}
-                </button>
-              </div>
-
-              <div className="p-3 rounded-xl bg-white border border-[#E6DFD3] sm:col-span-2 space-y-1">
-                <span className="text-[10px] text-[#5D556A] uppercase block">
-                  {lang === 'hi' ? 'शाखा एवं स्थान' : 'Branch Location'}
-                </span>
-                <span className="text-[#1E162B] block">{paymentData.branch}</span>
-              </div>
+            <div className="p-3.5 rounded-xl bg-amber-50 border border-amber-200 text-xs text-amber-900 font-medium">
+              {lang === 'hi'
+                ? 'नोट: हम केवल QR कोड एवं UPI (GPay / PhonePe / Paytm / BHIM) द्वारा ही भुगतान स्वीकार करते हैं।'
+                : 'Note: We strictly accept payments via Verified QR Code and UPI Apps only (GPay / PhonePe / Paytm / BHIM).'}
             </div>
           </div>
 

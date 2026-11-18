@@ -133,16 +133,16 @@ export const CORE_WEBSITE_SECTIONS: CoreSectionItem[] = [
   {
     id: 'core-contact',
     sectionKey: 'contact',
-    title_hi: '७. संपर्क सूत्र एवं बैंक खाता / UPI QR विवरण (Contact & Payment)',
-    title_en: '7. Contact Info & Bank Account / UPI QR',
-    subtitle_hi: 'आधिकारिक फोन नंबर, व्हाट्सएप डायरेक्ट लिंक, ईमेल, क्लिनिक पता, बैंक खाता संख्या, IFSC कोड एवं UPI QR कोड फोटो।',
-    subtitle_en: 'Official phone numbers, WhatsApp direct link, email, clinic address, bank account details, IFSC, and UPI QR image.',
+    title_hi: '७. संपर्क सूत्र एवं UPI / QR कोड भुगतान विवरण (Contact & UPI Payment)',
+    title_en: '7. Contact Info & UPI / QR Code Payment',
+    subtitle_hi: 'आधिकारिक फोन नंबर, व्हाट्सएप डायरेक्ट लिंक, ईमेल, क्लिनिक पता, UPI ID एवं QR कोड स्कैनर फोटो।',
+    subtitle_en: 'Official phone numbers, WhatsApp direct link, email, clinic address, UPI ID, and QR code scanner image.',
     slug: '#contact',
     icon: CreditCard,
-    category_hi: 'संपर्क व भुगतान',
-    category_en: 'Contact & Bank',
-    editableItems_hi: ['फोन नंबर (+91 9105731969)', 'व्हाट्सएप परामर्श लिंक', 'ईमेल व क्लिनिक का पता', 'बैंक खाता, IFSC, बैंक नाम', 'UPI ID व QR कोड फोटो'],
-    editableItems_en: ['Phone Number', 'WhatsApp Link', 'Clinic Address & Email', 'Bank Account & IFSC', 'UPI ID & QR Code Image']
+    category_hi: 'संपर्क व UPI भुगतान',
+    category_en: 'Contact & UPI',
+    editableItems_hi: ['फोन नंबर (+91 9105731969)', 'व्हाट्सएप परामर्श लिंक', 'ईमेल व क्लिनिक का पता', 'UPI ID व QR कोड फोटो'],
+    editableItems_en: ['Phone Number', 'WhatsApp Link', 'Clinic Address & Email', 'UPI ID & QR Code Image']
   }
 ];
 

@@ -5,7 +5,7 @@ export interface TestimonialItem {
   location_hi: string;
   service: string;
   service_hi: string;
-  category: 'all' | 'numerology' | 'watch' | 'salt' | 'chakra' | 'vastu';
+  category: 'all' | 'numerology' | 'salt' | 'chakra' | 'vastu';
   quote: string;
   quote_hi: string;
   rating: number;
@@ -30,22 +30,6 @@ export const TESTIMONIALS_DATA: TestimonialItem[] = [
     date: "February 2026",
     date_hi: "फरवरी 2026",
     helpfulCount: 42,
-    verified: true
-  },
-  {
-    id: "rev-2",
-    name: "Rohit Khandelwal",
-    location: "Jaipur, Rajasthan",
-    location_hi: "जयपुर, राजस्थान",
-    service: "Watch Therapy & Time Energy",
-    service_hi: "वॉच थेरेपी एवं समय ऊर्जा संतुलन",
-    category: "watch",
-    quote: "I was skeptical about Watch Therapy until Dr. Pooja Awasthi analyzed my wristwatch dial, strap color, and time vibration. Within 4 weeks of switching to the recommended dial shape and metallic frequency, my pending financial deals cleared effortlessly!",
-    quote_hi: "वॉच थेरेपी पर मुझे पहले संशय था, लेकिन डॉ. पूजा अवस्थी जी ने मेरी कलाई घड़ी के डायल, स्ट्रैप के रंग और समय की ऊर्जा का विश्लेषण किया। उनके बताए अनुसार सही डायल और धातु की घड़ी पहनने के मात्र ४ सप्ताह में मेरी वर्षों से अटकी कारोबारी पेमेंट बिना बाधा के प्राप्त हो गई!",
-    rating: 5,
-    date: "March 2026",
-    date_hi: "मार्च 2026",
-    helpfulCount: 38,
     verified: true
   },
   {

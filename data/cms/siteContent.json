@@ -86,20 +86,6 @@
     {
       "id": "srv-5",
       "number": 5,
-      "title": "Watch Analysis & Clock Therapy Consultation",
-      "title_hi": "कलाई घड़ी का विश्लेषण एवं वॉच थेरेपी (समय सुधार)",
-      "fee": 5100,
-      "feeFormatted": "₹5,100",
-      "duration": "45 मिनट",
-      "category": "therapy",
-      "categoryLabel_hi": "समय विज्ञान",
-      "badge": "अनोखा शोध",
-      "description": "आपकी कलाई घड़ी का डायल, रंग व पट्टा आपके समय और भाग्य को कैसे प्रभावित करता है उसका विश्लेषण।",
-      "image": "/assets/images/watch_therapy_consultation_1793624573045.jpg"
-    },
-    {
-      "id": "srv-6",
-      "number": 6,
       "title": "Pranic Energy Healing Session",
       "title_hi": "प्राणिक हीलिंग सत्र (दूरी से ऊर्जा उपचार)",
       "fee": 5100,
@@ -112,27 +98,27 @@
       "image": "/assets/images/hero_celestial_sacred_geometry_1792557572251.jpg"
     },
     {
-      "id": "srv-7",
-      "number": 7,
-      "title": "Crystal & Gemstone Resonance Guidance",
-      "title_hi": "क्रिस्टल एवं सिद्ध रत्न मार्गदर्शन (सही रत्न का चुनाव)",
-      "fee": 5100,
-      "feeFormatted": "₹5,100",
+      "id": "srv-6",
+      "number": 6,
+      "title": "Crystal Healing and Charging",
+      "title_hi": "क्रिस्टल हीलिंग एवं चार्जिंग (Crystal Healing and Charging)",
+      "fee": 11000,
+      "feeFormatted": "₹11,000/-",
       "duration": "45 मिनट",
       "category": "therapy",
-      "categoryLabel_hi": "रत्न विज्ञान",
-      "badge": "अभिमंत्रित रत्न",
-      "description": "आपकी जन्मतिथि के अनुसार आपके लिए सबसे सही और असरदार प्राकृतिक क्रिस्टल व रत्न का सुझाव।",
+      "categoryLabel_hi": "क्रिस्टल हीलिंग एवं चार्जिंग",
+      "badge": "अभिमंत्रित चार्जिंग",
+      "description": "आपकी ऊर्जा और जन्मतिथि के अनुसार प्राकृतिक क्रिस्टल का चयन, प्राण-प्रतिष्ठा एवं विशेष हीलिंग चार्जिंग परामर्श।",
       "image": "/assets/images/crystal_gemstones_healing_1793624595121.jpg"
     },
     {
-      "id": "srv-8",
-      "number": 8,
+      "id": "srv-7",
+      "number": 7,
       "title": "Vastu Harmonization & Spatial Energy",
       "title_hi": "वास्तु दोष निवारण (बिना तोड़-फोड़ के सकारात्मक ऊर्जा)",
-      "fee": 5100,
-      "feeFormatted": "₹5,100",
-      "duration": "60–90 मिनट",
+      "fee": 11000,
+      "feeFormatted": "₹11,000/-",
+      "duration": "40–60 मिनट",
       "category": "healing",
       "categoryLabel_hi": "वास्तु विज्ञान",
       "badge": "बिना तोड़-फोड़",
@@ -140,8 +126,8 @@
       "image": "/assets/images/vastu_sacred_yantra_1793624613612.jpg"
     },
     {
-      "id": "srv-9",
-      "number": 9,
+      "id": "srv-8",
+      "number": 8,
       "title": "Relationship Harmony & Soul Connection",
       "title_hi": "पति-पत्नी एवं पारिवारिक रिश्तों में मधुरता परामर्श",
       "fee": 5100,
@@ -154,13 +140,13 @@
       "image": "/assets/images/vedic_numerology_sacred_cosmos_1792557572243.jpg"
     },
     {
-      "id": "srv-10",
-      "number": 10,
+      "id": "srv-9",
+      "number": 9,
       "title": "Karma Cord Cutting & Emotional Liberation",
       "title_hi": "कॉर्ड कटिंग (पुराने तनाव व नकारात्मक यादों से मुक्ति)",
-      "fee": 5100,
-      "feeFormatted": "₹5,100",
-      "duration": "60 मिनट",
+      "fee": 11000,
+      "feeFormatted": "₹11,000/-",
+      "duration": "30–40 मिनट",
       "category": "healing",
       "categoryLabel_hi": "आत्मिक शांति",
       "badge": "गहरी मुक्ति",
@@ -168,12 +154,12 @@
       "image": "/assets/images/chakras_aura_energy_flow_1792557572576.jpg"
     },
     {
-      "id": "srv-11",
-      "number": 11,
+      "id": "srv-10",
+      "number": 10,
       "title": "Past Life Regression Exploration",
       "title_hi": "पास्ट लाइफ रिग्रेशन (पूर्व जन्म स्मृति सत्र - PLR)",
-      "fee": 5100,
-      "feeFormatted": "₹5,100",
+      "fee": 21000,
+      "feeFormatted": "₹21,000/-",
       "duration": "90–120 मिनट",
       "category": "regression",
       "categoryLabel_hi": "गहन ध्यान",
@@ -251,13 +237,13 @@
     "address": "देहरादून, उत्तराखंड • विश्वभर में ऑनलाइन परामर्श"
   },
   "bankUpi": {
-    "bank_name": "State Bank of India (SBI)",
+    "bank_name": "",
     "account_name": "Pooja Awasthi",
-    "account_number": "39876543210",
-    "ifsc_code": "SBIN0001234",
-    "branch": "Dehradun Main Branch, Uttarakhand",
+    "account_number": "",
+    "ifsc_code": "",
+    "branch": "",
     "upi_id": "9105731969@upi",
-    "qr_code_image": "/upi-qr-9105731969.svg"
+    "qr_code_image": "/assets/aistudio/Screenshot_2026-11-17_120046_1b5aa9a9.png"
   },
-  "updatedAt": "2026-11-03T08:45:00.000Z"
+  "updatedAt": "2026-11-17T23:55:00.000Z"
 }

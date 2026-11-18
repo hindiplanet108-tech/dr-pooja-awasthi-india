@@ -81,13 +81,13 @@ export const Footer: React.FC<FooterProps> = ({
               )}
             </div>
 
-            {/* Box 2: Bank Account & UPI Payment Details */}
+            {/* Box 2: Verified UPI & QR Code Payment Details */}
             <div className="p-5 sm:p-6 rounded-2xl bg-emerald-50 border-2 border-emerald-300 hover:border-emerald-500 shadow-sm transition-all flex flex-col justify-between group">
               <div className="space-y-3">
                 <div className="flex flex-wrap items-center justify-between gap-2">
                   <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white text-emerald-800 text-xs font-bold uppercase tracking-wider border border-emerald-300">
                     <ShieldCheck size={12} className="text-emerald-700" />
-                    <span>{lang === 'hi' ? 'सत्यापित आधिकारिक भुगतान' : 'Verified Payment'}</span>
+                    <span>{lang === 'hi' ? 'केवल UPI एवं QR भुगतान' : 'Verified UPI & QR Only'}</span>
                   </span>
                   <span className="px-3 py-1 rounded-md bg-emerald-700 text-white font-bold text-xs shadow-xs uppercase tracking-wider">
                     UPI QR Code
@@ -96,7 +96,7 @@ export const Footer: React.FC<FooterProps> = ({
 
                 <h3 className="font-cinzel text-lg sm:text-xl font-bold text-[#1E162B] group-hover:text-emerald-900 transition-colors flex items-center gap-2">
                   <CreditCard size={20} className="text-emerald-700 shrink-0" />
-                  <span>{lang === 'hi' ? 'बैंक खाता एवं सीधे UPI भुगतान विवरण' : 'Bank & UPI Payment Details'}</span>
+                  <span>{lang === 'hi' ? 'UPI एवं QR कोड भुगतान विवरण' : 'UPI & QR Code Payment Details'}</span>
                 </h3>
 
                 <div className="p-3.5 rounded-xl bg-white border border-emerald-200 text-xs space-y-1.5 shadow-2xs">
@@ -105,8 +105,8 @@ export const Footer: React.FC<FooterProps> = ({
                     <strong className="text-[#522B8A] font-mono font-bold select-all text-sm">9105731969@upi</strong>
                   </div>
                   <div className="flex items-center justify-between gap-2">
-                    <span className="text-[#5D556A] text-[11px]">खाताधारक (Beneficiary):</span>
-                    <strong className="text-[#1E162B] font-semibold">Pooja Awasthi • SBI Dehradun</strong>
+                    <span className="text-[#5D556A] text-[11px]">प्राप्तकर्ता (Recipient):</span>
+                    <strong className="text-[#1E162B] font-semibold">Pooja Awasthi • UPI & QR Only</strong>
                   </div>
                 </div>
               </div>
@@ -119,10 +119,10 @@ export const Footer: React.FC<FooterProps> = ({
                     className="w-full sm:w-auto h-11 inline-flex items-center justify-center gap-2 px-6 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs uppercase tracking-wider transition-all shadow-md cursor-pointer"
                   >
                     <QrCode size={14} className="text-white" />
-                    <span>{lang === 'hi' ? '📷 बैंक विवरण व QR कोड देखें' : '📷 View Bank & UPI QR'}</span>
+                    <span>{lang === 'hi' ? '📷 UPI व QR कोड स्कैनर देखें' : '📷 View UPI & QR Scanner'}</span>
                   </button>
                   <a
-                    href="https://wa.me/919105731969?text=Namaste%20Dr.%20Pooja%20Awasthi,%20I%20have%20transferred%20the%20fee."
+                    href="https://wa.me/919105731969?text=Namaste%20Dr.%20Pooja%20Awasthi,%20I%20have%20paid%20the%20fee%20via%20UPI."
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-xs text-emerald-800 hover:text-emerald-950 underline font-semibold transition-colors"
@@ -210,7 +210,7 @@ export const Footer: React.FC<FooterProps> = ({
                   >
                     <span className="flex items-center gap-1.5">
                       <QrCode size={13} className="text-emerald-700 shrink-0" />
-                      <span>{lang === 'hi' ? '💳 बैंक खाता एवं UPI विवरण' : 'Bank & UPI Details'}</span>
+                      <span>{lang === 'hi' ? '💳 UPI एवं QR भुगतान विवरण' : 'UPI & QR Payment'}</span>
                     </span>
                     <span className="text-[10px] bg-emerald-700 text-white font-bold px-1.5 py-0.5 rounded shadow-2xs uppercase shrink-0">
                       QR कोड

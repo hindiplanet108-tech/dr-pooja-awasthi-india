@@ -225,7 +225,7 @@ export const PricingConsultationSection: React.FC<PricingConsultationSectionProp
                     className="h-10 px-3 rounded-xl border border-emerald-300 bg-emerald-50 hover:bg-emerald-100 text-emerald-800 text-xs font-bold transition-all text-center flex items-center justify-center gap-1.5 cursor-pointer"
                   >
                     <ShieldCheck size={13} className="text-emerald-700 shrink-0" />
-                    <span className="truncate">{lang === 'hi' ? 'Bank & UPI विवरण' : 'Bank & UPI Details'}</span>
+                    <span className="truncate">{lang === 'hi' ? 'UPI व QR भुगतान' : 'UPI & QR Payment'}</span>
                   </button>
                 )}
               </div>

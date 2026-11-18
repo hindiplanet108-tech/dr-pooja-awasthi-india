@@ -522,15 +522,15 @@ function MainApp() {
           </button>
         )}
 
-        {/* Bank & UPI QR Button */}
+        {/* UPI & QR Pay Button */}
         <button
           type="button"
           onClick={() => setIsBankUpiModalOpen(true)}
           className="h-10 px-3.5 rounded-full bg-emerald-50/95 hover:bg-emerald-100 text-emerald-800 shadow-lg border border-emerald-400 font-bold text-xs flex items-center gap-1.5 backdrop-blur-md transition-all cursor-pointer"
-          title="Bank Account & UPI Payment Details (QR Code)"
+          title="UPI & QR Code Payment Details Only"
         >
           <QrCode size={15} className="text-emerald-700" />
-          <span className="hidden sm:inline">Bank & UPI</span>
+          <span className="hidden sm:inline">UPI & QR Pay</span>
         </button>
 
         {/* WhatsApp Direct */}

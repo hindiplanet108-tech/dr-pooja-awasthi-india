@@ -230,7 +230,7 @@ export const AdminSiteEditor: React.FC<AdminSiteEditorProps> = ({
             activeTab === 'contact' ? 'bg-[#D6B574] text-[#1c0f26] font-bold' : 'text-white/70 hover:text-white'
           }`}
         >
-          <span>🏦 ७. संपर्क व बैंक खाता</span>
+          <span>📱 ७. संपर्क व UPI / QR भुगतान</span>
         </button>
       </div>
 
@@ -1032,10 +1032,10 @@ export const AdminSiteEditor: React.FC<AdminSiteEditorProps> = ({
         <div className="p-6 sm:p-8 rounded-3xl bg-[#24152F]/80 border border-[#D6B574]/30 shadow-xl space-y-6">
           <div className="space-y-1">
             <h2 className="font-cinzel text-lg font-bold text-white">
-              सीधा संपर्क, परामर्श समय एवं बैंक UPI खाता विवरण
+              सीधा संपर्क, परामर्श समय एवं UPI / QR कोड भुगतान विवरण
             </h2>
             <p className="text-xs text-[#EAE2F4]/70">
-              आगंतुकों को दिखने वाला व्हाट्सएप नंबर, ईमेल, परामर्श शुल्क एवं बैंक भुगतान मोडल की जानकारी।
+              आगंतुकों को दिखने वाला व्हाट्सएप नंबर, ईमेल, परामर्श शुल्क एवं UPI व QR कोड भुगतान मोडल की जानकारी।
             </p>
           </div>
 
@@ -1146,33 +1146,16 @@ export const AdminSiteEditor: React.FC<AdminSiteEditorProps> = ({
             </div>
           </div>
 
-          {/* Bank UPI details */}
+          {/* UPI & QR Code Payment details */}
           <div className="pt-4 border-t border-white/5 space-y-4">
             <span className="text-xs uppercase font-bold text-[#D6B574] tracking-wider block">
-              बैंक एवं UPI भुगतान विवरण (Bank & UPI Modal Information)
+              UPI एवं QR कोड भुगतान विवरण (UPI & QR Code Payment Only)
             </span>
 
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
                 <label className="block text-xs font-semibold text-[#D6B574] mb-1">
-                  बैंक का नाम (Bank Name)
-                </label>
-                <input
-                  type="text"
-                  value={content.bankUpi.bank_name}
-                  onChange={(e) =>
-                    setContent({
-                      ...content,
-                      bankUpi: { ...content.bankUpi, bank_name: e.target.value },
-                    })
-                  }
-                  className="w-full px-3 py-2 rounded-xl bg-[#1c0f26] border border-[#D6B574]/30 text-xs text-white outline-hidden"
-                />
-              </div>
-
-              <div>
-                <label className="block text-xs font-semibold text-[#D6B574] mb-1">
-                  खाताधारक का नाम (Account Name)
+                  प्राप्तकर्ता का नाम (Recipient Name)
                 </label>
                 <input
                   type="text"
@@ -1184,42 +1167,6 @@ export const AdminSiteEditor: React.FC<AdminSiteEditorProps> = ({
                     })
                   }
                   className="w-full px-3 py-2 rounded-xl bg-[#1c0f26] border border-[#D6B574]/30 text-xs text-white outline-hidden"
-                />
-              </div>
-
-              <div>
-                <label className="block text-xs font-semibold text-[#D6B574] mb-1">
-                  खाता संख्या (Account Number)
-                </label>
-                <input
-                  type="text"
-                  value={content.bankUpi.account_number}
-                  onChange={(e) =>
-                    setContent({
-                      ...content,
-                      bankUpi: { ...content.bankUpi, account_number: e.target.value },
-                    })
-                  }
-                  className="w-full px-3 py-2 rounded-xl bg-[#1c0f26] border border-[#D6B574]/30 text-xs text-white outline-hidden font-mono"
-                />
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div>
-                <label className="block text-xs font-semibold text-[#D6B574] mb-1">
-                  IFSC कोड
-                </label>
-                <input
-                  type="text"
-                  value={content.bankUpi.ifsc_code}
-                  onChange={(e) =>
-                    setContent({
-                      ...content,
-                      bankUpi: { ...content.bankUpi, ifsc_code: e.target.value },
-                    })
-                  }
-                  className="w-full px-3 py-2 rounded-xl bg-[#1c0f26] border border-[#D6B574]/30 text-xs text-white outline-hidden font-mono"
                 />
               </div>
 

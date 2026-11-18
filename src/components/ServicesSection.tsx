@@ -92,7 +92,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
                   : 'text-[#4A4356] hover:text-[#1E162B] hover:bg-[#FAF8F5]'
               }`}
             >
-              {lang === 'hi' ? 'संपूर्ण सेवा सूची (11)' : 'Complete Catalog (11)'}
+              {lang === 'hi' ? `संपूर्ण सेवा सूची (${currentCatalog.length})` : `Complete Catalog (${currentCatalog.length})`}
             </button>
             <button
               type="button"

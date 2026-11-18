@@ -367,8 +367,8 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
             </div>
             <p className="text-xs text-[#EAE2F4]/70 line-clamp-2">
               {lang === 'hi'
-                ? 'Hero, About, 11 सेवाएँ, वीडियो, टेस्टिमोनियल, FAQ और बैंक UPI विवरण बदलें।'
-                : 'Directly edit Hero, About, 11 Services, Video, Testimonials, FAQ & Bank UPI.'}
+                ? 'Hero, About, सेवाएँ, टेस्टिमोनियल, FAQ और UPI / QR भुगतान विवरण बदलें।'
+                : 'Directly edit Hero, About, Services, Testimonials, FAQ & UPI / QR.'}
             </p>
           </div>
         </div>
