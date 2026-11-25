@@ -314,8 +314,8 @@ export const ContactBookingSection: React.FC<ContactBookingSectionProps> = ({
                     <option value="Name Spelling Correction (₹5,100/-)">
                       {lang === 'hi' ? 'नाम की स्पेलिंग सुधार — ₹5,100/-' : 'Name Spelling Vibrational Correction — ₹5,100/-'}
                     </option>
-                    <option value="Aura Cleansing (₹3,100)">
-                      {lang === 'hi' ? 'ऑरा सफाई (ऊर्जा संतुलन - 20 मिनट) — ₹3,100' : 'Aura Cleansing (20 min) — ₹3,100'}
+                    <option value="Aura Cleansing (₹5,100)">
+                      {lang === 'hi' ? 'ऑरा सफाई (ऊर्जा संतुलन - 20 मिनट) — ₹5,100' : 'Aura Cleansing (20 min) — ₹5,100'}
                     </option>
                     <option value="Crystal Healing and Charging (₹11,000/-)">
                       {lang === 'hi' ? 'क्रिस्टल हीलिंग व चार्जिंग — ₹11,000/-' : 'Crystal Healing and Charging — ₹11,000/-'}

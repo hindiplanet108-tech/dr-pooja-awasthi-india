@@ -395,7 +395,7 @@ function MainApp() {
         name: 'Dr. Pooja Awasthi Spiritual Guidance',
         url: homeCanonical,
         image: `${liveOrigin}/assets/aistudio/28_91acc32c.jpeg`,
-        priceRange: '₹3,100 - ₹31,000',
+        priceRange: '₹5,100 - ₹31,000',
         telephone: '+919105731969',
         email: 'astro.poojaofficial@gmail.com',
         founder: { '@id': `${homeCanonical}#person` },
