@@ -83,12 +83,6 @@ export const AwardsSection: React.FC<AwardsSectionProps> = ({ lang }) => {
         if (fileNameLower.includes('immt') && award.id === 'iimt-3') return true;
 
         if (fileNameLower.includes('lucknow mahopadhyay award-7') && award.id === 'lucknow-1') return true;
-        if (fileNameLower.includes('lucknow mahopadhyay award-2') && award.id === 'lucknow-3') return true;
-        if (fileNameLower.includes('lucknow mahopadhyay award-3') && award.id === 'lucknow-4') return true;
-        if (fileNameLower.includes('lucknow mahopadhyay award-4') && award.id === 'lucknow-5') return true;
-        if (fileNameLower.includes('lucknow mahopadhyay award-5') && award.id === 'lucknow-6') return true;
-        if (fileNameLower.includes('lucknow mahopadhyay award-6') && award.id === 'lucknow-7') return true;
-        if (fileNameLower.includes('lucknow mahopadhyay award') && award.id === 'lucknow-2') return true;
 
         if (fileNameLower.includes('शीर्ष 10') && award.id === 'ujjain-1') return true;
         if (fileNameLower.includes('इंदौर 2026 - 1') && award.id === 'ujjain-2') return true;
@@ -108,18 +102,6 @@ export const AwardsSection: React.FC<AwardsSectionProps> = ({ lang }) => {
 
         if (fileNameLower.includes('चंद्रमौली') && fileNameLower.includes('-7') && award.id === 'bhu-1') return true;
         if (fileNameLower.includes('चंद्रमौली') && fileNameLower.includes('-4') && award.id === 'bhu-2') return true;
-        if (fileNameLower.includes('मुख्य अतिथि के रूप में सम्मानित') && !fileNameLower.includes('-2') && award.id === 'bhu-3') return true;
-        if (fileNameLower.includes('चंद्रमौली') && fileNameLower.includes('-5') && award.id === 'bhu-4') return true;
-        if (fileNameLower.includes('चंद्रमौली') && fileNameLower.includes('-6') && award.id === 'bhu-5') return true;
-        if (fileNameLower.includes('चंद्रमौली') && fileNameLower.includes('-1') && award.id === 'bhu-6') return true;
-
-        if (fileNameLower.includes('nafeed-2') && award.id === 'nafeed-1') return true;
-        if (fileNameLower.includes('nafeed-1') && award.id === 'nafeed-2') return true;
-        if (fileNameLower.includes('मुख्य अतिथि के रूप में सम्मानित-2') && award.id === 'nafeed-3') return true;
-        if (fileNameLower.includes('चंद्रमौली') && fileNameLower.includes('-3') && award.id === 'nafeed-4') return true;
-        if (fileNameLower.includes('चंद्रमौली') && fileNameLower.includes('-2') && award.id === 'nafeed-5') return true;
-
-        if (fileNameLower.includes('कटारिया') && award.id === 'urja-1') return true;
         if (fileNameLower.includes('pooja.jpg') && award.id === 'portrait-1') return true;
 
         return false;
@@ -165,17 +147,18 @@ export const AwardsSection: React.FC<AwardsSectionProps> = ({ lang }) => {
     return item.eventGroup === activeGroup;
   });
 
+  const countByGroup = (group: AwardItem['eventGroup']) =>
+    AWARDS_DATA.filter((a) => a.eventGroup === group).length;
+
   const EVENT_GROUP_TABS = [
-    { id: 'all', label_en: 'All 40+ Honors', label_hi: 'सभी 40+ सम्मान व चित्र', count: AWARDS_DATA.length },
-    { id: 'iimt_meerut', label_en: 'IIMT Univ. Meerut', label_hi: 'आईआईएमटी वि.वि. मेरठ', count: 6 },
-    { id: 'lucknow', label_en: 'Lucknow Conclave', label_hi: 'राष्ट्रीय सम्मेलन लखनऊ', count: 7 },
-    { id: 'ujjain_indore', label_en: 'Ujjain & Indore', label_hi: 'महाकाल उज्जैन व इन्दौर', count: 9 },
-    { id: 'uttarakhand_governor', label_en: 'Uttarakhand Governor', label_hi: 'उत्तराखंड राजभवन', count: 5 },
-    { id: 'bhu_varanasi', label_en: 'BHU Varanasi', label_hi: 'बीएचयू वाराणसी', count: 6 },
-    { id: 'dynamic_excellence', label_en: 'Dynamic Excellence', label_hi: 'डायनामिक एक्सीलेंस दिल्ली', count: 5 },
-    { id: 'urja_samman', label_en: 'URJA Samman', label_hi: 'ऊर्जा ज्योतिष सम्मान', count: 1 },
-    { id: 'portraits', label_en: 'Profile Portraits', label_hi: 'व्यक्तित्व चित्र', count: 1 },
-  ];
+    { id: 'all', label_en: `All ${AWARDS_DATA.length} Honors`, label_hi: `सभी ${AWARDS_DATA.length} सम्मान व चित्र`, count: AWARDS_DATA.length },
+    { id: 'iimt_meerut', label_en: 'IIMT Univ. Meerut', label_hi: 'आईआईएमटी वि.वि. मेरठ', count: countByGroup('iimt_meerut') },
+    { id: 'lucknow', label_en: 'Lucknow Conclave', label_hi: 'राष्ट्रीय सम्मेलन लखनऊ', count: countByGroup('lucknow') },
+    { id: 'ujjain_indore', label_en: 'Ujjain & Indore', label_hi: 'महाकाल उज्जैन व इन्दौर', count: countByGroup('ujjain_indore') },
+    { id: 'uttarakhand_governor', label_en: 'Uttarakhand Governor', label_hi: 'उत्तराखंड राजभवन', count: countByGroup('uttarakhand_governor') },
+    { id: 'bhu_varanasi', label_en: 'BHU Varanasi', label_hi: 'बीएचयू वाराणसी', count: countByGroup('bhu_varanasi') },
+    { id: 'portraits', label_en: 'Profile Portraits', label_hi: 'व्यक्तित्व चित्र', count: countByGroup('portraits') },
+  ].filter((tab) => tab.count > 0);
 
   return (
     <section id="honors" className="py-12 md:py-16 bg-white text-[#1E162B] relative overflow-hidden border-t border-[#E5DFD5]">
@@ -190,7 +173,7 @@ export const AwardsSection: React.FC<AwardsSectionProps> = ({ lang }) => {
             <span className="text-[#522B8A]">{t.awardsNav}</span>
             <span aria-hidden="true" className="text-[#B48228]">·</span>
             <span className="tabular-nums font-bold">
-              {lang === 'hi' ? '40+ राष्ट्रीय सम्मान व फोटो गैलरी' : '40+ Verified Felicitations & Photo Archive'}
+              {lang === 'hi' ? `${AWARDS_DATA.length} राष्ट्रीय सम्मान व फोटो गैलरी` : `${AWARDS_DATA.length} Verified Felicitations & Photo Archive`}
             </span>
           </div>
 
@@ -203,7 +186,7 @@ export const AwardsSection: React.FC<AwardsSectionProps> = ({ lang }) => {
 
           <p className="text-sm text-[#4A4356] leading-relaxed">
             {lang === 'hi'
-              ? 'उत्तराखंड के माननीय राज्यपाल ले. ज. गुरमीत सिंह, आईआईएमटी विश्वविद्यालय मेरठ में पूज्य जैनाचार्य 108 सौरभ सागर जी महाराज, काशी हिन्दू विश्वविद्यालय (BHU) के ज्योतिष विभागाध्यक्ष आचार्य चंद्रमौली उपाध्याय जी, महाकाल उज्जैन के प्रधान पुरोहित दिनेश जी, और नाफेड के नेशनल डायरेक्टर माननीय अशोक ठाकुर जी द्वारा सम्मानित।'
+              ? 'उत्तराखंड के माननीय राज्यपाल ले. ज. गुरमीत सिंह, आईआईएमटी विश्वविद्यालय मेरठ में पूज्य जैनाचार्य 108 सौरभ सागर जी महाराज, काशी हिन्दू विश्वविद्यालय (BHU) के ज्योतिष विभागाध्यक्ष आचार्य चंद्रमौली उपाध्याय जी, और महाकाल उज्जैन के प्रधान पुरोहित दिनेश जी द्वारा सम्मानित।'
               : 'Conferred with highest state and academic honors by distinguished dignitaries including Hon. Governor of Uttarakhand Lt. Gen. Gurmeet Singh, Jainacharya 108 Saurabh Sagar Ji Maharaj at IIMT University, BHU Jyotish Head Acharya Chandramouli Upadhyay, and revered spiritual authorities across national conclaves.'}
           </p>
         </div>
@@ -224,8 +207,8 @@ export const AwardsSection: React.FC<AwardsSectionProps> = ({ lang }) => {
                 </h4>
                 <p className="text-xs text-[#4A4356] leading-relaxed max-w-3xl">
                   {lang === 'hi'
-                    ? 'आपकी सभी 40+ तस्वीरें और सम्मान इसी सेक्शन (#honors) में 8 मुख्य कार्यक्रमों के अनुसार दिए गए हैं। किसी भी फोटो पर क्लिक करके बड़ी तस्वीर और पूरी जानकारी देखें।'
-                    : 'All 40+ photos and honors are categorized right here in #honors across 8 major event groups. Click any card to inspect full high-resolution citations.'}
+                    ? `आपकी सभी ${AWARDS_DATA.length} तस्वीरें और सम्मान इसी सेक्शन (#honors) में मुख्य कार्यक्रमों के अनुसार दिए गए हैं। किसी भी फोटो पर क्लिक करके बड़ी तस्वीर और पूरी जानकारी देखें।`
+                    : `All ${AWARDS_DATA.length} verified photos and honors are categorized right here in #honors across major event groups. Click any card to inspect full high-resolution citations.`}
                 </p>
               </div>
             </div>
@@ -233,7 +216,7 @@ export const AwardsSection: React.FC<AwardsSectionProps> = ({ lang }) => {
             <div className="flex items-center gap-2 shrink-0 self-end md:self-center">
               <label className="cursor-pointer inline-flex items-center gap-1.5 h-9 px-3.5 rounded-xl bg-[#522B8A] hover:bg-[#412070] text-white text-xs font-bold shadow-xs transition-all">
                 <Upload size={14} />
-                <span>{lang === 'hi' ? 'सभी 41 चित्र अपलोड करें' : 'Upload All Photos'}</span>
+                <span>{lang === 'hi' ? `सभी ${AWARDS_DATA.length} चित्र अपलोड करें` : 'Upload All Photos'}</span>
                 <input
                   ref={fileInputRef}
                   type="file"
@@ -311,39 +294,39 @@ export const AwardsSection: React.FC<AwardsSectionProps> = ({ lang }) => {
           {/* Spotlight 2 */}
           <div 
             onClick={() => {
-              const nafeedAward = AWARDS_DATA.find((a) => a.id === 'nafeed-1') || null;
-              if (nafeedAward) setSelectedAward(nafeedAward);
+              const govAward = AWARDS_DATA.find((a) => a.id === 'gov-1') || null;
+              if (govAward) setSelectedAward(govAward);
             }}
             className="p-5 sm:p-6 rounded-2xl bg-[#FAF8F5] border border-[#DEC38C] flex flex-col sm:flex-row items-center gap-5 shadow-sm hover:shadow-xl group cursor-pointer hover:bg-[#FBF5E6]/50 transition-all"
           >
             <div className="w-28 h-36 sm:w-32 sm:h-40 rounded-xl overflow-hidden border border-[#E6DFD3] bg-white p-1.5 shrink-0 shadow-md">
               <img
-                src={customPhotos['nafeed-1'] || "/assets/awards/ashok_thakur_nafeed_award_2025.jpeg"}
-                alt="माननीय अशोक ठाकुर National Director of Nafeed द्वारा सम्मानित"
+                src={customPhotos['gov-1'] || "/assets/awards/uttarakhand_governor_gurmeet_singh_award.jpeg"}
+                alt="उत्तराखंड के माननीय राज्यपाल ले. ज. गुरमीत सिंह द्वारा सम्मानित"
                 className="w-full h-full object-cover object-top rounded-lg group-hover:scale-105 transition-transform duration-300"
                 onError={(e) => {
                   const target = e.currentTarget;
-                  if (target.src !== '/ashok_thakur_nafeed_award_2025.jpeg') target.src = '/ashok_thakur_nafeed_award_2025.jpeg';
+                  if (target.src !== '/uttarakhand_governor_gurmeet_singh_award.jpeg') target.src = '/uttarakhand_governor_gurmeet_singh_award.jpeg';
                 }}
               />
             </div>
             <div className="space-y-1.5 text-center sm:text-left flex-1">
               <div className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md bg-white border border-[#DEC38C] text-[#7A5311] text-[10px] font-bold">
                 <Sparkles size={10} className="text-[#B48228]" />
-                <span>{lang === 'hi' ? 'विशेष राष्ट्रीय मंच अलंकरण' : 'Featured National Honor'}</span>
+                <span>{lang === 'hi' ? 'विशेष राजकीय मंच सम्मान' : 'Featured State Honor'}</span>
               </div>
               <h3 className="font-cinzel text-base sm:text-lg font-bold text-[#1E162B] group-hover:text-[#522B8A] transition-colors">
-                {lang === 'hi' ? 'डायनामिक एक्सीलेंस अवार्ड्स 2025' : 'Dynamic Excellence Awards 2025'}
+                {lang === 'hi' ? 'अमर उजाला ज्योतिष महाकुंभ 2026' : 'Amar Ujala Jyotish Mahakumbh 2026'}
               </h3>
               <p className="text-xs font-semibold text-[#7A5311]">
                 {lang === 'hi'
-                  ? 'माननीय अशोक ठाकुर (National Director of Nafeed) द्वारा सम्मानित'
-                  : 'Honored by Shri Ashok Thakur, National Director of NAFED'}
+                  ? 'उत्तराखंड के माननीय राज्यपाल ले. ज. गुरमीत सिंह द्वारा सम्मानित'
+                  : 'Honored by Hon. Governor of Uttarakhand Lt. Gen. Gurmeet Singh'}
               </p>
               <p className="text-[11px] text-[#4A4356] line-clamp-2">
                 {lang === 'hi'
-                  ? 'इंडिया इंटरनेशनल सेन्टर (IIC) नई दिल्ली के मुख्य मंच पर नाफेड नेशनल डायरेक्टर द्वारा विशिष्ट सम्मान अर्पण।'
-                  : 'Conferred at India International Centre (IIC), New Delhi in recognition of conscious guidance.'}
+                  ? 'ग्राफिक एरा विश्वविद्यालय, देहरादून के मंच पर माननीय राज्यपाल द्वारा विशेष सम्मान व शील्ड अर्पण।'
+                  : 'Conferred on stage at Graphic Era University, Dehradun in recognition of Vedic scholarship and guidance.'}
               </p>
               <div className="pt-1 flex items-center justify-center sm:justify-start gap-1 text-[11px] text-[#522B8A] font-bold">
                 <span>{lang === 'hi' ? 'सम्मान विवरण देखें →' : 'View Full Details →'}</span>
